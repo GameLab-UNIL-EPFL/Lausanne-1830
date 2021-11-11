@@ -1,0 +1,14 @@
+> characters 
+	> player
+	> missgingCharacters
+	> pngs
+> architecture 
+	> genericPieces
+		> buildings
+		> grounds
+		> furnitures
+		> props
+	> palud
+> backgrounds
+> notebook 
+> UI/Menus
