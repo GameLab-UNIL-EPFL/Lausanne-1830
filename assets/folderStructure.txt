@@ -1,14 +1,16 @@
 > characters 
 	> player
 	> missgingCharacters
-	> pngs
+	> pnjs
 > architecture 
 	> genericPieces
 		> buildings
 		> grounds
-		> furnitures
+		> furniture
 		> props
 	> palud
 > backgrounds
 > notebook 
+> map
 > UI/Menus
+ 
