@@ -107,6 +107,6 @@ public class Player : KinematicBody2D {
 		HandleState(delta);
 		
 		//Scale velocity and move
-		MoveAndCollide(Velocity * delta);
+		Velocity = MoveAndSlide(Velocity);
 	}
 }
