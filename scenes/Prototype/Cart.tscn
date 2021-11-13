@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/carriage.png" type="Texture" id=1]
+
+[node name="Cart" type="StaticBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -15 )
+polygon = PoolVector2Array( -72, 20, -77, 23, -81, 29, -82, 34, -80, 41, -75, 47, -70, 50, -61, 49, -55, 46, -52, 41, -50, 35, -49, 32, -18, 32, -18, 40, -12, 48, -1, 48, 6, 43, 8, 36, 24, 31, 25, 23, 37, 20, 49, 16, 50, 33, 80, 31, 86, 7, 91, 3, -72, 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -15 )
+texture = ExtResource( 1 )
