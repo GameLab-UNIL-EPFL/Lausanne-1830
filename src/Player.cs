@@ -19,10 +19,14 @@ public class Player : KinematicBody2D {
 	
 	private int Speed = 0;
 	private bool RunRequest = false;
-	private float RunCooldown = 3.0f;
+	private float RunCooldown = 0.0f;
 	
 	public Vector2 Velocity = Vector2.Zero;
 	private Vector2 InputVec = Vector2.Zero;
+	
+	private AnimationPlayer animation;
+	private AnimationTree animationTree; 
+	private AnimationNodeStateMachinePlayback animationState;
 	
 	/**
 	 * @brief Checks for player input and updates its velocity accordingly
@@ -42,6 +46,10 @@ public class Player : KinematicBody2D {
 		if(InputVec == Vector2.Zero) {
 			Velocity = Velocity.MoveToward(Vector2.Zero, FRIC * delta);
 		} else {
+			//Set blend positions for animation
+			animationTree.Set("parameters/Walk/blend_position", InputVec);
+			animationTree.Set("parameters/Run/blend_position", InputVec);
+			animationTree.Set("parameters/Idle/blend_position", InputVec);
 			Velocity = Velocity.MoveToward(InputVec * Speed, ACC * delta);
 		}
 	}
@@ -59,6 +67,7 @@ public class Player : KinematicBody2D {
 				//Check for state change
 				if(Velocity != Vector2.Zero) {
 					CurrentState = PlayerStates.WALKING;
+					animationState.Travel("Walk");
 				}
 				break;
 				
@@ -69,6 +78,9 @@ public class Player : KinematicBody2D {
 				//Check for sprint
 				if(RunRequest && RunCooldown == RunTime) {
 					CurrentState = PlayerStates.RUNNING;
+					
+					//Update animation to match state change
+					animationState.Travel("Run");
 				} 
 				break;
 				
@@ -78,17 +90,24 @@ public class Player : KinematicBody2D {
 				if(RunCooldown <= 0.0f) {
 					RunCooldown = 0.0f;
 					CurrentState = PlayerStates.WALKING;
+					
+					//Update animation to match state change
+					animationState.Travel("Walk");
 				}
 				break;
 				
 			default:
+				//Update state and animation
 				CurrentState = PlayerStates.IDLE;
+				animationState.Travel("Idle");
 				break;
 		}
 		
 		//Become idle if player stops moving
 		if(Velocity == Vector2.Zero) {
+			//Update state and animation
 			CurrentState = PlayerStates.IDLE;
+			animationState.Travel("Idle");
 		}
 	}
 	
@@ -96,6 +115,11 @@ public class Player : KinematicBody2D {
 		//Initialize variables
 		Speed = WalkSpeed;
 		RunCooldown = RunTime;
+		
+		//Fetch nodes
+		animation = GetNode<AnimationPlayer>("AnimationPlayer");
+		animationTree = GetNode<AnimationTree>("AnimationTree");
+		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 	}
 	
 	// Called on every physics engine tick

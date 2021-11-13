@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Prototype/PaludProtoBG.tscn" type="PackedScene" id=2]
 
-[node name="World" type="Node2D"]
+[node name="World" type="YSort"]
 __meta__ = {
 "_edit_lock_": true
 }
