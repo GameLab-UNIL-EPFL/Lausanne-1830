@@ -11,6 +11,3 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 322, 178 )
 texture = ExtResource( 1 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 4, 24, 3, 209, 313, 204, 305, 232, 275, 247, 275, 280, 280, 285, 280, 294, 306, 309, 338, 308, 359, 295, 360, 284, 364, 280, 364, 248, 333, 231, 334, 224, 329, 217, 328, 205, 644, 205, 642, 0, 3, -3 )
