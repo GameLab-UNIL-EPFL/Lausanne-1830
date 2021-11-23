@@ -1,0 +1,12 @@
+<scene name="palud">
+	<dialogue type="onApproach" id="testApproach" target1="Baker">
+		<text id="1">Du pain frais de ce matin !</text>
+		<text id="2">Venez goûter !</text>
+	</dialogue>
+	<dialogue type="onDemand" id="testDemand" target1="Baker">
+		<text id="1">Bien le bonjour, qu'est-ce qui vous intéresse?</text>
+		<text id="2">Pain, croissant?</text>
+		<text id="1">C'est fait ce matin avec la farine des Rochat !</text>
+		<text id="1">Vous devriez aller voir leur moulin au Flon.</text>
+	</dialogue>
+</scene>
