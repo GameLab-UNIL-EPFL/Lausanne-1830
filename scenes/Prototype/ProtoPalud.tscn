@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Prototype/Cart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Prototype/PaludProtoBG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Prototype/PaludFloor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Prototype/PaludBuilings.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Prototype/TableV.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Prototype/Bread.tscn" type="PackedScene" id=7]
+
+[node name="ProtoPalud" type="Node2D"]
+
+[node name="TextureRect" parent="." instance=ExtResource( 4 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 144.0
+focus_neighbour_bottom = NodePath("../TextureRect")
+color = Color( 0.760784, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaludProtoBG" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, 1 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="PaludBuilings" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 169, 152 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 122, 240 )
+
+[node name="Cart" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 525, 319 )
+
+[node name="Bread2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 42, 314 )
+
+[node name="Bread3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 43, 331 )
+
+[node name="Bread" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 41, 299 )
+
+[node name="TableV" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 43, 294 )
