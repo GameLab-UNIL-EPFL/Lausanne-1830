@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/DialogController.cs" type="Script" id=1]
+[ext_resource path="res://src/DialogueController.cs" type="Script" id=1]
 
 [node name="DialogController" type="Node"]
 script = ExtResource( 1 )

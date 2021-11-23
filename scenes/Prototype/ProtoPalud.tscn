@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Prototype/Cart.tscn" type="PackedScene" id=2]
@@ -7,8 +7,14 @@
 [ext_resource path="res://scenes/Prototype/PaludBuilings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Prototype/TableV.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Prototype/Bread.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/DialogueController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Prototype/TableH.tscn" type="PackedScene" id=10]
 
 [node name="ProtoPalud" type="Node2D"]
+
+[node name="DialogueController" parent="." instance=ExtResource( 9 )]
+SceneDialogueFile = "res://assets/04_dialogues/01_Palud/testDialogue.xml"
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
 
@@ -30,20 +36,32 @@ position = Vector2( 0, 1 )
 [node name="PaludBuilings" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 169, 152 )
 
+[node name="NPC" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 360, 259 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 122, 240 )
 
 [node name="Cart" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 525, 319 )
 
-[node name="Bread2" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 42, 314 )
+[node name="TableH" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 361, 277 )
 
-[node name="Bread3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 43, 331 )
+[node name="Bread4" parent="YSort/TableH" instance=ExtResource( 7 )]
+position = Vector2( -14, -5 )
 
-[node name="Bread" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 41, 299 )
+[node name="Bread5" parent="YSort/TableH" instance=ExtResource( 7 )]
+position = Vector2( 15, -5 )
 
 [node name="TableV" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 43, 294 )
+
+[node name="Bread" parent="YSort/TableV" instance=ExtResource( 7 )]
+position = Vector2( -2, 5 )
+
+[node name="Bread3" parent="YSort/TableV" instance=ExtResource( 7 )]
+position = Vector2( 0, 37 )
+
+[node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
+position = Vector2( -1, 20 )

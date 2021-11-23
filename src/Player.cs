@@ -123,7 +123,7 @@ public class Player : KinematicBody2D {
 	}
 	
 	// Called on every physics engine tick
-	public override void _PhysicsProcess(float delta) {
+	public override void _Process(float delta) {
 		//Handle input
 		HandleInput(delta);
 		

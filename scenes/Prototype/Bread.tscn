@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0
-height = 40.0
+height = 6.0
 
 [node name="Bread" type="StaticBody2D"]
 
@@ -14,4 +14,3 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource( 1 )
-disabled = true
