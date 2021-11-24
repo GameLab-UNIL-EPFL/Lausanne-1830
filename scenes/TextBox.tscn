@@ -18,29 +18,31 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="PanelContainer" type="MarginContainer" parent="."]
-margin_right = 497.0
+margin_right = 350.0
 margin_bottom = 64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="PanelContainer"]
-margin_right = 497.0
+margin_right = 350.0
 margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 
-[node name="TextContainer" type="MarginContainer" parent="PanelContainer/Panel"]
-margin_left = 10.0
-margin_top = 7.0
-margin_right = 486.0
-margin_bottom = 54.0
+[node name="TextContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 350.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="Label" parent="PanelContainer/Panel/TextContainer"]
-margin_right = 476.0
-margin_bottom = 47.0
+[node name="Text" type="Label" parent="PanelContainer/TextContainer"]
+margin_right = 350.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 1 )

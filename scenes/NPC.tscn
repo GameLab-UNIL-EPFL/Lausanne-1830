@@ -14,10 +14,9 @@ radius = 52.0096
 
 [node name="NPC" type="KinematicBody2D"]
 script = ExtResource( 2 )
-DialogueID = "testApproach"
 
 [node name="TextBox" parent="." instance=ExtResource( 4 )]
-position = Vector2( -60, -40 )
+position = Vector2( -44, -43 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Sprite" type="Sprite" parent="."]

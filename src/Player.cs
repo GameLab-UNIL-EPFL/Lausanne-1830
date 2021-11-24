@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class Player : KinematicBody2D {
 	//Player FSM
@@ -28,6 +29,9 @@ public class Player : KinematicBody2D {
 	private AnimationTree animationTree; 
 	private AnimationNodeStateMachinePlayback animationState;
 	
+	private List<NPC> subs = new List<NPC>();
+	private int nSubs = 0;
+	
 	/**
 	 * @brief Checks for player input and updates its velocity accordingly
 	 * @param delta, the time elapsed since the last update
@@ -51,6 +55,11 @@ public class Player : KinematicBody2D {
 			animationTree.Set("parameters/Run/blend_position", InputVec);
 			animationTree.Set("parameters/Idle/blend_position", InputVec);
 			Velocity = Velocity.MoveToward(InputVec * Speed, ACC * delta);
+		}
+		
+		//Check for interaction
+		if(Input.IsActionJustPressed("ui_interact")) {
+			NotifySubs();
 		}
 	}
 	
@@ -132,5 +141,21 @@ public class Player : KinematicBody2D {
 		
 		//Scale velocity and move
 		Velocity = MoveAndSlide(Velocity);
+	}
+	
+	public int _Subscribe(NPC npc) {
+		subs.Add(npc);
+		return nSubs++;
+	}
+	
+	public void _Unsubscribe(NPC npc) {
+		subs.Remove(npc);
+		nSubs--;
+	}
+	
+	private void NotifySubs() {
+		foreach(NPC sub in subs) {
+			sub._Notify();
+		}
 	}
 }

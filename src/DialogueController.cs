@@ -3,12 +3,13 @@ using System;
 using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
+using System.Collections.Generic;
 
 public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
 	[Export]
-	public string SceneDialogueFile;
+	public string SceneDialogueFile = "res://assets/04_dialogues/01_Palud/testDialogue.xml";
 	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
@@ -65,8 +66,17 @@ public class DialogueController : Node {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
 					where dialogue.Attribute("id").Value == dialogueID
-					select dialogue.Element("text").Value;
+					select dialogue.Elements("text");
+		
+		List<string> res = new List<string>();
+		var newList = query.Select(x => x.Select(y => y.Value));
 					
-		return query.ToArray();
+		foreach(var elem in newList) {
+			foreach(var text in elem) {
+				res.Add(text);
+			}
+		}
+		
+		return res.ToArray();
 	}
 }
