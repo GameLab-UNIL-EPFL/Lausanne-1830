@@ -14,7 +14,6 @@
 [node name="ProtoPalud" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 9 )]
-SceneDialogueFile = "res://assets/04_dialogues/01_Palud/testDialogue.xml"
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
 
