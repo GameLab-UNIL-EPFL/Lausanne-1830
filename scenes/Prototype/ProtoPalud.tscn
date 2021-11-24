@@ -28,7 +28,6 @@ __meta__ = {
 }
 
 [node name="PaludProtoBG" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 0, 1 )
 
 [node name="YSort" type="YSort" parent="."]
@@ -37,7 +36,7 @@ position = Vector2( 0, 1 )
 position = Vector2( 169, 152 )
 
 [node name="NPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 360, 259 )
+position = Vector2( 436, 191 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 122, 240 )
@@ -46,7 +45,7 @@ position = Vector2( 122, 240 )
 position = Vector2( 525, 319 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 361, 277 )
+position = Vector2( 437, 211 )
 
 [node name="Bread4" parent="YSort/TableH" instance=ExtResource( 7 )]
 position = Vector2( -14, -5 )

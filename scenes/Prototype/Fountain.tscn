@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Fountain" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
