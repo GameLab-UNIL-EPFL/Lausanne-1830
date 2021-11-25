@@ -36,6 +36,7 @@ public class NPC : KinematicBody2D {
 				throw new Exception("Every scene must have its own dialogue controller!!");
 			} 
 			
+			//Check for auto dialogue
 			if(HasAutoDialogue) {
 				if(AutoDialogueID == null) {
 					throw new Exception("NPC doesn't have a dialogueID!");
@@ -44,16 +45,23 @@ public class NPC : KinematicBody2D {
 				AutoDialogues = DC._QueryDialogue(AutoDialogueID);
 			}
 			
+			//Check for onDemand dialogue
 			if(HasDemandDialogue) {
 				if(DemandDialogueID == null) {
 					throw new Exception("NPC doesn't have a dialogueID!");
 				}
 				DemandDialogues = DC._QueryDialogue(DemandDialogueID);
 			}
-			
 		}
 	}
-
+	
+	/**
+	 * @brief Handles what happens when the player enters the ListenBox area,
+	 * meaning that the player has entered the zone where they should be able to 
+	 * hear the NPC's dialogue. This also causes the NPC to subscribe to the player
+	 * allowing for onDemand dialogue to take place.
+	 * @param tb, the TalkBox of the player that has entered the zone.
+	 */
 	private void _on_ListenBox_area_entered(Area2D tb) {
 		if(tb.Owner is Player) {
 			Player p = (Player)tb.Owner;
@@ -72,6 +80,12 @@ public class NPC : KinematicBody2D {
 		} 
 	}
 	
+	/**
+	 * @brief Handles what happens the the player is no longer in range to hear dialogue.
+	 * This causes the NPC to unsubscribe to the player, making it no longer
+	 * possible to generate onDemand dialogue.
+	 * @param tb, the TalkBox of the player who has left the zone.
+	 */
 	private void _on_ListenBox_area_exited(Area2D tb) {
 		if(tb.Owner is Player) {
 			Player p = (Player)tb.Owner;
@@ -86,6 +100,9 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
+	/**
+	 * @brief Called by the player when the NPC should be notified of an interaction.
+	 */
 	public void _Notify() {
 		if(HasDemandDialogue) {
 			//Check if there is any dialogue left
@@ -101,6 +118,4 @@ public class NPC : KinematicBody2D {
 		}
 	}
 }
-
-
 

@@ -14,6 +14,12 @@ public class DialogueController : Node {
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
 	
+	/**
+	 * @brief Converts a local res:// to a global usable path,
+	 * depending on the how the executable is run.
+	 * @param path, the local godot resource path needed to be sanitized.
+	 * @return a global path usable by Linq (so accessible outside of Godot).
+	 */
 	private string SanitizePath(string path) {
 		string path_tmp = "";
 		if(OS.HasFeature("editor")) {
@@ -22,7 +28,7 @@ public class DialogueController : Node {
 			path_tmp = ProjectSettings.GlobalizePath(path);
 		} else {
 			//Running from an exported project.
-			//`path` will contain the absolute path to `hello.txt` next to the executable.
+			//`path` will contain the absolute path, next to the executable.
 			//This is *not* identical to using `ProjectSettings.globalize_path()` with a `res://` path,
 			//but is close enough in spirit.
 			string san_path = path.Split(':')[1];
@@ -68,9 +74,14 @@ public class DialogueController : Node {
 					where dialogue.Attribute("id").Value == dialogueID
 					select dialogue.Elements("text");
 		
-		List<string> res = new List<string>();
+		//Map the queried XElements to their respective values
 		var newList = query.Select(x => x.Select(y => y.Value));
-					
+		
+		List<string> res = new List<string>();
+		
+		//Painfully convert the IEnumeration to a usable list
+		//This step is necessary, since one can't obtain the size of an 
+		//IEnumeration without iterating through it #lazyevaluation
 		foreach(var elem in newList) {
 			foreach(var text in elem) {
 				res.Add(text);
