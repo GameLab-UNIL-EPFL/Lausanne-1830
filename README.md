@@ -3,6 +3,13 @@ Open-Source Historically accurate RPG based in 1830s Lausanne.
 
 # Dev  
 Game currently being developped using the Open-Source Godot game engine.  
+__Godot version__: Godot Mono v3.4-stable  
+  
+## Input Map  
+__E__: Interact.
+__Arrow keys__: Move around.  
+__Hold Shift__: Sprint (for 3 sec then 2 sec cooldown).  
+  
 ## Dialogue File Format  
 Dialogue is formatted using XML.  
 Example:  
