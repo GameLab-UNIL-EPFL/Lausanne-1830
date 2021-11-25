@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Prototype/Cart.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://scenes/Prototype/TableH.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Prototype/Fountain.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker.png" type="Texture" id=12]
+[ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
+[ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
 
 [node name="ProtoPalud" type="Node2D"]
 
@@ -40,18 +42,49 @@ position = Vector2( 0, 1 )
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 321, 233 )
 
-[node name="NPC" parent="YSort" instance=ExtResource( 8 )]
+[node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 421, 213 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandTruschel"
 
-[node name="NPC2" parent="YSort" instance=ExtResource( 8 )]
+[node name="ListenBox" parent="YSort/Truschel" index="3"]
+visible = false
+
+[node name="Baker" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 61, 286 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
-[node name="Sprite" parent="YSort/NPC2" index="1"]
+[node name="Sprite" parent="YSort/Baker" index="1"]
 texture = ExtResource( 12 )
+
+[node name="Elisabeth" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 214.707, 310.924 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "demandElisabeth"
+
+[node name="Sprite" parent="YSort/Elisabeth" index="1"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/Elisabeth" index="2"]
+visible = false
+
+[node name="ListenBox" parent="YSort/Elisabeth" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="YSort/Elisabeth/ListenBox" index="0"]
+visible = false
+
+[node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 242.325, 216.489 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "demandOldMan"
+
+[node name="Sprite" parent="YSort/OldMan" index="1"]
+texture = ExtResource( 13 )
+
+[node name="ListenBox" parent="YSort/OldMan" index="3"]
+visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 122, 240 )
@@ -80,7 +113,11 @@ position = Vector2( 0, 37 )
 [node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
 position = Vector2( -1, 20 )
 
-[editable path="YSort/NPC"]
-[editable path="YSort/NPC/ListenBox"]
-[editable path="YSort/NPC2"]
-[editable path="YSort/NPC2/ListenBox"]
+[editable path="YSort/Truschel"]
+[editable path="YSort/Truschel/ListenBox"]
+[editable path="YSort/Baker"]
+[editable path="YSort/Baker/ListenBox"]
+[editable path="YSort/Elisabeth"]
+[editable path="YSort/Elisabeth/ListenBox"]
+[editable path="YSort/OldMan"]
+[editable path="YSort/OldMan/ListenBox"]
