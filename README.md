@@ -2,8 +2,15 @@
 Open-Source Historically accurate RPG based in 1830s Lausanne.  
 
 # Dev  
-Game currently being developped using the Open-Source Godot game engine.  
+Game currently being developped using the Open-Source [Godot](https://godotengine.org/download) game engine.  
 __Godot version__: Godot Mono v3.4-stable  
+
+Requirements:
+- OpenGL 2.1 / OpenGL ES 2.0 compatible hardware
+- For the Mono version: MSBuild
+(from Visual Studio Build Tools or the [Mono SDK](https://www.mono-project.com/download/stable/))
+
+
   
 ## Input Map  
 - __E__: Interact.   
