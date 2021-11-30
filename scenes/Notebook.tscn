@@ -1,0 +1,167 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
+[ext_resource path="res://scenes/NotebookInfo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 3 )
+
+[node name="Notebook" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Labels" type="Control" parent="Sprite"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sprite/Labels"]
+margin_left = 144.0
+margin_top = 54.0
+margin_right = 176.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Prénom :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Sprite/Labels"]
+margin_left = 144.0
+margin_top = 87.0
+margin_right = 168.0
+margin_bottom = 101.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Nom :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 127.0
+margin_right = 114.0
+margin_bottom = 141.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Adresse :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 159.0
+margin_right = 129.0
+margin_bottom = 173.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Conjoint(e) :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 192.0
+margin_right = 124.0
+margin_bottom = 206.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Enfant(s) :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 223.0
+margin_right = 114.0
+margin_bottom = 237.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Métier :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Sprite/Labels"]
+margin_left = 192.0
+margin_top = 127.0
+margin_right = 226.0
+margin_bottom = 141.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "N° :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Placeholder" type="ColorRect" parent="Sprite"]
+margin_left = 73.0
+margin_top = 40.0
+margin_right = 129.0
+margin_bottom = 116.0
+color = Color( 0.647059, 0.435294, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 184, 48 )
+
+[node name="Text" parent="Sprite/Prenom/TextContainer" index="0"]
+text = "Angélique"
+
+[node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 184, 80 )
+
+[node name="Text" parent="Sprite/Nom/TextContainer" index="0"]
+text = "Trüschel"
+
+[node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 120, 120 )
+
+[node name="Text" parent="Sprite/Adresse/TextContainer" index="0"]
+text = "Rue Chaucrau"
+
+[node name="Num" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 208, 120 )
+
+[node name="Text" parent="Sprite/Num/TextContainer" index="0"]
+text = "16"
+
+[node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 136, 152 )
+
+[node name="Text" parent="Sprite/Conjoint/TextContainer" index="0"]
+text = "Conrad Trüschel"
+
+[node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 129, 185 )
+
+[node name="Text" parent="Sprite/Enfants/TextContainer" index="0"]
+text = "4"
+
+[node name="Metier" parent="Sprite" instance=ExtResource( 2 )]
+position = Vector2( 116.247, 216 )
+
+[node name="Text" parent="Sprite/Metier/TextContainer" index="0"]
+margin_right = 95.0
+text = "Propriétaire de Brasserie"
+
+[editable path="Sprite/Prenom"]
+[editable path="Sprite/Nom"]
+[editable path="Sprite/Adresse"]
+[editable path="Sprite/Num"]
+[editable path="Sprite/Conjoint"]
+[editable path="Sprite/Enfants"]
+[editable path="Sprite/Metier"]
