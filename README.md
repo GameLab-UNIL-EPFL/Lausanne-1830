@@ -22,20 +22,20 @@ Dialogue is formatted using XML.
 Example:  
 ```xml
 <scene name="palud">
-	<dialogue type="onApproach" id="testApproach" target1="baker">
-		<text id="1">
-			<option id="1">Du pain frais de ce matin !</option>
-			<option id="2">Venez goûter !</option>
-		</text>
-	</dialogue>
-	<dialogue type="onDemand" id="testDemand" target1="baker">
-		<text id="1">
-			<option id="1">Bien le bonjour, qu'est-ce qui vous intéresse ?</option>
-			<option id="2">Pain, croissant ?</option>
-		</text>
-		<text id="2">C'est fait ce matin avec la farine des Rochat !</text>
-		<text id="3">Vous devriez aller visiter leur moulin au Flon.</text>
-	</dialogue>
+    <dialogue type="onApproach" id="testApproach" target1="baker">
+        <text>
+            <option id="0">Du pain frais de ce matin !</option>
+            <option id="1">Venez goûter !</option>
+        </text>
+    </dialogue>
+    <dialogue type="onDemand" id="testDemand" target1="baker">
+        <text>
+            <option id="0">Bien le bonjour, qu'est-ce qui vous intéresse ?</option>
+            <option id="1">Pain, croissant ?</option>
+        </text>
+        <text>C'est fait ce matin avec la farine des Rochat !</text>
+        <text>Vous devriez aller visiter leur moulin au Flon.</text>
+    </dialogue>
 </scene>
 ```  
 Here we have the following format:  
