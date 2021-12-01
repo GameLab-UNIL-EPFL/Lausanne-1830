@@ -1,32 +1,16 @@
 <scene name="palud">
     <dialogue type="onApproach" id="testApproach" target1="baker">
-        <text id="0">
-            <option id="0"><>Du pain frais de ce matin !</></option>
-        </text>
-    </dialogue>
-    <dialogue type="onApproach" id="testApproach" target1="baker" target2="">
-        <text id="0">
-            <option id="1"><>Venez go&#251;ter !</></option>
+        <text>
+            <option id="0">Du pain frais de ce matin !</option>
+            <option id="1">Venez go&#251;ter !</option>
         </text>
     </dialogue>
     <dialogue type="onDemand" id="testDemand" target1="baker">
-        <text id="0">
-            <option id="0"><>Bien le bonjour, qu'est-ce qui vous int&#233;resse ?</></option>
+        <text>
+            <option id="0">Bien le bonjour, qu'est-ce qui vous int&#233;resse ?</option>
+            <option id="1">Pain, croissant ?</option>
         </text>
-    </dialogue>
-    <dialogue type="onDemand" id="testDemand" target1="baker">
-        <text id="0">
-            <option id="0"><>Pain, croissant ?</></option>
-        </text>
-    </dialogue>
-    <dialogue type="onDemand" id="testDemand" target1="baker">
-        <text id="1">
-            <option id="0"><>C'est fait ce matin avec la farine des Rochat !</></option>
-        </text>
-    </dialogue>
-    <dialogue type="onDemand" id="testDemand" target1="baker">
-        <text id="2">
-            <option id="0"><>Vous devriez aller visiter leur moulin au Flon.</></option>
-        </text>
+        <text>C'est fait ce matin avec la farine des Rochat !</text>
+        <text>Vous devriez aller visiter leur moulin au Flon.</text>
     </dialogue>
 </scene>

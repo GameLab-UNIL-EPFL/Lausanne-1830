@@ -39,11 +39,35 @@ def writeToXML(filename, values, bodies) -> None:
         subelem: ET.Element = root
 
         # Iterate through each xmlnode in the line (excluding body)
-        for j in range(1, len(xmlnodes)):
+        for j in range(1, len(xmlnodes) - 1):
             node = xmlnodes[j]
             subelem = ET.SubElement(subelem, node.tag, node.values)
 
-        subelem.text = bodies[bodyidx]
+        # Extract current body
+        body: str = bodies[bodyidx]
+
+        # Check for text follow-ups
+        texts = body.split('&')
+        textmeta = XMLTagInfo("text", [])
+        for text in texts:
+            # Add text tag
+            textnode = XMLTag(textmeta, [])
+            textsubelem = ET.SubElement(subelem, textnode.tag, textnode.values)
+
+            # Check for options
+            options = text.split('|')
+
+            if len(options) > 1:
+                optidx = 0
+                optionmeta = XMLTagInfo("option", ["id"])
+                # Loop through options and create a new node for each one
+                for option in options:
+                    xmlnode = XMLTag(optionmeta, [str(optidx)])
+                    ET.SubElement(textsubelem, xmlnode.tag, xmlnode.values).text = option
+                    optidx += 1
+            else:
+                textsubelem.text = text
+            
         bodyidx += 1
 
     # Output file name is same as input but .xml
