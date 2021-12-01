@@ -47,7 +47,7 @@ def writeToXML(filename, values, bodies) -> None:
         bodyidx += 1
 
     # Output file name is same as input but .xml
-    outputname = filename.split('.')[0] + ".xml"
+    outputname = "xml/" + filename.split('/')[1].split('.')[0] + ".xml"
 
     # Create tree
     tree = ET.ElementTree(root)
