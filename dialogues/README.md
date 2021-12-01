@@ -22,12 +22,12 @@ This will give us the following result, stored in `xml/examples.xml`:
     <dialogue type="onApproach" id="testApproach" target1="baker">
         <text>
             <option id="0">Du pain frais de ce matin !</option>
-            <option id="1">Venez go&#251;ter !</option>
+            <option id="1">Venez goûter !</option>
         </text>
     </dialogue>
     <dialogue type="onDemand" id="testDemand" target1="baker">
         <text>
-            <option id="0">Bien le bonjour, qu'est-ce qui vous int&#233;resse ?</option>
+            <option id="0">Bien le bonjour, qu'est-ce qui vous intéresse ?</option>
             <option id="1">Pain, croissant ?</option>
         </text>
         <text>C'est fait ce matin avec la farine des Rochat !</text>
