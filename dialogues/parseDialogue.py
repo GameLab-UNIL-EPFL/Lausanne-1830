@@ -75,7 +75,7 @@ def writeToXML(filename, values, bodies) -> None:
 
     # Create tree
     tree = ET.ElementTree(root)
-    tree.write(outputname)
+    tree.write(outputname, encoding='utf-8')
 
 ##
 # Parses the given .tsv file and converts it into an xml file
