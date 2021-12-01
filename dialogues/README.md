@@ -35,4 +35,4 @@ This will give us the following result, stored in `xml/examples.xml`:
     </dialogue>
 </scene>
 ```  
-> Note that this script is perfectly generic and works with any xml format.  
+> Note that this script is perfectly generic and works with any xml format containing the text and option fields.    
