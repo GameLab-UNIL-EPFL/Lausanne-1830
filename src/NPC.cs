@@ -74,8 +74,8 @@ public class NPC : KinematicBody2D {
 			//Subscribe to the player
 			p._Subscribe(this);
 			
-			//Show auto dialogue if needed
-			if(HasAutoDialogue) {
+			//Show auto dialogue if the NPC has one
+			if(AutoDialogueID != "") {
 				//Fetch the right dialogue
 				string d = AutoDialogues[AutoDialogueIdx];
 				AutoDialogueIdx = (AutoDialogueIdx + 1) % AutoDialogues.Length;

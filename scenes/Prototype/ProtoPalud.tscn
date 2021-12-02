@@ -43,7 +43,7 @@ position = Vector2( 310, 238 )
 
 [node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 421, 213 )
-AutoDialogueID = "testApproach"
+AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 
 [node name="ListenBox" parent="YSort/Truschel" index="3"]
@@ -59,7 +59,7 @@ texture = ExtResource( 12 )
 
 [node name="Elisabeth" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 214.707, 310.924 )
-AutoDialogueID = "testApproach"
+AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 
 [node name="Sprite" parent="YSort/Elisabeth" index="1"]
@@ -76,7 +76,7 @@ visible = false
 
 [node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 242.325, 216.489 )
-AutoDialogueID = "testApproach"
+AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 
 [node name="Sprite" parent="YSort/OldMan" index="1"]
