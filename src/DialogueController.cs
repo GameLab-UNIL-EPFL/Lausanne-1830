@@ -5,6 +5,17 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
 
+public struct Text_t {
+	bool hasOptions;
+	string[] options;
+};
+
+public struct Dialogue_t {
+	Text_t[] texts;
+	string type; //onDemand or onApproach
+	string target1; //Name of person talking
+};
+
 public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
@@ -68,25 +79,31 @@ public class DialogueController : Node {
 	 * @param dialogueID, the id of the dialogue being queried
 	 * @return a string array containing all of the lines of the dialogue
 	 */
-	public string[] _QueryDialogue(string dialogueID) {
+	public string[]/*Dialogue_t*/ _QueryDialogue(string dialogueID) {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
 					where dialogue.Attribute("id").Value == dialogueID
 					select dialogue.Elements("text");
-		
-		//Map the queried XElements to their respective values
-		var newList = query.Select(x => x.Select(y => y.Value));
-		
+					
+		/*var optionQuery = from text in query.Descendants("option")
+						  select text.Value;*/
+					
 		List<string> res = new List<string>();
 		
-		//Painfully convert the IEnumeration to a usable list
-		//This step is necessary, since one can't obtain the size of an 
-		//IEnumeration without iterating through it #lazyevaluation
-		foreach(var elem in newList) {
-			foreach(var text in elem) {
-				res.Add(text);
+		//Check for options
+		//if(query.Elements("option").isEmpty()) {
+			//Map the queried XElements to their respective values
+			var newList = query.Select(x => x.Select(y => y.Value));
+			
+			//Painfully convert the IEnumeration to a usable list
+			//This step is necessary, since one can't obtain the size of an 
+			//IEnumeration without iterating through it #lazyevaluation
+			foreach(var elem in newList) {
+				foreach(var text in elem) {
+					res.Add(text);
+				}
 			}
-		}
+		//}
 		
 		return res.ToArray();
 	}

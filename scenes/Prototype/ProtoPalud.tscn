@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Prototype/Cart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Notebook.cs" type="Script" id=2]
 [ext_resource path="res://scenes/Prototype/PaludProtoBG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Prototype/PaludFloor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Prototype/BuildingsPlaceholder.tscn" type="PackedScene" id=5]
@@ -14,6 +14,10 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/baker.png" type="Texture" id=12]
 [ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
+[ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=17]
+
+[sub_resource type="StyleBoxFlat" id=1]
 
 [node name="ProtoPalud" type="Node2D"]
 
@@ -89,9 +93,6 @@ visible = false
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 122, 240 )
 
-[node name="Cart" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 525, 319 )
-
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 421, 233 )
 
@@ -112,6 +113,35 @@ position = Vector2( 0, 37 )
 
 [node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
 position = Vector2( -1, 20 )
+
+[node name="Notebook" parent="." instance=ExtResource( 15 )]
+position = Vector2( 82, 36 )
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="Notebook"]
+modulate = Color( 0, 0, 0, 0.764706 )
+show_behind_parent = true
+margin_left = -91.0
+margin_top = -46.0
+margin_right = 575.0
+margin_bottom = 343.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotebookController" type="Button" parent="."]
+margin_left = 578.0
+margin_top = 319.0
+margin_right = 632.0
+margin_bottom = 353.0
+icon = ExtResource( 17 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
 [editable path="YSort/Truschel"]
 [editable path="YSort/Truschel/ListenBox"]
