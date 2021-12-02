@@ -3,6 +3,12 @@ using System;
 
 public class NPC : KinematicBody2D {
 	
+	[Signal]
+	public delegate void EndDialogue();
+	
+	[Signal]
+	public delegate void StartDialogue();
+	
 	private DialogueController DC;
 	
 	private string[] AutoDialogues;
@@ -103,10 +109,11 @@ public class NPC : KinematicBody2D {
 	/**
 	 * @brief Called by the player when the NPC should be notified of an interaction.
 	 */
-	public void _Notify() {
+	public void _Notify(Player player) {
 		if(HasDemandDialogue) {
 			//Check if there is any dialogue left
 			if(DemandDialogueIdx < DemandDialogues.Length) {
+				player._StartDialogue();
 				//Fetch the right dialogue
 				string d = DemandDialogues[DemandDialogueIdx++];
 				
@@ -114,6 +121,7 @@ public class NPC : KinematicBody2D {
 				TB._ShowText(d);
 			} else {
 				TB._HideText();
+				player._EndDialogue();
 			}
 		}
 	}

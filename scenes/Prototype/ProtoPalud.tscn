@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
-[ext_resource path="res://scenes/Prototype/PaludProtoBG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Prototype/PaludFloor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Prototype/BuildingsPlaceholder.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Prototype/PaludBuilings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Prototype/TableV.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Prototype/Bread.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
@@ -34,17 +33,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 321, 179 )
-
-[node name="PaludProtoBG" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 0, 1 )
+[node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
+position = Vector2( 319, 183 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 321, 233 )
+position = Vector2( 310, 238 )
 
 [node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 421, 213 )
@@ -115,6 +110,7 @@ position = Vector2( 0, 37 )
 position = Vector2( -1, 20 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 82, 36 )
 script = ExtResource( 2 )
 
@@ -141,6 +137,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="EndDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/Elisabeth" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/Elisabeth" to="DialogueController" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
 [editable path="YSort/Truschel"]
