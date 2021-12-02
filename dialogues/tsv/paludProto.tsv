@@ -1,0 +1,3 @@
+scene name	dialogue type id target1 target2	
+palud	onApproach testApproach baker	Du pain frais de ce matin !|Venez goûter !
+palud	onDemand testDemand baker	Bien le bonjour, qu'est-ce qui vous intéresse ?|Pain, croissant ?&C'est fait ce matin avec la farine des Rochat !&Vous devriez aller visiter leur moulin au Flon.
