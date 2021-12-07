@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
+[ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Prototype/PaludFloor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Prototype/PaludBuilings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Prototype/TableV.tscn" type="PackedScene" id=6]
@@ -16,6 +17,14 @@
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=17]
 
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -8.73701, 1.60986 )
+b = Vector2( 642.831, 1.25632 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 7.58701, -140.561 )
+b = Vector2( 7.2533, 11.611 )
+
 [sub_resource type="StyleBoxFlat" id=1]
 
 [node name="ProtoPalud" type="Node2D"]
@@ -24,17 +33,37 @@
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 margin_right = 640.0
 margin_bottom = 144.0
 focus_neighbour_bottom = NodePath("../TextureRect")
-color = Color( 0.760784, 1, 1, 1 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
 position = Vector2( 319, 183 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2( 1.00075, 360.158 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
+position = Vector2( -8.75844, 349.192 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D3"]
+position = Vector2( 633.633, 349.192 )
+shape = SubResource( 3 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -51,7 +80,7 @@ HasAutoDialogue = false
 visible = false
 
 [node name="Baker" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 61, 286 )
+position = Vector2( 54.8276, 286.652 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
