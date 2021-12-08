@@ -262,7 +262,6 @@ __meta__ = {
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Adresse" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Conjoint" to="NotebookList" method="_on_OpenOptions"]
-[connection signal="OpenOptions" from="Sprite/Enfants" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Metier" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Prenom" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Nom" method="_on_UpdateInfo"]
