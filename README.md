@@ -6,7 +6,7 @@ Game currently being developped using the Open-Source [Godot](https://godotengin
 __Godot version__: Godot Mono v3.4-stable  
 
 Requirements:
-- OpenGL 2.1 / OpenGL ES 2.0 compatible hardware
+- OpenGL 3.3 / OpenGL ES 3.0 compatible hardware
 - For the Mono version: MSBuild
 (from Visual Studio Build Tools or the [Mono SDK](https://www.mono-project.com/download/stable/))
 
