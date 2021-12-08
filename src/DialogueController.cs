@@ -31,7 +31,7 @@ public class DialogueController : Node {
 	 * @param path, the local godot resource path needed to be sanitized.
 	 * @return a global path usable by Linq (so accessible outside of Godot).
 	 */
-	private string SanitizePath(string path) {
+	public static string _SanitizePath(string path) {
 		string path_tmp = "";
 		if(OS.HasFeature("editor")) {
 			//Running from an editor binary.
@@ -52,18 +52,18 @@ public class DialogueController : Node {
 	/**
 	 * @brief Parses the XML file and loads it into a local XDocument
 	 */
-	private void ParseXML() {
+	public static void _ParseXML(ref XDocuement targetXML, string filePath) {
 		if(SceneDialogueFile == null) {
-			throw new Exception("No dialogue was input for the scene!");
+			throw new Exception("No xml file was input for the scene!");
 		}
 		
 		//Load XML file into a XDocument for querying
-		string newPath = SanitizePath(SceneDialogueFile);
+		string newPath = _SanitizePath(filePath);
 		var xml = XDocument.Load(newPath);
 		
 		//Sanity check
 		if(xml != null) {
-			dialogueTree = xml;
+			targetXML = xml;
 		} else {
 			throw new Exception("Unable to load xml file!");
 		}
@@ -71,7 +71,7 @@ public class DialogueController : Node {
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		ParseXML();
+		_ParseXML(ref dialogueTree, SceneDialogueFile);
 	}
 	
 	/**
