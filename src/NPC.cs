@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class NPC : KinematicBody2D {
 	
@@ -9,13 +10,18 @@ public class NPC : KinematicBody2D {
 	[Signal]
 	public delegate void StartDialogue();
 	
+	private const int MAX_CHAR_PER_LINE = 25;
+	private const int MAX_LINES = 3;
+	
 	private DialogueController DC;
 	
 	private string[] AutoDialogues;
 	private int AutoDialogueIdx = 0;
 	
 	private string[] DemandDialogues;
+	private string[] InnerLines;
 	private int DemandDialogueIdx = 0;
+	private int InnerLinesCount = 0;
 	
 	//Used to display text
 	private TextBox TB;
@@ -106,16 +112,52 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
+	private string[] FormatText(string text) {
+		string newText = "";
+		int count = MAX_CHAR_PER_LINE;
+		int lines = MAX_LINES;
+		List<string> textLines = new List<string>();
+		foreach(char c in text) {
+			// Ignore new lines
+			if(c == '\n') continue;
+			
+			// Max 25 characters per line
+			if(count-- == 0) {
+				newText += '\n' + c;
+				count = MAX_CHAR_PER_LINE;
+				lines--;
+			} else {
+				newText += c;
+			}
+			// Only 3 lines per entry
+			if(lines == 0) {
+				textLines.Add(newText);
+				newText = "";
+				lines =  MAX_LINES;
+			}
+		}
+		return textLines.ToArray();
+	}
+	
 	/**
 	 * @brief Called by the player when the NPC should be notified of an interaction.
 	 */
 	public void _Notify(Player player) {
+		TB._HideAll();
 		if(HasDemandDialogue) {
 			//Check if there is any dialogue left
 			if(DemandDialogueIdx < DemandDialogues.Length) {
 				player._StartDialogue();
+				
 				//Fetch the right dialogue
-				string d = DemandDialogues[DemandDialogueIdx++];
+				string d;
+				if(InnerLinesCount == 0) {
+					d = DemandDialogues[DemandDialogueIdx++];
+					InnerLines = FormatText(d);
+					InnerLinesCount = InnerLines.Length;
+				} else {
+					d = InnerLines[InnerLines.Length - InnerLinesCount--];
+				}
 				
 				//Show it in the box
 				TB._ShowText(d);
