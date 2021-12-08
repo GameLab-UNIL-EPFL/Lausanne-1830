@@ -1,17 +1,17 @@
 <db>
-	<personnage prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" metier="Propriétaire"></personnage>
-	<personnage prenom="Henri" nom="Perregaux" adresse="Rue St-François" metier="Architecte"></personnage>
-	<personnage prenom="Isabelle" nom="De Montolieu" adresse="Vennes" metier="Écrivain/e"></personnage>
-	<personnage prenom="Jean-Jacques" nom="Mercier" adresse="Rue de Pré" metier="Négociant/e"></personnage>
-	<personnage prenom="Benedict" nom="Müller" adresse="Moulins de Pépinet" metier="Meunier/ère"></personnage>
-	<personnage prenom="Vincent" nom="Geigler" adresse="Rue de la Madeleine" metier="Journalier/ère"></personnage>
-	<personnage prenom="Louis" nom="Michaud" adresse="Rue de la Cité Devant" metier="Journaliste"></personnage>
-	<personnage prenom="Samuel" nom="Kohler" adresse="Rue du Petit Chêne" metier="Tanneur/euse"></personnage>
-	<personnage prenom="Pierre" nom="De Crousaz" adresse="Rue St-Laurent" metier="Musicien/ne"></personnage>
-	<personnage prenom="Alexandre" nom="Chapuis" adresse="Rue de la Palud" metier="Concierge"></personnage>
-	<personnage prenom="Marie" nom="Rebillet" adresse="Rue du Flon" metier="Brasseur/euse"></personnage>
-	<personnage prenom="Caroline" nom="Baumann" adresse="Place du Pont" metier="Vigneron/ne"></personnage>
-	<personnage prenom="Jeannette" nom="Pouly" adresse="Rue d'Etraz" metier="Garde Police"></personnage>
-	<personnage prenom="Pauline" nom="Falconnier" adresse="Rue de Bourg" metier="Rentier/ère"></personnage>
-	<personnage prenom="Susanne" nom="Détraz" adresse="Rue de Martherey" metier="Lingère"></personnage>
+	<personnage prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" conjoint="Trüschel" metier="Propriétaire"></personnage>
+	<personnage prenom="Henri" nom="Perregaux" adresse="Rue St-François" conjoint="Perregaux" metier="Architecte"></personnage>
+	<personnage prenom="Isabelle" nom="De Montolieu" adresse="Vennes" conjoint="De Montolieu" metier="Écrivain/e"></personnage>
+	<personnage prenom="Jean-Jacques" nom="Mercier" adresse="Rue de Pré" conjoint="Mercier" metier="Négociant/e"></personnage>
+	<personnage prenom="Benedict" nom="Müller" adresse="Moulins de Pépinet" conjoint="Müller" metier="Meunier/ère"></personnage>
+	<personnage prenom="Vincent" nom="Geigler" adresse="Rue de la Madeleine" conjoint="Geigler" metier="Journalier/ère"></personnage>
+	<personnage prenom="Louis" nom="Michaud" adresse="Rue de la Cité Devant" conjoint="Michaud" metier="Journaliste"></personnage>
+	<personnage prenom="Samuel" nom="Kohler" adresse="Rue du Petit Chêne" conjoint="Kohler" metier="Tanneur/euse"></personnage>
+	<personnage prenom="Pierre" nom="De Crousaz" adresse="Rue St-Laurent" conjoint="De Crousaz" metier="Musicien/ne"></personnage>
+	<personnage prenom="Alexandre" nom="Chapuis" adresse="Rue de la Palud" conjoint="Chapuis" metier="Concierge"></personnage>
+	<personnage prenom="Marie" nom="Rebillet" adresse="Rue du Flon" conjoint="Rebillet" metier="Brasseur/euse"></personnage>
+	<personnage prenom="Caroline" nom="Baumann" adresse="Place du Pont" conjoint="Baumann" metier="Vigneron/ne"></personnage>
+	<personnage prenom="Jeannette" nom="Pouly" adresse="Rue d'Etraz" conjoint="Pouly" metier="Garde Police"></personnage>
+	<personnage prenom="Pauline" nom="Falconnier" adresse="Rue de Bourg" conjoint="Falconnier" metier="Rentier/ère"></personnage>
+	<personnage prenom="Susanne" nom="Détraz" adresse="Rue de Martherey" conjoint="Détraz" metier="Lingère"></personnage>
 </db>
