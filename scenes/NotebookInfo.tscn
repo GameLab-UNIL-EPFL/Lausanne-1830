@@ -6,9 +6,11 @@
 [node name="NotebookInfo" type="Button"]
 margin_right = 72.0
 margin_bottom = 25.0
+focus_mode = 0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_colors/font_color_hover = Color( 0.611765, 0.137255, 0.137255, 1 )
 custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
 text = "info"
 flat = true
 script = ExtResource( 2 )

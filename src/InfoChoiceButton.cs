@@ -13,6 +13,7 @@ public class InfoChoiceButton : Button {
 	private void SetupButton() {
 		Flat = true;
 		Align = 0; // Align left
+		Set("focus_mode", 0); // None focus mode
 		Set("custom_colors/font_color", NotebookInfo.C1);
 		Set("custom_colors/font_color_hover", NotebookInfo.Hover);
 		Set("custom_fonts/font", ResourceLoader.Load(

@@ -23,6 +23,8 @@ public class NotebookList : Node2D {
 	private ScrollContainer sC;
 	private VBoxContainer vBC;
 	private List<InfoChoiceButton> labels;
+	private Button close;
+	private Sprite closeSprite;
 	
 	// Used to not respawn labels in case of opening and reclosing the same attribute
 	private string curAttribute;
@@ -45,6 +47,8 @@ public class NotebookList : Node2D {
 		bgSprite.Show();
 		sC.Show();
 		vBC.Show();
+		
+		closeSprite.Frame = 0;
 		
 		//Show all labels
 		foreach(var label in labels) {
@@ -115,6 +119,8 @@ public class NotebookList : Node2D {
 		bgSprite = GetNode<Sprite>("BgSprite");
 		sC = GetNode<ScrollContainer>("BgSprite/ScrollContainer");
 		vBC = GetNode<VBoxContainer>("BgSprite/ScrollContainer/AttributeList");
+		close = GetNode<Button>("Close");
+		closeSprite = GetNode<Sprite>("Close/CloseSprite");
 		
 		// Spawn a label for each character
 		labels = new List<InfoChoiceButton>();
@@ -173,11 +179,12 @@ public class NotebookList : Node2D {
 		return finalRes;
 	}
 	
-	/**
-	 * @brief Reaction to the close button being pressed. Should hide all elements.
-	 */
-	private void _on_Close_pressed() {
+	private void _on_Close_button_down() {
+		closeSprite.Frame = 1;
+	}
+	
+	private void _on_Close_button_up() {
+		closeSprite.Frame = 0;
 		HideAll();
 	}
 }
-

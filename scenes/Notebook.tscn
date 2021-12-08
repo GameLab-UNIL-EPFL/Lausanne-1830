@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/NotebookInfo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/04_notebook/closeButton.png" type="Texture" id=4]
 [ext_resource path="res://assets/04_notebook/noteBooksTabsSheet.png" type="Texture" id=5]
 [ext_resource path="res://scenes/NotebookList.tscn" type="PackedScene" id=6]
 
@@ -141,6 +142,8 @@ margin_left = 176.0
 margin_top = 47.0
 margin_right = 240.0
 margin_bottom = 72.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Angélique"
 AttributeName = "prenom"
 
@@ -149,6 +152,8 @@ margin_left = 164.0
 margin_top = 80.0
 margin_right = 236.0
 margin_bottom = 105.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Trüschel"
 AttributeName = "nom"
 
@@ -157,6 +162,8 @@ margin_left = 114.0
 margin_top = 120.0
 margin_right = 186.0
 margin_bottom = 145.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Rue Chaucrau"
 AttributeName = "adresse"
 
@@ -165,6 +172,8 @@ margin_left = 205.0
 margin_top = 120.0
 margin_right = 232.0
 margin_bottom = 145.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "16"
 AttributeName = "num"
 
@@ -173,6 +182,8 @@ margin_left = 132.0
 margin_top = 153.0
 margin_right = 187.0
 margin_bottom = 178.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Trüschel"
 AttributeName = "conjoint"
 
@@ -181,6 +192,8 @@ margin_left = 125.0
 margin_top = 189.0
 margin_right = 148.0
 margin_bottom = 206.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "4"
 AttributeName = "enfants"
 
@@ -189,6 +202,8 @@ margin_left = 111.0
 margin_top = 217.0
 margin_right = 183.0
 margin_bottom = 242.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Propriétaire"
 AttributeName = "metier"
 
@@ -242,21 +257,26 @@ vframes = 4
 frame = 2
 
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 164.706, 73.6222 )
 DBFilePath = "res://db/characters/paludCharacters.xml"
 
 [node name="Close" type="Button" parent="NotebookList"]
-margin_left = 161.592
-margin_top = -7.24633
-margin_right = 180.592
-margin_bottom = 14.7537
+margin_left = 162.0
+margin_top = 1.0
+margin_right = 174.0
+margin_bottom = 20.0
+focus_mode = 0
 custom_fonts/font = SubResource( 3 )
-text = "x"
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseSprite" type="Sprite" parent="NotebookList/Close"]
+position = Vector2( 6.29401, 6.3778 )
+texture = ExtResource( 4 )
+vframes = 2
 
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
@@ -269,7 +289,8 @@ __meta__ = {
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Conjoint" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Enfants" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
-[connection signal="pressed" from="NotebookList/Close" to="NotebookList" method="_on_Close_pressed"]
+[connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
+[connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]
 
 [editable path="Sprite/Prenom"]
 [editable path="Sprite/Nom"]
