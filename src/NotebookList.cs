@@ -26,11 +26,18 @@ public class NotebookList : Node2D {
 	private Button close;
 	private Sprite closeSprite;
 	
+	// NumPad nodes
+	private VBoxContainer NumVC;
+	private Label InputNum;
+	
 	// Used to not respawn labels in case of opening and reclosing the same attribute
 	private string curAttribute;
+	private const string NUM = "num";
+	private const string ENFANTS = "enfants";
 	
 	private void HideAll() {
 		bgSprite.Hide();
+		NumVC.Hide();
 		sC.Hide();
 		vBC.Hide();
 		
@@ -43,8 +50,8 @@ public class NotebookList : Node2D {
 		Hide();
 	}
 	
-	private void ShowAll() {
-		bgSprite.Show();
+	private void ShowVerticalNameList() {
+		NumVC.Hide();
 		sC.Show();
 		vBC.Show();
 		
@@ -54,6 +61,21 @@ public class NotebookList : Node2D {
 		foreach(var label in labels) {
 			label.Show();
 		}
+	}
+	
+	private void ShowNumpad() {
+		// Show the buttons
+		NumVC.Show();
+		sC.Hide();
+		
+		// Don't forget to reset the text
+		InputNum.Text = "";
+	}
+	
+	private void ShowAll() {
+		bgSprite.Show();
+		
+		closeSprite.Frame = 0;
 		
 		// Show the parent node
 		Show();
@@ -122,6 +144,10 @@ public class NotebookList : Node2D {
 		close = GetNode<Button>("Close");
 		closeSprite = GetNode<Sprite>("Close/CloseSprite");
 		
+		// Fetch numpad nodes
+		NumVC = GetNode<VBoxContainer>("BgSprite/NumberVC");
+		InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
+		
 		// Spawn a label for each character
 		labels = new List<InfoChoiceButton>();
 		SpawnLabels();
@@ -135,18 +161,25 @@ public class NotebookList : Node2D {
 	 * @param attributeName, the attribute for which we want all options
 	 */
 	public void _on_OpenOptions(string attributeName) {
-		// Make sure to not respawn labels for nothing
-		if(curAttribute == attributeName) {
-			ShowAll();
-		} else {
-			// Get all options for a given attribute
-			string[] options = QueryCharacterAttribute(attributeName);
-			
-			// Fill and show the labels
-			FillLabels(options);
+		// Check if the numpad should be show instead of the list
+		if(attributeName == NUM || attributeName == ENFANTS) {
 			curAttribute = attributeName;
-			ShowAll();
+			ShowNumpad();
+		} else {
+			// Make sure to not respawn labels for nothing
+			if(curAttribute == attributeName) {
+				ShowVerticalNameList();
+			} else {
+				// Get all options for a given attribute
+				string[] options = QueryCharacterAttribute(attributeName);
+				
+				// Fill and show the labels
+				FillLabels(options);
+				curAttribute = attributeName;
+				ShowVerticalNameList();
+			}
 		}
+		ShowAll();
 	}
 	
 	/**
@@ -186,5 +219,20 @@ public class NotebookList : Node2D {
 	private void _on_Close_button_up() {
 		closeSprite.Frame = 0;
 		HideAll();
+	}
+	
+	private void _on_InsertNumber(int num) {
+		if(InputNum.Text.Length < 3) {
+			InputNum.Text += num.ToString();
+		}
+	}
+	
+	private void _on_RemoveNumber() {
+		InputNum.Text = InputNum.Text.Substring(0, InputNum.Text.Length - 1);
+	}
+	
+	private void _on_EnterNumber() {
+		EmitSignal(nameof(UpdateInfo), curAttribute, InputNum.Text);
+		_on_Close_button_up();
 	}
 }
