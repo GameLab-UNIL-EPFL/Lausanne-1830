@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/02_architecture/02_palud/fullScene.png" type="Texture" id=16]
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=17]
 
 [sub_resource type="SegmentShape2D" id=2]
@@ -40,8 +41,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 321, 180 )
+texture = ExtResource( 16 )
+
 [node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
-position = Vector2( 319, 183 )
+position = Vector2( 319, 181 )
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -140,6 +146,7 @@ position = Vector2( 0, 37 )
 position = Vector2( -1, 20 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 82, 36 )
 script = ExtResource( 2 )
 
