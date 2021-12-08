@@ -21,6 +21,16 @@ font_data = ExtResource( 3 )
 
 [node name="Notebook" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -148.0
+margin_top = -127.0
+margin_right = 761.0
+margin_bottom = 463.0
+color = Color( 0, 0, 0, 0.462745 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
@@ -32,7 +42,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Sprite/Labels"]
+[node name="PrenomLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 144.0
 margin_top = 54.0
 margin_right = 176.0
@@ -44,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="Sprite/Labels"]
+[node name="NomLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 144.0
 margin_top = 87.0
 margin_right = 168.0
@@ -56,7 +66,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="Sprite/Labels"]
+[node name="AdresseLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 80.0
 margin_top = 127.0
 margin_right = 114.0
@@ -68,7 +78,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="Sprite/Labels"]
+[node name="ConjointLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 80.0
 margin_top = 159.0
 margin_right = 129.0
@@ -80,7 +90,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label5" type="Label" parent="Sprite/Labels"]
+[node name="EnfantLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 80.0
 margin_top = 192.0
 margin_right = 124.0
@@ -92,7 +102,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label6" type="Label" parent="Sprite/Labels"]
+[node name="MetierLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 80.0
 margin_top = 223.0
 margin_right = 114.0
@@ -104,7 +114,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label7" type="Label" parent="Sprite/Labels"]
+[node name="NumLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 192.0
 margin_top = 127.0
 margin_right = 226.0
@@ -127,53 +137,67 @@ __meta__ = {
 }
 
 [node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 184, 48 )
-
-[node name="Text" parent="Sprite/Prenom/TextContainer" index="0"]
+margin_left = 176.0
+margin_top = 47.0
+margin_right = 240.0
+margin_bottom = 72.0
 text = "Angélique"
+AttributeName = "prenom"
 
 [node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 184, 80 )
-
-[node name="Text" parent="Sprite/Nom/TextContainer" index="0"]
+margin_left = 164.0
+margin_top = 80.0
+margin_right = 236.0
+margin_bottom = 105.0
 text = "Trüschel"
+AttributeName = "nom"
 
 [node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 120, 120 )
-
-[node name="Text" parent="Sprite/Adresse/TextContainer" index="0"]
+margin_left = 114.0
+margin_top = 120.0
+margin_right = 186.0
+margin_bottom = 145.0
 text = "Rue Chaucrau"
+AttributeName = "adresse"
 
 [node name="Num" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 208, 120 )
-
-[node name="Text" parent="Sprite/Num/TextContainer" index="0"]
+margin_left = 205.0
+margin_top = 120.0
+margin_right = 232.0
+margin_bottom = 145.0
 text = "16"
+AttributeName = "num"
 
 [node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 136, 152 )
-
-[node name="Text" parent="Sprite/Conjoint/TextContainer" index="0"]
-text = "Conrad Trüschel"
+margin_left = 132.0
+margin_top = 153.0
+margin_right = 187.0
+margin_bottom = 178.0
+text = "Trüschel"
+AttributeName = "conjoint"
 
 [node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 129, 185 )
-
-[node name="Text" parent="Sprite/Enfants/TextContainer" index="0"]
+margin_left = 125.0
+margin_top = 189.0
+margin_right = 148.0
+margin_bottom = 206.0
 text = "4"
+AttributeName = "enfants"
 
 [node name="Metier" parent="Sprite" instance=ExtResource( 2 )]
-position = Vector2( 116.247, 216 )
-
-[node name="Text" parent="Sprite/Metier/TextContainer" index="0"]
+margin_left = 111.0
+margin_top = 217.0
+margin_right = 183.0
+margin_bottom = 242.0
 text = "Propriétaire"
+AttributeName = "metier"
 
 [node name="Tab" type="Sprite" parent="."]
 position = Vector2( 444.51, 63.4949 )
 texture = ExtResource( 5 )
 vframes = 4
 
-[node name="Label" type="Label" parent="Tab"]
+[node name="PageNum" type="Label" parent="Tab"]
 margin_left = -12.0
 margin_top = -7.0
 margin_right = 11.0
@@ -218,9 +242,11 @@ vframes = 4
 frame = 2
 
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 164.706, 73.6222 )
+DBFilePath = "res://db/characters/paludCharacters.xml"
 
-[node name="Button" type="Button" parent="NotebookList"]
+[node name="Close" type="Button" parent="NotebookList"]
 margin_left = 161.592
 margin_top = -7.24633
 margin_right = 180.592
@@ -231,6 +257,20 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Adresse" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Conjoint" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Enfants" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Metier" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Prenom" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Nom" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Adresse" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Conjoint" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Enfants" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
+[connection signal="pressed" from="NotebookList/Close" to="NotebookList" method="_on_Close_pressed"]
 
 [editable path="Sprite/Prenom"]
 [editable path="Sprite/Nom"]

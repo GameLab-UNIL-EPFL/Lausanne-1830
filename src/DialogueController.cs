@@ -52,8 +52,8 @@ public class DialogueController : Node {
 	/**
 	 * @brief Parses the XML file and loads it into a local XDocument
 	 */
-	public static void _ParseXML(ref XDocuement targetXML, string filePath) {
-		if(SceneDialogueFile == null) {
+	public static void _ParseXML(ref XDocument targetXML, string filePath) {
+		if(filePath == null) {
 			throw new Exception("No xml file was input for the scene!");
 		}
 		

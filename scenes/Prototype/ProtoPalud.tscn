@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -24,8 +24,6 @@ b = Vector2( 642.831, 1.25632 )
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 7.58701, -140.561 )
 b = Vector2( 7.2533, 11.611 )
-
-[sub_resource type="StyleBoxFlat" id=1]
 
 [node name="ProtoPalud" type="Node2D"]
 
@@ -142,21 +140,8 @@ position = Vector2( 0, 37 )
 position = Vector2( -1, 20 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
-visible = false
 position = Vector2( 82, 36 )
 script = ExtResource( 2 )
-
-[node name="Panel" type="Panel" parent="Notebook"]
-modulate = Color( 0, 0, 0, 0.764706 )
-show_behind_parent = true
-margin_left = -91.0
-margin_top = -46.0
-margin_right = 575.0
-margin_bottom = 343.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NotebookController" type="Button" parent="."]
 margin_left = 578.0
@@ -188,3 +173,11 @@ __meta__ = {
 [editable path="YSort/Elisabeth/ListenBox"]
 [editable path="YSort/OldMan"]
 [editable path="YSort/OldMan/ListenBox"]
+[editable path="Notebook"]
+[editable path="Notebook/Sprite/Prenom"]
+[editable path="Notebook/Sprite/Nom"]
+[editable path="Notebook/Sprite/Adresse"]
+[editable path="Notebook/Sprite/Num"]
+[editable path="Notebook/Sprite/Conjoint"]
+[editable path="Notebook/Sprite/Enfants"]
+[editable path="Notebook/Sprite/Metier"]
