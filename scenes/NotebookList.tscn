@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/04_notebook/textBoxNoteBook.png" type="Texture" id=1]
+[ext_resource path="res://src/NotebookList.cs" type="Script" id=2]
 
 [node name="NotebookList" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
