@@ -23,12 +23,21 @@ public class NotebookList : Node2D {
 	private ScrollContainer sC;
 	private VBoxContainer vBC;
 	private List<InfoChoiceButton> labels;
+	private Button close;
+	private Sprite closeSprite;
+	
+	// NumPad nodes
+	private VBoxContainer NumVC;
+	private Label InputNum;
 	
 	// Used to not respawn labels in case of opening and reclosing the same attribute
 	private string curAttribute;
+	private const string NUM = "num";
+	private const string ENFANTS = "enfants";
 	
 	private void HideAll() {
 		bgSprite.Hide();
+		NumVC.Hide();
 		sC.Hide();
 		vBC.Hide();
 		
@@ -41,15 +50,32 @@ public class NotebookList : Node2D {
 		Hide();
 	}
 	
-	private void ShowAll() {
-		bgSprite.Show();
+	private void ShowVerticalNameList() {
+		NumVC.Hide();
 		sC.Show();
 		vBC.Show();
+		
+		closeSprite.Frame = 0;
 		
 		//Show all labels
 		foreach(var label in labels) {
 			label.Show();
 		}
+	}
+	
+	private void ShowNumpad() {
+		// Show the buttons
+		NumVC.Show();
+		sC.Hide();
+		
+		// Don't forget to reset the text
+		InputNum.Text = "";
+	}
+	
+	private void ShowAll() {
+		bgSprite.Show();
+		
+		closeSprite.Frame = 0;
 		
 		// Show the parent node
 		Show();
@@ -115,6 +141,12 @@ public class NotebookList : Node2D {
 		bgSprite = GetNode<Sprite>("BgSprite");
 		sC = GetNode<ScrollContainer>("BgSprite/ScrollContainer");
 		vBC = GetNode<VBoxContainer>("BgSprite/ScrollContainer/AttributeList");
+		close = GetNode<Button>("Close");
+		closeSprite = GetNode<Sprite>("Close/CloseSprite");
+		
+		// Fetch numpad nodes
+		NumVC = GetNode<VBoxContainer>("BgSprite/NumberVC");
+		InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
 		
 		// Spawn a label for each character
 		labels = new List<InfoChoiceButton>();
@@ -129,18 +161,25 @@ public class NotebookList : Node2D {
 	 * @param attributeName, the attribute for which we want all options
 	 */
 	public void _on_OpenOptions(string attributeName) {
-		// Make sure to not respawn labels for nothing
-		if(curAttribute == attributeName) {
-			ShowAll();
-		} else {
-			// Get all options for a given attribute
-			string[] options = QueryCharacterAttribute(attributeName);
-			
-			// Fill and show the labels
-			FillLabels(options);
+		// Check if the numpad should be show instead of the list
+		if(attributeName == NUM || attributeName == ENFANTS) {
 			curAttribute = attributeName;
-			ShowAll();
+			ShowNumpad();
+		} else {
+			// Make sure to not respawn labels for nothing
+			if(curAttribute == attributeName) {
+				ShowVerticalNameList();
+			} else {
+				// Get all options for a given attribute
+				string[] options = QueryCharacterAttribute(attributeName);
+				
+				// Fill and show the labels
+				FillLabels(options);
+				curAttribute = attributeName;
+				ShowVerticalNameList();
+			}
 		}
+		ShowAll();
 	}
 	
 	/**
@@ -158,6 +197,9 @@ public class NotebookList : Node2D {
 		var query = from personnage in characterAttributes.Root.Descendants("personnage")
 					select personnage.Attribute(attributeName).Value;
 					
+		var querySolution = from solution in characterAttributes.Root.Descendants("solution")
+							select solution.Attribute(attributeName).Value;
+					
 		List<string> res = new List<string>();
 		
 		//Painfully convert the IEnumeration to a usable list
@@ -166,18 +208,43 @@ public class NotebookList : Node2D {
 		foreach(var elem in query) {
 			res.Add(elem);
 		}
+		foreach(var e in querySolution) {
+			res.Add(e);
+		}
+		
 		// Cache result for future use
-		string[] finalRes = res.ToArray();
+		string[] result = res.ToArray();
+		string[] finalRes = result.OrderBy(x => x).ToArray();
 		attributesCache.Add(attributeName, finalRes);
 		
 		return finalRes;
 	}
 	
-	/**
-	 * @brief Reaction to the close button being pressed. Should hide all elements.
-	 */
-	private void _on_Close_pressed() {
+	private void _on_Close_button_down() {
+		closeSprite.Frame = 1;
+	}
+	
+	private void _on_Close_button_up() {
+		closeSprite.Frame = 0;
 		HideAll();
 	}
+	
+	private void _on_InsertNumber(int num) {
+		if(InputNum.Text.Length < 3) {
+			InputNum.Text += num.ToString();
+		}
+	}
+	
+	private void _on_RemoveNumber() {
+		if(InputNum.Text.Length != 0)  {
+			InputNum.Text = InputNum.Text.Substring(0, InputNum.Text.Length - 1);
+		}
+	}
+	
+	private void _on_EnterNumber() {
+		if(InputNum.Text.Length != 0) {
+			EmitSignal(nameof(UpdateInfo), curAttribute, InputNum.Text);
+			_on_Close_button_up();
+		}
+	}
 }
-

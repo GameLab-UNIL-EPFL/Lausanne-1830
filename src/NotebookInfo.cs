@@ -31,4 +31,3 @@ public class NotebookInfo : Button {
 		EmitSignal(nameof(OpenOptions), AttributeName);
 	}
 }
-

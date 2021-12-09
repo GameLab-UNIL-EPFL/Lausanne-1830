@@ -6,21 +6,26 @@
 	<dialogue type="onDemand" id="testDemand" target1="baker">
 		<text id="1">Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
 		<text id="2">Pain, croissant ?</text>
-		<text id="1">C'est fait ce matin avec la farine des Rochat !</text>
-		<text id="1">Vous devriez aller visiter leur moulin au Flon.</text>
+		<text id="1">C'est fait ce matin !</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandOldMan" target1="oldMan">
-		<text id="1">Je me souviens encore de l'ancienne façade de l'hôtel de ville...</text>
-		<text id="2">Le temps file et la ville n'arrête pas de changer.</text>
-		<text id="1">Ah, tout ça ne me rajeuni pas !</text>
+		<text id="1">Ah, Angélique a encore envoyé sa fille faire les courses.</text>
+		<text id="2">C'est plutôt les domestiques qui devraient s'en charger.</text>
+		<text id="1">Mais je crois que ses filles ont envie de voir un peu la ville.</text>
+		<text id="1">Ou en tout cas le voiturier de la place haha</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandTruschel" target1="frederiqueTruschel">
 		<text id="1">Est-ce que je peux vous aider ? Vous m'avez l'air perdu.</text>
-		<text id="2">Vous cherchez les Truschel ?</text>
+		<text id="2">Vous cherchez les Trüschel ?</text>
 		<text id="1">Vous tombez bien ! Je suis leur fille.</text>
-		<text id="1">Je vais vous montrer où on habite.</text>
+		<text id="1">On habite au bout de la rue Chaucrau, au numéro 16.</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandElisabeth" target1="elisabethDeCerjeat">
 		<text id="1">Vous ne devez pas être de la région. Tout le monde me connait ici.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="demandQuest" target1="oldMan">
+		<text id="1">Alors c'est vous qui avez été choisi pour compléter le registre de la population ?</text>
+		<text id="2">Très bien. J'espère que vous ferez un meilleur travail que votre prédécesseur.</text>
+		<text id="1">Revenez me voir lorsque vous aurez compléter votre carnet.</text>
 	</dialogue>
 </scene>

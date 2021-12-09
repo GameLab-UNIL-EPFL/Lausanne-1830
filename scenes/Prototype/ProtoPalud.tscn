@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -15,7 +15,9 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/02_architecture/02_palud/fullScene.png" type="Texture" id=16]
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=17]
+[ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -8.73701, 1.60986 )
@@ -40,8 +42,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 321, 180 )
+texture = ExtResource( 16 )
+
 [node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
-position = Vector2( 319, 183 )
+position = Vector2( 319, 181 )
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -82,6 +89,9 @@ position = Vector2( 54.8276, 286.652 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
+[node name="TextBox" parent="YSort/Baker" index="0"]
+position = Vector2( -13.8276, -35.652 )
+
 [node name="Sprite" parent="YSort/Baker" index="1"]
 texture = ExtResource( 12 )
 
@@ -90,6 +100,9 @@ position = Vector2( 214.707, 310.924 )
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Elisabeth" index="0"]
+position = Vector2( -11.707, -36.924 )
 
 [node name="Sprite" parent="YSort/Elisabeth" index="1"]
 texture = ExtResource( 14 )
@@ -104,10 +117,13 @@ visible = false
 visible = false
 
 [node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 535.431, 236.089 )
+position = Vector2( 420.811, 209.119 )
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/OldMan" index="0"]
+position = Vector2( -11.431, -36.089 )
 
 [node name="Sprite" parent="YSort/OldMan" index="1"]
 texture = ExtResource( 13 )
@@ -116,7 +132,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 122, 240 )
+position = Vector2( 537.78, 249.739 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 421, 233 )
@@ -139,7 +155,19 @@ position = Vector2( 0, 37 )
 [node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
 position = Vector2( -1, 20 )
 
+[node name="NPC" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 537.143, 225.495 )
+DemandDialogueID = "demandQuest"
+HasAutoDialogue = false
+
+[node name="Sprite" parent="YSort/NPC" index="1"]
+texture = ExtResource( 13 )
+
+[node name="ListenBox" parent="YSort/NPC" index="3"]
+visible = false
+
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
+visible = false
 position = Vector2( 82, 36 )
 script = ExtResource( 2 )
 
@@ -148,11 +176,16 @@ margin_left = 578.0
 margin_top = 319.0
 margin_right = 632.0
 margin_bottom = 353.0
+focus_mode = 0
+enabled_focus_mode = 0
 icon = ExtResource( 17 )
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NotebookClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
 
 [connection signal="EndDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
@@ -173,6 +206,8 @@ __meta__ = {
 [editable path="YSort/Elisabeth/ListenBox"]
 [editable path="YSort/OldMan"]
 [editable path="YSort/OldMan/ListenBox"]
+[editable path="YSort/NPC"]
+[editable path="YSort/NPC/ListenBox"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
