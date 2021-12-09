@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/02_architecture/02_palud/fullScene.png" type="Texture" id=16]
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=17]
+[ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -8.73701, 1.60986 )
@@ -182,6 +183,9 @@ expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NotebookClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
 
 [connection signal="EndDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
