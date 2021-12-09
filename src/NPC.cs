@@ -123,12 +123,10 @@ public class NPC : KinematicBody2D {
 			
 			// Max 25 characters per line
 			if(count-- == 0) {
-				newText += '\n' + c;
 				count = MAX_CHAR_PER_LINE;
 				lines--;
-			} else {
-				newText += c;
-			}
+			} 
+			newText += c;
 			// Only 3 lines per entry
 			if(lines == 0) {
 				textLines.Add(newText);

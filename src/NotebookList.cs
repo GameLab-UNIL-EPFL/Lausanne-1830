@@ -197,6 +197,9 @@ public class NotebookList : Node2D {
 		var query = from personnage in characterAttributes.Root.Descendants("personnage")
 					select personnage.Attribute(attributeName).Value;
 					
+		var querySolution = from solution in characterAttributes.Root.Descendants("solution")
+							select solution.Attribute(attributeName).Value;
+					
 		List<string> res = new List<string>();
 		
 		//Painfully convert the IEnumeration to a usable list
@@ -205,6 +208,10 @@ public class NotebookList : Node2D {
 		foreach(var elem in query) {
 			res.Add(elem);
 		}
+		foreach(var e in querySolution) {
+			res.Add(e);
+		}
+		
 		// Cache result for future use
 		string[] result = res.ToArray();
 		string[] finalRes = result.OrderBy(x => x).ToArray();
