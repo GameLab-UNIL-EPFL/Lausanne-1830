@@ -257,7 +257,7 @@ frame = 2
 
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
 position = Vector2( 164.706, 73.6222 )
-DBFilePath = "res://db/characters/paludCharacters.xml"
+DBFilePath = "res://db/characters/notebookCharacterList.xml"
 
 [node name="Close" type="Button" parent="NotebookList"]
 margin_left = 162.0

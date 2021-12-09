@@ -206,7 +206,8 @@ public class NotebookList : Node2D {
 			res.Add(elem);
 		}
 		// Cache result for future use
-		string[] finalRes = res.ToArray();
+		string[] result = res.ToArray();
+		string[] finalRes = result.OrderBy(x => x).ToArray();
 		attributesCache.Add(attributeName, finalRes);
 		
 		return finalRes;
