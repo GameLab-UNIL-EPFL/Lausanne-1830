@@ -235,7 +235,9 @@ public class NotebookList : Node2D {
 	}
 	
 	private void _on_EnterNumber() {
-		EmitSignal(nameof(UpdateInfo), curAttribute, InputNum.Text);
-		_on_Close_button_up();
+		if(InputNum.Text.Length != 0) {
+			EmitSignal(nameof(UpdateInfo), curAttribute, InputNum.Text);
+			_on_Close_button_up();
+		}
 	}
 }
