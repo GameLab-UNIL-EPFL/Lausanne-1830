@@ -116,7 +116,7 @@ visible = false
 visible = false
 
 [node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 535.431, 236.089 )
+position = Vector2( 420.811, 209.119 )
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -131,7 +131,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 122, 240 )
+position = Vector2( 537.78, 249.739 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 421, 233 )
@@ -153,6 +153,17 @@ position = Vector2( 0, 37 )
 
 [node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
 position = Vector2( -1, 20 )
+
+[node name="NPC" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 537.143, 225.495 )
+DemandDialogueID = "demandQuest"
+HasAutoDialogue = false
+
+[node name="Sprite" parent="YSort/NPC" index="1"]
+texture = ExtResource( 13 )
+
+[node name="ListenBox" parent="YSort/NPC" index="3"]
+visible = false
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -191,6 +202,8 @@ __meta__ = {
 [editable path="YSort/Elisabeth/ListenBox"]
 [editable path="YSort/OldMan"]
 [editable path="YSort/OldMan/ListenBox"]
+[editable path="YSort/NPC"]
+[editable path="YSort/NPC/ListenBox"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
