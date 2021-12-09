@@ -228,7 +228,9 @@ public class NotebookList : Node2D {
 	}
 	
 	private void _on_RemoveNumber() {
-		InputNum.Text = InputNum.Text.Substring(0, InputNum.Text.Length - 1);
+		if(InputNum.Text.Length != 0)  {
+			InputNum.Text = InputNum.Text.Substring(0, InputNum.Text.Length - 1);
+		}
 	}
 	
 	private void _on_EnterNumber() {
