@@ -149,7 +149,7 @@ margin_top = 47.0
 margin_right = 240.0
 margin_bottom = 72.0
 custom_fonts/font = SubResource( 4 )
-text = "Angélique"
+text = ""
 AttributeName = "prenom"
 
 [node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
@@ -167,7 +167,7 @@ margin_top = 120.0
 margin_right = 186.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 4 )
-text = "Rue Chaucrau"
+text = ""
 AttributeName = "adresse"
 
 [node name="Num" parent="Sprite" instance=ExtResource( 2 )]
@@ -176,7 +176,7 @@ margin_top = 120.0
 margin_right = 232.0
 margin_bottom = 145.0
 custom_fonts/font = SubResource( 4 )
-text = "16"
+text = ""
 AttributeName = "num"
 
 [node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
@@ -185,7 +185,7 @@ margin_top = 153.0
 margin_right = 187.0
 margin_bottom = 178.0
 custom_fonts/font = SubResource( 4 )
-text = "Trüschel"
+text = ""
 AttributeName = "conjoint"
 
 [node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
@@ -256,6 +256,7 @@ vframes = 4
 frame = 2
 
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 164.706, 73.6222 )
 DBFilePath = "res://db/characters/notebookCharacterList.xml"
 
@@ -293,11 +294,3 @@ vframes = 2
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
 [connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
 [connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]
-
-[editable path="Sprite/Prenom"]
-[editable path="Sprite/Nom"]
-[editable path="Sprite/Adresse"]
-[editable path="Sprite/Num"]
-[editable path="Sprite/Conjoint"]
-[editable path="Sprite/Enfants"]
-[editable path="Sprite/Metier"]
