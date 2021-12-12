@@ -9,7 +9,7 @@
 		<text id="1">C'est fait ce matin !</text>
 		<text id="1">Trüschel ? Non je ne les connais pas, désolé.</text>
 	</dialogue>
-	<dialogue type="onDemand" id="testDemand" target1="baker">
+	<dialogue type="onDemand" id="demandPasteur" target1="baker">
 		<text id="1">Demain la messe aura lieu à 8h30 à la Cathédrale,</text>
 		<text id="2">à 10h00 à l'église catholique à Chaucrau 15</text>
 		<text id="1">et à 15h00 au temple à St-François.</text>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -22,63 +22,53 @@
 [ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/QuestController.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/03_backgrounds/groundTexture.png" type="Texture" id=22]
+[ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
+[ext_resource path="res://scenes/Prototype/Prop.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBox.png" type="Texture" id=25]
 
 [sub_resource type="TileSet" id=4]
-2/name = "groundTexture.png 2"
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 64, 64 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "pavedGround-Sheet.png 3"
-3/texture = ExtResource( 22 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 8, 8, 32, 32 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
-4/name = "pavedGround-Sheet.png 4"
-4/texture = ExtResource( 22 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 8, 48, 32, 32 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
-4/shapes = [  ]
-4/z_index = 0
-5/name = "pavedGround-Sheet.png 5"
-5/texture = ExtResource( 22 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 8, 88, 32, 33 )
-5/tile_mode = 0
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
-5/shapes = [  ]
-5/z_index = 0
+6/name = "pavedGround-Sheet.png 6"
+6/texture = ExtResource( 23 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 8, 8, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "pavedGround-Sheet.png 7"
+7/texture = ExtResource( 23 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 8, 48, 32, 33 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "pavedGround-Sheet.png 8"
+8/texture = ExtResource( 23 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 8, 88, 32, 34 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -8.73701, 1.60986 )
@@ -90,7 +80,7 @@ b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Fade in"
-length = 1.5
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -98,7 +88,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0.2, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
@@ -126,7 +116,7 @@ tracks/0/keys = {
 [node name="QuestController" parent="." instance=ExtResource( 21 )]
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
-texture = null
+texture = ExtResource( 22 )
 
 [node name="Mud" type="TileMap" parent="."]
 visible = false
@@ -138,7 +128,7 @@ tile_data = PoolIntArray( 0, 1610612738, 0, 1, 1610612738, 0, 2, 1610612738, 0, 
 tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 65543, -1610612734, 0, 65544, -1610612734, 0, 65545, -1610612734, 0, 131075, -1610612734, 0, 131076, -1610612734, 0, 131077, -1610612734, 0, 131079, -1610612734, 0, 131080, -1610612734, 0, 196612, 1610612738, 0, 196613, -1073741822, 0, 196617, -1610612734, 0, 393221, -1073741819, 0, 393222, -1610612732, 0, 393223, 5, 0, 393224, 4, 0, 393227, -1610612732, 0, 393228, 4, 0, 393229, 1610612740, 0, 393230, 1610612739, 0, 393231, 1610612741, 0, 393232, 1610612741, 0, 393233, 1610612741, 0, 393234, 1610612741, 0, 393235, 1610612741, 0, 458752, -1610612732, 0, 458753, 5, 0, 458754, 5, 0, 458755, 5, 0, 458756, -1610612733, 0, 458757, 3, 0, 458758, -1073741820, 0, 458759, 1610612740, 0, 458760, -1073741820, 0, 458762, 1610612740, 0, 458763, -1073741820, 0, 458765, -1610612732, 0, 458766, -1610612733, 0, 458767, 3, 0, 458768, 5, 0, 458769, -1610612733, 0, 458770, 3, 0, 458771, 4, 0, 524292, -1610612731, 0, 524293, -1073741819, 0, 524295, -1610612731, 0, 524296, -1073741821, 0, 524299, -1073741820, 0, 524302, -1610612732, 0, 524303, 4, 0, 524305, -1610612732, 0, 524306, 4, 0, 589828, -1610612731, 0, 589829, -1073741821, 0, 589831, -1610612732, 0, 589832, -1610612733, 0, 589833, 1610612739, 0, 589834, 3, 0, 589835, 1610612740, 0, 589836, -1073741820, 0, 655364, -1610612732, 0, 655365, -1610612733, 0, 655366, 3, 0, 655367, 5, 0, 655368, 5, 0, 655369, 4, 0, 655370, 1610612740, 0, 655371, 1610612739, 0, 655372, -1073741821, 0, 655373, -1073741820, 0, 720901, -1610612732, 0, 720902, 4, 0, 720906, -1610612732, 0, 720907, 5, 0, 720908, 5, 0, 720909, 4, 0 )
+tile_data = PoolIntArray( 65543, -1610612734, 0, 65544, -1610612734, 0, 65545, -1610612734, 0, 131075, -1610612734, 0, 131076, -1610612734, 0, 131077, -1610612734, 0, 131079, -1610612734, 0, 131080, -1610612734, 0, 196612, 1610612738, 0, 196613, -1073741822, 0, 196617, -1610612734, 0, 393221, -1073741816, 0, 393222, -1610612729, 0, 393223, 8, 0, 393224, 7, 0, 393227, -1610612729, 0, 393228, 7, 0, 393229, 1610612740, 0, 393230, -1610612729, 0, 393231, 1610612742, 0, 393232, -1073741818, 0, 393233, 1610612744, 0, 393234, 1610612744, 0, 393235, 1610612744, 0, 458752, -1610612729, 0, 458753, 8, 0, 458754, 8, 0, 458755, 8, 0, 458756, 8, 0, 458757, 6, 0, 458758, -1073741817, 0, 458759, 1610612740, 0, 458760, -1073741820, 0, 458762, 1610612740, 0, 458763, -1073741820, 0, 458765, 1610612744, 0, 458766, -1073741817, 0, 458767, -1610612729, 0, 458768, 7, 0, 458769, -1610612729, 0, 458770, -1610612730, 0, 458771, 6, 0, 524292, -1610612731, 0, 524293, -1610612728, 0, 524294, -1073741816, 0, 524295, -1610612731, 0, 524296, -1073741821, 0, 524299, -1073741820, 0, 524301, -1610612730, 0, 524302, 7, 0, 524303, 4, 0, 524305, -1610612732, 0, 524306, -1610612729, 0, 524307, 7, 0, 589828, -1610612731, 0, 589829, -1610612728, 0, 589830, -1610612730, 0, 589831, -1073741816, 0, 589832, -1610612733, 0, 589833, 1610612739, 0, 589834, 3, 0, 589835, 1610612740, 0, 589836, -1073741820, 0, 589837, -1073741816, 0, 655364, -1610612732, 0, 655365, -1610612729, 0, 655366, -1610612730, 0, 655367, 6, 0, 655368, 6, 0, 655369, 8, 0, 655370, 8, 0, 655371, 7, 0, 655372, -1610612729, 0, 655373, 7, 0, 720901, -1610612732, 0, 720902, -1610612729, 0, 720903, 8, 0, 720904, 7, 0, 720906, -1610612732, 0, 720907, 5, 0, 720908, 5, 0, 720909, 4, 0 )
 
 [node name="BgBuildings" type="TextureRect" parent="."]
 margin_right = 640.0
@@ -164,6 +154,7 @@ position = Vector2( 319, 181 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
 position = Vector2( 1.00075, 360.158 )
 shape = SubResource( 2 )
+one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
 
@@ -180,10 +171,24 @@ shape = SubResource( 3 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 302.466, 256.327 )
+position = Vector2( 338.529, 256.327 )
+
+[node name="Box" parent="YSort/Fountain" instance=ExtResource( 24 )]
+position = Vector2( -35.0132, -9.58881 )
+
+[node name="Sprite" parent="YSort/Fountain/Box" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Barrel" parent="YSort/Fountain" instance=ExtResource( 24 )]
+position = Vector2( -9.05597, -9.65367 )
+
+[node name="Barrel2" parent="YSort/Fountain" instance=ExtResource( 24 )]
+position = Vector2( -67.9217, -2.51843 )
+
+[node name="Barrel3" parent="YSort/Fountain" instance=ExtResource( 24 )]
+position = Vector2( -91.1113, 5.80603 )
 
 [node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
-visible = false
 position = Vector2( 120.902, 333.068 )
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
@@ -193,7 +198,7 @@ HasAutoDialogue = false
 visible = false
 
 [node name="Baker" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 445.15, 204.522 )
+position = Vector2( 147.457, 228.564 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
@@ -203,8 +208,19 @@ position = Vector2( -13.8276, -35.652 )
 [node name="Sprite" parent="YSort/Baker" index="1"]
 texture = ExtResource( 12 )
 
+[node name="Baker2" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 30.9147, 273.159 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "demandRandom"
+
+[node name="TextBox" parent="YSort/Baker2" index="0"]
+position = Vector2( -13.8276, -35.652 )
+
+[node name="Sprite" parent="YSort/Baker2" index="1"]
+texture = ExtResource( 12 )
+
 [node name="Elisabeth" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 421.473, 307.178 )
+position = Vector2( 502.083, 324.856 )
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -224,8 +240,29 @@ visible = false
 [node name="CollisionShape2D" parent="YSort/Elisabeth/ListenBox" index="0"]
 visible = false
 
+[node name="Random" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 156.618, 287.991 )
+AutoDialogueID = ""
+DemandDialogueID = "demandPasteur"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Random" index="0"]
+position = Vector2( -11.707, -36.924 )
+
+[node name="Sprite" parent="YSort/Random" index="1"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/Random" index="2"]
+visible = false
+
+[node name="ListenBox" parent="YSort/Random" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="YSort/Random/ListenBox" index="0"]
+visible = false
+
 [node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 27.7694, 272.348 )
+position = Vector2( 300.692, 331.808 )
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -240,10 +277,10 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 537.78, 246.742 )
+position = Vector2( 545, 386 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 445.069, 227.809 )
+position = Vector2( 145.255, 253.265 )
 
 [node name="Bread4" parent="YSort/TableH" instance=ExtResource( 7 )]
 position = Vector2( -14, -5 )
@@ -274,6 +311,20 @@ texture = ExtResource( 13 )
 
 [node name="ListenBox" parent="YSort/QuestNPC" index="3"]
 visible = false
+
+[node name="Box2" parent="YSort" instance=ExtResource( 24 )]
+position = Vector2( 443.365, 259.981 )
+z_index = 1
+
+[node name="Sprite" parent="YSort/Box2" index="0"]
+z_as_relative = false
+texture = ExtResource( 25 )
+
+[node name="Box3" parent="YSort" instance=ExtResource( 24 )]
+position = Vector2( 443.365, 272.711 )
+
+[node name="Sprite" parent="YSort/Box3" index="0"]
+texture = ExtResource( 25 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -308,6 +359,7 @@ stream = ExtResource( 20 )
 autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = -14.0
 margin_top = -10.0
 margin_right = 661.0
@@ -318,6 +370,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+autoplay = "Fade in"
 "anims/Fade in" = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
@@ -325,24 +378,35 @@ anims/RESET = SubResource( 6 )
 [connection signal="StartDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/Baker2" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/Baker2" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/Elisabeth" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Elisabeth" to="DialogueController" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/Random" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
+[editable path="YSort/Fountain/Box"]
 [editable path="YSort/Truschel"]
 [editable path="YSort/Truschel/ListenBox"]
 [editable path="YSort/Baker"]
 [editable path="YSort/Baker/ListenBox"]
+[editable path="YSort/Baker2"]
+[editable path="YSort/Baker2/ListenBox"]
 [editable path="YSort/Elisabeth"]
 [editable path="YSort/Elisabeth/ListenBox"]
+[editable path="YSort/Random"]
+[editable path="YSort/Random/ListenBox"]
 [editable path="YSort/OldMan"]
 [editable path="YSort/OldMan/ListenBox"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
+[editable path="YSort/Box2"]
+[editable path="YSort/Box3"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
