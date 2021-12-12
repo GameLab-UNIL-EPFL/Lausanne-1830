@@ -197,13 +197,13 @@ public class QuestController : Node {
 		}
 		
 		InfoValue_t res = new InfoValue_t(
-			solution.prenom == val.prenom,
-			solution.nom == val.nom,
-			solution.adresse == val.adresse,
+			solution.prenom.Equals(val.prenom),
+			solution.nom.Equals(val.nom),
+			solution.adresse.Equals(val.adresse),
 			solution.num == val.num,
-			solution.conjoint == val.conjoint,
+			solution.conjoint.Equals(val.conjoint),
 			solution.enfants == val.enfants,
-			solution.metier == val.metier
+			solution.metier.Equals(val.metier)
 		);
 		
 		compareCache = res;

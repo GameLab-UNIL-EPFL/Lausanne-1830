@@ -94,6 +94,7 @@ public class Notebook : Node2D {
 	}
 	
 	public void _UpdateNotebook(InfoValue_t vals) {
+		//Change correct results to static
 		foreach(var v in vals.FoundAttributes()) {
 			int idx = AttributeToIdx(v);
 			//Sanity check
@@ -108,6 +109,9 @@ public class Notebook : Node2D {
 	}
 	
 	public void _on_SendInfoToQuestNPC(Player p, NPC questNPC) {
+		//Update the characterInfo
+		FillCharInfo();
+		
 		//Request an info evaluation from the NPC
 		correctInfo = questNPC._EvaluateQuest(p, characterInfo);
 		_UpdateNotebook(correctInfo);
