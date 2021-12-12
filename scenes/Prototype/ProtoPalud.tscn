@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
+[ext_resource path="res://scenes/QuestController.tscn" type="PackedScene" id=21]
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -8.73701, 1.60986 )
@@ -32,6 +33,8 @@ b = Vector2( 7.2533, 11.611 )
 [node name="ProtoPalud" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 9 )]
+
+[node name="QuestController" parent="." instance=ExtResource( 21 )]
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
 
@@ -157,15 +160,16 @@ position = Vector2( 0, 37 )
 [node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
 position = Vector2( -1, 20 )
 
-[node name="NPC" parent="YSort" instance=ExtResource( 8 )]
+[node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 537.143, 225.495 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
+isQuestNPC = true
 
-[node name="Sprite" parent="YSort/NPC" index="1"]
+[node name="Sprite" parent="YSort/QuestNPC" index="1"]
 texture = ExtResource( 13 )
 
-[node name="ListenBox" parent="YSort/NPC" index="3"]
+[node name="ListenBox" parent="YSort/QuestNPC" index="3"]
 visible = false
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
@@ -207,6 +211,7 @@ autoplay = true
 [connection signal="StartDialogue" from="YSort/Elisabeth" to="DialogueController" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
@@ -218,8 +223,8 @@ autoplay = true
 [editable path="YSort/Elisabeth/ListenBox"]
 [editable path="YSort/OldMan"]
 [editable path="YSort/OldMan/ListenBox"]
-[editable path="YSort/NPC"]
-[editable path="YSort/NPC/ListenBox"]
+[editable path="YSort/QuestNPC"]
+[editable path="YSort/QuestNPC/ListenBox"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]

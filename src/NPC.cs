@@ -10,10 +10,11 @@ public class NPC : KinematicBody2D {
 	[Signal]
 	public delegate void StartDialogue();
 	
-	private const int MAX_CHAR_PER_LINE = 25;
+	private const int MAX_CHAR_PER_LINE = 35;
 	private const int MAX_LINES = 3;
 	
 	private DialogueController DC;
+	private QuestController QC;
 	
 	private string[] AutoDialogues;
 	private int AutoDialogueIdx = 0;
@@ -22,6 +23,7 @@ public class NPC : KinematicBody2D {
 	private string[] InnerLines;
 	private int DemandDialogueIdx = 0;
 	private int InnerLinesCount = 0;
+	private int QuestLinesCount = 0;
 	
 	//Used to display text
 	private TextBox TB;
@@ -34,12 +36,39 @@ public class NPC : KinematicBody2D {
 	public bool HasAutoDialogue = true;
 	[Export]
 	public bool HasDemandDialogue = true;
+	[Export]
+	public bool isQuestNPC = false;
+	
+	private bool inDialogue = false;
+	
+	private string[] QuestText(InfoValue_t res) {
+		string[] outliers = res.Outliers().ToArray();
+		if(res.IsCorrect()) {
+			return FormatText("Alors...¢" +
+			"Voyons voir ce registre."+
+			"Bravo ! Vous avez fait du bon travail !¢"+
+			"Je vais garder ça dans nos documents importants.¢"+
+			"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
+			"et en faire un jeu vidéo.");
+		}
+		
+		string d = "Alors...¢" +
+		"Voyons voir ce registre.¢" +
+		"Il y a encore plusieurs données qui sont eronnées, comme:¢";
+		foreach(var o in outliers) {
+			d += o + ", ";
+		}
+		d += "et ...¢" + "Je crois que les ai tous cités.¢";
+		d += "Revenez me voir lorsque vous les aurez corrigées.";
+		return FormatText(d);
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		Show();
 		//Fetch the scene's Dialogue controller and the TextBox
 		DC = Owner.GetNode<DialogueController>("DialogueController");
+		QC = Owner.GetNode<QuestController>("QuestController");
 		TB = GetNode<TextBox>("TextBox");
 		
 		//Sanity Check
@@ -121,18 +150,20 @@ public class NPC : KinematicBody2D {
 			// Ignore new lines
 			if(c == '\n') continue;
 			
+			// Only 3 lines per entry
+			if(lines == 0 || c == '¢') {
+				textLines.Add(newText);
+				newText = "";
+				lines = MAX_LINES;
+				continue;
+			}
+			
 			// Max 25 characters per line
 			if(count-- == 0) {
 				count = MAX_CHAR_PER_LINE;
 				lines--;
 			} 
 			newText += c;
-			// Only 3 lines per entry
-			if(lines == 0) {
-				textLines.Add(newText);
-				newText = "";
-				lines =  MAX_LINES;
-			}
 		}
 		return textLines.ToArray();
 	}
@@ -164,6 +195,30 @@ public class NPC : KinematicBody2D {
 				player._EndDialogue();
 			}
 		}
+	}
+	
+	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {
+		CharacterInfo_t solution = QC._QueryQuestSolution();
+		InfoValue_t res = QC._CompareCharInfo(solution, characterInfo);
+		
+		if(!inDialogue) {
+			inDialogue = true;
+			player._StartDialogue();
+			QC._InitBuffer(QuestText(res));
+			TB._ShowText(QC._NextLine());
+		} else {
+			string l = QC._NextLine();
+			//Check that the dialogue isn't over
+			if(l == null) {
+				TB._HideText();
+				player._EndDialogue();
+				inDialogue = false;
+				QC._ClearCache();
+			} else {
+				TB._ShowText(l);
+			}
+		}
+		return res;
 	}
 }
 

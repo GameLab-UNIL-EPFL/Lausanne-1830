@@ -88,6 +88,9 @@ public class NotebookList : Node2D {
 		return (
 			from attr in characterAttributes.Root.Descendants("personnage")
 			select attr
+		).Count() + (
+			from attr in characterAttributes.Root.Descendants("solution")
+			select attr
 		).Count();
 	}
 	
@@ -117,8 +120,9 @@ public class NotebookList : Node2D {
 	 */
 	private void FillLabels(string[] options) {
 		// Sanity check
-		if(labels.Count() !=  options.Length) {
-			throw new Exception("Labels-Attributes size missmatch!");
+		if(labels.Count() != options.Length) {
+			throw new Exception("Labels-Attributes size missmatch! n_Labels = " +
+						 labels.Count() + ", n_options = " + options.Length);
 		} else {
 			for(int i = 0; i < options.Length; ++i) {
 				labels[i].Text = options[i];
