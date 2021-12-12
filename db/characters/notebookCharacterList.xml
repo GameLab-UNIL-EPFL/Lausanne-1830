@@ -1,5 +1,5 @@
 <db>
-	<solution prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" conjoint="Trüschel" metier="Propriétaire"></solution>
+	<solution prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" num="16" conjoint="Trüschel" enfant="4" metier="Propriétaire"></solution>
 	<personnage prenom="Henri" nom="Perregaux" adresse="Rue St-François" conjoint="Perregaux" metier="Architecte"></personnage>
 	<personnage prenom="Isabelle" nom="De Montolieu" adresse="Vennes" conjoint="De Montolieu" metier="Écrivain/e"></personnage>
 	<personnage prenom="Jean-Jacques" nom="Mercier" adresse="Rue de Pré" conjoint="Mercier" metier="Négociant/e"></personnage>
