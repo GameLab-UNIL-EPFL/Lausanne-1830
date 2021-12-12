@@ -252,7 +252,7 @@ public class QuestController : Node {
 					case "conjoint":
 						res.conjoint = inf;
 						break;
-					case "enfants":
+					case "enfant":
 						res.enfants = Int32.Parse(inf);
 						break;
 					case "metier":

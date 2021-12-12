@@ -197,6 +197,11 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
+	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo) {
+		CharacterInfo_t solution = QC._QueryQuestSolution();
+		return QC._CompareCharInfo(solution, characterInfo);
+	}
+	
 	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {
 		CharacterInfo_t solution = QC._QueryQuestSolution();
 		InfoValue_t res = QC._CompareCharInfo(solution, characterInfo);

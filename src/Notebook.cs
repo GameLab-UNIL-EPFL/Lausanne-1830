@@ -33,7 +33,7 @@ public class Notebook : Node2D {
 					characterInfo.conjoint = inf.Text;
 					break;
 				case "enfants":
-					characterInfo.enfants = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
+					characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
 					break;
 				case "metier":
 					characterInfo.metier = inf.Text;
@@ -108,6 +108,15 @@ public class Notebook : Node2D {
 		}
 	}
 	
+	public void _on_CutsceneEnd(NPC questNPC) {
+		//Update the characterInfo
+		FillCharInfo();
+		
+		//Request an info evaluation from the NPC
+		correctInfo = questNPC._CompareSolutions(characterInfo);
+		_UpdateNotebook(correctInfo);
+	}
+	
 	public void _on_SendInfoToQuestNPC(Player p, NPC questNPC) {
 		//Update the characterInfo
 		FillCharInfo();
@@ -129,4 +138,3 @@ public class Notebook : Node2D {
 		hidden = !hidden;
 	}
 }
-

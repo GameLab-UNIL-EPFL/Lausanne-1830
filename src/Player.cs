@@ -6,6 +6,9 @@ public class Player : KinematicBody2D {
 	[Signal]
 	public delegate void SendInfoToQuestNPC(Player p, NPC questNPC);
 	
+	[Signal]
+	public delegate void CutsceneEnd(NPC questNPC);
+	
 	//Player FSM
 	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
 	PlayerStates CurrentState = PlayerStates.IDLE;
@@ -248,15 +251,21 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
+		
+		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
 			FadeIn.Hide();
+			EmitSignal(nameof(CutsceneEnd), NearestSub());
 		}
 	}
 	
 	public void _StartDialogue() {
 		CurrentState = PlayerStates.BLOCKED;
-		isCutsceneConv = true;
+		
+		if(isCutscene) {
+			isCutsceneConv = true;
+		}
 	}
 	
 	/**
