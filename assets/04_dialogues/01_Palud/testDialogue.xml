@@ -7,19 +7,33 @@
 		<text id="1">Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
 		<text id="2">Pain, croissant ?</text>
 		<text id="1">C'est fait ce matin !</text>
+		<text id="1">Trüschel ? Non je ne les connais pas, désolé.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="testDemand" target1="baker">
+		<text id="1">Demain la messe aura lieu à 8h30 à la Cathédrale,</text>
+		<text id="2">à 10h00 à l'église catholique à Chaucrau 15</text>
+		<text id="1">et à 15h00 au temple à St-François.</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandOldMan" target1="oldMan">
 		<text id="1">Ah, Angélique a encore envoyé sa fille faire les courses.</text>
 		<text id="2">C'est plutôt les domestiques qui devraient s'en charger.</text>
-		<text id="1">Mais je crois que ses filles ont envie de voir un peu la ville.</text>
-		<text id="1">Ou en tout cas le voiturier de la place haha</text>
+		<text id="1">Mais je crois qu'elle a envie de voir un peu la ville.</text>
+		<text id="1">Ou en tout cas le jeune voiturier de la place haha.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="demandRandom" target1="oldMan">
+		<text id="1">Vous savez pas ce que Jeannette m'a raconté ce matin.</text>
+		<text id="2">Apparement, Pierre s'est fait volé sa mallette.</text>
+		<text id="1">Il est prêt à payer une jolie somme pour celui qui la retrouve.</text>
+		<text id="1">Et moi je suis prêt à parier que le contenu de cette mallette</text>
+		<text id="1">pourrait ruiner sa réputation...</text>
+		<text id="1">Pierre? Mais enfin, c'est le propriétaire qui habite à la rue de Bourg !</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandTruschel" target1="frederiqueTruschel">
 		<text id="1">Est-ce que je peux vous aider ? Vous m'avez l'air perdu.</text>
 		<text id="2">Vous cherchez les Trüschel ?</text>
 		<text id="1">Vous tombez bien !</text>
 		<text id="1">C'est mes parents.</text>
-		<text id="1">On habite au bout de la rue Chaucrau, au numéro 16.</text>
+		<text id="1">On habite au bout de la rue Chaucrau, juste après l'église catholique.</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandElisabeth" target1="elisabethDeCerjeat">
 		<text id="1">Vous ne devez pas être de la région. Tout le monde me connait ici.</text>
@@ -31,5 +45,25 @@
 		<text id="1">Voici le carnet à remplir.</text>
 		<text id="2">J'espère que vous ferez un meilleur travail que votre prédécesseur.</text>
 		<text id="1">Revenez me voir lorsque vous aurez fini de le compléter.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="unfinishedNB" target1="oldMan">
+		<text id="1">Alors...</text>
+		<text id="1">Voyons voir ce registre.</text>
+		<text id="1">Il y a encore plusieurs données manquantes.</text>
+		<text id="1">Revenez me voir lorsque vous aurez fini de le compléter.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="mistakesNB" target1="oldMan">
+		<text id="1">Alors...</text>
+		<text id="1">Voyons voir ce registre.</text>
+		<text id="1">Il y a encore plusieurs données qui sont eronnées.</text>
+		<text id="1">Revenez me voir lorsque vous les aurez corrigées.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="rightNB" target1="oldMan">
+		<text id="1">Alors...</text>
+		<text id="1">Voyons voir ce registre.</text>
+		<text id="1">Bravo ! Vous avez fait du bon travail !</text>
+		<text id="1">Je vais garder ça dans nos documents importants.</text>
+		<text id="1">Peut-être qu'un jour des historiens pourront utiliser ces informations</text>
+		<text id="1">et en faire un jeu vidéo.</text>
 	</dialogue>
 </scene>
