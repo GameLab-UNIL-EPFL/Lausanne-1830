@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -21,6 +21,64 @@
 [ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/QuestController.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/03_backgrounds/groundTexture.png" type="Texture" id=22]
+
+[sub_resource type="TileSet" id=4]
+2/name = "groundTexture.png 2"
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "pavedGround-Sheet.png 3"
+3/texture = ExtResource( 22 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 8, 8, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "pavedGround-Sheet.png 4"
+4/texture = ExtResource( 22 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 8, 48, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "pavedGround-Sheet.png 5"
+5/texture = ExtResource( 22 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 8, 88, 32, 33 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -8.73701, 1.60986 )
@@ -37,8 +95,21 @@ b = Vector2( 7.2533, 11.611 )
 [node name="QuestController" parent="." instance=ExtResource( 21 )]
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
+texture = null
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="Mud" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource( 4 )
+format = 1
+tile_data = PoolIntArray( 0, 1610612738, 0, 1, 1610612738, 0, 2, 1610612738, 0, 3, 1610612738, 0, 4, 1610612738, 0, 5, 1610612738, 0, 6, 1610612738, 0, 7, 1610612738, 0, 8, 1610612738, 0, 9, 1610612738, 0, 65536, 1610612738, 0, 65537, 1610612738, 0, 65538, 1610612738, 0, 65539, 1610612738, 0, 65540, 1610612738, 0, 65541, 1610612738, 0, 65542, 1610612738, 0, 65543, 1610612738, 0, 65544, 1610612738, 0, 65545, 1610612738, 0, 131072, 1610612738, 0, 131073, -1610612734, 0, 131074, -1610612734, 0, 131075, -1610612734, 0, 131076, 1610612738, 0, 131077, 1610612738, 0, 131078, 1610612738, 0, 131079, 1610612738, 0, 131080, 1610612738, 0, 131081, 1610612738, 0, 196608, -1610612734, 0, 196609, -1610612734, 0, 196610, -1610612734, 0, 196611, -1610612734, 0, 196612, -1610612734, 0, 196613, -1610612734, 0, 196614, -1610612734, 0, 196615, -1610612734, 0, 196616, -1610612734, 0, 196617, -1610612734, 0, 262144, -1610612734, 0, 262145, -1610612734, 0, 262146, -1610612734, 0, 262147, -1610612734, 0, 262148, -1610612734, 0, 262149, -1610612734, 0, 262150, -1610612734, 0, 262151, -1610612734, 0, 262152, -1610612734, 0, 262153, -1610612734, 0, 327680, -1610612734, 0, 327681, -1610612734, 0, 327682, -1610612734, 0, 327683, -1610612734, 0, 327684, -1610612734, 0, 327685, -1610612734, 0, 327686, -1610612734, 0, 327687, -1610612734, 0, 327688, -1610612734, 0, 327689, -1610612734, 0, 393237, 1610612738, 0 )
+
+[node name="PavedGround" type="TileMap" parent="."]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65543, -1610612734, 0, 65544, -1610612734, 0, 65545, -1610612734, 0, 131075, -1610612734, 0, 131076, -1610612734, 0, 131077, -1610612734, 0, 131079, -1610612734, 0, 131080, -1610612734, 0, 196612, 1610612738, 0, 196613, -1073741822, 0, 196617, -1610612734, 0, 393221, -1073741819, 0, 393222, -1610612732, 0, 393223, 5, 0, 393224, 4, 0, 393227, -1610612732, 0, 393228, 4, 0, 393229, 1610612740, 0, 393230, 1610612739, 0, 393231, 1610612741, 0, 393232, 1610612741, 0, 393233, 1610612741, 0, 393234, 1610612741, 0, 393235, 1610612741, 0, 458752, -1610612732, 0, 458753, 5, 0, 458754, 5, 0, 458755, 5, 0, 458756, -1610612733, 0, 458757, 3, 0, 458758, -1073741820, 0, 458759, 1610612740, 0, 458760, -1073741820, 0, 458762, 1610612740, 0, 458763, -1073741820, 0, 458765, -1610612732, 0, 458766, -1610612733, 0, 458767, 3, 0, 458768, 5, 0, 458769, -1610612733, 0, 458770, 3, 0, 458771, 4, 0, 524292, -1610612731, 0, 524293, -1073741819, 0, 524295, -1610612731, 0, 524296, -1073741821, 0, 524299, -1073741820, 0, 524302, -1610612732, 0, 524303, 4, 0, 524305, -1610612732, 0, 524306, 4, 0, 589828, -1610612731, 0, 589829, -1073741821, 0, 589831, -1610612732, 0, 589832, -1610612733, 0, 589833, 1610612739, 0, 589834, 3, 0, 589835, 1610612740, 0, 589836, -1073741820, 0, 655364, -1610612732, 0, 655365, -1610612733, 0, 655366, 3, 0, 655367, 5, 0, 655368, 5, 0, 655369, 4, 0, 655370, 1610612740, 0, 655371, 1610612739, 0, 655372, -1073741821, 0, 655373, -1073741820, 0, 720901, -1610612732, 0, 720902, 4, 0, 720906, -1610612732, 0, 720907, 5, 0, 720908, 5, 0, 720909, 4, 0 )
+
+[node name="BgBuildings" type="TextureRect" parent="."]
 margin_right = 640.0
 margin_bottom = 144.0
 focus_neighbour_bottom = NodePath("../TextureRect")
@@ -78,10 +149,11 @@ shape = SubResource( 3 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 310, 238 )
+position = Vector2( 302.466, 256.327 )
 
 [node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 184.398, 250.523 )
+visible = false
+position = Vector2( 120.902, 333.068 )
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
@@ -90,7 +162,7 @@ HasAutoDialogue = false
 visible = false
 
 [node name="Baker" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 419.665, 204.994 )
+position = Vector2( 445.15, 204.522 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
@@ -122,7 +194,7 @@ visible = false
 visible = false
 
 [node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 53.7259, 281.787 )
+position = Vector2( 27.7694, 272.348 )
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -137,10 +209,10 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 537, 350 )
+position = Vector2( 537.78, 246.742 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 421, 233 )
+position = Vector2( 445.069, 227.809 )
 
 [node name="Bread4" parent="YSort/TableH" instance=ExtResource( 7 )]
 position = Vector2( -14, -5 )
@@ -149,7 +221,7 @@ position = Vector2( -14, -5 )
 position = Vector2( 15, -5 )
 
 [node name="TableV" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 87, 260 )
+position = Vector2( 59.6277, 249.617 )
 
 [node name="Bread" parent="YSort/TableV" instance=ExtResource( 7 )]
 position = Vector2( -2, 5 )
@@ -161,7 +233,7 @@ position = Vector2( 0, 37 )
 position = Vector2( -1, 20 )
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 537, 225 )
+position = Vector2( 537.143, 225.495 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
@@ -190,14 +262,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Fountain" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 310.899, 262.204 )
+stream = ExtResource( 19 )
+volume_db = -5.0
+autoplay = true
+
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-
-[node name="Fountain" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 310.15, 272.692 )
-stream = ExtResource( 19 )
-autoplay = true
-max_distance = 100.0
+volume_db = -5.0
 
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
