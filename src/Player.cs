@@ -3,12 +3,16 @@ using System;
 using System.Collections.Generic;
 
 public class Player : KinematicBody2D {
+	[Signal]
+	public delegate void SendInfoToQuestNPC(Player p, NPC questNPC);
+	
 	//Player FSM
 	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
 	PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
 	private PlayerStates PrevState = PlayerStates.IDLE;
+	private bool isCutscene = true;
 	
 	[Export]
 	public int WalkSpeed = 100; //Pixels per second
@@ -178,9 +182,27 @@ public class Player : KinematicBody2D {
 		nSubs--;
 	}
 	
-	private void NotifySubs() {
+	// Finds the nearest sub to the player
+	private NPC NearestSub() {
+		float minDistance = float.MaxValue;
+		NPC nearest = subs[0];
 		foreach(NPC sub in subs) {
-			sub._Notify(this);
+			var distance = Position.DistanceTo(sub.Position);
+			if(distance < minDistance) {
+				minDistance = distance;
+				nearest = sub;
+			}
+		}
+		return nearest;
+	}
+	
+	private void NotifySubs() {
+		// Only notify the nearest sub
+		var nearestNPC = NearestSub();
+		if(nearestNPC.isQuestNPC) {
+			EmitSignal(nameof(SendInfoToQuestNPC), this, nearestNPC);
+		} else {
+			nearestNPC._Notify(this);
 		}
 	}
 	
