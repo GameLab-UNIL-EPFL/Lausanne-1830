@@ -80,7 +80,7 @@ b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Fade in"
-length = 4.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -88,7 +88,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2, 4 ),
+"times": PoolRealArray( 0.2, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
@@ -277,7 +277,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 545, 386 )
+position = Vector2( 537, 500 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 145.255, 253.265 )
@@ -301,7 +301,7 @@ position = Vector2( 0, 37 )
 position = Vector2( -1, 20 )
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 537.143, 225.495 )
+position = Vector2( 537, 225 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
@@ -358,8 +358,7 @@ volume_db = -5.0
 stream = ExtResource( 20 )
 autoplay = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="FadeIn" type="ColorRect" parent="."]
 margin_left = -14.0
 margin_top = -10.0
 margin_right = 661.0
@@ -369,7 +368,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
 autoplay = "Fade in"
 "anims/Fade in" = SubResource( 5 )
 anims/RESET = SubResource( 6 )

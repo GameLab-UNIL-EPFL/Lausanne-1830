@@ -12,7 +12,11 @@ public class Player : KinematicBody2D {
 	
 	private bool NotebookOpen = false;
 	private PlayerStates PrevState = PlayerStates.IDLE;
+	
+	// Cutscene state
 	private bool isCutscene = true;
+	private bool isCutsceneConv = false;
+	private ColorRect FadeIn;
 	
 	[Export]
 	public int WalkSpeed = 100; //Pixels per second
@@ -39,6 +43,16 @@ public class Player : KinematicBody2D {
 	private List<NPC> subs = new List<NPC>();
 	private int nSubs = 0;
 	
+	// Returns whether or not the quest giver is in the sub list
+	private bool QuestGiverIsSubbed() {
+		foreach(var sub in subs) {
+			if(sub.isQuestNPC) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	private void HandleMovement(float delta) {
 		Speed = CurrentState == PlayerStates.RUNNING ? RunSpeed : WalkSpeed;
 		
@@ -52,6 +66,27 @@ public class Player : KinematicBody2D {
 			animationTree.Set("parameters/Idle/blend_position", InputVec);
 			Velocity = Velocity.MoveToward(InputVec * Speed, ACC * delta);
 		}
+	}
+	
+	// Walk up to the quest giver and interact
+	private void HandleCutscene(float delta) {
+		if(isCutsceneConv) {
+			if(Input.IsActionJustPressed("ui_interact")) {
+				NearestSub()._Notify(this);
+			}
+		} else {
+			InputVec.x = 0.0f;
+			InputVec.y = -1.0f;
+			if(subs.Count != 0 && QuestGiverIsSubbed()) {
+				var nearestNPC = NearestSub();
+				if(nearestNPC.isQuestNPC) {
+					InputVec.y = 0.0f;
+					nearestNPC._Notify(this);
+				}
+			} 
+		}
+		InputVec = InputVec.Normalized();
+		HandleMovement(delta);
 	}
 	
 	/**
@@ -158,12 +193,13 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		FadeIn = GetNode<ColorRect>("../../FadeIn");
 	}
 	
 	// Called on every physics engine tick
 	public override void _Process(float delta) {
 		if(isCutscene) {
-			
+			HandleCutscene(delta);
 		} else {
 			//Handle input
 			HandleInput(delta);
@@ -212,11 +248,15 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
+		if(isCutscene) {
+			isCutscene = false;
+			FadeIn.Hide();
+		}
 	}
 	
 	public void _StartDialogue() {
 		CurrentState = PlayerStates.BLOCKED;
-		isCutscene = false;
+		isCutsceneConv = true;
 	}
 	
 	/**
