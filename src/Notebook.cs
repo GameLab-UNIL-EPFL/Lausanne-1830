@@ -118,7 +118,7 @@ public class Notebook : Node2D {
 	}
 	
 	public void _on_NotebookController_pressed() {
-		if(ASP.Playing == false){
+		if(ASP.Playing == false) {
 			ASP.Play();
 		}
 		if(hidden) {

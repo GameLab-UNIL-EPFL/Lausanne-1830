@@ -40,13 +40,6 @@ public class Player : KinematicBody2D {
 	private int nSubs = 0;
 	
 	private void HandleMovement(float delta) {
-		//Handle movement
-		InputVec.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-		InputVec.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-		InputVec = InputVec.Normalized();
-		
-		//Check for sprint
-		RunRequest = Input.IsActionPressed("ui_shift");
 		Speed = CurrentState == PlayerStates.RUNNING ? RunSpeed : WalkSpeed;
 		
 		//Update velocity
@@ -67,6 +60,13 @@ public class Player : KinematicBody2D {
 	 */
 	private void HandleInput(float delta) {
 		if(CurrentState != PlayerStates.BLOCKED) {
+			//Handle movement
+			InputVec.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+			InputVec.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
+			InputVec = InputVec.Normalized();
+			
+			//Check for sprint
+			RunRequest = Input.IsActionPressed("ui_shift");
 			HandleMovement(delta);
 		} else {
 			InputVec = Vector2.Zero;
@@ -162,8 +162,12 @@ public class Player : KinematicBody2D {
 	
 	// Called on every physics engine tick
 	public override void _Process(float delta) {
-		//Handle input
-		HandleInput(delta);
+		if(isCutscene) {
+			
+		} else {
+			//Handle input
+			HandleInput(delta);
+		}
 		
 		//Update player state
 		HandleState(delta);
@@ -212,6 +216,7 @@ public class Player : KinematicBody2D {
 	
 	public void _StartDialogue() {
 		CurrentState = PlayerStates.BLOCKED;
+		isCutscene = false;
 	}
 	
 	/**
