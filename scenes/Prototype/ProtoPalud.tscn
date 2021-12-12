@@ -137,7 +137,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 537.78, 249.739 )
+position = Vector2( 537, 350 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 421, 233 )
@@ -161,7 +161,7 @@ position = Vector2( 0, 37 )
 position = Vector2( -1, 20 )
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 537.143, 225.495 )
+position = Vector2( 537, 225 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
