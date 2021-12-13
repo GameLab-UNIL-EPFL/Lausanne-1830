@@ -12,7 +12,7 @@ public class Notebook : Node2D {
 	private AudioStreamPlayer ASP;
 	
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
-	public InfoValue_t correctInfo = new InfoValue_t(false, false, false, false, false, false, false);
+	public InfoValue_t correctInfo = new InfoValue_t(false, true, false, false, false, true, true);
 	
 	private void FillCharInfo() {
 		foreach(var inf in info) {
@@ -59,7 +59,7 @@ public class Notebook : Node2D {
 		foreach(var infS in infoStatic) {
 			infS.Hide();
 		}
-		
+		_UpdateNotebook(correctInfo);
 		FillCharInfo();
 	}
 	
@@ -123,7 +123,7 @@ public class Notebook : Node2D {
 		
 		//Request an info evaluation from the NPC
 		correctInfo = questNPC._EvaluateQuest(p, characterInfo);
-		_UpdateNotebook(correctInfo);
+		//_UpdateNotebook(correctInfo);
 	}
 	
 	public void _on_NotebookController_pressed() {
