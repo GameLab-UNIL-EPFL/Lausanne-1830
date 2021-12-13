@@ -33,7 +33,7 @@ public class DialogueController : Node {
 	 */
 	public static string _SanitizePath(string path) {
 		string path_tmp = "";
-		if(OS.HasFeature("editor")) {
+		/*if(OS.HasFeature("editor")) {
 			//Running from an editor binary.
 			//`path` will contain the absolute path located in the project root.
 			path_tmp = ProjectSettings.GlobalizePath(path);
@@ -45,8 +45,8 @@ public class DialogueController : Node {
 			string san_path = path.Split(':')[1];
 			san_path = san_path.Substring(2, san_path.Length);
 			path_tmp = OS.GetExecutablePath().GetBaseDir().PlusFile(san_path);
-		}
-		return path_tmp;
+		}*/
+		return ProjectSettings.GlobalizePath(path);
 	}
 	
 	/**
