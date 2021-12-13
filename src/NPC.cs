@@ -49,16 +49,23 @@ public class NPC : KinematicBody2D {
 			"Bravo ! Vous avez fait du bon travail !¢"+
 			"Je vais garder ça dans nos documents importants.¢"+
 			"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
-			"et en faire un jeu vidéo.");
+			"et en faire un jeu vidéo.¢"+
+			// Quick fix
+			"...");
 		}
 		
 		string d = "Alors...¢" +
 		"Voyons voir ce registre.¢" +
-		"Il y a encore plusieurs données qui sont eronnées, comme:¢";
+		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
+		"Il y a encore ";
+		var i = 0;
 		foreach(var o in outliers) {
-			d += o + ", ";
+			//d += o + ", ";
+			i++;
 		}
-		d += "et ...¢" + "Je crois que les ai tous cités.¢";
+		d += i;
+		//d += "et ...¢" + "Je crois que les ai tous cités.¢";
+		d += " données qui sont eronnées.¢";
 		d += "Revenez me voir lorsque vous les aurez corrigées.";
 		return FormatText(d);
 	}

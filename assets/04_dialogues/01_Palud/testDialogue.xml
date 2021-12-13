@@ -5,9 +5,16 @@
 	</dialogue>
 	<dialogue type="onDemand" id="testDemand" target1="baker">
 		<text id="1">Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
-		<text id="2">Pain, croissant ?</text>
+		<text id="2">Pain, croissants ?</text>
 		<text id="1">C'est fait ce matin !</text>
 		<text id="1">Trüschel ? Non je ne les connais pas, désolé.</text>
+	</dialogue>
+	<dialogue type="onDemand" id="demandBaker" target1="baker">
+		<text id="1">Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
+		<text id="2">Pain, croissants, ragots ?</text>
+		<text id="1">Il paraît qu'une nouvelle révolution se prépare.</text>
+		<text id="1">Vous devriez aller faire un tour du côté du casino.</text>
+		<text id="1">C'est leur lieu de rencontre.</text>
 	</dialogue>
 	<dialogue type="onDemand" id="demandPasteur" target1="baker">
 		<text id="1">Demain la messe aura lieu à 8h30 à la Cathédrale,</text>
