@@ -49,9 +49,7 @@ public class NPC : KinematicBody2D {
 			"Bravo ! Vous avez fait du bon travail !¢"+
 			"Je vais garder ça dans nos documents importants.¢"+
 			"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
-			"et en faire un jeu vidéo.¢"+
-			// Quick fix
-			"...");
+			"et en faire un jeu vidéo.");
 		}
 		
 		string d = "Alors...¢" +
@@ -171,6 +169,9 @@ public class NPC : KinematicBody2D {
 				lines--;
 			} 
 			newText += c;
+		}
+		if(textLines.Count > 1) {
+			textLines.Add(newText);
 		}
 		return textLines.ToArray();
 	}

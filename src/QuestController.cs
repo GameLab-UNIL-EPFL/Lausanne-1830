@@ -178,8 +178,8 @@ public class QuestController : Node {
 	}
 	
 	public void _InitBuffer(string[] text) {
-		for(int i = text.Length - 1; i >= 0; --i) {
-			QuestBuffer.Push(text[i]);
+		for(int i = 0; i < text.Length; ++i) {
+			QuestBuffer.Push(text[text.Length - i - 1]);
 		}
 	}
 	
