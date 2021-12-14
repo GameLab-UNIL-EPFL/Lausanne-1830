@@ -45,7 +45,7 @@ public class NPC : KinematicBody2D {
 		string[] outliers = res.Outliers().ToArray();
 		if(res.IsCorrect()) {
 			return FormatText("Alors...¢" +
-			"Voyons voir ce registre."+
+			"Voyons voir ce registre.¢"+
 			"Bravo ! Vous avez fait du bon travail !¢"+
 			"Je vais garder ça dans nos documents importants.¢"+
 			"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
@@ -54,11 +54,16 @@ public class NPC : KinematicBody2D {
 		
 		string d = "Alors...¢" +
 		"Voyons voir ce registre.¢" +
-		"Il y a encore plusieurs données qui sont eronnées, comme:¢";
+		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
+		"Il y a encore ";
+		var i = 0;
 		foreach(var o in outliers) {
-			d += o + ", ";
+			//d += o + ", ";
+			i++;
 		}
-		d += "et ...¢" + "Je crois que les ai tous cités.¢";
+		d += i;
+		//d += "et ...¢" + "Je crois que les ai tous cités.¢";
+		d += " données qui sont eronnées.¢";
 		d += "Revenez me voir lorsque vous les aurez corrigées.";
 		return FormatText(d);
 	}
@@ -165,6 +170,9 @@ public class NPC : KinematicBody2D {
 			} 
 			newText += c;
 		}
+		if(textLines.Count > 1) {
+			textLines.Add(newText);
+		}
 		return textLines.ToArray();
 	}
 	
@@ -195,6 +203,11 @@ public class NPC : KinematicBody2D {
 				player._EndDialogue();
 			}
 		}
+	}
+	
+	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo) {
+		CharacterInfo_t solution = QC._QueryQuestSolution();
+		return QC._CompareCharInfo(solution, characterInfo);
 	}
 	
 	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {

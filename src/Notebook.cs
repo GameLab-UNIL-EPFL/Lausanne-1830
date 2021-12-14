@@ -12,7 +12,7 @@ public class Notebook : Node2D {
 	private AudioStreamPlayer ASP;
 	
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
-	public InfoValue_t correctInfo = new InfoValue_t(false, false, false, false, false, false, false);
+	public InfoValue_t correctInfo = new InfoValue_t(false);
 	
 	private void FillCharInfo() {
 		foreach(var inf in info) {
@@ -33,7 +33,7 @@ public class Notebook : Node2D {
 					characterInfo.conjoint = inf.Text;
 					break;
 				case "enfants":
-					characterInfo.enfants = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
+					characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
 					break;
 				case "metier":
 					characterInfo.metier = inf.Text;
@@ -59,7 +59,6 @@ public class Notebook : Node2D {
 		foreach(var infS in infoStatic) {
 			infS.Hide();
 		}
-		
 		FillCharInfo();
 	}
 	
@@ -108,6 +107,15 @@ public class Notebook : Node2D {
 		}
 	}
 	
+	public void _on_CutsceneEnd(NPC questNPC) {
+		//Update the characterInfo
+		FillCharInfo();
+		
+		//Request an info evaluation from the NPC
+		correctInfo = questNPC._CompareSolutions(characterInfo);
+		_UpdateNotebook(correctInfo);
+	}
+	
 	public void _on_SendInfoToQuestNPC(Player p, NPC questNPC) {
 		//Update the characterInfo
 		FillCharInfo();
@@ -118,7 +126,7 @@ public class Notebook : Node2D {
 	}
 	
 	public void _on_NotebookController_pressed() {
-		if(ASP.Playing == false){
+		if(ASP.Playing == false) {
 			ASP.Play();
 		}
 		if(hidden) {

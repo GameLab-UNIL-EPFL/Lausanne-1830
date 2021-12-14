@@ -97,6 +97,7 @@ public class NotebookList : Node2D {
 	// Propagate the request to update the notebook info
 	private void _on_UpdateNotebookInfo(string newVal) {
 		EmitSignal(nameof(UpdateInfo), curAttribute, newVal);
+		_on_Close_button_up();
 	}
 	
 	/**

@@ -299,6 +299,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Quest" type="Label" parent="."]
+margin_left = 270.0
+margin_top = 61.0
+margin_right = 415.0
+margin_bottom = 101.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Objectif:
+Trouver les informations manquantes pour completer le registre et aller les faire  valider."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tab" type="Sprite" parent="."]
 position = Vector2( 444.51, 63.4949 )
 texture = ExtResource( 5 )

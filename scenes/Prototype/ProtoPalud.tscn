@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/02_architecture/02_palud/fullScene.png" type="Texture" id=16]
-[ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=17]
+[ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
 [ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
 [ext_resource path="res://scenes/Prototype/Prop.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBox.png" type="Texture" id=25]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrel.png" type="Texture" id=26]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -78,6 +79,37 @@ b = Vector2( 642.831, 1.25632 )
 a = Vector2( 7.58701, -140.561 )
 b = Vector2( 7.2533, 11.611 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "Fade in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.996078 ) ]
+}
+
 [node name="ProtoPalud" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 9 )]
@@ -123,6 +155,7 @@ position = Vector2( 319, 181 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
 position = Vector2( 1.00075, 360.158 )
 shape = SubResource( 2 )
+one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
 
@@ -176,8 +209,19 @@ position = Vector2( -13.8276, -35.652 )
 [node name="Sprite" parent="YSort/Baker" index="1"]
 texture = ExtResource( 12 )
 
+[node name="Baker3" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 29.457, 278.564 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "demandBaker"
+
+[node name="TextBox" parent="YSort/Baker3" index="0"]
+position = Vector2( -13.8276, -35.652 )
+
+[node name="Sprite" parent="YSort/Baker3" index="1"]
+texture = ExtResource( 12 )
+
 [node name="Baker2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 30.9147, 273.159 )
+position = Vector2( 452.755, 298.104 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
@@ -188,7 +232,7 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 12 )
 
 [node name="Elisabeth" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 502.083, 324.856 )
+position = Vector2( 318.729, 268.53 )
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -209,7 +253,7 @@ visible = false
 visible = false
 
 [node name="Random" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 156.618, 287.991 )
+position = Vector2( 259.118, 203.991 )
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
@@ -245,31 +289,51 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 537.78, 246.742 )
+position = Vector2( 537, 500 )
 
 [node name="TableH" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 145.255, 253.265 )
 
 [node name="Bread4" parent="YSort/TableH" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( -14, -5 )
 
 [node name="Bread5" parent="YSort/TableH" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 15, -5 )
 
 [node name="TableV" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 59.6277, 249.617 )
 
 [node name="Bread" parent="YSort/TableV" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( -2, 5 )
 
 [node name="Bread3" parent="YSort/TableV" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 0, 37 )
 
 [node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -1, 20 )
+
+[node name="TableV2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 481.914, 263.871 )
+
+[node name="Bread" parent="YSort/TableV2" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -2, 5 )
+
+[node name="Bread3" parent="YSort/TableV2" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 0, 37 )
+
+[node name="Bread2" parent="YSort/TableV2" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( -1, 20 )
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 537.143, 225.495 )
+position = Vector2( 537, 225 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
@@ -294,17 +358,39 @@ position = Vector2( 443.365, 272.711 )
 [node name="Sprite" parent="YSort/Box3" index="0"]
 texture = ExtResource( 25 )
 
+[node name="Box4" parent="YSort" instance=ExtResource( 24 )]
+position = Vector2( 26.8453, 243.278 )
+
+[node name="Sprite" parent="YSort/Box4" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Box5" parent="YSort" instance=ExtResource( 24 )]
+position = Vector2( 420.175, 326.523 )
+
+[node name="Sprite" parent="YSort/Box5" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Box6" parent="YSort" instance=ExtResource( 24 )]
+position = Vector2( 398.77, 325.928 )
+
+[node name="Sprite" parent="YSort/Box6" index="0"]
+texture = ExtResource( 26 )
+
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
 position = Vector2( 82, 36 )
 script = ExtResource( 2 )
 
+[node name="Quest" parent="Notebook" index="2"]
+visible = false
+
 [node name="NotebookController" type="Button" parent="."]
-margin_left = 578.0
-margin_top = 319.0
-margin_right = 632.0
-margin_bottom = 353.0
+margin_left = 592.719
+margin_top = 4.16838
+margin_right = 635.719
+margin_bottom = 39.1684
 focus_mode = 0
+mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 icon = ExtResource( 17 )
 expand_icon = true
@@ -326,10 +412,27 @@ volume_db = -5.0
 stream = ExtResource( 20 )
 autoplay = true
 
+[node name="FadeIn" type="ColorRect" parent="."]
+margin_left = -14.0
+margin_top = -10.0
+margin_right = 661.0
+margin_bottom = 370.0
+color = Color( 0, 0, 0, 0.996078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
+autoplay = "Fade in"
+"anims/Fade in" = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
 [connection signal="EndDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/Baker3" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/Baker3" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/Baker2" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/Baker2" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/Elisabeth" to="YSort/Player" method="_on_NPC_EndDialogue"]
@@ -338,6 +441,7 @@ autoplay = true
 [connection signal="StartDialogue" from="YSort/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
@@ -347,6 +451,8 @@ autoplay = true
 [editable path="YSort/Truschel/ListenBox"]
 [editable path="YSort/Baker"]
 [editable path="YSort/Baker/ListenBox"]
+[editable path="YSort/Baker3"]
+[editable path="YSort/Baker3/ListenBox"]
 [editable path="YSort/Baker2"]
 [editable path="YSort/Baker2/ListenBox"]
 [editable path="YSort/Elisabeth"]
@@ -359,6 +465,9 @@ autoplay = true
 [editable path="YSort/QuestNPC/ListenBox"]
 [editable path="YSort/Box2"]
 [editable path="YSort/Box3"]
+[editable path="YSort/Box4"]
+[editable path="YSort/Box5"]
+[editable path="YSort/Box6"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
