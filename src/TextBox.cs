@@ -45,15 +45,17 @@ public class TextBox : Node2D {
 	
 	public void _ShowText(string text) {
 		Text.Text = text;
-		float nLines = text.Length / 25.0f;
+		float nLines = text.Length / 30.0f;
 		ShowAll();
 		
 		//Pick which TB to show
 		if(nLines > 1.0f)  {
+			ATB.Hide();
 			TC.Set("rect_size", DTCSize);
 			TC.Set("rect_position", DTCPos);
 			DTB.Show();
 		} else {
+			DTB.Hide();
 			TC.Set("rect_size", ATCSize);
 			TC.Set("rect_position", ATCPos);
 			ATB.Show();

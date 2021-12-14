@@ -45,7 +45,7 @@ public class NPC : KinematicBody2D {
 		string[] outliers = res.Outliers().ToArray();
 		if(res.IsCorrect()) {
 			return FormatText("Alors...¢" +
-			"Voyons voir ce registre."+
+			"Voyons voir ce registre.¢"+
 			"Bravo ! Vous avez fait du bon travail !¢"+
 			"Je vais garder ça dans nos documents importants.¢"+
 			"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
