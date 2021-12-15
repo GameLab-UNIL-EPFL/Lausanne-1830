@@ -26,7 +26,6 @@ public class TextBox : Node2D {
 	private void ShowAll() {
 		TC.Show();
 		Text.Show();
-		E.Show();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -46,6 +45,10 @@ public class TextBox : Node2D {
 	public void _HideText() {
 		Text.Text = "";
 		_HideAll();
+	}
+	
+	public void _ShowPressE() {
+		E.Show();
 	}
 	
 	public void _ShowText(string text) {

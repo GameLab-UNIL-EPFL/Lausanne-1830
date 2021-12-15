@@ -198,6 +198,7 @@ public class NPC : KinematicBody2D {
 				
 				//Show it in the box
 				TB._ShowText(d);
+				TB._ShowPressE();
 			} else {
 				TB._HideText();
 				player._EndDialogue();
