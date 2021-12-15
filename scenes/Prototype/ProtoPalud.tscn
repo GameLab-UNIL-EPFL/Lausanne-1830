@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -24,11 +24,12 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=22]
 [ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
 [ext_resource path="res://scenes/Prototype/Prop.tscn" type="PackedScene" id=24]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxBotFountain.png" type="Texture" id=25]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxTopFountain.png" type="Texture" id=26]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/steelBarrel.png" type="Texture" id=30]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -190,6 +191,9 @@ position = Vector2( -67.9217, -2.51843 )
 
 [node name="Barrel3" parent="YSort/Fountain" instance=ExtResource( 24 )]
 position = Vector2( -91.1113, 5.80603 )
+
+[node name="Sprite" parent="YSort/Fountain/Barrel3" index="0"]
+texture = ExtResource( 30 )
 
 [node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 120.902, 333.068 )
@@ -405,6 +409,7 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 icon = ExtResource( 17 )
+flat = true
 expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -460,6 +465,8 @@ anims/RESET = SubResource( 6 )
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
 [editable path="YSort/Fountain/Box"]
+[editable path="YSort/Fountain/Barrel"]
+[editable path="YSort/Fountain/Barrel3"]
 [editable path="YSort/Truschel"]
 [editable path="YSort/Truschel/ListenBox"]
 [editable path="YSort/Baker"]
