@@ -430,7 +430,6 @@ stream = ExtResource( 20 )
 autoplay = true
 
 [node name="FadeIn" type="ColorRect" parent="."]
-visible = false
 margin_left = -14.0
 margin_top = -10.0
 margin_right = 661.0
