@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/01_characters/01_player/perso-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.cs" type="Script" id=2]
 [ext_resource path="res://scenes/Interaction/TalkBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/01_characters/01_player/shadow.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 4.0
@@ -482,9 +483,10 @@ radius = 21.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+
+[node name="shadow" type="Sprite" parent="."]
+position = Vector2( -0.125, 3.5 )
+texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
@@ -521,6 +523,7 @@ parameters/Run/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [node name="TalkBox" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="CollisionShape2D" parent="TalkBox" index="0"]
 position = Vector2( 0, -6 )
