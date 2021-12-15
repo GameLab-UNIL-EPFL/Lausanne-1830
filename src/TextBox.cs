@@ -6,6 +6,7 @@ public class TextBox : Node2D {
 	private Sprite DTB;
 	private MarginContainer TC;
 	private Label Text;
+	private AnimatedSprite E;
 	
 	private Vector2 DTCSize = new Vector2(393, 140);
 	private Vector2 DTCPos = new Vector2(12, -93);
@@ -18,12 +19,14 @@ public class TextBox : Node2D {
 		DTB.Hide();
 		TC.Hide();
 		Text.Hide();
+		E.Hide();
 	}
 	
 	//Shows all nodes
 	private void ShowAll() {
 		TC.Show();
 		Text.Show();
+		E.Show();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -33,6 +36,8 @@ public class TextBox : Node2D {
 		DTB = GetNode<Sprite>("DemandTB");
 		TC = GetNode<MarginContainer>("TextContainer");
 		Text = GetNode<Label>("TextContainer/Text");
+		E = GetNode<AnimatedSprite>("AnimatedSprite");
+		
 		
 		Show();
 		_HideAll();
