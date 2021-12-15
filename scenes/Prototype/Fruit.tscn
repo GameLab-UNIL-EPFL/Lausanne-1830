@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bread.png" type="Texture" id=1]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketHorizontal.png" type="Texture" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.0
 height = 6.0
 
-[node name="Bread" type="StaticBody2D"]
+[node name="Fruit" type="StaticBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
