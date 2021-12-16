@@ -14,11 +14,11 @@ position = Vector2( 1, -1 )
 texture = ExtResource( 4 )
 
 [node name="Cityhall" type="Sprite" parent="."]
-position = Vector2( 240, -65 )
+position = Vector2( 240.375, -53.3881 )
 texture = ExtResource( 2 )
 
 [node name="Building" type="Sprite" parent="."]
-position = Vector2( 71, -84 )
+position = Vector2( 71, -70.4937 )
 texture = ExtResource( 1 )
 
 [node name="CroissantBuilding" type="Sprite" parent="."]
@@ -26,7 +26,7 @@ position = Vector2( -233, -60 )
 texture = ExtResource( 5 )
 
 [node name="TallBlueBuilding" type="Sprite" parent="."]
-position = Vector2( -85, -81 )
+position = Vector2( -81.1272, -68.7297 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
