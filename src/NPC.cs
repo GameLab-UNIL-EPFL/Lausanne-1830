@@ -63,8 +63,14 @@ public class NPC : KinematicBody2D {
 		}
 		d += i;
 		//d += "et ...¢" + "Je crois que les ai tous cités.¢";
-		d += " données qui sont eronnées.¢";
-		d += "Revenez me voir lorsque vous les aurez corrigées.";
+		if(i>1) {
+			d += " données eronnées.¢";
+			d += "Revenez me voir lorsque vous les aurez corrigées.";
+		} else {
+			d += " donnée eronnée.¢";
+			d += "Revenez me voir lorsque vous l'aurez corrigée.";
+		}
+
 		return FormatText(d);
 	}
 
