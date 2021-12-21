@@ -11,20 +11,25 @@ public class NotebookInfo : Button {
 	public static Color C = new Color("#876853");
 	public static Color C1 = new Color("#ceb29f");
 	public static Color Hover = new Color("#9c2323");
-	private ColorRect CR;
+	private Sprite S;
+	private Texture SHover;
+	private Texture STexture;
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		// Fetch child node
-		CR = GetNode<ColorRect>("ColorRect");
+		S = GetNode<Sprite>("Sprite");
+		
+		SHover = (Texture)GD.Load("res://assets/04_notebook/notebookBox2.png");
+		STexture = (Texture)GD.Load("res://assets/04_notebook/notebookBox.png");
 		
 		// Sanity Check
 		if(AttributeName == null) {
 			throw new Exception("NoteBookInfo must have an attribute name!");
 		}
 		if(Text == ""){
-			CR.Show();
+			S.Show();
 		}
 	}
 	
@@ -34,7 +39,7 @@ public class NotebookInfo : Button {
 			Text = newVal;
 		}
 		if(Text != "") {
-			CR.Hide();
+			S.Hide();
 		}
 		
 	}
@@ -42,4 +47,17 @@ public class NotebookInfo : Button {
 	private void _on_NotebookInfo_pressed() {
 		EmitSignal(nameof(OpenOptions), AttributeName);
 	}
+	
+	private void _on_NotebookInfo_mouse_entered() {
+		S.Texture = SHover;
+	}
+
+
+	private void _on_NotebookInfo_mouse_exited() {
+		S.Texture = STexture;
+	}
+	
 }
+
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/02_architecture/02_palud/fullScene.png" type="Texture" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
 [ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
@@ -123,12 +122,6 @@ tracks/0/keys = {
 
 [node name="TextureRect" parent="." instance=ExtResource( 4 )]
 
-[node name="Mud" type="TileMap" parent="."]
-visible = false
-tile_set = SubResource( 4 )
-format = 1
-tile_data = PoolIntArray( 0, 1610612738, 0, 1, 1610612738, 0, 2, 1610612738, 0, 3, 1610612738, 0, 4, 1610612738, 0, 5, 1610612738, 0, 6, 1610612738, 0, 7, 1610612738, 0, 8, 1610612738, 0, 9, 1610612738, 0, 65536, 1610612738, 0, 65537, 1610612738, 0, 65538, 1610612738, 0, 65539, 1610612738, 0, 65540, 1610612738, 0, 65541, 1610612738, 0, 65542, 1610612738, 0, 65543, 1610612738, 0, 65544, 1610612738, 0, 65545, 1610612738, 0, 131072, 1610612738, 0, 131073, -1610612734, 0, 131074, -1610612734, 0, 131075, -1610612734, 0, 131076, 1610612738, 0, 131077, 1610612738, 0, 131078, 1610612738, 0, 131079, 1610612738, 0, 131080, 1610612738, 0, 131081, 1610612738, 0, 196608, -1610612734, 0, 196609, -1610612734, 0, 196610, -1610612734, 0, 196611, -1610612734, 0, 196612, -1610612734, 0, 196613, -1610612734, 0, 196614, -1610612734, 0, 196615, -1610612734, 0, 196616, -1610612734, 0, 196617, -1610612734, 0, 262144, -1610612734, 0, 262145, -1610612734, 0, 262146, -1610612734, 0, 262147, -1610612734, 0, 262148, -1610612734, 0, 262149, -1610612734, 0, 262150, -1610612734, 0, 262151, -1610612734, 0, 262152, -1610612734, 0, 262153, -1610612734, 0, 327680, -1610612734, 0, 327681, -1610612734, 0, 327682, -1610612734, 0, 327683, -1610612734, 0, 327684, -1610612734, 0, 327685, -1610612734, 0, 327686, -1610612734, 0, 327687, -1610612734, 0, 327688, -1610612734, 0, 327689, -1610612734, 0, 393237, 1610612738, 0 )
-
 [node name="PavedGround" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
@@ -143,11 +136,6 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 321, 180 )
-texture = ExtResource( 16 )
 
 [node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
 position = Vector2( 319, 181 )
@@ -175,6 +163,228 @@ shape = SubResource( 3 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Props" type="YSort" parent="YSort"]
+
+[node name="TableH" parent="YSort/Props" instance=ExtResource( 10 )]
+position = Vector2( 145.255, 253.265 )
+
+[node name="Bread4" parent="YSort/Props/TableH" instance=ExtResource( 7 )]
+position = Vector2( -0.140671, -5 )
+
+[node name="Sprite" parent="YSort/Props/TableH/Bread4" index="0"]
+texture = ExtResource( 27 )
+
+[node name="Bread5" parent="YSort/Props/TableH" instance=ExtResource( 7 )]
+position = Vector2( 15, -5 )
+
+[node name="Sprite" parent="YSort/Props/TableH/Bread5" index="0"]
+texture = ExtResource( 28 )
+
+[node name="Bread6" parent="YSort/Props/TableH" instance=ExtResource( 7 )]
+position = Vector2( -15.1534, -5.18729 )
+
+[node name="Sprite" parent="YSort/Props/TableH/Bread6" index="0"]
+texture = ExtResource( 28 )
+
+[node name="TableV" parent="YSort/Props" instance=ExtResource( 6 )]
+position = Vector2( 59.6277, 249.617 )
+
+[node name="Bread" parent="YSort/Props/TableV" instance=ExtResource( 7 )]
+position = Vector2( 1.35876, 10.1265 )
+
+[node name="Bread2" parent="YSort/Props/TableV" instance=ExtResource( 7 )]
+position = Vector2( 1.2981, 20.5303 )
+
+[node name="Bread3" parent="YSort/Props/TableV" instance=ExtResource( 7 )]
+position = Vector2( 1.06066, 33.1109 )
+
+[node name="Sprite" parent="YSort/Props/TableV/Bread3" index="0"]
+texture = ExtResource( 29 )
+
+[node name="TableV2" parent="YSort/Props" instance=ExtResource( 6 )]
+position = Vector2( 481.914, 263.871 )
+
+[node name="Bread" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -2, 5 )
+
+[node name="Bread3" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 0, 37 )
+
+[node name="Bread2" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -1, 20 )
+
+[node name="TableV3" parent="YSort/Props" instance=ExtResource( 6 )]
+position = Vector2( 642.375, 226.674 )
+
+[node name="Bread" parent="YSort/Props/TableV3" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -2, 5 )
+
+[node name="Bread3" parent="YSort/Props/TableV3" instance=ExtResource( 7 )]
+position = Vector2( 0, 31.3342 )
+
+[node name="Sprite" parent="YSort/Props/TableV3/Bread3" index="0"]
+texture = ExtResource( 29 )
+
+[node name="Bread2" parent="YSort/Props/TableV3" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -1, 20 )
+
+[node name="TableV4" parent="YSort/Props" instance=ExtResource( 6 )]
+position = Vector2( 642.52, 270.147 )
+
+[node name="Bread" parent="YSort/Props/TableV4" instance=ExtResource( 7 )]
+position = Vector2( 0, 11.3047 )
+
+[node name="Bread3" parent="YSort/Props/TableV4" instance=ExtResource( 7 )]
+position = Vector2( 0, 37 )
+
+[node name="Bread2" parent="YSort/Props/TableV4" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -1, 20 )
+
+[node name="Box2" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 443.365, 259.981 )
+z_index = 1
+
+[node name="Sprite" parent="YSort/Props/Box2" index="0"]
+z_as_relative = false
+texture = ExtResource( 25 )
+
+[node name="Box3" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 443.365, 272.711 )
+
+[node name="Sprite" parent="YSort/Props/Box3" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Box4" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 26.8453, 243.278 )
+
+[node name="Sprite" parent="YSort/Props/Box4" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Box5" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 420.175, 326.523 )
+
+[node name="Sprite" parent="YSort/Props/Box5" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Box7" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 627, 342.523 )
+
+[node name="Sprite" parent="YSort/Props/Box7" index="0"]
+texture = ExtResource( 25 )
+
+[node name="Box6" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 398.77, 325.928 )
+
+[node name="Sprite" parent="YSort/Props/Box6" index="0"]
+texture = ExtResource( 22 )
+
+[node name="NPC" type="YSort" parent="YSort"]
+
+[node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 120.902, 333.068 )
+AutoDialogueID = ""
+DemandDialogueID = "demandTruschel"
+HasAutoDialogue = false
+
+[node name="ListenBox" parent="YSort/NPC/Truschel" index="3"]
+visible = false
+
+[node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 147.457, 228.564 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "testDemand"
+
+[node name="TextBox" parent="YSort/NPC/Baker" index="0"]
+position = Vector2( -13.8276, -35.652 )
+
+[node name="Sprite" parent="YSort/NPC/Baker" index="1"]
+texture = ExtResource( 12 )
+
+[node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 29.457, 278.564 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "demandBaker"
+
+[node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
+position = Vector2( -13.8276, -35.652 )
+
+[node name="Sprite" parent="YSort/NPC/Baker3" index="1"]
+texture = ExtResource( 12 )
+
+[node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 452.755, 298.104 )
+AutoDialogueID = "testApproach"
+DemandDialogueID = "demandRandom"
+
+[node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
+position = Vector2( -13.8276, -35.652 )
+
+[node name="Sprite" parent="YSort/NPC/Baker2" index="1"]
+texture = ExtResource( 12 )
+
+[node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 318.729, 268.53 )
+AutoDialogueID = ""
+DemandDialogueID = "demandElisabeth"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
+position = Vector2( -11.707, -36.924 )
+
+[node name="Sprite" parent="YSort/NPC/Elisabeth" index="1"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="2"]
+visible = false
+
+[node name="ListenBox" parent="YSort/NPC/Elisabeth" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
+visible = false
+
+[node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 259.118, 203.991 )
+AutoDialogueID = ""
+DemandDialogueID = "demandPasteur"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Random" index="0"]
+position = Vector2( -11.707, -36.924 )
+
+[node name="Sprite" parent="YSort/NPC/Random" index="1"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/NPC/Random" index="2"]
+visible = false
+
+[node name="ListenBox" parent="YSort/NPC/Random" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="YSort/NPC/Random/ListenBox" index="0"]
+visible = false
+
+[node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 300.692, 331.808 )
+AutoDialogueID = ""
+DemandDialogueID = "demandOldMan"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
+position = Vector2( -11.431, -36.089 )
+
+[node name="Sprite" parent="YSort/NPC/OldMan" index="1"]
+texture = ExtResource( 13 )
+
+[node name="ListenBox" parent="YSort/NPC/OldMan" index="3"]
+visible = false
+
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 338.529, 256.327 )
 
@@ -196,161 +406,11 @@ position = Vector2( -91.1113, 5.80603 )
 [node name="Sprite" parent="YSort/Fountain/Barrel3" index="0"]
 texture = ExtResource( 30 )
 
-[node name="Truschel" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 120.902, 333.068 )
-AutoDialogueID = ""
-DemandDialogueID = "demandTruschel"
-HasAutoDialogue = false
-
-[node name="ListenBox" parent="YSort/Truschel" index="3"]
-visible = false
-
-[node name="Baker" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 147.457, 228.564 )
-AutoDialogueID = "testApproach"
-DemandDialogueID = "testDemand"
-
-[node name="TextBox" parent="YSort/Baker" index="0"]
-position = Vector2( -13.8276, -35.652 )
-
-[node name="Sprite" parent="YSort/Baker" index="1"]
-texture = ExtResource( 12 )
-
-[node name="Baker3" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 29.457, 278.564 )
-AutoDialogueID = "testApproach"
-DemandDialogueID = "demandBaker"
-
-[node name="TextBox" parent="YSort/Baker3" index="0"]
-position = Vector2( -13.8276, -35.652 )
-
-[node name="Sprite" parent="YSort/Baker3" index="1"]
-texture = ExtResource( 12 )
-
-[node name="Baker2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 452.755, 298.104 )
-AutoDialogueID = "testApproach"
-DemandDialogueID = "demandRandom"
-
-[node name="TextBox" parent="YSort/Baker2" index="0"]
-position = Vector2( -13.8276, -35.652 )
-
-[node name="Sprite" parent="YSort/Baker2" index="1"]
-texture = ExtResource( 12 )
-
-[node name="Elisabeth" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 318.729, 268.53 )
-AutoDialogueID = ""
-DemandDialogueID = "demandElisabeth"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Elisabeth" index="0"]
-position = Vector2( -11.707, -36.924 )
-
-[node name="Sprite" parent="YSort/Elisabeth" index="1"]
-texture = ExtResource( 14 )
-
-[node name="CollisionShape2D" parent="YSort/Elisabeth" index="2"]
-visible = false
-
-[node name="ListenBox" parent="YSort/Elisabeth" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/Elisabeth/ListenBox" index="0"]
-visible = false
-
-[node name="Random" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 259.118, 203.991 )
-AutoDialogueID = ""
-DemandDialogueID = "demandPasteur"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Random" index="0"]
-position = Vector2( -11.707, -36.924 )
-
-[node name="Sprite" parent="YSort/Random" index="1"]
-texture = ExtResource( 14 )
-
-[node name="CollisionShape2D" parent="YSort/Random" index="2"]
-visible = false
-
-[node name="ListenBox" parent="YSort/Random" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/Random/ListenBox" index="0"]
-visible = false
-
-[node name="OldMan" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 300.692, 331.808 )
-AutoDialogueID = ""
-DemandDialogueID = "demandOldMan"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/OldMan" index="0"]
-position = Vector2( -11.431, -36.089 )
-
-[node name="Sprite" parent="YSort/OldMan" index="1"]
-texture = ExtResource( 13 )
-
-[node name="ListenBox" parent="YSort/OldMan" index="3"]
-visible = false
-
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
 
-[node name="TableH" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 145.255, 253.265 )
-
-[node name="Bread4" parent="YSort/TableH" instance=ExtResource( 7 )]
-position = Vector2( -0.140671, -5 )
-
-[node name="Sprite" parent="YSort/TableH/Bread4" index="0"]
-texture = ExtResource( 27 )
-
-[node name="Bread5" parent="YSort/TableH" instance=ExtResource( 7 )]
-position = Vector2( 15, -5 )
-
-[node name="Sprite" parent="YSort/TableH/Bread5" index="0"]
-texture = ExtResource( 28 )
-
-[node name="Bread6" parent="YSort/TableH" instance=ExtResource( 7 )]
-position = Vector2( -15.1534, -5.18729 )
-
-[node name="Sprite" parent="YSort/TableH/Bread6" index="0"]
-texture = ExtResource( 28 )
-
-[node name="TableV" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 59.6277, 249.617 )
-
-[node name="Bread" parent="YSort/TableV" instance=ExtResource( 7 )]
-position = Vector2( 1.35876, 10.1265 )
-
-[node name="Bread2" parent="YSort/TableV" instance=ExtResource( 7 )]
-position = Vector2( 1.2981, 20.5303 )
-
-[node name="Bread3" parent="YSort/TableV" instance=ExtResource( 7 )]
-position = Vector2( 1.06066, 33.1109 )
-
-[node name="Sprite" parent="YSort/TableV/Bread3" index="0"]
-texture = ExtResource( 29 )
-
-[node name="TableV2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 481.914, 263.871 )
-
-[node name="Bread" parent="YSort/TableV2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( -2, 5 )
-
-[node name="Bread3" parent="YSort/TableV2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 0, 37 )
-
-[node name="Bread2" parent="YSort/TableV2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( -1, 20 )
-
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 537, 225 )
+position = Vector2( 535, 225 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
@@ -361,45 +421,10 @@ texture = ExtResource( 13 )
 [node name="ListenBox" parent="YSort/QuestNPC" index="3"]
 visible = false
 
-[node name="Box2" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 443.365, 259.981 )
-z_index = 1
-
-[node name="Sprite" parent="YSort/Box2" index="0"]
-z_as_relative = false
-texture = ExtResource( 25 )
-
-[node name="Box3" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 443.365, 272.711 )
-
-[node name="Sprite" parent="YSort/Box3" index="0"]
-texture = ExtResource( 25 )
-
-[node name="Box4" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 26.8453, 243.278 )
-
-[node name="Sprite" parent="YSort/Box4" index="0"]
-texture = ExtResource( 25 )
-
-[node name="Box5" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 420.175, 326.523 )
-
-[node name="Sprite" parent="YSort/Box5" index="0"]
-texture = ExtResource( 25 )
-
-[node name="Box6" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 398.77, 325.928 )
-
-[node name="Sprite" parent="YSort/Box6" index="0"]
-texture = ExtResource( 22 )
-
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
 position = Vector2( 82, 36 )
 script = ExtResource( 2 )
-
-[node name="Quest" parent="Notebook" index="2"]
-visible = false
 
 [node name="NotebookController" type="Button" parent="."]
 margin_left = 592.719
@@ -417,15 +442,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NotebookClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -5.0
+
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )
 stream = ExtResource( 19 )
 volume_db = -5.0
 autoplay = true
-
-[node name="NotebookClick" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
-volume_db = -5.0
+max_distance = 200.0
 
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
@@ -446,20 +472,20 @@ autoplay = "Fade in"
 "anims/Fade in" = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
-[connection signal="EndDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/Baker" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/Baker3" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/Baker3" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/Baker2" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/Baker2" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/Elisabeth" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/Elisabeth" to="DialogueController" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/Random" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/Baker3" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/Baker3" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/Baker2" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/Baker2" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/Elisabeth" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/Elisabeth" to="DialogueController" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/Random" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
+[connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
+[connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
@@ -467,34 +493,36 @@ anims/RESET = SubResource( 6 )
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
+[editable path="YSort/Props/TableH/Bread4"]
+[editable path="YSort/Props/TableH/Bread5"]
+[editable path="YSort/Props/TableH/Bread6"]
+[editable path="YSort/Props/TableV/Bread3"]
+[editable path="YSort/Props/TableV3/Bread3"]
+[editable path="YSort/Props/Box2"]
+[editable path="YSort/Props/Box3"]
+[editable path="YSort/Props/Box4"]
+[editable path="YSort/Props/Box5"]
+[editable path="YSort/Props/Box7"]
+[editable path="YSort/Props/Box6"]
+[editable path="YSort/NPC/Truschel"]
+[editable path="YSort/NPC/Truschel/ListenBox"]
+[editable path="YSort/NPC/Baker"]
+[editable path="YSort/NPC/Baker/ListenBox"]
+[editable path="YSort/NPC/Baker3"]
+[editable path="YSort/NPC/Baker3/ListenBox"]
+[editable path="YSort/NPC/Baker2"]
+[editable path="YSort/NPC/Baker2/ListenBox"]
+[editable path="YSort/NPC/Elisabeth"]
+[editable path="YSort/NPC/Elisabeth/ListenBox"]
+[editable path="YSort/NPC/Random"]
+[editable path="YSort/NPC/Random/ListenBox"]
+[editable path="YSort/NPC/OldMan"]
+[editable path="YSort/NPC/OldMan/ListenBox"]
 [editable path="YSort/Fountain/Box"]
 [editable path="YSort/Fountain/Barrel"]
 [editable path="YSort/Fountain/Barrel3"]
-[editable path="YSort/Truschel"]
-[editable path="YSort/Truschel/ListenBox"]
-[editable path="YSort/Baker"]
-[editable path="YSort/Baker/ListenBox"]
-[editable path="YSort/Baker3"]
-[editable path="YSort/Baker3/ListenBox"]
-[editable path="YSort/Baker2"]
-[editable path="YSort/Baker2/ListenBox"]
-[editable path="YSort/Elisabeth"]
-[editable path="YSort/Elisabeth/ListenBox"]
-[editable path="YSort/Random"]
-[editable path="YSort/Random/ListenBox"]
-[editable path="YSort/OldMan"]
-[editable path="YSort/OldMan/ListenBox"]
-[editable path="YSort/TableH/Bread4"]
-[editable path="YSort/TableH/Bread5"]
-[editable path="YSort/TableH/Bread6"]
-[editable path="YSort/TableV/Bread3"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
-[editable path="YSort/Box2"]
-[editable path="YSort/Box3"]
-[editable path="YSort/Box4"]
-[editable path="YSort/Box5"]
-[editable path="YSort/Box6"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
