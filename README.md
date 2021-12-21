@@ -1,5 +1,6 @@
 # Lausanne-1830
 Open-Source Historically accurate RPG based in 1830s Lausanne.  
+![Lausanne1830 Prototype Screenshot](Lausanne_1830_Proto.png)
 
 # Dev  
 Game currently being developped using the Open-Source [Godot](https://godotengine.org/download) game engine.  
