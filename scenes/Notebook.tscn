@@ -35,12 +35,16 @@ margin_right = 761.0
 margin_bottom = 463.0
 color = Color( 0, 0, 0, 0.462745 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Labels" type="Control" parent="Sprite"]
 margin_right = 40.0
@@ -54,7 +58,7 @@ margin_left = 144.0
 margin_top = 54.0
 margin_right = 176.0
 margin_bottom = 68.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Prénom :"
 __meta__ = {
@@ -66,7 +70,7 @@ margin_left = 144.0
 margin_top = 87.0
 margin_right = 168.0
 margin_bottom = 101.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Nom :"
 __meta__ = {
@@ -78,7 +82,7 @@ margin_left = 80.0
 margin_top = 127.0
 margin_right = 114.0
 margin_bottom = 141.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Adresse :"
 __meta__ = {
@@ -90,7 +94,7 @@ margin_left = 80.0
 margin_top = 159.0
 margin_right = 129.0
 margin_bottom = 173.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Conjoint(e) :"
 __meta__ = {
@@ -102,7 +106,7 @@ margin_left = 80.0
 margin_top = 192.0
 margin_right = 124.0
 margin_bottom = 206.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Enfant(s) :"
 __meta__ = {
@@ -114,7 +118,7 @@ margin_left = 80.0
 margin_top = 223.0
 margin_right = 114.0
 margin_bottom = 237.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Métier :"
 __meta__ = {
@@ -126,7 +130,7 @@ margin_left = 192.0
 margin_top = 127.0
 margin_right = 226.0
 margin_bottom = 141.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "N° :"
 __meta__ = {
@@ -157,7 +161,7 @@ margin_left = 176.0
 margin_top = 47.0
 margin_right = 240.0
 margin_bottom = 72.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -179,7 +183,7 @@ margin_left = 164.0
 margin_top = 80.0
 margin_right = 236.0
 margin_bottom = 105.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -201,7 +205,7 @@ margin_left = 114.0
 margin_top = 120.0
 margin_right = 186.0
 margin_bottom = 145.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -218,12 +222,16 @@ custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "num"
 
+[node name="Sprite" parent="Sprite/Num" index="1"]
+position = Vector2( 18.4741, 12.5083 )
+scale = Vector2( 0.375923, 1 )
+
 [node name="NumStatic" type="Label" parent="Sprite"]
 margin_left = 205.0
 margin_top = 120.0
 margin_right = 232.0
 margin_bottom = 145.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -245,7 +253,7 @@ margin_left = 132.0
 margin_top = 153.0
 margin_right = 187.0
 margin_bottom = 178.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -262,12 +270,16 @@ custom_fonts/font = SubResource( 4 )
 text = "4"
 AttributeName = "enfants"
 
+[node name="Sprite" parent="Sprite/Enfants" index="1"]
+position = Vector2( 12.2141, 8.42689 )
+scale = Vector2( 0.333858, 1 )
+
 [node name="EnfantsStatic" type="Label" parent="Sprite"]
 margin_left = 125.0
 margin_top = 189.0
 margin_right = 148.0
 margin_bottom = 206.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -280,7 +292,6 @@ margin_left = 111.0
 margin_top = 217.0
 margin_right = 183.0
 margin_bottom = 242.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Propriétaire"
 AttributeName = "metier"
@@ -290,7 +301,7 @@ margin_left = 111.0
 margin_top = 217.0
 margin_right = 183.0
 margin_bottom = 242.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Propriétaire"
 align = 1
@@ -304,7 +315,7 @@ margin_left = 270.0
 margin_top = 61.0
 margin_right = 415.0
 margin_bottom = 101.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Objectif:
 Trouver les informations manquantes pour completer le registre et aller les faire  valider."
@@ -401,3 +412,6 @@ vframes = 2
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
 [connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
 [connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]
+
+[editable path="Sprite/Num"]
+[editable path="Sprite/Enfants"]

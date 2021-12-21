@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/05_fonts/InfoFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/NotebookInfo.cs" type="Script" id=2]
+[ext_resource path="res://assets/04_notebook/notebookBox.png" type="Texture" id=3]
 
 [node name="NotebookInfo" type="Button"]
 margin_right = 72.0
@@ -19,20 +20,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 visible = false
-show_behind_parent = true
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 7.0
-margin_top = -8.5
-margin_right = -6.0
-margin_bottom = 8.5
-mouse_filter = 1
-color = Color( 0.647059, 0.435294, 0.407843, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 35.9483, 12.5083 )
+texture = ExtResource( 3 )
 
+[connection signal="mouse_entered" from="." to="." method="_on_NotebookInfo_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_NotebookInfo_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_NotebookInfo_pressed"]
