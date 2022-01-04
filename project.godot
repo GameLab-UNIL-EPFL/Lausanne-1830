@@ -13,6 +13,10 @@ config_version=4
 config/name="Lausanne 1830"
 run/main_scene="res://scenes/Prototype/ProtoPalud.tscn"
 
+[autoload]
+
+SceneChanger="*res://scenes/SceneChanger.tscn"
+
 [display]
 
 window/size/width=640
