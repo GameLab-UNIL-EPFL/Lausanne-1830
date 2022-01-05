@@ -47,9 +47,6 @@ public class SceneChanger : CanvasLayer
 		if(nextScene == null) {
 			throw new Exception("Cannot open path!");
 		} 
-		else if(!nextScene.CanInstance()) {
-			throw new Exception("Cannot instance path!");
-		}
 			
 		if(animate) {
 			_FadeOut();
