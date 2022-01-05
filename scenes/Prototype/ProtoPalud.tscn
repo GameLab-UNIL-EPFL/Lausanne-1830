@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/steelBarrel.png" type="Texture" id=30]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
+[ext_resource path="res://scenes/Pigeon.tscn" type="PackedScene" id=33]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -436,6 +437,9 @@ position = Vector2( -91.1113, 5.80603 )
 
 [node name="Sprite" parent="YSort/Fountain/Barrel3" index="0"]
 texture = ExtResource( 30 )
+
+[node name="Pigeon" parent="YSort/Fountain" instance=ExtResource( 33 )]
+position = Vector2( 80.971, 2.673 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
