@@ -25,6 +25,8 @@ public class DialogueController : Node {
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
 	
+	private XMLParser xmlp = new XMLParser();
+	
 	/**
 	 * @brief Converts a local res:// to a global usable path,
 	 * depending on the how the executable is run.
@@ -67,6 +69,14 @@ public class DialogueController : Node {
 		} else {
 			throw new Exception("Unable to load xml file!");
 		}
+	}
+	
+	public static void _GDParseXML(ref XMLParser xmlp, string filePath) {
+		if(filePath == null) {
+			throw new Exception("No xml file was input for the scene!");
+		}
+		
+		var xml = xmlp.Open(filePath);
 	}
 
 	// Called when the node enters the scene tree for the first time.
