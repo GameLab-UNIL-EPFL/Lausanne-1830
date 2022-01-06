@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://scenes/Prototype/Fountain.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=12]
 [ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
-[ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat.png" type="Texture" id=14]
+[ext_resource path="res://assets/01_characters/03_pnjs/randomWoman-Sheet.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
@@ -33,6 +33,7 @@
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
 [ext_resource path="res://scenes/Pigeon.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=34]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -327,7 +328,7 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="1"]
 texture = ExtResource( 32 )
 hframes = 2
-vframes = 1
+vframes = 2
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 29.457, 278.564 )
@@ -340,7 +341,7 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="1"]
 texture = ExtResource( 32 )
 hframes = 2
-vframes = 1
+vframes = 2
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 452.755, 298.104 )
@@ -353,7 +354,7 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="1"]
 texture = ExtResource( 32 )
 hframes = 2
-vframes = 1
+vframes = 2
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 318.729, 268.53 )
@@ -389,9 +390,8 @@ position = Vector2( -11.707, -36.924 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="1"]
 texture = ExtResource( 14 )
-hframes = 1
-vframes = 1
-frame = 0
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" parent="YSort/NPC/Random" index="2"]
 visible = false
@@ -454,10 +454,9 @@ HasAutoDialogue = false
 isQuestNPC = true
 
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="1"]
-texture = ExtResource( 13 )
-hframes = 1
+texture = ExtResource( 34 )
+hframes = 2
 vframes = 1
-frame = 0
 
 [node name="ListenBox" parent="YSort/QuestNPC" index="3"]
 visible = false
