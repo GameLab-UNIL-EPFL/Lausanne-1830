@@ -314,7 +314,7 @@ AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
-[node name="ListenBox" parent="YSort/NPC/Truschel" index="3"]
+[node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
 visible = false
 
 [node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
@@ -325,7 +325,7 @@ DemandDialogueID = "testDemand"
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
 position = Vector2( -13.8276, -35.652 )
 
-[node name="FullyAnimated" parent="YSort/NPC/Baker" index="1"]
+[node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
 hframes = 2
 vframes = 2
@@ -338,7 +338,7 @@ DemandDialogueID = "demandBaker"
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
 position = Vector2( -13.8276, -35.652 )
 
-[node name="FullyAnimated" parent="YSort/NPC/Baker3" index="1"]
+[node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
 hframes = 2
 vframes = 2
@@ -351,7 +351,7 @@ DemandDialogueID = "demandRandom"
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
 position = Vector2( -13.8276, -35.652 )
 
-[node name="FullyAnimated" parent="YSort/NPC/Baker2" index="1"]
+[node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
 hframes = 2
 vframes = 2
@@ -365,15 +365,15 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 position = Vector2( -11.707, -36.924 )
 
-[node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="1"]
+[node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 hframes = 2
 vframes = 2
 
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="2"]
+[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="3"]
 visible = false
 
-[node name="ListenBox" parent="YSort/NPC/Elisabeth" index="3"]
+[node name="ListenBox" parent="YSort/NPC/Elisabeth" index="4"]
 visible = false
 
 [node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
@@ -388,15 +388,15 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/Random" index="0"]
 position = Vector2( -11.707, -36.924 )
 
-[node name="FullyAnimated" parent="YSort/NPC/Random" index="1"]
+[node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
 hframes = 2
 vframes = 2
 
-[node name="CollisionShape2D" parent="YSort/NPC/Random" index="2"]
+[node name="CollisionShape2D" parent="YSort/NPC/Random" index="3"]
 visible = false
 
-[node name="ListenBox" parent="YSort/NPC/Random" index="3"]
+[node name="ListenBox" parent="YSort/NPC/Random" index="4"]
 visible = false
 
 [node name="CollisionShape2D" parent="YSort/NPC/Random/ListenBox" index="0"]
@@ -411,13 +411,13 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
 position = Vector2( -11.431, -36.089 )
 
-[node name="FullyAnimated" parent="YSort/NPC/OldMan" index="1"]
+[node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
 texture = ExtResource( 13 )
 hframes = 1
 vframes = 1
 frame = 0
 
-[node name="ListenBox" parent="YSort/NPC/OldMan" index="3"]
+[node name="ListenBox" parent="YSort/NPC/OldMan" index="4"]
 visible = false
 
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
@@ -453,12 +453,12 @@ DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
 
-[node name="FullyAnimated" parent="YSort/QuestNPC" index="1"]
+[node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 34 )
 hframes = 2
 vframes = 1
 
-[node name="ListenBox" parent="YSort/QuestNPC" index="3"]
+[node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
