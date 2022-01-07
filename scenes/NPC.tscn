@@ -15,7 +15,6 @@ radius = 12.0416
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
-length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("FullyAnimated:frame")
@@ -24,10 +23,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -184,6 +183,7 @@ texture = ExtResource( 5 )
 [node name="FullyAnimated" type="Sprite" parent="."]
 position = Vector2( 0, -7 )
 texture = ExtResource( 1 )
+flip_h = true
 hframes = 4
 vframes = 3
 frame = 1
@@ -199,6 +199,7 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 anims/Idle = SubResource( 3 )
 anims/IdleLeft = SubResource( 4 )
 anims/IdleRight = SubResource( 5 )

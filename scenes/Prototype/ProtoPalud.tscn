@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/Prototype/TableH.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Prototype/Fountain.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=12]
-[ext_resource path="res://assets/01_characters/03_pnjs/oldMan.png" type="Texture" id=13]
+[ext_resource path="res://assets/01_characters/03_pnjs/oldMan-Sheet.png" type="Texture" id=13]
 [ext_resource path="res://assets/01_characters/03_pnjs/randomWoman-Sheet.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=16]
@@ -327,8 +327,6 @@ position = Vector2( -13.8276, -35.652 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
-hframes = 2
-vframes = 2
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 29.457, 278.564 )
@@ -340,8 +338,6 @@ position = Vector2( -13.8276, -35.652 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
-hframes = 2
-vframes = 2
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 452.755, 298.104 )
@@ -353,8 +349,6 @@ position = Vector2( -13.8276, -35.652 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
-hframes = 2
-vframes = 2
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 318.729, 268.53 )
@@ -367,8 +361,6 @@ position = Vector2( -11.707, -36.924 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
-hframes = 2
-vframes = 2
 
 [node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="3"]
 visible = false
@@ -390,8 +382,6 @@ position = Vector2( -11.707, -36.924 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
-hframes = 2
-vframes = 2
 
 [node name="CollisionShape2D" parent="YSort/NPC/Random" index="3"]
 visible = false
@@ -412,10 +402,7 @@ HasAutoDialogue = false
 position = Vector2( -11.431, -36.089 )
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
-texture = ExtResource( 13 )
-hframes = 1
-vframes = 1
-frame = 0
+texture = ExtResource( 34 )
 
 [node name="ListenBox" parent="YSort/NPC/OldMan" index="4"]
 visible = false
@@ -454,9 +441,7 @@ HasAutoDialogue = false
 isQuestNPC = true
 
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
-texture = ExtResource( 34 )
-hframes = 2
-vframes = 1
+texture = ExtResource( 13 )
 
 [node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
