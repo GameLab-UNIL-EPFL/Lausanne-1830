@@ -11,7 +11,6 @@ public class SceneChanger : CanvasLayer
 	{
 		Viewport root = GetTree().GetRoot();
 		CurrentScene = root.GetChild(root.GetChildCount() - 1);
-		GD.Print(CurrentScene.Name);
 		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
@@ -25,14 +24,15 @@ public class SceneChanger : CanvasLayer
 	}
 	
 	public void GotoScene(string path) {
-	// This function will usually be called from a signal callback,
-	// or some other function from the current scene.
-	// Deleting the current scene at this point is
-	// a bad idea, because it may still be executing code.
-	// This will result in a crash or unexpected behavior.
+		
+		// This function will usually be called from a signal callback,
+		// or some other function from the current scene.
+		// Deleting the current scene at this point is
+		// a bad idea, because it may still be executing code.
+		// This will result in a crash or unexpected behavior.
 
-	// The solution is to defer the load to a later time, when
-	// we can be sure that no code from the current scene is running:
+		// The solution is to defer the load to a later time, when
+		// we can be sure that no code from the current scene is running:
 
 		CallDeferred(nameof(DeferredGotoScene), path, true);
 	}
@@ -47,9 +47,6 @@ public class SceneChanger : CanvasLayer
 		if(nextScene == null) {
 			throw new Exception("Cannot open path!");
 		} 
-		else if(!nextScene.CanInstance()) {
-			throw new Exception("Cannot instance path!");
-		}
 			
 		if(animate) {
 			_FadeOut();
