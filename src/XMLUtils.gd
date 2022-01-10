@@ -19,10 +19,8 @@ func parseXML(filepath: String) -> XMLParser:
 		
 	return xmlp
 	
-func queryXML(dialogueID: String):
-	# from dialogue in dialogueTree.Root.Descendants("dialogue")
-	# where dialogue.Attribute("id").Value == dialogueID
-	# select dialogue.Elements("text");
+# Query the parsed XML file and return a dictionary assotiating fields to values
+func queryXML():
 	var res = {}
 		
 	while xmlp.read() != ERR_FILE_EOF:

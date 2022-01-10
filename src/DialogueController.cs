@@ -14,6 +14,12 @@ public struct Dialogue_t {
 	Text_t[] texts;
 	string type; //onDemand or onApproach
 	string target1; //Name of person talking
+	
+	public Dialogue_t(Text_t[] t, string tpe, string tgt1) {
+		texts = t;
+		type = tpe;
+		target1 = tgt1;
+	}
 };
 
 public class DialogueController : Node {
@@ -27,29 +33,29 @@ public class DialogueController : Node {
 	
 	private XMLParser xmlp = new XMLParser();
 	
-	/**
-	 * @brief Converts a local res:// to a global usable path,
-	 * depending on the how the executable is run.
-	 * @param path, the local godot resource path needed to be sanitized.
-	 * @return a global path usable by Linq (so accessible outside of Godot).
-	 */
-	public static string _SanitizePath(string path) {
-		string path_tmp = "";
-		/*if(OS.HasFeature("editor")) {
-			//Running from an editor binary.
-			//`path` will contain the absolute path located in the project root.
-			path_tmp = ProjectSettings.GlobalizePath(path);
-		} else {
-			//Running from an exported project.
-			//`path` will contain the absolute path, next to the executable.
-			//This is *not* identical to using `ProjectSettings.globalize_path()` with a `res://` path,
-			//but is close enough in spirit.
-			string san_path = path.Split(':')[1];
-			san_path = san_path.Substring(2, san_path.Length);
-			path_tmp = OS.GetExecutablePath().GetBaseDir().PlusFile(san_path);
-		}*/
-		return ProjectSettings.GlobalizePath(path);
-	}
+//	/**
+//	 * @brief Converts a local res:// to a global usable path,
+//	 * depending on the how the executable is run.
+//	 * @param path, the local godot resource path needed to be sanitized.
+//	 * @return a global path usable by Linq (so accessible outside of Godot).
+//	 */
+//	public static string _SanitizePath(string path) {
+//		string path_tmp = "";
+//		/*if(OS.HasFeature("editor")) {
+//			//Running from an editor binary.
+//			//`path` will contain the absolute path located in the project root.
+//			path_tmp = ProjectSettings.GlobalizePath(path);
+//		} else {
+//			//Running from an exported project.
+//			//`path` will contain the absolute path, next to the executable.
+//			//This is *not* identical to using `ProjectSettings.globalize_path()` with a `res://` path,
+//			//but is close enough in spirit.
+//			string san_path = path.Split(':')[1];
+//			san_path = san_path.Substring(2, san_path.Length);
+//			path_tmp = OS.GetExecutablePath().GetBaseDir().PlusFile(san_path);
+//		}*/
+//		return ProjectSettings.GlobalizePath(path);
+//	}
 	
 	/**
 	 * @brief Parses the XML file and loads it into a local XDocument
@@ -60,8 +66,7 @@ public class DialogueController : Node {
 		}
 		
 		//Load XML file into a XDocument for querying
-		string newPath = _SanitizePath(filePath);
-		var xml = XDocument.Load(newPath);
+		var xml = XDocument.Load(filePath);
 		
 		//Sanity check
 		if(xml != null) {

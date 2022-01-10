@@ -502,8 +502,6 @@ anims/RESET = SubResource( 6 )
 [connection signal="StartDialogue" from="YSort/NPC/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
-[connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
