@@ -94,7 +94,7 @@ public class NPC : KinematicBody2D {
 					throw new Exception("NPC doesn't have a dialogueID!");
 				}
 				//Load in the NPC's dialogue
-				AutoDialogues = DC._QueryDialogue(AutoDialogueID);
+				AutoDialogues = new string[1];//DC._StartDialogue(AutoDialogueID, true);
 			}
 			
 			//Check for onDemand dialogue
@@ -102,7 +102,7 @@ public class NPC : KinematicBody2D {
 				if(DemandDialogueID == null) {
 					throw new Exception("NPC doesn't have a dialogueID!");
 				}
-				DemandDialogues = DC._QueryDialogue(DemandDialogueID);
+				DemandDialogues = new string[1];//DC._QueryDialogue(DemandDialogueID);
 			}
 		}
 	}

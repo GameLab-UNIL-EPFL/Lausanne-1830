@@ -16,9 +16,7 @@ public class InfoChoiceButton : Button {
 		Set("focus_mode", 0); // None focus mode
 		Set("custom_colors/font_color", NotebookInfo.C1);
 		Set("custom_colors/font_color_hover", NotebookInfo.Hover);
-		Set("custom_fonts/font", ResourceLoader.Load(
-			DialogueController._SanitizePath("res://assets/05_fonts/InfoFont.tres")
-		));
+		Set("custom_fonts/font", ResourceLoader.Load("res://assets/05_fonts/InfoFont.tres"));
 		
 		//Connect to a trigger function to update the NotebookInfo
 		Connect("pressed", this, "_on_Pressed");

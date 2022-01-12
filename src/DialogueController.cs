@@ -33,29 +33,16 @@ public class DialogueController : Node {
 	
 	private XMLParser xmlp = new XMLParser();
 	
-//	/**
-//	 * @brief Converts a local res:// to a global usable path,
-//	 * depending on the how the executable is run.
-//	 * @param path, the local godot resource path needed to be sanitized.
-//	 * @return a global path usable by Linq (so accessible outside of Godot).
-//	 */
-//	public static string _SanitizePath(string path) {
-//		string path_tmp = "";
-//		/*if(OS.HasFeature("editor")) {
-//			//Running from an editor binary.
-//			//`path` will contain the absolute path located in the project root.
-//			path_tmp = ProjectSettings.GlobalizePath(path);
-//		} else {
-//			//Running from an exported project.
-//			//`path` will contain the absolute path, next to the executable.
-//			//This is *not* identical to using `ProjectSettings.globalize_path()` with a `res://` path,
-//			//but is close enough in spirit.
-//			string san_path = path.Split(':')[1];
-//			san_path = san_path.Substring(2, san_path.Length);
-//			path_tmp = OS.GetExecutablePath().GetBaseDir().PlusFile(san_path);
-//		}*/
-//		return ProjectSettings.GlobalizePath(path);
-//	}
+	//Used to lock the Dialogue controller during an interaction
+	private bool IsOccupied
+	{get; set;}
+	
+	//Used to store the texts of each target
+	private Queue<String> target0Text;
+	private Queue<String> target1Text;
+	
+	public const string ON_DEMAND = "onDemand";
+	public const string ON_APPROACH = "onApproach";
 	
 	/**
 	 * @brief Parses the XML file and loads it into a local XDocument
@@ -86,6 +73,7 @@ public class DialogueController : Node {
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
+		IsOccupied = false;
 		_ParseXML(ref dialogueTree, SceneDialogueFile);
 	}
 	
@@ -94,14 +82,11 @@ public class DialogueController : Node {
 	 * @param dialogueID, the id of the dialogue being queried
 	 * @return a string array containing all of the lines of the dialogue
 	 */
-	public string[]/*Dialogue_t*/ _QueryDialogue(string dialogueID) {
+	private string[] QueryDialogue(string dialogueID, string type, int tagetNum = 0) {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
 					where dialogue.Attribute("id").Value == dialogueID
 					select dialogue.Elements("text");
-					
-		/*var optionQuery = from text in query.Descendants("option")
-						  select text.Value;*/
 					
 		List<string> res = new List<string>();
 		
@@ -121,5 +106,79 @@ public class DialogueController : Node {
 		//}
 		
 		return res.ToArray();
+	}
+	
+	private void FillQueue(string dialogueID, int id = 0, bool isApproach = false) {
+		//Fetch initial dialogues and fill queues
+		string[] texts = QueryDialogue(
+				dialogueID, 
+				isApproach ? ON_APPROACH : ON_DEMAND,
+				id == 0 ? 0 : 1 //Make sure its only 0 or 1
+		);
+		for(int i = 0; i < texts.Length ; ++i) {
+			if(id == 0) {
+				target0Text.Enqueue(texts[i]);
+			} else {
+				target1Text.Enqueue(texts[i]);
+			}
+		}
+	}
+	
+	/**
+	 * @brief Starts the given dialogue and returns the first text
+	 * @param dialogueId, the id of the dialogue that must be started 
+	 * @returns the first text of the dialogue
+	 */
+	public string _StartDialogue(string dialogueId, bool isApproach = false, bool dualTargets = false) {
+		//Check for lock
+		if(IsOccupied) {
+			return null;  
+		} else {
+			//Clear the queues
+			target0Text.Clear();
+			target1Text.Clear();
+			
+			//Grab lock if not onApproach
+			if(!isApproach) {
+				IsOccupied = true;
+			}
+			
+			//Fetch initial dialogues and fill queues
+			FillQueue(dialogueId, 0, isApproach);
+			
+			//Check for second target
+			if(dualTargets) {
+				FillQueue(dialogueId, 1, isApproach);
+			}
+			
+			//Target0 always starts the conversation
+			return target0Text.Dequeue();
+		}
+	}
+	
+	/**
+	 * @brief Fetches the next text in the dialogue for the given npc
+	 * @param tragetId, the id of the npc requesting the text
+	 * @returns the text required to continue the dialogue
+	 */
+	public string _NextDialogue(int targetId) {
+		var Q = targetId == 0 ? ref target0Text : ref target1Text;
+		try {
+			return Q.Dequeue();
+		} catch(InvalidOperationException e) {
+			if(targetId == 0) _EndDialogue();
+			return null;
+		}
+	}  
+	
+	/**
+	 * @brief Ends the currently playing dialogue
+	 */
+	public void _EndDialogue() {
+		IsOccupied = false;
+		
+		//Clear the queues
+		target0Text.Clear();
+		target1Text.Clear();
 	}
 }
