@@ -85,25 +85,9 @@ a = Vector2( 7.58701, -140.561 )
 b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="Animation" id=5]
-resource_name = "Fade in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.2, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
+tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -112,7 +96,22 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0.996078 ) ]
+"values": [ Vector2( 650, 4.168 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
 }
 
 [node name="ProtoPalud" type="Node2D"]
@@ -202,6 +201,22 @@ position = Vector2( 1.06066, 33.1109 )
 [node name="Sprite" parent="YSort/Props/TableV/Bread3" index="0"]
 texture = ExtResource( 29 )
 
+[node name="TableV5" parent="YSort/Props" instance=ExtResource( 6 )]
+position = Vector2( 59.6277, 301.818 )
+
+[node name="Bread" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 1.35876, 10.1265 )
+
+[node name="Bread2" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
+position = Vector2( 1.2981, 20.5303 )
+
+[node name="Bread3" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
+position = Vector2( 1.06066, 33.1109 )
+
+[node name="Sprite" parent="YSort/Props/TableV5/Bread3" index="0"]
+texture = ExtResource( 29 )
+
 [node name="TableV2" parent="YSort/Props" instance=ExtResource( 6 )]
 position = Vector2( 481.914, 263.871 )
 
@@ -262,7 +277,7 @@ position = Vector2( 443.365, 272.711 )
 texture = ExtResource( 25 )
 
 [node name="Box4" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 26.8453, 243.278 )
+position = Vector2( 10.2483, 237.809 )
 
 [node name="Sprite" parent="YSort/Props/Box4" index="0"]
 texture = ExtResource( 25 )
@@ -323,6 +338,7 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 12 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 29.457, 278.564 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
@@ -443,10 +459,10 @@ position = Vector2( 82, 36 )
 script = ExtResource( 2 )
 
 [node name="NotebookController" type="Button" parent="."]
-margin_left = 592.719
-margin_top = 4.16838
-margin_right = 635.719
-margin_bottom = 39.1684
+margin_left = 650.0
+margin_top = 4.168
+margin_right = 693.0
+margin_bottom = 39.168
 focus_mode = 0
 mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
@@ -457,6 +473,10 @@ script = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
+anims/RESET = SubResource( 5 )
+anims/Slide = SubResource( 6 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
@@ -473,21 +493,6 @@ max_distance = 200.0
 stream = ExtResource( 20 )
 autoplay = true
 
-[node name="FadeIn" type="ColorRect" parent="."]
-margin_left = -14.0
-margin_top = -10.0
-margin_right = 661.0
-margin_bottom = 370.0
-color = Color( 0, 0, 0, 0.996078 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-autoplay = "Fade in"
-"anims/Fade in" = SubResource( 5 )
-anims/RESET = SubResource( 6 )
-
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
@@ -502,6 +507,9 @@ anims/RESET = SubResource( 6 )
 [connection signal="StartDialogue" from="YSort/NPC/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
+[connection signal="CutsceneEnd" from="YSort/Player" to="NotebookController" method="_on_Player_CutsceneEnd"]
+[connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
@@ -511,6 +519,7 @@ anims/RESET = SubResource( 6 )
 [editable path="YSort/Props/TableH/Bread5"]
 [editable path="YSort/Props/TableH/Bread6"]
 [editable path="YSort/Props/TableV/Bread3"]
+[editable path="YSort/Props/TableV5/Bread3"]
 [editable path="YSort/Props/TableV3/Bread3"]
 [editable path="YSort/Props/Box2"]
 [editable path="YSort/Props/Box3"]
