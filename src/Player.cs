@@ -196,7 +196,7 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-		FadeIn = GetNode<ColorRect>("../../FadeIn");
+
 	}
 	
 	// Called on every physics engine tick
@@ -255,7 +255,6 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
-			FadeIn.Hide();
 			EmitSignal(nameof(CutsceneEnd), NearestSub());
 		}
 	}
