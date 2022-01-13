@@ -23,7 +23,7 @@ Dialogue is formatted using XML.
 Example:  
 ```xml
 <scene name="palud">
-    <dialogue type="onApproach" id="testApproach" target1="baker">
+    <dialogue type="onApproach" id="testApproach" ntargets="1">
         <text>
             <option id="0">Du pain frais de ce matin !</option>
             <option id="1">Venez goûter !</option>
