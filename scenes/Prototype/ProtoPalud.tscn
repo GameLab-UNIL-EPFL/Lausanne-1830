@@ -456,6 +456,9 @@ position = Vector2( 54.6294, 192.912 )
 [node name="Label" parent="YSort/Props/Item/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Props/Item/Sprite" index="1"]
+frame = 0
+
 [node name="AffichePlaceholder" type="ColorRect" parent="YSort/Props"]
 margin_left = 45.457
 margin_top = 183.915
