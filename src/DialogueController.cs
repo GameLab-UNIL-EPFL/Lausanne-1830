@@ -14,8 +14,6 @@ public class DialogueController : Node {
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
 	
-	private XMLParser xmlp = new XMLParser();
-	
 	//Used to lock the Dialogue controller during an interaction
 	private bool IsOccupied
 	{get; set;}
@@ -44,14 +42,6 @@ public class DialogueController : Node {
 		} else {
 			throw new Exception("Unable to load xml file!");
 		}
-	}
-	
-	public static void _GDParseXML(ref XMLParser xmlp, string filePath) {
-		if(filePath == null) {
-			throw new Exception("No xml file was input for the scene!");
-		}
-		
-		var xml = xmlp.Open(filePath);
 	}
 
 	// Called when the node enters the scene tree for the first time.
