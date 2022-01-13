@@ -34,7 +34,13 @@ public class DialogueController : Node {
 		}
 		
 		//Load XML file into a XDocument for querying
-		var xml = XDocument.Load(filePath);
+		var file = new File();
+		if (file.Open(filePath, File.ModeFlags.Read) != 0) {
+			throw new Exception("Unable to open the xml file: " + filePath);
+		}
+		var loadedXML = file.GetAsText();
+		var xml = XDocument.Parse(loadedXML);
+		file.Close();
 		
 		//Sanity check
 		if(xml != null) {
