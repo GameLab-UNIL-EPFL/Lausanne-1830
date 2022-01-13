@@ -81,10 +81,12 @@ public class DialogueController : Node {
 		Random rnd = new Random();
 		foreach(var txt in query) {
 			//Check for options
-			if(txt.Elements("option").Count() == 0) {
+			var nOptions = txt.Descendants("option").Count();
+			if(nOptions == 0) {
+				//No options -> text can directly be added to res
 				res.Add(txt.Select(x => x.Value).GetEnumerator().Current);
 			} else {
-				var nOptions = txt.Descendants("option").Count();
+				//Pick an option at random
 				int nextText = rnd.Next(0, nOptions);
 				string optionQuery = (from opt in txt.Descendants("option")
 								  where int.Parse(opt.Attribute("id").Value) == nextText
@@ -150,7 +152,7 @@ public class DialogueController : Node {
 	 * @param tragetId, the id of the npc requesting the text
 	 * @returns the text required to continue the dialogue
 	 */
-	public string _NextDialogue(int targetId) {
+	public string _NextDialogue(int targetId = 0) {
 		var Q = targetId == 0 ? ref target0Text : ref target1Text;
 		try {
 			return Q.Dequeue();

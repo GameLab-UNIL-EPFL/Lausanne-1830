@@ -16,14 +16,8 @@ public class NPC : KinematicBody2D {
 	private DialogueController DC;
 	private QuestController QC;
 	
-	private string[] AutoDialogues;
-	private int AutoDialogueIdx = 0;
-	
-	private string[] DemandDialogues;
 	private string[] InnerLines;
-	private int DemandDialogueIdx = 0;
 	private int InnerLinesCount = 0;
-	private int QuestLinesCount = 0;
 	
 	//Used to display text
 	private TextBox TB;
@@ -87,23 +81,6 @@ public class NPC : KinematicBody2D {
 			if(DC == null) {
 				throw new Exception("Every scene must have its own dialogue controller!!");
 			} 
-			
-			//Check for auto dialogue
-			if(HasAutoDialogue) {
-				if(AutoDialogueID == null) {
-					throw new Exception("NPC doesn't have a dialogueID!");
-				}
-				//Load in the NPC's dialogue
-				AutoDialogues = new string[1];//DC._StartDialogue(AutoDialogueID, true);
-			}
-			
-			//Check for onDemand dialogue
-			if(HasDemandDialogue) {
-				if(DemandDialogueID == null) {
-					throw new Exception("NPC doesn't have a dialogueID!");
-				}
-				DemandDialogues = new string[1];//DC._QueryDialogue(DemandDialogueID);
-			}
 		}
 	}
 	
@@ -121,13 +98,14 @@ public class NPC : KinematicBody2D {
 			p._Subscribe(this);
 			
 			//Show auto dialogue if the NPC has one
-			if(HasAutoDialogue) {
+			if(HasAutoDialogue && !inDialogue) {
 				//Fetch the right dialogue
-				string d = AutoDialogues[AutoDialogueIdx];
-				AutoDialogueIdx = (AutoDialogueIdx + 1) % AutoDialogues.Length;
+				string next = DC._StartDialogue(AutoDialogueID, true);
 				
 				//Show it in the box
-				TB._ShowText(d);
+				if(next != null) {
+					TB._ShowText(next);
+				}
 			}
 		} 
 	}
@@ -144,8 +122,10 @@ public class NPC : KinematicBody2D {
 			//Unsubscribe to the player
 			p._Unsubscribe(this);
 			
-			//Reset dialogue counter
-			DemandDialogueIdx = 0;
+			//End dialogue for DialogueController when needed
+			if(HasAutoDialogue) {
+				DC._EndDialogue();
+			}
 			
 			//Hide the text box
 			TB._HideText();
@@ -188,26 +168,41 @@ public class NPC : KinematicBody2D {
 	public void _Notify(Player player) {
 		TB._HideAll();
 		if(HasDemandDialogue) {
-			//Check if there is any dialogue left
-			if(DemandDialogueIdx < DemandDialogues.Length) {
-				player._StartDialogue();
-				
-				//Fetch the right dialogue
-				string d;
-				if(InnerLinesCount == 0) {
-					d = DemandDialogues[DemandDialogueIdx++];
-					InnerLines = FormatText(d);
-					InnerLinesCount = InnerLines.Length;
+			string d;
+			
+			if(InnerLinesCount != 0) {
+				d = InnerLines[InnerLines.Length - InnerLinesCount--];
+			} else {
+				//Check if this is the start of a dialogue
+				if(!inDialogue) {
+					inDialogue = true;
+					player._StartDialogue();
+					d = DC._StartDialogue(DemandDialogueID);
 				} else {
-					d = InnerLines[InnerLines.Length - InnerLinesCount--];
+					d = DC._NextDialogue();
+					
+					//Check if it's the end of the dialogue
+					if(d == null) {
+						TB._HideText();
+						player._EndDialogue();
+						DC._EndDialogue();
+					}
 				}
 				
-				//Show it in the box
+				//Format the text to fit in the dialogue boxes
+				InnerLines = FormatText(d);
+				InnerLinesCount = InnerLines.Length;
+				
+				//Update the dialogue
+				if(InnerLinesCount != 0) {
+					d = InnerLines[InnerLines.Length - InnerLinesCount--];
+				}
+			}
+			
+			//Show it in the box
+			if(d != null) {
 				TB._ShowText(d);
 				TB._ShowPressE();
-			} else {
-				TB._HideText();
-				player._EndDialogue();
 			}
 		}
 	}
