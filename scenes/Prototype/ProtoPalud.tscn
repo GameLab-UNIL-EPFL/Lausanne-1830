@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -28,7 +28,6 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/steelBarrel.png" type="Texture" id=30]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
 [ext_resource path="res://scenes/Pigeon.tscn" type="PackedScene" id=33]
@@ -370,8 +369,7 @@ texture = ExtResource( 29 )
 position = Vector2( 481.914, 263.871 )
 
 [node name="Bread" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( -2, 5 )
+position = Vector2( 0.82843, 5.53033 )
 
 [node name="Bread3" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
 visible = false
@@ -455,9 +453,6 @@ position = Vector2( 54.6294, 192.912 )
 [node name="Label" parent="YSort/Props/Item/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="YSort/Props/Item/Sprite" index="1"]
-frame = 0
-
 [node name="AffichePlaceholder" type="ColorRect" parent="YSort/Props"]
 margin_left = 45.457
 margin_top = 183.915
@@ -466,6 +461,12 @@ margin_bottom = 202.915
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Box" parent="YSort/Props" instance=ExtResource( 24 )]
+position = Vector2( 2.19925, 248.341 )
+
+[node name="Sprite" parent="YSort/Props/Box" index="0"]
+texture = ExtResource( 22 )
 
 [node name="NPC" type="YSort" parent="YSort"]
 
@@ -490,7 +491,6 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 32 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-visible = false
 position = Vector2( 29.457, 278.564 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
@@ -570,7 +570,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 320.121, 257.295 )
+position = Vector2( 329.886, 256.665 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -584,7 +584,7 @@ hframes = 2
 vframes = 1
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 271.668, 274.139 )
+position = Vector2( 246.891, 264.7 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -606,12 +606,6 @@ anims/WalkUp = SubResource( 14 )
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 338.529, 256.327 )
 
-[node name="Box" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -336.142, -13.0429 )
-
-[node name="Sprite" parent="YSort/Fountain/Box" index="0"]
-texture = ExtResource( 25 )
-
 [node name="Barrel" parent="YSort/Fountain" instance=ExtResource( 24 )]
 visible = false
 position = Vector2( -9.05597, -9.65367 )
@@ -619,20 +613,14 @@ position = Vector2( -9.05597, -9.65367 )
 [node name="Barrel2" parent="YSort/Fountain" instance=ExtResource( 24 )]
 position = Vector2( -67.2146, -4.28622 )
 
-[node name="Barrel3" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -91.1113, 5.80603 )
-
-[node name="Sprite" parent="YSort/Fountain/Barrel3" index="0"]
-texture = ExtResource( 30 )
-
 [node name="Laundry" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -65.3019, 36.2116 )
+position = Vector2( -37.5483, -11.8868 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry" index="0"]
 texture = ExtResource( 37 )
 
 [node name="Laundry2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -92.1719, 27.0192 )
+position = Vector2( -72.0137, 18.0139 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
@@ -740,6 +728,7 @@ anims/RESET = SubResource( 6 )
 [editable path="YSort/Props/Box7"]
 [editable path="YSort/Props/Box6"]
 [editable path="YSort/Props/Item"]
+[editable path="YSort/Props/Box"]
 [editable path="YSort/NPC/Truschel"]
 [editable path="YSort/NPC/Truschel/ListenBox"]
 [editable path="YSort/NPC/Baker"]
@@ -758,9 +747,7 @@ anims/RESET = SubResource( 6 )
 [editable path="YSort/NPC/Lingere/ListenBox"]
 [editable path="YSort/NPC/Lingere2"]
 [editable path="YSort/NPC/Lingere2/ListenBox"]
-[editable path="YSort/Fountain/Box"]
 [editable path="YSort/Fountain/Barrel"]
-[editable path="YSort/Fountain/Barrel3"]
 [editable path="YSort/Fountain/Laundry"]
 [editable path="YSort/Fountain/Laundry2"]
 [editable path="YSort/QuestNPC"]
