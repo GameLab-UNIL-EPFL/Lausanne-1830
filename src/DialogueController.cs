@@ -5,23 +5,6 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
 
-public struct Text_t {
-	bool hasOptions;
-	string[] options;
-};
-
-public struct Dialogue_t {
-	Text_t[] texts;
-	string type; //onDemand or onApproach
-	string target1; //Name of person talking
-	
-	public Dialogue_t(Text_t[] t, string tpe, string tgt1) {
-		texts = t;
-		type = tpe;
-		target1 = tgt1;
-	}
-};
-
 public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
@@ -80,30 +63,36 @@ public class DialogueController : Node {
 	/**
 	 * @brief Queries the local XDocument for a given dialogue
 	 * @param dialogueID, the id of the dialogue being queried
+	 * @param type, either onApproach or onDemand, i.e. the type of the requested dialogue
+	 * @param targetNum, the number of the target speaking.
 	 * @return a string array containing all of the lines of the dialogue
 	 */
-	private string[] QueryDialogue(string dialogueID, string type, int tagetNum = 0) {
+	private string[] QueryDialogue(string dialogueID, string type, int targetNum = 0) {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
-					where dialogue.Attribute("id").Value == dialogueID
+					where dialogue.Attribute("id").Value == dialogueID &&
+						dialogue.Attribute("type").Value == type &&
+						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum
 					select dialogue.Elements("text");
 					
 		List<string> res = new List<string>();
 		
-		//Check for options
-		//if(query.Elements("option").isEmpty()) {
-			//Map the queried XElements to their respective values
-			var newList = query.Select(x => x.Select(y => y.Value));
-			
-			//Painfully convert the IEnumeration to a usable list
-			//This step is necessary, since one can't obtain the size of an 
-			//IEnumeration without iterating through it #lazyevaluation
-			foreach(var elem in newList) {
-				foreach(var text in elem) {
-					res.Add(text);
-				}
+		//Iterate through query results and pick a text for each selection  
+		Random rnd = new Random();
+		foreach(var txt in query) {
+			//Check for options
+			if(txt.Elements("option").Count() == 0) {
+				res.Add(txt.Select(x => x.Value).GetEnumerator().Current);
+			} else {
+				var nOptions = txt.Descendants("option").Count();
+				int nextText = rnd.Next(0, nOptions);
+				string optionQuery = (from opt in txt.Descendants("option")
+								  where int.Parse(opt.Attribute("id").Value) == nextText
+								  select opt.Value).GetEnumerator().Current;
+								
+				res.Add(optionQuery);
 			}
-		//}
+		}
 		
 		return res.ToArray();
 	}

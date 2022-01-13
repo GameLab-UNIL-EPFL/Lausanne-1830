@@ -9,7 +9,7 @@ public class SceneChanger : CanvasLayer
 
 	public override void _Ready()
 	{
-		Viewport root = GetTree().GetRoot();
+		Viewport root = GetTree().Root;
 		CurrentScene = root.GetChild(root.GetChildCount() - 1);
 		GD.Print(CurrentScene.Name);
 		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -58,10 +58,10 @@ public class SceneChanger : CanvasLayer
 		CurrentScene = nextScene.Instance();
 
 		// Add it to the active scene, as child of root.
-		GetTree().GetRoot().AddChild(CurrentScene);
+		GetTree().Root.AddChild(CurrentScene);
 
 		// Optionally, to make it compatible with the SceneTree.change_scene() API.
-		GetTree().SetCurrentScene(CurrentScene);
+		GetTree().CurrentScene = CurrentScene;
 		
 		if(animate) {
 			_EaseIn();
