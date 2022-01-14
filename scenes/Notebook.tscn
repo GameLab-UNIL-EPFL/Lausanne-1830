@@ -47,7 +47,8 @@ __meta__ = {
 }
 
 [node name="Labels" type="Control" parent="Sprite"]
-margin_right = 40.0
+margin_left = -5.0
+margin_right = 35.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,9 +127,9 @@ __meta__ = {
 }
 
 [node name="NumLabel" type="Label" parent="Sprite/Labels"]
-margin_left = 198.0
+margin_left = 203.0
 margin_top = 127.0
-margin_right = 232.0
+margin_right = 237.0
 margin_bottom = 141.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -148,18 +149,18 @@ __meta__ = {
 }
 
 [node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 180.0
+margin_left = 175.0
 margin_top = 52.0
-margin_right = 230.0
+margin_right = 225.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "prenom"
 
 [node name="PrenomStatic" type="Label" parent="Sprite"]
-margin_left = 180.0
+margin_left = 177.0
 margin_top = 52.0
-margin_right = 229.0
+margin_right = 226.0
 margin_bottom = 70.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -192,9 +193,9 @@ __meta__ = {
 }
 
 [node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 115.0
+margin_left = 112.0
 margin_top = 124.0
-margin_right = 187.0
+margin_right = 184.0
 margin_bottom = 142.0
 custom_fonts/font = SubResource( 4 )
 text = ""
