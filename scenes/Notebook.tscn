@@ -47,7 +47,8 @@ __meta__ = {
 }
 
 [node name="Labels" type="Control" parent="Sprite"]
-margin_right = 40.0
+margin_left = -5.0
+margin_right = 35.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,9 +127,9 @@ __meta__ = {
 }
 
 [node name="NumLabel" type="Label" parent="Sprite/Labels"]
-margin_left = 192.0
+margin_left = 203.0
 margin_top = 127.0
-margin_right = 226.0
+margin_right = 237.0
 margin_bottom = 141.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -148,19 +149,19 @@ __meta__ = {
 }
 
 [node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 176.0
-margin_top = 47.0
-margin_right = 240.0
-margin_bottom = 72.0
+margin_left = 175.0
+margin_top = 52.0
+margin_right = 225.0
+margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "prenom"
 
 [node name="PrenomStatic" type="Label" parent="Sprite"]
-margin_left = 176.0
-margin_top = 47.0
-margin_right = 240.0
-margin_bottom = 72.0
+margin_left = 177.0
+margin_top = 52.0
+margin_right = 226.0
+margin_bottom = 70.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
@@ -170,19 +171,19 @@ __meta__ = {
 }
 
 [node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 164.0
-margin_top = 80.0
-margin_right = 236.0
-margin_bottom = 105.0
+margin_left = 169.0
+margin_top = 83.0
+margin_right = 213.0
+margin_bottom = 101.0
 custom_fonts/font = SubResource( 4 )
 text = "Trüschel"
 AttributeName = "nom"
 
 [node name="NomStatic" type="Label" parent="Sprite"]
-margin_left = 164.0
-margin_top = 80.0
-margin_right = 236.0
-margin_bottom = 105.0
+margin_left = 169.0
+margin_top = 83.0
+margin_right = 212.0
+margin_bottom = 101.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
@@ -192,19 +193,19 @@ __meta__ = {
 }
 
 [node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 114.0
-margin_top = 120.0
-margin_right = 186.0
-margin_bottom = 145.0
+margin_left = 112.0
+margin_top = 124.0
+margin_right = 184.0
+margin_bottom = 142.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "adresse"
 
 [node name="AdresseStatic" type="Label" parent="Sprite"]
-margin_left = 114.0
-margin_top = 120.0
-margin_right = 186.0
-margin_bottom = 145.0
+margin_left = 115.0
+margin_top = 124.0
+margin_right = 187.0
+margin_bottom = 141.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
@@ -214,23 +215,19 @@ __meta__ = {
 }
 
 [node name="Num" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 205.0
-margin_top = 120.0
-margin_right = 232.0
-margin_bottom = 145.0
+margin_left = 215.0
+margin_top = 124.0
+margin_right = 237.0
+margin_bottom = 142.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "num"
 
-[node name="Sprite" parent="Sprite/Num" index="1"]
-position = Vector2( 18.4741, 12.5083 )
-scale = Vector2( 0.375923, 1 )
-
 [node name="NumStatic" type="Label" parent="Sprite"]
-margin_left = 205.0
-margin_top = 120.0
-margin_right = 232.0
-margin_bottom = 145.0
+margin_left = 216.0
+margin_top = 124.0
+margin_right = 237.0
+margin_bottom = 142.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
@@ -240,19 +237,19 @@ __meta__ = {
 }
 
 [node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 132.0
-margin_top = 153.0
-margin_right = 187.0
-margin_bottom = 178.0
+margin_left = 137.0
+margin_top = 156.0
+margin_right = 190.0
+margin_bottom = 174.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "conjoint"
 
 [node name="ConjointStatic" type="Label" parent="Sprite"]
-margin_left = 132.0
-margin_top = 153.0
-margin_right = 187.0
-margin_bottom = 178.0
+margin_left = 137.0
+margin_top = 156.0
+margin_right = 190.0
+margin_bottom = 174.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
@@ -262,22 +259,18 @@ __meta__ = {
 }
 
 [node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 125.0
-margin_top = 189.0
-margin_right = 148.0
+margin_left = 130.0
+margin_top = 188.0
+margin_right = 151.0
 margin_bottom = 206.0
 custom_fonts/font = SubResource( 4 )
 text = "4"
 AttributeName = "enfants"
 
-[node name="Sprite" parent="Sprite/Enfants" index="1"]
-position = Vector2( 12.2141, 8.42689 )
-scale = Vector2( 0.333858, 1 )
-
 [node name="EnfantsStatic" type="Label" parent="Sprite"]
-margin_left = 125.0
+margin_left = 131.0
 margin_top = 189.0
-margin_right = 148.0
+margin_right = 152.0
 margin_bottom = 206.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -288,19 +281,19 @@ __meta__ = {
 }
 
 [node name="Metier" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 111.0
-margin_top = 217.0
-margin_right = 183.0
-margin_bottom = 242.0
+margin_left = 115.0
+margin_top = 220.0
+margin_right = 187.0
+margin_bottom = 238.0
 custom_fonts/font = SubResource( 4 )
 text = "Propriétaire"
 AttributeName = "metier"
 
 [node name="MetierStatic" type="Label" parent="Sprite"]
-margin_left = 111.0
-margin_top = 217.0
-margin_right = 183.0
-margin_bottom = 242.0
+margin_left = 115.0
+margin_top = 220.0
+margin_right = 187.0
+margin_bottom = 238.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Propriétaire"
@@ -412,6 +405,3 @@ vframes = 2
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
 [connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
 [connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]
-
-[editable path="Sprite/Num"]
-[editable path="Sprite/Enfants"]
