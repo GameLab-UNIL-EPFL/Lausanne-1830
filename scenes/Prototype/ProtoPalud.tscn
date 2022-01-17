@@ -506,7 +506,6 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 32 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-visible = false
 position = Vector2( 29.457, 278.564 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
@@ -591,6 +590,7 @@ HasAutoDialogue = false
 HasDemandDialogue = false
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
+visible = false
 position = Vector2( 2, 4 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere" index="2"]
@@ -603,6 +603,9 @@ vframes = 1
 position = Vector2( 246.891, 264.7 )
 HasAutoDialogue = false
 HasDemandDialogue = false
+
+[node name="Shadow" parent="YSort/NPC/Lingere2" index="1"]
+visible = false
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere2" index="2"]
 texture = ExtResource( 35 )
@@ -698,22 +701,6 @@ max_distance = 200.0
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
 autoplay = true
-
-[node name="FadeIn" type="ColorRect" parent="."]
-visible = false
-margin_left = -14.0
-margin_top = -10.0
-margin_right = 661.0
-margin_bottom = 370.0
-color = Color( 0, 0, 0, 0.996078 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-autoplay = "Fade in"
-"anims/Fade in" = SubResource( 5 )
-anims/RESET = SubResource( 6 )
 
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]

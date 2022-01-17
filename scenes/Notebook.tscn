@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/04_notebook/closeButton.png" type="Texture" id=4]
 [ext_resource path="res://assets/04_notebook/noteBooksTabsSheet.png" type="Texture" id=5]
 [ext_resource path="res://scenes/NotebookList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -388,6 +389,9 @@ __meta__ = {
 position = Vector2( 6.29401, 6.3778 )
 texture = ExtResource( 4 )
 vframes = 2
+
+[node name="Map" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
