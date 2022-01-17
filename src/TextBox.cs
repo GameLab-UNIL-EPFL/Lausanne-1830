@@ -53,7 +53,7 @@ public class TextBox : Node2D {
 	
 	public void _ShowText(string text) {
 		Text.Text = text;
-		float nLines = text.Length / 30.0f;
+		float nLines = text.Length / 25.0f;
 		ShowAll();
 		
 		//Pick which TB to show

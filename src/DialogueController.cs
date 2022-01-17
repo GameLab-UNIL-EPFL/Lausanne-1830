@@ -9,7 +9,7 @@ public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
 	[Export]
-	public string SceneDialogueFile = "res://assets/04_dialogues/01_Palud/testDialogue.xml";
+	public string SceneDialogueFile = "res://db/dialogues/xml/Dialogues.xml";
 	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
@@ -52,6 +52,11 @@ public class DialogueController : Node {
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
+		//Initialize dialogue queues
+		target0Text = new Queue<String>();
+		target1Text = new Queue<String>();
+		
+		//Load XML and init state
 		IsOccupied = false;
 		_ParseXML(ref dialogueTree, SceneDialogueFile);
 	}
@@ -67,8 +72,8 @@ public class DialogueController : Node {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
 					where dialogue.Attribute("id").Value == dialogueID &&
-						dialogue.Attribute("type").Value == type &&
-						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum
+						dialogue.Attribute("type").Value == type /*&&
+						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum*/
 					select dialogue.Elements("text");
 					
 		List<string> res = new List<string>();
@@ -80,15 +85,31 @@ public class DialogueController : Node {
 			var nOptions = txt.Descendants("option").Count();
 			if(nOptions == 0) {
 				//No options -> text can directly be added to res
-				res.Add(txt.Select(x => x.Value).GetEnumerator().Current);
+				var txtValues = txt.Select(x => x.Value);
+				
+				//Sanity check
+				if(txtValues == null) {
+					throw new Exception("Query must select something!");
+				}
+				
+				//Query only returns an iterator, so we iterate
+				foreach(var t in txtValues) {
+					res.Add(t);
+				}
 			} else {
 				//Pick an option at random
 				int nextText = rnd.Next(0, nOptions);
-				string optionQuery = (from opt in txt.Descendants("option")
+				var optionQuery = from opt in txt.Descendants("option")
 								  where int.Parse(opt.Attribute("id").Value) == nextText
-								  select opt.Value).GetEnumerator().Current;
-								
-				res.Add(optionQuery);
+								  select opt.Value;
+				//Sanity check
+				if(optionQuery == null) {
+					throw new Exception("Option Query must select something!");
+				}
+				
+				foreach(var t in optionQuery) {
+					res.Add(t);
+				}
 			}
 		}
 		
@@ -102,6 +123,7 @@ public class DialogueController : Node {
 				isApproach ? ON_APPROACH : ON_DEMAND,
 				id == 0 ? 0 : 1 //Make sure its only 0 or 1
 		);
+		//throw new Exception(string.Join(", ", texts));
 		for(int i = 0; i < texts.Length ; ++i) {
 			if(id == 0) {
 				target0Text.Enqueue(texts[i]);
@@ -119,7 +141,7 @@ public class DialogueController : Node {
 	public string _StartDialogue(string dialogueId, bool isApproach = false, bool dualTargets = false) {
 		//Check for lock
 		if(IsOccupied) {
-			return null;  
+			return "Occupied";  
 		} else {
 			//Clear the queues
 			target0Text.Clear();
@@ -133,13 +155,27 @@ public class DialogueController : Node {
 			//Fetch initial dialogues and fill queues
 			FillQueue(dialogueId, 0, isApproach);
 			
+			//Sanity Check
+			if(target0Text.Count == 0) {
+				throw new Exception("Queue not filled!");
+			}
+			
 			//Check for second target
 			if(dualTargets) {
 				FillQueue(dialogueId, 1, isApproach);
 			}
 			
 			//Target0 always starts the conversation
-			return target0Text.Dequeue();
+			try {	
+				var txt = target0Text.Dequeue();
+				if(txt == null) {
+					throw new Exception("No text dequeued!");
+				}
+				return txt;
+ 			} catch {
+				//If an exception ways thrown, the person has no dialogue
+				return "Mince, j'ai oublié ce que je devais dire...";
+			}
 		}
 	}
 	

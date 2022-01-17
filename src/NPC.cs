@@ -133,6 +133,11 @@ public class NPC : KinematicBody2D {
 	}
 	
 	private string[] FormatText(string text) {
+		//Sanity check
+		if(text == null) {
+			throw new Exception("Can't format null");
+		}
+		
 		string newText = "";
 		int count = MAX_CHAR_PER_LINE;
 		int lines = MAX_LINES;
@@ -178,6 +183,9 @@ public class NPC : KinematicBody2D {
 					inDialogue = true;
 					player._StartDialogue();
 					d = DC._StartDialogue(DemandDialogueID);
+					if(d == null) {
+						throw new Exception("No starting dialogue given");
+					}
 				} else {
 					d = DC._NextDialogue();
 					
@@ -186,6 +194,7 @@ public class NPC : KinematicBody2D {
 						TB._HideText();
 						player._EndDialogue();
 						DC._EndDialogue();
+						return;
 					}
 				}
 				
