@@ -72,8 +72,8 @@ public class DialogueController : Node {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
 					where dialogue.Attribute("id").Value == dialogueID &&
-						dialogue.Attribute("type").Value == type /*&&
-						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum*/
+						dialogue.Attribute("type").Value == type &&
+						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum
 					select dialogue.Elements("text");
 					
 		List<string> res = new List<string>();
