@@ -38,7 +38,7 @@ public class NPC : KinematicBody2D {
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
 		if(res.IsCorrect()) {
-			return FormatText("Alors...¢" +
+			return FormatText("Alors...¢"+
 			"Voyons voir ce registre.¢"+
 			"Bravo ! Vous avez fait du bon travail !¢"+
 			"Je vais garder ça dans nos documents importants.¢"+
@@ -46,8 +46,7 @@ public class NPC : KinematicBody2D {
 			"et en faire un jeu vidéo.");
 		}
 		
-		string d = "Alors...¢" +
-		"Voyons voir ce registre.¢" +
+		string d = "Voyons voir ce registre.¢" +
 		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
 		"Il y a encore ";
 		var i = 0;
@@ -191,6 +190,7 @@ public class NPC : KinematicBody2D {
 					
 					//Check if it's the end of the dialogue
 					if(d == null) {
+						inDialogue = false;
 						TB._HideText();
 						player._EndDialogue();
 						DC._EndDialogue();
@@ -211,19 +211,18 @@ public class NPC : KinematicBody2D {
 			//Show it in the box
 			if(d != null) {
 				TB._ShowText(d);
-				TB._ShowPressE();
 			}
 		}
 	}
 	
 	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo) {
 		CharacterInfo_t solution = QC._QueryQuestSolution();
+		solution = QC._QueryQuestSolution();
 		return QC._CompareCharInfo(solution, characterInfo);
 	}
 	
 	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {
-		CharacterInfo_t solution = QC._QueryQuestSolution();
-		InfoValue_t res = QC._CompareCharInfo(solution, characterInfo);
+		InfoValue_t res = _CompareSolutions(characterInfo);
 		
 		if(!inDialogue) {
 			inDialogue = true;
@@ -237,7 +236,6 @@ public class NPC : KinematicBody2D {
 				TB._HideText();
 				player._EndDialogue();
 				inDialogue = false;
-				QC._ClearCache();
 			} else {
 				TB._ShowText(l);
 			}

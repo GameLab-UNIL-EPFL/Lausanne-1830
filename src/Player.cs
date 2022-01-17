@@ -257,7 +257,8 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
-			EmitSignal(nameof(CutsceneEnd), NearestSub());
+			var nearestNPC = NearestSub();
+			EmitSignal(nameof(CutsceneEnd), nearestNPC);
 		}
 	}
 	

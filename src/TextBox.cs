@@ -69,5 +69,6 @@ public class TextBox : Node2D {
 			ATB.Show();
 		}
 		ShowAll();
+		_ShowPressE();
 	}
 }
