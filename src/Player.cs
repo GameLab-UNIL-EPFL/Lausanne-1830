@@ -9,6 +9,12 @@ public class Player : KinematicBody2D {
 	[Signal]
 	public delegate void CutsceneEnd(NPC questNPC);
 	
+	[Signal]
+	public delegate void SlideInNotebookController();
+	
+	[Signal]
+	public delegate void OpenNotebook();
+	
 	//Player FSM
 	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
 	PlayerStates CurrentState = PlayerStates.IDLE;
@@ -119,6 +125,11 @@ public class Player : KinematicBody2D {
 				NotifySubs();
 			}
 		}
+		
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next")) {
+			EmitSignal(nameof(OpenNotebook));
+		}
 	}
 	
 	private void CheckIdle() {
@@ -198,6 +209,10 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		
+		if(!isCutscene) {
+			EmitSignal(nameof(SlideInNotebookController));
+		}
 
 	}
 	
@@ -261,6 +276,7 @@ public class Player : KinematicBody2D {
 			isCutscene = false;
 			var nearestNPC = NearestSub();
 			EmitSignal(nameof(CutsceneEnd), nearestNPC);
+			EmitSignal(nameof(SlideInNotebookController));
 		}
 	}
 	
@@ -287,7 +303,5 @@ public class Player : KinematicBody2D {
 		}
 	}
 }
-
-
 
 

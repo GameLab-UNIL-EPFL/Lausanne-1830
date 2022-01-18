@@ -20,13 +20,13 @@ public class Map : Node2D
 			ASP.Play();
 		}
 		if(hidden) {
-				Show();
-				S.Frame = 3;
-			} else {
-				Hide();
-				S.Frame = 2;
-			}
-			hidden = !hidden;
+			Show();
+			S.Frame = 3;
+		} else {
+			Hide();
+			S.Frame = 2;
+		}
+		hidden = !hidden;
 	}
 
 }

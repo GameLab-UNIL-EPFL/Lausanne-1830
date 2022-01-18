@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=2]
@@ -468,6 +468,9 @@ position = Vector2( 54.6294, 192.912 )
 [node name="Label" parent="YSort/Props/Item/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Props/Item/Sprite" index="1"]
+frame = 0
+
 [node name="AffichePlaceholder" type="ColorRect" parent="YSort/Props"]
 margin_left = 45.457
 margin_top = 183.915
@@ -718,8 +721,9 @@ autoplay = true
 [connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
-[connection signal="CutsceneEnd" from="YSort/Player" to="NotebookController" method="_on_Player_CutsceneEnd"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
