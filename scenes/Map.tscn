@@ -8,31 +8,28 @@
 
 [node name="Map" type="Node2D"]
 
-[node name="Map" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Map" type="Sprite" parent="."]
+position = Vector2( 224, 132 )
+scale = Vector2( 0.903226, 0.916667 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MapIcon" parent="." instance=ExtResource( 1 )]
-margin_left = 179.5
-margin_top = 61.5
-margin_right = 195.5
-margin_bottom = 77.5
+margin_left = 160.0
+margin_top = 48.0
+margin_right = 176.0
+margin_bottom = 64.0
 texture_hover = ExtResource( 3 )
 
 [node name="MapIcon2" parent="." instance=ExtResource( 1 )]
-margin_left = 208.671
-margin_top = 195.003
-margin_right = 224.671
-margin_bottom = 211.003
+margin_left = 192.0
+margin_top = 176.0
+margin_right = 208.0
+margin_bottom = 192.0
 texture_normal = ExtResource( 4 )
 
 [node name="MapIcon3" parent="." instance=ExtResource( 1 )]
-margin_left = 236.749
-margin_top = 130.497
-margin_right = 252.749
-margin_bottom = 146.497
+margin_left = 216.0
+margin_top = 120.0
+margin_right = 232.0
+margin_bottom = 136.0
 texture_normal = ExtResource( 5 )

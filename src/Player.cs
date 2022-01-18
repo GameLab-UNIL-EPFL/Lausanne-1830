@@ -17,7 +17,7 @@ public class Player : KinematicBody2D {
 	private PlayerStates PrevState = PlayerStates.IDLE;
 	
 	// Cutscene state
-	private bool isCutscene = true;
+	
 	private bool isCutsceneConv = false;
 	private ColorRect FadeIn;
 	
@@ -27,6 +27,8 @@ public class Player : KinematicBody2D {
 	public int RunSpeed = 150;
 	[Export]
 	public float RunTime = 3.0f; // Seconds
+	[Export]
+	public bool isCutscene;
 	
 	//Empirical acceleration and friction amounts
 	private const int ACC = 950;

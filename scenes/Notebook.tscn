@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/04_notebook/noteBooksTabsSheet.png" type="Texture" id=5]
 [ext_resource path="res://scenes/NotebookList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Map.cs" type="Script" id=8]
+[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -367,6 +369,18 @@ texture = ExtResource( 5 )
 vframes = 4
 frame = 2
 
+[node name="MapButton" type="Button" parent="."]
+margin_left = 432.0
+margin_top = 213.0
+margin_right = 458.0
+margin_bottom = 233.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( 164.706, 73.6222 )
@@ -392,6 +406,11 @@ vframes = 2
 
 [node name="Map" parent="." instance=ExtResource( 7 )]
 visible = false
+position = Vector2( 25.9568, 12.7135 )
+script = ExtResource( 8 )
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
@@ -400,6 +419,7 @@ visible = false
 [connection signal="OpenOptions" from="Sprite/Conjoint" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Enfants" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Metier" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="pressed" from="MapButton" to="Map" method="_on_MapButton_pressed"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Prenom" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Nom" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Adresse" method="_on_UpdateInfo"]
