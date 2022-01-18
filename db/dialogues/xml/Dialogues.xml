@@ -47,9 +47,11 @@
     <dialogue type="onDemand" id="demandQuest" ntargets="1">
         <text>Alors...</text>
         <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
-        <text>Très bien. Voyons voir... Il y a encore plusieurs données manquantes.</text>
-        <text>Voici le carnet à remplir.</text>
-        <text>J'espère que vous ferez un meilleur travail que votre prédécesseur.</text>
+        <text>Très bien. Voyons voir ce carnet...</text>
+        <text>Il est sensé contenir toutes les informations importantes sur les habitants de Lausanne.</text>
+        <text>Mais les données de plusieurs personnes sont manquantes.</text>
+        <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
+        <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
         <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
     </dialogue>
 </scene>
