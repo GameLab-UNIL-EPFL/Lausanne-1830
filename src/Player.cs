@@ -229,6 +229,8 @@ public class Player : KinematicBody2D {
 	private NPC NearestSub() {
 		float minDistance = float.MaxValue;
 		NPC nearest = subs[0];
+		
+		// Iterate through all subs and keep the one with the shortest distance to player
 		foreach(NPC sub in subs) {
 			var distance = Position.DistanceTo(sub.Position);
 			if(distance < minDistance) {
@@ -255,7 +257,8 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
-			EmitSignal(nameof(CutsceneEnd), NearestSub());
+			var nearestNPC = NearestSub();
+			EmitSignal(nameof(CutsceneEnd), nearestNPC);
 		}
 	}
 	

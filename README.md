@@ -15,7 +15,7 @@ Requirements:
   
 ## Input Map  
 - __E__: Interact.   
-- __Arrow keys__: Move around.  
+- __Arrow keys / wasd__: Move around.  
 - __Hold Shift__: Sprint (for 3 sec then 2 sec cooldown).  
   
 ## Dialogue File Format  
@@ -29,7 +29,7 @@ Example:
             <option id="1">Venez goûter !</option>
         </text>
     </dialogue>
-    <dialogue type="onDemand" id="testDemand" target1="baker">
+    <dialogue type="onDemand" id="testDemand" ntargets="1">
         <text>
             <option id="0">Bien le bonjour, qu'est-ce qui vous intéresse ?</option>
             <option id="1">Pain, croissant ?</option>
@@ -44,8 +44,7 @@ Here we have the following format:
 - __dialogue__: defines a set of dialogue lines, contains the following attributes:  
     1. __type__: Defines how the dialogue is triggered (either _onDemand_ or _onApproach_).  
     2. __id__: A unique identifier used to locate the dialogue.  
-    3. __target1__: The name of the person speaking.  
-    4. __taget2__[Optional]: The name of the person listining in the case of a dialogue between NPCs.  
+    3. __ntargets__: The number of NPCs in the conversation.   
 - __text__: The core text of the dialogue, contains and __id__ defining the index in the dialogue it is at.  
 - __option__: In the case of random dialogue, an option is one of the options for a given text, __id__ is the index of the option.  
   
