@@ -211,6 +211,7 @@ public class NPC : KinematicBody2D {
 			//Show it in the box
 			if(d != null) {
 				TB._ShowText(d);
+				TB._ShowPressE();
 			}
 		}
 	}
@@ -229,6 +230,7 @@ public class NPC : KinematicBody2D {
 			player._StartDialogue();
 			QC._InitBuffer(QuestText(res));
 			TB._ShowText(QC._NextLine());
+			TB._ShowPressE();
 		} else {
 			string l = QC._NextLine();
 			//Check that the dialogue isn't over
@@ -238,6 +240,7 @@ public class NPC : KinematicBody2D {
 				inDialogue = false;
 			} else {
 				TB._ShowText(l);
+				TB._ShowPressE();
 			}
 		}
 		return res;
