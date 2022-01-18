@@ -25,6 +25,7 @@ margin_left = 192.0
 margin_top = 176.0
 margin_right = 208.0
 margin_bottom = 192.0
+disabled = true
 texture_normal = ExtResource( 4 )
 
 [node name="MapIcon3" parent="." instance=ExtResource( 1 )]
@@ -32,4 +33,5 @@ margin_left = 216.0
 margin_top = 120.0
 margin_right = 232.0
 margin_bottom = 136.0
+disabled = true
 texture_normal = ExtResource( 5 )
