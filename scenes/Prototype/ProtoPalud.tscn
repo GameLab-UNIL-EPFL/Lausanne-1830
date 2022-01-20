@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
-[ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/QuestController.tscn" type="PackedScene" id=21]
@@ -468,6 +468,9 @@ position = Vector2( 54.6294, 192.912 )
 [node name="Label" parent="YSort/Props/Item/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Props/Item/Sprite" index="1"]
+frame = 0
+
 [node name="AffichePlaceholder" type="ColorRect" parent="YSort/Props"]
 margin_left = 45.457
 margin_top = 183.915
@@ -506,7 +509,6 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 32 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-visible = false
 position = Vector2( 29.457, 278.564 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
@@ -591,6 +593,7 @@ HasAutoDialogue = false
 HasDemandDialogue = false
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
+visible = false
 position = Vector2( 2, 4 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere" index="2"]
@@ -603,6 +606,9 @@ vframes = 1
 position = Vector2( 246.891, 264.7 )
 HasAutoDialogue = false
 HasDemandDialogue = false
+
+[node name="Shadow" parent="YSort/NPC/Lingere2" index="1"]
+visible = false
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere2" index="2"]
 texture = ExtResource( 35 )
@@ -646,6 +652,7 @@ position = Vector2( 80.971, 2.673 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
+isCutscene = true
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 535, 225 )
@@ -699,22 +706,6 @@ max_distance = 200.0
 stream = ExtResource( 20 )
 autoplay = true
 
-[node name="FadeIn" type="ColorRect" parent="."]
-visible = false
-margin_left = -14.0
-margin_top = -10.0
-margin_right = 661.0
-margin_bottom = 370.0
-color = Color( 0, 0, 0, 0.996078 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-autoplay = "Fade in"
-"anims/Fade in" = SubResource( 5 )
-anims/RESET = SubResource( 6 )
-
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
@@ -730,8 +721,9 @@ anims/RESET = SubResource( 6 )
 [connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
-[connection signal="CutsceneEnd" from="YSort/Player" to="NotebookController" method="_on_Player_CutsceneEnd"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]

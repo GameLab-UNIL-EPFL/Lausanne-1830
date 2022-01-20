@@ -156,10 +156,6 @@ public class QuestController : Node {
 	public string SceneCharacterFileBasePath = "res://db/characters/";
 	public string SceneCharacterFilePath;
 	
-	//Caches
-	public CharacterInfo_t solutionCache;
-	public InfoValue_t compareCache;
-	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument characterList;
 	
@@ -170,11 +166,6 @@ public class QuestController : Node {
 	public override void _Ready() {
 		SceneCharacterFilePath = SceneCharacterFileBasePath + SceneCharacterFileName;
 		DialogueController._ParseXML(ref characterList, SceneCharacterFilePath);
-	}
-	
-	public void _ClearCache() {
-		solutionCache.valid = false;
-		compareCache.valid = false;
 	}
 	
 	public void _InitBuffer(string[] text) {
@@ -191,11 +182,6 @@ public class QuestController : Node {
 	}
 	
 	public InfoValue_t _CompareCharInfo(CharacterInfo_t solution, CharacterInfo_t val) {
-		//Check for cache
-		if(compareCache.IsValid()) {
-			return compareCache;
-		}
-		
 		InfoValue_t res = new InfoValue_t(
 			solution.prenom.Equals(val.prenom),
 			solution.nom.Equals(val.nom),
@@ -206,9 +192,6 @@ public class QuestController : Node {
 			solution.metier.Equals(val.metier)
 		);
 		
-		compareCache = res;
-		compareCache.valid = true;
-		
 		return res;
 	}
 	
@@ -217,10 +200,6 @@ public class QuestController : Node {
 	 * @return a CharacterInfo_t struct containing all of the solution data
 	 */
 	public CharacterInfo_t _QueryQuestSolution() {
-		//Check for cache
-		if(solutionCache.IsValid()) {
-			return solutionCache;
-		}
 		
 		//Query a new solution
 		var querySolution = from solution in characterList.Root.Descendants("solution")
@@ -263,9 +242,6 @@ public class QuestController : Node {
 				}
 			}
 		}
-		
-		solutionCache = res;
-		solutionCache.valid = true;
 		
 		return res;
 	}

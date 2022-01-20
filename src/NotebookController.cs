@@ -33,13 +33,10 @@ public class NotebookController : Button
 		Icon = I;
 	}
 	
-	private void _on_Player_CutsceneEnd(NPC questNPC) {
+	private void _on_Player_SlideInNotebookController() {
+		if(AnimPlayer == null) {
+			_Ready();
+		}
 		AnimPlayer.Play("Slide");
 	}
-
 }
-
-
-
-
-
