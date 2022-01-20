@@ -2,6 +2,22 @@
 Open-Source Historically accurate RPG based in 1830s Lausanne.  
 ![Lausanne1830 Prototype Screenshot](Lausanne_1830_Proto.png)
 
+#Game Design
+
+Jeu pédagogique qui sera utilisé dans les écoles lausannoises (12-16 ans) ayant pour but de retranscrire Lausanne en 1830. Le but du jeu est de retrouver des informations sur 5 personnages habitants Lausanne en 1830 en résolvant des enquêtes. Ces derniers étant:
+- Angélique Truschel (Propriétaire de Brasserie)
+- Henri Perregaux (Architecte)
+- Isabelle de Montolieu (Ecrivaine)
+- Jean-Jacques Mercier (Tanneur)
+- Benedict Rochat (Meunier)
+
+Pour cela le joueur pourra se balader dans plusieurs espaces accessibles par une carte, à savoir : 
+- La place de la palud
+- Un moulin du Flon (vue extérieure et vue intérieure)
+- L'extérieur du Casino
+- L'intérieur de la brasserie Truschel
+- Le château de Vennes 
+
 # Dev  
 Game currently being developped using the Open-Source [Godot](https://godotengine.org/download) game engine.  
 __Godot version__: Godot Mono v3.4-stable  
