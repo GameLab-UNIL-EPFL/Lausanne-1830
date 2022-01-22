@@ -2,7 +2,7 @@
 Open-Source Historically accurate RPG based in 1830s Lausanne.  
 ![Lausanne1830 Prototype Screenshot](Lausanne_1830_Proto.png)
 
-#Game Design
+# Game Design
 
 Jeu pédagogique qui sera utilisé dans les écoles lausannoises (12-16 ans) ayant pour but de retranscrire Lausanne en 1830. Le but du jeu est de retrouver des informations sur 5 personnages habitants Lausanne en 1830 en résolvant des enquêtes. Ces derniers étant:
 - Angélique Truschel (Propriétaire de Brasserie)
