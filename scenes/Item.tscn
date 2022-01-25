@@ -8,6 +8,8 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
+outline_size = 1
+outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
@@ -27,7 +29,6 @@ radius = 24.0013
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 3 )
 
@@ -59,6 +60,9 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="Open" type="Node2D" parent="."]
+visible = false
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
