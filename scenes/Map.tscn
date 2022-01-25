@@ -28,6 +28,11 @@ margin_bottom = 192.0
 disabled = true
 texture_normal = ExtResource( 4 )
 
+[node name="Label" parent="moulin_button" index="0"]
+visible = false
+text = "Moulin"
+percent_visible = 0.166667
+
 [node name="palud_button" parent="." instance=ExtResource( 1 )]
 margin_left = 216.0
 margin_top = 120.0
@@ -35,3 +40,11 @@ margin_right = 232.0
 margin_bottom = 136.0
 texture_normal = ExtResource( 5 )
 id = "Prototype/ProtoPalud"
+
+[node name="Label" parent="palud_button" index="0"]
+visible = false
+text = "Palud"
+percent_visible = 0.2
+
+[editable path="moulin_button"]
+[editable path="palud_button"]
