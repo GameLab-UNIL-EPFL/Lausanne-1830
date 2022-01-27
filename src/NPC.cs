@@ -16,14 +16,8 @@ public class NPC : KinematicBody2D {
 	private DialogueController DC;
 	private QuestController QC;
 	
-	private string[] AutoDialogues;
-	private int AutoDialogueIdx = 0;
-	
-	private string[] DemandDialogues;
 	private string[] InnerLines;
-	private int DemandDialogueIdx = 0;
 	private int InnerLinesCount = 0;
-	private int QuestLinesCount = 0;
 	
 	//Used to display text
 	private TextBox TB;
@@ -44,7 +38,7 @@ public class NPC : KinematicBody2D {
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
 		if(res.IsCorrect()) {
-			return FormatText("Alors...¢" +
+			return FormatText("Alors...¢"+
 			"Voyons voir ce registre.¢"+
 			"Bravo ! Vous avez fait du bon travail !¢"+
 			"Je vais garder ça dans nos documents importants.¢"+
@@ -52,8 +46,7 @@ public class NPC : KinematicBody2D {
 			"et en faire un jeu vidéo.");
 		}
 		
-		string d = "Alors...¢" +
-		"Voyons voir ce registre.¢" +
+		string d = "Voyons voir ce registre.¢" +
 		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
 		"Il y a encore ";
 		var i = 0;
@@ -87,23 +80,6 @@ public class NPC : KinematicBody2D {
 			if(DC == null) {
 				throw new Exception("Every scene must have its own dialogue controller!!");
 			} 
-			
-			//Check for auto dialogue
-			if(HasAutoDialogue) {
-				if(AutoDialogueID == null) {
-					throw new Exception("NPC doesn't have a dialogueID!");
-				}
-				//Load in the NPC's dialogue
-				AutoDialogues = DC._QueryDialogue(AutoDialogueID);
-			}
-			
-			//Check for onDemand dialogue
-			if(HasDemandDialogue) {
-				if(DemandDialogueID == null) {
-					throw new Exception("NPC doesn't have a dialogueID!");
-				}
-				DemandDialogues = DC._QueryDialogue(DemandDialogueID);
-			}
 		}
 	}
 	
@@ -121,13 +97,14 @@ public class NPC : KinematicBody2D {
 			p._Subscribe(this);
 			
 			//Show auto dialogue if the NPC has one
-			if(HasAutoDialogue) {
+			if(HasAutoDialogue && !inDialogue) {
 				//Fetch the right dialogue
-				string d = AutoDialogues[AutoDialogueIdx];
-				AutoDialogueIdx = (AutoDialogueIdx + 1) % AutoDialogues.Length;
+				string next = DC._StartDialogue(AutoDialogueID, true);
 				
 				//Show it in the box
-				TB._ShowText(d);
+				if(next != null) {
+					TB._ShowText(next);
+				}
 			}
 		} 
 	}
@@ -144,8 +121,10 @@ public class NPC : KinematicBody2D {
 			//Unsubscribe to the player
 			p._Unsubscribe(this);
 			
-			//Reset dialogue counter
-			DemandDialogueIdx = 0;
+			//End dialogue for DialogueController when needed
+			if(HasAutoDialogue) {
+				DC._EndDialogue();
+			}
 			
 			//Hide the text box
 			TB._HideText();
@@ -153,6 +132,11 @@ public class NPC : KinematicBody2D {
 	}
 	
 	private string[] FormatText(string text) {
+		//Sanity check
+		if(text == null) {
+			throw new Exception("Can't format null");
+		}
+		
 		string newText = "";
 		int count = MAX_CHAR_PER_LINE;
 		int lines = MAX_LINES;
@@ -188,44 +172,65 @@ public class NPC : KinematicBody2D {
 	public void _Notify(Player player) {
 		TB._HideAll();
 		if(HasDemandDialogue) {
-			//Check if there is any dialogue left
-			if(DemandDialogueIdx < DemandDialogues.Length) {
-				player._StartDialogue();
-				
-				//Fetch the right dialogue
-				string d;
-				if(InnerLinesCount == 0) {
-					d = DemandDialogues[DemandDialogueIdx++];
-					InnerLines = FormatText(d);
-					InnerLinesCount = InnerLines.Length;
+			string d;
+			
+			if(InnerLinesCount != 0) {
+				d = InnerLines[InnerLines.Length - InnerLinesCount--];
+			} else {
+				//Check if this is the start of a dialogue
+				if(!inDialogue) {
+					inDialogue = true;
+					player._StartDialogue();
+					d = DC._StartDialogue(DemandDialogueID);
+					if(d == null) {
+						throw new Exception("No starting dialogue given");
+					}
 				} else {
-					d = InnerLines[InnerLines.Length - InnerLinesCount--];
+					d = DC._NextDialogue();
+					
+					//Check if it's the end of the dialogue
+					if(d == null) {
+						inDialogue = false;
+						TB._HideText();
+						player._EndDialogue();
+						DC._EndDialogue();
+						return;
+					}
 				}
 				
-				//Show it in the box
+				//Format the text to fit in the dialogue boxes
+				InnerLines = FormatText(d);
+				InnerLinesCount = InnerLines.Length;
+				
+				//Update the dialogue
+				if(InnerLinesCount != 0) {
+					d = InnerLines[InnerLines.Length - InnerLinesCount--];
+				}
+			}
+			
+			//Show it in the box
+			if(d != null) {
 				TB._ShowText(d);
 				TB._ShowPressE();
-			} else {
-				TB._HideText();
-				player._EndDialogue();
 			}
 		}
 	}
 	
 	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo) {
 		CharacterInfo_t solution = QC._QueryQuestSolution();
+		solution = QC._QueryQuestSolution();
 		return QC._CompareCharInfo(solution, characterInfo);
 	}
 	
 	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {
-		CharacterInfo_t solution = QC._QueryQuestSolution();
-		InfoValue_t res = QC._CompareCharInfo(solution, characterInfo);
+		InfoValue_t res = _CompareSolutions(characterInfo);
 		
 		if(!inDialogue) {
 			inDialogue = true;
 			player._StartDialogue();
 			QC._InitBuffer(QuestText(res));
 			TB._ShowText(QC._NextLine());
+			TB._ShowPressE();
 		} else {
 			string l = QC._NextLine();
 			//Check that the dialogue isn't over
@@ -233,9 +238,9 @@ public class NPC : KinematicBody2D {
 				TB._HideText();
 				player._EndDialogue();
 				inDialogue = false;
-				QC._ClearCache();
 			} else {
 				TB._ShowText(l);
+				TB._ShowPressE();
 			}
 		}
 		return res;

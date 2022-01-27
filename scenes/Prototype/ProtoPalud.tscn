@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
-[ext_resource path="res://assets/07_sounds/Misc_Paper_TurnPage_01.mp3" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/QuestController.tscn" type="PackedScene" id=21]
@@ -42,7 +42,7 @@
 6/texture = ExtResource( 23 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 8, 8, 32, 32 )
+6/region = Rect2( 0, 0, 32, 32 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
@@ -56,7 +56,7 @@
 7/texture = ExtResource( 23 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 8, 48, 32, 33 )
+7/region = Rect2( 35, 0, 33, 32 )
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
@@ -70,7 +70,7 @@
 8/texture = ExtResource( 23 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 8, 88, 32, 34 )
+8/region = Rect2( 68, 0, 32, 32 )
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
@@ -80,6 +80,20 @@
 8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
+9/name = "pavedGround-Sheet.png 9"
+9/texture = ExtResource( 23 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 103, 0, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
 
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -8.73701, 1.60986 )
@@ -247,25 +261,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "Fade in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.2, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
+tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -274,7 +272,22 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0.996078 ) ]
+"values": [ Vector2( 650, 4.168 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
 }
 
 [node name="ProtoPalud" type="Node2D"]
@@ -289,7 +302,7 @@ tracks/0/keys = {
 tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 65543, -1610612734, 0, 65544, -1610612734, 0, 65545, -1610612734, 0, 131075, -1610612734, 0, 131076, -1610612734, 0, 131077, -1610612734, 0, 131079, -1610612734, 0, 131080, -1610612734, 0, 196612, 1610612738, 0, 196613, -1073741822, 0, 196617, -1610612734, 0, 393221, -1073741816, 0, 393222, -1610612729, 0, 393223, 8, 0, 393224, 7, 0, 393227, -1610612729, 0, 393228, 7, 0, 393229, 1610612740, 0, 393230, -1610612729, 0, 393231, 1610612742, 0, 393232, -1073741818, 0, 393233, 1610612744, 0, 393234, 1610612744, 0, 393235, 1610612744, 0, 458752, -1610612729, 0, 458753, 8, 0, 458754, 8, 0, 458755, 8, 0, 458756, 8, 0, 458757, 6, 0, 458758, -1073741817, 0, 458759, 1610612740, 0, 458760, -1073741820, 0, 458762, 1610612740, 0, 458763, -1073741820, 0, 458765, 1610612744, 0, 458766, -1073741817, 0, 458767, -1610612729, 0, 458768, 7, 0, 458769, -1610612729, 0, 458770, -1610612730, 0, 458771, 6, 0, 524292, -1610612731, 0, 524293, -1610612728, 0, 524294, -1073741816, 0, 524295, -1610612731, 0, 524296, -1073741821, 0, 524299, -1073741820, 0, 524301, -1610612730, 0, 524302, 7, 0, 524303, 4, 0, 524305, -1610612732, 0, 524306, -1610612729, 0, 524307, 7, 0, 589828, -1610612731, 0, 589829, -1610612728, 0, 589830, -1610612730, 0, 589831, -1073741816, 0, 589832, -1610612733, 0, 589833, 1610612739, 0, 589834, 3, 0, 589835, 1610612740, 0, 589836, -1073741820, 0, 589837, -1073741816, 0, 589843, 1610612743, 0, 655361, 1610612743, 0, 655362, -1073741817, 0, 655364, -1610612732, 0, 655365, -1610612729, 0, 655366, -1610612730, 0, 655367, 6, 0, 655368, 6, 0, 655369, 8, 0, 655370, 8, 0, 655371, 7, 0, 655372, -1610612729, 0, 655373, 7, 0, 655377, 1610612743, 0, 655378, 1610612744, 0, 655379, -1073741818, 0, 720897, -1610612729, 0, 720898, 7, 0, 720901, -1610612732, 0, 720902, -1610612729, 0, 720903, 8, 0, 720904, 7, 0, 720906, -1610612732, 0, 720907, 5, 0, 720908, 5, 0, 720909, 4, 0, 720913, -1610612729, 0, 720914, -1610612730, 0, 720915, 6, 0 )
+tile_data = PoolIntArray( 65543, -1610612734, 0, 65544, -1610612734, 0, 65545, -1610612734, 0, 131075, -1610612734, 0, 131076, -1610612734, 0, 131077, -1610612734, 0, 131079, -1610612734, 0, 131080, -1610612734, 0, 196612, 1610612738, 0, 196613, -1073741822, 0, 196617, -1610612734, 0, 327680, -1610612728, 0, 327681, -1610612730, 0, 327686, 1610612743, 0, 327687, -1073741816, 0, 327688, -1610612730, 0, 327692, 1610612743, 0, 327693, 1610612742, 0, 327694, -1610612729, 0, 327696, -1073741817, 0, 327697, -1073741816, 0, 327698, -1073741816, 0, 327699, -1073741816, 0, 393216, 9, 0, 393217, -1610612729, 0, 393219, -1073741817, 0, 393220, 6, 0, 393221, 7, 0, 393229, 1610612743, 0, 393230, -1610612727, 0, 393232, 1610612743, 0, 393233, 1610612744, 0, 393234, 1610612744, 0, 393235, 1610612744, 0, 458752, -1610612729, 0, 458755, -1073741818, 0, 458756, 8, 0, 458757, -1073741815, 0, 458758, 6, 0, 458759, 7, 0, 458766, 1610612743, 0, 458767, -1610612729, 0, 458770, -1073741818, 0, 458771, 8, 0, 524291, 1610612743, 0, 524292, 1610612742, 0, 524293, -1610612727, 0, 524294, 8, 0, 524295, -1073741815, 0, 524296, 7, 0, 524298, 8, 0, 524299, 8, 0, 524301, -1610612730, 0, 524303, 4, 0, 524306, 1610612743, 0, 524307, -1610612727, 0, 589824, 7, 0, 589828, -1610612731, 0, 589829, 1610612743, 0, 589830, -1610612727, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 8, 0, 589835, 8, 0, 589836, 8, 0, 589837, -1610612730, 0, 589843, -1073741818, 0, 655360, -1073741815, 0, 655361, 6, 0, 655362, 7, 0, 655364, -1610612732, 0, 655366, 1610612743, 0, 655367, 1610612742, 0, 655368, 1610612742, 0, 655369, -1610612729, 0, 655370, 1610612743, 0, 655371, 1610612742, 0, 655372, 1610612742, 0, 655373, -1610612729, 0, 655377, -1073741817, 0, 655378, 6, 0, 655379, 1610612745, 0, 720896, 8, 0, 720897, 8, 0, 720898, -1610612730, 0, 720901, -1610612732, 0, 720908, 5, 0, 720909, 4, 0, 720913, 1610612743, 0, 720914, 1610612744, 0, 720915, 1610612744, 0 )
 
 [node name="BgBuildings" type="TextureRect" parent="."]
 margin_right = 640.0
@@ -363,6 +376,22 @@ position = Vector2( 1.2981, 20.5303 )
 position = Vector2( 1.06066, 33.1109 )
 
 [node name="Sprite" parent="YSort/Props/TableV/Bread3" index="0"]
+texture = ExtResource( 29 )
+
+[node name="TableV5" parent="YSort/Props" instance=ExtResource( 6 )]
+position = Vector2( 59.6277, 301.818 )
+
+[node name="Bread" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 1.35876, 10.1265 )
+
+[node name="Bread2" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
+position = Vector2( 1.2981, 20.5303 )
+
+[node name="Bread3" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
+position = Vector2( 1.06066, 33.1109 )
+
+[node name="Sprite" parent="YSort/Props/TableV5/Bread3" index="0"]
 texture = ExtResource( 29 )
 
 [node name="TableV2" parent="YSort/Props" instance=ExtResource( 6 )]
@@ -578,6 +607,7 @@ HasAutoDialogue = false
 HasDemandDialogue = false
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
+visible = false
 position = Vector2( 2, 4 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere" index="2"]
@@ -590,6 +620,9 @@ vframes = 1
 position = Vector2( 246.891, 264.7 )
 HasAutoDialogue = false
 HasDemandDialogue = false
+
+[node name="Shadow" parent="YSort/NPC/Lingere2" index="1"]
+visible = false
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere2" index="2"]
 texture = ExtResource( 35 )
@@ -633,6 +666,7 @@ position = Vector2( 80.971, 2.673 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
+isCutscene = true
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 535, 225 )
@@ -652,10 +686,10 @@ position = Vector2( 82, 36 )
 script = ExtResource( 2 )
 
 [node name="NotebookController" type="Button" parent="."]
-margin_left = 592.719
-margin_top = 4.16838
-margin_right = 635.719
-margin_bottom = 39.1684
+margin_left = 650.0
+margin_top = 4.168
+margin_right = 693.0
+margin_bottom = 39.168
 focus_mode = 0
 mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
@@ -666,6 +700,10 @@ script = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
+anims/RESET = SubResource( 5 )
+anims/Slide = SubResource( 6 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
@@ -682,22 +720,6 @@ max_distance = 200.0
 stream = ExtResource( 20 )
 autoplay = true
 
-[node name="FadeIn" type="ColorRect" parent="."]
-visible = false
-margin_left = -14.0
-margin_top = -10.0
-margin_right = 661.0
-margin_bottom = 370.0
-color = Color( 0, 0, 0, 0.996078 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-autoplay = "Fade in"
-"anims/Fade in" = SubResource( 5 )
-anims/RESET = SubResource( 6 )
-
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
@@ -713,7 +735,9 @@ anims/RESET = SubResource( 6 )
 [connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
@@ -723,6 +747,7 @@ anims/RESET = SubResource( 6 )
 [editable path="YSort/Props/TableH/Bread5"]
 [editable path="YSort/Props/TableH/Bread6"]
 [editable path="YSort/Props/TableV/Bread3"]
+[editable path="YSort/Props/TableV5/Bread3"]
 [editable path="YSort/Props/TableV3/Bread3"]
 [editable path="YSort/Props/Box2"]
 [editable path="YSort/Props/Box3"]

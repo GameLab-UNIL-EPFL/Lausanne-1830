@@ -8,12 +8,14 @@ public class NotebookController : Button
 	// private string b = "text";
 	private Texture I;
 	private Texture Hover;
+	private AnimationPlayer AnimPlayer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		 Hover = (Texture)GD.Load("res://assets/04_notebook/journal2.png");
-		 I = (Texture)GD.Load("res://assets/04_notebook/journal.png");
+		Hover = (Texture)GD.Load("res://assets/04_notebook/journal2.png");
+		I = (Texture)GD.Load("res://assets/04_notebook/journal.png");
+		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +32,11 @@ public class NotebookController : Button
 	private void _on_NotebookController_mouse_exited() {
 		Icon = I;
 	}
-
+	
+	private void _on_Player_SlideInNotebookController() {
+		if(AnimPlayer == null) {
+			_Ready();
+		}
+		AnimPlayer.Play("Slide");
+	}
 }
-
-

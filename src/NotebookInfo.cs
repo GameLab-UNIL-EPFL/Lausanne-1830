@@ -11,25 +11,25 @@ public class NotebookInfo : Button {
 	public static Color C = new Color("#876853");
 	public static Color C1 = new Color("#ceb29f");
 	public static Color Hover = new Color("#9c2323");
-	private Sprite S;
-	private Texture SHover;
-	private Texture STexture;
+	private NinePatchRect N;
+	private Texture NHover;
+	private Texture NTexture;
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		// Fetch child node
-		S = GetNode<Sprite>("Sprite");
+		N = GetNode<NinePatchRect>("NinePatchRect");
 		
-		SHover = (Texture)GD.Load("res://assets/04_notebook/notebookBox2.png");
-		STexture = (Texture)GD.Load("res://assets/04_notebook/notebookBox.png");
+		NHover = (Texture)GD.Load("res://assets/04_notebook/notebookBox2.png");
+		NTexture = (Texture)GD.Load("res://assets/04_notebook/notebookBox.png");
 		
 		// Sanity Check
 		if(AttributeName == null) {
 			throw new Exception("NoteBookInfo must have an attribute name!");
 		}
 		if(Text == ""){
-			S.Show();
+			N.Show();
 		}
 	}
 	
@@ -37,9 +37,6 @@ public class NotebookInfo : Button {
 		// Check that the update signal was for this info
 		if(attribute == AttributeName) {
 			Text = newVal;
-		}
-		if(Text != "") {
-			S.Hide();
 		}
 		
 	}
@@ -49,12 +46,12 @@ public class NotebookInfo : Button {
 	}
 	
 	private void _on_NotebookInfo_mouse_entered() {
-		S.Texture = SHover;
+		N.Texture = NHover;
 	}
 
 
 	private void _on_NotebookInfo_mouse_exited() {
-		S.Texture = STexture;
+		N.Texture = NTexture;
 	}
 	
 }
