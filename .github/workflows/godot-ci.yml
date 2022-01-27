@@ -2,8 +2,8 @@ name: "godot-ci export"
 on: push
 
 env:
-  GODOT_VERSION: mono-3.4
-  EXPORT_NAME: test-project
+  GODOT_VERSION: 3.4
+  EXPORT_NAME: Lausanne-1830
 
 jobs:
   export-windows:
