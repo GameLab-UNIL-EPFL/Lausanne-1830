@@ -9,6 +9,12 @@ public class Player : KinematicBody2D {
 	[Signal]
 	public delegate void CutsceneEnd(NPC questNPC);
 	
+	[Signal]
+	public delegate void SlideInNotebookController();
+	
+	[Signal]
+	public delegate void OpenNotebook();
+	
 	//Player FSM
 	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
 	PlayerStates CurrentState = PlayerStates.IDLE;
@@ -17,7 +23,7 @@ public class Player : KinematicBody2D {
 	private PlayerStates PrevState = PlayerStates.IDLE;
 	
 	// Cutscene state
-	private bool isCutscene = true;
+	
 	private bool isCutsceneConv = false;
 	private ColorRect FadeIn;
 	
@@ -27,6 +33,8 @@ public class Player : KinematicBody2D {
 	public int RunSpeed = 150;
 	[Export]
 	public float RunTime = 3.0f; // Seconds
+	[Export]
+	public bool isCutscene;
 	
 	//Empirical acceleration and friction amounts
 	private const int ACC = 950;
@@ -117,6 +125,11 @@ public class Player : KinematicBody2D {
 				NotifySubs();
 			}
 		}
+		
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next")) {
+			EmitSignal(nameof(OpenNotebook));
+		}
 	}
 	
 	private void CheckIdle() {
@@ -196,7 +209,11 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-		FadeIn = GetNode<ColorRect>("../../FadeIn");
+		
+		if(!isCutscene) {
+			EmitSignal(nameof(SlideInNotebookController));
+		}
+
 	}
 	
 	// Called on every physics engine tick
@@ -229,6 +246,8 @@ public class Player : KinematicBody2D {
 	private NPC NearestSub() {
 		float minDistance = float.MaxValue;
 		NPC nearest = subs[0];
+		
+		// Iterate through all subs and keep the one with the shortest distance to player
 		foreach(NPC sub in subs) {
 			var distance = Position.DistanceTo(sub.Position);
 			if(distance < minDistance) {
@@ -255,8 +274,9 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
-			FadeIn.Hide();
-			EmitSignal(nameof(CutsceneEnd), NearestSub());
+			var nearestNPC = NearestSub();
+			EmitSignal(nameof(CutsceneEnd), nearestNPC);
+			EmitSignal(nameof(SlideInNotebookController));
 		}
 	}
 	
@@ -283,7 +303,5 @@ public class Player : KinematicBody2D {
 		}
 	}
 }
-
-
 
 

@@ -108,6 +108,10 @@ public class Notebook : Node2D {
 	}
 	
 	public void _on_CutsceneEnd(NPC questNPC) {
+		//Sanity check
+		if(questNPC == null) {
+			return;
+		}
 		//Update the characterInfo
 		FillCharInfo();
 		

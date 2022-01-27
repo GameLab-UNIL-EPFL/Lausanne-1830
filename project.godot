@@ -11,7 +11,11 @@ config_version=4
 [application]
 
 config/name="Lausanne 1830"
-run/main_scene="res://scenes/Prototype/ProtoPalud.tscn"
+run/main_scene="res://scenes/Menu.tscn"
+
+[autoload]
+
+SceneChanger="*res://scenes/SceneChanger.tscn"
 
 [display]
 

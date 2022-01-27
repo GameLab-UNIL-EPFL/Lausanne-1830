@@ -1,0 +1,57 @@
+<scene name="palud">
+    <dialogue type="onApproach" id="testApproach" ntargets="1">
+        <text>
+            <option id="0">Fruits et légumes frais!</option>
+            <option id="1">Venez goûter !</option>
+        </text>
+    </dialogue>
+    <dialogue type="onDemand" id="testDemand" ntargets="1">
+        <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
+        <text>Des belles pommes, des navets ?</text>
+        <text>Trüschel ? Non, je ne les connais pas, désolé.</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandElisabeth" ntargets="1">
+        <text>Vous ne devez pas être de la région. Tout le monde me connait ici.</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandTruschel" ntargets="1">
+        <text>Est-ce que je peux vous aider ? Vous m'avez l'air perdu.</text>
+        <text>Vous cherchez les Truschel ?</text>
+        <text>Vous tombez bien ! Ce sont mes parents.</text>
+        <text>On habite au bout de la rue Chaucrau, juste après l'église catholique.</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandOldMan" ntargets="1">
+        <text>Ah, Angélique a encore envoyé sa fille faire les courses.</text>
+        <text>C'est plutôt les domestiques qui devraient s'en charger.</text>
+        <text>Mais je crois qu'elle a envie de voir un peu la ville.</text>
+        <text>Ou en tout cas le jeune voiturier de la place, haha !</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandRandom" ntargets="1">
+        <text>Vous savez pas ce que Jeannette m'a raconté ce matin.</text>
+        <text>Apparement, Pierre s'est fait voler sa mallette.</text>
+        <text>Il est prêt à payer une jolie somme pour celui qui la retrouve.</text>
+        <text>Et moi je suis prêt à parier que le contenu de cette mallette</text>
+        <text>pourrait ruiner sa réputation...</text>
+        <text>Pierre? Mais enfin, c'est le propriétaire qui habite à la rue de Bourg !</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandPasteur" ntargets="1">
+        <text>Demain la messe aura lieu à 8h30 à la Cathédrale,</text>
+        <text>à 10h00 à l'église catholique à Chaucrau 15</text>
+        <text>et à 15h00 au temple à St-François.</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandBaker" ntargets="1">
+        <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
+        <text>Des betteraves, des choux ou des ragots ?</text>
+        <text>Il paraît qu'une nouvelle révolution se prépare.</text>
+        <text>Vous devriez aller faire un tour du côté du casino.</text>
+    </dialogue>
+    <dialogue type="onDemand" id="demandQuest" ntargets="1">
+        <text>Alors...</text>
+        <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
+        <text>Très bien. Voyons voir ce carnet...</text>
+        <text>Il est sensé contenir toutes les informations importantes sur les habitants de Lausanne.</text>
+        <text>Mais les données de plusieurs personnes sont manquantes.</text>
+        <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
+        <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
+        <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
+    </dialogue>
+</scene>
