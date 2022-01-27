@@ -5,19 +5,16 @@ Open source historically inspired role-playing game based on 1830s Lausanne.
 
 # Game Design
 
-Jeu pédagogique qui sera utilisé dans les écoles lausannoises (12-16 ans) ayant pour objectif de retranscrire Lausanne en 1830. Le but du jeu est de retrouver des informations sur cinq personnages habitant Lausanne en 1830 à travers la résolution d'enquêtes. Ces personnages sont :
-- Angélique Truschel (Propriétaire de Brasserie)
-- Henri Perregaux (Architecte)
-- Isabelle de Montolieu (Ecrivaine)
-- Jean-Jacques Mercier (Tanneur)
-- Benedict Rochat (Meunier)
+Jeu vidéo pédagogique qui sera utilisé dans les écoles lausannoises (12-16 ans) ayant pour objectif de retranscrire Lausanne en 1830. Le but du jeu est de compléter le registre de la population et de retrouver les informations manquantes sur cinq personnages habitant Lausanne en 1830 à travers la résolution d'enquêtes.
 
 Pour cela, le joueur ou la joueuse pourra se balader dans plusieurs espaces accessibles par l'intermédiaire d'une carte, à savoir : 
 - La place de la palud
 - Un moulin du Flon (vue extérieure et vue intérieure)
 - L'extérieur du Casino
 - L'intérieur de la brasserie Truschel
-- Le château de Vennes 
+
+Educational video game that will be used in schools (12-16yo) to teach the history of Lausanne in 1830. The goal is to complete the given notebook and find missing information about five characters living in Lausanne at the time.
+The player can explore different places that can be accessed through the map.
 
 # Dev  
 
