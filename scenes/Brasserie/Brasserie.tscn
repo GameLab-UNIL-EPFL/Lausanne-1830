@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=3]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=4]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=5]
-[ext_resource path="res://scenes/Notebook.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
@@ -52,9 +52,10 @@ __meta__ = {
 [node name="Placeholder" type="TextureRect" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 128.0
-margin_right = 512.0
-margin_bottom = 359.0
+margin_left = 152.0
+margin_top = 16.0
+margin_right = 536.0
+margin_bottom = 375.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
