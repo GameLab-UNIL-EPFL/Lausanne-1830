@@ -11,11 +11,11 @@ config_version=4
 [application]
 
 config/name="Lausanne 1830"
-run/main_scene="res://scenes/Menu.tscn"
+run/main_scene="res://scenes/Interaction/Menu.tscn"
 
 [autoload]
 
-SceneChanger="*res://scenes/SceneChanger.tscn"
+SceneChanger="*res://scenes/Interaction/SceneChanger.tscn"
 
 [display]
 
