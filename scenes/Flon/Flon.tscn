@@ -47,7 +47,7 @@ b = Vector2( 8.75844, 10.808 )
 
 [node name="Flon" type="Node2D"]
 
-[node name="TextureRect" type="Sprite" parent="."]
+[node name="Bg" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
 scale = Vector2( 1.33327, 1.33327 )
 texture = ExtResource( 1 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/02_architecture/03_brewery/fullScene.png" type="Texture" id=1]
+[ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=3]
+[ext_resource path="res://assets/02_architecture/03_brewery/cuve.png" type="Texture" id=4]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=7]
@@ -37,17 +38,16 @@ tracks/0/keys = {
 "values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
 }
 
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 32.0
+height = 48.0
+
 [node name="Brasserie" type="Node2D"]
 
-[node name="Placeholder" type="TextureRect" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_right = 640.0
-margin_bottom = 360.0
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( 319.111, 180.5 )
+scale = Vector2( 1.32963, 1.32963 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 320 )
@@ -55,9 +55,8 @@ position = Vector2( 208, 320 )
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-visible = false
 position = Vector2( 402, 128 )
-polygon = PoolVector2Array( -229.4, 106.581, -221.249, 104.363, -221.249, 31.7902, -228.928, 31.7827, -228.457, -47.5028, -202, -64, -98, -64, -68.9418, -46.5589, -69.4137, 30.8388, -202.028, 30.8388, -202, 48, -202, 96, -162.02, 96.5298, -161.687, 154.929, -154.345, 155.263, -154.679, 96.5298, 73.5833, 96.7104, 73.5833, 212.335, 238, 232, 238, -128, -402, -128, -402, 232, 78, 232, 73.1113, 211.863, -154.679, 211.483, -154.679, 169.436, -161.687, 168.768, -161.687, 211.483, -228.928, 210.879 )
+polygon = PoolVector2Array( -226, 152, -210, 152, -210, 56, -386, 56, -386, -48, -346, -64, -202, -64, -170, -48, -170, 56, -178, 56, -178, 160, -170, 160, -170, 128, -90, 128, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -82, 216, -82, 168, -90, 168, -90, 216, -226, 216 )
 
 [node name="Notebook" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -86,6 +85,17 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 496, 264 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 496, 264 )
+rotation = 1.5708
+shape = SubResource( 3 )
 
 [connection signal="OpenNotebook" from="Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
