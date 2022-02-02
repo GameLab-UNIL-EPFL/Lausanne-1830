@@ -1,7 +1,6 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/Notebook.cs" type="Script" id=2]
 [ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Palud/PaludFloor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Palud/PaludBuilings.tscn" type="PackedScene" id=5]
@@ -36,7 +35,6 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/profileLingereAnim-Sheet.png" type="Texture" id=36]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundry.png" type="Texture" id=37]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
-
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -683,8 +681,10 @@ visible = false
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
-position = Vector2( 82, 36 )
-script = ExtResource( 2 )
+position = Vector2( -4, 7 )
+
+[node name="Map" parent="Notebook" index="11"]
+visible = false
 
 [node name="NotebookController" type="Button" parent="."]
 margin_left = 650.0

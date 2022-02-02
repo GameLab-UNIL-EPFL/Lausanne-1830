@@ -16,18 +16,18 @@ scale = Vector2( 0.903226, 0.916667 )
 texture = ExtResource( 2 )
 
 [node name="brasserie_button" parent="." instance=ExtResource( 1 )]
-margin_left = 116.0
-margin_top = 93.0
-margin_right = 132.0
-margin_bottom = 109.0
+margin_left = 118.0
+margin_top = 96.0
+margin_right = 134.0
+margin_bottom = 112.0
 texture_hover = ExtResource( 3 )
 id = "Brasserie/Brasserie"
 
 [node name="moulin_button" parent="." instance=ExtResource( 1 )]
-margin_left = 176.0
-margin_top = 200.0
-margin_right = 192.0
-margin_bottom = 216.0
+margin_left = 175.0
+margin_top = 203.0
+margin_right = 191.0
+margin_bottom = 219.0
 texture_normal = ExtResource( 4 )
 id = "Flon/Flon"
 
@@ -41,9 +41,9 @@ id = "Palud/ProtoPalud"
 
 [node name="casino_button" parent="." instance=ExtResource( 1 )]
 margin_left = 270.0
-margin_top = 210.0
+margin_top = 214.0
 margin_right = 286.0
-margin_bottom = 226.0
+margin_bottom = 230.0
 texture_normal = ExtResource( 6 )
 id = "Casino/Casino"
 

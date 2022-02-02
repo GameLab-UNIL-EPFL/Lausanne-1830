@@ -408,7 +408,7 @@ vframes = 2
 
 [node name="Map" parent="." instance=ExtResource( 7 )]
 visible = false
-position = Vector2( 25.9568, 12.7135 )
+position = Vector2( 96, 32 )
 script = ExtResource( 8 )
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
