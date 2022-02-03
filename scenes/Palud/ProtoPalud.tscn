@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
@@ -775,9 +775,6 @@ texture = ExtResource( 39 )
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
 position = Vector2( -4, 7 )
-
-[node name="Map" parent="Notebook" index="11"]
-visible = false
 
 [node name="NotebookController" type="Button" parent="."]
 margin_left = 650.0
