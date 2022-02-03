@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/05_fonts/InfoFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/NotebookInfo.cs" type="Script" id=2]
+[ext_resource path="res://assets/04_notebook/notebookBox.png" type="Texture" id=4]
+
+[sub_resource type="StreamTexture" id=1]
+
+[node name="NotebookInfo" type="Button"]
+margin_right = 37.0
+margin_bottom = 22.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_colors/font_color = Color( 0.431373, 0.301961, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.333333, 0.207843, 0.121569, 1 )
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "info"
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 35.9483, 12.5083 )
+texture = SubResource( 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_NotebookInfo_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_NotebookInfo_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_NotebookInfo_pressed"]
