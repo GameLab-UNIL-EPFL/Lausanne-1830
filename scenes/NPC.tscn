@@ -173,6 +173,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="TextBox" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( -13, -43 )
 scale = Vector2( 0.28, 0.28 )
 
