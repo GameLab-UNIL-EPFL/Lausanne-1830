@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/Interaction/TextBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/01_characters/01_player/shadow.png" type="Texture" id=5]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
 height = 6.0
@@ -172,6 +171,7 @@ tracks/0/keys = {
 
 [node name="NPC" type="KinematicBody2D"]
 script = ExtResource( 2 )
+IdleStartProb = 25
 
 [node name="TextBox" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -201,7 +201,6 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 anims/Idle = SubResource( 3 )
 anims/IdleLeft = SubResource( 4 )
 anims/IdleRight = SubResource( 5 )

@@ -22,6 +22,14 @@ public class NPC : KinematicBody2D {
 	//Used to display text
 	private TextBox TB;
 	
+	//For Idle animation starting
+	private AnimationPlayer AP;
+	private bool IdleAnimIsPlaying = false;
+	private Random random = new Random();
+	
+	[Export]
+	public int IdleStartProb = 25; //0 to 100
+	
 	[Export]
 	public string AutoDialogueID;
 	[Export]
@@ -74,12 +82,22 @@ public class NPC : KinematicBody2D {
 		DC = Owner.GetNode<DialogueController>("DialogueController");
 		QC = Owner.GetNode<QuestController>("QuestController");
 		TB = GetNode<TextBox>("TextBox");
+		AP = GetNode<AnimationPlayer>("AnimationPlayer");
 		
 		//Sanity Check
 		if(HasDemandDialogue || HasAutoDialogue) {
 			if(DC == null) {
 				throw new Exception("Every scene must have its own dialogue controller!!");
 			} 
+		}
+	}
+	
+	public override void _Process(float delta) {
+		if(!IdleAnimIsPlaying) {
+			if(random.Next(100) < IdleStartProb) {
+				AP.Play("Idle");
+				IdleAnimIsPlaying = true;
+			}
 		}
 	}
 	
