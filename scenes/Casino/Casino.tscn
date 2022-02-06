@@ -56,19 +56,19 @@ b = Vector2( 7.2533, 11.611 )
 [node name="Casino" type="Node2D"]
 
 [node name="Bg" type="Sprite" parent="."]
-position = Vector2( 320.001, 180.001 )
+position = Vector2( 320, 180 )
 scale = Vector2( 1.33334, 1.33334 )
 texture = ExtResource( 7 )
 
 [node name="Casino" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Casino"]
-position = Vector2( 426.404, 134 )
-scale = Vector2( 1.28846, 1.28846 )
+position = Vector2( 426, 134 )
+scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Casino"]
-position = Vector2( 428.5, 133 )
+position = Vector2( 428, 133 )
 shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -106,7 +106,7 @@ volume_db = -5.0
 [node name="StaticBody2D" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D"]
-position = Vector2( 1.00075, 360.158 )
+position = Vector2( 1, 360 )
 shape = SubResource( 3 )
 one_way_collision = true
 
@@ -119,15 +119,17 @@ one_way_collision = true
 [node name="StaticBody2D2" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D2"]
-position = Vector2( -8.75844, 349.192 )
+position = Vector2( -8, 349 )
 shape = SubResource( 4 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D3"]
-position = Vector2( 633.633, 349.192 )
+position = Vector2( 633, 349 )
 shape = SubResource( 5 )
 
+[connection signal="OpenNotebook" from="Player" to="Notebook" method="_on_Player_OpenNotebook"]
+[connection signal="SlideInNotebookController" from="Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="Player" method="_on_NotebookController_pressed"]

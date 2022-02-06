@@ -321,20 +321,20 @@ position = Vector2( 319, 181 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
-position = Vector2( 1.00075, 360.158 )
+position = Vector2( 1, 360 )
 shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
-position = Vector2( -8.75844, 349.192 )
+position = Vector2( -9, 349 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D3"]
-position = Vector2( 633.633, 349.192 )
+position = Vector2( 633, 349 )
 shape = SubResource( 3 )
 
 [node name="YSort" type="YSort" parent="."]
@@ -342,10 +342,10 @@ shape = SubResource( 3 )
 [node name="Props" type="YSort" parent="YSort"]
 
 [node name="TableH" parent="YSort/Props" instance=ExtResource( 10 )]
-position = Vector2( 145.255, 253.265 )
+position = Vector2( 145, 253 )
 
 [node name="Bread4" parent="YSort/Props/TableH" instance=ExtResource( 7 )]
-position = Vector2( -0.140671, -5 )
+position = Vector2( 0, -5 )
 
 [node name="Sprite" parent="YSort/Props/TableH/Bread4" index="0"]
 texture = ExtResource( 27 )
@@ -357,47 +357,47 @@ position = Vector2( 15, -5 )
 texture = ExtResource( 28 )
 
 [node name="Bread6" parent="YSort/Props/TableH" instance=ExtResource( 7 )]
-position = Vector2( -15.1534, -5.18729 )
+position = Vector2( -15, -5 )
 
 [node name="Sprite" parent="YSort/Props/TableH/Bread6" index="0"]
 texture = ExtResource( 28 )
 
 [node name="TableV" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 59.6277, 249.617 )
+position = Vector2( 60, 250 )
 
 [node name="Bread" parent="YSort/Props/TableV" instance=ExtResource( 7 )]
-position = Vector2( 1.35876, 10.1265 )
+position = Vector2( 1, 10 )
 
 [node name="Bread2" parent="YSort/Props/TableV" instance=ExtResource( 7 )]
-position = Vector2( 1.2981, 20.5303 )
+position = Vector2( 1, 20 )
 
 [node name="Bread3" parent="YSort/Props/TableV" instance=ExtResource( 7 )]
-position = Vector2( 1.06066, 33.1109 )
+position = Vector2( 1, 33 )
 
 [node name="Sprite" parent="YSort/Props/TableV/Bread3" index="0"]
 texture = ExtResource( 29 )
 
 [node name="TableV5" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 59.6277, 301.818 )
+position = Vector2( 60, 302 )
 
 [node name="Bread" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
 visible = false
-position = Vector2( 1.35876, 10.1265 )
+position = Vector2( 1, 10 )
 
 [node name="Bread2" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
-position = Vector2( 1.2981, 20.5303 )
+position = Vector2( 1, 20 )
 
 [node name="Bread3" parent="YSort/Props/TableV5" instance=ExtResource( 7 )]
-position = Vector2( 1.06066, 33.1109 )
+position = Vector2( 1, 33 )
 
 [node name="Sprite" parent="YSort/Props/TableV5/Bread3" index="0"]
 texture = ExtResource( 29 )
 
 [node name="TableV2" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 481.914, 263.871 )
+position = Vector2( 482, 264 )
 
 [node name="Bread" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
-position = Vector2( 0.82843, 5.53033 )
+position = Vector2( 1, 6 )
 
 [node name="Bread3" parent="YSort/Props/TableV2" instance=ExtResource( 7 )]
 visible = false
@@ -408,14 +408,14 @@ visible = false
 position = Vector2( -1, 20 )
 
 [node name="TableV3" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 642.375, 226.674 )
+position = Vector2( 642, 227 )
 
 [node name="Bread" parent="YSort/Props/TableV3" instance=ExtResource( 7 )]
 visible = false
 position = Vector2( -2, 5 )
 
 [node name="Bread3" parent="YSort/Props/TableV3" instance=ExtResource( 7 )]
-position = Vector2( 0, 31.3342 )
+position = Vector2( 0, 31 )
 
 [node name="Sprite" parent="YSort/Props/TableV3/Bread3" index="0"]
 texture = ExtResource( 29 )
@@ -425,10 +425,10 @@ visible = false
 position = Vector2( -1, 20 )
 
 [node name="TableV4" parent="YSort/Props" instance=ExtResource( 6 )]
-position = Vector2( 642.52, 270.147 )
+position = Vector2( 642, 270 )
 
 [node name="Bread" parent="YSort/Props/TableV4" instance=ExtResource( 7 )]
-position = Vector2( 0, 11.3047 )
+position = Vector2( 0, 11 )
 
 [node name="Bread3" parent="YSort/Props/TableV4" instance=ExtResource( 7 )]
 position = Vector2( 0, 37 )
@@ -438,7 +438,7 @@ visible = false
 position = Vector2( -1, 20 )
 
 [node name="Box2" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 443.365, 259.981 )
+position = Vector2( 443, 260 )
 z_index = 1
 
 [node name="Sprite" parent="YSort/Props/Box2" index="0"]
@@ -446,55 +446,52 @@ z_as_relative = false
 texture = ExtResource( 25 )
 
 [node name="Box3" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 443.365, 272.711 )
+position = Vector2( 443, 273 )
 
 [node name="Sprite" parent="YSort/Props/Box3" index="0"]
 texture = ExtResource( 25 )
 
 [node name="Box4" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 2.38654, 232.228 )
+position = Vector2( 2, 232 )
 
 [node name="Sprite" parent="YSort/Props/Box4" index="0"]
 texture = ExtResource( 25 )
 
 [node name="Box5" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 420.175, 326.523 )
+position = Vector2( 420, 326 )
 
 [node name="Sprite" parent="YSort/Props/Box5" index="0"]
 texture = ExtResource( 25 )
 
 [node name="Box7" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 627, 342.523 )
+position = Vector2( 627, 342 )
 
 [node name="Sprite" parent="YSort/Props/Box7" index="0"]
 texture = ExtResource( 25 )
 
 [node name="Box6" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 398.77, 325.928 )
+position = Vector2( 399, 326 )
 
 [node name="Sprite" parent="YSort/Props/Box6" index="0"]
 texture = ExtResource( 22 )
 
 [node name="Item" parent="YSort/Props" instance=ExtResource( 16 )]
-position = Vector2( 54.6294, 192.912 )
+position = Vector2( 55, 193 )
 
 [node name="Label" parent="YSort/Props/Item/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="YSort/Props/Item/Sprite" index="1"]
-frame = 0
-
 [node name="AffichePlaceholder" type="ColorRect" parent="YSort/Props"]
-margin_left = 45.457
-margin_top = 183.915
-margin_right = 61.457
-margin_bottom = 202.915
+margin_left = 45.0
+margin_top = 184.0
+margin_right = 61.0
+margin_bottom = 203.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Box" parent="YSort/Props" instance=ExtResource( 24 )]
-position = Vector2( 2.19925, 248.341 )
+position = Vector2( 2, 248 )
 
 [node name="Sprite" parent="YSort/Props/Box" index="0"]
 texture = ExtResource( 22 )
@@ -502,7 +499,7 @@ texture = ExtResource( 22 )
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 120.902, 333.068 )
+position = Vector2( 121, 333 )
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
@@ -511,7 +508,7 @@ HasAutoDialogue = false
 visible = false
 
 [node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 147.457, 228.564 )
+position = Vector2( 147, 228 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
@@ -522,7 +519,7 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 32 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 29.457, 278.564 )
+position = Vector2( 29, 278 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
@@ -533,7 +530,7 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 32 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 452.755, 298.104 )
+position = Vector2( 453, 298 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
@@ -544,7 +541,7 @@ position = Vector2( -13.8276, -35.652 )
 texture = ExtResource( 32 )
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 190.45, 295.152 )
+position = Vector2( 190, 295 )
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -565,7 +562,7 @@ visible = false
 visible = false
 
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 259.118, 203.991 )
+position = Vector2( 259, 204 )
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
@@ -586,7 +583,7 @@ visible = false
 visible = false
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 300.692, 331.808 )
+position = Vector2( 301, 332 )
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -601,7 +598,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 329.886, 256.665 )
+position = Vector2( 330, 257 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -616,7 +613,7 @@ hframes = 2
 vframes = 1
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 246.891, 264.7 )
+position = Vector2( 247, 265 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -639,29 +636,29 @@ anims/WalkRight = SubResource( 13 )
 anims/WalkUp = SubResource( 14 )
 
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 338.529, 256.327 )
+position = Vector2( 339, 256 )
 
 [node name="Barrel" parent="YSort/Fountain" instance=ExtResource( 24 )]
 visible = false
-position = Vector2( -9.05597, -9.65367 )
+position = Vector2( -9, -10 )
 
 [node name="Barrel2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -67.2146, -4.28622 )
+position = Vector2( -67, -4 )
 
 [node name="Laundry" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -37.5483, -11.8868 )
+position = Vector2( -37, -12 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry" index="0"]
 texture = ExtResource( 37 )
 
 [node name="Laundry2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -72.0137, 18.0139 )
+position = Vector2( -72, 18 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
 
 [node name="Pigeon" parent="YSort/Fountain" instance=ExtResource( 33 )]
-position = Vector2( 80.971, 2.673 )
+position = Vector2( 81, 3 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
@@ -682,9 +679,6 @@ visible = false
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
 position = Vector2( -4, 7 )
-
-[node name="Map" parent="Notebook" index="11"]
-visible = false
 
 [node name="NotebookController" type="Button" parent="."]
 margin_left = 650.0

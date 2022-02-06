@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 
 public class Notebook : Node2D {
-	
+	private List<NotebookInfo> tempInfo = new List<NotebookInfo>();
 	private List<NotebookInfo> info = new List<NotebookInfo>();
 	private List<Label> infoStatic = new List<Label>();
 	private string[] infoNames = {"Prenom", "Nom", "Adresse", "Num", "Conjoint", "Enfants", "Metier"};
 	
 	private bool hidden = true;
+	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
 	
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
@@ -140,5 +141,26 @@ public class Notebook : Node2D {
 		}
 		hidden = !hidden;
 	}
+	
+	public void _on_MapButton_pressed() {
+		if(mapOpen) {
+			//Show all temps
+			foreach(var i in tempInfo) {
+				i.Show();
+			}
+			tempInfo.Clear();
+		} else {
+			//Copy activated buttons to temp
+			foreach(var i in info) {
+				if(i.Visible)  {
+					tempInfo.Add(i);
+				}
+				i.Hide();
+			}
+		}
+		mapOpen = !mapOpen;
+	}
 }
+
+
 

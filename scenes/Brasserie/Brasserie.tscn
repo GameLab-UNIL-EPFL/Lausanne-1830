@@ -1017,7 +1017,7 @@ __meta__ = {
 }
 
 [node name="Bg" type="Sprite" parent="."]
-position = Vector2( 319.111, 180.5 )
+position = Vector2( 319, 180 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -1034,7 +1034,7 @@ polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -38
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Cuve" type="StaticBody2D" parent="YSort"]
-position = Vector2( -21.4057, -19.6219 )
+position = Vector2( -21, -19 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1052,12 +1052,12 @@ polygon = PoolVector2Array( 16, 48, 32, 32, 40, 16, 40, -16, 32, -32, 16, -48, 0
 position = Vector2( 269, 287 )
 
 [node name="Adrienne" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 204, 144.495 )
+position = Vector2( 204, 144 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
 [node name="Angelique" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 277, 241.508 )
+position = Vector2( 277, 241 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -1075,7 +1075,7 @@ anims/WalkRight = SubResource( 49 )
 anims/WalkUp = SubResource( 50 )
 
 [node name="Jenny" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 137, 153.495 )
+position = Vector2( 137, 153 )
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
@@ -1129,7 +1129,7 @@ anims/WalkRight = SubResource( 25 )
 anims/WalkUp = SubResource( 26 )
 
 [node name="Brasseur" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 536.65, 240 )
+position = Vector2( 536, 240 )
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
@@ -1165,13 +1165,13 @@ anims/WalkRight = SubResource( 41 )
 anims/WalkUp = SubResource( 42 )
 
 [node name="Bag" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 487.034, 184.779 )
+position = Vector2( 487, 184 )
 
 [node name="Sprite" parent="YSort/Bag" index="0"]
 texture = ExtResource( 20 )
 
 [node name="Barrel" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 536.65, 188 )
+position = Vector2( 536, 188 )
 
 [node name="Sprite" parent="YSort/Barrel" index="0"]
 texture = ExtResource( 19 )
@@ -1231,7 +1231,7 @@ flip_h = true
 shape = SubResource( 52 )
 
 [node name="Chair" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 174.516, 110.299 )
+position = Vector2( 174, 110 )
 
 [node name="Sprite" parent="YSort/Chair" index="0"]
 texture = ExtResource( 26 )

@@ -422,6 +422,7 @@ stream = ExtResource( 9 )
 [connection signal="OpenOptions" from="Sprite/Conjoint" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Enfants" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Metier" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="pressed" from="MapButton" to="." method="_on_MapButton_pressed"]
 [connection signal="pressed" from="MapButton" to="Map" method="_on_MapButton_pressed"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Prenom" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Nom" method="_on_UpdateInfo"]
