@@ -1,0 +1,435 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/04_notebook/closeButton.png" type="Texture" id=4]
+[ext_resource path="res://assets/04_notebook/noteBooksTabsSheet.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Notebook/NotebookList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Notebook/Map.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Map.cs" type="Script" id=8]
+[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=9]
+[ext_resource path="res://src/Notebook.cs" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+use_mipmaps = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+use_mipmaps = true
+font_data = ExtResource( 3 )
+
+[node name="Notebook" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -148.0
+margin_top = -127.0
+margin_right = 761.0
+margin_bottom = 463.0
+color = Color( 0, 0, 0, 0.462745 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Labels" type="Control" parent="Sprite"]
+margin_left = 66.0
+margin_top = 36.0
+margin_right = 106.0
+margin_bottom = 76.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PrenomLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 144.0
+margin_top = 54.0
+margin_right = 176.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Prénom :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NomLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 144.0
+margin_top = 87.0
+margin_right = 168.0
+margin_bottom = 101.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Nom :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdresseLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 127.0
+margin_right = 114.0
+margin_bottom = 141.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Adresse :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConjointLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 159.0
+margin_right = 129.0
+margin_bottom = 173.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Etat Civil :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnfantLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 192.0
+margin_right = 124.0
+margin_bottom = 206.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Enfant(s) :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MetierLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 80.0
+margin_top = 223.0
+margin_right = 114.0
+margin_bottom = 237.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Métier :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumLabel" type="Label" parent="Sprite/Labels"]
+margin_left = 203.0
+margin_top = 127.0
+margin_right = 237.0
+margin_bottom = 141.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "N° :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Placeholder" type="ColorRect" parent="Sprite"]
+margin_left = 144.0
+margin_top = 76.0
+margin_right = 200.0
+margin_bottom = 152.0
+color = Color( 0.647059, 0.435294, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 246.0
+margin_top = 88.0
+margin_right = 296.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 4 )
+text = ""
+AttributeName = "prenom"
+
+[node name="PrenomStatic" type="Label" parent="Sprite"]
+margin_left = 248.0
+margin_top = 88.0
+margin_right = 297.0
+margin_bottom = 106.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 240.0
+margin_top = 119.0
+margin_right = 284.0
+margin_bottom = 137.0
+custom_fonts/font = SubResource( 4 )
+text = "Trüschel"
+AttributeName = "nom"
+
+[node name="NomStatic" type="Label" parent="Sprite"]
+margin_left = 240.0
+margin_top = 119.0
+margin_right = 283.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 183.0
+margin_top = 160.0
+margin_right = 255.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 4 )
+text = ""
+AttributeName = "adresse"
+
+[node name="AdresseStatic" type="Label" parent="Sprite"]
+margin_left = 186.0
+margin_top = 160.0
+margin_right = 258.0
+margin_bottom = 177.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Num" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 286.0
+margin_top = 160.0
+margin_right = 308.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 4 )
+text = ""
+AttributeName = "num"
+
+[node name="NumStatic" type="Label" parent="Sprite"]
+margin_left = 287.0
+margin_top = 160.0
+margin_right = 308.0
+margin_bottom = 178.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 208.0
+margin_top = 192.0
+margin_right = 261.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 4 )
+text = ""
+AttributeName = "conjoint"
+
+[node name="ConjointStatic" type="Label" parent="Sprite"]
+margin_left = 208.0
+margin_top = 192.0
+margin_right = 261.0
+margin_bottom = 210.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 201.0
+margin_top = 224.0
+margin_right = 222.0
+margin_bottom = 242.0
+custom_fonts/font = SubResource( 4 )
+text = "4"
+AttributeName = "enfants"
+
+[node name="EnfantsStatic" type="Label" parent="Sprite"]
+margin_left = 202.0
+margin_top = 225.0
+margin_right = 223.0
+margin_bottom = 242.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Metier" parent="Sprite" instance=ExtResource( 2 )]
+margin_left = 186.0
+margin_top = 256.0
+margin_right = 258.0
+margin_bottom = 274.0
+custom_fonts/font = SubResource( 4 )
+text = "Propriétaire"
+AttributeName = "metier"
+
+[node name="MetierStatic" type="Label" parent="Sprite"]
+margin_left = 186.0
+margin_top = 256.0
+margin_right = 258.0
+margin_bottom = 274.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Propriétaire"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quest" type="Label" parent="."]
+margin_left = 341.0
+margin_top = 97.0
+margin_right = 486.0
+margin_bottom = 150.0
+custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Objectif:
+Trouver les informations manquantes pour completer le registre et aller les faire  valider."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tab" type="Sprite" parent="."]
+position = Vector2( 514.51, 99.4949 )
+texture = ExtResource( 5 )
+vframes = 4
+
+[node name="PageNum" type="Label" parent="Tab"]
+margin_left = -12.0
+margin_top = -7.0
+margin_right = 11.0
+margin_bottom = 8.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tab2" type="Sprite" parent="."]
+position = Vector2( 514.483, 131.056 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 1
+
+[node name="Tab3" type="Sprite" parent="."]
+position = Vector2( 514.51, 163 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 1
+
+[node name="Tab4" type="Sprite" parent="."]
+position = Vector2( 514.514, 195 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 1
+
+[node name="Tab5" type="Sprite" parent="."]
+position = Vector2( 514.504, 226.808 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 1
+
+[node name="TabMap" type="Sprite" parent="."]
+position = Vector2( 514.466, 259.188 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 2
+
+[node name="MapButton" type="Button" parent="."]
+margin_left = 502.0
+margin_top = 249.0
+margin_right = 528.0
+margin_bottom = 269.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotebookList" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 232, 112 )
+DBFilePath = "res://db/characters/notebookCharacterList.xml"
+
+[node name="Close" type="Button" parent="NotebookList"]
+margin_left = 162.0
+margin_top = 1.0
+margin_right = 174.0
+margin_bottom = 20.0
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseSprite" type="Sprite" parent="NotebookList/Close"]
+position = Vector2( 6.29401, 6.3778 )
+texture = ExtResource( 4 )
+vframes = 2
+
+[node name="Map" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 96, 48 )
+script = ExtResource( 8 )
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Adresse" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Num" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Conjoint" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Enfants" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="OpenOptions" from="Sprite/Metier" to="NotebookList" method="_on_OpenOptions"]
+[connection signal="pressed" from="MapButton" to="." method="_on_MapButton_pressed"]
+[connection signal="pressed" from="MapButton" to="Map" method="_on_MapButton_pressed"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Prenom" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Nom" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Adresse" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Num" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Conjoint" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Enfants" method="_on_UpdateInfo"]
+[connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
+[connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
+[connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]

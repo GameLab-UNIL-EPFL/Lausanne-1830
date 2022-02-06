@@ -15,7 +15,7 @@ public class Menu : Control
 
 	private void _on_Button_pressed() {
 		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
-		SC.GotoScene("res://scenes/Prototype/ProtoPalud.tscn");
+		SC.GotoScene("res://scenes/Palud/ProtoPalud.tscn");
 	}
 
 }
