@@ -40,6 +40,14 @@ public class NPC : KinematicBody2D {
 	private float wanderTime = 1.0f;
 	
 	[Export]
+	public int ProbRight = 2; //max weight of right movement
+	[Export]
+	public int ProbLeft = 2; //max weight of left movement
+	[Export]
+	public int ProbUp = 2; //max weight of up movement
+	[Export]
+	public int ProbDown = 2; //max weight of down movement
+	[Export]
 	public bool CanWander = false;
 	[Export]
 	public float WanderingCooldown = 5.0f;
@@ -125,9 +133,10 @@ public class NPC : KinematicBody2D {
 	
 	//Generate a new random position within the wandering distance
 	private Vector2 NewInputVec() {
-		int randXOffset = random.Next(2);
-		int randYOffset = random.Next(2);
-		return new Vector2(randXOffset - random.Next(2), randYOffset - random.Next(2));
+		return new Vector2(
+			random.Next(ProbRight) - random.Next(ProbLeft), 
+			random.Next(ProbDown) - random.Next(ProbUp)
+		);
 	}
 	
 	private void StopWandering() {
