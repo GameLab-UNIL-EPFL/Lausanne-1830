@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
@@ -101,6 +101,22 @@ b = Vector2( 642.831, 1.25632 )
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 7.58701, -140.561 )
 b = Vector2( 7.2533, 11.611 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Idle"
@@ -258,6 +274,10 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 8, 9, 8, 10 ]
 }
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -500,12 +520,16 @@ texture = ExtResource( 22 )
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 121, 333 )
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
 [node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
 visible = false
+
+[node name="AnimationTree" parent="YSort/NPC/Truschel" index="6"]
+parameters/playback = SubResource( 15 )
 
 [node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 147, 228 )
@@ -518,6 +542,9 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
 
+[node name="AnimationTree" parent="YSort/NPC/Baker" index="6"]
+parameters/playback = SubResource( 16 )
+
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 29, 278 )
 AutoDialogueID = "testApproach"
@@ -528,6 +555,9 @@ position = Vector2( -13.8276, -35.652 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
+
+[node name="AnimationTree" parent="YSort/NPC/Baker3" index="6"]
+parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 453, 298 )
@@ -540,8 +570,12 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
 
+[node name="AnimationTree" parent="YSort/NPC/Baker2" index="6"]
+parameters/playback = SubResource( 18 )
+
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 190, 295 )
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -561,8 +595,12 @@ visible = false
 [node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/NPC/Elisabeth" index="6"]
+parameters/playback = SubResource( 19 )
+
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 259, 204 )
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
@@ -582,8 +620,12 @@ visible = false
 [node name="CollisionShape2D" parent="YSort/NPC/Random/ListenBox" index="0"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/NPC/Random" index="6"]
+parameters/playback = SubResource( 20 )
+
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 301, 332 )
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -597,6 +639,9 @@ texture = ExtResource( 13 )
 [node name="ListenBox" parent="YSort/NPC/OldMan" index="4"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/NPC/OldMan" index="6"]
+parameters/playback = SubResource( 21 )
+
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 330, 257 )
 HasAutoDialogue = false
@@ -608,9 +653,11 @@ position = Vector2( 2, 4 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere" index="2"]
 texture = ExtResource( 36 )
-flip_h = false
 hframes = 2
 vframes = 1
+
+[node name="AnimationTree" parent="YSort/NPC/Lingere" index="6"]
+parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 247, 265 )
@@ -634,6 +681,9 @@ anims/WalkDown = SubResource( 11 )
 anims/WalkLeft = SubResource( 12 )
 anims/WalkRight = SubResource( 13 )
 anims/WalkUp = SubResource( 14 )
+
+[node name="AnimationTree" parent="YSort/NPC/Lingere2" index="6"]
+parameters/playback = SubResource( 23 )
 
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 339, 256 )
@@ -675,6 +725,9 @@ texture = ExtResource( 34 )
 
 [node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
+
+[node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
+parameters/playback = SubResource( 24 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
