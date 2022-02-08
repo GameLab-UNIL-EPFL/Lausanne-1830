@@ -603,6 +603,8 @@ parameters/playback = SubResource( 19 )
 
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 259, 204 )
+ProbUp = 0
+ProbDown = 0
 CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
@@ -627,7 +629,11 @@ visible = false
 parameters/playback = SubResource( 20 )
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 301, 332 )
+position = Vector2( 301, 325 )
+ProbRight = 1
+ProbLeft = 1
+ProbUp = 0
+ProbDown = 0
 CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
