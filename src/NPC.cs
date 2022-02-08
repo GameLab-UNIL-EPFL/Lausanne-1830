@@ -127,7 +127,7 @@ public class NPC : KinematicBody2D {
 	private Vector2 NewInputVec() {
 		int randXOffset = random.Next(2);
 		int randYOffset = random.Next(2);
-		return new Vector2(randXOffset - random.Next(3), randYOffset - random.Next(3));
+		return new Vector2(randXOffset - random.Next(2), randYOffset - random.Next(2));
 	}
 	
 	private void StopWandering() {
