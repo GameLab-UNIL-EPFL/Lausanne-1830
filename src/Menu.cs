@@ -3,14 +3,13 @@ using System;
 
 public class Menu : Control
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+	private AnimationPlayer AP;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		
+		AP = GetNode<AnimationPlayer>("AnimationPlayer");
+		AP.Play("Loop");
 	}
 
 	private void _on_Button_pressed() {

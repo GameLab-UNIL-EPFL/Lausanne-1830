@@ -11,6 +11,7 @@ public class Notebook : Node2D {
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
+	private AnimationPlayer AnimPlayer;
 	
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
 	public InfoValue_t correctInfo = new InfoValue_t(false);
@@ -49,7 +50,7 @@ public class Notebook : Node2D {
 	public override void _Ready() {
 		Hide();
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
-		
+		AnimPlayer = GetNode<AnimationPlayer>("../NotebookController/AnimationPlayer");
 		//Fetch all info
 		foreach(var infoName in infoNames) {
 			info.Add(GetNode<NotebookInfo>("Sprite/" + infoName));
@@ -136,8 +137,10 @@ public class Notebook : Node2D {
 		}
 		if(hidden) {
 			Show();
+			AnimPlayer.Play("FadeSound");
 		} else {
 			Hide();
+			AnimPlayer.PlayBackwards("FadeSound");
 		}
 		hidden = !hidden;
 	}
