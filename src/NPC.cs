@@ -42,9 +42,9 @@ public class NPC : KinematicBody2D {
 	[Export]
 	public bool CanWander = false;
 	[Export]
-	public float WanderingCooldown = 10.0f;
+	public float WanderingCooldown = 5.0f;
 	[Export]
-	public float WanderingDist = 3.0f;
+	public float WanderingDist = 1.0f;
 	[Export]
 	public int WalkSpeed = 50;
 	[Export]
@@ -125,9 +125,9 @@ public class NPC : KinematicBody2D {
 	
 	//Generate a new random position within the wandering distance
 	private Vector2 NewInputVec() {
-		int randXOffset = random.Next(100);
-		int randYOffset = random.Next(100);
-		return new Vector2(randXOffset, randYOffset).Normalized();
+		int randXOffset = random.Next(2);
+		int randYOffset = random.Next(2);
+		return new Vector2(randXOffset - random.Next(3), randYOffset - random.Next(3));
 	}
 	
 	private void StopWandering() {
@@ -178,6 +178,10 @@ public class NPC : KinematicBody2D {
 		} else {
 			//Scale velocity and move
 			Velocity = MoveAndSlide(Velocity);
+			
+			/*if(GetSlideCount() > 0) {
+				StopWandering();
+			}*/
 		}
 	}
 	
@@ -205,8 +209,6 @@ public class NPC : KinematicBody2D {
 					TB._ShowText(next);
 				}
 			}
-		} else {
-			StopWandering();
 		}
 	}
 	
@@ -307,6 +309,12 @@ public class NPC : KinematicBody2D {
 				if(InnerLinesCount != 0) {
 					d = InnerLines[InnerLines.Length - InnerLinesCount--];
 				}
+				
+				//Turn to player
+				InputVec = (player.Position - Position).Normalized();
+				HandleMovement(0.03f);
+				InputVec = Vector2.Zero;
+				HandleMovement(0.03f);
 			}
 			
 			//Show it in the box
