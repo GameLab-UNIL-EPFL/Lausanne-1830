@@ -28,17 +28,17 @@ script = ExtResource( 2 )
 
 [node name="ApproachTB" type="Sprite" parent="."]
 position = Vector2( 204, 34 )
-scale = Vector2( 2.76923, 1.91463 )
+scale = Vector2( 2.8, 2 )
 texture = ExtResource( 3 )
 
 [node name="DemandTB" type="Sprite" parent="."]
 position = Vector2( 208, -14 )
-scale = Vector2( 2.78205, 2.14286 )
+scale = Vector2( 2.8, 2 )
 texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 4.73065, 41.1354 )
-scale = Vector2( 3.28189, 3.28189 )
+position = Vector2( 5, 40 )
+scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
 animation = "press"
 playing = true

@@ -36,6 +36,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0, 9 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:align")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 1 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -63,6 +75,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 1 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:align")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
 
 [node name="MapIcon" type="TextureButton"]
 margin_right = 16.0
@@ -75,9 +99,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 visible = false
-margin_left = 21.0
+margin_left = 25.0
 margin_top = 1.0
-margin_right = 22.0
+margin_right = 26.0
 margin_bottom = 17.0
 custom_colors/font_color = Color( 0.431373, 0.301961, 0.211765, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -92,11 +116,8 @@ __meta__ = {
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Label"]
 show_behind_parent = true
-anchor_left = -0.033
-anchor_right = 1.033
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.574
-margin_right = -7.574
 texture = ExtResource( 3 )
 patch_margin_left = 7
 patch_margin_top = 6

@@ -12,6 +12,7 @@ outline_size = 1
 outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 use_mipmaps = true
 use_filter = true
+extra_spacing_char = 1
 font_data = ExtResource( 4 )
 
 [sub_resource type="SpriteFrames" id=3]
@@ -62,7 +63,16 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="Open" type="Node2D" parent="."]
-visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Open"]
+margin_left = -606.0
+margin_top = -395.0
+margin_right = 713.0
+margin_bottom = 455.0
+color = Color( 0, 0, 0, 0.560784 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]

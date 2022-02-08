@@ -6,6 +6,9 @@ public class MapIcon : TextureButton
 	[Export]
 	public string id = "Brasserie";
 	
+	[Export]
+	public string text = "Brasserie";
+	
 	private AnimationPlayer AnimPlayer;
 	private Label L;
 
@@ -14,6 +17,7 @@ public class MapIcon : TextureButton
 	{
 		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		L = GetNode<Label>("Label");
+		L.Text = text;
 	}
 
 	private void _on_MapIcon_pressed()

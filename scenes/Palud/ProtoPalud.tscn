@@ -263,6 +263,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="DynamicFont" id=15]
+use_mipmaps = true
 font_data = ExtResource( 30 )
 
 [sub_resource type="Animation" id=5]
@@ -667,30 +668,20 @@ texture = ExtResource( 34 )
 [node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
 
-[node name="Item" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 54.6294, 187.085 )
+[node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 55, 188 )
 z_index = 1
 
-[node name="Sprite" parent="YSort/Item" index="0"]
+[node name="Sprite" parent="YSort/Affiche" index="0"]
 visible = false
 
-[node name="Label" parent="YSort/Item/Sprite" index="0"]
+[node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="YSort/Item/Sprite" index="1"]
-frame = 0
+[node name="Open" parent="YSort/Affiche" index="2"]
+visible = false
 
-[node name="AffichePlaceholder" type="ColorRect" parent="YSort/Item/Open" index="0"]
-margin_left = -96.0
-margin_top = -201.0
-margin_right = 603.0
-margin_bottom = 198.0
-color = Color( 0, 0, 0, 0.560784 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Item/Open" index="1"]
+[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Affiche/Open" index="1"]
 margin_left = 166.0
 margin_top = -130.0
 margin_right = 350.0
@@ -705,7 +696,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="YSort/Item/Open" index="2"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="YSort/Affiche/Open" index="2"]
 margin_left = 20.0
 margin_top = -6.0
 margin_right = 238.0
@@ -720,20 +711,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="YSort/Item/Open" index="3"]
-margin_left = 186.283
-margin_top = -113.959
-margin_right = 336.283
-margin_bottom = -78.9594
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 15 )
-text = "Tannerie Mercier
-Cherche apprenti"
+[node name="NinePatchRect3" type="NinePatchRect" parent="YSort/Affiche/Open" index="3"]
+margin_left = 275.0
+margin_top = 30.0
+margin_right = 483.0
+margin_bottom = 126.0
+texture = ExtResource( 26 )
+region_rect = Rect2( 1, 1, 154, 73 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="YSort/Item/Open" index="4"]
+[node name="Label" type="Label" parent="YSort/Affiche/Open" index="4"]
+margin_left = 168.0
+margin_top = -120.0
+margin_right = 348.0
+margin_bottom = -75.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "TANNERIE MERCIER
+Cherche apprenti"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="YSort/Affiche/Open" index="5"]
+margin_left = 184.0
+margin_top = -72.0
+margin_right = 398.0
+margin_bottom = -18.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Se présenter directement
+aupres de Mr. Mercier
+A la Rue de Pré 31"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="YSort/Affiche/Open" index="6"]
 margin_left = 31.5
 margin_top = 7.0
 margin_right = 278.5
@@ -751,22 +774,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="YSort/Item/Open" index="5"]
-margin_left = 184.783
-margin_top = -72.4594
-margin_right = 398.783
-margin_bottom = -18.4594
-rect_scale = Vector2( 0.7, 0.7 )
+[node name="Label4" type="Label" parent="YSort/Affiche/Open" index="7"]
+margin_left = 275.0
+margin_top = 42.0
+margin_right = 412.0
+margin_bottom = 63.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 15 )
-text = "Se présenter directement
-aupres de Mr. Mercier
-A la Rue de Pré 31"
+text = "Conseils"
+align = 1
+valign = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/Item/Open" index="6"]
+[node name="Label5" type="Label" parent="YSort/Affiche/Open" index="8"]
+margin_left = 277.0
+margin_top = 61.0
+margin_right = 570.0
+margin_bottom = 160.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "Sur l'Art de guérir sans mercure,
+LES MALADIES SECRETES,
+Un volume, prix 1 fr. 50 c."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="9"]
 modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
 position = Vector2( 56.1055, 21.75 )
 scale = Vector2( 0.411111, 0.411111 )
@@ -870,7 +911,7 @@ autoplay = true
 [editable path="YSort/Fountain/Laundry2"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
-[editable path="YSort/Item"]
+[editable path="YSort/Affiche"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
