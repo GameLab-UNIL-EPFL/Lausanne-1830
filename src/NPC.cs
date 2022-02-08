@@ -144,6 +144,7 @@ public class NPC : KinematicBody2D {
 		isWandering = false;
 		InputVec = Vector2.Zero;
 		Velocity = Vector2.Zero;
+		AS.Travel("Idle");
 		
 		//Start cooldown
 		cooldown = (random.Next(100)/100.0f) * WanderingCooldown;
@@ -187,10 +188,7 @@ public class NPC : KinematicBody2D {
 		} else {
 			//Scale velocity and move
 			Velocity = MoveAndSlide(Velocity);
-			
-			/*if(GetSlideCount() > 0) {
-				StopWandering();
-			}*/
+			AS.Travel("Walk");
 		}
 	}
 	
