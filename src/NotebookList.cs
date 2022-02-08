@@ -57,9 +57,14 @@ public class NotebookList : Node2D {
 		
 		closeSprite.Frame = 0;
 		
+		List<string> shownOptions = new List<string>();
+		
 		//Show all labels
 		foreach(var label in labels) {
-			label.Show();
+			if(!shownOptions.Contains(label.Text)) {
+				label.Show();
+				shownOptions.Add(label.Text);
+			}
 		}
 	}
 	
