@@ -115,7 +115,7 @@ public class Pigeon : KinematicBody2D {
 		if(hb.Owner is Player) {
 			if(curState == PigeonState.FOUNTAIN) {
 				curState = PigeonState.FLYING;
-				Destination = RoofTops[rand.Next(4)];
+				Destination = RoofTops[rand.Next(RoofTops.Length)]; //RoofTops.Size didn't work...
 				if(Destination.x - Position.x < 0) {
 					AS.Travel("FlyLeft");
 				} else {
