@@ -1,6 +1,7 @@
 [gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
 [ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Palud/PaludFloor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Palud/PaludBuilings.tscn" type="PackedScene" id=5]
@@ -905,9 +906,10 @@ volume_db = -5.0
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )
 stream = ExtResource( 19 )
-volume_db = -5.0
+volume_db = 1.0
 autoplay = true
 max_distance = 200.0
+script = ExtResource( 2 )
 
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
