@@ -10,6 +10,7 @@ public class Pigeon : KinematicBody2D {
 	private AnimationPlayer AP;
 	private AnimationTree AT;
 	private AnimationNodeStateMachinePlayback AS;
+	private AudioStreamPlayer2D ASP;
 	
 	private Random rand = new Random();
 	
@@ -49,6 +50,7 @@ public class Pigeon : KinematicBody2D {
 		AP = GetNode<AnimationPlayer>("AnimationPlayer");
 		AT = GetNode<AnimationTree>("AnimationTree");
 		AS = (AnimationNodeStateMachinePlayback)AT.Get("parameters/playback");
+		ASP = GetNode<AudioStreamPlayer2D>("TakeOff");
 	}
 	
 	private void HandleMovement(float delta) {
@@ -138,6 +140,7 @@ public class Pigeon : KinematicBody2D {
 		if(hb.Owner is Player) {
 			if(curState == PigeonState.FOUNTAIN) {
 				curState = PigeonState.FLYING;
+				ASP.Play();
 				Destination = RoofTops[rand.Next(RoofTops.Length)];
 				if(Destination.x - Position.x < 0) {
 					AS.Travel("FlyLeft");
