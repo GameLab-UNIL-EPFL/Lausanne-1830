@@ -59,7 +59,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Palud/ProtoPalud"
-text = "Palud"
+text = ""
 
 [node name="casino_point" parent="." instance=ExtResource( 1 )]
 margin_left = 270.0
@@ -70,7 +70,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Casino/Casino"
-text = "Casino"
+text = ""
 
 [node name="moulin_point" parent="." instance=ExtResource( 1 )]
 margin_left = 176.0
@@ -81,7 +81,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Flon/Flon"
-text = "Flon"
+text = ""
 
 [node name="brasserie_point" parent="." instance=ExtResource( 1 )]
 margin_left = 130.0
@@ -92,3 +92,4 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Brasserie/Brasserie"
+text = ""

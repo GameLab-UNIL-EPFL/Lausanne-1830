@@ -31,8 +31,11 @@ public class MapIcon : TextureButton
 		if(AnimPlayer == null) {
 			_Ready();
 		}
+		if(L.Text != "") {
 		L.Show();
-		AnimPlayer.Play("Appear");
+		AnimPlayer.Play("Appear");	
+		}
+		
 	}
 
 
