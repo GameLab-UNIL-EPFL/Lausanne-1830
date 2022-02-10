@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
@@ -28,7 +28,6 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
-[ext_resource path="res://assets/05_fonts/Newsgeek/NewsgeekSerif.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
 [ext_resource path="res://scenes/Palud/Pigeon.tscn" type="PackedScene" id=33]
@@ -278,9 +277,6 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="DynamicFont" id=15]
-use_mipmaps = true
-font_data = ExtResource( 30 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 
@@ -510,7 +506,6 @@ texture = ExtResource( 22 )
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 121, 333 )
-CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
@@ -565,7 +560,6 @@ parameters/playback = SubResource( 18 )
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 190, 295 )
-CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -590,9 +584,6 @@ parameters/playback = SubResource( 19 )
 
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 259, 204 )
-ProbUp = 0
-ProbDown = 0
-CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
@@ -617,11 +608,6 @@ parameters/playback = SubResource( 20 )
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 301, 325 )
-ProbRight = 1
-ProbLeft = 1
-ProbUp = 0
-ProbDown = 0
-CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -722,6 +708,9 @@ texture = ExtResource( 34 )
 [node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
+parameters/playback = SubResource( 24 )
+
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
 z_index = 1
@@ -731,6 +720,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -786,7 +778,6 @@ margin_top = -120.0
 margin_right = 348.0
 margin_bottom = -75.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "TANNERIE MERCIER
 Cherche apprenti"
 align = 1
@@ -802,7 +793,6 @@ margin_right = 398.0
 margin_bottom = -18.0
 rect_scale = Vector2( 0.7, 0.7 )
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "Se présenter directement
 aupres de Mr. Mercier
 A la Rue de Pré 31"
@@ -817,7 +807,6 @@ margin_right = 278.5
 margin_bottom = 103.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "A dater du 1er mars,
 M. Dejean fait partir
 une bonne berline pour Paris
@@ -835,7 +824,6 @@ margin_right = 412.0
 margin_bottom = 63.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "Conseils"
 align = 1
 valign = 1
@@ -851,7 +839,6 @@ margin_right = 570.0
 margin_bottom = 160.0
 rect_scale = Vector2( 0.7, 0.7 )
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 15 )
 text = "Sur l'Art de guérir sans mercure,
 LES MALADIES SECRETES,
 Un volume, prix 1 fr. 50 c."
