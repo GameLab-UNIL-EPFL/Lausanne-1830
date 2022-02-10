@@ -1,14 +1,12 @@
 using Godot;
 using System;
 
-public class Item : Node2D
-{
+public class Item : Node2D {
 	private Sprite ItemSprite;
 	private Node2D N;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		ItemSprite = GetNode<Sprite>("Sprite");
 		N = GetNode<Node2D>("Open");
 	}
