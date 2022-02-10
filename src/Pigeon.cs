@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Pigeon : KinematicBody2D {
 	
-	enum PigeonState {FOUNTAIN, FLYING, ROOF};
+	enum PigeonState {INIT, FOUNTAIN, FLYING, ROOF};
 	private PigeonState curState;
 	
 	private AnimationPlayer AP;
@@ -30,14 +30,20 @@ public class Pigeon : KinematicBody2D {
 	public float RoofTime = 10.0f;
 	[Export]
 	public int FlySpeed = 100;
+	[Export]
+	public bool RandomStartDir = true;
+	[Export]
+	public int RightDirProb = 50;
+	[Export]
+	public int IdleStartProb = 25;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		//Set init pos and cooldown
 		InitPos = Position;
 		Destination = RoofTops[0];
-		cooldown = RoofTime;
-		curState = PigeonState.FOUNTAIN;
+		cooldown = (rand.Next(100)/100.0f) * RoofTime;
+		curState = PigeonState.INIT;
 		
 		//Fetch nodes
 		AP = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -57,6 +63,19 @@ public class Pigeon : KinematicBody2D {
 	
 	private void HandleStates(float delta) {
 		switch(curState) {
+			case PigeonState.INIT:
+				if(rand.Next(100) < IdleStartProb) {
+					AT.Active = true;
+					curState = PigeonState.FOUNTAIN;
+					if(RandomStartDir) {
+						if(rand.Next(100) > RightDirProb) {
+							AS.Travel("Idle");
+						} else {
+							AS.Travel("IdleRight");
+						}
+					}
+				}
+				break;
 			case PigeonState.FOUNTAIN:
 				break;
 			case PigeonState.FLYING:
@@ -72,7 +91,11 @@ public class Pigeon : KinematicBody2D {
 						curState = PigeonState.FOUNTAIN;
 					}
 					//Clip onto destination
-					AS.Travel("Idle");
+					if(rand.Next(100) > RightDirProb) {
+						AS.Travel("Idle");
+					} else {
+						AS.Travel("IdleRight");
+					}
 				} else {
 					//Set input vector
 					InputVec = (Destination - Position).Normalized();
@@ -115,7 +138,7 @@ public class Pigeon : KinematicBody2D {
 		if(hb.Owner is Player) {
 			if(curState == PigeonState.FOUNTAIN) {
 				curState = PigeonState.FLYING;
-				Destination = RoofTops[rand.Next(RoofTops.Length)]; //RoofTops.Size didn't work...
+				Destination = RoofTops[rand.Next(RoofTops.Length)];
 				if(Destination.x - Position.x < 0) {
 					AS.Travel("FlyLeft");
 				} else {

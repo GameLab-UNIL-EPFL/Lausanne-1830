@@ -956,6 +956,8 @@ parameters/playback = SubResource( 23 )
 position = Vector2( 420, 259 )
 RoofTops = PoolVector2Array( 550, 90, 388, 38, 283, 85, 50, 75 )
 FountainSpot = Vector2( 420, 259 )
+RandomStartDir = false
+RightDirProb = 25
 
 [node name="Pigeon2" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( 242, 293 )
@@ -963,6 +965,7 @@ RoofTops = PoolVector2Array( 54, 78, 24, 26, 120, 26 )
 FountainSpot = Vector2( 242, 293 )
 RoofTime = 5.0
 FlySpeed = 120
+RightDirProb = 40
 
 [node name="AnimationTree" parent="YSort/Pigeon2" index="3"]
 parameters/playback = SubResource( 26 )
@@ -977,6 +980,7 @@ RoofTops = PoolVector2Array( 210, 20, 500, 90 )
 FountainSpot = Vector2( 25, 240 )
 RoofTime = 15.0
 FlySpeed = 95
+RightDirProb = 45
 
 [node name="AnimationPlayer" parent="YSort/Pigeon3" index="2"]
 anims/FlyDown = SubResource( 28 )
@@ -1046,9 +1050,6 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false

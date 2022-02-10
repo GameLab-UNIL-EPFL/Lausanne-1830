@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bird-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Pigeon.cs" type="Script" id=2]
@@ -274,6 +274,9 @@ animation = "FlyRight"
 [sub_resource type="AnimationNodeAnimation" id=66]
 animation = "Idle"
 
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "IdleRight"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=67]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=68]
@@ -282,14 +285,28 @@ animation = "Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=70]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
 [sub_resource type="AnimationNodeStateMachine" id=53]
 states/FlyLeft/node = SubResource( 64 )
 states/FlyLeft/position = Vector2( 432.823, 111.397 )
 states/FlyRight/node = SubResource( 65 )
 states/FlyRight/position = Vector2( 451.323, 213.897 )
 states/Idle/node = SubResource( 66 )
-states/Idle/position = Vector2( 207.323, 161.397 )
-transitions = [ "Idle", "FlyLeft", SubResource( 67 ), "FlyLeft", "Idle", SubResource( 68 ), "Idle", "FlyRight", SubResource( 69 ), "FlyRight", "Idle", SubResource( 70 ) ]
+states/Idle/position = Vector2( 203.823, 83.897 )
+states/IdleRight/node = SubResource( 71 )
+states/IdleRight/position = Vector2( 202.073, 189.397 )
+transitions = [ "Idle", "FlyLeft", SubResource( 67 ), "FlyLeft", "Idle", SubResource( 68 ), "Idle", "FlyRight", SubResource( 69 ), "FlyRight", "Idle", SubResource( 70 ), "IdleRight", "FlyLeft", SubResource( 72 ), "FlyLeft", "IdleRight", SubResource( 73 ), "IdleRight", "FlyRight", SubResource( 74 ), "FlyRight", "IdleRight", SubResource( 75 ), "Idle", "IdleRight", SubResource( 76 ), "IdleRight", "Idle", SubResource( 77 ) ]
 start_node = "Idle"
 graph_offset = Vector2( 10.3227, 39.3975 )
 
@@ -326,7 +343,6 @@ anims/RESET = SubResource( 3 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 53 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 54 )
 
 [node name="Area2D" type="Area2D" parent="."]
