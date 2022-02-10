@@ -36,7 +36,7 @@ public class NPC : KinematicBody2D {
 	private Vector2 InputVec = Vector2.Zero;
 	private const int ACC = 950;
 	private const int FRIC = 1000;
-	private float cooldown = 10.0f;
+	private float cooldown = 0.0f;
 	private float wanderTime = 1.0f;
 	
 	[Export]
