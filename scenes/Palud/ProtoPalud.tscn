@@ -1043,7 +1043,7 @@ parameters/playback = SubResource( 24 )
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
-z_index = 1
+z_index = 2
 
 [node name="Sprite" parent="YSort/Affiche" index="0"]
 visible = false
