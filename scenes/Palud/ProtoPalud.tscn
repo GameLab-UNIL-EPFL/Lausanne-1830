@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -280,6 +280,275 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 24.9748, 22.4492 )
+
+[sub_resource type="Animation" id=28]
+resource_name = "FlyDown"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "FlyLeft"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "FlyRight"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "FlyUp"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "Idle"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "IdleDown"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "IdleRight"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "IdleUp"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=36]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 29.9439, 18.9086 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -683,6 +952,54 @@ anims/WalkUp = SubResource( 14 )
 [node name="AnimationTree" parent="YSort/NPC/Lingere2" index="6"]
 parameters/playback = SubResource( 23 )
 
+[node name="Pigeon" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 420, 259 )
+RoofTops = PoolVector2Array( 550, 90, 388, 38, 283, 85, 50, 75 )
+FountainSpot = Vector2( 420, 259 )
+RandomStartDir = false
+RightDirProb = 25
+
+[node name="Pigeon2" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 242, 293 )
+RoofTops = PoolVector2Array( 54, 78, 24, 26, 120, 26 )
+FountainSpot = Vector2( 242, 293 )
+RoofTime = 5.0
+FlySpeed = 120
+RightDirProb = 40
+
+[node name="AnimationTree" parent="YSort/Pigeon2" index="3"]
+parameters/playback = SubResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Pigeon2/Area2D" index="0"]
+position = Vector2( -13.5868, 14.7951 )
+shape = SubResource( 27 )
+
+[node name="Pigeon3" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 25, 240 )
+RoofTops = PoolVector2Array( 210, 20, 500, 90 )
+FountainSpot = Vector2( 25, 240 )
+RoofTime = 15.0
+FlySpeed = 95
+RightDirProb = 45
+
+[node name="AnimationPlayer" parent="YSort/Pigeon3" index="2"]
+anims/FlyDown = SubResource( 28 )
+anims/FlyLeft = SubResource( 29 )
+anims/FlyRight = SubResource( 30 )
+anims/FlyUp = SubResource( 31 )
+anims/Idle = SubResource( 32 )
+anims/IdleDown = SubResource( 33 )
+anims/IdleRight = SubResource( 34 )
+anims/IdleUp = SubResource( 35 )
+anims/RESET = SubResource( 36 )
+
+[node name="AnimationTree" parent="YSort/Pigeon3" index="3"]
+parameters/playback = SubResource( 37 )
+
+[node name="CollisionShape2D" parent="YSort/Pigeon3/Area2D" index="0"]
+position = Vector2( 20.3879, -8.70552 )
+shape = SubResource( 38 )
+
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 339, 256 )
 
@@ -705,9 +1022,6 @@ position = Vector2( -72, 18 )
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
 
-[node name="Pigeon" parent="YSort/Fountain" instance=ExtResource( 33 )]
-position = Vector2( 81, 3 )
-
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
 isCutscene = true
@@ -729,16 +1043,13 @@ parameters/playback = SubResource( 24 )
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
-z_index = 1
+z_index = 2
 
 [node name="Sprite" parent="YSort/Affiche" index="0"]
 visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -969,6 +1280,8 @@ autoplay = true
 [editable path="YSort/NPC/Lingere/ListenBox"]
 [editable path="YSort/NPC/Lingere2"]
 [editable path="YSort/NPC/Lingere2/ListenBox"]
+[editable path="YSort/Pigeon2"]
+[editable path="YSort/Pigeon3"]
 [editable path="YSort/Fountain/Barrel"]
 [editable path="YSort/Fountain/Laundry"]
 [editable path="YSort/Fountain/Laundry2"]
