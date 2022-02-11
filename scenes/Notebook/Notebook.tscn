@@ -31,6 +31,7 @@ use_mipmaps = true
 font_data = ExtResource( 3 )
 
 [node name="Notebook" type="Node2D"]
+z_index = 2
 script = ExtResource( 10 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
