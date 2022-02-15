@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -183,6 +183,8 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=53]
+
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
 loop = true
@@ -338,6 +340,8 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 8, 9, 8, 10 ]
 }
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
 [sub_resource type="Animation" id=11]
 resource_name = "Idle"
@@ -495,6 +499,8 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=55]
+
 [sub_resource type="Animation" id=19]
 resource_name = "Idle"
 loop = true
@@ -650,6 +656,8 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 8, 9, 8, 10 ]
 }
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=56]
 
 [sub_resource type="Animation" id=27]
 resource_name = "Idle"
@@ -807,6 +815,8 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=57]
+
 [sub_resource type="Animation" id=35]
 resource_name = "Idle"
 loop = true
@@ -963,6 +973,8 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=58]
+
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
 b = Vector2( -4.75978, 13.7821 )
@@ -1074,6 +1086,9 @@ anims/WalkLeft = SubResource( 48 )
 anims/WalkRight = SubResource( 49 )
 anims/WalkUp = SubResource( 50 )
 
+[node name="AnimationTree" parent="YSort/Angelique" index="6"]
+parameters/playback = SubResource( 53 )
+
 [node name="Jenny" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 137, 153 )
 DemandDialogueID = "demandTruschel"
@@ -1091,6 +1106,9 @@ anims/WalkDown = SubResource( 7 )
 anims/WalkLeft = SubResource( 8 )
 anims/WalkRight = SubResource( 9 )
 anims/WalkUp = SubResource( 10 )
+
+[node name="AnimationTree" parent="YSort/Jenny" index="6"]
+parameters/playback = SubResource( 54 )
 
 [node name="Conrad" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 354, 208 )
@@ -1110,6 +1128,9 @@ anims/WalkLeft = SubResource( 16 )
 anims/WalkRight = SubResource( 17 )
 anims/WalkUp = SubResource( 18 )
 
+[node name="AnimationTree" parent="YSort/Conrad" index="6"]
+parameters/playback = SubResource( 55 )
+
 [node name="Tonnelier" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 476, 190 )
 DemandDialogueID = "demandTruschel"
@@ -1127,6 +1148,9 @@ anims/WalkDown = SubResource( 23 )
 anims/WalkLeft = SubResource( 24 )
 anims/WalkRight = SubResource( 25 )
 anims/WalkUp = SubResource( 26 )
+
+[node name="AnimationTree" parent="YSort/Tonnelier" index="6"]
+parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 536, 240 )
@@ -1146,6 +1170,9 @@ anims/WalkLeft = SubResource( 32 )
 anims/WalkRight = SubResource( 33 )
 anims/WalkUp = SubResource( 34 )
 
+[node name="AnimationTree" parent="YSort/Brasseur" index="6"]
+parameters/playback = SubResource( 57 )
+
 [node name="Brasseur2" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 407, 244 )
 DemandDialogueID = "demandTruschel"
@@ -1163,6 +1190,9 @@ anims/WalkDown = SubResource( 39 )
 anims/WalkLeft = SubResource( 40 )
 anims/WalkRight = SubResource( 41 )
 anims/WalkUp = SubResource( 42 )
+
+[node name="AnimationTree" parent="YSort/Brasseur2" index="6"]
+parameters/playback = SubResource( 58 )
 
 [node name="Bag" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 487, 184 )

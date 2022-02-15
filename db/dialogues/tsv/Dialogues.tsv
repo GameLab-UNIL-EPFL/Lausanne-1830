@@ -21,8 +21,8 @@ casino	onApproach appPichard pichard	Je suis tout à fait d'accord, M. Perregaux
 casino	onDemand demandPerregaux perregaux	Quel beau bâtiment, vous ne trouvez pas?&C'est le casino de Derrière-Bourg, une salle de concerts et de réunions en tout genre.&C'est ici que les casinistes se sont rassemblés pour organiser la révolution libérale.
 casino	onDemand demandPichard pichard	...
 casino	onDemand demandBourgeois bourgeois	Bonjour, je m'appelle Louis Henri Bourgeois.&J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même
-casino	onDemand demandBene benedict	Bonjour, bienvenue au moulin Rochat !&Je m'appelle Benedict.&Cela fait déjà plusieurs générations que ma famille habite et travaille ici.&Il y a plusieurs moulins au bord du Flon mais nous habitons dans le tout premier.
-casino	onApproach appFemme femme	Émilie, arrête de jouer et vient m'aider !
+moulin	onDemand demandBene benedict	Bonjour, bienvenue au moulin Rochat !&Je m'appelle Benedict.&Cela fait déjà plusieurs générations que ma famille habite et travaille ici.&Il y a plusieurs moulins au bord du Flon mais nous habitons dans le tout premier.
+moulin	onApproach appFemme femme	Émilie, arrête de jouer et vient m'aider !
 moulin	onDemand demandFemme femme	Oui, ce sont tous nos enfants. Même moi je ne suis plus sûr combien nous en avons...
 moulin	onDemand demandEnfant enfant	Oh non, tu m'as trouvé ! Il faut que je cherche une meilleure cachette.|Hihi, personne ne va me trouver ici.
 moulin	onApproach appEnfant enfant	1, 2, 3...|4,5,6...|9,10... Prêt ou pas, j'arrive !

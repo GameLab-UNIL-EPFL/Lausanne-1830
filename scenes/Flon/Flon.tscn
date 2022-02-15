@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/fullScene.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=6]
+[ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/01_characters/03_pnjs/brasseur.png" type="Texture" id=10]
+[ext_resource path="res://assets/01_characters/03_pnjs/randomWoman-Sheet.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -45,7 +50,15 @@ b = Vector2( 642.831, 1.25632 )
 a = Vector2( 8.75844, -349.192 )
 b = Vector2( 8.75844, 10.808 )
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
 [node name="Flon" type="Node2D"]
+
+[node name="DialogueController" parent="." instance=ExtResource( 7 )]
+
+[node name="QuestController" parent="." instance=ExtResource( 9 )]
 
 [node name="Bg" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
@@ -103,9 +116,38 @@ shape = SubResource( 3 )
 position = Vector2( -8, 349 )
 shape = SubResource( 4 )
 
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Benedict" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 328, 208 )
+HasAutoDialogue = false
+HasDemandDialogue = false
+
+[node name="FullyAnimated" parent="YSort/Benedict" index="2"]
+texture = ExtResource( 10 )
+
+[node name="AnimationTree" parent="YSort/Benedict" index="6"]
+parameters/playback = SubResource( 5 )
+
+[node name="Epouse" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 496, 184 )
+HasAutoDialogue = false
+HasDemandDialogue = false
+
+[node name="FullyAnimated" parent="YSort/Epouse" index="2"]
+texture = ExtResource( 11 )
+
+[node name="AnimationTree" parent="YSort/Epouse" index="6"]
+parameters/playback = SubResource( 6 )
+
 [connection signal="OpenNotebook" from="Player" to="Notebook" method="_on_Player_OpenNotebook"]
 [connection signal="SlideInNotebookController" from="Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+
+[editable path="YSort/Benedict"]
+[editable path="YSort/Benedict/ListenBox"]
+[editable path="YSort/Epouse"]
+[editable path="YSort/Epouse/ListenBox"]
