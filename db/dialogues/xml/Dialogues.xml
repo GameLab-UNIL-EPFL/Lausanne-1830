@@ -1,57 +1,141 @@
 <scene name="palud">
-    <dialogue type="onApproach" id="testApproach" ntargets="1">
+    <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
             <option id="0">Fruits et légumes frais!</option>
             <option id="1">Venez goûter !</option>
+            <option id="2">Venez acheter !</option>
         </text>
     </dialogue>
-    <dialogue type="onDemand" id="testDemand" ntargets="1">
+    <dialogue id="testDemand" ntargets="1" type="onDemand">
         <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
         <text>Des belles pommes, des navets ?</text>
         <text>Trüschel ? Non, je ne les connais pas, désolé.</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandElisabeth" ntargets="1">
+    <dialogue id="demandElisabeth" ntargets="1" type="onDemand">
         <text>Vous ne devez pas être de la région. Tout le monde me connait ici.</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandTruschel" ntargets="1">
+    <dialogue id="demandTruschel" ntargets="1" type="onDemand">
         <text>Est-ce que je peux vous aider ? Vous m'avez l'air perdu.</text>
-        <text>Vous cherchez les Truschel ?</text>
-        <text>Vous tombez bien ! Ce sont mes parents.</text>
-        <text>On habite au bout de la rue Chaucrau, juste après l'église catholique.</text>
+        <text>Vous cherchez les Trüschel ?</text>
+        <text>Vous tombez bien ! Je suis leur fille.</text>
+        <text>On habite à la brasserie de la rue Chaucrau.</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandOldMan" ntargets="1">
-        <text>Ah, Angélique a encore envoyé sa fille faire les courses.</text>
+    <dialogue id="demandOldMan" ntargets="1" type="onDemand">
+        <text>Ah, on dirait qu'Angélique a encore envoyé sa fille faire les courses.</text>
         <text>C'est plutôt les domestiques qui devraient s'en charger.</text>
         <text>Mais je crois qu'elle a envie de voir un peu la ville.</text>
-        <text>Ou en tout cas le jeune voiturier de la place, haha !</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandRandom" ntargets="1">
-        <text>Vous savez pas ce que Jeannette m'a raconté ce matin.</text>
-        <text>Apparement, Pierre s'est fait voler sa mallette.</text>
-        <text>Il est prêt à payer une jolie somme pour celui qui la retrouve.</text>
-        <text>Et moi je suis prêt à parier que le contenu de cette mallette</text>
-        <text>pourrait ruiner sa réputation...</text>
-        <text>Pierre? Mais enfin, c'est le propriétaire qui habite à la rue de Bourg !</text>
+    <dialogue id="demandRandom" ntargets="1" type="onDemand">
+        <text>Le cuir n'est pas à vendre, désolé !</text>
+        <text>Je l'ai acheté aux Merciers.</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandPasteur" ntargets="1">
-        <text>Demain la messe aura lieu à 8h30 à la Cathédrale,</text>
-        <text>à 10h00 à l'église catholique à Chaucrau 15</text>
-        <text>et à 15h00 au temple à St-François.</text>
+    <dialogue id="demandPasteur" ntargets="1" type="onDemand">
+        <text>Si vous chercher des renseignements ou du travail,</text>
+        <text>je vous conseille d'aller voir le panneau d'affiche.</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandBaker" ntargets="1">
+    <dialogue id="demandBaker" ntargets="1" type="onDemand">
         <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
         <text>Des betteraves, des choux ou des ragots ?</text>
-        <text>Il paraît qu'une nouvelle révolution se prépare.</text>
-        <text>Vous devriez aller faire un tour du côté du casino.</text>
+        <text>Il y a beaucoup de vols ces temps.</text>
+        <text>Vous devriez faire attention !</text>
+        <text> Ils piquent surtout les mallettes à l'arrière des calèches,</text>
+        <text> mais j'ai entendu dire que quelqu'un</text>
+        <text> c'était fait voler son hibou dans son jardin !</text>
     </dialogue>
-    <dialogue type="onDemand" id="demandQuest" ntargets="1">
-        <text>Alors...</text>
-        <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
-        <text>Très bien. Voyons voir ce carnet...</text>
-        <text>Il est sensé contenir toutes les informations importantes sur les habitants de Lausanne.</text>
-        <text>Mais les données de plusieurs personnes sont manquantes.</text>
-        <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
-        <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
-        <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
+    <dialogue id="demandLingere" ntargets="1" type="onDemand">
+        <text>Je rêverais d'être invitée au château de Vennes,</text>
+        <text>de voir si l'intérieur est aussi beau que l'extérieur...</text>
+        <text>Mais je ne suis qu'une lingère.</text>
+        <text>Madame De Montolieu y habite avec son fils unique.</text>
+    </dialogue>
+    <dialogue id="appConrad" ntargets="1" type="onApproach">
+        <text>
+            <option id="0">Allez, allez ! La bière ne va pas se brasser toute seule !</option>
+            <option id="1">Schnell, schnell !</option>
+        </text>
+    </dialogue>
+    <dialogue id="demandConrad" ntargets="1" type="onDemand">
+        <text>Si vous avez des questions, allez demander à mon épouse, bitte.</text>
+    </dialogue>
+    <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
+        <text>Hé Jacob ! Tu sais ce qui est arrivé à Ralf ?</text>
+        <text>Je ne l'ai pas revu depuis longtemps.</text>
+    </dialogue>
+    <dialogue id="demandTonnelier" ntargets="1" type="onDemand">
+        <text>Nein, keine ahnung...</text>
+        <text>La dernière fois que je l'ai vu c'était la semaine passée,</text>
+        <text>mais mes souvenirs sont un peu flou...</text>
+        <text>On a encore trop bu ce soir-là. </text>
+    </dialogue>
+    <dialogue id="demandTonneliers" ntargets="1" type="onDemand">
+        <text>Le travail de brasseur peut être très fatiguant.</text>
+        <text>Tu veux essayer ?</text>
+        <text>Il faut brasser au moment où tu vois des bulles apparaître.</text>
+    </dialogue>
+    <dialogue id="demandAngelique" ntargets="1" type="onDemand">
+        <text>Je suis désolée mais je suis très occupée.</text>
+        <text>J'ai encore du travail à terminer.</text>
+    </dialogue>
+    <dialogue id="demandFille" ntargets="1" type="onDemand">
+        <text>Moi aussi j'aimerais aller en ville!</text>
+    </dialogue>
+    <dialogue id="demandFilles" ntargets="1" type="onDemand">
+        <text>Notre mère pense que nous sommes encore trop jeunes pour sortir,</text>
+        <text>mais Frédérique, elle, a le droit d'aller au marché.</text>
+    </dialogue>
+    <dialogue id="appPerregaux" ntargets="1" type="onApproach">
+        <text>Vous ne trouvez pas qu'il n'y a pas assez de ponts à Lausanne?</text>
+    </dialogue>
+    <dialogue id="appPichard" ntargets="1" type="onApproach">
+        <text>Je suis tout à fait d'accord, M. Perregaux !</text>
+    </dialogue>
+    <dialogue id="demandPerregaux" ntargets="1" type="onDemand">
+        <text>Quel beau bâtiment, vous ne trouvez pas?</text>
+        <text>C'est le casino de Derrière-Bourg, une salle de concerts et de réunions en tout genre.</text>
+        <text>C'est ici que les casinistes se sont rassemblés pour organiser la révolution libérale.</text>
+    </dialogue>
+    <dialogue id="demandPichard" ntargets="1" type="onDemand">
+        <text>...</text>
+    </dialogue>
+    <dialogue id="demandBourgeois" ntargets="1" type="onDemand">
+        <text>Bonjour, je m'appelle Louis Henri Bourgeois.</text>
+        <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même</text>
+    </dialogue>
+    <dialogue id="demandBene" ntargets="1" type="onDemand">
+        <text>Bonjour, bienvenue au moulin Rochat !</text>
+        <text>Je m'appelle Benedict.</text>
+        <text>Cela fait déjà plusieurs générations que ma famille habite et travaille ici.</text>
+        <text>Il y a plusieurs moulins au bord du Flon mais nous habitons dans le tout premier.</text>
+    </dialogue>
+    <dialogue id="appFemme" ntargets="1" type="onApproach">
+        <text>Émilie, arrête de jouer et vient m'aider !</text>
+    </dialogue>
+    <dialogue id="demandFemme" ntargets="1" type="onDemand">
+        <text>Oui, ce sont tous nos enfants. Même moi je ne suis plus sûr combien nous en avons...</text>
+    </dialogue>
+    <dialogue id="demandEnfant" ntargets="1" type="onDemand">
+        <text>
+            <option id="0">Oh non, tu m'as trouvé ! Il faut que je cherche une meilleure cachette.</option>
+            <option id="1">Hihi, personne ne va me trouver ici.</option>
+        </text>
+    </dialogue>
+    <dialogue id="appEnfant" ntargets="1" type="onApproach">
+        <text>
+            <option id="0">1, 2, 3...</option>
+            <option id="1">4,5,6...</option>
+            <option id="2">9,10... Prêt ou pas, j'arrive !</option>
+        </text>
+    </dialogue>
+    <dialogue id="appDomestique" ntargets="1" type="onApproach">
+        <text>
+            <option id="0">Repose-toi.</option>
+            <option id="1">Bois un peu de ce remède.</option>
+        </text>
+    </dialogue>
+    <dialogue id="demDomestique" ntargets="1" type="onDemand">
+        <text>Satané Flon ! Ce n'est qu'une source de maux et de maladies !</text>
+    </dialogue>
+    <dialogue id="appMalade" ntargets="1" type="onApproach">
+        <text>*Kof kof*</text>
     </dialogue>
 </scene>
