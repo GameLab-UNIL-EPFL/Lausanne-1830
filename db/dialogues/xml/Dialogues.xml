@@ -1,4 +1,14 @@
 <scene name="palud">
+    <dialogue type="onDemand" ntargets="1" id="demandQuest">
+        <text>Alors...</text>
+        <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
+        <text>Très bien. Voyons voir ce carnet...</text>
+        <text>Il est sensé contenir toutes les informations importantes sur les habitants de Lausanne.</text>
+        <text>Mais les données de plusieurs personnes sont manquantes.</text>
+        <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
+        <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
+        <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
+    </dialogue>
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
             <option id="0">Fruits et légumes frais!</option>
@@ -31,16 +41,16 @@
     </dialogue>
     <dialogue id="demandPasteur" ntargets="1" type="onDemand">
         <text>Si vous chercher des renseignements ou du travail,</text>
-        <text>je vous conseille d'aller voir le panneau d'affiche.</text>
+        <text>je vous conseille d'aller voir les affiches sur le mur.</text>
     </dialogue>
     <dialogue id="demandBaker" ntargets="1" type="onDemand">
         <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
         <text>Des betteraves, des choux ou des ragots ?</text>
         <text>Il y a beaucoup de vols ces temps.</text>
         <text>Vous devriez faire attention !</text>
-        <text> Ils piquent surtout les mallettes à l'arrière des calèches,</text>
-        <text> mais j'ai entendu dire que quelqu'un</text>
-        <text> c'était fait voler son hibou dans son jardin !</text>
+        <text>Ils piquent surtout les mallettes à l'arrière des calèches,</text>
+        <text>mais j'ai entendu dire que quelqu'un</text>
+        <text>c'était fait voler son hibou dans son jardin !</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
         <text>Je rêverais d'être invitée au château de Vennes,</text>
@@ -55,7 +65,7 @@
         </text>
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
-        <text>Si vous avez des questions, allez demander à mon épouse, bitte.</text>
+        <text>Si vous avez des questions, allez demander à mon épouse, Bitte.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
         <text>Hé Jacob ! Tu sais ce qui est arrivé à Ralf ?</text>
@@ -81,7 +91,7 @@
     </dialogue>
     <dialogue id="demandFilles" ntargets="1" type="onDemand">
         <text>Notre mère pense que nous sommes encore trop jeunes pour sortir,</text>
-        <text>mais Frédérique, elle, a le droit d'aller au marché.</text>
+        <text>mais notre soeur Frédérique, elle, a le droit d'aller au marché.</text>
     </dialogue>
     <dialogue id="appPerregaux" ntargets="1" type="onApproach">
         <text>Vous ne trouvez pas qu'il n'y a pas assez de ponts à Lausanne?</text>

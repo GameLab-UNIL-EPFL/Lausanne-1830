@@ -87,9 +87,6 @@ texture = ExtResource( 2 )
 position = Vector2( 428, 133 )
 shape = SubResource( 6 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 296, 320 )
-
 [node name="Notebook" parent="." instance=ExtResource( 3 )]
 visible = false
 
@@ -130,7 +127,6 @@ one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D4"]
 shape = SubResource( 3 )
-one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Coillision"]
 
@@ -146,10 +142,13 @@ shape = SubResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 296, 320 )
+
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 176, 248 )
-HasAutoDialogue = false
-HasDemandDialogue = false
+AutoDialogueID = "appPerregaux"
+DemandDialogueID = "demandPerregaux"
 
 [node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
 texture = ExtResource( 12 )
@@ -160,8 +159,8 @@ parameters/playback = SubResource( 7 )
 [node name="Bourgeois" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 160, 144 )
 CanWander = true
+DemandDialogueID = "demandBourgeois"
 HasAutoDialogue = false
-HasDemandDialogue = false
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
 texture = ExtResource( 11 )
@@ -171,8 +170,8 @@ parameters/playback = SubResource( 8 )
 
 [node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 208, 248 )
-HasAutoDialogue = false
-HasDemandDialogue = false
+AutoDialogueID = "appPichard"
+DemandDialogueID = "demandPichard"
 
 [node name="FullyAnimated" parent="YSort/Pichard" index="2"]
 texture = ExtResource( 13 )
@@ -180,12 +179,12 @@ texture = ExtResource( 13 )
 [node name="AnimationTree" parent="YSort/Pichard" index="6"]
 parameters/playback = SubResource( 9 )
 
-[connection signal="OpenNotebook" from="Player" to="Notebook" method="_on_Player_OpenNotebook"]
-[connection signal="SlideInNotebookController" from="Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
-[connection signal="pressed" from="NotebookController" to="Player" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_Player_OpenNotebook"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 
 [editable path="YSort/Perregaux"]
 [editable path="YSort/Perregaux/ListenBox"]
