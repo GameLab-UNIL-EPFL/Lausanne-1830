@@ -912,8 +912,8 @@ parameters/playback = SubResource( 21 )
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 330, 257 )
+DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
-HasDemandDialogue = false
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
 visible = false
