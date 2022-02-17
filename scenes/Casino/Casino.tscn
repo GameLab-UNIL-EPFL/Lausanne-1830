@@ -147,6 +147,13 @@ position = Vector2( 296, 320 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 176, 248 )
+ProbRight = 4
+ProbLeft = 0
+ProbUp = 0
+ProbDown = 0
+CanWander = true
+WanderingCooldown = 1000.0
+WanderingDist = 0.0
 AutoDialogueID = "appPerregaux"
 DemandDialogueID = "demandPerregaux"
 
@@ -170,6 +177,13 @@ parameters/playback = SubResource( 8 )
 
 [node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 208, 248 )
+ProbRight = 0
+ProbLeft = 8
+ProbUp = 0
+ProbDown = 0
+CanWander = true
+WanderingCooldown = 1000.0
+WanderingDist = 0.0
 AutoDialogueID = "appPichard"
 DemandDialogueID = "demandPichard"
 
@@ -181,8 +195,8 @@ parameters/playback = SubResource( 9 )
 
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
-[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_Player_OpenNotebook"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 
