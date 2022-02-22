@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -279,11 +279,6 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "FadeSound"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Fountain:volume_db")
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
@@ -389,13 +384,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -5.0, -80.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../MarketCrowd:volume_db")
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -551,12 +539,6 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -15.0, -80.0 ]
-}
-
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -586,30 +568,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 650, 4.168 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Fountain:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -80.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../MarketCrowd:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -80.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -1093,6 +1051,9 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
+
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
@@ -1249,14 +1210,12 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
-reset_on_save = false
-anims/FadeSound = SubResource( 15 )
 anims/RESET = SubResource( 5 )
 anims/Slide = SubResource( 6 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )
@@ -1264,12 +1223,14 @@ stream = ExtResource( 19 )
 volume_db = 1.0
 autoplay = true
 max_distance = 200.0
+bus = "Sounds"
 script = ExtResource( 2 )
 
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
-volume_db = -15.0
+volume_db = -10.0
 autoplay = true
+bus = "Sounds"
 
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]

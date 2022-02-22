@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/04_notebook/notebookExample.png" type="Texture" id=2]
 [ext_resource path="res://src/Menu.cs" type="Script" id=3]
-[ext_resource path="res://assets/07_sounds/Music/Schubert_Sonata13_2.mp3" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -13,53 +12,6 @@ font_data = ExtResource( 1 )
 size = 40
 outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=3]
-resource_name = "Loop"
-length = 27.6
-loop = true
-step = 0.01
-tracks/0/type = "audio"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 4 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.04, 26.1, 27.4, 27.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ -80.0, 0.0, 0.0, -10.0, -80.0 ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -113,13 +65,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../AudioStreamPlayer")
-anims/Loop = SubResource( 3 )
-anims/RESET = SubResource( 4 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
