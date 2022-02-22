@@ -15,7 +15,7 @@ public class Menu : Control
 		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
 		SC.GotoScene("res://scenes/Palud/ProtoPalud.tscn");
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13.mp3");
+		MP.PlayMusic("Schubert_Sonata13.mp3", -5);
 	}
 
 }
