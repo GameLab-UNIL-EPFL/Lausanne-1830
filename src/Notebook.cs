@@ -49,7 +49,6 @@ public class Notebook : Node2D {
 	public override void _Ready() {
 		Hide();
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
-		
 		//Fetch all info
 		foreach(var infoName in infoNames) {
 			info.Add(GetNode<NotebookInfo>("Sprite/" + infoName));
@@ -136,8 +135,10 @@ public class Notebook : Node2D {
 		}
 		if(hidden) {
 			Show();
+			AudioServer.SetBusMute(2, true);
 		} else {
 			Hide();
+			AudioServer.SetBusMute(2, false);
 		}
 		hidden = !hidden;
 	}

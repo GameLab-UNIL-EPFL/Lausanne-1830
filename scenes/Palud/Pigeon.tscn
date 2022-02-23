@@ -354,5 +354,6 @@ shape = SubResource( 55 )
 
 [node name="TakeOff" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+volume_db = -5.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
