@@ -1,4 +1,4 @@
-
+[gd_scene load_steps=79 format=2]
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=3]
