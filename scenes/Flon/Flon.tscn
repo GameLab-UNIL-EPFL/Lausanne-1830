@@ -90,7 +90,7 @@ anims/Slide = SubResource( 2 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Collision" type="Node2D" parent="."]
 

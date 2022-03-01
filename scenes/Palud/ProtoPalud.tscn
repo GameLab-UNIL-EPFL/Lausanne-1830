@@ -17,9 +17,9 @@
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
-[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/Sounds/fountain.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/07_sounds/Sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=22]
 [ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
@@ -1052,6 +1052,9 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
+
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
@@ -1232,7 +1235,7 @@ anims/Slide = SubResource( 6 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )
@@ -1240,11 +1243,14 @@ stream = ExtResource( 19 )
 volume_db = 1.0
 autoplay = true
 max_distance = 200.0
+bus = "Sounds"
 script = ExtResource( 2 )
 
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+volume_db = -10.0
 autoplay = true
+bus = "Sounds"
 
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]

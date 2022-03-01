@@ -16,6 +16,7 @@ run/main_scene="res://scenes/Interaction/Menu.tscn"
 [autoload]
 
 SceneChanger="*res://scenes/Interaction/SceneChanger.tscn"
+MusicPlayer="*res://scenes/Interaction/MusicPlayer.tscn"
 
 [display]
 
