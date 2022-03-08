@@ -794,6 +794,9 @@ AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
+[node name="TextBox" parent="YSort/NPC/Truschel" index="0"]
+NPCName = " Mlle Trüschel "
+
 [node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
 visible = false
 
@@ -807,6 +810,7 @@ DemandDialogueID = "testDemand"
 
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
 position = Vector2( -13.8276, -35.652 )
+NPCName = " M. Chapuis "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
@@ -821,6 +825,7 @@ DemandDialogueID = "demandBaker"
 
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
 position = Vector2( -13.8276, -35.652 )
+NPCName = " M. Guignard "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
@@ -835,6 +840,7 @@ DemandDialogueID = "demandRandom"
 
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
 position = Vector2( -13.8276, -35.652 )
+NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
@@ -850,6 +856,10 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 position = Vector2( -11.707, -36.924 )
+NPCName = " Mlle De Cerjeat "
+
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 0
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -874,6 +884,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Random" index="0"]
 position = Vector2( -11.707, -36.924 )
+NPCName = " Mme. Chardon "
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
@@ -898,6 +909,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
 position = Vector2( -11.431, -36.089 )
+NPCName = " M. Jaccard "
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
 texture = ExtResource( 13 )
@@ -913,6 +925,9 @@ position = Vector2( 330, 256 )
 DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
 HasDemandDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Lingere" index="0"]
+NPCName = " Mme Détraz "
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
 visible = false
@@ -1032,6 +1047,9 @@ DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
 
+[node name="TextBox" parent="YSort/QuestNPC" index="0"]
+NPCName = " M. Gély  "
+
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 34 )
 
@@ -1051,6 +1069,9 @@ position = Vector2( 11.0124, -17.6866 )
 
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
@@ -1091,6 +1112,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PlaceholderCuir" type="ColorRect" parent="YSort"]
+margin_left = 477.774
+margin_top = 290.904
+margin_right = 486.774
+margin_bottom = 297.904
+color = Color( 0.439216, 0.298039, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
 z_index = 2
@@ -1100,6 +1131,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1239,7 +1273,6 @@ texture = ExtResource( 39 )
 [node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -1283,16 +1316,6 @@ stream = ExtResource( 20 )
 volume_db = -10.0
 autoplay = true
 bus = "Sounds"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 477.774
-margin_top = 290.904
-margin_right = 486.774
-margin_bottom = 297.904
-color = Color( 0.439216, 0.298039, 0.203922, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]

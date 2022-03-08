@@ -1078,6 +1078,9 @@ position = Vector2( 277, 241 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
+[node name="TextBox" parent="YSort/Angelique" index="0"]
+NPCName = " Mme Trüschel "
+
 [node name="FullyAnimated" parent="YSort/Angelique" index="2"]
 texture = ExtResource( 17 )
 
@@ -1099,6 +1102,9 @@ position = Vector2( 137, 153 )
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
+[node name="TextBox" parent="YSort/Jenny" index="0"]
+NPCName = " Mlle Trüschel "
+
 [node name="FullyAnimated" parent="YSort/Jenny" index="2"]
 texture = ExtResource( 9 )
 
@@ -1119,6 +1125,9 @@ parameters/playback = SubResource( 65 )
 position = Vector2( 354, 208 )
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Conrad" index="0"]
+NPCName = " M. Trüschel "
 
 [node name="FullyAnimated" parent="YSort/Conrad" index="2"]
 texture = ExtResource( 14 )
