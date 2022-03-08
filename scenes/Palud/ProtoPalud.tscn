@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -39,6 +39,8 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundry.png" type="Texture" id=37]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
 [ext_resource path="res://assets/06_UI_menus/calecheNews.png" type="Texture" id=39]
+[ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/05_fonts/Newsgeek/Newsgeek.ttf" type="DynamicFontData" id=41]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -552,6 +554,13 @@ extents = Vector2( 29.9439, 18.9086 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
+[sub_resource type="CircleShape2D" id=40]
+radius = 10.8202
+
+[sub_resource type="DynamicFont" id=39]
+use_mipmaps = true
+font_data = ExtResource( 41 )
+
 [sub_resource type="DynamicFont" id=25]
 font_data = ExtResource( 30 )
 
@@ -780,8 +789,7 @@ texture = ExtResource( 22 )
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 121, 333 )
-CanWander = true
+position = Vector2( 120, 332 )
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
@@ -793,7 +801,7 @@ visible = false
 parameters/playback = SubResource( 15 )
 
 [node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 147, 228 )
+position = Vector2( 148, 228 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
@@ -807,7 +815,7 @@ texture = ExtResource( 32 )
 parameters/playback = SubResource( 16 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 29, 278 )
+position = Vector2( 32, 278 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
@@ -821,7 +829,7 @@ texture = ExtResource( 32 )
 parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 453, 298 )
+position = Vector2( 452, 298 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
@@ -835,8 +843,7 @@ texture = ExtResource( 32 )
 parameters/playback = SubResource( 18 )
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 190, 295 )
-CanWander = true
+position = Vector2( 190, 296 )
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -860,10 +867,7 @@ visible = false
 parameters/playback = SubResource( 19 )
 
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 259, 204 )
-ProbUp = 0
-ProbDown = 0
-CanWander = true
+position = Vector2( 260, 204 )
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
@@ -887,12 +891,7 @@ visible = false
 parameters/playback = SubResource( 20 )
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 301, 325 )
-ProbRight = 1
-ProbLeft = 1
-ProbUp = 0
-ProbDown = 0
-CanWander = true
+position = Vector2( 300, 324 )
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -910,7 +909,8 @@ visible = false
 parameters/playback = SubResource( 21 )
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 330, 257 )
+position = Vector2( 330, 256 )
+DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -927,7 +927,7 @@ vframes = 1
 parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 247, 265 )
+position = Vector2( 248, 264 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -1041,6 +1041,56 @@ visible = false
 [node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
 parameters/playback = SubResource( 24 )
 
+[node name="Cuir" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 481.821, 294.246 )
+z_index = 1
+
+[node name="Sprite" parent="YSort/Cuir" index="0"]
+visible = false
+position = Vector2( 11.0124, -17.6866 )
+
+[node name="Label" parent="YSort/Cuir/Sprite" index="0"]
+text = "Regarder"
+
+[node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
+position = Vector2( 3.69278, -0.155334 )
+shape = SubResource( 40 )
+
+[node name="Open" parent="YSort/Cuir" index="2"]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Cuir/Open" index="1"]
+margin_left = -242.811
+margin_top = -162.459
+margin_right = -48.8108
+margin_bottom = -42.4594
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 156.02, 75.5419 )
+patch_margin_left = 6
+patch_margin_top = 7
+patch_margin_right = 9
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="YSort/Cuir/Open" index="2"]
+margin_left = -251.703
+margin_top = -160.865
+margin_right = -108.703
+margin_bottom = -78.8651
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 39 )
+text = "VEAUX 1ER CHOIX
+EMIS PAR
+J.J. MERCIER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
 z_index = 2
@@ -1050,9 +1100,6 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1189,6 +1236,11 @@ position = Vector2( 56.1055, 21.75 )
 scale = Vector2( 0.411111, 0.411111 )
 texture = ExtResource( 39 )
 
+[node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
+position = Vector2( -38, 155 )
+scale = Vector2( 1, 1 )
+frame = 1
+
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
 position = Vector2( -4, 7 )
@@ -1231,6 +1283,16 @@ stream = ExtResource( 20 )
 volume_db = -10.0
 autoplay = true
 bus = "Sounds"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 477.774
+margin_top = 290.904
+margin_right = 486.774
+margin_bottom = 297.904
+color = Color( 0.439216, 0.298039, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
@@ -1277,6 +1339,7 @@ bus = "Sounds"
 [editable path="YSort/NPC/Baker2"]
 [editable path="YSort/NPC/Baker2/ListenBox"]
 [editable path="YSort/NPC/Elisabeth"]
+[editable path="YSort/NPC/Elisabeth/TextBox"]
 [editable path="YSort/NPC/Elisabeth/ListenBox"]
 [editable path="YSort/NPC/Random"]
 [editable path="YSort/NPC/Random/ListenBox"]
@@ -1293,6 +1356,7 @@ bus = "Sounds"
 [editable path="YSort/Fountain/Laundry2"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
+[editable path="YSort/Cuir"]
 [editable path="YSort/Affiche"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
