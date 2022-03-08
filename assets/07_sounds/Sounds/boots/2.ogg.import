@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2.ogg-3bd657510975dba4a05b70b17b1cd804.oggstr"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/boots/2.ogg"
+dest_files=[ "res://.import/2.ogg-3bd657510975dba4a05b70b17b1cd804.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

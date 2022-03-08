@@ -1,9 +1,31 @@
-scene name	dialogue type id target1 target2	
-palud	onApproach testApproach baker	Fruits et légumes frais!|Venez goûter !
-palud	onDemand testDemand baker	Bien le bonjour, qu'est-ce qui vous intéresse ?&Des belles pommes, des navets ?&Trüschel ? Non, je ne les connais pas, désolé.
-palud	onDemand demandElisabeth elisabeth	Vous ne devez pas être de la région. Tout le monde me connait ici.
-palud	onDemand demandTruschel truschel	Est-ce que je peux vous aider ? Vous m'avez l'air perdu.&Vous cherchez les Truschel ?&Vous tombez bien ! Ce sont mes parents.&On habite au bout de la rue Chaucrau, juste après l'église catholique.
-palud	onDemand demandOldMan oldMan	Ah, Angélique a encore envoyé sa fille faire les courses.&C'est plutôt les domestiques qui devraient s'en charger.&Mais je crois qu'elle a envie de voir un peu la ville.&Ou en tout cas le jeune voiturier de la place, haha !
-palud	onDemand demandRandom random	Vous savez pas ce que Jeannette m'a raconté ce matin.&Apparement, Pierre s'est fait voler sa mallette.&Il est prêt à payer une jolie somme pour celui qui la retrouve.&Et moi je suis prêt à parier que le contenu de cette mallette&pourrait ruiner sa réputation...&Pierre? Mais enfin, c'est le propriétaire qui habite à la rue de Bourg !
-palud	onDemand demandPasteur pasteur	Demain la messe aura lieu à 8h30 à la Cathédrale,&à 10h00 à l'église catholique à Chaucrau 15&et à 15h00 au temple à St-François.
-palud	onDemand demandBaker baker	Bien le bonjour, qu'est-ce qui vous intéresse ?&Des betteraves, des choux ou des ragots ?&Il paraît qu'une nouvelle révolution se prépare.&Vous devriez aller faire un tour du côté du casino.
+scene name	dialogue type id ntargets	
+palud	onApproach testApproach 1	Fruits et légumes frais!|Venez goûter !|Venez acheter !
+palud	onDemand testDemand 1	Bien le bonjour, qu'est-ce qui vous intéresse ?&Des belles pommes, des navets ?&Trüschel ? Non, je ne les connais pas, désolé.
+palud	onDemand demandElisabeth 1	Vous ne devez pas être de la région. Tout le monde me connait ici.
+palud	onDemand demandTruschel 1	Est-ce que je peux vous aider ? Vous m'avez l'air perdu.&Vous cherchez les Trüschel ?&Vous tombez bien ! Je suis leur fille.&On habite à la brasserie de la rue Chaucrau.
+palud	onDemand demandOldMan 1	Ah, on dirait qu'Angélique a encore envoyé sa fille faire les courses.&C'est plutôt les domestiques qui devraient s'en charger.&Mais je crois qu'elle a envie de voir un peu la ville.
+palud	onDemand demandRandom 1	Le cuir n'est pas à vendre, désolé !&Je l'ai acheté aux Merciers.
+palud	onDemand demandPasteur 1	Si vous chercher des renseignements ou du travail,&je vous conseille d'aller voir le panneau d'affiche.
+palud	onDemand demandBaker 1	Bien le bonjour, qu'est-ce qui vous intéresse ?&Des betteraves, des choux ou des ragots ?&Il y a beaucoup de vols ces temps.&Vous devriez faire attention !& Ils piquent surtout les mallettes à l'arrière des calèches,& mais j'ai entendu dire que quelqu'un& c'était fait voler son hibou dans son jardin !
+palud	onDemand demandLingere 1	Je rêverais d'être invitée au château de Vennes,&de voir si l'intérieur est aussi beau que l'extérieur...&Mais je ne suis qu'une lingère.&Madame De Montolieu y habite avec son fils unique.
+brasserie	onApproach appConrad 1	Allez, allez ! La bière ne va pas se brasser toute seule !|Schnell, schnell !
+brasserie	onDemand demandConrad 1	Si vous avez des questions, allez demander à mon épouse, bitte.
+brasserie	onDemand demandBrasseur 1	Hé Jacob ! Tu sais ce qui est arrivé à Ralf ?&Je ne l'ai pas revu depuis longtemps.
+brasserie	onDemand demandTonnelier 1	Nein, keine ahnung...&La dernière fois que je l'ai vu c'était la semaine passée,&mais mes souvenirs sont un peu flou...&On a encore trop bu ce soir-là. 
+brasserie	onDemand demandTonneliers 1	Le travail de brasseur peut être très fatiguant.&Tu veux essayer ?&Il faut brasser au moment où tu vois des bulles apparaître.
+brasserie	onDemand demandAngelique 1	Je suis désolée mais je suis très occupée.&J'ai encore du travail à terminer.
+brasserie	onDemand demandFille 1	Moi aussi j'aimerais aller en ville!
+brasserie	onDemand demandFilles 1	Notre mère pense que nous sommes encore trop jeunes pour sortir,&mais Frédérique, elle, a le droit d'aller au marché.
+casino	onApproach appPerregaux 1	Vous ne trouvez pas qu'il n'y a pas assez de ponts à Lausanne?
+casino	onApproach appPichard 1	Je suis tout à fait d'accord, M. Perregaux !
+casino	onDemand demandPerregaux 1	Quel beau bâtiment, vous ne trouvez pas?&C'est le casino de Derrière-Bourg, une salle de concerts et de réunions en tout genre.&C'est ici que les casinistes se sont rassemblés pour organiser la révolution libérale.
+casino	onDemand demandPichard 1	...
+casino	onDemand demandBourgeois 1	Bonjour, je m'appelle Louis Henri Bourgeois.&J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même
+moulin	onDemand demandBene 1	Bonjour, bienvenue au moulin Rochat !&Je m'appelle Benedict.&Cela fait déjà plusieurs générations que ma famille habite et travaille ici.&Il y a plusieurs moulins au bord du Flon mais nous habitons dans le tout premier.
+moulin	onApproach appFemme 1	Émilie, arrête de jouer et vient m'aider !
+moulin	onDemand demandFemme 1	Oui, ce sont tous nos enfants. Même moi je ne suis plus sûr combien nous en avons...
+moulin	onDemand demandEnfant 1	Oh non, tu m'as trouvé ! Il faut que je cherche une meilleure cachette.|Hihi, personne ne va me trouver ici.
+moulin	onApproach appEnfant 1	1, 2, 3...|4,5,6...|9,10... Prêt ou pas, j'arrive !
+moulin	onApproach appDomestique 1	Repose-toi.|Bois un peu de ce remède.
+moulin	onDemand demDomestique 1	Satané Flon ! Ce n'est qu'une source de maux et de maladies !
+moulin	onApproach appMalade 1	*Kof kof*
