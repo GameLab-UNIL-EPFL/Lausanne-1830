@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -26,7 +26,10 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/commode.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/tabouret.png" type="Texture" id=26]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=31]
+[ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://assets/06_UI_menus/simpleTextBoxBig.png" type="Texture" id=29]
+[ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=30]
 
 [sub_resource type="Animation" id=43]
 resource_name = "Idle"
@@ -184,7 +187,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=64]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=53]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -342,7 +345,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=65]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
 [sub_resource type="Animation" id=11]
 resource_name = "Idle"
@@ -500,7 +503,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=66]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
 [sub_resource type="Animation" id=19]
 resource_name = "Idle"
@@ -658,7 +661,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=67]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=56]
 
 [sub_resource type="Animation" id=27]
 resource_name = "Idle"
@@ -816,7 +819,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=68]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=57]
 
 [sub_resource type="Animation" id=35]
 resource_name = "Idle"
@@ -974,7 +977,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 8, 10 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=69]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=58]
 
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
@@ -1018,6 +1021,22 @@ tracks/0/keys = {
 "values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=59]
+extents = Vector2( 20.4686, 10 )
+
+[sub_resource type="DynamicFont" id=60]
+size = 18
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=61]
+size = 12
+use_mipmaps = true
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=62]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 28 )
+
 [node name="Brasserie" type="Node2D"]
 
 [node name="QuestController" parent="." instance=ExtResource( 10 )]
@@ -1051,17 +1070,14 @@ polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -38
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Cuve" type="StaticBody2D" parent="YSort"]
-position = Vector2( -21, -19 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 466, 241 )
 
 [node name="Sprite" type="Sprite" parent="YSort/Cuve"]
-position = Vector2( 496, 264 )
+position = Vector2( 0, 10 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Cuve"]
-position = Vector2( 496, 264 )
+position = Vector2( 0, 6 )
 rotation = 1.5708
 polygon = PoolVector2Array( 16, 48, 32, 32, 40, 16, 40, -16, 32, -32, 16, -48, 0, -48, -12.8338, -44.0833, -19.969, -28.3263, -24, -8, -24, 16, -20.2661, 32.9179, -12.8335, 43.6207, 0, 48 )
 
@@ -1070,13 +1086,16 @@ position = Vector2( 269, 287 )
 
 [node name="Adrienne" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 204, 144 )
+collision_layer = 3
+collision_mask = 3
+CanWander = true
+DemandDialogueID = "demandFille"
 HasAutoDialogue = false
-HasDemandDialogue = false
 
 [node name="Angelique" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 277, 241 )
+DemandDialogueID = "demandAngelique"
 HasAutoDialogue = false
-HasDemandDialogue = false
 
 [node name="TextBox" parent="YSort/Angelique" index="0"]
 NPCName = " Mme Trüschel "
@@ -1095,11 +1114,14 @@ anims/WalkRight = SubResource( 49 )
 anims/WalkUp = SubResource( 50 )
 
 [node name="AnimationTree" parent="YSort/Angelique" index="6"]
-parameters/playback = SubResource( 64 )
+parameters/playback = SubResource( 53 )
 
 [node name="Jenny" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 137, 153 )
-DemandDialogueID = "demandTruschel"
+collision_layer = 3
+collision_mask = 3
+CanWander = true
+DemandDialogueID = "demandFilles"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Jenny" index="0"]
@@ -1119,12 +1141,12 @@ anims/WalkRight = SubResource( 9 )
 anims/WalkUp = SubResource( 10 )
 
 [node name="AnimationTree" parent="YSort/Jenny" index="6"]
-parameters/playback = SubResource( 65 )
+parameters/playback = SubResource( 54 )
 
 [node name="Conrad" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 354, 208 )
-DemandDialogueID = "demandTruschel"
-HasAutoDialogue = false
+AutoDialogueID = "appConrad"
+DemandDialogueID = "demandConrad"
 
 [node name="TextBox" parent="YSort/Conrad" index="0"]
 NPCName = " M. Trüschel "
@@ -1143,11 +1165,11 @@ anims/WalkRight = SubResource( 17 )
 anims/WalkUp = SubResource( 18 )
 
 [node name="AnimationTree" parent="YSort/Conrad" index="6"]
-parameters/playback = SubResource( 66 )
+parameters/playback = SubResource( 55 )
 
 [node name="Tonnelier" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 476, 190 )
-DemandDialogueID = "demandTruschel"
+DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
 
 [node name="FullyAnimated" parent="YSort/Tonnelier" index="2"]
@@ -1164,11 +1186,11 @@ anims/WalkRight = SubResource( 25 )
 anims/WalkUp = SubResource( 26 )
 
 [node name="AnimationTree" parent="YSort/Tonnelier" index="6"]
-parameters/playback = SubResource( 67 )
+parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 536, 240 )
-DemandDialogueID = "demandTruschel"
+DemandDialogueID = "demandTonnelier"
 HasAutoDialogue = false
 
 [node name="FullyAnimated" parent="YSort/Brasseur" index="2"]
@@ -1185,11 +1207,11 @@ anims/WalkRight = SubResource( 33 )
 anims/WalkUp = SubResource( 34 )
 
 [node name="AnimationTree" parent="YSort/Brasseur" index="6"]
-parameters/playback = SubResource( 68 )
+parameters/playback = SubResource( 57 )
 
 [node name="Brasseur2" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 407, 244 )
-DemandDialogueID = "demandTruschel"
+DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
 
 [node name="FullyAnimated" parent="YSort/Brasseur2" index="2"]
@@ -1206,7 +1228,7 @@ anims/WalkRight = SubResource( 41 )
 anims/WalkUp = SubResource( 42 )
 
 [node name="AnimationTree" parent="YSort/Brasseur2" index="6"]
-parameters/playback = SubResource( 69 )
+parameters/playback = SubResource( 58 )
 
 [node name="Bag" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 487, 184 )
@@ -1322,6 +1344,102 @@ __meta__ = {
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 235, 198 )
+shape = SubResource( 59 )
+
+[node name="Book" parent="." instance=ExtResource( 27 )]
+position = Vector2( 110, 85 )
+
+[node name="Sprite" parent="Book" index="0"]
+visible = false
+
+[node name="Label" parent="Book/Sprite" index="0"]
+text = "Lire"
+
+[node name="Open" parent="Book" index="2"]
+visible = false
+
+[node name="ColorRect" parent="Book/Open" index="0"]
+margin_left = -581.5
+margin_top = -363.0
+margin_right = 737.5
+margin_bottom = 487.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Book/Open" index="1"]
+margin_left = 115.0
+margin_top = -6.0
+margin_right = 307.0
+margin_bottom = 199.0
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 155.762, 74.6972 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Book/Open" index="2"]
+margin_left = 118.0
+margin_top = 6.0
+margin_right = 305.0
+margin_bottom = 179.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 60 )
+text = "LE
+ROBINSON SUISSE,
+
+JOURNAL
+
+
+
+BARONNE DE MONTOLIEU."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Book/Open" index="3"]
+margin_left = 115.0
+margin_top = 30.0
+margin_right = 305.0
+margin_bottom = 163.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 61 )
+text = "OU
+
+
+D'un père de famille naufragé
+avec ses enfants;
+continué par Madame Isabelle,"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressE" parent="Book/Open" index="4" instance=ExtResource( 30 )]
+position = Vector2( -94, 260 )
+scale = Vector2( 1, 1 )
+
+[node name="Label3" type="Label" parent="Book/Open" index="5"]
+margin_left = -83.0
+margin_top = 253.0
+margin_right = -34.0
+margin_bottom = 269.0
+custom_colors/font_color = Color( 0.909804, 0.909804, 0.909804, 1 )
+custom_fonts/font = SubResource( 62 )
+text = "FERMER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
@@ -1353,3 +1471,4 @@ anims/Slide = SubResource( 2 )
 [editable path="YSort/Chair"]
 [editable path="YSort/Barril"]
 [editable path="Notebook"]
+[editable path="Book"]

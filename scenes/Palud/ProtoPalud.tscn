@@ -29,7 +29,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
-[ext_resource path="res://assets/05_fonts/Newsgeek/NewsgeekSerif.ttf" type="DynamicFontData" id=30]
+[ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
 [ext_resource path="res://scenes/Palud/Pigeon.tscn" type="PackedScene" id=33]
@@ -924,7 +924,6 @@ parameters/playback = SubResource( 21 )
 position = Vector2( 330, 256 )
 DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
-HasDemandDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Lingere" index="0"]
 NPCName = " Mme Détraz "
@@ -1213,7 +1212,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="YSort/Affiche/Open" index="6"]
+[node name="Label6" type="Label" parent="YSort/Affiche/Open" index="6"]
+margin_left = -28.0
+margin_top = 152.0
+margin_right = 23.0
+margin_bottom = 168.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "FERMER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="YSort/Affiche/Open" index="7"]
 margin_left = 31.5
 margin_top = 7.0
 margin_right = 278.5
@@ -1231,7 +1245,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="YSort/Affiche/Open" index="7"]
+[node name="Label4" type="Label" parent="YSort/Affiche/Open" index="8"]
 margin_left = 275.0
 margin_top = 42.0
 margin_right = 412.0
@@ -1247,7 +1261,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label5" type="Label" parent="YSort/Affiche/Open" index="8"]
+[node name="Label5" type="Label" parent="YSort/Affiche/Open" index="9"]
 margin_left = 277.0
 margin_top = 61.0
 margin_right = 570.0
@@ -1264,7 +1278,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="9"]
+[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="10"]
 modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
 position = Vector2( 56.1055, 21.75 )
 scale = Vector2( 0.411111, 0.411111 )

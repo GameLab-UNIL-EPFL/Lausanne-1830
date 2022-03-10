@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/fountain.wav-96f2d19f9551c42483be6c4838689ecc.sample"
+path="res://.import/birdChirps.wav-d550272f0163f825893cee38422bbb3f.sample"
 
 [deps]
 
-source_file="res://assets/07_sounds/Sounds/fountain.wav"
-dest_files=[ "res://.import/fountain.wav-96f2d19f9551c42483be6c4838689ecc.sample" ]
+source_file="res://assets/07_sounds/birdChirps.wav"
+dest_files=[ "res://.import/birdChirps.wav-d550272f0163f825893cee38422bbb3f.sample" ]
 
 [params]
 

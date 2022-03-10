@@ -12,4 +12,4 @@ dest_files=[ "res://.import/Schubert_Sonata13_2.mp3-d5930f429db64659bb38a27b8a30
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=0.0
