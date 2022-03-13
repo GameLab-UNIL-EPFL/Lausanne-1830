@@ -30,6 +30,7 @@ margin_right = 191.0
 margin_bottom = 219.0
 texture_normal = ExtResource( 4 )
 id = "Flon/Flon"
+text = "Flon"
 
 [node name="palud_button" parent="." instance=ExtResource( 1 )]
 margin_left = 202.0
@@ -38,6 +39,7 @@ margin_right = 218.0
 margin_bottom = 146.0
 texture_normal = ExtResource( 5 )
 id = "Palud/ProtoPalud"
+text = "Palud"
 
 [node name="casino_button" parent="." instance=ExtResource( 1 )]
 margin_left = 270.0
@@ -46,6 +48,7 @@ margin_right = 286.0
 margin_bottom = 230.0
 texture_normal = ExtResource( 6 )
 id = "Casino/Casino"
+text = "Casino"
 
 [node name="palud_point" parent="." instance=ExtResource( 1 )]
 margin_left = 200.0
@@ -55,6 +58,8 @@ margin_bottom = 160.0
 texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
+id = "Palud/ProtoPalud"
+text = ""
 
 [node name="casino_point" parent="." instance=ExtResource( 1 )]
 margin_left = 270.0
@@ -65,6 +70,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Casino/Casino"
+text = ""
 
 [node name="moulin_point" parent="." instance=ExtResource( 1 )]
 margin_left = 176.0
@@ -75,6 +81,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Flon/Flon"
+text = ""
 
 [node name="brasserie_point" parent="." instance=ExtResource( 1 )]
 margin_left = 130.0
@@ -85,3 +92,4 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 3
 id = "Brasserie/Brasserie"
+text = ""

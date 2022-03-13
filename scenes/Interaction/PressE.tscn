@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/04_notebook/presse1.png" type="Texture" id=1]
+[ext_resource path="res://assets/04_notebook/presse2.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "press",
+"speed": 2.0
+} ]
+
+[node name="PressE" type="AnimatedSprite"]
+position = Vector2( 5, 40 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 3 )
+animation = "press"
+playing = true
