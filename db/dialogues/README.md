@@ -6,9 +6,9 @@ The script takes a single command line argument in the form of a path to the `.t
 ## Example  
 Given the following `example.tsv` file found in the `/tsv/` directory:
 ```tsv
-scene name	dialogue type id target1 target2	
-palud	onApproach testApproach baker	Du pain frais de ce matin !|Venez goûter !
-palud	onDemand testDemand baker	Bien le bonjour, qu'est-ce qui vous intéresse ?|Pain, croissant ?&C'est fait ce matin avec la farine des Rochat !&Vous devriez aller visiter leur moulin au Flon.
+scene name	dialogue type id ntargets	
+palud	onApproach testApproach 1	Du pain frais de ce matin !|Venez goûter !
+palud	onDemand testDemand 1	Bien le bonjour, qu'est-ce qui vous intéresse ?|Pain, croissant ?&C'est fait ce matin avec la farine des Rochat !&Vous devriez aller visiter leur moulin au Flon.
 ```  
 > Note that in the body section of the tsv, the options are separated using the `|` symbol and the different text lines are separated using the `&` symbol.  
 
@@ -19,13 +19,13 @@ python3 parseDialogue.py tsv/example.tsv
 This will give us the following result, stored in `xml/examples.xml`:  
 ```xml  
 <scene name="palud">
-    <dialogue type="onApproach" id="testApproach" target1="baker">
+    <dialogue type="onApproach" id="testApproach" ntargets="1">
         <text>
             <option id="0">Du pain frais de ce matin !</option>
             <option id="1">Venez goûter !</option>
         </text>
     </dialogue>
-    <dialogue type="onDemand" id="testDemand" target1="baker">
+    <dialogue type="onDemand" id="testDemand" ntargets="1">
         <text>
             <option id="0">Bien le bonjour, qu'est-ce qui vous intéresse ?</option>
             <option id="1">Pain, croissant ?</option>

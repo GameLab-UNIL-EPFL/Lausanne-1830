@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Misc_Paper_TurnPage_01.mp3-9a69ae1b723b3cae353762b699f91621.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/Misc_Paper_TurnPage_01.mp3"
+dest_files=[ "res://.import/Misc_Paper_TurnPage_01.mp3-9a69ae1b723b3cae353762b699f91621.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

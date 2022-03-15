@@ -1,19 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/TextBox.cs" type="Script" id=2]
 [ext_resource path="res://assets/06_UI_menus/textBoxSmall.png" type="Texture" id=3]
 [ext_resource path="res://assets/06_UI_menus/textBoxBig.png" type="Texture" id=4]
-[ext_resource path="res://assets/04_notebook/presse1.png" type="Texture" id=5]
-[ext_resource path="res://assets/04_notebook/presse2.png" type="Texture" id=6]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "press",
-"speed": 2.0
-} ]
+[ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -28,20 +19,15 @@ script = ExtResource( 2 )
 
 [node name="ApproachTB" type="Sprite" parent="."]
 position = Vector2( 204, 34 )
-scale = Vector2( 2.76923, 1.91463 )
+scale = Vector2( 2.8, 2 )
 texture = ExtResource( 3 )
 
 [node name="DemandTB" type="Sprite" parent="."]
 position = Vector2( 208, -14 )
-scale = Vector2( 2.78205, 2.14286 )
+scale = Vector2( 2.8, 2 )
 texture = ExtResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 4.73065, 41.1354 )
-scale = Vector2( 3.28189, 3.28189 )
-frames = SubResource( 3 )
-animation = "press"
-playing = true
+[node name="PressE" parent="." instance=ExtResource( 5 )]
 
 [node name="TextContainer" type="MarginContainer" parent="."]
 margin_left = -4.0

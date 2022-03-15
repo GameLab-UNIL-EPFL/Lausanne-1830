@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/marketCrowd.wav-2a69b13136d5ffe50339e3c3a27ce83a.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/marketCrowd.wav"
+dest_files=[ "res://.import/marketCrowd.wav-2a69b13136d5ffe50339e3c3a27ce83a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

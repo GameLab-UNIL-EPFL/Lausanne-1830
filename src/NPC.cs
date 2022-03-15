@@ -23,13 +23,40 @@ public class NPC : KinematicBody2D {
 	private TextBox TB;
 	
 	//For Idle animation starting
-	private AnimationPlayer AP;
+	private AnimationTree AT;
+	private AnimationNodeStateMachinePlayback AS;
 	private bool IdleAnimIsPlaying = false;
+	
+	//Randomness
 	private Random random = new Random();
 	
+	//For wandering
+	private bool isWandering = false;
+	private Vector2 Velocity = Vector2.Zero;
+	private Vector2 InputVec = Vector2.Zero;
+	private const int ACC = 950;
+	private const int FRIC = 1000;
+	private float cooldown = 0.0f;
+	private float wanderTime = 1.0f;
+	
+	[Export]
+	public int ProbRight = 2; //max weight of right movement
+	[Export]
+	public int ProbLeft = 2; //max weight of left movement
+	[Export]
+	public int ProbUp = 2; //max weight of up movement
+	[Export]
+	public int ProbDown = 2; //max weight of down movement
+	[Export]
+	public bool CanWander = false;
+	[Export]
+	public float WanderingCooldown = 5.0f;
+	[Export]
+	public float WanderingDist = 1.0f;
+	[Export]
+	public int WalkSpeed = 50;
 	[Export]
 	public int IdleStartProb = 25; //0 to 100
-	
 	[Export]
 	public string AutoDialogueID;
 	[Export]
@@ -82,8 +109,8 @@ public class NPC : KinematicBody2D {
 		DC = Owner.GetNode<DialogueController>("DialogueController");
 		QC = Owner.GetNode<QuestController>("QuestController");
 		TB = GetNode<TextBox>("TextBox");
-		AP = GetNode<AnimationPlayer>("AnimationPlayer");
-		
+		AT = GetNode<AnimationTree>("AnimationTree");
+		AS = (AnimationNodeStateMachinePlayback)AT.Get("parameters/playback");
 		//Sanity Check
 		if(HasDemandDialogue || HasAutoDialogue) {
 			if(DC == null) {
@@ -92,12 +119,76 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
+	private void HandleMovement(float delta) {
+		//Update velocity
+		if(InputVec == Vector2.Zero) {
+			Velocity = Velocity.MoveToward(Vector2.Zero, FRIC * delta);
+		} else {
+			//Set blend positions for animation
+			AT.Set("parameters/Walk/blend_position", InputVec);
+			AT.Set("parameters/Idle/blend_position", InputVec);
+			Velocity = Velocity.MoveToward(InputVec * WalkSpeed, ACC * delta);
+		}
+	}
+	
+	//Generate a new random position within the wandering distance
+	private Vector2 NewInputVec() {
+		return new Vector2(
+			random.Next(ProbRight) - random.Next(ProbLeft), 
+			random.Next(ProbDown) - random.Next(ProbUp)
+		);
+	}
+	
+	private void StopWandering() {
+		wanderTime = 0.0f;
+		isWandering = false;
+		InputVec = Vector2.Zero;
+		Velocity = Vector2.Zero;
+		AS.Travel("Idle");
+		
+		//Start cooldown
+		cooldown = (random.Next(100)/100.0f) * WanderingCooldown;
+	}
+	
 	public override void _Process(float delta) {
 		if(!IdleAnimIsPlaying) {
 			if(random.Next(100) < IdleStartProb) {
-				AP.Play("Idle");
+				AT.Active = true;
 				IdleAnimIsPlaying = true;
 			}
+		}
+		//Check for movement
+		if(!inDialogue && IdleAnimIsPlaying && CanWander) {
+			if(cooldown > 0.0f) {
+				cooldown -= delta;
+			} else {
+				cooldown = 0.0f;
+				//Check for destination
+				if(!isWandering) {
+					AS.Travel("Walk");
+					isWandering = true;
+					wanderTime = (random.Next(100)/100.0f) * WanderingDist;
+					//Set input vec
+					InputVec = NewInputVec();
+				} else {
+					wanderTime -= delta;
+					//Check if destination was reached
+					if(wanderTime <= 0.0f) {
+						StopWandering();
+					}
+				}
+				
+			}
+		}
+		HandleMovement(delta);
+		
+		if(Velocity == Vector2.Zero) {
+			//Goto idle
+			AS.Travel("Idle");
+		} else {
+			//Scale velocity and move
+			Velocity = MoveAndSlide(Velocity);
+			AS.Travel("Walk");
 		}
 	}
 	
@@ -109,6 +200,7 @@ public class NPC : KinematicBody2D {
 	 * @param tb, the TalkBox of the player that has entered the zone.
 	 */
 	private void _on_ListenBox_area_entered(Area2D tb) {
+		//Check if player is around
 		if(tb.Owner is Player) {
 			Player p = (Player)tb.Owner;
 			//Subscribe to the player
@@ -124,7 +216,7 @@ public class NPC : KinematicBody2D {
 					TB._ShowText(next);
 				}
 			}
-		} 
+		}
 	}
 	
 	/**
@@ -224,6 +316,12 @@ public class NPC : KinematicBody2D {
 				if(InnerLinesCount != 0) {
 					d = InnerLines[InnerLines.Length - InnerLinesCount--];
 				}
+				
+				//Turn to player
+				InputVec = (player.Position - Position).Normalized();
+				HandleMovement(0.03f);
+				InputVec = Vector2.Zero;
+				HandleMovement(0.03f);
 			}
 			
 			//Show it in the box

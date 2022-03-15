@@ -1,6 +1,7 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
 [ext_resource path="res://assets/02_architecture/02_palud/backgroundPalud.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Palud/PaludFloor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Palud/PaludBuilings.tscn" type="PackedScene" id=5]
@@ -16,17 +17,19 @@
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
-[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/07_sounds/fountain.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/07_sounds/marketCrowd.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/Sounds/fountain.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/07_sounds/Sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=22]
 [ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=25]
+[ext_resource path="res://assets/06_UI_menus/simpleTextBoxBig.png" type="Texture" id=26]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
+[ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=30]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
 [ext_resource path="res://scenes/Palud/Pigeon.tscn" type="PackedScene" id=33]
@@ -35,6 +38,8 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/profileLingereAnim-Sheet.png" type="Texture" id=36]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundry.png" type="Texture" id=37]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
+[ext_resource path="res://assets/06_UI_menus/calecheNews.png" type="Texture" id=39]
+[ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -101,6 +106,22 @@ b = Vector2( 642.831, 1.25632 )
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 7.58701, -140.561 )
 b = Vector2( 7.2533, 11.611 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Idle"
@@ -258,6 +279,282 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 8, 9, 8, 10 ]
 }
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 24.9748, 22.4492 )
+
+[sub_resource type="Animation" id=28]
+resource_name = "FlyDown"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "FlyLeft"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "FlyRight"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "FlyUp"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 7, 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "Idle"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "IdleDown"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "IdleRight"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "IdleUp"
+length = 3.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9, 1, 1.1, 1.4, 1.5, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=36]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 29.9439, 18.9086 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+
+[sub_resource type="DynamicFont" id=25]
+font_data = ExtResource( 30 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -475,21 +772,6 @@ position = Vector2( 399, 326 )
 [node name="Sprite" parent="YSort/Props/Box6" index="0"]
 texture = ExtResource( 22 )
 
-[node name="Item" parent="YSort/Props" instance=ExtResource( 16 )]
-position = Vector2( 55, 193 )
-
-[node name="Label" parent="YSort/Props/Item/Sprite" index="0"]
-text = "Regarder"
-
-[node name="AffichePlaceholder" type="ColorRect" parent="YSort/Props"]
-margin_left = 45.0
-margin_top = 184.0
-margin_right = 61.0
-margin_bottom = 203.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Box" parent="YSort/Props" instance=ExtResource( 24 )]
 position = Vector2( 2, 248 )
 
@@ -500,12 +782,16 @@ texture = ExtResource( 22 )
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 121, 333 )
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
 [node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
 visible = false
+
+[node name="AnimationTree" parent="YSort/NPC/Truschel" index="6"]
+parameters/playback = SubResource( 15 )
 
 [node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 147, 228 )
@@ -518,6 +804,9 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
 
+[node name="AnimationTree" parent="YSort/NPC/Baker" index="6"]
+parameters/playback = SubResource( 16 )
+
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 29, 278 )
 AutoDialogueID = "testApproach"
@@ -528,6 +817,9 @@ position = Vector2( -13.8276, -35.652 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
+
+[node name="AnimationTree" parent="YSort/NPC/Baker3" index="6"]
+parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 453, 298 )
@@ -540,8 +832,12 @@ position = Vector2( -13.8276, -35.652 )
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
 
+[node name="AnimationTree" parent="YSort/NPC/Baker2" index="6"]
+parameters/playback = SubResource( 18 )
+
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 190, 295 )
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -561,8 +857,14 @@ visible = false
 [node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/NPC/Elisabeth" index="6"]
+parameters/playback = SubResource( 19 )
+
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 259, 204 )
+ProbUp = 0
+ProbDown = 0
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
@@ -582,8 +884,16 @@ visible = false
 [node name="CollisionShape2D" parent="YSort/NPC/Random/ListenBox" index="0"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/NPC/Random" index="6"]
+parameters/playback = SubResource( 20 )
+
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 301, 332 )
+position = Vector2( 301, 325 )
+ProbRight = 1
+ProbLeft = 1
+ProbUp = 0
+ProbDown = 0
+CanWander = true
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -597,10 +907,13 @@ texture = ExtResource( 13 )
 [node name="ListenBox" parent="YSort/NPC/OldMan" index="4"]
 visible = false
 
+[node name="AnimationTree" parent="YSort/NPC/OldMan" index="6"]
+parameters/playback = SubResource( 21 )
+
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 330, 257 )
+DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
-HasDemandDialogue = false
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
 visible = false
@@ -608,9 +921,11 @@ position = Vector2( 2, 4 )
 
 [node name="FullyAnimated" parent="YSort/NPC/Lingere" index="2"]
 texture = ExtResource( 36 )
-flip_h = false
 hframes = 2
 vframes = 1
+
+[node name="AnimationTree" parent="YSort/NPC/Lingere" index="6"]
+parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 247, 265 )
@@ -635,6 +950,57 @@ anims/WalkLeft = SubResource( 12 )
 anims/WalkRight = SubResource( 13 )
 anims/WalkUp = SubResource( 14 )
 
+[node name="AnimationTree" parent="YSort/NPC/Lingere2" index="6"]
+parameters/playback = SubResource( 23 )
+
+[node name="Pigeon" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 420, 259 )
+RoofTops = PoolVector2Array( 550, 90, 388, 38, 283, 85, 50, 75 )
+FountainSpot = Vector2( 420, 259 )
+RandomStartDir = false
+RightDirProb = 25
+
+[node name="Pigeon2" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 242, 293 )
+RoofTops = PoolVector2Array( 54, 78, 24, 26, 120, 26 )
+FountainSpot = Vector2( 242, 293 )
+RoofTime = 5.0
+FlySpeed = 120
+RightDirProb = 40
+
+[node name="AnimationTree" parent="YSort/Pigeon2" index="3"]
+parameters/playback = SubResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Pigeon2/Area2D" index="0"]
+position = Vector2( -13.5868, 14.7951 )
+shape = SubResource( 27 )
+
+[node name="Pigeon3" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 25, 240 )
+RoofTops = PoolVector2Array( 210, 20, 500, 90 )
+FountainSpot = Vector2( 25, 240 )
+RoofTime = 15.0
+FlySpeed = 95
+RightDirProb = 45
+
+[node name="AnimationPlayer" parent="YSort/Pigeon3" index="2"]
+anims/FlyDown = SubResource( 28 )
+anims/FlyLeft = SubResource( 29 )
+anims/FlyRight = SubResource( 30 )
+anims/FlyUp = SubResource( 31 )
+anims/Idle = SubResource( 32 )
+anims/IdleDown = SubResource( 33 )
+anims/IdleRight = SubResource( 34 )
+anims/IdleUp = SubResource( 35 )
+anims/RESET = SubResource( 36 )
+
+[node name="AnimationTree" parent="YSort/Pigeon3" index="3"]
+parameters/playback = SubResource( 37 )
+
+[node name="CollisionShape2D" parent="YSort/Pigeon3/Area2D" index="0"]
+position = Vector2( 20.3879, -8.70552 )
+shape = SubResource( 38 )
+
 [node name="Fountain" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 339, 256 )
 
@@ -657,9 +1023,6 @@ position = Vector2( -72, 18 )
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
 
-[node name="Pigeon" parent="YSort/Fountain" instance=ExtResource( 33 )]
-position = Vector2( 81, 3 )
-
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 537, 500 )
 isCutscene = true
@@ -675,6 +1038,176 @@ texture = ExtResource( 34 )
 
 [node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
+
+[node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
+parameters/playback = SubResource( 24 )
+
+[node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 55, 188 )
+z_index = 2
+
+[node name="Sprite" parent="YSort/Affiche" index="0"]
+visible = false
+
+[node name="Label" parent="YSort/Affiche/Sprite" index="0"]
+text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
+
+[node name="Open" parent="YSort/Affiche" index="2"]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Affiche/Open" index="1"]
+margin_left = 166.0
+margin_top = -130.0
+margin_right = 350.0
+margin_bottom = -20.0
+texture = ExtResource( 26 )
+region_rect = Rect2( 1, 1, 154, 73 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="YSort/Affiche/Open" index="2"]
+margin_left = 20.0
+margin_top = -6.0
+margin_right = 238.0
+margin_bottom = 90.0
+texture = ExtResource( 26 )
+region_rect = Rect2( 1, 1, 154, 73 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="YSort/Affiche/Open" index="3"]
+margin_left = 275.0
+margin_top = 30.0
+margin_right = 483.0
+margin_bottom = 126.0
+texture = ExtResource( 26 )
+region_rect = Rect2( 1, 1, 154, 73 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="YSort/Affiche/Open" index="4"]
+margin_left = 168.0
+margin_top = -120.0
+margin_right = 348.0
+margin_bottom = -75.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "TANNERIE MERCIER
+Cherche apprenti"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="YSort/Affiche/Open" index="5"]
+margin_left = 184.0
+margin_top = -72.0
+margin_right = 398.0
+margin_bottom = -18.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "Se présenter directement
+aupres de Mr. Mercier
+A la Rue de Pré 31"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="YSort/Affiche/Open" index="6"]
+margin_left = -28.0
+margin_top = 152.0
+margin_right = 23.0
+margin_bottom = 168.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "FERMER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="YSort/Affiche/Open" index="7"]
+margin_left = 31.5
+margin_top = 7.0
+margin_right = 278.5
+margin_bottom = 103.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "A dater du 1er mars,
+M. Dejean fait partir
+une bonne berline pour Paris
+ et une pour l'Angleterre,
+a des prix modérés."
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="YSort/Affiche/Open" index="8"]
+margin_left = 275.0
+margin_top = 42.0
+margin_right = 412.0
+margin_bottom = 63.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "Conseils"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="YSort/Affiche/Open" index="9"]
+margin_left = 277.0
+margin_top = 61.0
+margin_right = 570.0
+margin_bottom = 160.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 25 )
+text = "Sur l'Art de guérir sans mercure,
+LES MALADIES SECRETES,
+Un volume, prix 1 fr. 50 c."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="10"]
+modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
+position = Vector2( 56.1055, 21.75 )
+scale = Vector2( 0.411111, 0.411111 )
+texture = ExtResource( 39 )
+
+[node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
+position = Vector2( -38, 155 )
+scale = Vector2( 1, 1 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -702,18 +1235,22 @@ anims/Slide = SubResource( 6 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )
 stream = ExtResource( 19 )
-volume_db = -5.0
+volume_db = 1.0
 autoplay = true
 max_distance = 200.0
+bus = "Sounds"
+script = ExtResource( 2 )
 
 [node name="MarketCrowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+volume_db = -10.0
 autoplay = true
+bus = "Sounds"
 
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
@@ -750,7 +1287,6 @@ autoplay = true
 [editable path="YSort/Props/Box5"]
 [editable path="YSort/Props/Box7"]
 [editable path="YSort/Props/Box6"]
-[editable path="YSort/Props/Item"]
 [editable path="YSort/Props/Box"]
 [editable path="YSort/NPC/Truschel"]
 [editable path="YSort/NPC/Truschel/ListenBox"]
@@ -770,11 +1306,14 @@ autoplay = true
 [editable path="YSort/NPC/Lingere/ListenBox"]
 [editable path="YSort/NPC/Lingere2"]
 [editable path="YSort/NPC/Lingere2/ListenBox"]
+[editable path="YSort/Pigeon2"]
+[editable path="YSort/Pigeon3"]
 [editable path="YSort/Fountain/Barrel"]
 [editable path="YSort/Fountain/Laundry"]
 [editable path="YSort/Fountain/Laundry2"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
+[editable path="YSort/Affiche"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]
 [editable path="Notebook/Sprite/Nom"]
