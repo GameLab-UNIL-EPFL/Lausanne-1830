@@ -1,10 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/TextBox.cs" type="Script" id=2]
 [ext_resource path="res://assets/06_UI_menus/textBoxSmall.png" type="Texture" id=3]
 [ext_resource path="res://assets/06_UI_menus/textBoxBig.png" type="Texture" id=4]
-[ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/04_notebook/presse1.png" type="Texture" id=5]
+[ext_resource path="res://assets/06_UI_menus/simpleTextBoxSmall.png" type="Texture" id=6]
+[ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/04_notebook/presse2.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "pressE",
+"speed": 2.0
+} ]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -13,6 +24,11 @@ outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_color = Color( 0.831373, 0.764706, 0.662745, 1 )
+use_mipmaps = true
+font_data = ExtResource( 7 )
 
 [node name="TextBox" type="Node2D"]
 script = ExtResource( 2 )
@@ -27,7 +43,12 @@ position = Vector2( 208, -14 )
 scale = Vector2( 2.8, 2 )
 texture = ExtResource( 4 )
 
-[node name="PressE" parent="." instance=ExtResource( 5 )]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 5, 40 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 4 )
+animation = "pressE"
+playing = true
 
 [node name="TextContainer" type="MarginContainer" parent="."]
 margin_left = -4.0
@@ -56,4 +77,35 @@ autowrap = true
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_left = 25.0
+margin_top = -125.0
+margin_right = 97.0
+margin_bottom = -104.0
+rect_scale = Vector2( 2.2, 2.2 )
+custom_colors/font_color = Color( 0.831373, 0.764706, 0.662745, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "NPC"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Name"]
+modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 1.54673, 1.41773, 155.104, 30.0749 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": true
 }

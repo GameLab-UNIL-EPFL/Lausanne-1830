@@ -109,6 +109,12 @@
         <text>Bonjour, je m'appelle Louis Henri Bourgeois.</text>
         <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même.</text>
     </dialogue>
+    <dialogue id="demandBaumann" ntargets="1" type="onDemand">
+        <text>Mme Perregaux est de nouveau enceinte. Elle attend son deuxième enfant.</text>
+    </dialogue>
+    <dialogue id="demandPouly" ntargets="1" type="onDemand">
+        <text>Oh ! Mais quelle nouvelle réjouissante !</text>
+    </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Bonjour, bienvenue au moulin Rochat !</text>
         <text>Je m'appelle Benedict.</text>
