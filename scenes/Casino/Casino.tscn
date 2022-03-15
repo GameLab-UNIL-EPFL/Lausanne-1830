@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=4]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=5]
-[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/02_architecture/04_casino/background.png" type="Texture" id=7]
+[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/01_characters/03_pnjs/tonnelier.png" type="Texture" id=11]
+[ext_resource path="res://assets/01_characters/03_pnjs/conradTruschel.png" type="Texture" id=12]
+[ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 147.5, 117 )
@@ -53,7 +59,17 @@ b = Vector2( 8.75844, 10.808 )
 a = Vector2( 6.367, -349.192 )
 b = Vector2( 7.2533, 11.611 )
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
 [node name="Casino" type="Node2D"]
+
+[node name="DialogueController" parent="." instance=ExtResource( 9 )]
+
+[node name="QuestController" parent="." instance=ExtResource( 10 )]
 
 [node name="Bg" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
@@ -70,9 +86,6 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Casino"]
 position = Vector2( 428, 133 )
 shape = SubResource( 6 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 296, 320 )
 
 [node name="Notebook" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -99,7 +112,7 @@ anims/Slide = SubResource( 2 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Coillision" type="Node2D" parent="."]
 
@@ -114,7 +127,6 @@ one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D4"]
 shape = SubResource( 3 )
-one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Coillision"]
 
@@ -128,9 +140,69 @@ shape = SubResource( 4 )
 position = Vector2( 633, 349 )
 shape = SubResource( 5 )
 
-[connection signal="OpenNotebook" from="Player" to="Notebook" method="_on_Player_OpenNotebook"]
-[connection signal="SlideInNotebookController" from="Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 296, 320 )
+
+[node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 176, 248 )
+ProbRight = 4
+ProbLeft = 0
+ProbUp = 0
+ProbDown = 0
+CanWander = true
+WanderingCooldown = 1000.0
+WanderingDist = 0.0
+AutoDialogueID = "appPerregaux"
+DemandDialogueID = "demandPerregaux"
+
+[node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
+texture = ExtResource( 12 )
+
+[node name="AnimationTree" parent="YSort/Perregaux" index="6"]
+parameters/playback = SubResource( 7 )
+
+[node name="Bourgeois" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 160, 144 )
+CanWander = true
+DemandDialogueID = "demandBourgeois"
+HasAutoDialogue = false
+
+[node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
+texture = ExtResource( 11 )
+
+[node name="AnimationTree" parent="YSort/Bourgeois" index="6"]
+parameters/playback = SubResource( 8 )
+
+[node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 208, 248 )
+ProbRight = 0
+ProbLeft = 8
+ProbUp = 0
+ProbDown = 0
+CanWander = true
+WanderingCooldown = 1000.0
+WanderingDist = 0.0
+AutoDialogueID = "appPichard"
+DemandDialogueID = "demandPichard"
+
+[node name="FullyAnimated" parent="YSort/Pichard" index="2"]
+texture = ExtResource( 13 )
+
+[node name="AnimationTree" parent="YSort/Pichard" index="6"]
+parameters/playback = SubResource( 9 )
+
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
-[connection signal="pressed" from="NotebookController" to="Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_Player_OpenNotebook"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+
+[editable path="YSort/Perregaux"]
+[editable path="YSort/Perregaux/ListenBox"]
+[editable path="YSort/Bourgeois"]
+[editable path="YSort/Bourgeois/ListenBox"]
+[editable path="YSort/Pichard"]
+[editable path="YSort/Pichard/ListenBox"]

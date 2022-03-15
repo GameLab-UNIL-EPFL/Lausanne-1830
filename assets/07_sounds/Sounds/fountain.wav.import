@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fountain.wav-96f2d19f9551c42483be6c4838689ecc.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/fountain.wav"
+dest_files=[ "res://.import/fountain.wav-96f2d19f9551c42483be6c4838689ecc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

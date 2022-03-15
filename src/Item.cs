@@ -1,21 +1,21 @@
 using Godot;
 using System;
 
-public class Item : Node2D
-{
+public class Item : Node2D {
 	private Sprite ItemSprite;
+	private Node2D N;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		ItemSprite = GetNode<Sprite>("Sprite");
+		N = GetNode<Node2D>("Open");
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta) {
 		if(Input.IsActionJustPressed("ui_interact")) {
 			if(ItemSprite.Visible) {
-				GD.Print("Ouvrir l'affiche or whatever");
+				N.Visible = !N.Visible;
 			}
 		}
 	}

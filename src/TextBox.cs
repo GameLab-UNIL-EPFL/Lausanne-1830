@@ -35,7 +35,7 @@ public class TextBox : Node2D {
 		DTB = GetNode<Sprite>("DemandTB");
 		TC = GetNode<MarginContainer>("TextContainer");
 		Text = GetNode<Label>("TextContainer/Text");
-		E = GetNode<AnimatedSprite>("AnimatedSprite");
+		E = GetNode<AnimatedSprite>("PressE");
 		
 		
 		Show();
