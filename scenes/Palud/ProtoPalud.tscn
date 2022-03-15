@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://scenes/Palud/Fountain.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=12]
 [ext_resource path="res://assets/01_characters/03_pnjs/oldMan-Sheet.png" type="Texture" id=13]
-[ext_resource path="res://assets/01_characters/03_pnjs/randomWoman-Sheet.png" type="Texture" id=14]
+[ext_resource path="res://assets/01_characters/03_pnjs/lingereChapeau.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=17]
@@ -40,6 +40,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
 [ext_resource path="res://assets/06_UI_menus/calecheNews.png" type="Texture" id=39]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/05_fonts/Newsgeek/Newsgeek.ttf" type="DynamicFontData" id=41]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -553,6 +554,13 @@ extents = Vector2( 29.9439, 18.9086 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
+[sub_resource type="CircleShape2D" id=40]
+radius = 10.8202
+
+[sub_resource type="DynamicFont" id=39]
+use_mipmaps = true
+font_data = ExtResource( 41 )
+
 [sub_resource type="DynamicFont" id=25]
 font_data = ExtResource( 30 )
 
@@ -781,11 +789,16 @@ texture = ExtResource( 22 )
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 121, 333 )
+position = Vector2( 120, 332 )
 CanWander = true
+WanderingCooldown = 15.0
+WalkSpeed = 40
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Truschel" index="0"]
+NPCName = " Mlle Trüschel "
 
 [node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
 visible = false
@@ -794,12 +807,13 @@ visible = false
 parameters/playback = SubResource( 15 )
 
 [node name="Baker" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 147, 228 )
+position = Vector2( 148, 228 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
 position = Vector2( -13.8276, -35.652 )
+NPCName = " M. Chapuis "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
@@ -809,12 +823,12 @@ parameters/playback = SubResource( 16 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 29, 278 )
-InitDir = 0
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
 position = Vector2( -13.8276, -35.652 )
+NPCName = " M. Guignard "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
@@ -824,12 +838,12 @@ parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 453, 298 )
-InitDir = 0
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
 position = Vector2( -13.8276, -35.652 )
+NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
@@ -838,14 +852,19 @@ texture = ExtResource( 32 )
 parameters/playback = SubResource( 18 )
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 190, 295 )
+position = Vector2( 190, 296 )
 CanWander = true
+WalkSpeed = 30
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 position = Vector2( -11.707, -36.924 )
+NPCName = " Mlle De Cerjeat "
+
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -863,16 +882,14 @@ visible = false
 parameters/playback = SubResource( 19 )
 
 [node name="Random" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 259, 204 )
-ProbUp = 0
-ProbDown = 0
-CanWander = true
+position = Vector2( 260, 204 )
 AutoDialogueID = ""
 DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Random" index="0"]
 position = Vector2( -11.707, -36.924 )
+NPCName = " Mme. Chardon "
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
@@ -903,6 +920,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
 position = Vector2( -11.431, -36.089 )
+NPCName = " M. Jaccard "
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
 texture = ExtResource( 13 )
@@ -914,9 +932,12 @@ visible = false
 parameters/playback = SubResource( 21 )
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 330, 257 )
+position = Vector2( 330, 259 )
 DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Lingere" index="0"]
+NPCName = " Mme Détraz "
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
 visible = false
@@ -931,7 +952,7 @@ vframes = 1
 parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 247, 265 )
+position = Vector2( 248, 264 )
 HasAutoDialogue = false
 HasDemandDialogue = false
 
@@ -1036,6 +1057,9 @@ DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
 
+[node name="TextBox" parent="YSort/QuestNPC" index="0"]
+NPCName = " M. Gély  "
+
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 34 )
 
@@ -1044,6 +1068,66 @@ visible = false
 
 [node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
 parameters/playback = SubResource( 24 )
+
+[node name="Cuir" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 481.821, 294.246 )
+z_index = 1
+
+[node name="Sprite" parent="YSort/Cuir" index="0"]
+visible = false
+position = Vector2( 11.0124, -17.6866 )
+
+[node name="Label" parent="YSort/Cuir/Sprite" index="0"]
+text = "Regarder"
+
+[node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
+position = Vector2( 3.69278, -0.155334 )
+shape = SubResource( 40 )
+
+[node name="Open" parent="YSort/Cuir" index="2"]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Cuir/Open" index="1"]
+margin_left = -242.811
+margin_top = -162.459
+margin_right = -48.8108
+margin_bottom = -42.4594
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 156.02, 75.5419 )
+patch_margin_left = 6
+patch_margin_top = 7
+patch_margin_right = 9
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="YSort/Cuir/Open" index="2"]
+margin_left = -251.703
+margin_top = -160.865
+margin_right = -108.703
+margin_bottom = -78.8651
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 39 )
+text = "VEAUX 1ER CHOIX
+EMIS PAR
+J.J. MERCIER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceholderCuir" type="ColorRect" parent="YSort"]
+margin_left = 477.774
+margin_top = 290.904
+margin_right = 486.774
+margin_bottom = 297.904
+color = Color( 0.439216, 0.298039, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
@@ -1054,6 +1138,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1128,7 +1215,7 @@ custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 25 )
 text = "Se présenter directement
 aupres de Mr. Mercier
-A la Rue de Pré 31"
+A la Rue du Pré 31"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1199,16 +1286,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="10"]
-modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
-position = Vector2( 56.1055, 21.75 )
-scale = Vector2( 0.411111, 0.411111 )
-texture = ExtResource( 39 )
+[node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
+position = Vector2( -38, 155 )
+scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
+
+[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="12"]
+modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
+position = Vector2( 56.1055, 21.75 )
+scale = Vector2( 0.411111, 0.411111 )
+texture = ExtResource( 39 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -1298,6 +1389,7 @@ bus = "Sounds"
 [editable path="YSort/NPC/Baker2"]
 [editable path="YSort/NPC/Baker2/ListenBox"]
 [editable path="YSort/NPC/Elisabeth"]
+[editable path="YSort/NPC/Elisabeth/TextBox"]
 [editable path="YSort/NPC/Elisabeth/ListenBox"]
 [editable path="YSort/NPC/Random"]
 [editable path="YSort/NPC/Random/ListenBox"]
@@ -1314,6 +1406,7 @@ bus = "Sounds"
 [editable path="YSort/Fountain/Laundry2"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
+[editable path="YSort/Cuir"]
 [editable path="YSort/Affiche"]
 [editable path="Notebook"]
 [editable path="Notebook/Sprite/Prenom"]

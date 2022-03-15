@@ -16,6 +16,7 @@ public class Notebook : Node2D {
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
+	private Sprite Portrait;
 	
 	private Context context;
 	
@@ -90,6 +91,7 @@ public class Notebook : Node2D {
 		Hide();
 		context = GetNode<Context>("/root/Context");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
+		Portrait = GetNode<Sprite>("Portrait");
 		//Fetch all info
 		foreach(var infoName in infoNames) {
 			info.Add(GetNode<NotebookInfo>("Sprite/" + infoName));
@@ -277,18 +279,28 @@ public class Notebook : Node2D {
 	
 	public void _on_Tab1Button_pressed() {
 		PressTabButton(0);
+		Portrait.Show();
+		Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/angeliqueTruschel.png");
 	}
 	public void _on_Tab2Button_pressed() {
 		PressTabButton(1);
+		Portrait.Show();
+		Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/henriPerregaux.png");
 	}
 	public void _on_Tab3Button_pressed() {
 		PressTabButton(2);
+		//Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/randomWoman-Sheet.png");
+		Portrait.Hide();
 	}
 	public void _on_Tab4Button_pressed() {
 		PressTabButton(3);
+		//Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png");
+		Portrait.Hide();
 	}
 	public void _on_Tab5Button_pressed() {
 		PressTabButton(4);
+		//Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png");
+		Portrait.Hide();
 	}
 }
 
