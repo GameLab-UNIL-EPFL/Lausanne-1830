@@ -3,10 +3,13 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
+public enum GameStates {INIT, PALUD, OTHERS};
+
 // Storage for all persistent data in the game
 public class Context : Node {
 	public List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	public List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
+	public GameStates GameState = GameStates.INIT;
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -39,6 +42,18 @@ public class Context : Node {
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, false, false, false
 		));
+	}
+	
+	public void _StartGame() {
+		GameState = GameStates.PALUD;
+	}
+	
+	public void _SwitchScenes() {
+		GameState = GameStates.OTHERS;
+	}
+	
+	public GameStates _GetGameState() {
+		return GameState;
 	}
 
 	public List<CharacterInfo_t> _GetNotebookCharInfo() {
