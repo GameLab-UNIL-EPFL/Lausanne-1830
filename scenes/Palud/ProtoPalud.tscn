@@ -822,7 +822,7 @@ texture = ExtResource( 32 )
 parameters/playback = SubResource( 16 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 32, 278 )
+position = Vector2( 29, 278 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
@@ -837,7 +837,7 @@ texture = ExtResource( 32 )
 parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 452, 298 )
+position = Vector2( 453, 298 )
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
@@ -862,6 +862,9 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 position = Vector2( -11.707, -36.924 )
 NPCName = " Mlle De Cerjeat "
+
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -904,7 +907,13 @@ visible = false
 parameters/playback = SubResource( 20 )
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 300, 324 )
+position = Vector2( 301, 325 )
+ProbRight = 5
+ProbLeft = 5
+ProbUp = 1
+ProbDown = 1
+CanWander = true
+WalkSpeed = 25
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
@@ -1070,9 +1079,6 @@ position = Vector2( 11.0124, -17.6866 )
 
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
@@ -1283,8 +1289,13 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
+frame = 1
 
-[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="11"]
+[node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
+position = Vector2( -38, 155 )
+scale = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="12"]
 modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
 position = Vector2( 56.1055, 21.75 )
 scale = Vector2( 0.411111, 0.411111 )
