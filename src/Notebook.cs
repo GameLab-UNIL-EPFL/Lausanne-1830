@@ -292,5 +292,3 @@ public class Notebook : Node2D {
 	}
 }
 
-
-

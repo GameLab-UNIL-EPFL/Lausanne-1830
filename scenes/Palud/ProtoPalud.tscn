@@ -1052,6 +1052,9 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
+
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
@@ -1205,7 +1208,6 @@ texture = ExtResource( 39 )
 [node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false
