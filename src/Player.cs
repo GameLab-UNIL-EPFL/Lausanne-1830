@@ -141,6 +141,14 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	public void BlockPlayer() {
+		CurrentState = PlayerStates.BLOCKED;
+	}
+	
+	public void UnBlockPlayer() {
+		CurrentState = PlayerStates.IDLE;
+	}
+	
 	/**
 	 * @brief Updates the player's state according to the current actions taken
 	 * @param delta, the time elapsed since the last update

@@ -199,10 +199,11 @@ public class QuestController : Node {
 	 * @brief Queries the local XDocument for a given solution
 	 * @return a CharacterInfo_t struct containing all of the solution data
 	 */
-	public CharacterInfo_t _QueryQuestSolution() {
+	public CharacterInfo_t _QueryQuestSolution(int tabId) {
 		
 		//Query a new solution
 		var querySolution = from solution in characterList.Root.Descendants("solution")
+							where Int32.Parse(solution.Attribute("id").Value) == tabId
 							select solution.Attributes();
 		
 		// Extract attribute name and value

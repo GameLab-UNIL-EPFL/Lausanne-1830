@@ -185,7 +185,7 @@ public class Notebook : Node2D {
 		FillCharInfo();
 		
 		//Request an info evaluation from the NPC
-		correctInfo = questNPC._CompareSolutions(characterInfo);
+		correctInfo = questNPC._CompareSolutions(characterInfo, curTabId);
 		_UpdateNotebook(correctInfo);
 	}
 	
@@ -194,20 +194,24 @@ public class Notebook : Node2D {
 		FillCharInfo();
 		
 		//Request an info evaluation from the NPC
-		correctInfo = questNPC._EvaluateQuest(p, characterInfo);
+		correctInfo = questNPC._EvaluateQuest(p, characterInfo, curTabId);
 		_UpdateNotebook(correctInfo);
 	}
 	
 	public void _on_NotebookController_pressed() {
+		Player p = GetNode<Player>("../YSort/Player");
+		
 		if(ASP.Playing == false) {
 			ASP.Play();
 		}
 		if(hidden) {
 			Show();
 			AudioServer.SetBusMute(2, true);
+			p.BlockPlayer();
 		} else {
 			Hide();
 			AudioServer.SetBusMute(2, false);
+			p.UnBlockPlayer();
 		}
 		hidden = !hidden;
 	}
