@@ -1,19 +1,61 @@
 using Godot;
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 
 public class Notebook : Node2D {
+	private const int N_TABS = 5;
 	private List<NotebookInfo> tempInfo = new List<NotebookInfo>();
 	private List<NotebookInfo> info = new List<NotebookInfo>();
 	private List<Label> infoStatic = new List<Label>();
 	private string[] infoNames = {"Prenom", "Nom", "Adresse", "Num", "Conjoint", "Enfants", "Metier"};
 	
+	private List<Sprite> tabSprites = new List<Sprite>();
+	private List<Button> tabButtons = new List<Button>(); 
+	
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
 	
+	//Currently opened tab
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
 	public InfoValue_t correctInfo = new InfoValue_t(false);
+	
+	//Store values for all tabs
+	private List<CharacterInfo_t> characterInfos = new List<CharacterInfo_t>();
+	private List<InfoValue_t> correctInfos = new List<InfoValue_t>();
+	
+	private int curTabId = 0;
+	
+	private void FillNotebook(CharacterInfo_t cI) {
+		foreach(var inf in info) {
+			switch(inf.AttributeName) {
+				case "prenom":
+					inf.Text = cI.prenom; 
+					break;
+				case "nom":
+					inf.Text = cI.nom;
+					break;
+				case "adresse":
+					inf.Text = cI.adresse;
+					break;
+				case "num":
+					inf.Text = cI.num.ToString();
+					break;
+				case "conjoint":
+					inf.Text = cI.conjoint;
+					break;
+				case "enfants":
+					inf.Text = cI.enfants.ToString();
+					break;
+				case "metier":
+					inf.Text = cI.metier;
+					break;
+				default:
+					break;
+			}
+		}
+	}
 	
 	private void FillCharInfo() {
 		foreach(var inf in info) {
@@ -55,11 +97,27 @@ public class Notebook : Node2D {
 			infoStatic.Add(GetNode<Label>("Sprite/" + infoName + "Static"));
 		}
 		
+		//Gather all tabs
+		for(int i = 1; i <= N_TABS; ++i) {
+			tabSprites.Add(GetNode<Sprite>("Tab" + i));
+			
+			//Retrieve tab and connect its pressed signal
+			Button tab = GetNode<Button>("Tab" + i + "Button");
+			tab.Connect("pressed", this, "_on_Tab" + i + "Button_pressed");
+			tabButtons.Add(tab);
+			
+			//Initialize character infor and correct info
+			characterInfos.Add(new CharacterInfo_t(-1));
+			correctInfos.Add(new InfoValue_t(false));
+		}
+		
 		//Initially hide all static info
 		foreach(var infS in infoStatic) {
 			infS.Hide();
 		}
 		FillCharInfo();
+		
+		curTabId = 0;
 	}
 	
 	private int AttributeToIdx(string attr) {
@@ -104,6 +162,17 @@ public class Notebook : Node2D {
 			infoStatic[idx].Text = info[idx].Text;
 			info[idx].Hide();
 			infoStatic[idx].Show();
+		}
+		
+		foreach(var v in vals.Outliers()) {
+			int idx = AttributeToIdx(v);
+			//Sanity check
+			if(idx == -1)  {
+				throw new Exception("Illegal attribute name!");
+			}
+			
+			infoStatic[idx].Hide();
+			info[idx].Show();
 		}
 	}
 	
@@ -160,6 +229,47 @@ public class Notebook : Node2D {
 			}
 		}
 		mapOpen = !mapOpen;
+	}
+	
+	private void PressTabButton(int buttonid) {
+		Debug.Assert(0 <= buttonid && buttonid < 5);
+		Debug.Assert(0 <= curTabId && curTabId < 5);
+		
+		//Fill char info one last time
+		FillCharInfo();
+		
+		//Load charinfo back into the list
+		characterInfos[curTabId] = characterInfo;
+		characterInfo = characterInfos[buttonid];
+		
+		//Update the correctInfo
+		correctInfos[curTabId] = correctInfo;
+		correctInfo = correctInfos[buttonid];
+		
+		//Update the Notebook display
+		tabSprites[curTabId].Frame = 1;
+		tabSprites[buttonid].Frame = 0;
+		FillNotebook(characterInfo);
+		_UpdateNotebook(correctInfo);
+		
+		//Update current tab id
+		curTabId = buttonid;
+	}
+	
+	public void _on_Tab1Button_pressed() {
+		PressTabButton(0);
+	}
+	public void _on_Tab2Button_pressed() {
+		PressTabButton(1);
+	}
+	public void _on_Tab3Button_pressed() {
+		PressTabButton(2);
+	}
+	public void _on_Tab4Button_pressed() {
+		PressTabButton(3);
+	}
+	public void _on_Tab5Button_pressed() {
+		PressTabButton(4);
 	}
 }
 
