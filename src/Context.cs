@@ -13,34 +13,34 @@ public class Context : Node {
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Trüschel", "", 0, "", 4, "Propriétaire"
+			"", "Trüschel", "", 0, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, true, false, false, false, true, true
+			false, true, false, false, false, false, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Perregaux", "Rue St-François", 0, "", 0, ""
+			"", "Perregaux", "Rue St-François", 9, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, true, true, false, false, true, false
+			false, true, true, true, false, false, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"Isabelle", "", "", 0, "Marié.e", 0, "Écrivain.e"
+			"", "De Montolieu", "", 0, "Veuf.ve", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			true, false, false, false, true, true, true
+			false, true, false, true, true, false, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "", "Rue du Pré", 31, "", 0, "Négociant.e"
+			"", "Mercier", "", 0, "Marié.e", 3, "Négociant.e"
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, false, true, true, false, true, true
+			false, true, false, false, true, true, true
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "", "Moulins de Pépinet", 1, "Veuf.ve", 0, ""
+			"", "Rochat", "", 0, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, false, true, true, true, true, false
+			false, true, false, false, false, false, false
 		));
 	}
 	
