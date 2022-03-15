@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
+
 public class Player : KinematicBody2D {
 	[Signal]
 	public delegate void SendInfoToQuestNPC(Player p, NPC questNPC);
@@ -16,8 +18,7 @@ public class Player : KinematicBody2D {
 	public delegate void OpenNotebook();
 	
 	//Player FSM
-	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
-	PlayerStates CurrentState = PlayerStates.IDLE;
+	public PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
 	private PlayerStates PrevState = PlayerStates.IDLE;
@@ -50,6 +51,8 @@ public class Player : KinematicBody2D {
 	private AnimationPlayer animation;
 	private AnimationTree animationTree; 
 	private AnimationNodeStateMachinePlayback animationState;
+	
+	private List<Item> itemsInRange = new List<Item>();
 	
 	private List<NPC> subs = new List<NPC>();
 	private int nSubs = 0;
@@ -125,6 +128,9 @@ public class Player : KinematicBody2D {
 		if((subs.Count != 0) && (CurrentState != PlayerStates.NOTEBOOK)) {
 			if(Input.IsActionJustPressed("ui_interact")) {
 				NotifySubs();
+				if(subs.Count == 0 && itemsInRange.Count != 0) {
+					NotifyItems();
+				}
 			}
 		}
 		
@@ -141,6 +147,10 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.IDLE;
 			animationState.Travel("Idle");
 		}
+	}
+	
+	public bool _CanInteract() {
+		return subs.Count == 0;
 	}
 	
 	public void BlockPlayer() {
@@ -258,6 +268,30 @@ public class Player : KinematicBody2D {
 		nSubs--;
 	}
 	
+	public void _AddItemInRange(Item i) {
+		itemsInRange.Add(i);
+	}
+	
+	public void _RemoveItemInRange(Item i) {
+		itemsInRange.Remove(i);
+	}
+	
+	// Finds the nearest item to the player
+	private Item NearestItem() {
+		float minDistance = float.MaxValue;
+		Item nearest = itemsInRange[0];
+		
+		// Iterate through all subs and keep the one with the shortest distance to player
+		foreach(Item i in itemsInRange) {
+			var distance = Position.DistanceTo(i.Position);
+			if(distance < minDistance) {
+				minDistance = distance;
+				nearest = i;
+			}
+		}
+		return nearest;
+	}
+	
 	// Finds the nearest sub to the player
 	private NPC NearestSub() {
 		float minDistance = float.MaxValue;
@@ -272,6 +306,10 @@ public class Player : KinematicBody2D {
 			}
 		}
 		return nearest;
+	}
+	
+	private void NotifyItems() {
+		NearestItem()._Notify(this);
 	}
 	
 	private void NotifySubs() {
