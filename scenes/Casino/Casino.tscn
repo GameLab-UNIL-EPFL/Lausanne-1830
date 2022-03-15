@@ -10,8 +10,8 @@
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/01_characters/03_pnjs/tonnelier.png" type="Texture" id=11]
-[ext_resource path="res://assets/01_characters/03_pnjs/conradTruschel.png" type="Texture" id=12]
+[ext_resource path="res://assets/01_characters/03_pnjs/henriPerregaux.png" type="Texture" id=11]
+[ext_resource path="res://assets/01_characters/03_pnjs/louisHenriBourgeois.png" type="Texture" id=12]
 [ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=13]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/02_architecture/04_casino/malette.png" type="Texture" id=15]
@@ -73,16 +73,16 @@ b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
 
 [sub_resource type="DynamicFont" id=11]
 size = 9
 font_data = ExtResource( 17 )
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
 [node name="Casino" type="Node2D"]
 
@@ -178,7 +178,7 @@ DemandDialogueID = "demandPerregaux"
 NPCName = " M. Perregaux "
 
 [node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
 [node name="AnimationTree" parent="YSort/Perregaux" index="6"]
 parameters/playback = SubResource( 7 )
@@ -186,14 +186,17 @@ parameters/playback = SubResource( 7 )
 [node name="Bourgeois" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 160, 144 )
 CanWander = true
+WanderingCooldown = 10.0
+WalkSpeed = 45
 DemandDialogueID = "demandBourgeois"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Bourgeois" index="0"]
+z_index = 2
 NPCName = " M. Bourgeois "
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="AnimationTree" parent="YSort/Bourgeois" index="6"]
 parameters/playback = SubResource( 8 )
@@ -218,6 +221,34 @@ texture = ExtResource( 13 )
 
 [node name="AnimationTree" parent="YSort/Pichard" index="6"]
 parameters/playback = SubResource( 9 )
+
+[node name="Baumann" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 214.96, 90.5097 )
+DemandDialogueID = "demandBaumann"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Baumann" index="0"]
+NPCName = " Mme Baumann "
+
+[node name="FullyAnimated" parent="YSort/Baumann" index="2"]
+texture = ExtResource( 20 )
+
+[node name="AnimationTree" parent="YSort/Baumann" index="6"]
+parameters/playback = SubResource( 12 )
+
+[node name="Pouly" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 186.676, 89.8026 )
+DemandDialogueID = "demandPouly"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Pouly" index="0"]
+NPCName = " Mme Pouly "
+
+[node name="FullyAnimated" parent="YSort/Pouly" index="2"]
+texture = ExtResource( 21 )
+
+[node name="AnimationTree" parent="YSort/Pouly" index="6"]
+parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 216, 184 )
@@ -263,30 +294,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Baumann" parent="." instance=ExtResource( 8 )]
-position = Vector2( 214.96, 90.5097 )
-
-[node name="TextBox" parent="Baumann" index="0"]
-NPCName = " Mme Baumann "
-
-[node name="FullyAnimated" parent="Baumann" index="2"]
-texture = ExtResource( 20 )
-
-[node name="AnimationTree" parent="Baumann" index="6"]
-parameters/playback = SubResource( 12 )
-
-[node name="Pouly" parent="." instance=ExtResource( 8 )]
-position = Vector2( 186.676, 89.8026 )
-
-[node name="TextBox" parent="Pouly" index="0"]
-NPCName = " Mme Pouly "
-
-[node name="FullyAnimated" parent="Pouly" index="2"]
-texture = ExtResource( 21 )
-
-[node name="AnimationTree" parent="Pouly" index="6"]
-parameters/playback = SubResource( 13 )
-
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
@@ -300,9 +307,9 @@ parameters/playback = SubResource( 13 )
 [editable path="YSort/Bourgeois/ListenBox"]
 [editable path="YSort/Pichard"]
 [editable path="YSort/Pichard/ListenBox"]
+[editable path="YSort/Baumann"]
+[editable path="YSort/Baumann/ListenBox"]
+[editable path="YSort/Pouly"]
+[editable path="YSort/Pouly/ListenBox"]
 [editable path="YSort/Briefcase"]
 [editable path="Mallette"]
-[editable path="Baumann"]
-[editable path="Baumann/ListenBox"]
-[editable path="Pouly"]
-[editable path="Pouly/ListenBox"]

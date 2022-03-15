@@ -446,6 +446,7 @@ __meta__ = {
 }
 
 [node name="Tab5" type="Sprite" parent="."]
+visible = false
 position = Vector2( 514.504, 226.808 )
 texture = ExtResource( 5 )
 vframes = 4
@@ -466,6 +467,7 @@ __meta__ = {
 }
 
 [node name="Tab5Button" type="Button" parent="."]
+visible = false
 margin_left = 502.0
 margin_top = 217.0
 margin_right = 529.0
@@ -481,7 +483,7 @@ texture = ExtResource( 5 )
 vframes = 4
 frame = 2
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Portrait" type="Sprite" parent="."]
 position = Vector2( 171.51, 112 )
 texture = ExtResource( 11 )
 hframes = 4

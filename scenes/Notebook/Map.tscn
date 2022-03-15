@@ -24,6 +24,7 @@ texture_hover = ExtResource( 3 )
 id = "Brasserie/Brasserie"
 
 [node name="moulin_button" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_left = 175.0
 margin_top = 203.0
 margin_right = 191.0
@@ -73,6 +74,7 @@ id = "Casino/Casino"
 text = ""
 
 [node name="moulin_point" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_left = 176.0
 margin_top = 215.0
 margin_right = 192.0

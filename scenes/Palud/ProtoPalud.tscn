@@ -790,6 +790,9 @@ texture = ExtResource( 22 )
 
 [node name="Truschel" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 120, 332 )
+CanWander = true
+WanderingCooldown = 15.0
+WalkSpeed = 40
 AutoDialogueID = ""
 DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
@@ -850,6 +853,8 @@ parameters/playback = SubResource( 18 )
 
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 190, 296 )
+CanWander = true
+WalkSpeed = 30
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
@@ -921,8 +926,7 @@ visible = false
 parameters/playback = SubResource( 21 )
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 330, 256 )
-z_index = 1
+position = Vector2( 330, 259 )
 DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
 
@@ -1202,7 +1206,7 @@ custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 25 )
 text = "Se présenter directement
 aupres de Mr. Mercier
-A la Rue de Pré 31"
+A la Rue du Pré 31"
 __meta__ = {
 "_edit_use_anchors_": false
 }
