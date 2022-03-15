@@ -374,6 +374,12 @@ texture = ExtResource( 5 )
 vframes = 4
 frame = 2
 
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 171.51, 112 )
+texture = ExtResource( 11 )
+hframes = 4
+vframes = 3
+
 [node name="MapButton" type="Button" parent="."]
 margin_left = 502.0
 margin_top = 249.0
@@ -416,12 +422,6 @@ script = ExtResource( 8 )
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 171.51, 112 )
-texture = ExtResource( 11 )
-hframes = 4
-vframes = 3
 
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]

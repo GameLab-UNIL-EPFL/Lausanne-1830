@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/tonnelier.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/conradTruschel.png" type="Texture" id=12]
 [ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/02_architecture/04_casino/malette.png" type="Texture" id=15]
+[ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/05_fonts/Bonefish.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://assets/02_architecture/04_casino/planInt.jpg" type="Texture" id=18]
+[ext_resource path="res://assets/02_architecture/04_casino/planExt.jpg" type="Texture" id=19]
+[ext_resource path="res://assets/01_characters/03_pnjs/randomWoman-Sheet.png" type="Texture" id=20]
+[ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 116, 96 )
@@ -64,6 +72,17 @@ b = Vector2( 7.2533, 11.611 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=11]
+size = 9
+font_data = ExtResource( 17 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
 [node name="Casino" type="Node2D"]
 
@@ -144,7 +163,7 @@ shape = SubResource( 5 )
 position = Vector2( 320, 288 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 176, 248 )
+position = Vector2( 424, 268 )
 ProbRight = 4
 ProbLeft = 0
 ProbUp = 0
@@ -180,7 +199,7 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 8 )
 
 [node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 216, 248 )
+position = Vector2( 486, 267 )
 ProbRight = 0
 ProbLeft = 8
 ProbUp = 0
@@ -200,6 +219,74 @@ texture = ExtResource( 13 )
 [node name="AnimationTree" parent="YSort/Pichard" index="6"]
 parameters/playback = SubResource( 9 )
 
+[node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 216, 184 )
+
+[node name="Sprite" parent="YSort/Briefcase" index="0"]
+texture = ExtResource( 15 )
+
+[node name="Mallette" parent="." instance=ExtResource( 14 )]
+position = Vector2( 216, 184 )
+
+[node name="Sprite" parent="Mallette" index="0"]
+visible = false
+position = Vector2( 0, -19 )
+
+[node name="Label" parent="Mallette/Sprite" index="0"]
+text = "Ouvrir"
+
+[node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
+shape = SubResource( 10 )
+
+[node name="Open" parent="Mallette" index="2"]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Mallette/Open" index="1"]
+position = Vector2( -14, 48 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 18 )
+
+[node name="TextureRect" type="Sprite" parent="Mallette/Open" index="2"]
+position = Vector2( 166, -50 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="Mallette/Open" index="3"]
+margin_left = 31.0
+margin_top = 103.0
+margin_right = 91.0
+margin_bottom = 117.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Henri Perregaux"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Baumann" parent="." instance=ExtResource( 8 )]
+position = Vector2( 214.96, 90.5097 )
+
+[node name="TextBox" parent="Baumann" index="0"]
+NPCName = " Mme Baumann "
+
+[node name="FullyAnimated" parent="Baumann" index="2"]
+texture = ExtResource( 20 )
+
+[node name="AnimationTree" parent="Baumann" index="6"]
+parameters/playback = SubResource( 12 )
+
+[node name="Pouly" parent="." instance=ExtResource( 8 )]
+position = Vector2( 186.676, 89.8026 )
+
+[node name="TextBox" parent="Pouly" index="0"]
+NPCName = " Mme Pouly "
+
+[node name="FullyAnimated" parent="Pouly" index="2"]
+texture = ExtResource( 21 )
+
+[node name="AnimationTree" parent="Pouly" index="6"]
+parameters/playback = SubResource( 13 )
+
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
@@ -213,3 +300,9 @@ parameters/playback = SubResource( 9 )
 [editable path="YSort/Bourgeois/ListenBox"]
 [editable path="YSort/Pichard"]
 [editable path="YSort/Pichard/ListenBox"]
+[editable path="YSort/Briefcase"]
+[editable path="Mallette"]
+[editable path="Baumann"]
+[editable path="Baumann/ListenBox"]
+[editable path="Pouly"]
+[editable path="Pouly/ListenBox"]

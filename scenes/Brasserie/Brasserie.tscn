@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -34,6 +34,9 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=32]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=33]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio2.png" type="Texture" id=34]
+[ext_resource path="res://assets/02_architecture/03_brewery/Canton.png" type="Texture" id=35]
+[ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=36]
+[ext_resource path="res://assets/05_fonts/Bonefish.ttf" type="DynamicFontData" id=37]
 
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
@@ -1043,6 +1046,19 @@ font_data = ExtResource( 28 )
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 28 )
 
+[sub_resource type="DynamicFont" id=65]
+font_data = ExtResource( 37 )
+
+[sub_resource type="DynamicFont" id=66]
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=67]
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=68]
+use_mipmaps = true
+font_data = ExtResource( 37 )
+
 [node name="Brasserie" type="Node2D"]
 
 [node name="QuestController" parent="." instance=ExtResource( 10 )]
@@ -1490,6 +1506,113 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Item" parent="." instance=ExtResource( 27 )]
+position = Vector2( 174, 80 )
+
+[node name="Sprite" parent="Item" index="0"]
+visible = false
+
+[node name="Label" parent="Item/Sprite" index="0"]
+text = "Regarder"
+
+[node name="Open" parent="Item" index="2"]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Item/Open" index="1"]
+margin_left = 15.0
+margin_top = -59.0
+margin_right = 304.0
+margin_bottom = 258.0
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 156.229, 74.426 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Item/Open" index="2"]
+position = Vector2( 166.023, 2.13452 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 35 )
+
+[node name="Sprite2" type="Sprite" parent="Item/Open" index="3"]
+position = Vector2( 134, 210 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 36 )
+
+[node name="Label" type="Label" parent="Item/Open" index="4"]
+margin_left = 20.0
+margin_top = 52.0
+margin_right = 299.0
+margin_bottom = 68.0
+custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
+custom_fonts/font = SubResource( 65 )
+text = "Lausanne"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Item/Open" index="5"]
+margin_left = 135.0
+margin_top = 145.0
+margin_right = 285.0
+margin_bottom = 161.0
+custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
+custom_fonts/font = SubResource( 65 )
+text = "Vaquer à ses affaires"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Item/Open" index="6"]
+margin_left = 18.0
+margin_top = 75.0
+margin_right = 301.0
+margin_bottom = 148.0
+custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "Acte de Propriété
+Brasserie Trüschel
+Rue Chaucrau 16
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Item/Open" index="7"]
+margin_left = 35.0
+margin_top = 145.0
+margin_right = 169.0
+margin_bottom = 161.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
+custom_fonts/font = SubResource( 67 )
+text = "Dans l'intention de"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Item/Open" index="8"]
+margin_left = 175.0
+margin_top = 175.0
+margin_right = 277.0
+margin_bottom = 241.0
+rect_scale = Vector2( 1.2, 1.2 )
+custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
+custom_fonts/font = SubResource( 68 )
+text = "Bergier
+Lieutenant du
+Préfet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
@@ -1528,3 +1651,4 @@ __meta__ = {
 [editable path="YSort/NPC/Brasseur2/ListenBox"]
 [editable path="Notebook"]
 [editable path="Book"]
+[editable path="Item"]

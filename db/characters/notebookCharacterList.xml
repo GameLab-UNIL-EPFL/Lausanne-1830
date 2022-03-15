@@ -1,7 +1,7 @@
 <db>
 	<solution id="0" prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" num="16" conjoint="Marié.e" enfant="4" metier="Propriétaire"></solution>
 	<solution id="1" prenom="Henri" nom="Perregaux" adresse="Rue St-François" num="9" conjoint="Marié.e" metier="Architecte"></solution>
-	<solution  id="2" prenom="Isabelle" nom="De Montolieu" adresse="Château de Vennes" num="" conjoint="Marié.e" metier="Écrivain.e"></solution>
+	<solution  id="2" prenom="Isabelle" nom="De Montolieu" adresse="Château de Vennes" num="0" conjoint="Marié.e" metier="Écrivain.e"></solution>
 	<solution id="3"  prenom="Jean-Jacques" nom="Mercier" adresse="Rue du Pré" num="31" conjoint="Veuf.ve" metier="Négociant.e"></solution>
 	<solution id="4"  prenom="Benedict" nom="Rochat" adresse="Moulins de Pépinet" num="1" conjoint="Veuf.ve" metier="Meunier.ère"></solution>
 	<personnage prenom="Vincent" nom="Geigler" adresse="Rue de la Madeleine" conjoint="Célibataire" metier="Journalier.ère"></personnage>
