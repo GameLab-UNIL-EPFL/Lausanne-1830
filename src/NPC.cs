@@ -46,6 +46,8 @@ public class NPC : KinematicBody2D {
 	private float wanderTime = 1.0f;
 	private Vector2 PrevDir = Vector2.Zero;
 	
+	private Vector2 InitialDirection = Vector2.Zero;
+	
 	[Export]
 	public Direction InitDir = Direction.DOWN;
 	[Export]
@@ -110,6 +112,13 @@ public class NPC : KinematicBody2D {
 
 		return FormatText(d);
 	}
+	
+	private void LookInInitalDir() {
+		InputVec = InitialDirection;
+		HandleMovement(0.03f);
+		InputVec = Vector2.Zero;
+		HandleMovement(0.03f);
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -126,26 +135,24 @@ public class NPC : KinematicBody2D {
 				throw new Exception("Every scene must have its own dialogue controller!!");
 			} 
 		}
-		Vector2 dir = Vector2.Zero;
+		
+		//Set initial direction
 		switch(InitDir) {
 			case Direction.LEFT:
-				dir = LeftDir;
+				InitialDirection = LeftDir;
 				break;
 			case Direction.RIGHT:
-				dir = RightDir;
+				InitialDirection = RightDir;
 				break;
 			case Direction.UP:
-				dir = UpDir;
+				InitialDirection = UpDir;
 				break;
 			default:
 			case Direction.DOWN:
-				dir = DownDir;
+				InitialDirection = DownDir;
 				break;
 		}
-		InputVec = dir;
-		HandleMovement(0.03f);
-		InputVec = Vector2.Zero;
-		HandleMovement(0.03f);
+		LookInInitalDir();
 	}
 	
 	private void HandleMovement(float delta) {
@@ -311,12 +318,10 @@ public class NPC : KinematicBody2D {
 		d = DC._StartDialogue(DemandDialogueID);
 		
 		//Turn to player
-		if(CanWander) {
-			InputVec = (player.Position - Position).Normalized();
-			HandleMovement(0.03f);
-			InputVec = Vector2.Zero;
-			HandleMovement(0.03f);
-		}
+		InputVec = (player.Position - Position).Normalized();
+		HandleMovement(0.03f);
+		InputVec = Vector2.Zero;
+		HandleMovement(0.03f);
 	}
 	
 	private void FinishDialogue(Player player) {
@@ -324,6 +329,10 @@ public class NPC : KinematicBody2D {
 		TB._HideText();
 		player._EndDialogue();
 		DC._EndDialogue();
+		
+		if(!CanWander) {
+			LookInInitalDir();
+		}
 	}
 	
 	/**
