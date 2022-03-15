@@ -16,7 +16,7 @@ public class Player : KinematicBody2D {
 	public delegate void OpenNotebook();
 	
 	//Player FSM
-	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
+	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 	PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
@@ -53,6 +53,8 @@ public class Player : KinematicBody2D {
 	
 	private List<NPC> subs = new List<NPC>();
 	private int nSubs = 0;
+	
+	private Context context;
 	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
@@ -120,7 +122,7 @@ public class Player : KinematicBody2D {
 		}
 		
 		//Check for interaction
-		if(subs.Count != 0) {
+		if((subs.Count != 0) && (CurrentState != PlayerStates.NOTEBOOK)) {
 			if(Input.IsActionJustPressed("ui_interact")) {
 				NotifySubs();
 			}
@@ -139,6 +141,14 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.IDLE;
 			animationState.Travel("Idle");
 		}
+	}
+	
+	public void BlockPlayer() {
+		CurrentState = PlayerStates.NOTEBOOK;
+	}
+	
+	public void UnBlockPlayer() {
+		CurrentState = PlayerStates.IDLE;
 	}
 	
 	/**
@@ -186,7 +196,7 @@ public class Player : KinematicBody2D {
 				
 				CheckIdle();
 				break;
-				
+			case PlayerStates.NOTEBOOK:
 			case PlayerStates.BLOCKED:
 				animationState.Travel("Idle");
 				break;
@@ -206,14 +216,20 @@ public class Player : KinematicBody2D {
 		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
+		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		
+		if(context._GetGameState() != GameStates.INIT) {
+			isCutscene = false;
+			if(context._GetGameState() == GameStates.PALUD) {
+				Position = new Vector2(Position.x, Position.y - 200);
+			}
+		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
 		}
-
 	}
 	
 	// Called on every physics engine tick
@@ -277,6 +293,7 @@ public class Player : KinematicBody2D {
 			var nearestNPC = NearestSub();
 			EmitSignal(nameof(CutsceneEnd), nearestNPC);
 			EmitSignal(nameof(SlideInNotebookController));
+			context._StartGame();
 		}
 	}
 	

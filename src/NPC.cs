@@ -332,14 +332,14 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
-	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo) {
-		CharacterInfo_t solution = QC._QueryQuestSolution();
-		solution = QC._QueryQuestSolution();
+	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo, int tabId) {
+		CharacterInfo_t solution = QC._QueryQuestSolution(tabId);
+		solution = QC._QueryQuestSolution(tabId);
 		return QC._CompareCharInfo(solution, characterInfo);
 	}
 	
-	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {
-		InfoValue_t res = _CompareSolutions(characterInfo);
+	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo, int tabId) {
+		InfoValue_t res = _CompareSolutions(characterInfo, tabId);
 		
 		if(!inDialogue) {
 			inDialogue = true;
