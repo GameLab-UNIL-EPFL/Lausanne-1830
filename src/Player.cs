@@ -54,6 +54,8 @@ public class Player : KinematicBody2D {
 	private List<NPC> subs = new List<NPC>();
 	private int nSubs = 0;
 	
+	private Context context;
+	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
 		foreach(var sub in subs) {
@@ -214,14 +216,20 @@ public class Player : KinematicBody2D {
 		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
+		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		
+		if(context._GetGameState() != GameStates.INIT) {
+			isCutscene = false;
+			if(context._GetGameState() == GameStates.PALUD) {
+				Position = new Vector2(Position.x, Position.y - 200);
+			}
+		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
 		}
-
 	}
 	
 	// Called on every physics engine tick
@@ -285,6 +293,7 @@ public class Player : KinematicBody2D {
 			var nearestNPC = NearestSub();
 			EmitSignal(nameof(CutsceneEnd), nearestNPC);
 			EmitSignal(nameof(SlideInNotebookController));
+			context._StartGame();
 		}
 	}
 	
