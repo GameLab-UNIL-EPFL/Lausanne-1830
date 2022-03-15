@@ -6,6 +6,19 @@ using System.Linq;
 using System.Collections.Generic;
 
 public struct CharacterInfo_t {
+	public CharacterInfo_t(
+		string pnm="", string nm="", string addr="", int numb=0,
+		string cnjt="", int enfts=0, string mtr=""
+	) {
+		prenom = pnm;
+		nom = nm;
+		adresse = addr;
+		num = numb;
+		conjoint = cnjt;
+		enfants = enfts;
+		metier = mtr;
+		valid = true;
+	}
 	public CharacterInfo_t(int _illegalVal) {
 		prenom = "";
 		nom = "";

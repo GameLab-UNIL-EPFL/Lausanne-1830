@@ -17,13 +17,11 @@ public class Notebook : Node2D {
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
 	
+	private Context context;
+	
 	//Currently opened tab
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
 	public InfoValue_t correctInfo = new InfoValue_t(false);
-	
-	//Store values for all tabs
-	private List<CharacterInfo_t> characterInfos = new List<CharacterInfo_t>();
-	private List<InfoValue_t> correctInfos = new List<InfoValue_t>();
 	
 	private int curTabId = 0;
 	
@@ -90,6 +88,7 @@ public class Notebook : Node2D {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		Hide();
+		context = GetNode<Context>("/root/Context");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		//Fetch all info
 		foreach(var infoName in infoNames) {
@@ -105,19 +104,21 @@ public class Notebook : Node2D {
 			Button tab = GetNode<Button>("Tab" + i + "Button");
 			tab.Connect("pressed", this, "_on_Tab" + i + "Button_pressed");
 			tabButtons.Add(tab);
-			
-			//Initialize character infor and correct info
-			characterInfos.Add(new CharacterInfo_t(-1));
-			correctInfos.Add(new InfoValue_t(false));
 		}
+		curTabId = 0;
+		
+		//Load in current character info and correct info
+		characterInfo = context._GetNotebookCharInfo(curTabId);
+		correctInfo = context._GetNotebookCorrectInfo(curTabId);
 		
 		//Initially hide all static info
 		foreach(var infS in infoStatic) {
 			infS.Hide();
 		}
-		FillCharInfo();
 		
-		curTabId = 0;
+		//Initialize display
+		FillNotebook(characterInfo);
+		_UpdateNotebook(correctInfo);
 	}
 	
 	private int AttributeToIdx(string attr) {
@@ -214,6 +215,11 @@ public class Notebook : Node2D {
 			p.UnBlockPlayer();
 		}
 		hidden = !hidden;
+		
+		//Update Context
+		FillCharInfo();
+		context._UpdateNotebookCharInfo(curTabId, characterInfo);
+		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
 	public void _on_MapButton_pressed() {
@@ -233,6 +239,11 @@ public class Notebook : Node2D {
 			}
 		}
 		mapOpen = !mapOpen;
+		
+		//Update Context
+		FillCharInfo();
+		context._UpdateNotebookCharInfo(curTabId, characterInfo);
+		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
 	private void PressTabButton(int buttonid) {
@@ -242,13 +253,17 @@ public class Notebook : Node2D {
 		//Fill char info one last time
 		FillCharInfo();
 		
-		//Load charinfo back into the list
-		characterInfos[curTabId] = characterInfo;
-		characterInfo = characterInfos[buttonid];
+		//Update Context
+		context._UpdateNotebookCharInfo(curTabId, characterInfo);
+		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 		
-		//Update the correctInfo
-		correctInfos[curTabId] = correctInfo;
-		correctInfo = correctInfos[buttonid];
+		//Sanity check
+		Debug.Assert(context._GetNotebookCharInfo(curTabId).Equals(characterInfo));
+		Debug.Assert(context._GetNotebookCorrectInfo(curTabId).Equals(correctInfo));
+		
+		//Fetch data from context
+		characterInfo = context._GetNotebookCharInfo(buttonid);
+		correctInfo = context._GetNotebookCorrectInfo(buttonid);
 		
 		//Update the Notebook display
 		tabSprites[curTabId].Frame = 1;
