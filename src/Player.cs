@@ -16,7 +16,7 @@ public class Player : KinematicBody2D {
 	public delegate void OpenNotebook();
 	
 	//Player FSM
-	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
+	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 	PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
@@ -120,7 +120,7 @@ public class Player : KinematicBody2D {
 		}
 		
 		//Check for interaction
-		if(subs.Count != 0) {
+		if((subs.Count != 0) && (CurrentState != PlayerStates.NOTEBOOK)) {
 			if(Input.IsActionJustPressed("ui_interact")) {
 				NotifySubs();
 			}
@@ -139,6 +139,14 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.IDLE;
 			animationState.Travel("Idle");
 		}
+	}
+	
+	public void BlockPlayer() {
+		CurrentState = PlayerStates.NOTEBOOK;
+	}
+	
+	public void UnBlockPlayer() {
+		CurrentState = PlayerStates.IDLE;
 	}
 	
 	/**
@@ -186,7 +194,7 @@ public class Player : KinematicBody2D {
 				
 				CheckIdle();
 				break;
-				
+			case PlayerStates.NOTEBOOK:
 			case PlayerStates.BLOCKED:
 				animationState.Travel("Idle");
 				break;

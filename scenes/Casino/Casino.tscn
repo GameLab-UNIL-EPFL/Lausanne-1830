@@ -197,7 +197,7 @@ parameters/playback = SubResource( 9 )
 [connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
-[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_Player_OpenNotebook"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 
 [editable path="YSort/Perregaux"]

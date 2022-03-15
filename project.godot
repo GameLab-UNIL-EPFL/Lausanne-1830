@@ -17,6 +17,7 @@ run/main_scene="res://scenes/Interaction/Menu.tscn"
 
 SceneChanger="*res://scenes/Interaction/SceneChanger.tscn"
 MusicPlayer="*res://scenes/Interaction/MusicPlayer.tscn"
+Context="*res://scenes/Context.tscn"
 
 [display]
 
