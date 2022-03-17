@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -49,6 +49,9 @@ b = Vector2( 13.5, 27 )
 [sub_resource type="CapsuleShape2D" id=63]
 radius = 11.3028
 height = 33.488
+
+[sub_resource type="CircleShape2D" id=69]
+radius = 5.57125
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=64]
 
@@ -209,6 +212,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=53]
+
+[sub_resource type="CircleShape2D" id=70]
+radius = 6.08623
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -1031,7 +1037,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=59]
-extents = Vector2( 20.4686, 10 )
+extents = Vector2( 83.8691, 18.911 )
+
+[sub_resource type="CircleShape2D" id=71]
+radius = 15.4083
 
 [sub_resource type="DynamicFont" id=60]
 size = 18
@@ -1046,6 +1055,9 @@ font_data = ExtResource( 28 )
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 28 )
 
+[sub_resource type="CircleShape2D" id=72]
+radius = 16.4808
+
 [sub_resource type="DynamicFont" id=65]
 font_data = ExtResource( 37 )
 
@@ -1058,6 +1070,9 @@ font_data = ExtResource( 28 )
 [sub_resource type="DynamicFont" id=68]
 use_mipmaps = true
 font_data = ExtResource( 37 )
+
+[sub_resource type="DynamicFont" id=73]
+font_data = ExtResource( 28 )
 
 [node name="Brasserie" type="Node2D"]
 
@@ -1222,13 +1237,20 @@ shape = SubResource( 63 )
 position = Vector2( 204, 144 )
 collision_layer = 3
 collision_mask = 3
+ProbRight = 3
+ProbLeft = 3
 CanWander = true
-WanderingCooldown = 10.0
+WanderingCooldown = 20.0
+WalkSpeed = 25
 DemandDialogueID = "demandFille"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Adrienne" index="0"]
 NPCName = " Mlle Trüschel "
+
+[node name="CollisionShape2D" parent="YSort/NPC/Adrienne/ListenBox" index="0"]
+position = Vector2( 0, 1.66855 )
+shape = SubResource( 69 )
 
 [node name="AnimationTree" parent="YSort/NPC/Adrienne" index="6"]
 parameters/playback = SubResource( 64 )
@@ -1261,18 +1283,23 @@ parameters/playback = SubResource( 53 )
 position = Vector2( 137, 153 )
 collision_layer = 3
 collision_mask = 3
-ProbRight = 1
-ProbLeft = 1
-ProbUp = 1
-ProbDown = 1
+ProbRight = 3
+ProbLeft = 3
 CanWander = true
-WanderingCooldown = 15.0
+WanderingCooldown = 20.0
 WalkSpeed = 25
 DemandDialogueID = "demandFilles"
 HasAutoDialogue = false
 
+[node name="TextBox" parent="YSort/NPC/Jenny" index="0"]
+NPCName = " Mlle Trüschel "
+
 [node name="FullyAnimated" parent="YSort/NPC/Jenny" index="2"]
 texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="YSort/NPC/Jenny/ListenBox" index="0"]
+position = Vector2( 0.33371, 2.66968 )
+shape = SubResource( 70 )
 
 [node name="AnimationPlayer" parent="YSort/NPC/Jenny" index="5"]
 anims/Idle = SubResource( 3 )
@@ -1337,6 +1364,12 @@ parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 536, 240 )
+InitDir = 1
+ProbRight = 0
+ProbLeft = 0
+CanWander = true
+WanderingCooldown = 10.0
+WalkSpeed = 20
 DemandDialogueID = "demandTonnelier"
 HasAutoDialogue = false
 
@@ -1361,6 +1394,7 @@ parameters/playback = SubResource( 57 )
 
 [node name="Brasseur2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 407, 244 )
+InitDir = 0
 DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
 
@@ -1418,7 +1452,16 @@ collision_mask = 2
 position = Vector2( 235.63, 183.511 )
 shape = SubResource( 59 )
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 174.671, 113.386 )
+shape = SubResource( 59 )
+
 [node name="Book" parent="." instance=ExtResource( 27 )]
+visible = false
 position = Vector2( 110, 85 )
 
 [node name="Sprite" parent="Book" index="0"]
@@ -1427,8 +1470,12 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
-[node name="Open" parent="Book" index="2"]
-visible = false
+[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
+frame = 0
+
+[node name="CollisionShape2D" parent="Book/Area2D" index="0"]
+position = Vector2( -5.67307, 11.3461 )
+shape = SubResource( 71 )
 
 [node name="ColorRect" parent="Book/Open" index="0"]
 margin_left = -581.5
@@ -1458,14 +1505,13 @@ margin_right = 305.0
 margin_bottom = 179.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 60 )
-text = "LE
-ROBINSON SUISSE,
+text = "CAROLINE
+DE LICHTFIELD
 
-JOURNAL
+MEMOIRES
 
 
-
-BARONNE DE MONTOLIEU."
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1473,17 +1519,18 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Book/Open" index="3"]
 margin_left = 115.0
-margin_top = 30.0
+margin_top = 40.0
 margin_right = 305.0
-margin_bottom = 163.0
+margin_bottom = 173.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 61 )
 text = "OU
 
 
-D'un père de famille naufragé
-avec ses enfants;
-continué par Madame Isabelle,"
+D'UNE FAMILLE PRUSSIENNE,
+
+écrit par Madame La Baronne,
+Isabelle De Montolieu"
 align = 1
 valign = 1
 __meta__ = {
@@ -1493,6 +1540,7 @@ __meta__ = {
 [node name="PressE" parent="Book/Open" index="4" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="5"]
 margin_left = -83.0
@@ -1514,6 +1562,13 @@ visible = false
 
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
+frame = 0
+
+[node name="CollisionShape2D" parent="Item/Area2D" index="0"]
+position = Vector2( 0.667419, 10.0113 )
+shape = SubResource( 72 )
 
 [node name="Open" parent="Item" index="2"]
 visible = false
@@ -1609,6 +1664,22 @@ custom_fonts/font = SubResource( 68 )
 text = "Bergier
 Lieutenant du
 Préfet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressE" parent="Item/Open" index="9" instance=ExtResource( 30 )]
+position = Vector2( -150, 256 )
+scale = Vector2( 1.5, 1.5 )
+frame = 1
+
+[node name="Label6" type="Label" parent="Item/Open" index="10"]
+margin_left = -137.0
+margin_top = 250.0
+margin_right = -88.0
+margin_bottom = 266.0
+custom_fonts/font = SubResource( 73 )
+text = "FERMER"
 __meta__ = {
 "_edit_use_anchors_": false
 }

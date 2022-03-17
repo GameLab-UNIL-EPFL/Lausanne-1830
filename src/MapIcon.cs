@@ -37,7 +37,7 @@ public class MapIcon : TextureButton {
 		}
 		if(L.Text != "") {
 			L.Show();
-			AnimPlayer.Play("Appear");	
+			//AnimPlayer.Play("Appear");	
 		}
 	}
 

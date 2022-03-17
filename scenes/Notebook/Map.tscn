@@ -15,11 +15,48 @@ position = Vector2( 224, 132 )
 scale = Vector2( 0.903226, 0.916667 )
 texture = ExtResource( 2 )
 
+[node name="palud_point" parent="." instance=ExtResource( 1 )]
+margin_left = 200.0
+margin_top = 144.0
+margin_right = 216.0
+margin_bottom = 160.0
+texture_normal = ExtResource( 7 )
+id = "Palud/ProtoPalud"
+text = ""
+
+[node name="casino_point" parent="." instance=ExtResource( 1 )]
+margin_left = 270.0
+margin_top = 226.0
+margin_right = 286.0
+margin_bottom = 242.0
+texture_normal = ExtResource( 7 )
+id = "Casino/Casino"
+text = ""
+
+[node name="moulin_point" parent="." instance=ExtResource( 1 )]
+visible = false
+margin_left = 176.0
+margin_top = 215.0
+margin_right = 192.0
+margin_bottom = 231.0
+texture_normal = ExtResource( 7 )
+id = "Flon/Flon"
+text = ""
+
+[node name="brasserie_point" parent="." instance=ExtResource( 1 )]
+margin_left = 130.0
+margin_top = 100.0
+margin_right = 146.0
+margin_bottom = 116.0
+texture_normal = ExtResource( 7 )
+id = "Brasserie/Brasserie"
+text = ""
+
 [node name="brasserie_button" parent="." instance=ExtResource( 1 )]
-margin_left = 118.0
-margin_top = 96.0
-margin_right = 134.0
-margin_bottom = 112.0
+margin_left = 106.0
+margin_top = 86.0
+margin_right = 139.0
+margin_bottom = 118.0
 texture_hover = ExtResource( 3 )
 id = "Brasserie/Brasserie"
 
@@ -34,64 +71,19 @@ id = "Flon/Flon"
 text = "Flon"
 
 [node name="palud_button" parent="." instance=ExtResource( 1 )]
-margin_left = 202.0
-margin_top = 130.0
-margin_right = 218.0
-margin_bottom = 146.0
+margin_left = 196.0
+margin_top = 122.0
+margin_right = 227.0
+margin_bottom = 152.0
 texture_normal = ExtResource( 5 )
 id = "Palud/ProtoPalud"
 text = "Palud"
 
 [node name="casino_button" parent="." instance=ExtResource( 1 )]
-margin_left = 270.0
-margin_top = 214.0
-margin_right = 286.0
-margin_bottom = 230.0
+margin_left = 262.0
+margin_top = 202.0
+margin_right = 295.0
+margin_bottom = 235.0
 texture_normal = ExtResource( 6 )
 id = "Casino/Casino"
 text = "Casino"
-
-[node name="palud_point" parent="." instance=ExtResource( 1 )]
-margin_left = 200.0
-margin_top = 144.0
-margin_right = 216.0
-margin_bottom = 160.0
-texture_normal = ExtResource( 7 )
-expand = true
-stretch_mode = 3
-id = "Palud/ProtoPalud"
-text = ""
-
-[node name="casino_point" parent="." instance=ExtResource( 1 )]
-margin_left = 270.0
-margin_top = 226.0
-margin_right = 286.0
-margin_bottom = 242.0
-texture_normal = ExtResource( 7 )
-expand = true
-stretch_mode = 3
-id = "Casino/Casino"
-text = ""
-
-[node name="moulin_point" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 176.0
-margin_top = 215.0
-margin_right = 192.0
-margin_bottom = 231.0
-texture_normal = ExtResource( 7 )
-expand = true
-stretch_mode = 3
-id = "Flon/Flon"
-text = ""
-
-[node name="brasserie_point" parent="." instance=ExtResource( 1 )]
-margin_left = 130.0
-margin_top = 100.0
-margin_right = 146.0
-margin_bottom = 116.0
-texture_normal = ExtResource( 7 )
-expand = true
-stretch_mode = 3
-id = "Brasserie/Brasserie"
-text = ""

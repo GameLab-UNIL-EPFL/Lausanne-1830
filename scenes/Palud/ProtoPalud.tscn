@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -561,6 +561,9 @@ radius = 10.8202
 use_mipmaps = true
 font_data = ExtResource( 41 )
 
+[sub_resource type="DynamicFont" id=41]
+font_data = ExtResource( 30 )
+
 [sub_resource type="DynamicFont" id=25]
 font_data = ExtResource( 30 )
 
@@ -1115,6 +1118,22 @@ EMIS PAR
 J.J. MERCIER"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressE" parent="YSort/Cuir/Open" index="3" instance=ExtResource( 40 )]
+position = Vector2( -457, 50 )
+scale = Vector2( 1, 1 )
+frame = 1
+
+[node name="Label2" type="Label" parent="YSort/Cuir/Open" index="4"]
+margin_left = -445.0
+margin_top = 42.0
+margin_right = -396.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 41 )
+text = "FERMER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
