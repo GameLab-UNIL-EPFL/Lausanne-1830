@@ -46,6 +46,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CloseNotebook" type="Button" parent="ColorRect"]
+margin_left = 143.0
+margin_top = 120.0
+margin_right = 794.0
+margin_bottom = 511.0
+focus_mode = 0
+action_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
@@ -349,6 +362,8 @@ margin_left = 501.0
 margin_top = 90.0
 margin_right = 528.0
 margin_bottom = 110.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -379,6 +394,8 @@ margin_left = 502.0
 margin_top = 121.0
 margin_right = 529.0
 margin_bottom = 141.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -410,6 +427,8 @@ margin_left = 502.0
 margin_top = 153.0
 margin_right = 529.0
 margin_bottom = 173.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -440,6 +459,8 @@ margin_left = 502.0
 margin_top = 185.0
 margin_right = 529.0
 margin_bottom = 205.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -472,6 +493,8 @@ margin_left = 502.0
 margin_top = 217.0
 margin_right = 529.0
 margin_bottom = 237.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -532,6 +555,7 @@ script = ExtResource( 8 )
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
+[connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Adresse" to="NotebookList" method="_on_OpenOptions"]

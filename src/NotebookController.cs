@@ -9,6 +9,9 @@ public class NotebookController : Button
 	private Texture I;
 	private Texture Hover;
 	private AnimationPlayer AnimPlayer;
+	private Button MB;
+	private Notebook NB;
+	private Map M;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -16,6 +19,11 @@ public class NotebookController : Button
 		Hover = (Texture)GD.Load("res://assets/04_notebook/journal2.png");
 		I = (Texture)GD.Load("res://assets/04_notebook/journal.png");
 		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		MB = GetNode<Button>("MapButton");
+		NB = GetNode<Notebook>("../Notebook");
+		M = GetNode<Map>("../Notebook/Map");
+		
+		MB.Connect("pressed", NB, "_on_MapB_pressed");
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.

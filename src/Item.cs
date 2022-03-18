@@ -10,16 +10,6 @@ public class Item : Node2D {
 		ItemSprite = GetNode<Sprite>("Sprite");
 		N = GetNode<Node2D>("Open");
 	}
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(float delta) {
-		if(Input.IsActionJustPressed("ui_interact")) {
-			if(ItemSprite.Visible) {
-				N.Visible = !N.Visible;
-				
-			}
-		}
-	}
 	
 	public void _Notify(Player p) {
 		if(ItemSprite.Visible) {

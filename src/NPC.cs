@@ -155,6 +155,12 @@ public class NPC : KinematicBody2D {
 		LookInInitalDir();
 	}
 	
+	public void _StopTalking() {
+		if(!inDialogue) {
+			TB.Hide();
+		}
+	}
+	
 	private void HandleMovement(float delta) {
 		//Update velocity
 		if(InputVec == Vector2.Zero) {
@@ -169,10 +175,13 @@ public class NPC : KinematicBody2D {
 	
 	//Generate a new random position within the wandering distance
 	private Vector2 NewInputVec() {
-		return new Vector2(
-			random.Next(ProbRight) - random.Next(ProbLeft), 
-			random.Next(ProbDown) - random.Next(ProbUp)
-		);
+		float horizontalMov = (float)(random.Next(ProbRight) - random.Next(ProbLeft));
+		float verticalMov = (float)(random.Next(ProbDown) - random.Next(ProbUp));
+		
+		if(random.Next(2) > 0) {
+			return new Vector2(horizontalMov, 0.0f);
+		}
+		return new Vector2(0.0f, verticalMov);
 	}
 	
 	private void StopWandering() {

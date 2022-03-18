@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 
@@ -125,12 +126,12 @@ public class Player : KinematicBody2D {
 		}
 		
 		//Check for interaction
-		if((subs.Count != 0) && (CurrentState != PlayerStates.NOTEBOOK)) {
+		if(((subs.Count != 0) || (itemsInRange.Count != 0)) &&
+			(CurrentState != PlayerStates.NOTEBOOK)) {
+				
 			if(Input.IsActionJustPressed("ui_interact")) {
 				NotifySubs();
-				if(subs.Count == 0 && itemsInRange.Count != 0) {
-					NotifyItems();
-				}
+				NotifyItems();
 			}
 		}
 		
@@ -259,17 +260,24 @@ public class Player : KinematicBody2D {
 	}
 	
 	public int _Subscribe(NPC npc) {
-		subs.Add(npc);
-		return nSubs++;
+		if(itemsInRange.Count == 0) {
+			subs.Add(npc);
+			return nSubs++;
+		}
+		return nSubs;
 	}
 	
 	public void _Unsubscribe(NPC npc) {
-		subs.Remove(npc);
-		nSubs--;
+		if(subs.Contains(npc)) {
+			subs.Remove(npc);
+			nSubs--;
+		}
 	}
 	
 	public void _AddItemInRange(Item i) {
-		itemsInRange.Add(i);
+		if(subs.Count == 0) {
+			itemsInRange.Add(i);
+		}
 	}
 	
 	public void _RemoveItemInRange(Item i) {
@@ -278,6 +286,8 @@ public class Player : KinematicBody2D {
 	
 	// Finds the nearest item to the player
 	private Item NearestItem() {
+		if(itemsInRange.Count == 0) return null;
+		
 		float minDistance = float.MaxValue;
 		Item nearest = itemsInRange[0];
 		
@@ -294,6 +304,8 @@ public class Player : KinematicBody2D {
 	
 	// Finds the nearest sub to the player
 	private NPC NearestSub() {
+		if(subs.Count == 0) return null;
+		
 		float minDistance = float.MaxValue;
 		NPC nearest = subs[0];
 		
@@ -309,12 +321,17 @@ public class Player : KinematicBody2D {
 	}
 	
 	private void NotifyItems() {
-		NearestItem()._Notify(this);
+		var item = NearestItem();
+		if(item == null) return;
+		
+		item._Notify(this);
 	}
 	
 	private void NotifySubs() {
 		// Only notify the nearest sub
 		var nearestNPC = NearestSub();
+		if(nearestNPC == null) return;
+		
 		if(nearestNPC.isQuestNPC) {
 			EmitSignal(nameof(SendInfoToQuestNPC), this, nearestNPC);
 		} else {
@@ -337,6 +354,10 @@ public class Player : KinematicBody2D {
 	
 	public void _StartDialogue() {
 		CurrentState = PlayerStates.BLOCKED;
+		
+		foreach(var sub in subs) {
+			sub._StopTalking();
+		}
 		
 		if(isCutscene) {
 			isCutsceneConv = true;

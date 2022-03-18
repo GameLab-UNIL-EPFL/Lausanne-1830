@@ -4,12 +4,14 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 public enum GameStates {INIT, PALUD, OTHERS};
+public enum Locations {PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
 public class Context : Node {
-	public List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
-	public List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
-	public GameStates GameState = GameStates.INIT;
+	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
+	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
+	private GameStates GameState = GameStates.INIT;
+	private Locations CurrentLocation = Locations.PALUD;
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -42,6 +44,29 @@ public class Context : Node {
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, false, false, false
 		));
+	}
+	
+	public void _UpdateLocation(string id) {
+		switch(id) {
+			case "Palud/ProtoPalud":
+				CurrentLocation = Locations.PALUD;
+				_StartGame();
+				break;
+			case "Casino/Casino":
+				CurrentLocation = Locations.CASINO;
+				_SwitchScenes();
+				break;
+			case "Brasserie/Brasserie":
+				CurrentLocation = Locations.BRASSERIE;
+				_SwitchScenes();
+				break;
+			default:
+				break;
+		}
+	}
+	
+	public Locations _GetLocation() {
+		return CurrentLocation;
 	}
 	
 	public void _StartGame() {
