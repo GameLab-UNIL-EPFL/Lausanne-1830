@@ -7,6 +7,7 @@ public class Map : Node2D
 	
 	private AudioStreamPlayer ASP;
 	private Sprite S;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,8 +15,7 @@ public class Map : Node2D
 		S = GetNode<Sprite>("../TabMap");
 	}
 
-	private void _on_MapButton_pressed()
-	{
+	public void _on_MapButton_pressed() {
 		if(ASP.Playing == false) {
 			ASP.Play();
 		}

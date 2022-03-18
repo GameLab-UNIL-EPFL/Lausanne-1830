@@ -18,6 +18,8 @@ public class Notebook : Node2D {
 	private AudioStreamPlayer ASP;
 	private Sprite Portrait;
 	
+	private Map M;
+	
 	private Context context;
 	
 	//Currently opened tab
@@ -91,6 +93,7 @@ public class Notebook : Node2D {
 		Hide();
 		context = GetNode<Context>("/root/Context");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
+		M = GetNode<Map>("Map");
 		Portrait = GetNode<Sprite>("Portrait");
 		//Fetch all info
 		foreach(var infoName in infoNames) {
@@ -203,6 +206,10 @@ public class Notebook : Node2D {
 	
 	public void _on_NotebookController_pressed() {
 		Player p = GetNode<Player>("../YSort/Player");
+		if(mapOpen) {
+			_on_MapButton_pressed();
+			M._on_MapButton_pressed();
+		}
 		
 		if(ASP.Playing == false) {
 			ASP.Play();
@@ -222,6 +229,20 @@ public class Notebook : Node2D {
 		FillCharInfo();
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
+	}
+	
+	public void _on_MapB_pressed() {
+		if(hidden) {
+			_on_NotebookController_pressed();
+			
+			_on_MapButton_pressed();
+			M._on_MapButton_pressed();
+		} else if(!hidden && !mapOpen) {
+			_on_MapButton_pressed();
+			M._on_MapButton_pressed();
+		} else {
+			_on_NotebookController_pressed();
+		}
 	}
 	
 	public void _on_MapButton_pressed() {
@@ -303,4 +324,3 @@ public class Notebook : Node2D {
 		Portrait.Hide();
 	}
 }
-

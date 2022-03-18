@@ -126,6 +126,13 @@ __meta__ = {
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
+[node name="MapButton" type="Button" parent="NotebookController"]
+margin_top = 41.832
+margin_right = 39.0
+margin_bottom = 61.832
+text = "Map"
+expand_icon = true
+
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -10.0
@@ -265,6 +272,9 @@ position = Vector2( 0, -19 )
 
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
+
+[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )

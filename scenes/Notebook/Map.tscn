@@ -15,6 +15,17 @@ position = Vector2( 224, 132 )
 scale = Vector2( 0.903226, 0.916667 )
 texture = ExtResource( 2 )
 
+[node name="YouAreHere" type="ReferenceRect" parent="."]
+margin_left = 260.0
+margin_top = 206.0
+margin_right = 294.0
+margin_bottom = 240.0
+border_width = 1.7
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="palud_point" parent="." instance=ExtResource( 1 )]
 margin_left = 200.0
 margin_top = 144.0
