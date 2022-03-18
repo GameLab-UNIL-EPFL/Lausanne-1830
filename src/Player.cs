@@ -259,17 +259,24 @@ public class Player : KinematicBody2D {
 	}
 	
 	public int _Subscribe(NPC npc) {
-		subs.Add(npc);
-		return nSubs++;
+		if(itemsInRange.Count == 0) {
+			subs.Add(npc);
+			return nSubs++;
+		}
+		return nSubs;
 	}
 	
 	public void _Unsubscribe(NPC npc) {
-		subs.Remove(npc);
-		nSubs--;
+		if(subs.Contains(npc)) {
+			subs.Remove(npc);
+			nSubs--;
+		}
 	}
 	
 	public void _AddItemInRange(Item i) {
-		itemsInRange.Add(i);
+		if(subs.Count == 0) {
+			itemsInRange.Add(i);
+		}
 	}
 	
 	public void _RemoveItemInRange(Item i) {
@@ -337,6 +344,10 @@ public class Player : KinematicBody2D {
 	
 	public void _StartDialogue() {
 		CurrentState = PlayerStates.BLOCKED;
+		
+		foreach(var sub in subs) {
+			sub._StopTalking();
+		}
 		
 		if(isCutscene) {
 			isCutsceneConv = true;
