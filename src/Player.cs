@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 
@@ -125,12 +126,12 @@ public class Player : KinematicBody2D {
 		}
 		
 		//Check for interaction
-		if((subs.Count != 0) && (CurrentState != PlayerStates.NOTEBOOK)) {
+		if(((subs.Count != 0) || (itemsInRange.Count != 0)) &&
+			(CurrentState != PlayerStates.NOTEBOOK)) {
+				
 			if(Input.IsActionJustPressed("ui_interact")) {
 				NotifySubs();
-				if(subs.Count == 0 && itemsInRange.Count != 0) {
-					NotifyItems();
-				}
+				NotifyItems();
 			}
 		}
 		
@@ -285,6 +286,8 @@ public class Player : KinematicBody2D {
 	
 	// Finds the nearest item to the player
 	private Item NearestItem() {
+		if(itemsInRange.Count == 0) return null;
+		
 		float minDistance = float.MaxValue;
 		Item nearest = itemsInRange[0];
 		
@@ -301,6 +304,8 @@ public class Player : KinematicBody2D {
 	
 	// Finds the nearest sub to the player
 	private NPC NearestSub() {
+		if(subs.Count == 0) return null;
+		
 		float minDistance = float.MaxValue;
 		NPC nearest = subs[0];
 		
@@ -316,12 +321,17 @@ public class Player : KinematicBody2D {
 	}
 	
 	private void NotifyItems() {
-		NearestItem()._Notify(this);
+		var item = NearestItem();
+		if(item == null) return;
+		
+		item._Notify(this);
 	}
 	
 	private void NotifySubs() {
 		// Only notify the nearest sub
 		var nearestNPC = NearestSub();
+		if(nearestNPC == null) return;
+		
 		if(nearestNPC.isQuestNPC) {
 			EmitSignal(nameof(SendInfoToQuestNPC), this, nearestNPC);
 		} else {
