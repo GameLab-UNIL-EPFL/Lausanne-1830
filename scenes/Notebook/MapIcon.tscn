@@ -17,7 +17,7 @@ tracks/0/path = NodePath("Label:rect_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -29,7 +29,7 @@ tracks/1/path = NodePath("Label:visible_characters")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -41,7 +41,7 @@ tracks/2/path = NodePath("Label:align")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 16 ) ]
+"values": [ Vector2( 70, 16 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Label:visible_characters")
@@ -73,7 +73,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ -1 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Label:align")
@@ -89,9 +89,11 @@ tracks/2/keys = {
 }
 
 [node name="MapIcon" type="TextureButton"]
-margin_right = 16.0
-margin_bottom = 16.0
+margin_right = 40.0
+margin_bottom = 40.0
 texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,18 +101,19 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 visible = false
-margin_left = 25.0
-margin_top = 1.0
-margin_right = 26.0
-margin_bottom = 17.0
+margin_left = 36.0
+margin_top = 12.0
+margin_right = 106.0
+margin_bottom = 28.0
 custom_colors/font_color = Color( 0.431373, 0.301961, 0.211765, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Brasserie"
 align = 1
 valign = 1
 clip_text = true
-percent_visible = 0.111111
+percent_visible = -0.111111
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
