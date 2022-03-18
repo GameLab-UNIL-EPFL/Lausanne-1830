@@ -4,7 +4,6 @@ using System;
 public class Item : Node2D {
 	private Sprite ItemSprite;
 	private Node2D N;
-	private bool opened = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -13,7 +12,6 @@ public class Item : Node2D {
 	}
 	
 	public void _Notify(Player p) {
-		opened = !opened;
 		if(ItemSprite.Visible) {
 			N.Visible = !N.Visible;
 			if(N.Visible) {
