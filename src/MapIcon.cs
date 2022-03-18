@@ -24,18 +24,20 @@ public class MapIcon : TextureButton {
 		L.Text = text;
 		context = GetNode<Context>("/root/Context");
 		RR = GetNode<ReferenceRect>("../YouAreHere");
-		RR.RectPosition = PALUD_POS;
+		
+		//Update You are Here
+		SetYouAreHerePos(context._GetLocation());
 	}
 	
-	private void SetYouAreHerePos(string id) {
-		switch(id) {
-			case "Palud/ProtoPalud":
+	private void SetYouAreHerePos(Locations l) {
+		switch(l) {
+			case Locations.PALUD:
 				RR.RectPosition = PALUD_POS;
 				break;
-			case "Casino/Casino":
+			case Locations.CASINO:
 				RR.RectPosition = CASINO_POS;
 				break;
-			case "Brasserie/Brasserie":
+			case Locations.BRASSERIE:
 				RR.RectPosition = BRASSERIE_POS;
 				break;
 			default:
@@ -49,9 +51,6 @@ public class MapIcon : TextureButton {
 			
 		//Update the context
 		context._UpdateLocation(id);
-		
-		//Update You are Here
-		SetYouAreHerePos(id);
 	}
 	
 	private void _on_MapIcon_mouse_entered() {
