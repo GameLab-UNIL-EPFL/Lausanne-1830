@@ -1350,6 +1350,9 @@ margin_right = 39.0
 margin_bottom = 61.832
 text = "Map"
 expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )

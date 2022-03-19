@@ -58,6 +58,7 @@ public class Player : KinematicBody2D {
 	private List<NPC> subs = new List<NPC>();
 	private int nSubs = 0;
 	
+	private Notebook NB;
 	private Context context;
 	
 	// Returns whether or not the quest giver is in the sub list
@@ -135,9 +136,28 @@ public class Player : KinematicBody2D {
 			}
 		}
 		
+		//Check for map
+		if(Input.IsActionJustPressed("ui_map")) {
+			NB._on_MapB_pressed();
+		}
+		
 		//Check for tab
 		if(Input.IsActionJustPressed("ui_focus_next")) {
 			EmitSignal(nameof(OpenNotebook));
+		}
+		
+		//Check for tab switches
+		if(Input.IsActionJustPressed("ui_1")) {
+			NB._on_Tab1Button_pressed();
+		}
+		if(Input.IsActionJustPressed("ui_2")) {
+			NB._on_Tab2Button_pressed();
+		}
+		if(Input.IsActionJustPressed("ui_3")) {
+			NB._on_Tab3Button_pressed();
+		}
+		if(Input.IsActionJustPressed("ui_4")) {
+			NB._on_Tab4Button_pressed();
 		}
 	}
 	
@@ -227,6 +247,7 @@ public class Player : KinematicBody2D {
 		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
+		NB = GetNode<Notebook>("../../Notebook");
 		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
