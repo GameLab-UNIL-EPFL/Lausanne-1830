@@ -270,6 +270,7 @@ public class Notebook : Node2D {
 	}
 	
 	private void PressTabButton(int buttonid) {
+		if(hidden || mapOpen) return;
 		Debug.Assert(0 <= buttonid && buttonid < 5);
 		Debug.Assert(0 <= curTabId && curTabId < 5);
 		
