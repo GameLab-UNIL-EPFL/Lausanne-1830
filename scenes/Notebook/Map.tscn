@@ -122,4 +122,4 @@ text = "Casino"
 
 [node name="YouAreHere" type="Sprite" parent="."]
 position = Vector2( 208, 152 )
-texture = ExtResource( 8 )
+texture = SubResource( 7 )
