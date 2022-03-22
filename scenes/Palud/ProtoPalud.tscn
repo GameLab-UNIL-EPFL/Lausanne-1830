@@ -1317,6 +1317,7 @@ scale = Vector2( 0.411111, 0.411111 )
 texture = ExtResource( 39 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
+visible = false
 
 [node name="CloseNotebook" parent="Notebook/ColorRect" index="0"]
 margin_top = 119.0

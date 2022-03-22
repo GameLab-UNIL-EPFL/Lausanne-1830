@@ -12,6 +12,7 @@ public class Context : Node {
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
 	private GameStates GameState = GameStates.INIT;
 	private Locations CurrentLocation = Locations.PALUD;
+	public const int N_TABS = 6;
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -86,7 +87,7 @@ public class Context : Node {
 	}
 	
 	public CharacterInfo_t _GetNotebookCharInfo(int id) {
-		Debug.Assert(0 <= id && id < 5);
+		Debug.Assert(0 <= id && id < N_TABS);
 		return NotebookCharInfo[id];
 	}
 	
@@ -95,17 +96,17 @@ public class Context : Node {
 	}
 	
 	public InfoValue_t _GetNotebookCorrectInfo(int id) {
-		Debug.Assert(0 <= id && id < 5);
+		Debug.Assert(0 <= id && id < N_TABS);
 		return NotebookCorrectInfo[id];
 	}
 	
 	public void _UpdateNotebookCharInfo(int id, CharacterInfo_t data) {
-		Debug.Assert(0 <= id && id < 5);
+		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCharInfo[id] = data;
 	}
 	
 	public void _UpdateNotebookCorrectInfo(int id, InfoValue_t data) {
-		Debug.Assert(0 <= id && id < 5);
+		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCorrectInfo[id] = data;
 	}
 }

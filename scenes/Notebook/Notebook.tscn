@@ -500,6 +500,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tab6" type="Sprite" parent="."]
+visible = false
+position = Vector2( 514.504, 226.808 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 1
+
+[node name="PageNum" type="Label" parent="Tab6"]
+margin_left = -11.504
+margin_top = -6.808
+margin_right = 11.496
+margin_bottom = 8.192
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tab6Button" type="Button" parent="."]
+visible = false
+margin_left = 502.0
+margin_top = 217.0
+margin_right = 529.0
+margin_bottom = 237.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TabMap" type="Sprite" parent="."]
 position = Vector2( 514.466, 259.188 )
 texture = ExtResource( 5 )

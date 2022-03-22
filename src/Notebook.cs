@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 public class Notebook : Node2D {
-	private const int N_TABS = 5;
 	private List<NotebookInfo> tempInfo = new List<NotebookInfo>();
 	private List<NotebookInfo> info = new List<NotebookInfo>();
 	private List<Label> infoStatic = new List<Label>();
@@ -102,7 +101,7 @@ public class Notebook : Node2D {
 		}
 		
 		//Gather all tabs
-		for(int i = 1; i <= N_TABS; ++i) {
+		for(int i = 1; i <= Context.N_TABS; ++i) {
 			tabSprites.Add(GetNode<Sprite>("Tab" + i));
 			
 			//Retrieve tab and connect its pressed signal
@@ -271,8 +270,8 @@ public class Notebook : Node2D {
 	
 	private void PressTabButton(int buttonid) {
 		if(hidden || mapOpen) return;
-		Debug.Assert(0 <= buttonid && buttonid < 5);
-		Debug.Assert(0 <= curTabId && curTabId < 5);
+		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
+		Debug.Assert(0 <= curTabId && curTabId < Context.N_TABS);
 		
 		//Fill char info one last time
 		FillCharInfo();
