@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/Notebook/MapIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/05_map/map.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/05_map/paludIcon.png" type="Texture" id=5]
 [ext_resource path="res://assets/05_map/casinoIcon.png" type="Texture" id=6]
 [ext_resource path="res://assets/05_map/point.png" type="Texture" id=7]
+[ext_resource path="res://assets/05_map/pointHere.png" type="Texture" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -38,17 +39,6 @@ region = Rect2( 16, 0, 16, 16 )
 position = Vector2( 224, 132 )
 scale = Vector2( 0.903226, 0.916667 )
 texture = ExtResource( 2 )
-
-[node name="YouAreHere" type="ReferenceRect" parent="."]
-margin_left = 260.0
-margin_top = 206.0
-margin_right = 294.0
-margin_bottom = 240.0
-border_width = 1.7
-editor_only = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="palud_point" parent="." instance=ExtResource( 1 )]
 margin_left = 200.0
@@ -125,3 +115,7 @@ texture_normal = SubResource( 3 )
 texture_hover = SubResource( 6 )
 id = "Casino/Casino"
 text = "Casino"
+
+[node name="YouAreHere" type="Sprite" parent="."]
+position = Vector2( 208, 152 )
+texture = ExtResource( 8 )

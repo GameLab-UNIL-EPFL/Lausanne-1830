@@ -99,8 +99,10 @@
     </dialogue>
     <dialogue id="demandPichard" ntargets="1" type="onDemand">
         <text>Quel beau bâtiment, vous ne trouvez pas?</text>
-        <text>C'est le casino de Derrière-Bourg, une salle de concerts et de réunions en tout genre.</text>
-        <text>C'est ici que les casinistes se sont rassemblés pour organiser la révolution libérale.</text>
+        <text>C'est le casino de Derrière-Bourg,</text>
+        <text>une salle de concerts et de réunions en tout genre.</text>
+        <text>C'est ici que les casinistes se sont rassemblés</text>
+        <text>pour organiser la révolution libérale.</text>
     </dialogue>
     <dialogue id="demandPerregaux" ntargets="1" type="onDemand">
         <text>J'ai oublié ma mallette quelque part...</text>
