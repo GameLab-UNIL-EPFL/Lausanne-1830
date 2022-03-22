@@ -1,8 +1,8 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/04_notebook/journal.png" type="Texture" id=3]
+[ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=3]
 [ext_resource path="res://assets/02_architecture/03_brewery/cuve.png" type="Texture" id=4]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=6]
@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/02_architecture/03_brewery/Canton.png" type="Texture" id=35]
 [ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=36]
 [ext_resource path="res://assets/05_fonts/Bonefish.ttf" type="DynamicFontData" id=37]
+[ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
@@ -1006,6 +1007,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=58]
 
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 3 )
+region = Rect2( 38, 0, 37, 36 )
+
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
@@ -1036,20 +1041,15 @@ tracks/0/keys = {
 "values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
 }
 
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 37, 36 )
+
 [sub_resource type="RectangleShape2D" id=59]
 extents = Vector2( 83.8691, 18.911 )
 
 [sub_resource type="CircleShape2D" id=71]
 radius = 15.4083
-
-[sub_resource type="DynamicFont" id=60]
-size = 18
-font_data = ExtResource( 28 )
-
-[sub_resource type="DynamicFont" id=61]
-size = 12
-use_mipmaps = true
-font_data = ExtResource( 28 )
 
 [sub_resource type="DynamicFont" id=62]
 outline_color = Color( 0, 0, 0, 1 )
@@ -1081,6 +1081,7 @@ font_data = ExtResource( 28 )
 [node name="DialogueController" parent="." instance=ExtResource( 11 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 641.0
 margin_bottom = 365.0
 color = Color( 0.239216, 0.184314, 0.203922, 1 )
@@ -1424,17 +1425,15 @@ visible = false
 stream = ExtResource( 7 )
 volume_db = -10.0
 
-[node name="NotebookController" type="Button" parent="."]
+[node name="NotebookController" type="TextureButton" parent="."]
 margin_left = 650.0
 margin_top = 4.168
 margin_right = 693.0
-margin_bottom = 39.168
+margin_bottom = 40.168
 focus_mode = 0
 mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
-icon = ExtResource( 3 )
-flat = true
-expand_icon = true
+texture_normal = SubResource( 74 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1444,12 +1443,15 @@ __meta__ = {
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
-[node name="MapButton" type="Button" parent="NotebookController"]
+[node name="MapButton" type="TextureButton" parent="NotebookController"]
 margin_top = 41.832
 margin_right = 39.0
 margin_bottom = 61.832
-text = "Map"
-expand_icon = true
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 75 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -1468,7 +1470,6 @@ position = Vector2( 174.671, 113.386 )
 shape = SubResource( 59 )
 
 [node name="Book" parent="." instance=ExtResource( 27 )]
-visible = false
 position = Vector2( 110, 85 )
 
 [node name="Sprite" parent="Book" index="0"]
@@ -1481,71 +1482,20 @@ text = "Lire"
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
 
+[node name="Open" parent="Book" index="2"]
+visible = false
+
 [node name="ColorRect" parent="Book/Open" index="0"]
 margin_left = -581.5
 margin_top = -363.0
 margin_right = 737.5
 margin_bottom = 487.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Book/Open" index="1"]
-margin_left = 115.0
-margin_top = -6.0
-margin_right = 307.0
-margin_bottom = 199.0
-texture = ExtResource( 29 )
-region_rect = Rect2( 0, 0, 155.762, 74.6972 )
-patch_margin_left = 7
-patch_margin_top = 7
-patch_margin_right = 7
-patch_margin_bottom = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Book/Open" index="2"]
-margin_left = 118.0
-margin_top = 6.0
-margin_right = 305.0
-margin_bottom = 179.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 60 )
-text = "CAROLINE
-DE LICHTFIELD
-
-MEMOIRES
-
-
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="Book/Open" index="3"]
-margin_left = 115.0
-margin_top = 40.0
-margin_right = 305.0
-margin_bottom = 173.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 61 )
-text = "OU
-
-
-D'UNE FAMILLE PRUSSIENNE,
-
-écrit par Madame La Baronne,
-Isabelle De Montolieu"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PressE" parent="Book/Open" index="4" instance=ExtResource( 30 )]
+[node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
 
-[node name="Label3" type="Label" parent="Book/Open" index="5"]
+[node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
 margin_top = 253.0
 margin_right = -34.0
@@ -1556,6 +1506,10 @@ text = "FERMER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="Book/Open" index="3"]
+position = Vector2( 210, 95 )
+texture = ExtResource( 38 )
 
 [node name="Item" parent="." instance=ExtResource( 27 )]
 position = Vector2( 174, 80 )
@@ -1685,8 +1639,6 @@ __meta__ = {
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
-[connection signal="mouse_entered" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_entered"]
-[connection signal="mouse_exited" from="NotebookController" to="NotebookController" method="_on_NotebookController_mouse_exited"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 

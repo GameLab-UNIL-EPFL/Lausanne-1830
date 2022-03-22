@@ -10,12 +10,13 @@ public class MapIcon : TextureButton {
 	
 	private AnimationPlayer AnimPlayer;
 	private Label L;
-	private ReferenceRect RR;
+	private Sprite RR;
 	private Context context;
 	
-	private Vector2 PALUD_POS = new Vector2(194, 124);
-	private Vector2 BRASSERIE_POS = new Vector2(110, 90);
-	private Vector2 CASINO_POS = new Vector2(260, 206);
+	private Vector2 PALUD_POS = new Vector2(208, 152);
+	private Vector2 BRASSERIE_POS = new Vector2(138, 108);
+	private Vector2 CASINO_POS = new Vector2(278, 234);
+	private Vector2 MOULIN_POS = new Vector2(184, 223);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -23,7 +24,7 @@ public class MapIcon : TextureButton {
 		L = GetNode<Label>("Label");
 		L.Text = text;
 		context = GetNode<Context>("/root/Context");
-		RR = GetNode<ReferenceRect>("../YouAreHere");
+		RR = GetNode<Sprite>("../YouAreHere");
 		
 		//Update You are Here
 		SetYouAreHerePos(context._GetLocation());
@@ -32,13 +33,13 @@ public class MapIcon : TextureButton {
 	private void SetYouAreHerePos(Locations l) {
 		switch(l) {
 			case Locations.PALUD:
-				RR.RectPosition = PALUD_POS;
+				RR.Position = PALUD_POS;
 				break;
 			case Locations.CASINO:
-				RR.RectPosition = CASINO_POS;
+				RR.Position = CASINO_POS;
 				break;
 			case Locations.BRASSERIE:
-				RR.RectPosition = BRASSERIE_POS;
+				RR.Position = BRASSERIE_POS;
 				break;
 			default:
 				break;
