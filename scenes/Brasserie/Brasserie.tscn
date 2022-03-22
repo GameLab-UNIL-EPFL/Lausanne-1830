@@ -1081,6 +1081,7 @@ font_data = ExtResource( 28 )
 [node name="DialogueController" parent="." instance=ExtResource( 11 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 641.0
 margin_bottom = 365.0
 color = Color( 0.239216, 0.184314, 0.203922, 1 )

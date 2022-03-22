@@ -1328,6 +1328,9 @@ margin_right = 39.0
 margin_bottom = 61.832
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 43 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )

@@ -16,7 +16,9 @@ public class NotebookController : TextureButton
 		NB = GetNode<Notebook>("../Notebook");
 		M = GetNode<Map>("../Notebook/Map");
 		
-		MB.Connect("pressed", NB, "_on_MapB_pressed");
+		if(!MB.IsConnected("pressed", NB, "_on_MapB_pressed")){
+			MB.Connect("pressed", NB, "_on_MapB_pressed");
+		}
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
