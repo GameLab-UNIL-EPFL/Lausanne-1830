@@ -31,7 +31,7 @@
         <text>Et j'habite à la brasserie à la rue Chaucrau.</text>
     </dialogue>
     <dialogue id="demandOldMan" ntargets="1" type="onDemand">
-        <text>Ah, on dirait qu'Angélique a encore envoyé sa fille faire les courses.</text>
+        <text>Ah, on dirait que madame Trüschel a encore envoyé sa fille faire les courses.</text>
         <text>C'est plutôt les domestiques qui devraient s'en charger.</text>
         <text>Mais je crois qu'elle a envie de voir un peu la ville.</text>
     </dialogue>
@@ -86,6 +86,8 @@
     <dialogue id="demandAngelique" ntargets="1" type="onDemand">
         <text>Je suis désolée mais je suis très occupée.</text>
         <text>J'ai encore du travail à terminer.</text>
+        <text>Ah pardon, je n'ai pas pris le temps de me présenter.</text>
+        <text>Je m'appelle Angélique Trüschel.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>

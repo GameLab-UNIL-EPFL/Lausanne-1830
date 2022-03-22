@@ -334,9 +334,7 @@ graph_offset = Vector2( -90.6573, 2.58748 )
 script = ExtResource( 2 )
 
 [node name="TextBox" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( -13, -43 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( -18, -58 )
 
 [node name="Shadow" type="Sprite" parent="."]
 position = Vector2( 0, 8 )

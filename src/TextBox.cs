@@ -6,19 +6,19 @@ public class TextBox : Node2D {
 	[Export]
 	public string NPCName = "NPC";
 	
-	private Sprite ATB;
-	private Sprite DTB;
+	private NinePatchRect ATB;
+	private NinePatchRect DTB;
 	private MarginContainer TC;
 	private Label Text;
 	private AnimatedSprite E;
 	private Label N;
 	
-	private Vector2 DTCSize = new Vector2(393, 140);
-	private Vector2 DTCPos = new Vector2(12, -93);
-	private Vector2 ATCSize = new Vector2(380, 50);
-	private Vector2 ATCPos = new Vector2(15, 0);
-	private Vector2 DNamePos = new Vector2(25, -125);
-	private Vector2 ANamePos = new Vector2(25, -35);
+	private Vector2 DTCSize = new Vector2(114, 41);
+	private Vector2 DTCPos = new Vector2(3, -16);
+	private Vector2 ATCSize = new Vector2(114, 10);
+	private Vector2 ATCPos = new Vector2(3, 9);
+	private Vector2 DNamePos = new Vector2(10, -30);
+	private Vector2 ANamePos = new Vector2(10, -12);
 	
 	//Hides all nodes
 	public void _HideAll() {
@@ -40,8 +40,8 @@ public class TextBox : Node2D {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		//Fetch all usefull nodes
-		ATB = GetNode<Sprite>("ApproachTB");
-		DTB = GetNode<Sprite>("DemandTB");
+		ATB = GetNode<NinePatchRect>("ApproachTB");
+		DTB = GetNode<NinePatchRect>("DemandTB");
 		TC = GetNode<MarginContainer>("TextContainer");
 		Text = GetNode<Label>("TextContainer/Text");
 		E = GetNode<AnimatedSprite>("AnimatedSprite");
