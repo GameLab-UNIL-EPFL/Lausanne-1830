@@ -11,11 +11,11 @@ public class Notebook : Node2D {
 	
 	private List<Sprite> tabSprites = new List<Sprite>();
 	private List<Button> tabButtons = new List<Button>(); 
+	private List<Sprite> Portraits = new List<Sprite>();
 	
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
-	private Sprite Portrait;
 	
 	private Map M;
 	
@@ -93,7 +93,9 @@ public class Notebook : Node2D {
 		context = GetNode<Context>("/root/Context");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		M = GetNode<Map>("Map");
-		Portrait = GetNode<Sprite>("Portrait");
+		for(int i = 1; i < Context.N_TABS; ++i) {
+			Portraits.Add(GetNode<Sprite>("Portrait" + i));
+		}
 		//Fetch all info
 		foreach(var infoName in infoNames) {
 			info.Add(GetNode<NotebookInfo>("Sprite/" + infoName));
@@ -298,29 +300,35 @@ public class Notebook : Node2D {
 		curTabId = buttonid;
 	}
 	
+	private void _Change_Portrait(int num) {
+		for(int i = 1; i <= 5; ++i) {
+			var P = GetNode<Sprite>("Portrait" + i);
+			P.Hide();
+		}
+		Portraits[num].Show();
+	}
+	
 	public void _on_Tab1Button_pressed() {
 		PressTabButton(0);
-		Portrait.Show();
-		Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/angeliqueTruschel.png");
+		_Change_Portrait(0);
+		
 	}
 	public void _on_Tab2Button_pressed() {
 		PressTabButton(1);
-		Portrait.Show();
-		Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/henriPerregaux.png");
+		_Change_Portrait(1);
+		
 	}
 	public void _on_Tab3Button_pressed() {
 		PressTabButton(2);
-		//Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/randomWoman-Sheet.png");
-		Portrait.Hide();
+		_Change_Portrait(2);
+		
 	}
 	public void _on_Tab4Button_pressed() {
 		PressTabButton(3);
-		//Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png");
-		Portrait.Hide();
+		_Change_Portrait(3);
 	}
 	public void _on_Tab5Button_pressed() {
 		PressTabButton(4);
-		//Portrait.Texture = (Texture)GD.Load("res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png");
-		Portrait.Hide();
+		_Change_Portrait(4);
 	}
 }
