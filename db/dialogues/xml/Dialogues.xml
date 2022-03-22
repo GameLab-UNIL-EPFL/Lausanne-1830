@@ -58,6 +58,9 @@
         <text>Mais je ne suis qu'une lingère.</text>
         <text>C'est madame De Montolieu qui y habite avec son fils unique.</text>
     </dialogue>
+    <dialogue id="demandLingere2" ntargets="1" type="onDemand">
+        <text>Et moi, je rêverais que quelqu'un fasse la lessive à ma place.</text>
+    </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
             <option id="0">Allez, allez ! La bière ne va pas se brasser toute seule !</option>
