@@ -40,7 +40,8 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
 [ext_resource path="res://assets/06_UI_menus/calecheNews.png" type="Texture" id=39]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
-[ext_resource path="res://assets/05_fonts/Newsgeek/Newsgeek.ttf" type="DynamicFontData" id=41]
+[ext_resource path="res://assets/06_UI_menus/leatherSheet.png" type="Texture" id=41]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/leather.png" type="Texture" id=42]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -556,10 +557,6 @@ extents = Vector2( 29.9439, 18.9086 )
 
 [sub_resource type="CircleShape2D" id=40]
 radius = 10.8202
-
-[sub_resource type="DynamicFont" id=39]
-use_mipmaps = true
-font_data = ExtResource( 41 )
 
 [sub_resource type="DynamicFont" id=41]
 font_data = ExtResource( 30 )
@@ -1090,43 +1087,17 @@ shape = SubResource( 40 )
 [node name="Open" parent="YSort/Cuir" index="2"]
 visible = false
 
-[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Cuir/Open" index="1"]
-margin_left = -242.811
-margin_top = -162.459
-margin_right = -48.8108
-margin_bottom = -42.4594
-texture = ExtResource( 26 )
-region_rect = Rect2( 0, 0, 156.02, 75.5419 )
-patch_margin_left = 6
-patch_margin_top = 7
-patch_margin_right = 9
-patch_margin_bottom = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" parent="YSort/Cuir/Open" index="0"]
+margin_left = -617.892
+margin_top = -427.703
+margin_right = 701.108
+margin_bottom = 422.297
 
-[node name="Label" type="Label" parent="YSort/Cuir/Open" index="2"]
-margin_left = -251.703
-margin_top = -160.865
-margin_right = -108.703
-margin_bottom = -78.8651
-rect_scale = Vector2( 1.5, 1.5 )
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 39 )
-text = "VEAUX 1ER CHOIX
-EMIS PAR
-J.J. MERCIER"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PressE" parent="YSort/Cuir/Open" index="3" instance=ExtResource( 40 )]
+[node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
 
-[node name="Label2" type="Label" parent="YSort/Cuir/Open" index="4"]
+[node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
 margin_top = 42.0
 margin_right = -396.0
@@ -1137,15 +1108,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaceholderCuir" type="ColorRect" parent="YSort"]
-margin_left = 477.774
-margin_top = 290.904
-margin_right = 486.774
-margin_bottom = 297.904
-color = Color( 0.439216, 0.298039, 0.203922, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="YSort/Cuir/Open" index="3"]
+position = Vector2( -162, -114 )
+texture = ExtResource( 41 )
+
+[node name="Cuir2" type="Sprite" parent="YSort"]
+position = Vector2( 481, 294 )
+texture = ExtResource( 42 )
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 55, 188 )
@@ -1317,6 +1286,7 @@ scale = Vector2( 0.411111, 0.411111 )
 texture = ExtResource( 39 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
+visible = false
 
 [node name="CloseNotebook" parent="Notebook/ColorRect" index="0"]
 margin_top = 119.0
