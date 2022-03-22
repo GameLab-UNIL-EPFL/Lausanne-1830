@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=114 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=36]
 [ext_resource path="res://assets/05_fonts/Bonefish.ttf" type="DynamicFontData" id=37]
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
@@ -1038,7 +1040,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
+"values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=75]
@@ -1102,7 +1104,7 @@ __meta__ = {
 visible = false
 position = Vector2( 384.007, 140.819 )
 scale = Vector2( 0.753472, 0.753472 )
-polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170, 56, -178, 56, -178, 160, -170, 160, -170, 128, -90, 128, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -82, 216, -90, 216, -226, 216 )
+polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170, 56, -183.531, 55.4858, -182.039, 157.895, -170, 160, -170, 128, -90, 128, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -82, 216, -90, 216, -226, 216 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1448,14 +1450,22 @@ anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
 [node name="MapButton" type="TextureButton" parent="NotebookController"]
-margin_top = 41.832
-margin_right = 39.0
-margin_bottom = 61.832
+margin_left = 44.0
+margin_right = 83.0
+margin_bottom = 36.0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 75 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 39 )]
+position = Vector2( 5, 33 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="PressTab" parent="NotebookController" instance=ExtResource( 40 )]
+position = Vector2( 0, 34 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -1481,9 +1491,6 @@ visible = false
 
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
-
-[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
@@ -1527,9 +1534,6 @@ visible = false
 
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
