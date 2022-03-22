@@ -1081,7 +1081,6 @@ font_data = ExtResource( 28 )
 [node name="DialogueController" parent="." instance=ExtResource( 11 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_right = 641.0
 margin_bottom = 365.0
 color = Color( 0.239216, 0.184314, 0.203922, 1 )
@@ -1235,7 +1234,7 @@ shape = SubResource( 63 )
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Adrienne" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 204, 144 )
+position = Vector2( 234, 144 )
 collision_layer = 3
 collision_mask = 3
 ProbRight = 3
@@ -1288,7 +1287,7 @@ ProbRight = 3
 ProbLeft = 3
 CanWander = true
 WanderingCooldown = 20.0
-WalkSpeed = 25
+WalkSpeed = 20
 DemandDialogueID = "demandFilles"
 HasAutoDialogue = false
 
@@ -1340,7 +1339,13 @@ anims/WalkUp = SubResource( 18 )
 parameters/playback = SubResource( 55 )
 
 [node name="Tonnelier" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 462.919, 187.027 )
+position = Vector2( 530, 250 )
+InitDir = 1
+ProbRight = 0
+ProbLeft = 0
+CanWander = true
+WanderingCooldown = 10.0
+WalkSpeed = 20
 DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
 
@@ -1364,11 +1369,10 @@ anims/WalkUp = SubResource( 26 )
 parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 536, 240 )
-InitDir = 1
+position = Vector2( 432, 212 )
 ProbRight = 0
 ProbLeft = 0
-CanWander = true
+ProbUp = 0
 WanderingCooldown = 10.0
 WalkSpeed = 20
 DemandDialogueID = "demandTonnelier"
@@ -1478,6 +1482,9 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1494,6 +1501,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1519,6 +1527,9 @@ visible = false
 
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
@@ -1625,6 +1636,7 @@ __meta__ = {
 [node name="PressE" parent="Item/Open" index="9" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
+frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="10"]
 margin_left = -137.0
