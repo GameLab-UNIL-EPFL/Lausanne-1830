@@ -821,6 +821,7 @@ DemandDialogueID = "testDemand"
 
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
 position = Vector2( -13.8276, -35.652 )
+z_index = 1
 NPCName = " M. Chapuis "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
@@ -836,6 +837,7 @@ DemandDialogueID = "demandBaker"
 
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
 position = Vector2( -13.8276, -35.652 )
+z_index = 1
 NPCName = " M. Guignard "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
@@ -851,6 +853,7 @@ DemandDialogueID = "demandRandom"
 
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
 position = Vector2( -13.8276, -35.652 )
+z_index = 1
 NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
@@ -869,6 +872,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 position = Vector2( -11.707, -36.924 )
+z_index = 1
 NPCName = " Mlle De Cerjeat "
 
 [node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
@@ -897,6 +901,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Random" index="0"]
 position = Vector2( -11.707, -36.924 )
+z_index = 1
 NPCName = " Mme. Chardon "
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
@@ -928,6 +933,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
 position = Vector2( -11.431, -36.089 )
+z_index = 1
 NPCName = " M. Jaccard "
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
@@ -945,6 +951,7 @@ DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Lingere" index="0"]
+z_index = 1
 NPCName = " Mme Détraz "
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
@@ -961,8 +968,12 @@ parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 248, 264 )
+DemandDialogueID = "demandLingere2"
 HasAutoDialogue = false
-HasDemandDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Lingere2" index="0"]
+z_index = 1
+NPCName = " Mme Rebillet "
 
 [node name="Shadow" parent="YSort/NPC/Lingere2" index="1"]
 visible = false
@@ -1050,7 +1061,7 @@ position = Vector2( -37, -12 )
 texture = ExtResource( 37 )
 
 [node name="Laundry2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -72, 18 )
+position = Vector2( -75, 20 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
