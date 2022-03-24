@@ -50,7 +50,7 @@
         <text>Vous devriez faire attention !</text>
         <text>Ils piquent surtout les mallettes à l'arrière des calèches,</text>
         <text>mais j'ai entendu dire que quelqu'un</text>
-        <text>c'était fait voler son hibou dans son jardin !</text>
+        <text>s'était fait voler son hibou dans son jardin !</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
         <text>Je rêverais d'être invitée au château de Vennes,</text>
