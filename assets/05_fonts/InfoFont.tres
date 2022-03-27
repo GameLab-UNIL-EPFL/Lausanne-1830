@@ -1,9 +1,0 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
-
-[ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=1]
-
-[resource]
-size = 12
-outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-use_mipmaps = true
-font_data = ExtResource( 1 )
