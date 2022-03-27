@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public class NPC : KinematicBody2D {
 	
+	public enum Direction {RIGHT, LEFT, UP, DOWN};
+	private Vector2 RightDir = new Vector2(1.0f, 0.0f);
+	private Vector2 LeftDir = new Vector2(-1.0f, 0.0f);
+	private Vector2 UpDir = new Vector2(0.0f, -1.0f);
+	private Vector2 DownDir = new Vector2(0.0f, 1.0f);
+	
 	[Signal]
 	public delegate void EndDialogue();
 	
@@ -38,7 +44,12 @@ public class NPC : KinematicBody2D {
 	private const int FRIC = 1000;
 	private float cooldown = 0.0f;
 	private float wanderTime = 1.0f;
+	private Vector2 PrevDir = Vector2.Zero;
 	
+	private Vector2 InitialDirection = Vector2.Zero;
+	
+	[Export]
+	public Direction InitDir = Direction.DOWN;
 	[Export]
 	public int ProbRight = 2; //max weight of right movement
 	[Export]
@@ -101,6 +112,13 @@ public class NPC : KinematicBody2D {
 
 		return FormatText(d);
 	}
+	
+	private void LookInInitalDir() {
+		InputVec = InitialDirection;
+		HandleMovement(0.03f);
+		InputVec = Vector2.Zero;
+		HandleMovement(0.03f);
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -116,6 +134,30 @@ public class NPC : KinematicBody2D {
 			if(DC == null) {
 				throw new Exception("Every scene must have its own dialogue controller!!");
 			} 
+		}
+		
+		//Set initial direction
+		switch(InitDir) {
+			case Direction.LEFT:
+				InitialDirection = LeftDir;
+				break;
+			case Direction.RIGHT:
+				InitialDirection = RightDir;
+				break;
+			case Direction.UP:
+				InitialDirection = UpDir;
+				break;
+			default:
+			case Direction.DOWN:
+				InitialDirection = DownDir;
+				break;
+		}
+		LookInInitalDir();
+	}
+	
+	public void _StopTalking() {
+		if(!inDialogue) {
+			TB.Hide();
 		}
 	}
 	
@@ -133,10 +175,13 @@ public class NPC : KinematicBody2D {
 	
 	//Generate a new random position within the wandering distance
 	private Vector2 NewInputVec() {
-		return new Vector2(
-			random.Next(ProbRight) - random.Next(ProbLeft), 
-			random.Next(ProbDown) - random.Next(ProbUp)
-		);
+		float horizontalMov = (float)(random.Next(ProbRight) - random.Next(ProbLeft));
+		float verticalMov = (float)(random.Next(ProbDown) - random.Next(ProbUp));
+		
+		if(random.Next(2) > 0) {
+			return new Vector2(horizontalMov, 0.0f);
+		}
+		return new Vector2(0.0f, verticalMov);
 	}
 	
 	private void StopWandering() {
@@ -276,22 +321,44 @@ public class NPC : KinematicBody2D {
 		return textLines.ToArray();
 	}
 	
+	private void BeginDialogue(Player player, ref string d) {
+		inDialogue = true;
+		player._StartDialogue();
+		d = DC._StartDialogue(DemandDialogueID);
+		
+		//Turn to player
+		InputVec = (player.Position - Position).Normalized();
+		HandleMovement(0.03f);
+		InputVec = Vector2.Zero;
+		HandleMovement(0.03f);
+	}
+	
+	private void FinishDialogue(Player player) {
+		inDialogue = false;
+		TB._HideText();
+		player._EndDialogue();
+		DC._EndDialogue();
+		
+		if(!CanWander) {
+			LookInInitalDir();
+		}
+	}
+	
 	/**
 	 * @brief Called by the player when the NPC should be notified of an interaction.
 	 */
 	public void _Notify(Player player) {
 		TB._HideAll();
 		if(HasDemandDialogue) {
-			string d;
+			string d = null;
 			
 			if(InnerLinesCount != 0) {
 				d = InnerLines[InnerLines.Length - InnerLinesCount--];
 			} else {
 				//Check if this is the start of a dialogue
 				if(!inDialogue) {
-					inDialogue = true;
-					player._StartDialogue();
-					d = DC._StartDialogue(DemandDialogueID);
+					BeginDialogue(player, ref d);
+					
 					if(d == null) {
 						throw new Exception("No starting dialogue given");
 					}
@@ -300,10 +367,7 @@ public class NPC : KinematicBody2D {
 					
 					//Check if it's the end of the dialogue
 					if(d == null) {
-						inDialogue = false;
-						TB._HideText();
-						player._EndDialogue();
-						DC._EndDialogue();
+						FinishDialogue(player);
 						return;
 					}
 				}
@@ -316,12 +380,6 @@ public class NPC : KinematicBody2D {
 				if(InnerLinesCount != 0) {
 					d = InnerLines[InnerLines.Length - InnerLinesCount--];
 				}
-				
-				//Turn to player
-				InputVec = (player.Position - Position).Normalized();
-				HandleMovement(0.03f);
-				InputVec = Vector2.Zero;
-				HandleMovement(0.03f);
 			}
 			
 			//Show it in the box
@@ -332,14 +390,14 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
-	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo) {
-		CharacterInfo_t solution = QC._QueryQuestSolution();
-		solution = QC._QueryQuestSolution();
+	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo, int tabId) {
+		CharacterInfo_t solution = QC._QueryQuestSolution(tabId);
+		solution = QC._QueryQuestSolution(tabId);
 		return QC._CompareCharInfo(solution, characterInfo);
 	}
 	
-	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo) {
-		InfoValue_t res = _CompareSolutions(characterInfo);
+	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo, int tabId) {
+		InfoValue_t res = _CompareSolutions(characterInfo, tabId);
 		
 		if(!inDialogue) {
 			inDialogue = true;

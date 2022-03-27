@@ -10,29 +10,34 @@ public class Item : Node2D {
 		ItemSprite = GetNode<Sprite>("Sprite");
 		N = GetNode<Node2D>("Open");
 	}
+	
+	public void _Notify(Player p) {
+		if(ItemSprite.Visible) {
+			N.Visible = !N.Visible;
+			if(N.Visible) {
+				p.CurrentState = PlayerStates.BLOCKED;
+			} else {
+				p.CurrentState = PlayerStates.IDLE;
+			}
+		}
+	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(float delta) {
-		if(Input.IsActionJustPressed("ui_interact")) {
-			if(ItemSprite.Visible) {
-				N.Visible = !N.Visible;
+	private void _on_Area2D_area_entered(Area2D tb) {
+		if(tb.Owner is Player) {
+			Player p = (Player)tb.Owner;
+			if(p._CanInteract()) {
+				ItemSprite.Show();
+				p._AddItemInRange(this);
 			}
 		}
 	}
 
 
-
-	private void _on_Area2D_area_entered(Area2D tb) {
+	private void _on_Area2D_area_exited(Area2D tb) {
 		if(tb.Owner is Player) {
-			ItemSprite.Show();
-			}
-	}
-
-
-	private void _on_Area2D_area_exited(Area2D tb)
-	{
-		if(tb.Owner is Player) {
+			Player p = (Player)tb.Owner;
 			ItemSprite.Hide();
+			p._RemoveItemInRange(this);
 		}
 	}
 

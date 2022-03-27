@@ -1,6 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+
+public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 
 public class Player : KinematicBody2D {
 	[Signal]
@@ -16,8 +19,7 @@ public class Player : KinematicBody2D {
 	public delegate void OpenNotebook();
 	
 	//Player FSM
-	enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED };
-	PlayerStates CurrentState = PlayerStates.IDLE;
+	public PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
 	private PlayerStates PrevState = PlayerStates.IDLE;
@@ -51,8 +53,13 @@ public class Player : KinematicBody2D {
 	private AnimationTree animationTree; 
 	private AnimationNodeStateMachinePlayback animationState;
 	
+	private List<Item> itemsInRange = new List<Item>();
+	
 	private List<NPC> subs = new List<NPC>();
 	private int nSubs = 0;
+	
+	private Notebook NB;
+	private Context context;
 	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
@@ -120,15 +127,37 @@ public class Player : KinematicBody2D {
 		}
 		
 		//Check for interaction
-		if(subs.Count != 0) {
+		if(((subs.Count != 0) || (itemsInRange.Count != 0)) &&
+			(CurrentState != PlayerStates.NOTEBOOK)) {
+				
 			if(Input.IsActionJustPressed("ui_interact")) {
 				NotifySubs();
+				NotifyItems();
 			}
+		}
+		
+		//Check for map
+		if(Input.IsActionJustPressed("ui_map")) {
+			NB._on_MapB_pressed();
 		}
 		
 		//Check for tab
 		if(Input.IsActionJustPressed("ui_focus_next")) {
 			EmitSignal(nameof(OpenNotebook));
+		}
+		
+		//Check for tab switches
+		if(Input.IsActionJustPressed("ui_1")) {
+			NB._on_Tab1Button_pressed();
+		}
+		if(Input.IsActionJustPressed("ui_2")) {
+			NB._on_Tab2Button_pressed();
+		}
+		if(Input.IsActionJustPressed("ui_3")) {
+			NB._on_Tab3Button_pressed();
+		}
+		if(Input.IsActionJustPressed("ui_4")) {
+			NB._on_Tab4Button_pressed();
 		}
 	}
 	
@@ -139,6 +168,18 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.IDLE;
 			animationState.Travel("Idle");
 		}
+	}
+	
+	public bool _CanInteract() {
+		return subs.Count == 0;
+	}
+	
+	public void BlockPlayer() {
+		CurrentState = PlayerStates.NOTEBOOK;
+	}
+	
+	public void UnBlockPlayer() {
+		CurrentState = PlayerStates.IDLE;
 	}
 	
 	/**
@@ -186,7 +227,7 @@ public class Player : KinematicBody2D {
 				
 				CheckIdle();
 				break;
-				
+			case PlayerStates.NOTEBOOK:
 			case PlayerStates.BLOCKED:
 				animationState.Travel("Idle");
 				break;
@@ -206,14 +247,21 @@ public class Player : KinematicBody2D {
 		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
+		NB = GetNode<Notebook>("../../Notebook");
+		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		
+		if(context._GetGameState() != GameStates.INIT) {
+			isCutscene = false;
+			if(context._GetGameState() == GameStates.PALUD) {
+				Position = new Vector2(Position.x, Position.y - 200);
+			}
+		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
 		}
-
 	}
 	
 	// Called on every physics engine tick
@@ -233,17 +281,52 @@ public class Player : KinematicBody2D {
 	}
 	
 	public int _Subscribe(NPC npc) {
-		subs.Add(npc);
-		return nSubs++;
+		if(itemsInRange.Count == 0) {
+			subs.Add(npc);
+			return nSubs++;
+		}
+		return nSubs;
 	}
 	
 	public void _Unsubscribe(NPC npc) {
-		subs.Remove(npc);
-		nSubs--;
+		if(subs.Contains(npc)) {
+			subs.Remove(npc);
+			nSubs--;
+		}
+	}
+	
+	public void _AddItemInRange(Item i) {
+		if(subs.Count == 0) {
+			itemsInRange.Add(i);
+		}
+	}
+	
+	public void _RemoveItemInRange(Item i) {
+		itemsInRange.Remove(i);
+	}
+	
+	// Finds the nearest item to the player
+	private Item NearestItem() {
+		if(itemsInRange.Count == 0) return null;
+		
+		float minDistance = float.MaxValue;
+		Item nearest = itemsInRange[0];
+		
+		// Iterate through all subs and keep the one with the shortest distance to player
+		foreach(Item i in itemsInRange) {
+			var distance = Position.DistanceTo(i.Position);
+			if(distance < minDistance) {
+				minDistance = distance;
+				nearest = i;
+			}
+		}
+		return nearest;
 	}
 	
 	// Finds the nearest sub to the player
 	private NPC NearestSub() {
+		if(subs.Count == 0) return null;
+		
 		float minDistance = float.MaxValue;
 		NPC nearest = subs[0];
 		
@@ -258,9 +341,18 @@ public class Player : KinematicBody2D {
 		return nearest;
 	}
 	
+	private void NotifyItems() {
+		var item = NearestItem();
+		if(item == null) return;
+		
+		item._Notify(this);
+	}
+	
 	private void NotifySubs() {
 		// Only notify the nearest sub
 		var nearestNPC = NearestSub();
+		if(nearestNPC == null) return;
+		
 		if(nearestNPC.isQuestNPC) {
 			EmitSignal(nameof(SendInfoToQuestNPC), this, nearestNPC);
 		} else {
@@ -277,11 +369,16 @@ public class Player : KinematicBody2D {
 			var nearestNPC = NearestSub();
 			EmitSignal(nameof(CutsceneEnd), nearestNPC);
 			EmitSignal(nameof(SlideInNotebookController));
+			context._StartGame();
 		}
 	}
 	
 	public void _StartDialogue() {
 		CurrentState = PlayerStates.BLOCKED;
+		
+		foreach(var sub in subs) {
+			sub._StopTalking();
+		}
 		
 		if(isCutscene) {
 			isCutsceneConv = true;

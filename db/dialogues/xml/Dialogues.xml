@@ -19,16 +19,16 @@
     <dialogue id="testDemand" ntargets="1" type="onDemand">
         <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
         <text>Des belles pommes, des navets ?</text>
-        <text>Trüschel ? Non, je ne les connais pas, désolé.</text>
     </dialogue>
     <dialogue id="demandElisabeth" ntargets="1" type="onDemand">
-        <text>Vous ne devez pas être de la région. Tout le monde me connait ici.</text>
+        <text>François ?</text>
+        <text>Ah pardon. Je vous ai pris pour quelqu'un d'autre...</text>
     </dialogue>
     <dialogue id="demandTruschel" ntargets="1" type="onDemand">
-        <text>Est-ce que je peux vous aider ? Vous m'avez l'air perdu.</text>
-        <text>Vous cherchez les Trüschel ?</text>
-        <text>Vous tombez bien ! Je suis leur fille.</text>
-        <text>On habite à la brasserie de la rue Chaucrau.</text>
+        <text>J'adore venir au marché !</text>
+        <text>Il y a tant de choses qui me font envie.</text>
+        <text>Mais si j'achète trop, je vais devoir tout porter jusqu'à la maison...</text>
+        <text>Et j'habite à la brasserie à la rue Chaucrau.</text>
     </dialogue>
     <dialogue id="demandOldMan" ntargets="1" type="onDemand">
         <text>Ah, on dirait qu'Angélique a encore envoyé sa fille faire les courses.</text>
@@ -56,7 +56,7 @@
         <text>Je rêverais d'être invitée au château de Vennes,</text>
         <text>de voir si l'intérieur est aussi beau que l'extérieur...</text>
         <text>Mais je ne suis qu'une lingère.</text>
-        <text>Madame De Montolieu y habite avec son fils unique.</text>
+        <text>C'est madame De Montolieu qui y habite avec son fils unique.</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
@@ -65,10 +65,10 @@
         </text>
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
-        <text>Si vous avez des questions, allez demander à mon épouse, Bitte.</text>
+        <text>Si vous avez des questions, allez demander à mon épouse.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
-        <text>Hé Jacob ! Tu sais ce qui est arrivé à Ralf ?</text>
+        <text>Hé Wolff ! Tu sais ce qui est arrivé à Ralf ?</text>
         <text>Je ne l'ai pas revu depuis longtemps.</text>
     </dialogue>
     <dialogue id="demandTonnelier" ntargets="1" type="onDemand">
@@ -79,8 +79,6 @@
     </dialogue>
     <dialogue id="demandTonneliers" ntargets="1" type="onDemand">
         <text>Le travail de brasseur peut être très fatiguant.</text>
-        <text>Tu veux essayer ?</text>
-        <text>Il faut brasser au moment où tu vois des bulles apparaître.</text>
     </dialogue>
     <dialogue id="demandAngelique" ntargets="1" type="onDemand">
         <text>Je suis désolée mais je suis très occupée.</text>
@@ -99,17 +97,25 @@
     <dialogue id="appPichard" ntargets="1" type="onApproach">
         <text>Je suis tout à fait d'accord, M. Perregaux !</text>
     </dialogue>
-    <dialogue id="demandPerregaux" ntargets="1" type="onDemand">
-        <text>Quel beau bâtiment, vous ne trouvez pas?</text>
-        <text>C'est le casino de Derrière-Bourg, une salle de concerts et de réunions en tout genre.</text>
-        <text>C'est ici que les casinistes se sont rassemblés pour organiser la révolution libérale.</text>
-    </dialogue>
     <dialogue id="demandPichard" ntargets="1" type="onDemand">
-        <text>...</text>
+        <text>Quel beau bâtiment, vous ne trouvez pas?</text>
+        <text>C'est le casino de Derrière-Bourg,</text>
+        <text>une salle de concerts et de réunions en tout genre.</text>
+        <text>C'est ici que les casinistes se sont rassemblés</text>
+        <text>pour organiser la révolution libérale.</text>
+    </dialogue>
+    <dialogue id="demandPerregaux" ntargets="1" type="onDemand">
+        <text>J'ai oublié ma mallette quelque part...</text>
     </dialogue>
     <dialogue id="demandBourgeois" ntargets="1" type="onDemand">
         <text>Bonjour, je m'appelle Louis Henri Bourgeois.</text>
-        <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même</text>
+        <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même.</text>
+    </dialogue>
+    <dialogue id="demandBaumann" ntargets="1" type="onDemand">
+        <text>Mme Perregaux est de nouveau enceinte. Elle attend son deuxième enfant.</text>
+    </dialogue>
+    <dialogue id="demandPouly" ntargets="1" type="onDemand">
+        <text>Oh ! Mais quelle nouvelle réjouissante !</text>
     </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Bonjour, bienvenue au moulin Rochat !</text>

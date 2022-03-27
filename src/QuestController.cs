@@ -6,6 +6,19 @@ using System.Linq;
 using System.Collections.Generic;
 
 public struct CharacterInfo_t {
+	public CharacterInfo_t(
+		string pnm="", string nm="", string addr="", int numb=0,
+		string cnjt="", int enfts=0, string mtr=""
+	) {
+		prenom = pnm;
+		nom = nm;
+		adresse = addr;
+		num = numb;
+		conjoint = cnjt;
+		enfants = enfts;
+		metier = mtr;
+		valid = true;
+	}
 	public CharacterInfo_t(int _illegalVal) {
 		prenom = "";
 		nom = "";
@@ -199,10 +212,11 @@ public class QuestController : Node {
 	 * @brief Queries the local XDocument for a given solution
 	 * @return a CharacterInfo_t struct containing all of the solution data
 	 */
-	public CharacterInfo_t _QueryQuestSolution() {
+	public CharacterInfo_t _QueryQuestSolution(int tabId) {
 		
 		//Query a new solution
 		var querySolution = from solution in characterList.Root.Descendants("solution")
+							where Int32.Parse(solution.Attribute("id").Value) == tabId
 							select solution.Attributes();
 		
 		// Extract attribute name and value
