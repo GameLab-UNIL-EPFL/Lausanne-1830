@@ -124,14 +124,7 @@ radius = 36.4278
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
-[sub_resource type="CircleShape2D" id=45]
-radius = 51.457
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
-
-[sub_resource type="CapsuleShape2D" id=44]
-radius = 16.9454
-height = 37.8152
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
@@ -671,7 +664,7 @@ shape = SubResource( 3 )
 [node name="OpenMapZone" type="Area2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/OpenMapZone"]
-polygon = PoolVector2Array( -10, 383, 644, 377, 643, 329, 659, 326, 662, 402, -27, 401, -25, 251, -9, 251 )
+polygon = PoolVector2Array( -10, 385, 644, 385, 643, 329, 659, 326, 662, 402, -27, 401, -25, 251, -9, 251 )
 
 [node name="HotelDeVilleDoor" type="StaticBody2D" parent="Collisions"]
 
