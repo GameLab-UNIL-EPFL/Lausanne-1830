@@ -20,6 +20,7 @@ public class Notebook : Node2D {
 	private Map M;
 	
 	private Context context;
+	private Player p;
 	
 	//Currently opened tab
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
@@ -91,8 +92,12 @@ public class Notebook : Node2D {
 	public override void _Ready() {
 		Hide();
 		context = GetNode<Context>("/root/Context");
+		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		M = GetNode<Map>("Map");
+		
+		//Make sure that the context has the questNPC
+		context._FetchQuestNPC();
 		for(int i = 1; i < Context.N_TABS; ++i) {
 			Portraits.Add(GetNode<Sprite>("Portrait" + i));
 		}
@@ -157,6 +162,23 @@ public class Notebook : Node2D {
 		return idx;
 	}
 	
+	private void EvaluateAndUpdateNB(bool cutscene = true) {
+		//Update the characterInfo
+		FillCharInfo();
+		
+		//Request an info evaluation from the NPC
+		correctInfo = context._GetQuestNPC()._CompareSolutions(characterInfo, curTabId);
+		if(correctInfo.IsCorrect() || cutscene) {
+			_UpdateNotebook(correctInfo);
+		}
+	}
+	
+	//Evaluate the notebook infor on every update
+	private void _on_NotebookInfo_UpdateInfo() {
+		//Used to evaluate and update the notebook
+		EvaluateAndUpdateNB(false);
+	}
+	
 	public void _UpdateNotebook(InfoValue_t vals) {
 		//Change correct results to static
 		foreach(var v in vals.FoundAttributes()) {
@@ -183,30 +205,19 @@ public class Notebook : Node2D {
 		}
 	}
 	
-	public void _on_CutsceneEnd(NPC questNPC) {
-		//Sanity check
-		if(questNPC == null) {
-			return;
-		}
-		//Update the characterInfo
-		FillCharInfo();
-		
-		//Request an info evaluation from the NPC
-		correctInfo = questNPC._CompareSolutions(characterInfo, curTabId);
-		_UpdateNotebook(correctInfo);
+	public void _on_CutsceneEnd() {
+		EvaluateAndUpdateNB();
 	}
 	
-	public void _on_SendInfoToQuestNPC(Player p, NPC questNPC) {
+	public void _on_SendInfoToQuestNPC(NPC questNPC) {
 		//Update the characterInfo
 		FillCharInfo();
 		
 		//Request an info evaluation from the NPC
 		correctInfo = questNPC._EvaluateQuest(p, characterInfo, curTabId);
-		_UpdateNotebook(correctInfo);
 	}
 	
 	public void _on_NotebookController_pressed() {
-		Player p = GetNode<Player>("../YSort/Player");
 		if(mapOpen) {
 			_on_MapButton_pressed();
 			M._on_MapButton_pressed();
@@ -270,6 +281,15 @@ public class Notebook : Node2D {
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
+	private void _on_OpenMapZone_area_entered(Area2D tb) {
+		if(tb.Owner is Player) {
+			Player p = (Player)(tb.Owner);
+			if(!p.isCutscene) {
+				_on_MapB_pressed();
+			}
+		}
+	}
+	
 	private void PressTabButton(int buttonid) {
 		if(hidden || mapOpen) return;
 		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
@@ -293,11 +313,13 @@ public class Notebook : Node2D {
 		//Update the Notebook display
 		tabSprites[curTabId].Frame = 1;
 		tabSprites[buttonid].Frame = 0;
-		FillNotebook(characterInfo);
-		_UpdateNotebook(correctInfo);
 		
 		//Update current tab id
 		curTabId = buttonid;
+		
+		//Update the characterInfo
+		FillNotebook(characterInfo);
+		_UpdateNotebook(correctInfo);
 	}
 	
 	private void _Change_Portrait(int num) {
@@ -332,3 +354,4 @@ public class Notebook : Node2D {
 		_Change_Portrait(4);
 	}
 }
+

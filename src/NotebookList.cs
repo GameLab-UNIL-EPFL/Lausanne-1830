@@ -24,6 +24,7 @@ public class NotebookList : Node2D {
 	private VBoxContainer vBC;
 	private List<InfoChoiceButton> labels;
 	private Button close;
+	private Button CloseNBList;
 	private Sprite closeSprite;
 	
 	// NumPad nodes
@@ -153,6 +154,10 @@ public class NotebookList : Node2D {
 		vBC = GetNode<VBoxContainer>("BgSprite/ScrollContainer/AttributeList");
 		close = GetNode<Button>("Close");
 		closeSprite = GetNode<Sprite>("Close/CloseSprite");
+		CloseNBList = GetNode<Button>("CloseNBList");
+		
+		//Connect background button
+		CloseNBList.Connect("pressed", this, "_on_Close_button_up");
 		
 		// Fetch numpad nodes
 		NumVC = GetNode<VBoxContainer>("BgSprite/NumberVC");
