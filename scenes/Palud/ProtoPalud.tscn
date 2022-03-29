@@ -874,9 +874,6 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Mlle De Cerjeat "
 
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 0
-
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
@@ -944,6 +941,7 @@ parameters/playback = SubResource( 21 )
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 330, 259 )
+CanTurn = false
 DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
 
@@ -965,6 +963,7 @@ parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 248, 264 )
+CanTurn = false
 DemandDialogueID = "demandLingere2"
 HasAutoDialogue = false
 
@@ -1096,9 +1095,6 @@ position = Vector2( 11.0124, -17.6866 )
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
-frame = 1
-
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
 shape = SubResource( 40 )
@@ -1145,9 +1141,6 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 1
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
