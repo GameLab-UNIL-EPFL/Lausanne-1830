@@ -1492,6 +1492,9 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1508,7 +1511,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1534,6 +1536,9 @@ visible = false
 
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
@@ -1640,7 +1645,6 @@ __meta__ = {
 [node name="PressE" parent="Item/Open" index="9" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
-frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="10"]
 margin_left = -137.0
@@ -1655,6 +1659,8 @@ __meta__ = {
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="visibility_changed" from="Notebook" to="Book" method="_on_Notebook_visibility_changed"]
+[connection signal="visibility_changed" from="Notebook" to="Item" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 

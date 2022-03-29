@@ -40,5 +40,9 @@ public class Item : Node2D {
 			p._RemoveItemInRange(this);
 		}
 	}
+	
+	private void _on_Notebook_visibility_changed() {
+		N.Hide();
+	}
 
 }
