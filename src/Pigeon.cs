@@ -137,7 +137,7 @@ public class Pigeon : KinematicBody2D {
 	}
 	
 	private void _on_Area2D_area_entered(Area2D hb) {
-		if(hb.Owner is Player) {
+		if(hb.Owner is Player || hb.Owner is NPC) {
 			if(curState == PigeonState.FOUNTAIN) {
 				curState = PigeonState.FLYING;
 				ASP.Play();
