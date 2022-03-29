@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -42,6 +42,8 @@
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
 [ext_resource path="res://assets/06_UI_menus/leatherSheet.png" type="Texture" id=41]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/leather.png" type="Texture" id=42]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=43]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=44]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -595,7 +597,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
+"values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=43]
@@ -806,6 +808,7 @@ DemandDialogueID = "demandTruschel"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Truschel" index="0"]
+z_index = 1
 NPCName = " Mlle Trüschel "
 
 [node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
@@ -820,7 +823,7 @@ AutoDialogueID = "testApproach"
 DemandDialogueID = "testDemand"
 
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
-position = Vector2( -13.8276, -35.652 )
+z_index = 1
 NPCName = " M. Chapuis "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
@@ -835,7 +838,7 @@ AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
-position = Vector2( -13.8276, -35.652 )
+z_index = 1
 NPCName = " M. Guignard "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
@@ -850,7 +853,7 @@ AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
-position = Vector2( -13.8276, -35.652 )
+z_index = 1
 NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
@@ -868,11 +871,8 @@ DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
-position = Vector2( -11.707, -36.924 )
+z_index = 1
 NPCName = " Mlle De Cerjeat "
-
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -896,7 +896,7 @@ DemandDialogueID = "demandPasteur"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Random" index="0"]
-position = Vector2( -11.707, -36.924 )
+z_index = 1
 NPCName = " Mme. Chardon "
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
@@ -927,7 +927,7 @@ DemandDialogueID = "demandOldMan"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
-position = Vector2( -11.431, -36.089 )
+z_index = 1
 NPCName = " M. Jaccard "
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
@@ -941,10 +941,12 @@ parameters/playback = SubResource( 21 )
 
 [node name="Lingere" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 330, 259 )
+CanTurn = false
 DemandDialogueID = "demandLingere"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Lingere" index="0"]
+z_index = 1
 NPCName = " Mme Détraz "
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
@@ -961,8 +963,13 @@ parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 248, 264 )
+CanTurn = false
+DemandDialogueID = "demandLingere2"
 HasAutoDialogue = false
-HasDemandDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Lingere2" index="0"]
+z_index = 1
+NPCName = " Mme Rebillet "
 
 [node name="Shadow" parent="YSort/NPC/Lingere2" index="1"]
 visible = false
@@ -1050,7 +1057,7 @@ position = Vector2( -37, -12 )
 texture = ExtResource( 37 )
 
 [node name="Laundry2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -72, 18 )
+position = Vector2( -75, 20 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
@@ -1134,9 +1141,6 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1323,14 +1327,22 @@ anims/RESET = SubResource( 5 )
 anims/Slide = SubResource( 6 )
 
 [node name="MapButton" type="TextureButton" parent="NotebookController"]
-margin_top = 41.832
-margin_right = 39.0
-margin_bottom = 61.832
+margin_left = 43.0
+margin_right = 82.0
+margin_bottom = 36.0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 43 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 44 )]
+position = Vector2( 6, 34 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="PressTab" parent="NotebookController" instance=ExtResource( 43 )]
+position = Vector2( 0, 34 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )

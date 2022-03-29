@@ -31,7 +31,7 @@
         <text>Et j'habite à la brasserie à la rue Chaucrau.</text>
     </dialogue>
     <dialogue id="demandOldMan" ntargets="1" type="onDemand">
-        <text>Ah, on dirait qu'Angélique a encore envoyé sa fille faire les courses.</text>
+        <text>Ah, on dirait que madame Trüschel a encore envoyé sa fille faire les courses.</text>
         <text>C'est plutôt les domestiques qui devraient s'en charger.</text>
         <text>Mais je crois qu'elle a envie de voir un peu la ville.</text>
     </dialogue>
@@ -50,13 +50,16 @@
         <text>Vous devriez faire attention !</text>
         <text>Ils piquent surtout les mallettes à l'arrière des calèches,</text>
         <text>mais j'ai entendu dire que quelqu'un</text>
-        <text>c'était fait voler son hibou dans son jardin !</text>
+        <text>s'était fait voler son hibou dans son jardin !</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
         <text>Je rêverais d'être invitée au château de Vennes,</text>
         <text>de voir si l'intérieur est aussi beau que l'extérieur...</text>
         <text>Mais je ne suis qu'une lingère.</text>
         <text>C'est madame De Montolieu qui y habite avec son fils unique.</text>
+    </dialogue>
+    <dialogue id="demandLingere2" ntargets="1" type="onDemand">
+        <text>Et moi, je rêverais que quelqu'un fasse la lessive à ma place.</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
@@ -83,6 +86,8 @@
     <dialogue id="demandAngelique" ntargets="1" type="onDemand">
         <text>Je suis désolée mais je suis très occupée.</text>
         <text>J'ai encore du travail à terminer.</text>
+        <text>Ah pardon, je n'ai pas pris le temps de me présenter.</text>
+        <text>Je m'appelle Angélique Trüschel.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>

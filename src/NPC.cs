@@ -51,6 +51,8 @@ public class NPC : KinematicBody2D {
 	[Export]
 	public Direction InitDir = Direction.DOWN;
 	[Export]
+	public bool CanTurn = true;
+	[Export]
 	public int ProbRight = 2; //max weight of right movement
 	[Export]
 	public int ProbLeft = 2; //max weight of left movement
@@ -327,10 +329,13 @@ public class NPC : KinematicBody2D {
 		d = DC._StartDialogue(DemandDialogueID);
 		
 		//Turn to player
-		InputVec = (player.Position - Position).Normalized();
-		HandleMovement(0.03f);
-		InputVec = Vector2.Zero;
-		HandleMovement(0.03f);
+		if(CanTurn) {
+			InputVec = (player.Position - Position).Normalized();
+			HandleMovement(0.03f);
+			InputVec = Vector2.Zero;
+			HandleMovement(0.03f);
+		}
+		
 	}
 	
 	private void FinishDialogue(Player player) {

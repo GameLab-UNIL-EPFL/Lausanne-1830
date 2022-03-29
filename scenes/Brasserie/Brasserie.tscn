@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=114 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=36]
 [ext_resource path="res://assets/05_fonts/Bonefish.ttf" type="DynamicFontData" id=37]
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
@@ -1038,7 +1040,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 650, 4.168 ), Vector2( 592.719, 4.16838 ) ]
+"values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=75]
@@ -1081,7 +1083,6 @@ font_data = ExtResource( 28 )
 [node name="DialogueController" parent="." instance=ExtResource( 11 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_right = 641.0
 margin_bottom = 365.0
 color = Color( 0.239216, 0.184314, 0.203922, 1 )
@@ -1103,7 +1104,7 @@ __meta__ = {
 visible = false
 position = Vector2( 384.007, 140.819 )
 scale = Vector2( 0.753472, 0.753472 )
-polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170, 56, -178, 56, -178, 160, -170, 160, -170, 128, -90, 128, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -82, 216, -90, 216, -226, 216 )
+polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170, 56, -183.531, 55.4858, -182.039, 157.895, -170, 160, -170, 128, -90, 128, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -82, 216, -90, 216, -226, 216 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1235,7 +1236,7 @@ shape = SubResource( 63 )
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Adrienne" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 204, 144 )
+position = Vector2( 234, 144 )
 collision_layer = 3
 collision_mask = 3
 ProbRight = 3
@@ -1288,7 +1289,7 @@ ProbRight = 3
 ProbLeft = 3
 CanWander = true
 WanderingCooldown = 20.0
-WalkSpeed = 25
+WalkSpeed = 20
 DemandDialogueID = "demandFilles"
 HasAutoDialogue = false
 
@@ -1340,7 +1341,13 @@ anims/WalkUp = SubResource( 18 )
 parameters/playback = SubResource( 55 )
 
 [node name="Tonnelier" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 462.919, 187.027 )
+position = Vector2( 530, 250 )
+InitDir = 1
+ProbRight = 0
+ProbLeft = 0
+CanWander = true
+WanderingCooldown = 10.0
+WalkSpeed = 20
 DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
 
@@ -1364,11 +1371,10 @@ anims/WalkUp = SubResource( 26 )
 parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 536, 240 )
-InitDir = 1
+position = Vector2( 432, 212 )
 ProbRight = 0
 ProbLeft = 0
-CanWander = true
+ProbUp = 0
 WanderingCooldown = 10.0
 WalkSpeed = 20
 DemandDialogueID = "demandTonnelier"
@@ -1444,14 +1450,22 @@ anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
 [node name="MapButton" type="TextureButton" parent="NotebookController"]
-margin_top = 41.832
-margin_right = 39.0
-margin_bottom = 61.832
+margin_left = 44.0
+margin_right = 83.0
+margin_bottom = 36.0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 75 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 39 )]
+position = Vector2( 5, 33 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="PressTab" parent="NotebookController" instance=ExtResource( 40 )]
+position = Vector2( 0, 34 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -1494,6 +1508,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1625,6 +1640,7 @@ __meta__ = {
 [node name="PressE" parent="Item/Open" index="9" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
+frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="10"]
 margin_left = -137.0
