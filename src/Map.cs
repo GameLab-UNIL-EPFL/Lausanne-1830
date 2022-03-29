@@ -21,10 +21,10 @@ public class Map : Node2D
 		}
 		if(hidden) {
 			Show();
-			S.Frame = 3;
+			S.Frame = 0;
 		} else {
 			Hide();
-			S.Frame = 2;
+			S.Frame = 1;
 		}
 		hidden = !hidden;
 	}

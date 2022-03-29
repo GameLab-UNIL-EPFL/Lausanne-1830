@@ -111,6 +111,12 @@ b = Vector2( 657, 2 )
 a = Vector2( 7.58701, -140.561 )
 b = Vector2( 8, 51 )
 
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 13, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 16.5, 8 )
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
 [sub_resource type="CircleShape2D" id=46]
@@ -667,6 +673,29 @@ shape = SubResource( 3 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/OpenMapZone"]
 polygon = PoolVector2Array( -10, 383, 644, 377, 643, 329, 659, 326, 662, 402, -27, 401, -25, 251, -9, 251 )
 
+[node name="HotelDeVilleDoor" type="StaticBody2D" parent="Collisions"]
+
+[node name="OpenEndDoor" type="ColorRect" parent="Collisions/HotelDeVilleDoor"]
+visible = false
+margin_left = 548.0
+margin_top = 194.0
+margin_right = 574.0
+margin_bottom = 219.0
+color = Color( 0.231373, 0.266667, 0.298039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnterEndZone" type="Area2D" parent="Collisions/HotelDeVilleDoor/OpenEndDoor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/HotelDeVilleDoor/OpenEndDoor/EnterEndZone"]
+position = Vector2( 13, -3.5 )
+shape = SubResource( 45 )
+
+[node name="EndDoor" type="CollisionShape2D" parent="Collisions/HotelDeVilleDoor"]
+position = Vector2( 560.5, 211 )
+shape = SubResource( 44 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Props" type="YSort" parent="YSort"]
@@ -900,6 +929,9 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Mlle De Cerjeat "
 
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
+
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
@@ -1121,6 +1153,9 @@ position = Vector2( 11.0124, -17.6866 )
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
 shape = SubResource( 40 )
@@ -1137,7 +1172,6 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1167,6 +1201,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1315,11 +1352,11 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="12"]
 modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
@@ -1390,6 +1427,7 @@ autoplay = true
 bus = "Sounds"
 
 [connection signal="area_entered" from="Collisions/OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
+[connection signal="area_entered" from="Collisions/HotelDeVilleDoor/OpenEndDoor/EnterEndZone" to="YSort/Player" method="_on_EnterEndZone_area_entered"]
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]

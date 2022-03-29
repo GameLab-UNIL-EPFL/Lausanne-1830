@@ -7,10 +7,10 @@ public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 
 public class Player : KinematicBody2D {
 	[Signal]
-	public delegate void SendInfoToQuestNPC(Player p, NPC questNPC);
+	public delegate void SendInfoToQuestNPC(NPC questNPC);
 	
 	[Signal]
-	public delegate void CutsceneEnd(NPC questNPC);
+	public delegate void CutsceneEnd();
 	
 	[Signal]
 	public delegate void SlideInNotebookController();
@@ -369,7 +369,7 @@ public class Player : KinematicBody2D {
 		if(nearestNPC == null) return;
 		
 		if(nearestNPC.isQuestNPC) {
-			EmitSignal(nameof(SendInfoToQuestNPC), this, nearestNPC);
+			EmitSignal(nameof(SendInfoToQuestNPC), nearestNPC);
 		} else {
 			nearestNPC._Notify(this);
 		}
@@ -378,14 +378,27 @@ public class Player : KinematicBody2D {
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
 		
+		if(context._IsGameComplete()) {
+			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
+			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
+			
+			//Show opened door and remove collisions
+			dooropen.Show();
+			doorcolision.Disabled = true;
+		}
+		
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
-			var nearestNPC = NearestSub();
-			EmitSignal(nameof(CutsceneEnd), nearestNPC);
+			EmitSignal(nameof(CutsceneEnd));
 			EmitSignal(nameof(SlideInNotebookController));
 			context._StartGame();
 		}
+	}
+	
+	private void _on_EnterEndZone_area_entered(object area) {
+		SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+		SC.GotoScene("res://scenes/Interaction/EndScreen.tscn");
 	}
 	
 	public void _StartDialogue() {
@@ -415,4 +428,3 @@ public class Player : KinematicBody2D {
 		}
 	}
 }
-

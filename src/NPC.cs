@@ -44,7 +44,7 @@ public class NPC : KinematicBody2D {
 	private const int FRIC = 1000;
 	private float cooldown = 0.0f;
 	private float wanderTime = 1.0f;
-	private Vector2 PrevDir = Vector2.Zero;
+	private Vector2 NextDir = Vector2.Zero;
 	
 	private Vector2 InitialDirection = Vector2.Zero;
 	
@@ -178,10 +178,21 @@ public class NPC : KinematicBody2D {
 	
 	//Generate a new random position within the wandering distance
 	private Vector2 NewInputVec() {
-		float horizontalMov = (float)(random.Next(ProbRight) - random.Next(ProbLeft));
-		float verticalMov = (float)(random.Next(ProbDown) - random.Next(ProbUp));
+		float horizontalMov = 0.0f;
+		float verticalMov = 0.0f;
 		
-		if(random.Next(2) > 0) {
+		//Check if a collision has happened since the last movement
+		if(NextDir != Vector2.Zero) {
+			//If so, move away from the collision
+			horizontalMov = NextDir[0];
+			verticalMov = NextDir[1];
+			NextDir = Vector2.Zero;
+		} else {
+			horizontalMov = (float)(random.Next(ProbRight) - random.Next(ProbLeft));
+			verticalMov = (float)(random.Next(ProbDown) - random.Next(ProbUp));
+		}
+		
+		if((random.Next(2) > 0 || verticalMov == 0.0f) && horizontalMov != 0.0f) {
 			return new Vector2(horizontalMov, 0.0f);
 		}
 		return new Vector2(0.0f, verticalMov);
@@ -220,6 +231,15 @@ public class NPC : KinematicBody2D {
 					InputVec = NewInputVec();
 				} else {
 					wanderTime -= delta;
+					
+					//Check for collision
+					if(NextDir == Vector2.Zero) {
+						if(IsOnWall() || IsOnFloor() || IsOnCeiling()) {
+							KinematicCollision2D col = GetLastSlideCollision();
+							NextDir = (Position - col.Position).Normalized(); 
+						}
+					}
+					
 					//Check if destination was reached
 					if(wanderTime <= 0.0f) {
 						StopWandering();
