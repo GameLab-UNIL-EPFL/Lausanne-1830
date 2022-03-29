@@ -131,6 +131,14 @@ public class Context : Node {
 		return GameState == GameStates.COMPLETE;
 	}
 	
+	public int _GetNCorrectTabs() {
+		int corrects = 0;
+		for(int i = 0; i < 4; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) corrects++;
+		}
+		return corrects;
+	} 
+	
 	private bool CheckGameOver() {
 		for(int i = 0; i < 4; ++i) {
 			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
