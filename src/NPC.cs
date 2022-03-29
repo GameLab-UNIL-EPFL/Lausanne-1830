@@ -82,6 +82,7 @@ public class NPC : KinematicBody2D {
 	public bool isQuestNPC = false;
 	
 	private bool inDialogue = false;
+	private bool inAutoDialogue = false;
 	
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
@@ -252,18 +253,35 @@ public class NPC : KinematicBody2D {
 			Player p = (Player)tb.Owner;
 			//Subscribe to the player
 			p._Subscribe(this);
-			
-			//Show auto dialogue if the NPC has one
-			if(HasAutoDialogue && !inDialogue) {
-				//Fetch the right dialogue
-				string next = DC._StartDialogue(AutoDialogueID, true);
-				
-				//Show it in the box
-				if(next != null) {
-					TB._ShowText(next);
-				}
-			}
 		}
+	}
+	
+	public bool _RequestAutoDialogue() {
+		//Show auto dialogue if the NPC has one
+		if(HasAutoDialogue && !inDialogue && !inAutoDialogue) {
+			//Fetch the right dialogue
+			string next = DC._StartDialogue(AutoDialogueID, true);
+			
+			//Show it in the box
+			if(next != null) {
+				TB._ShowText(next);
+			}
+			
+			//Set state
+			inAutoDialogue = true;
+		}
+		return inAutoDialogue;
+	}
+	
+	public bool _EndAutoDialogue() {
+		//Hide auto dialogue if the NPC is in one
+		if(HasAutoDialogue && inAutoDialogue) {
+			DC._EndDialogue();
+			inAutoDialogue = false;
+			//Hide the text box
+			TB._HideText();
+		}
+		return inAutoDialogue;
 	}
 	
 	/**
@@ -279,8 +297,9 @@ public class NPC : KinematicBody2D {
 			p._Unsubscribe(this);
 			
 			//End dialogue for DialogueController when needed
-			if(HasAutoDialogue) {
+			if(HasAutoDialogue && inAutoDialogue) {
 				DC._EndDialogue();
+				inAutoDialogue = false;
 			}
 			
 			//Hide the text box

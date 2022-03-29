@@ -56,10 +56,11 @@ public class Player : KinematicBody2D {
 	private List<Item> itemsInRange = new List<Item>();
 	
 	private List<NPC> subs = new List<NPC>();
-	private int nSubs = 0;
+	private List<NPC> subsWithAuto = new List<NPC>();
 	
 	private Notebook NB;
 	private Context context;
+	private NPC lastNearest = null;
 	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
@@ -280,18 +281,31 @@ public class Player : KinematicBody2D {
 		Velocity = MoveAndSlide(Velocity);
 	}
 	
-	public int _Subscribe(NPC npc) {
+	public void _Subscribe(NPC npc) {
 		if(itemsInRange.Count == 0) {
 			subs.Add(npc);
-			return nSubs++;
+			if(npc.HasAutoDialogue) {
+				subsWithAuto.Add(npc);
+			}
 		}
-		return nSubs;
+		
+		//Check to see if AutoDialogue exists
+		var nearest = NearestSub(true);
+		if(nearest != null) {
+			if(lastNearest != null && nearest != lastNearest) {
+				lastNearest._EndAutoDialogue();
+			}
+			lastNearest = nearest;
+			nearest._RequestAutoDialogue();
+		}
 	}
 	
 	public void _Unsubscribe(NPC npc) {
 		if(subs.Contains(npc)) {
 			subs.Remove(npc);
-			nSubs--;
+		}
+		if(subsWithAuto.Contains(npc)) {
+			subsWithAuto.Remove(npc);
 		}
 	}
 	
@@ -324,14 +338,15 @@ public class Player : KinematicBody2D {
 	}
 	
 	// Finds the nearest sub to the player
-	private NPC NearestSub() {
-		if(subs.Count == 0) return null;
+	private NPC NearestSub(bool withAuto = false) {
+		List<NPC> subL = withAuto ? subsWithAuto : subs;
+		if(subL.Count == 0) return null;
 		
 		float minDistance = float.MaxValue;
-		NPC nearest = subs[0];
+		NPC nearest = subL[0];
 		
 		// Iterate through all subs and keep the one with the shortest distance to player
-		foreach(NPC sub in subs) {
+		foreach(NPC sub in subL) {
 			var distance = Position.DistanceTo(sub.Position);
 			if(distance < minDistance) {
 				minDistance = distance;
