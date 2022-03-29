@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriPerregaux.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/louisHenriBourgeois.png" type="Texture" id=12]
-[ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://assets/01_characters/03_pnjs/adrienPichard.png" type="Texture" id=13]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/02_architecture/04_casino/malette.png" type="Texture" id=15]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=16]
@@ -23,6 +23,9 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=21]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/Palud/TableH.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bench.png" type="Texture" id=25]
+[ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 116, 96 )
@@ -87,6 +90,12 @@ b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 5.36835
+height = 27.9452
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
 
@@ -103,9 +112,15 @@ font_data = ExtResource( 17 )
 [node name="Bg" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Casino" type="StaticBody2D" parent="."]
 position = Vector2( 384, 144 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Casino"]
 texture = ExtResource( 2 )
@@ -188,12 +203,12 @@ shape = SubResource( 5 )
 position = Vector2( 320, 288 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 424, 268 )
+position = Vector2( 448, 267 )
+InitDir = 0
 ProbRight = 4
 ProbLeft = 0
 ProbUp = 0
 ProbDown = 0
-CanWander = true
 WanderingCooldown = 1000.0
 WanderingDist = 0.0
 AutoDialogueID = "appPerregaux"
@@ -209,15 +224,14 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 7 )
 
 [node name="Bourgeois" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 160, 144 )
+position = Vector2( 134, 267 )
 CanWander = true
 WanderingCooldown = 10.0
-WalkSpeed = 45
+WalkSpeed = 40
 DemandDialogueID = "demandBourgeois"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Bourgeois" index="0"]
-z_index = 2
 NPCName = " M. Bourgeois "
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
@@ -228,11 +242,11 @@ parameters/playback = SubResource( 8 )
 
 [node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 486, 267 )
+InitDir = 1
 ProbRight = 0
 ProbLeft = 8
 ProbUp = 0
 ProbDown = 0
-CanWander = true
 WanderingCooldown = 1000.0
 WanderingDist = 0.0
 AutoDialogueID = "appPichard"
@@ -248,7 +262,8 @@ texture = ExtResource( 13 )
 parameters/playback = SubResource( 9 )
 
 [node name="Baumann" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 214.96, 90.5097 )
+position = Vector2( 140, 123 )
+InitDir = 1
 DemandDialogueID = "demandBaumann"
 HasAutoDialogue = false
 
@@ -262,7 +277,8 @@ texture = ExtResource( 20 )
 parameters/playback = SubResource( 12 )
 
 [node name="Pouly" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 186.676, 89.8026 )
+position = Vector2( 108, 123 )
+InitDir = 0
 DemandDialogueID = "demandPouly"
 HasAutoDialogue = false
 
@@ -276,13 +292,51 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 216, 184 )
+position = Vector2( 209, 213 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
 
+[node name="Bench" parent="YSort" instance=ExtResource( 24 )]
+visible = false
+position = Vector2( 242, 208 )
+
+[node name="Sprite" parent="YSort/Bench" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionPolygon2D" parent="YSort/Bench" index="1"]
+position = Vector2( 0, 0.807999 )
+polygon = PoolVector2Array( 25, -1.308, 24.5, 11.442, -23.5, 11.442, -23.75, -1.308 )
+
+[node name="Fischer" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 242, 217 )
+CanTurn = false
+DemandDialogueID = "demandFischer"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Fischer" index="0"]
+NPCName = " M. Fischer "
+
+[node name="Shadow" parent="YSort/Fischer" index="1"]
+position = Vector2( 4, 6 )
+
+[node name="FullyAnimated" parent="YSort/Fischer" index="2"]
+texture = ExtResource( 26 )
+hframes = 2
+vframes = 1
+
+[node name="CollisionShape2D" parent="YSort/Fischer" index="3"]
+position = Vector2( 0, 0 )
+shape = SubResource( 17 )
+
+[node name="ListenBox" parent="YSort/Fischer" index="4"]
+visible = false
+
+[node name="AnimationTree" parent="YSort/Fischer" index="6"]
+parameters/playback = SubResource( 16 )
+
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 216, 184 )
+position = Vector2( 209, 213 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
@@ -292,7 +346,7 @@ position = Vector2( 0, -19 )
 text = "Ouvrir"
 
 [node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
-frame = 1
+frame = 0
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
@@ -322,6 +376,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="visibility_changed" from="Notebook" to="Mallette" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
@@ -338,4 +393,7 @@ __meta__ = {
 [editable path="YSort/Pouly"]
 [editable path="YSort/Pouly/ListenBox"]
 [editable path="YSort/Briefcase"]
+[editable path="YSort/Bench"]
+[editable path="YSort/Fischer"]
+[editable path="YSort/Fischer/ListenBox"]
 [editable path="Mallette"]

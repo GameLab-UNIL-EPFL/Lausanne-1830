@@ -122,6 +122,10 @@
     <dialogue id="demandPouly" ntargets="1" type="onDemand">
         <text>Oh ! Mais quelle nouvelle réjouissante !</text>
     </dialogue>
+    <dialogue id="demandFischer" ntargets="1" type="onDemand">
+        <text>Madame Appiani, la première chanteuse du grand théâtre de Lisbonne,</text> 
+        <text>va venir donner un concert ici le 14 février.</text>
+    </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Bonjour, bienvenue au moulin Rochat !</text>
         <text>Je m'appelle Benedict.</text>

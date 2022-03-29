@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -113,9 +113,19 @@ b = Vector2( 8, 51 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
+[sub_resource type="CircleShape2D" id=46]
+radius = 36.4278
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
+[sub_resource type="CircleShape2D" id=45]
+radius = 51.457
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="CapsuleShape2D" id=44]
+radius = 16.9454
+height = 37.8152
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
@@ -834,11 +844,15 @@ NPCName = " M. Chapuis "
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
 
+[node name="CollisionShape2D" parent="YSort/NPC/Baker/ListenBox" index="0"]
+shape = SubResource( 46 )
+
 [node name="AnimationTree" parent="YSort/NPC/Baker" index="6"]
 parameters/playback = SubResource( 16 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 29, 278 )
+position = Vector2( 22.6504, 310.542 )
+InitDir = 0
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
@@ -849,11 +863,15 @@ NPCName = " M. Guignard "
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
 
+[node name="CollisionShape2D" parent="YSort/NPC/Baker3/ListenBox" index="0"]
+shape = SubResource( 45 )
+
 [node name="AnimationTree" parent="YSort/NPC/Baker3" index="6"]
 parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 453, 298 )
+InitDir = 0
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
@@ -863,6 +881,9 @@ NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
+
+[node name="CollisionShape2D" parent="YSort/NPC/Baker2/ListenBox" index="0"]
+shape = SubResource( 44 )
 
 [node name="AnimationTree" parent="YSort/NPC/Baker2" index="6"]
 parameters/playback = SubResource( 18 )
@@ -1387,6 +1408,8 @@ bus = "Sounds"
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="visibility_changed" from="Notebook" to="YSort/Cuir" method="_on_Notebook_visibility_changed"]
+[connection signal="visibility_changed" from="Notebook" to="YSort/Affiche" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
