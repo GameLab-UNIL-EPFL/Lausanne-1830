@@ -378,6 +378,15 @@ public class Player : KinematicBody2D {
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
 		
+		if(context._IsGameComplete()) {
+			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
+			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
+			
+			//Show opened door and remove collisions
+			dooropen.Show();
+			doorcolision.Disabled = true;
+		}
+		
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
@@ -385,6 +394,11 @@ public class Player : KinematicBody2D {
 			EmitSignal(nameof(SlideInNotebookController));
 			context._StartGame();
 		}
+	}
+	
+	private void _on_EnterEndZone_area_entered(object area) {
+		SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+		SC.GotoScene("res://scenes/Interaction/EndScreen.tscn");
 	}
 	
 	public void _StartDialogue() {
@@ -414,4 +428,3 @@ public class Player : KinematicBody2D {
 		}
 	}
 }
-

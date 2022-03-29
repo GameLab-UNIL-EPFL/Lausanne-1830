@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-public enum GameStates {INIT, PALUD, OTHERS};
+public enum GameStates {INIT, PALUD, OTHERS, COMPLETE};
 public enum Locations {PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
@@ -46,6 +46,17 @@ public class Context : Node {
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, false, false, false
 		));
+	}
+	
+	public void _Clear() {
+		//Clear all elements
+		NotebookCharInfo = new List<CharacterInfo_t>();
+		NotebookCorrectInfo = new List<InfoValue_t>();
+		GameState = GameStates.INIT;
+		CurrentLocation = Locations.PALUD;
+		
+		//Reload context
+		_Ready();
 	}
 	
 	public void _UpdateLocation(string id) {
@@ -116,8 +127,24 @@ public class Context : Node {
 		NotebookCharInfo[id] = data;
 	}
 	
+	public bool _IsGameComplete() {
+		return GameState == GameStates.COMPLETE;
+	}
+	
+	private bool CheckGameOver() {
+		for(int i = 0; i < 4; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
+		}
+		return true;
+	}
+	
 	public void _UpdateNotebookCorrectInfo(int id, InfoValue_t data) {
 		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCorrectInfo[id] = data;
+		
+		//Check if the game is complete
+		if(CheckGameOver()) {
+			GameState = GameStates.COMPLETE;
+		} 
 	}
 }

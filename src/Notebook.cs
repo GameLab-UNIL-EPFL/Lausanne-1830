@@ -308,6 +308,7 @@ public class Notebook : Node2D {
 		
 		//Fetch data from context
 		characterInfo = context._GetNotebookCharInfo(buttonid);
+		correctInfo = context._GetNotebookCorrectInfo(buttonid);
 		
 		//Update the Notebook display
 		tabSprites[curTabId].Frame = 1;
@@ -316,7 +317,9 @@ public class Notebook : Node2D {
 		//Update current tab id
 		curTabId = buttonid;
 		
-		EvaluateAndUpdateNB(false);
+		//Update the characterInfo
+		FillNotebook(characterInfo);
+		_UpdateNotebook(correctInfo);
 	}
 	
 	private void _Change_Portrait(int num) {

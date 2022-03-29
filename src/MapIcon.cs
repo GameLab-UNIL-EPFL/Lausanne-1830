@@ -47,7 +47,7 @@ public class MapIcon : TextureButton {
 	}
 
 	private void _on_MapIcon_pressed() {
-		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
+		SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
 		SC.GotoScene("res://scenes/" + id + ".tscn");
 			
 		//Update the context
