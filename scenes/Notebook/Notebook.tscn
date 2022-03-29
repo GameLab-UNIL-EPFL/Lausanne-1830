@@ -352,9 +352,9 @@ vframes = 2
 
 [node name="PageNum" type="Label" parent="Tab1"]
 margin_left = -12.0
-margin_top = -7.0
+margin_top = -9.0
 margin_right = 11.0
-margin_bottom = 8.0
+margin_bottom = 6.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "1"
@@ -384,9 +384,9 @@ frame = 1
 
 [node name="PageNum" type="Label" parent="Tab2"]
 margin_left = -12.0
-margin_top = -7.0
+margin_top = -8.0
 margin_right = 11.0
-margin_bottom = 8.0
+margin_bottom = 7.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "2"
@@ -448,9 +448,9 @@ frame = 1
 
 [node name="PageNum" type="Label" parent="Tab4"]
 margin_left = -11.514
-margin_top = -7.0
+margin_top = -8.0
 margin_right = 11.486
-margin_bottom = 8.0
+margin_bottom = 7.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "4"
@@ -576,6 +576,7 @@ visible = false
 position = Vector2( 171.521, 111.934 )
 scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 13 )
+hframes = 2
 
 [node name="Portrait4" type="Sprite" parent="."]
 visible = false

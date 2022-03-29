@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=107 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -28,15 +28,12 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/tabouret.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=28]
-[ext_resource path="res://assets/06_UI_menus/simpleTextBoxBig.png" type="Texture" id=29]
+[ext_resource path="res://assets/06_UI_menus/acteProprio.png" type="Texture" id=29]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=31]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=32]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=33]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio2.png" type="Texture" id=34]
-[ext_resource path="res://assets/02_architecture/03_brewery/Canton.png" type="Texture" id=35]
-[ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=36]
-[ext_resource path="res://assets/05_fonts/Bonefish.ttf" type="DynamicFontData" id=37]
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
@@ -1060,19 +1057,6 @@ font_data = ExtResource( 28 )
 [sub_resource type="CircleShape2D" id=72]
 radius = 16.4808
 
-[sub_resource type="DynamicFont" id=65]
-font_data = ExtResource( 37 )
-
-[sub_resource type="DynamicFont" id=66]
-font_data = ExtResource( 28 )
-
-[sub_resource type="DynamicFont" id=67]
-font_data = ExtResource( 28 )
-
-[sub_resource type="DynamicFont" id=68]
-use_mipmaps = true
-font_data = ExtResource( 37 )
-
 [sub_resource type="DynamicFont" id=73]
 font_data = ExtResource( 28 )
 
@@ -1542,107 +1526,12 @@ shape = SubResource( 72 )
 [node name="Open" parent="Item" index="2"]
 visible = false
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Item/Open" index="1"]
-margin_left = 15.0
-margin_top = -59.0
-margin_right = 304.0
-margin_bottom = 258.0
-texture = ExtResource( 29 )
-region_rect = Rect2( 0, 0, 156.229, 74.426 )
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="Item/Open" index="2"]
-position = Vector2( 166.023, 2.13452 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 35 )
-
-[node name="Sprite2" type="Sprite" parent="Item/Open" index="3"]
-position = Vector2( 134, 210 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 36 )
-
-[node name="Label" type="Label" parent="Item/Open" index="4"]
-margin_left = 20.0
-margin_top = 52.0
-margin_right = 299.0
-margin_bottom = 68.0
-custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
-custom_fonts/font = SubResource( 65 )
-text = "Lausanne"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Item/Open" index="5"]
-margin_left = 135.0
-margin_top = 145.0
-margin_right = 285.0
-margin_bottom = 161.0
-custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
-custom_fonts/font = SubResource( 65 )
-text = "Vaquer à ses affaires"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="Item/Open" index="6"]
-margin_left = 18.0
-margin_top = 75.0
-margin_right = 301.0
-margin_bottom = 148.0
-custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
-custom_fonts/font = SubResource( 66 )
-text = "Acte de Propriété
-Brasserie Trüschel
-Rue Chaucrau 16
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="Item/Open" index="7"]
-margin_left = 35.0
-margin_top = 145.0
-margin_right = 169.0
-margin_bottom = 161.0
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
-custom_fonts/font = SubResource( 67 )
-text = "Dans l'intention de"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="Item/Open" index="8"]
-margin_left = 175.0
-margin_top = 175.0
-margin_right = 277.0
-margin_bottom = 241.0
-rect_scale = Vector2( 1.2, 1.2 )
-custom_colors/font_color = Color( 0.235294, 0.254902, 0.270588, 1 )
-custom_fonts/font = SubResource( 68 )
-text = "Bergier
-Lieutenant du
-Préfet"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PressE" parent="Item/Open" index="9" instance=ExtResource( 30 )]
+[node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
 frame = 1
 
-[node name="Label6" type="Label" parent="Item/Open" index="10"]
+[node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
 margin_top = 250.0
 margin_right = -88.0
@@ -1653,8 +1542,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Item/Open" index="3"]
+position = Vector2( 146, 102 )
+texture = ExtResource( 29 )
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="visibility_changed" from="Notebook" to="Book" method="_on_Notebook_visibility_changed"]
+[connection signal="visibility_changed" from="Notebook" to="Item" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
