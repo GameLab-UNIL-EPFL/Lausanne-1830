@@ -12,6 +12,7 @@ public class Context : Node {
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
 	private GameStates GameState = GameStates.INIT;
 	private Locations CurrentLocation = Locations.PALUD;
+	private NPC QuestNPC = null;
 	public const int N_TABS = 6;
 	
 	public override void _Ready() {
@@ -64,6 +65,16 @@ public class Context : Node {
 			default:
 				break;
 		}
+	}
+	
+	public void _FetchQuestNPC() {
+		if(QuestNPC == null) {
+			QuestNPC = GetNode<NPC>("/root/ProtoPalud/YSort/QuestNPC");
+		}
+	}
+	
+	public NPC _GetQuestNPC() {
+		return QuestNPC;
 	}
 	
 	public Locations _GetLocation() {

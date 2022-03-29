@@ -7,10 +7,10 @@ public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
 
 public class Player : KinematicBody2D {
 	[Signal]
-	public delegate void SendInfoToQuestNPC(Player p, NPC questNPC);
+	public delegate void SendInfoToQuestNPC(NPC questNPC);
 	
 	[Signal]
-	public delegate void CutsceneEnd(NPC questNPC);
+	public delegate void CutsceneEnd();
 	
 	[Signal]
 	public delegate void SlideInNotebookController();
@@ -369,7 +369,7 @@ public class Player : KinematicBody2D {
 		if(nearestNPC == null) return;
 		
 		if(nearestNPC.isQuestNPC) {
-			EmitSignal(nameof(SendInfoToQuestNPC), this, nearestNPC);
+			EmitSignal(nameof(SendInfoToQuestNPC), nearestNPC);
 		} else {
 			nearestNPC._Notify(this);
 		}
@@ -381,8 +381,7 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			isCutscene = false;
-			var nearestNPC = NearestSub();
-			EmitSignal(nameof(CutsceneEnd), nearestNPC);
+			EmitSignal(nameof(CutsceneEnd));
 			EmitSignal(nameof(SlideInNotebookController));
 			context._StartGame();
 		}
