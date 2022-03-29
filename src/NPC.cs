@@ -84,19 +84,28 @@ public class NPC : KinematicBody2D {
 	private bool inDialogue = false;
 	private bool inAutoDialogue = false;
 	
+	private Context context;
+	
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
 		if(res.IsCorrect()) {
+			if(context._IsGameComplete()) {
+				return FormatText("Alors...¢"+
+				"Voyons voir ce registre.¢"+
+				"Bravo ! Vous avez fait du bon travail !¢"+
+				"Je vais garder ça dans nos documents importants.¢"+
+				"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
+				"et en faire un jeu vidéo.");
+			} 
 			return FormatText("Alors...¢"+
-			"Voyons voir ce registre.¢"+
-			"Bravo ! Vous avez fait du bon travail !¢"+
-			"Je vais garder ça dans nos documents importants.¢"+
-			"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
-			"et en faire un jeu vidéo.");
+			"Il me semble que tout est correcte chez cette personne.¢"+
+			"Il faut maintenant passer aux prochains.¢"+
+			"Plus que " + context._GetNCorrectTabs() + " pages à compléter!");
 		}
 		
 		string d = "Voyons voir ce registre.¢" +
 		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
+		"Sur la page actuelle...¢"+
 		"Il y a encore ";
 		var i = 0;
 		foreach(var o in outliers) {
@@ -127,6 +136,7 @@ public class NPC : KinematicBody2D {
 	public override void _Ready() {
 		Show();
 		//Fetch the scene's Dialogue controller and the TextBox
+		context = GetNode<Context>("/root/Context");
 		DC = Owner.GetNode<DialogueController>("DialogueController");
 		QC = Owner.GetNode<QuestController>("QuestController");
 		TB = GetNode<TextBox>("TextBox");
