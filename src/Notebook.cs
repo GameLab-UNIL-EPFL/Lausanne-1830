@@ -270,6 +270,15 @@ public class Notebook : Node2D {
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
+	private void _on_OpenMapZone_area_entered(Area2D tb) {
+		if(tb.Owner is Player) {
+			Player p = (Player)(tb.Owner);
+			if(!p.isCutscene) {
+				_on_MapB_pressed();
+			}
+		}
+	}
+	
 	private void PressTabButton(int buttonid) {
 		if(hidden || mapOpen) return;
 		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
@@ -332,3 +341,4 @@ public class Notebook : Node2D {
 		_Change_Portrait(4);
 	}
 }
+
