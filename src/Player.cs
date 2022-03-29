@@ -113,7 +113,7 @@ public class Player : KinematicBody2D {
 	 * @param delta, the time elapsed since the last update
 	 */
 	private void HandleInput(float delta) {
-		if(CurrentState != PlayerStates.BLOCKED) {
+		if(CurrentState != PlayerStates.BLOCKED && CurrentState != PlayerStates.NOTEBOOK) {
 			//Handle movement
 			InputVec.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
 			InputVec.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
