@@ -576,6 +576,7 @@ visible = false
 position = Vector2( 171.521, 111.934 )
 scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 13 )
+hframes = 2
 
 [node name="Portrait4" type="Sprite" parent="."]
 visible = false
