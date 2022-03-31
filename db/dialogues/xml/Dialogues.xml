@@ -70,6 +70,7 @@
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
         <text>Si vous avez des questions, allez demander à mon épouse.</text>
+        <text>Elle s'occupe du côté administratif et moi de la brasserie.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
         <text>Hé Wolff ! Tu sais ce qui est arrivé à Ralf ?</text>
@@ -116,7 +117,7 @@
         <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même.</text>
     </dialogue>
     <dialogue id="demandBaumann" ntargets="1" type="onDemand">
-        <text>Mme Perregaux est de nouveau enceinte. Elle attend son deuxième enfant.</text>
+        <text>Mme Perregaux est de nouveau enceinte. Elle attend son troisième enfant.</text>
     </dialogue>
     <dialogue id="demandPouly" ntargets="1" type="onDemand">
         <text>Oh ! Mais quelle nouvelle réjouissante !</text>
