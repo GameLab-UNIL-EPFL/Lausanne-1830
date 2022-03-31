@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -93,6 +93,9 @@ b = Vector2( 7.2533, 11.611 )
 [sub_resource type="CapsuleShape2D" id=17]
 radius = 5.36835
 height = 27.9452
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 5.20476
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
@@ -292,7 +295,7 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 209, 213 )
+position = Vector2( 202, 213 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
@@ -326,17 +329,19 @@ hframes = 2
 vframes = 1
 
 [node name="CollisionShape2D" parent="YSort/Fischer" index="3"]
+visible = false
 position = Vector2( 0, 0 )
 shape = SubResource( 17 )
 
-[node name="ListenBox" parent="YSort/Fischer" index="4"]
-visible = false
+[node name="CollisionShape2D" parent="YSort/Fischer/ListenBox" index="0"]
+position = Vector2( 13, 0 )
+shape = SubResource( 18 )
 
 [node name="AnimationTree" parent="YSort/Fischer" index="6"]
 parameters/playback = SubResource( 16 )
 
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 209, 213 )
+position = Vector2( 202, 213 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
