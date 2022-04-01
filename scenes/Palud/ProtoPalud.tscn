@@ -928,15 +928,6 @@ frame = 1
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="3"]
-visible = false
-
-[node name="ListenBox" parent="YSort/NPC/Elisabeth" index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
-visible = false
-
 [node name="AnimationTree" parent="YSort/NPC/Elisabeth" index="6"]
 parameters/playback = SubResource( 19 )
 

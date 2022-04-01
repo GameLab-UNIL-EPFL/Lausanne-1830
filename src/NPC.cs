@@ -377,6 +377,7 @@ public class NPC : KinematicBody2D {
 		inDialogue = true;
 		player._StartDialogue();
 		d = DC._StartDialogue(DemandDialogueID);
+
 		
 		//Turn to player
 		if(CanTurn) {

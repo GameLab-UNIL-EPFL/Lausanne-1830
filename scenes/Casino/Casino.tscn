@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -79,6 +79,9 @@ b = Vector2( 8.75844, 10.808 )
 [sub_resource type="SegmentShape2D" id=5]
 a = Vector2( 6.367, -349.192 )
 b = Vector2( 7.2533, 11.611 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 48.7575, 33.1507 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
@@ -199,6 +202,18 @@ shape = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D3"]
 position = Vector2( 504, 352 )
 shape = SubResource( 5 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Coillision"]
+position = Vector2( 229.3, 213.808 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D5"]
+position = Vector2( -14.8091, -3.86674 )
+shape = SubResource( 19 )
 
 [node name="YSort" type="YSort" parent="."]
 
