@@ -8,8 +8,8 @@ using System.Collections.Generic;
 public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
-	[Export]
-	public string SceneDialogueFile = "res://db/dialogues/xml/Dialogues.xml";
+	//[Export]
+	public string SceneDialogueFile = "res://db/dialogues/xml/supersecret.xml";
 	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
@@ -21,6 +21,8 @@ public class DialogueController : Node {
 	//Used to store the texts of each target
 	private Queue<String> target0Text;
 	private Queue<String> target1Text;
+	
+	public Context context;
 	
 	public const string ON_DEMAND = "onDemand";
 	public const string ON_APPROACH = "onApproach";
@@ -52,6 +54,8 @@ public class DialogueController : Node {
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
+		context = GetNode<Context>("/root/Context");
+		
 		//Initialize dialogue queues
 		target0Text = new Queue<String>();
 		target1Text = new Queue<String>();
@@ -71,9 +75,7 @@ public class DialogueController : Node {
 	private string[] QueryDialogue(string dialogueID, string type, int targetNum = 0) {
 		// Query the data and write out resulting texts as a string array
 		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
-					where dialogue.Attribute("id").Value == dialogueID &&
-						dialogue.Attribute("type").Value == type &&
-						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum
+					where dialogue.Attribute("id").Value == (dialogueID)
 					select dialogue.Elements("text");
 					
 		List<string> res = new List<string>();

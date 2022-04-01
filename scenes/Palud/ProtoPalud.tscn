@@ -652,19 +652,19 @@ one_way_collision = true
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
-position = Vector2( -17, 349 )
+position = Vector2( -24, 350 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D3"]
-position = Vector2( 633, 349 )
+position = Vector2( 641, 348 )
 shape = SubResource( 3 )
 
 [node name="OpenMapZone" type="Area2D" parent="Collisions"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/OpenMapZone"]
-polygon = PoolVector2Array( -10, 385, 644, 385, 643, 329, 659, 326, 662, 402, -27, 401, -25, 251, -9, 251 )
+polygon = PoolVector2Array( -17, 385, 649, 385, 649, 331, 659, 326, 662, 402, -27, 401, -25, 251, -15, 250 )
 
 [node name="HotelDeVilleDoor" type="StaticBody2D" parent="Collisions"]
 
@@ -927,15 +927,6 @@ frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
-
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="3"]
-visible = false
-
-[node name="ListenBox" parent="YSort/NPC/Elisabeth" index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
-visible = false
 
 [node name="AnimationTree" parent="YSort/NPC/Elisabeth" index="6"]
 parameters/playback = SubResource( 19 )
@@ -1435,6 +1426,7 @@ bus = "Sounds"
 [connection signal="StartDialogue" from="YSort/NPC/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="CutsceneEnd" from="YSort/Player" to="YSort/QuestNPC" method="_on_Player_CutsceneEnd"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]

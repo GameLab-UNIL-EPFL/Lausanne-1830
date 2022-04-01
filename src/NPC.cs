@@ -96,7 +96,8 @@ public class NPC : KinematicBody2D {
 				"Je vais garder ça dans nos documents importants.¢"+
 				"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
 				"et en faire un jeu vidéo.¢"+
-				"Je vous ouvre la porte. Vous pouvez aller les remettre à l'intérieur.");
+				"Je vous ouvre la porte.¢" +
+				"Vous pouvez aller les remettre à l'intérieur.");
 			} 
 			return FormatText("Alors...¢"+
 			"Il me semble que toutes les informations sur cette personne sont correctes.¢"+
@@ -291,7 +292,7 @@ public class NPC : KinematicBody2D {
 		//Show auto dialogue if the NPC has one
 		if(HasAutoDialogue && !inDialogue && !inAutoDialogue) {
 			//Fetch the right dialogue
-			string next = DC._StartDialogue(AutoDialogueID, true);
+			string next = DC._StartDialogue(context._GetDialogueIdx(), true);
 			
 			//Show it in the box
 			if(next != null) {
@@ -376,7 +377,7 @@ public class NPC : KinematicBody2D {
 	private void BeginDialogue(Player player, ref string d) {
 		inDialogue = true;
 		player._StartDialogue();
-		d = DC._StartDialogue(DemandDialogueID);
+		d = DC._StartDialogue(context._GetDialogueIdx());
 		
 		//Turn to player
 		if(CanTurn) {
@@ -474,5 +475,12 @@ public class NPC : KinematicBody2D {
 		}
 		return res;
 	}
+	
+	private void _on_Player_CutsceneEnd() {
+		isQuestNPC = false;
+	}
 }
+
+
+
 

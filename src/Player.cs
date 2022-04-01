@@ -256,12 +256,21 @@ public class Player : KinematicBody2D {
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
-			if(context._GetGameState() == GameStates.PALUD) {
+			if(context._GetLocation() == Locations.PALUD) {
 				Position = new Vector2(Position.x, Position.y - 200);
 			}
 		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
+		}
+		
+		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
+			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
+			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
+			
+			//Show opened door and remove collisions
+			dooropen.Show();
+			doorcolision.Disabled = true;
 		}
 	}
 	
@@ -282,6 +291,8 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _Subscribe(NPC npc) {
+		if(!isCutscene)
+			EmitSignal(nameof(CutsceneEnd));
 		if(itemsInRange.Count == 0) {
 			subs.Add(npc);
 			if(npc.HasAutoDialogue) {
@@ -378,7 +389,7 @@ public class Player : KinematicBody2D {
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
 		
-		if(context._IsGameComplete()) {
+		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
 			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
 			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
 			

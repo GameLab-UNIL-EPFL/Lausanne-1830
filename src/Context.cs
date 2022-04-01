@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-public enum GameStates {INIT, PALUD, OTHERS, COMPLETE};
+public enum GameStates {INIT, OTHERS, COMPLETE};
 public enum Locations {PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
@@ -14,6 +14,7 @@ public class Context : Node {
 	private Locations CurrentLocation = Locations.PALUD;
 	private NPC QuestNPC = null;
 	public const int N_TABS = 6;
+	private int didx = -6;
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -54,6 +55,7 @@ public class Context : Node {
 		NotebookCorrectInfo = new List<InfoValue_t>();
 		GameState = GameStates.INIT;
 		CurrentLocation = Locations.PALUD;
+		didx = 0;
 		
 		//Reload context
 		_Ready();
@@ -78,6 +80,16 @@ public class Context : Node {
 		}
 	}
 	
+	public string _GetDialogueIdx() {
+		int res = didx;
+		didx++;
+		if(didx >= 0) {
+			GameState = GameStates.COMPLETE;
+			didx %= 56;
+		}
+		return res.ToString();
+	}
+	
 	public void _FetchQuestNPC() {
 		if(QuestNPC == null) {
 			QuestNPC = GetNode<NPC>("/root/ProtoPalud/YSort/QuestNPC");
@@ -93,11 +105,13 @@ public class Context : Node {
 	}
 	
 	public void _StartGame() {
-		GameState = GameStates.PALUD;
+		if(GameState != GameStates.COMPLETE)
+			GameState = GameStates.OTHERS;
 	}
 	
 	public void _SwitchScenes() {
-		GameState = GameStates.OTHERS;
+		if(GameState != GameStates.COMPLETE)
+			GameState = GameStates.OTHERS;
 	}
 	
 	public GameStates _GetGameState() {
