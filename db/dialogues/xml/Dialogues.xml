@@ -87,7 +87,9 @@
     </dialogue>
     <dialogue id="demandAngelique" ntargets="1" type="onDemand">
         <text>Je suis désolée mais je suis très occupée.</text>
-        <text>J'ai encore du travail à terminer.</text>
+        <text>J'ai encore du travail à terminer,</text>
+        <text>mais vous pouvez aller regarder dans mes documents à l'étage.</text>
+        <text>Peut-être que vous trouverez ce que vous chercher.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>

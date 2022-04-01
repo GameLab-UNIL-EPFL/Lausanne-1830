@@ -620,7 +620,7 @@ script = ExtResource( 8 )
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 39.0

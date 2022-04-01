@@ -790,7 +790,6 @@ parameters/Run/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [node name="TalkBox" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="CollisionShape2D" parent="TalkBox" index="0"]
 position = Vector2( 0, -6 )
