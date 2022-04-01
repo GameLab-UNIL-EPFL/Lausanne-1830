@@ -35,10 +35,10 @@ public class Context : Node {
 			false, true, false, true, true, false, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Mercier", "", 0, "Marié.e", 3, "Négociant.e"
+			"", "Mercier", "", 0, "Marié.e", 3, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, true, false, false, true, true, true
+			false, true, false, false, true, true, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "Rochat", "", 0, "", 0, ""
