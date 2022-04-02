@@ -137,28 +137,31 @@ public class Player : KinematicBody2D {
 			}
 		}
 		
-		//Check for map
-		if(Input.IsActionJustPressed("ui_map")) {
-			NB._on_MapB_pressed();
+		if(CurrentState != PlayerStates.BLOCKED) {
+			//Check for map
+			if(Input.IsActionJustPressed("ui_map")) {
+				NB._on_MapB_pressed();
+			}
+			//Check for tab
+			if(Input.IsActionJustPressed("ui_focus_next")) {
+				EmitSignal(nameof(OpenNotebook));
+			}
 		}
 		
-		//Check for tab
-		if(Input.IsActionJustPressed("ui_focus_next")) {
-			EmitSignal(nameof(OpenNotebook));
-		}
-		
-		//Check for tab switches
-		if(Input.IsActionJustPressed("ui_1")) {
-			NB._on_Tab1Button_pressed();
-		}
-		if(Input.IsActionJustPressed("ui_2")) {
-			NB._on_Tab2Button_pressed();
-		}
-		if(Input.IsActionJustPressed("ui_3")) {
-			NB._on_Tab3Button_pressed();
-		}
-		if(Input.IsActionJustPressed("ui_4")) {
-			NB._on_Tab4Button_pressed();
+		if(CurrentState == PlayerStates.NOTEBOOK) {
+			//Check for tab switches
+			if(Input.IsActionJustPressed("ui_1")) {
+				NB._on_Tab1Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_2")) {
+				NB._on_Tab2Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_3")) {
+				NB._on_Tab3Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_4")) {
+				NB._on_Tab4Button_pressed();
+			}
 		}
 	}
 	
@@ -256,12 +259,21 @@ public class Player : KinematicBody2D {
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
-			if(context._GetGameState() == GameStates.PALUD) {
+			if(context._GetLocation() == Locations.PALUD) {
 				Position = new Vector2(Position.x, Position.y - 200);
 			}
 		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
+		}
+		
+		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
+			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
+			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
+			
+			//Show opened door and remove collisions
+			dooropen.Show();
+			doorcolision.Disabled = true;
 		}
 	}
 	
@@ -378,7 +390,7 @@ public class Player : KinematicBody2D {
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
 		
-		if(context._IsGameComplete()) {
+		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
 			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
 			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
 			

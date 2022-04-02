@@ -27,7 +27,7 @@ animations = [ {
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "water"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

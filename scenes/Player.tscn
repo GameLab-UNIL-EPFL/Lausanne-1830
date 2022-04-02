@@ -746,7 +746,7 @@ graph_offset = Vector2( 0, -41.1 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 
 [sub_resource type="CircleShape2D" id=39]
-radius = 21.0
+radius = 14.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )

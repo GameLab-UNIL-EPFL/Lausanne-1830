@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-public enum GameStates {INIT, PALUD, OTHERS, COMPLETE};
+public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
@@ -93,11 +93,12 @@ public class Context : Node {
 	}
 	
 	public void _StartGame() {
-		GameState = GameStates.PALUD;
+		GameState = GameStates.PLAYING;
+		CurrentLocation = Locations.PALUD;
 	}
 	
 	public void _SwitchScenes() {
-		GameState = GameStates.OTHERS;
+		GameState = GameStates.PLAYING;
 	}
 	
 	public GameStates _GetGameState() {

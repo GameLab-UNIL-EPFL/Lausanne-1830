@@ -167,8 +167,9 @@ public class Notebook : Node2D {
 		FillCharInfo();
 		
 		//Request an info evaluation from the NPC
-		correctInfo = context._GetQuestNPC()._CompareSolutions(characterInfo, curTabId);
-		if(correctInfo.IsCorrect() || cutscene) {
+		var tmpcorrect = context._GetQuestNPC()._CompareSolutions(characterInfo, curTabId);
+		if(tmpcorrect.IsCorrect() || cutscene) {
+			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
 		}
 	}
@@ -240,7 +241,6 @@ public class Notebook : Node2D {
 		//Update Context
 		FillCharInfo();
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
-		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
 	public void _on_MapB_pressed() {
@@ -278,7 +278,6 @@ public class Notebook : Node2D {
 		//Update Context
 		FillCharInfo();
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
-		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
 	private void _on_OpenMapZone_area_entered(Area2D tb) {

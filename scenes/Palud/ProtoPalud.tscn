@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -939,15 +939,6 @@ NPCName = " Mme. Chardon "
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
-
-[node name="CollisionShape2D" parent="YSort/NPC/Random" index="3"]
-visible = false
-
-[node name="ListenBox" parent="YSort/NPC/Random" index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/NPC/Random/ListenBox" index="0"]
-visible = false
 
 [node name="AnimationTree" parent="YSort/NPC/Random" index="6"]
 parameters/playback = SubResource( 20 )
