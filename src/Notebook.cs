@@ -17,7 +17,7 @@ public class Notebook : Node2D {
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
 	
-	private Map M;
+	private Node2D M;
 	
 	private Context context;
 	private Player p;
@@ -94,7 +94,7 @@ public class Notebook : Node2D {
 		context = GetNode<Context>("/root/Context");
 		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
-		M = GetNode<Map>("Map");
+		M = GetNode<Node2D>("Map");
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
@@ -220,15 +220,16 @@ public class Notebook : Node2D {
 	
 	public void _on_NotebookController_pressed() {
 		if(mapOpen) {
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
+			_on_MapB_pressed();
+			hidden = true;
+			Show();
 		}
-		
 		if(ASP.Playing == false) {
 			ASP.Play();
 		}
 		if(hidden) {
 			Show();
+			ShowAll();
 			AudioServer.SetBusMute(2, true);
 			p.BlockPlayer();
 		} else {
@@ -240,20 +241,55 @@ public class Notebook : Node2D {
 		
 		//Update Context
 		FillCharInfo();
+		_UpdateNotebook(correctInfo);
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
+		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
+	}
+	
+	private void ShowAll() {
+		var bg = GetNode<Sprite>("Sprite");
+		bg.Show();
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Show();
+		foreach(var inf in info) {
+			inf.Show();
+		}
+		foreach(var inf in infoStatic) {
+			inf.Show();
+		}
+		for(int i = 0; i < 4; ++i) {
+			tabSprites[i].Show();
+			tabButtons[i].Show();
+		}
+	}
+	
+	private void HideAll() {
+		var bg = GetNode<Sprite>("Sprite");
+		bg.Hide();
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Hide();
+		foreach(var inf in info) {
+			inf.Hide();
+		}
+		foreach(var inf in infoStatic) {
+			inf.Hide();
+		}
+		for(int i = 0; i < 4; ++i) {
+			tabSprites[i].Hide();
+			tabButtons[i].Hide();
+		}
 	}
 	
 	public void _on_MapB_pressed() {
-		if(hidden) {
-			_on_NotebookController_pressed();
-			
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
-		} else if(!hidden && !mapOpen) {
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
+		_on_MapButton_pressed();
+		M.Show();
+		
+		if(mapOpen) {
+			Show();
+			HideAll();
 		} else {
-			_on_NotebookController_pressed();
+			M.Hide();
+			Hide();
 		}
 	}
 	
@@ -278,6 +314,7 @@ public class Notebook : Node2D {
 		//Update Context
 		FillCharInfo();
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
+		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
 	private void _on_OpenMapZone_area_entered(Area2D tb) {
