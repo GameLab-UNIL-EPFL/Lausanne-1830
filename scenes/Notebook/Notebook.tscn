@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/04_notebook/noteBooksTabsSheet.png" type="Texture" id=5]
 [ext_resource path="res://scenes/Notebook/NotebookList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Notebook/Map.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Map.cs" type="Script" id=8]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/angeliqueTruschel.png" type="Texture" id=11]
@@ -540,24 +540,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TabMap" type="Sprite" parent="."]
-position = Vector2( 527, 260 )
-texture = ExtResource( 5 )
-vframes = 2
-frame = 1
-
-[node name="MapButton" type="Button" parent="."]
-margin_left = 515.0
-margin_top = 249.0
-margin_right = 541.0
-margin_bottom = 269.0
-focus_mode = 0
-enabled_focus_mode = 0
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Portrait1" type="Sprite" parent="."]
 position = Vector2( 171.51, 112 )
 texture = ExtResource( 11 )
@@ -616,7 +598,6 @@ vframes = 2
 [node name="Map" parent="." instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 96, 48 )
-script = ExtResource( 8 )
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
@@ -635,6 +616,10 @@ __meta__ = {
 
 [node name="PressTab" parent="." instance=ExtResource( 15 )]
 
+[node name="PressSpace" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 20, 340 )
+
 [connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
@@ -643,8 +628,6 @@ __meta__ = {
 [connection signal="OpenOptions" from="Sprite/Conjoint" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Enfants" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Metier" to="NotebookList" method="_on_OpenOptions"]
-[connection signal="pressed" from="MapButton" to="." method="_on_MapButton_pressed"]
-[connection signal="pressed" from="MapButton" to="Map" method="_on_MapButton_pressed"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Prenom" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Nom" method="_on_UpdateInfo"]
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Adresse" method="_on_UpdateInfo"]
