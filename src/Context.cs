@@ -33,6 +33,11 @@ public class Context : Node {
 	private NPC QuestNPC = null;
 	public const int N_TABS = 6;
 	
+	//Brewery minigame variables
+	private float BrewGameScore = -1.0f;
+	private bool BrewGameCutscene = false;
+	private Vector2 PlayerPreviousPos = Vector2.Zero;
+	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "Trüschel", "", 0, "", 0, ""
@@ -173,5 +178,30 @@ public class Context : Node {
 		if(CheckGameOver()) {
 			GameState = GameStates.COMPLETE;
 		} 
+	}
+	
+	public void _EndBrewGameCutscene() {
+		BrewGameCutscene = false;
+	}
+	
+	public bool _IsBrewGameCutscene() { 
+		return BrewGameCutscene;
+	}
+	
+	public void _UpdateBrewBurn(int burn) {
+		BrewGameScore = (float)burn;
+		BrewGameCutscene = true;
+	}
+	
+	public float _CheckBrewBurn() {
+		return BrewGameScore;
+	}
+	
+	public Vector2 _GetPlayerPreviousPos() {
+		return new Vector2(PlayerPreviousPos.x, PlayerPreviousPos.y);
+	}
+	
+	public void _UpdatePlayerPreviousPos(Vector2 pos) {
+		PlayerPreviousPos = new Vector2(pos.x, pos.y);
 	}
 }
