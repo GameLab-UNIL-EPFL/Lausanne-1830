@@ -80,7 +80,7 @@
         <text>Nein, keine ahnung...</text>
         <text>La dernière fois que je l'ai vu c'était la semaine passée,</text>
         <text>mais mes souvenirs sont un peu flou...</text>
-        <text>On a encore trop bu ce soir-là. </text>
+        <text>On a encore trop bu ce soir-là.</text>
     </dialogue>
     <dialogue id="demandTonneliers" ntargets="1" type="onDemand">
         <text>Le travail de brasseur peut être très fatiguant.</text>

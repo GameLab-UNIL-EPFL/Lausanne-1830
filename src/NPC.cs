@@ -171,7 +171,7 @@ public class NPC : KinematicBody2D {
 	
 	public void _StopTalking() {
 		if(!inDialogue) {
-			TB.Hide();
+			TB._HideText();
 		}
 	}
 	
