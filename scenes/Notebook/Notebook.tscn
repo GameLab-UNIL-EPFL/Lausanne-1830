@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/04_notebook/noteBooksTabsSheet.png" type="Texture" id=5]
 [ext_resource path="res://scenes/Notebook/NotebookList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Notebook/Map.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/angeliqueTruschel.png" type="Texture" id=11]
@@ -614,6 +615,10 @@ __meta__ = {
 }
 
 [node name="PressTab" parent="." instance=ExtResource( 15 )]
+
+[node name="PressSpace" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 20, 340 )
 
 [connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]

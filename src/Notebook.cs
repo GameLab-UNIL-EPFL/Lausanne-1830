@@ -283,12 +283,15 @@ public class Notebook : Node2D {
 	public void _on_MapB_pressed() {
 		_on_MapButton_pressed();
 		M.Show();
+		var space = GetNode<Sprite>("PressSpace");
+		space.Show();
 		
 		if(mapOpen) {
 			Show();
 			HideAll();
 		} else {
 			M.Hide();
+			space.Hide();
 			Hide();
 		}
 	}
