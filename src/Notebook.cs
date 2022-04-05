@@ -303,6 +303,8 @@ public class Notebook : Node2D {
 		var space = GetNode<Sprite>("PressSpace");
 		space.Show();
 		
+		p._Map_B_Pressed();
+		
 		if(mapOpen) {
 			Show();
 			HideAll();

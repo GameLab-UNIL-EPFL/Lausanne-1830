@@ -39,6 +39,7 @@ public class Player : KinematicBody2D {
 	public PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
+	private bool MapOpen = false;
 	private PlayerStates PrevState = PlayerStates.IDLE;
 	
 	// Cutscene state
@@ -442,10 +443,23 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	public void _Map_B_Pressed() {
+		if(MapOpen) {
+			MapOpen = false;
+			CurrentState = PrevState;
+		} else {
+			MapOpen = true;
+			if(NotebookOpen) {
+				PrevState = CurrentState;
+			}
+			CurrentState = PlayerStates.NOTEBOOK;
+		}
+	}
+	
 	/**
 	 * @brief Makes sure that the player can't move when the notebook is open 
 	 */
-	private void _on_NotebookController_pressed() {
+	public void _on_NotebookController_pressed() {
 		if(NotebookOpen) {
 			NotebookOpen = false;
 			//Restore the state the previous state before the notebook was opened
@@ -453,7 +467,7 @@ public class Player : KinematicBody2D {
 		} else {
 			NotebookOpen = true;
 			PrevState = CurrentState;
-			CurrentState = PlayerStates.BLOCKED;
+			CurrentState = PlayerStates.NOTEBOOK;
 		}
 	}
 }
