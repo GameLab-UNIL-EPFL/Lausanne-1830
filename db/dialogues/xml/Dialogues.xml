@@ -98,10 +98,10 @@
         <text>Allez embêter quelqu'un d'autre.</text>
     </dialogue>
     <dialogue id="demandAngeliqueGood" ntargets="1" type="onDemand">
-        <text>Merci beaucoup pour votre aide!</text>
-        <text>Vu que vous avez fait mon travail à ma place,</text>
-        <text>J'ai le temps de répondre à vos questions.</text>
-        <text>Bla bla bla, infos incroyables et secretes!!!!!</text>
+        <text>Merci beaucoup pour votre aide !</text>
+        <text>Ah mais je n'ai pas pris le temps de me présenter !</text>
+        <text>Je m'appelle Angélique Trüschel.</text>
+        <text>Avec mon mari, Conrad, nous sommes propriétaire de la brasserie.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>

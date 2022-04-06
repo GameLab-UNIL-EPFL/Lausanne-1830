@@ -1331,6 +1331,7 @@ WanderingCooldown = 10.0
 WalkSpeed = 20
 DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
+isBrewer = true
 
 [node name="TextBox" parent="YSort/NPC/Tonnelier" index="0"]
 NPCName = " M. Firstein "
@@ -1385,7 +1386,6 @@ position = Vector2( 407, 244 )
 InitDir = 0
 DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
-isBrewer = true
 
 [node name="TextBox" parent="YSort/NPC/Brewer" index="0"]
 NPCName = "M. Malter"

@@ -114,12 +114,13 @@ public class NPC : KinematicBody2D {
 	private string[] BrewQuestText() {
 		//Check if the game has been played yet
 		if(context._CheckBrewBurn() == -1.0f) {
-			return FormatText("On est vraiment sous l'eau là...¢" +
-				"Tu veux nous aider avec la bière?¢" +
+			return FormatText("Le travail de brasseur peut être très fatiguant.¢" +
+				"Je ne sais pas si on va réussir à finir cette cuvée à temps...¢" +
+				"Tu veux nous aider à brasser la bière ?¢" +
 				"Merci!");
 		} else if(context._CheckBrewBurn() < BrewBadThreshold) {
-			return FormatText("Mais tu as fait n'importe quoi!¢" +
-				"La bière est complètement brûlée!¢"+
+			return FormatText("Mais tu as fait n'importe quoi !¢" +
+				"La bière est complètement brûlée !¢"+
 				"Mme Trüschel ne sera pas du tout contente...");
 		} else if(context._CheckBrewBurn() < BrewPerfectThreshold) {
 			return FormatText("Bien...¢" +
