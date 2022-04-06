@@ -312,6 +312,8 @@ public class Player : KinematicBody2D {
 		}
 		if(isBrewEnd) {
 			NotifySubs();
+			NPC brewer = GetNode<NPC>("../NPC/Brewer");
+			subs.Remove(brewer);
 			isBrewEnd = false;
 		}
 		

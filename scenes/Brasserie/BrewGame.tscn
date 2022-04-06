@@ -44,8 +44,10 @@ extents = Vector2( 11.5, 28 )
 
 [node name="BrewGame" type="Node2D"]
 script = ExtResource( 3 )
-GameTime = 20.0
+MaxRotateSpeed = 7.0
 MinRotateSpeed = 0.5
+BoostErrorDecrement = 1.5
+BurnThreshold = 2.0
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( -25, -26 )

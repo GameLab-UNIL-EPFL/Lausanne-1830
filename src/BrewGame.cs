@@ -61,6 +61,12 @@ public class BrewGame : Node2D {
 	private Label Score;
 	private Label Time;
 	
+	//Arrow sprites
+	private Sprite TopArrow;
+	private Sprite LeftArrow;
+	private Sprite DownArrow;
+	private Sprite RightArrow;
+	
 	//Hit areas
 	private Area2D TopArea;
 	private Area2D LeftArea;
@@ -90,6 +96,11 @@ public class BrewGame : Node2D {
 		BeerBurnt = GetNode<Sprite>("BeerBurnt");
 		HideStickBurnt = GetNode<ColorRect>("Stick/hideStickBurnt");
 		
+		TopArrow = GetNode<Sprite>("arrowTop");
+		LeftArrow = GetNode<Sprite>("arrowLeft");
+		DownArrow = GetNode<Sprite>("arrowBottom");
+		RightArrow = GetNode<Sprite>("arrowRight");
+		
 		TopArea = GetNode<Area2D>("arrowTop/Area2D");
 		LeftArea = GetNode<Area2D>("arrowLeft/Area2D");
 		DownArea = GetNode<Area2D>("arrowBottom/Area2D");
@@ -109,6 +120,12 @@ public class BrewGame : Node2D {
 		//Init constants
 		InvMaxBurn = 1.0f/MaxBurn;
 		InvBurnThreshold = 1.0f/BurnThreshold;
+		
+		//Initially hide all arrows
+		TopArrow.Hide();
+		LeftArrow.Hide();
+		DownArrow.Hide();
+		RightArrow.Hide();
 	}
 	
 	/**
@@ -252,21 +269,35 @@ public class BrewGame : Node2D {
 	//Signal methods
 	public void _on_Area2D_Exited(Area2D obj) {
 		BoostPressed = 0;
+		
+		//Hide all arrows
+		TopArrow.Hide();
+		LeftArrow.Hide();
+		DownArrow.Hide();
+		RightArrow.Hide();
 	}
 	
 	public void _on_Top_Entered(Area2D obj) {
 		Location = StickLocation.UP;
+		//Show up arrow
+		TopArrow.Show();
 	}
 	
 	public void _on_Left_Entered(Area2D obj) {
 		Location = StickLocation.LEFT;
+		//Show left arrow
+		LeftArrow.Show();
 	}
 	
 	public void _on_Down_Entered(Area2D obj) {
 		Location = StickLocation.DOWN;
+		//Show bottom arrow
+		DownArrow.Show();
 	}
 	
 	public void _on_Right_Entered(Area2D obj) {
 		Location = StickLocation.RIGHT;
+		//Show Right Arrow
+		RightArrow.Show();
 	}
 }
