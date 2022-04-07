@@ -205,7 +205,7 @@ public class DialogueController : Node {
 		var Q = targetId == 0 ? ref target0Text : ref target1Text;
 		try {
 			return Q.Dequeue();
-		} catch(InvalidOperationException e) {
+		} catch {
 			if(targetId == 0) _EndDialogue();
 			return null;
 		}

@@ -45,7 +45,6 @@ public class Player : KinematicBody2D {
 	// Cutscene state
 	
 	private bool isCutsceneConv = false;
-	private ColorRect FadeIn;
 	
 	[Export]
 	public int WalkSpeed = 100; //Pixels per second
@@ -55,6 +54,8 @@ public class Player : KinematicBody2D {
 	public float RunTime = 3.0f; // Seconds
 	[Export]
 	public bool isCutscene;
+	
+	public bool isBrewEnd = false;
 	
 	//Empirical acceleration and friction amounts
 	private const int ACC = 950;
@@ -280,6 +281,12 @@ public class Player : KinematicBody2D {
 			if(context._GetLocation() == Locations.PALUD) {
 				Position = new Vector2(Position.x, Position.y - 200);
 			}
+			if(context._GetLocation() == Locations.BRASSERIE && context._IsBrewGameCutscene()) {
+ 				Position = context._GetPlayerPreviousPos();
+				NPC brewer = GetNode<NPC>("../NPC/Brewer");
+				subs.Add(brewer);
+				isBrewEnd = true;
+			}
 		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
@@ -302,6 +309,12 @@ public class Player : KinematicBody2D {
 		} else {
 			//Handle input
 			HandleInput(delta);
+		}
+		if(isBrewEnd) {
+			NotifySubs();
+			NPC brewer = GetNode<NPC>("../NPC/Brewer");
+			subs.Remove(brewer);
+			isBrewEnd = false;
 		}
 		
 		//Update player state
@@ -407,6 +420,11 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
+		var nearestNPC = NearestSub();
+		
+		if(nearestNPC.isBrewer) {
+			context._UpdatePlayerPreviousPos(Position);
+		}
 		
 		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
 			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");

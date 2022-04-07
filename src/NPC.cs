@@ -97,11 +97,43 @@ public class NPC : KinematicBody2D {
 	public bool HasDemandDialogue = true;
 	[Export]
 	public bool isQuestNPC = false;
+	[Export]
+	public bool isBrewer = false;
+	[Export]
+	public float BrewBadThreshold = 40f;
+	[Export]
+	public float BrewPerfectThreshold = 90f;
+	[Export]
+	public bool isTrueschel = false;
 	
 	private bool inDialogue = false;
 	private bool inAutoDialogue = false;
 	
 	private Context context;
+	
+	private string[] BrewQuestText() {
+		//Check if the game has been played yet
+		if(context._CheckBrewBurn() == -1.0f) {
+			return FormatText("Le travail de brasseur peut être très fatiguant.¢" +
+				"Je ne sais pas si on va réussir à finir cette cuvée à temps...¢" +
+				"Tu veux nous aider à brasser la bière ?¢" +
+				"Merci!");
+		} else if(context._CheckBrewBurn() < BrewBadThreshold) {
+			return FormatText("Mais tu as fait n'importe quoi !¢" +
+				"La bière est complètement brûlée !¢"+
+				"Mme Trüschel ne sera pas du tout contente...");
+		} else if(context._CheckBrewBurn() < BrewPerfectThreshold) {
+			return FormatText("Bien...¢" +
+				"La bière n'est pas trop brûlée et encore vendable.¢"+
+				"Merci pour l'aide.");
+		} else {
+			return FormatText("Wow la bière est parfaite!¢" +
+				"Tu as vraiment un don pour ça.¢"+
+				"Merci énormément pour l'aide!¢"+
+				"Allez parler à Mme Trüschel...¢"+
+				"Je pense qu'elle vous remerciera.");
+		}
+	}
 	
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
@@ -391,10 +423,22 @@ public class NPC : KinematicBody2D {
 	}
 	
 	private void BeginDialogue(Player player, ref string d) {
+		if(isTrueschel && context._CheckBrewBurn() != -1.0f) {
+			if(context._CheckBrewBurn() < BrewBadThreshold) {
+				DemandDialogueID = "demandAngeliqueBad";
+			} else {
+				DemandDialogueID = "demandAngeliqueGood";
+			}
+		}
 		inDialogue = true;
 		player._StartDialogue();
-		d = DC._StartDialogue(DemandDialogueID);
-
+		if(isBrewer) {
+			InnerLines = BrewQuestText();
+			InnerLinesCount = InnerLines.Length;
+			d = InnerLines[0];
+		} else {
+			d = DC._StartDialogue(DemandDialogueID);
+		}
 		
 		//Turn to player
 		if(CanTurn) {
@@ -411,6 +455,18 @@ public class NPC : KinematicBody2D {
 		TB._HideText();
 		player._EndDialogue();
 		DC._EndDialogue();
+		
+		//Start the brewing minigame
+		if(isBrewer) {
+			if(context._CheckBrewBurn() == -1.0f) {
+				SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+				SC.GotoScene("res://scenes/Brasserie/BrewGame.tscn");
+			} else {
+				isBrewer = false;
+				isQuestNPC = false;
+				context._EndBrewGameCutscene();
+			}
+		}
 		
 		if(!CanWander) {
 			LookInInitalDir();
@@ -445,9 +501,11 @@ public class NPC : KinematicBody2D {
 					}
 				}
 				
-				//Format the text to fit in the dialogue boxes
-				InnerLines = FormatText(d);
-				InnerLinesCount = InnerLines.Length;
+				if(!isBrewer) {
+					//Format the text to fit in the dialogue boxes
+					InnerLines = FormatText(d);
+					InnerLinesCount = InnerLines.Length;
+				}
 				
 				//Update the dialogue
 				if(InnerLinesCount != 0) {

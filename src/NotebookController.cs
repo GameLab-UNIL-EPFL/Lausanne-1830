@@ -23,7 +23,6 @@ public class NotebookController : TextureButton
 	private AnimationPlayer AnimPlayer;
 	private TextureButton MB;
 	private Notebook NB;
-	private Map M;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

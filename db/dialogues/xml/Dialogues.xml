@@ -91,6 +91,18 @@
         <text>mais vous pouvez aller regarder dans mes documents à l'étage.</text>
         <text>Peut-être que vous trouverez ce que vous chercher.</text>
     </dialogue>
+    <dialogue id="demandAngeliqueBad" ntargets="1" type="onDemand">
+        <text>Je n'ai pas envis de vous parler...</text>
+        <text>Vous avez raté ma bière et brûlé ma cuve.</text>
+        <text>Ça va me coûter cher en temps et en argent.</text>
+        <text>Allez embêter quelqu'un d'autre.</text>
+    </dialogue>
+    <dialogue id="demandAngeliqueGood" ntargets="1" type="onDemand">
+        <text>Merci beaucoup pour votre aide !</text>
+        <text>Ah mais je n'ai pas pris le temps de me présenter !</text>
+        <text>Je m'appelle Angélique Trüschel.</text>
+        <text>Avec mon mari, Conrad, nous sommes propriétaire de la brasserie.</text>
+    </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>
     </dialogue>
