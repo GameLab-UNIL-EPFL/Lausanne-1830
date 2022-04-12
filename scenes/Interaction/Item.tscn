@@ -54,7 +54,6 @@ position = Vector2( -78, 16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "press"
-frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -74,5 +73,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="Open"]
+margin_left = -584.0
+margin_top = -333.0
+margin_right = 655.0
+margin_bottom = 369.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="pressed" from="Open/Button" to="." method="_on_Button_pressed"]
