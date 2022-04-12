@@ -232,7 +232,7 @@ DemandDialogueID = "demandPerregaux"
 
 [node name="TextBox" parent="YSort/Perregaux" index="0"]
 z_index = 1
-NPCName = " M. Perregaux "
+NPCName = " Mr. Perregaux "
 
 [node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
 texture = ExtResource( 11 )
@@ -250,7 +250,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Bourgeois" index="0"]
 z_index = 1
-NPCName = " M. Bourgeois "
+NPCName = " Mr. Bourgeois "
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
 texture = ExtResource( 12 )
@@ -272,7 +272,7 @@ DemandDialogueID = "demandPichard"
 
 [node name="TextBox" parent="YSort/Pichard" index="0"]
 z_index = 1
-NPCName = " M. Pichard "
+NPCName = " Mr. Pichard "
 
 [node name="FullyAnimated" parent="YSort/Pichard" index="2"]
 texture = ExtResource( 13 )
@@ -324,7 +324,7 @@ DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Fischer" index="0"]
-NPCName = " M. Fischer "
+NPCName = " Mr. Fischer "
 
 [node name="Shadow" parent="YSort/Fischer" index="1"]
 position = Vector2( 4, 6 )
@@ -355,6 +355,9 @@ position = Vector2( 0, -19 )
 
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
+
+[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
+frame = 1
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
