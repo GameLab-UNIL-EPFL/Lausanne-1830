@@ -883,7 +883,7 @@ DemandDialogueID = "testDemand"
 
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
 z_index = 1
-NPCName = " Mr. Chapuis "
+NPCName = " M. Chapuis "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
@@ -902,7 +902,7 @@ DemandDialogueID = "demandBaker"
 
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
 z_index = 1
-NPCName = " Mr. Guignard "
+NPCName = " M. Guignard "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
@@ -921,7 +921,7 @@ DemandDialogueID = "demandRandom"
 
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
 z_index = 1
-NPCName = " Mr. Burnier "
+NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
@@ -943,9 +943,6 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 z_index = 1
 NPCName = " Mlle De Cerjeat "
-
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -983,7 +980,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
 z_index = 1
-NPCName = " Mr. Jaccard "
+NPCName = " M. Jaccard "
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
 texture = ExtResource( 13 )
@@ -1128,7 +1125,7 @@ HasAutoDialogue = false
 isQuestNPC = true
 
 [node name="TextBox" parent="YSort/QuestNPC" index="0"]
-NPCName = " Mr. Gély  "
+NPCName = " M. Gély  "
 
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 34 )
@@ -1151,7 +1148,7 @@ position = Vector2( 11.0124, -17.6866 )
 text = "Regarder"
 
 [node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
-frame = 1
+frame = 0
 
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
@@ -1169,7 +1166,6 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1200,9 +1196,6 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 1
-
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
@@ -1228,6 +1221,7 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="2" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="3"]
 position = Vector2( 265, 0 )

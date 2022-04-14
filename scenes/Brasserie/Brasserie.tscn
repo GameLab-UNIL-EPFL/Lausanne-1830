@@ -1303,7 +1303,7 @@ AutoDialogueID = "appConrad"
 DemandDialogueID = "demandConrad"
 
 [node name="TextBox" parent="YSort/NPC/Conrad" index="0"]
-NPCName = " Mr. Trüschel "
+NPCName = " M. Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Conrad" index="2"]
 texture = ExtResource( 14 )
@@ -1334,7 +1334,7 @@ HasAutoDialogue = false
 isBrewer = true
 
 [node name="TextBox" parent="YSort/NPC/Brewer" index="0"]
-NPCName = " Mr. Firstein "
+NPCName = " M. Firstein "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brewer" index="2"]
 texture = ExtResource( 12 )
@@ -1363,7 +1363,7 @@ DemandDialogueID = "demandTonnelier"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brasseur" index="0"]
-NPCName = "Mr. Wolff"
+NPCName = "M. Wolff"
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur" index="2"]
 texture = ExtResource( 13 )
@@ -1388,7 +1388,7 @@ DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brasseur2" index="0"]
-NPCName = " Mr. Malter "
+NPCName = "M. Malter"
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur2" index="2"]
 texture = ExtResource( 13 )
