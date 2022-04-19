@@ -66,6 +66,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+margin_left = 257.0
+margin_top = 161.0
+margin_right = 679.0
+margin_bottom = 454.0
+color = Color( 1, 1, 1, 0 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false

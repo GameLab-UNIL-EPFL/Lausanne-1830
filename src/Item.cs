@@ -61,5 +61,9 @@ public class Item : Node2D {
 	private void _on_Notebook_visibility_changed() {
 		N.Hide();
 	}
+	
+	private void _on_Button_pressed() {
+		N.Hide();
+	}
 
 }
