@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/NotebookController.cs" type="Script" id=1]
+[ext_resource path="res://assets/06_UI_menus/Space.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=4]
+[ext_resource path="res://assets/06_UI_menus/Tab.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 4 )
+region = Rect2( 38, 0, 37, 36 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4.168 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 37, 36 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 1, 1, 27, 11 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 5 )
+region = Rect2( 1, 1, 23, 11 )
+
+[node name="NotebookController" type="TextureButton"]
+margin_left = 650.0
+margin_top = 4.168
+margin_right = 693.0
+margin_bottom = 40.168
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+texture_normal = SubResource( 42 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/Slide = SubResource( 6 )
+
+[node name="MapButton" type="TextureButton" parent="."]
+margin_left = 43.0
+margin_right = 82.0
+margin_bottom = 36.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 43 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressSpace" type="Sprite" parent="MapButton" instance=ExtResource( 3 )]
+position = Vector2( 6, 34 )
+scale = Vector2( 0.75, 0.75 )
+texture = SubResource( 1 )
+
+[node name="PressTab" type="Sprite" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 34 )
+scale = Vector2( 0.75, 0.75 )
+texture = SubResource( 44 )
