@@ -1,9 +1,27 @@
+/*
+Historically accurate educational video game based in 1830s Lausanne.
+Copyright (C) 2021  GameLab UNIL-EPFL
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 using Godot;
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-public enum GameStates {INIT, PALUD, OTHERS};
+public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
@@ -12,7 +30,13 @@ public class Context : Node {
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
 	private GameStates GameState = GameStates.INIT;
 	private Locations CurrentLocation = Locations.PALUD;
+	private NPC QuestNPC = null;
 	public const int N_TABS = 6;
+	
+	//Brewery minigame variables
+	private float BrewGameScore = -1.0f;
+	private bool BrewGameCutscene = false;
+	private Vector2 PlayerPreviousPos = Vector2.Zero;
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -34,10 +58,10 @@ public class Context : Node {
 			false, true, false, true, true, false, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Mercier", "", 0, "Marié.e", 3, "Négociant.e"
+			"", "Mercier", "", 0, "Marié.e", 3, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, true, false, false, true, true, true
+			false, true, false, false, true, true, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "Rochat", "", 0, "", 0, ""
@@ -45,6 +69,17 @@ public class Context : Node {
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, false, false, false
 		));
+	}
+	
+	public void _Clear() {
+		//Clear all elements
+		NotebookCharInfo = new List<CharacterInfo_t>();
+		NotebookCorrectInfo = new List<InfoValue_t>();
+		GameState = GameStates.INIT;
+		CurrentLocation = Locations.PALUD;
+		
+		//Reload context
+		_Ready();
 	}
 	
 	public void _UpdateLocation(string id) {
@@ -66,16 +101,27 @@ public class Context : Node {
 		}
 	}
 	
+	public void _FetchQuestNPC() {
+		if(QuestNPC == null) {
+			QuestNPC = GetNode<NPC>("/root/ProtoPalud/YSort/QuestNPC");
+		}
+	}
+	
+	public NPC _GetQuestNPC() {
+		return QuestNPC;
+	}
+	
 	public Locations _GetLocation() {
 		return CurrentLocation;
 	}
 	
 	public void _StartGame() {
-		GameState = GameStates.PALUD;
+		GameState = GameStates.PLAYING;
+		CurrentLocation = Locations.PALUD;
 	}
 	
 	public void _SwitchScenes() {
-		GameState = GameStates.OTHERS;
+		GameState = GameStates.PLAYING;
 	}
 	
 	public GameStates _GetGameState() {
@@ -105,8 +151,57 @@ public class Context : Node {
 		NotebookCharInfo[id] = data;
 	}
 	
+	public bool _IsGameComplete() {
+		return GameState == GameStates.COMPLETE;
+	}
+	
+	public int _GetNCorrectTabs() {
+		int corrects = 0;
+		for(int i = 0; i < 4; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) corrects++;
+		}
+		return corrects;
+	} 
+	
+	private bool CheckGameOver() {
+		for(int i = 0; i < 4; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
+		}
+		return true;
+	}
+	
 	public void _UpdateNotebookCorrectInfo(int id, InfoValue_t data) {
 		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCorrectInfo[id] = data;
+		
+		//Check if the game is complete
+		if(CheckGameOver()) {
+			GameState = GameStates.COMPLETE;
+		} 
+	}
+	
+	public void _EndBrewGameCutscene() {
+		BrewGameCutscene = false;
+	}
+	
+	public bool _IsBrewGameCutscene() { 
+		return BrewGameCutscene;
+	}
+	
+	public void _UpdateBrewBurn(int burn) {
+		BrewGameScore = (float)burn;
+		BrewGameCutscene = true;
+	}
+	
+	public float _CheckBrewBurn() {
+		return BrewGameScore;
+	}
+	
+	public Vector2 _GetPlayerPreviousPos() {
+		return new Vector2(PlayerPreviousPos.x, PlayerPreviousPos.y);
+	}
+	
+	public void _UpdatePlayerPreviousPos(Vector2 pos) {
+		PlayerPreviousPos = new Vector2(pos.x, pos.y);
 	}
 }

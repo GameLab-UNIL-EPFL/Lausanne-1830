@@ -38,9 +38,9 @@ __meta__ = {
 
 [node name="Button" type="TextureButton" parent="."]
 margin_left = 256.0
-margin_top = 152.0
+margin_top = 160.0
 margin_right = 386.0
-margin_bottom = 222.0
+margin_bottom = 230.0
 focus_mode = 0
 enabled_focus_mode = 0
 texture_normal = SubResource( 1 )

@@ -18,19 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using Godot;
 using System;
 
-public class MusicPlayer : Node2D
-{
-	private AudioStreamPlayer Music;
+public class EndScreen : Node2D {
+	Context context;
+	SceneChanger SC;
 	
-	public override void _Ready()
-	{
-		Music = GetNode<AudioStreamPlayer>("Music");
+	public override void _Ready() {
+		context = GetNode<Context>("/root/Context");
+		SC = GetNode<SceneChanger>("/root/SceneChanger");
 	}
-
-	public void PlayMusic(string fileName, float db = 0) {
-		var audioStream = (AudioStream)GD.Load("res://assets/07_sounds/Music/" + fileName);
-		Music.Stream = audioStream;
-		Music.VolumeDb = db;
-		Music.Play();
+	
+	private void _on_Button_pressed() {
+		//Clear context and restart game
+		context._Clear();
+		SC.GotoScene("res://scenes/Interaction/Menu.tscn");
 	}
 }
+

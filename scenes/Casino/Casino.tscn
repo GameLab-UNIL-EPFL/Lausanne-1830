@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriPerregaux.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/louisHenriBourgeois.png" type="Texture" id=12]
-[ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://assets/01_characters/03_pnjs/adrienPichard.png" type="Texture" id=13]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/02_architecture/04_casino/malette.png" type="Texture" id=15]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=16]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=21]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 116, 96 )
@@ -77,6 +78,9 @@ b = Vector2( 8.75844, 10.808 )
 a = Vector2( 6.367, -349.192 )
 b = Vector2( 7.2533, 11.611 )
 
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 48.7575, 33.1507 )
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
@@ -86,6 +90,15 @@ b = Vector2( 7.2533, 11.611 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 5.36835
+height = 27.9452
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 5.20476
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
@@ -103,9 +116,15 @@ font_data = ExtResource( 17 )
 [node name="Bg" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Casino" type="StaticBody2D" parent="."]
 position = Vector2( 384, 144 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Casino"]
 texture = ExtResource( 2 )
@@ -182,24 +201,37 @@ shape = SubResource( 4 )
 position = Vector2( 504, 352 )
 shape = SubResource( 5 )
 
+[node name="StaticBody2D5" type="StaticBody2D" parent="Coillision"]
+position = Vector2( 228.3, 106.303 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D5"]
+position = Vector2( -14.8091, -3.86674 )
+shape = SubResource( 19 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 320, 288 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 424, 268 )
+position = Vector2( 313, 242 )
+InitDir = 1
 ProbRight = 4
 ProbLeft = 0
 ProbUp = 0
 ProbDown = 0
-CanWander = true
 WanderingCooldown = 1000.0
 WanderingDist = 0.0
 AutoDialogueID = "appPerregaux"
 DemandDialogueID = "demandPerregaux"
 
 [node name="TextBox" parent="YSort/Perregaux" index="0"]
+z_index = 1
 NPCName = " M. Perregaux "
 
 [node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
@@ -209,15 +241,15 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 7 )
 
 [node name="Bourgeois" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 160, 144 )
+position = Vector2( 464, 269 )
 CanWander = true
 WanderingCooldown = 10.0
-WalkSpeed = 45
+WalkSpeed = 40
 DemandDialogueID = "demandBourgeois"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Bourgeois" index="0"]
-z_index = 2
+z_index = 1
 NPCName = " M. Bourgeois "
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
@@ -227,18 +259,19 @@ texture = ExtResource( 12 )
 parameters/playback = SubResource( 8 )
 
 [node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 486, 267 )
+position = Vector2( 287, 242 )
+InitDir = 0
 ProbRight = 0
 ProbLeft = 8
 ProbUp = 0
 ProbDown = 0
-CanWander = true
 WanderingCooldown = 1000.0
 WanderingDist = 0.0
 AutoDialogueID = "appPichard"
 DemandDialogueID = "demandPichard"
 
 [node name="TextBox" parent="YSort/Pichard" index="0"]
+z_index = 1
 NPCName = " M. Pichard "
 
 [node name="FullyAnimated" parent="YSort/Pichard" index="2"]
@@ -248,11 +281,13 @@ texture = ExtResource( 13 )
 parameters/playback = SubResource( 9 )
 
 [node name="Baumann" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 214.96, 90.5097 )
+position = Vector2( 156, 195 )
+InitDir = 2
 DemandDialogueID = "demandBaumann"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Baumann" index="0"]
+z_index = 1
 NPCName = " Mme Baumann "
 
 [node name="FullyAnimated" parent="YSort/Baumann" index="2"]
@@ -262,11 +297,12 @@ texture = ExtResource( 20 )
 parameters/playback = SubResource( 12 )
 
 [node name="Pouly" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 186.676, 89.8026 )
+position = Vector2( 156, 171 )
 DemandDialogueID = "demandPouly"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Pouly" index="0"]
+z_index = 1
 NPCName = " Mme Pouly "
 
 [node name="FullyAnimated" parent="YSort/Pouly" index="2"]
@@ -276,13 +312,42 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 216, 184 )
+position = Vector2( 201, 105.495 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
 
+[node name="Fischer" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 241, 109.495 )
+CanTurn = false
+DemandDialogueID = "demandFischer"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Fischer" index="0"]
+NPCName = " M. Fischer "
+
+[node name="Shadow" parent="YSort/Fischer" index="1"]
+position = Vector2( 4, 6 )
+
+[node name="FullyAnimated" parent="YSort/Fischer" index="2"]
+texture = ExtResource( 26 )
+hframes = 2
+vframes = 1
+
+[node name="CollisionShape2D" parent="YSort/Fischer" index="3"]
+visible = false
+position = Vector2( 0, 0 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D" parent="YSort/Fischer/ListenBox" index="0"]
+position = Vector2( 13, 0 )
+shape = SubResource( 18 )
+
+[node name="AnimationTree" parent="YSort/Fischer" index="6"]
+parameters/playback = SubResource( 16 )
+
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 216, 184 )
+position = Vector2( 201, 105.495 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
@@ -291,9 +356,6 @@ position = Vector2( 0, -19 )
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
 
-[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
-frame = 1
-
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
 
@@ -301,20 +363,20 @@ shape = SubResource( 10 )
 visible = false
 
 [node name="Sprite" type="Sprite" parent="Mallette/Open" index="1"]
-position = Vector2( -14, 48 )
+position = Vector2( 21, 118.505 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 18 )
 
 [node name="TextureRect" type="Sprite" parent="Mallette/Open" index="2"]
-position = Vector2( 166, -50 )
+position = Vector2( 202, 16.0133 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 19 )
 
 [node name="Label" type="Label" parent="Mallette/Open" index="3"]
-margin_left = 31.0
-margin_top = 103.0
-margin_right = 91.0
-margin_bottom = 117.0
+margin_left = 68.0
+margin_top = 169.505
+margin_right = 128.0
+margin_bottom = 183.505
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Henri Perregaux"
@@ -322,6 +384,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="visibility_changed" from="Notebook" to="Mallette" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
@@ -338,4 +401,6 @@ __meta__ = {
 [editable path="YSort/Pouly"]
 [editable path="YSort/Pouly/ListenBox"]
 [editable path="YSort/Briefcase"]
+[editable path="YSort/Fischer"]
+[editable path="YSort/Fischer/ListenBox"]
 [editable path="Mallette"]
