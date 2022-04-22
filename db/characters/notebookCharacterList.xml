@@ -1,18 +1,18 @@
 <db>
-	<solution id="0" prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" num="16" conjoint="Marié.e" enfant="3" metier="Propriétaire"></solution>
+	<solution id="0" prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" num="16" conjoint="Marié.e" enfant="3" metier="Brasseur.se"></solution>
 	<solution id="1" prenom="Henri" nom="Perregaux" adresse="Rue St-François" num="9" conjoint="Marié.e" enfant="2" metier="Architecte"></solution>
 	<solution  id="2" prenom="Isabelle" nom="De Montolieu" adresse="Château de Vennes" num="0" conjoint="Veuf.ve" enfant="1" metier="Écrivain.e"></solution>
 	<solution id="3"  prenom="Jean-Jacques" nom="Mercier" adresse="Rue du Pré" num="31" conjoint="Marié.e" enfant="3" metier="Tanneur.se"></solution>
 	<solution id="4"  prenom="Benedict" nom="Rochat" adresse="Moulins de Pépinet" num="1" conjoint="Marié.e" enfant="9" metier="Meunier.ère"></solution>
-	<solution id="5" prenom="Elisabeth" nom="De Cerjeat" adresse="Montchoisi" conjoint="Célibataire" metier="Propriétaire"></solution>
-	<personnage prenom="Louis" nom="Michaud" adresse="Rue de la Madeleine" conjoint="Célibataire" metier="Journaliste"></personnage>
+	<solution id="5" prenom="Elisabeth" nom="De Cerjeat" adresse="Montchoisi" conjoint="Célibataire" metier="Rentier.ère"></solution>
+	<personnage prenom="Louis" nom="Michaud" adresse="Rue de la Madeleine" conjoint="Célibataire" metier="Jardinier.ère"></personnage>
 	<personnage prenom="Samuel" nom="Kohler" adresse="Rue du Petit Chêne" conjoint="Célibataire" metier="Négociant.e"></personnage>
 	<personnage prenom="Pierre" nom="De Crousaz" adresse="Rue St-Laurent" conjoint="Célibataire" metier="Musicien.ne"></personnage>
 	<personnage prenom="Alexandre" nom="Chapuis" adresse="Rue de la Palud" conjoint="Célibataire" metier="Journalier.e"></personnage>
-	<personnage prenom="Marie" nom="Rebillet" adresse="Rue du Flon" conjoint="Célibataire" metier="Brasseur.se"></personnage>
+	<personnage prenom="Marie" nom="Rebillet" adresse="Rue du Flon" conjoint="Célibataire" metier="Avocat.e"></personnage>
 	<personnage prenom="Caroline" nom="Baumann" adresse="Place du Pont" conjoint="Célibataire" metier="Vigneron.ne"></personnage>
 	<personnage prenom="Jeannette" nom="Pouly" adresse="Rue d'Etraz" conjoint="Célibataire" metier="Garde Police"></personnage>
-	<personnage prenom="Pauline" nom="Falconnier" adresse="Rue de Bourg" conjoint="Divorcé.e" metier="Rentier.ère"></personnage>
+	<personnage prenom="Pauline" nom="Falconnier" adresse="Rue de Bourg" conjoint="Divorcé.e" metier="Marchand.e"></personnage>
 	<personnage prenom="Susanne" nom="Détraz" adresse="Rue de Martheray" conjoint="Divorcé.e" metier="Lingère"></personnage>
 	<personnage prenom="_____" nom="_____" adresse="_____" conjoint="_____" metier="_____"></personnage>
 </db>
