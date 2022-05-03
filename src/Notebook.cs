@@ -1,3 +1,20 @@
+/*
+Historically accurate educational video game based in 1830s Lausanne.
+Copyright (C) 2021  GameLab UNIL-EPFL
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 using Godot;
 using System;
 using System.Diagnostics;
@@ -17,7 +34,7 @@ public class Notebook : Node2D {
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
 	
-	private Map M;
+	private Node2D M;
 	
 	private Context context;
 	private Player p;
@@ -94,7 +111,7 @@ public class Notebook : Node2D {
 		context = GetNode<Context>("/root/Context");
 		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
-		M = GetNode<Map>("Map");
+		M = GetNode<Node2D>("Map");
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
@@ -167,8 +184,9 @@ public class Notebook : Node2D {
 		FillCharInfo();
 		
 		//Request an info evaluation from the NPC
-		correctInfo = context._GetQuestNPC()._CompareSolutions(characterInfo, curTabId);
-		if(correctInfo.IsCorrect() || cutscene) {
+		var tmpcorrect = context._GetQuestNPC()._CompareSolutions(characterInfo, curTabId);
+		if(tmpcorrect.IsCorrect() || cutscene) {
+			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
 		}
 	}
@@ -219,15 +237,16 @@ public class Notebook : Node2D {
 	
 	public void _on_NotebookController_pressed() {
 		if(mapOpen) {
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
+			_on_MapB_pressed();
+			hidden = true;
+			Show();
 		}
-		
 		if(ASP.Playing == false) {
 			ASP.Play();
 		}
 		if(hidden) {
 			Show();
+			ShowAll();
 			AudioServer.SetBusMute(2, true);
 			p.BlockPlayer();
 		} else {
@@ -239,21 +258,60 @@ public class Notebook : Node2D {
 		
 		//Update Context
 		FillCharInfo();
+		_UpdateNotebook(correctInfo);
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
+	private void ShowAll() {
+		var bg = GetNode<Sprite>("Sprite");
+		bg.Show();
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Show();
+		foreach(var inf in info) {
+			inf.Show();
+		}
+		foreach(var inf in infoStatic) {
+			inf.Show();
+		}
+		for(int i = 0; i < 4; ++i) {
+			tabSprites[i].Show();
+			tabButtons[i].Show();
+		}
+	}
+	
+	private void HideAll() {
+		var bg = GetNode<Sprite>("Sprite");
+		bg.Hide();
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Hide();
+		foreach(var inf in info) {
+			inf.Hide();
+		}
+		foreach(var inf in infoStatic) {
+			inf.Hide();
+		}
+		for(int i = 0; i < 4; ++i) {
+			tabSprites[i].Hide();
+			tabButtons[i].Hide();
+		}
+	}
+	
 	public void _on_MapB_pressed() {
-		if(hidden) {
-			_on_NotebookController_pressed();
-			
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
-		} else if(!hidden && !mapOpen) {
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
+		_on_MapButton_pressed();
+		M.Show();
+		var space = GetNode<Sprite>("PressSpace");
+		space.Show();
+		
+		p._Map_B_Pressed();
+		
+		if(mapOpen) {
+			Show();
+			HideAll();
 		} else {
-			_on_NotebookController_pressed();
+			M.Hide();
+			space.Hide();
+			Hide();
 		}
 	}
 	

@@ -1093,7 +1093,7 @@ polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -38
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 269, 287 )
+position = Vector2( 262, 284 )
 
 [node name="Props" type="YSort" parent="YSort"]
 
@@ -1221,8 +1221,6 @@ shape = SubResource( 63 )
 
 [node name="Adrienne" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 234, 144 )
-collision_layer = 3
-collision_mask = 3
 ProbRight = 3
 ProbLeft = 3
 CanWander = true
@@ -1245,6 +1243,7 @@ parameters/playback = SubResource( 64 )
 position = Vector2( 277, 241 )
 DemandDialogueID = "demandAngelique"
 HasAutoDialogue = false
+isTrueschel = true
 
 [node name="TextBox" parent="YSort/NPC/Angelique" index="0"]
 NPCName = " Mme Trüschel "
@@ -1267,8 +1266,6 @@ parameters/playback = SubResource( 53 )
 
 [node name="Jenny" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 137, 153 )
-collision_layer = 3
-collision_mask = 3
 ProbRight = 3
 ProbLeft = 3
 CanWander = true
@@ -1324,7 +1321,7 @@ anims/WalkUp = SubResource( 18 )
 [node name="AnimationTree" parent="YSort/NPC/Conrad" index="6"]
 parameters/playback = SubResource( 55 )
 
-[node name="Tonnelier" parent="YSort/NPC" instance=ExtResource( 8 )]
+[node name="Brewer" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 530, 250 )
 InitDir = 1
 ProbRight = 0
@@ -1334,14 +1331,15 @@ WanderingCooldown = 10.0
 WalkSpeed = 20
 DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
+isBrewer = true
 
-[node name="TextBox" parent="YSort/NPC/Tonnelier" index="0"]
+[node name="TextBox" parent="YSort/NPC/Brewer" index="0"]
 NPCName = " M. Firstein "
 
-[node name="FullyAnimated" parent="YSort/NPC/Tonnelier" index="2"]
+[node name="FullyAnimated" parent="YSort/NPC/Brewer" index="2"]
 texture = ExtResource( 12 )
 
-[node name="AnimationPlayer" parent="YSort/NPC/Tonnelier" index="5"]
+[node name="AnimationPlayer" parent="YSort/NPC/Brewer" index="5"]
 anims/Idle = SubResource( 19 )
 anims/IdleLeft = SubResource( 20 )
 anims/IdleRight = SubResource( 21 )
@@ -1351,7 +1349,7 @@ anims/WalkLeft = SubResource( 24 )
 anims/WalkRight = SubResource( 25 )
 anims/WalkUp = SubResource( 26 )
 
-[node name="AnimationTree" parent="YSort/NPC/Tonnelier" index="6"]
+[node name="AnimationTree" parent="YSort/NPC/Brewer" index="6"]
 parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort/NPC" instance=ExtResource( 8 )]
@@ -1576,8 +1574,8 @@ texture = ExtResource( 29 )
 [editable path="YSort/NPC/Jenny/ListenBox"]
 [editable path="YSort/NPC/Conrad"]
 [editable path="YSort/NPC/Conrad/ListenBox"]
-[editable path="YSort/NPC/Tonnelier"]
-[editable path="YSort/NPC/Tonnelier/ListenBox"]
+[editable path="YSort/NPC/Brewer"]
+[editable path="YSort/NPC/Brewer/ListenBox"]
 [editable path="YSort/NPC/Brasseur"]
 [editable path="YSort/NPC/Brasseur/ListenBox"]
 [editable path="YSort/NPC/Brasseur2"]

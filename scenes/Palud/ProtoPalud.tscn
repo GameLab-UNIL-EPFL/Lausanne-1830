@@ -25,7 +25,7 @@
 [ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=25]
-[ext_resource path="res://assets/06_UI_menus/simpleTextBoxBig.png" type="Texture" id=26]
+[ext_resource path="res://assets/06_UI_menus/affichesPalud.png" type="Texture" id=26]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
@@ -38,7 +38,6 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/profileLingereAnim-Sheet.png" type="Texture" id=36]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundry.png" type="Texture" id=37]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
-[ext_resource path="res://assets/06_UI_menus/calecheNews.png" type="Texture" id=39]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
 [ext_resource path="res://assets/06_UI_menus/leatherSheet.png" type="Texture" id=41]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/leather.png" type="Texture" id=42]
@@ -106,6 +105,9 @@
 [sub_resource type="SegmentShape2D" id=2]
 a = Vector2( -26, 1 )
 b = Vector2( 657, 2 )
+
+[sub_resource type="SegmentShape2D" id=47]
+a = Vector2( 224, 8 )
 
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 7.58701, -140.561 )
@@ -649,13 +651,33 @@ position = Vector2( 1, 383 )
 shape = SubResource( 2 )
 one_way_collision = true
 
+[node name="StaticBody2D5" type="StaticBody2D" parent="Collisions"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D5"]
+position = Vector2( 0, 360 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Collisions"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D4"]
+position = Vector2( 0, 248 )
+shape = SubResource( 47 )
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
 position = Vector2( -17, 349 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D3"]
 position = Vector2( 633, 349 )
@@ -922,20 +944,8 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Mlle De Cerjeat "
 
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 1
-
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
-
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth" index="3"]
-visible = false
-
-[node name="ListenBox" parent="YSort/NPC/Elisabeth" index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/NPC/Elisabeth/ListenBox" index="0"]
-visible = false
 
 [node name="AnimationTree" parent="YSort/NPC/Elisabeth" index="6"]
 parameters/playback = SubResource( 19 )
@@ -953,20 +963,11 @@ NPCName = " Mme. Chardon "
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
 
-[node name="CollisionShape2D" parent="YSort/NPC/Random" index="3"]
-visible = false
-
-[node name="ListenBox" parent="YSort/NPC/Random" index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="YSort/NPC/Random/ListenBox" index="0"]
-visible = false
-
 [node name="AnimationTree" parent="YSort/NPC/Random" index="6"]
 parameters/playback = SubResource( 20 )
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 301, 325 )
+position = Vector2( 296, 344 )
 ProbRight = 5
 ProbLeft = 5
 ProbUp = 1
@@ -1013,7 +1014,7 @@ vframes = 1
 parameters/playback = SubResource( 22 )
 
 [node name="Lingere2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 248, 264 )
+position = Vector2( 271, 258 )
 CanTurn = false
 DemandDialogueID = "demandLingere2"
 HasAutoDialogue = false
@@ -1099,7 +1100,7 @@ visible = false
 position = Vector2( -9, -10 )
 
 [node name="Barrel2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -67, -4 )
+position = Vector2( -91, 8 )
 
 [node name="Laundry" parent="YSort/Fountain" instance=ExtResource( 24 )]
 position = Vector2( -37, -12 )
@@ -1108,7 +1109,7 @@ position = Vector2( -37, -12 )
 texture = ExtResource( 37 )
 
 [node name="Laundry2" parent="YSort/Fountain" instance=ExtResource( 24 )]
-position = Vector2( -75, 20 )
+position = Vector2( -64, 37 )
 
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
@@ -1195,88 +1196,14 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
-frame = 0
-
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
-[node name="NinePatchRect" type="NinePatchRect" parent="YSort/Affiche/Open" index="1"]
-margin_left = 166.0
-margin_top = -130.0
-margin_right = 350.0
-margin_bottom = -20.0
-texture = ExtResource( 26 )
-region_rect = Rect2( 1, 1, 154, 73 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" parent="YSort/Affiche/Open" index="0"]
+margin_left = -545.455
+margin_right = 773.545
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="YSort/Affiche/Open" index="2"]
-margin_left = 20.0
-margin_top = -6.0
-margin_right = 238.0
-margin_bottom = 90.0
-texture = ExtResource( 26 )
-region_rect = Rect2( 1, 1, 154, 73 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect3" type="NinePatchRect" parent="YSort/Affiche/Open" index="3"]
-margin_left = 275.0
-margin_top = 30.0
-margin_right = 483.0
-margin_bottom = 126.0
-texture = ExtResource( 26 )
-region_rect = Rect2( 1, 1, 154, 73 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="YSort/Affiche/Open" index="4"]
-margin_left = 168.0
-margin_top = -120.0
-margin_right = 348.0
-margin_bottom = -75.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 25 )
-text = "TANNERIE MERCIER
-Cherche apprenti"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="YSort/Affiche/Open" index="5"]
-margin_left = 184.0
-margin_top = -72.0
-margin_right = 398.0
-margin_bottom = -18.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 25 )
-text = "Se présenter directement
-aupres de Mr. Mercier
-A la Rue du Pré 31"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label6" type="Label" parent="YSort/Affiche/Open" index="6"]
+[node name="Label6" type="Label" parent="YSort/Affiche/Open" index="1"]
 margin_left = -28.0
 margin_top = 152.0
 margin_right = 23.0
@@ -1291,71 +1218,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="YSort/Affiche/Open" index="7"]
-margin_left = 31.5
-margin_top = 7.0
-margin_right = 278.5
-margin_bottom = 103.0
-rect_scale = Vector2( 0.8, 0.8 )
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 25 )
-text = "A dater du 1er mars,
-M. Dejean fait partir
-une bonne berline pour Paris
- et une pour l'Angleterre,
-a des prix modérés."
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="YSort/Affiche/Open" index="8"]
-margin_left = 275.0
-margin_top = 42.0
-margin_right = 412.0
-margin_bottom = 63.0
-rect_scale = Vector2( 1.5, 1.5 )
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 25 )
-text = "Conseils"
-align = 1
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="YSort/Affiche/Open" index="9"]
-margin_left = 277.0
-margin_top = 61.0
-margin_right = 570.0
-margin_bottom = 160.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
-custom_fonts/font = SubResource( 25 )
-text = "Sur l'Art de guérir sans mercure,
-LES MALADIES SECRETES,
-Un volume, prix 1 fr. 50 c."
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
-position = Vector2( -38, 155 )
-scale = Vector2( 1, 1 )
-
-[node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
+[node name="PressE" parent="YSort/Affiche/Open" index="2" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
 frame = 1
 
-[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="12"]
-modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
-position = Vector2( 56.1055, 21.75 )
-scale = Vector2( 0.411111, 0.411111 )
-texture = ExtResource( 39 )
+[node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="3"]
+position = Vector2( 265, 0 )
+texture = ExtResource( 26 )
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false

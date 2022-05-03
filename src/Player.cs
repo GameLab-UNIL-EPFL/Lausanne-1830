@@ -1,3 +1,20 @@
+/*
+Historically accurate educational video game based in 1830s Lausanne.
+Copyright (C) 2021  GameLab UNIL-EPFL
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -22,12 +39,12 @@ public class Player : KinematicBody2D {
 	public PlayerStates CurrentState = PlayerStates.IDLE;
 	
 	private bool NotebookOpen = false;
+	private bool MapOpen = false;
 	private PlayerStates PrevState = PlayerStates.IDLE;
 	
 	// Cutscene state
 	
 	private bool isCutsceneConv = false;
-	private ColorRect FadeIn;
 	
 	[Export]
 	public int WalkSpeed = 100; //Pixels per second
@@ -37,6 +54,8 @@ public class Player : KinematicBody2D {
 	public float RunTime = 3.0f; // Seconds
 	[Export]
 	public bool isCutscene;
+	
+	public bool isBrewEnd = false;
 	
 	//Empirical acceleration and friction amounts
 	private const int ACC = 950;
@@ -137,28 +156,31 @@ public class Player : KinematicBody2D {
 			}
 		}
 		
-		//Check for map
-		if(Input.IsActionJustPressed("ui_map")) {
-			NB._on_MapB_pressed();
+		if(CurrentState != PlayerStates.BLOCKED) {
+			//Check for map
+			if(Input.IsActionJustPressed("ui_map")) {
+				NB._on_MapB_pressed();
+			}
+			//Check for tab
+			if(Input.IsActionJustPressed("ui_focus_next")) {
+				EmitSignal(nameof(OpenNotebook));
+			}
 		}
 		
-		//Check for tab
-		if(Input.IsActionJustPressed("ui_focus_next")) {
-			EmitSignal(nameof(OpenNotebook));
-		}
-		
-		//Check for tab switches
-		if(Input.IsActionJustPressed("ui_1")) {
-			NB._on_Tab1Button_pressed();
-		}
-		if(Input.IsActionJustPressed("ui_2")) {
-			NB._on_Tab2Button_pressed();
-		}
-		if(Input.IsActionJustPressed("ui_3")) {
-			NB._on_Tab3Button_pressed();
-		}
-		if(Input.IsActionJustPressed("ui_4")) {
-			NB._on_Tab4Button_pressed();
+		if(CurrentState == PlayerStates.NOTEBOOK) {
+			//Check for tab switches
+			if(Input.IsActionJustPressed("ui_1")) {
+				NB._on_Tab1Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_2")) {
+				NB._on_Tab2Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_3")) {
+				NB._on_Tab3Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_4")) {
+				NB._on_Tab4Button_pressed();
+			}
 		}
 	}
 	
@@ -256,12 +278,27 @@ public class Player : KinematicBody2D {
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
-			if(context._GetGameState() == GameStates.PALUD) {
+			if(context._GetLocation() == Locations.PALUD) {
 				Position = new Vector2(Position.x, Position.y - 200);
+			}
+			if(context._GetLocation() == Locations.BRASSERIE && context._IsBrewGameCutscene()) {
+ 				Position = context._GetPlayerPreviousPos();
+				NPC brewer = GetNode<NPC>("../NPC/Brewer");
+				subs.Add(brewer);
+				isBrewEnd = true;
 			}
 		}
 		if(!isCutscene) {
 			EmitSignal(nameof(SlideInNotebookController));
+		}
+		
+		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
+			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
+			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
+			
+			//Show opened door and remove collisions
+			dooropen.Show();
+			doorcolision.Disabled = true;
 		}
 	}
 	
@@ -272,6 +309,12 @@ public class Player : KinematicBody2D {
 		} else {
 			//Handle input
 			HandleInput(delta);
+		}
+		if(isBrewEnd) {
+			NotifySubs();
+			NPC brewer = GetNode<NPC>("../NPC/Brewer");
+			subs.Remove(brewer);
+			isBrewEnd = false;
 		}
 		
 		//Update player state
@@ -377,8 +420,13 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
+		var nearestNPC = NearestSub();
 		
-		if(context._IsGameComplete()) {
+		if(nearestNPC.isBrewer) {
+			context._UpdatePlayerPreviousPos(Position);
+		}
+		
+		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
 			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
 			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
 			
@@ -413,10 +461,23 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	public void _Map_B_Pressed() {
+		if(MapOpen) {
+			MapOpen = false;
+			CurrentState = PrevState;
+		} else {
+			MapOpen = true;
+			if(NotebookOpen) {
+				PrevState = CurrentState;
+			}
+			CurrentState = PlayerStates.NOTEBOOK;
+		}
+	}
+	
 	/**
 	 * @brief Makes sure that the player can't move when the notebook is open 
 	 */
-	private void _on_NotebookController_pressed() {
+	public void _on_NotebookController_pressed() {
 		if(NotebookOpen) {
 			NotebookOpen = false;
 			//Restore the state the previous state before the notebook was opened
@@ -424,7 +485,7 @@ public class Player : KinematicBody2D {
 		} else {
 			NotebookOpen = true;
 			PrevState = CurrentState;
-			CurrentState = PlayerStates.BLOCKED;
+			CurrentState = PlayerStates.NOTEBOOK;
 		}
 	}
 }

@@ -331,6 +331,8 @@ graph_offset = Vector2( -90.6573, 2.58748 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
 [node name="NPC" type="KinematicBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="TextBox" parent="." instance=ExtResource( 4 )]
