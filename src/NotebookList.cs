@@ -24,11 +24,14 @@ public class NotebookList : Node2D {
 	private VBoxContainer vBC;
 	private List<InfoChoiceButton> labels;
 	private Button close;
+	private Button CloseNBList;
 	private Sprite closeSprite;
+	
 	
 	// NumPad nodes
 	private VBoxContainer NumVC;
-	private Label InputNum;
+	//private Label InputNum;
+	private LineEdit InputNum;
 	
 	// Used to not respawn labels in case of opening and reclosing the same attribute
 	private string curAttribute;
@@ -153,10 +156,15 @@ public class NotebookList : Node2D {
 		vBC = GetNode<VBoxContainer>("BgSprite/ScrollContainer/AttributeList");
 		close = GetNode<Button>("Close");
 		closeSprite = GetNode<Sprite>("Close/CloseSprite");
+		CloseNBList = GetNode<Button>("CloseNBList");
+		
+		//Connect background button
+		CloseNBList.Connect("pressed", this, "_on_Close_button_up");
 		
 		// Fetch numpad nodes
 		NumVC = GetNode<VBoxContainer>("BgSprite/NumberVC");
-		InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
+		//InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
+		InputNum = GetNode<LineEdit>("BgSprite/NumberVC/LineEdit");
 		
 		// Spawn a label for each character
 		labels = new List<InfoChoiceButton>();
@@ -256,5 +264,8 @@ public class NotebookList : Node2D {
 			EmitSignal(nameof(UpdateInfo), curAttribute, InputNum.Text);
 			_on_Close_button_up();
 		}
+	}
+	private void _on_LineEdit_text_entered(String new_text) {
+		_on_EnterNumber();
 	}
 }

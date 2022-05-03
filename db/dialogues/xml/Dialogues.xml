@@ -29,6 +29,7 @@
         <text>Il y a tant de choses qui me font envie.</text>
         <text>Mais si j'achète trop, je vais devoir tout porter jusqu'à la maison...</text>
         <text>Et j'habite à la brasserie à la rue Chaucrau.</text>
+        <text>Et j'ai peur que ma mère, Angélique, ne me laisse plus venir.</text>
     </dialogue>
     <dialogue id="demandOldMan" ntargets="1" type="onDemand">
         <text>Ah, on dirait que madame Trüschel a encore envoyé sa fille faire les courses.</text>
@@ -86,8 +87,6 @@
     <dialogue id="demandAngelique" ntargets="1" type="onDemand">
         <text>Je suis désolée mais je suis très occupée.</text>
         <text>J'ai encore du travail à terminer.</text>
-        <text>Ah pardon, je n'ai pas pris le temps de me présenter.</text>
-        <text>Je m'appelle Angélique Trüschel.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>
@@ -121,6 +120,10 @@
     </dialogue>
     <dialogue id="demandPouly" ntargets="1" type="onDemand">
         <text>Oh ! Mais quelle nouvelle réjouissante !</text>
+    </dialogue>
+    <dialogue id="demandFischer" ntargets="1" type="onDemand">
+        <text>Madame Appiani, la première chanteuse du grand théâtre de Lisbonne,</text> 
+        <text>va venir donner un concert ici le 14 février.</text>
     </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Bonjour, bienvenue au moulin Rochat !</text>

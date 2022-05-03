@@ -346,15 +346,15 @@ __meta__ = {
 }
 
 [node name="Tab1" type="Sprite" parent="."]
-position = Vector2( 514.51, 99.4949 )
+position = Vector2( 523, 99.495 )
 texture = ExtResource( 5 )
-vframes = 4
+vframes = 2
 
 [node name="PageNum" type="Label" parent="Tab1"]
 margin_left = -12.0
-margin_top = -7.0
+margin_top = -9.0
 margin_right = 11.0
-margin_bottom = 8.0
+margin_bottom = 6.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "1"
@@ -365,10 +365,10 @@ __meta__ = {
 }
 
 [node name="Tab1Button" type="Button" parent="."]
-margin_left = 501.0
-margin_top = 90.0
-margin_right = 528.0
-margin_bottom = 110.0
+margin_left = 515.0
+margin_top = 88.0
+margin_right = 542.0
+margin_bottom = 108.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -377,16 +377,16 @@ __meta__ = {
 }
 
 [node name="Tab2" type="Sprite" parent="."]
-position = Vector2( 514.483, 131.056 )
+position = Vector2( 523, 131 )
 texture = ExtResource( 5 )
-vframes = 4
+vframes = 2
 frame = 1
 
 [node name="PageNum" type="Label" parent="Tab2"]
 margin_left = -12.0
-margin_top = -7.0
+margin_top = -8.0
 margin_right = 11.0
-margin_bottom = 8.0
+margin_bottom = 7.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "2"
@@ -397,9 +397,9 @@ __meta__ = {
 }
 
 [node name="Tab2Button" type="Button" parent="."]
-margin_left = 502.0
+margin_left = 509.0
 margin_top = 121.0
-margin_right = 529.0
+margin_right = 536.0
 margin_bottom = 141.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -409,17 +409,16 @@ __meta__ = {
 }
 
 [node name="Tab3" type="Sprite" parent="."]
-position = Vector2( 335, 119 )
+position = Vector2( 523, 162 )
 texture = ExtResource( 5 )
-offset = Vector2( 179.51, 44 )
-vframes = 4
+vframes = 2
 frame = 1
 
 [node name="PageNum" type="Label" parent="Tab3"]
-margin_left = 168.0
-margin_top = 37.0
-margin_right = 191.0
-margin_bottom = 52.0
+margin_left = -12.0
+margin_top = -8.0
+margin_right = 11.0
+margin_bottom = 7.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "3"
@@ -430,10 +429,10 @@ __meta__ = {
 }
 
 [node name="Tab3Button" type="Button" parent="."]
-margin_left = 502.0
-margin_top = 153.0
-margin_right = 529.0
-margin_bottom = 173.0
+margin_left = 510.0
+margin_top = 151.0
+margin_right = 537.0
+margin_bottom = 171.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -442,16 +441,16 @@ __meta__ = {
 }
 
 [node name="Tab4" type="Sprite" parent="."]
-position = Vector2( 514.514, 195 )
+position = Vector2( 523, 195 )
 texture = ExtResource( 5 )
-vframes = 4
+vframes = 2
 frame = 1
 
 [node name="PageNum" type="Label" parent="Tab4"]
 margin_left = -11.514
-margin_top = -7.0
+margin_top = -8.0
 margin_right = 11.486
-margin_bottom = 8.0
+margin_bottom = 7.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "4"
@@ -462,9 +461,9 @@ __meta__ = {
 }
 
 [node name="Tab4Button" type="Button" parent="."]
-margin_left = 502.0
+margin_left = 510.0
 margin_top = 185.0
-margin_right = 529.0
+margin_right = 537.0
 margin_bottom = 205.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -477,7 +476,7 @@ __meta__ = {
 visible = false
 position = Vector2( 514.504, 226.808 )
 texture = ExtResource( 5 )
-vframes = 4
+vframes = 2
 frame = 1
 
 [node name="PageNum" type="Label" parent="Tab5"]
@@ -511,7 +510,7 @@ __meta__ = {
 visible = false
 position = Vector2( 514.504, 226.808 )
 texture = ExtResource( 5 )
-vframes = 4
+vframes = 2
 frame = 1
 
 [node name="PageNum" type="Label" parent="Tab6"]
@@ -542,10 +541,22 @@ __meta__ = {
 }
 
 [node name="TabMap" type="Sprite" parent="."]
-position = Vector2( 514.466, 259.188 )
+position = Vector2( 527, 260 )
 texture = ExtResource( 5 )
-vframes = 4
-frame = 2
+vframes = 2
+frame = 1
+
+[node name="MapButton" type="Button" parent="."]
+margin_left = 515.0
+margin_top = 249.0
+margin_right = 541.0
+margin_bottom = 269.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Portrait1" type="Sprite" parent="."]
 position = Vector2( 171.51, 112 )
@@ -565,6 +576,7 @@ visible = false
 position = Vector2( 171.521, 111.934 )
 scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 13 )
+hframes = 2
 
 [node name="Portrait4" type="Sprite" parent="."]
 visible = false
@@ -577,18 +589,6 @@ visible = false
 position = Vector2( 171.51, 112 )
 hframes = 4
 vframes = 3
-
-[node name="MapButton" type="Button" parent="."]
-margin_left = 502.0
-margin_top = 249.0
-margin_right = 528.0
-margin_bottom = 269.0
-focus_mode = 0
-enabled_focus_mode = 0
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
 visible = false

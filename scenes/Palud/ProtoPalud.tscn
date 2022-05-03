@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -104,14 +104,23 @@
 9/z_index = 0
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -8.73701, 1.60986 )
-b = Vector2( 642.831, 1.25632 )
+a = Vector2( -26, 1 )
+b = Vector2( 657, 2 )
 
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 7.58701, -140.561 )
-b = Vector2( 7.2533, 11.611 )
+b = Vector2( 8, 51 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 13, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 16.5, 8 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[sub_resource type="CircleShape2D" id=46]
+radius = 36.4278
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
@@ -636,14 +645,14 @@ position = Vector2( 319, 181 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
-position = Vector2( 1, 360 )
+position = Vector2( 1, 383 )
 shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D2"]
-position = Vector2( -9, 349 )
+position = Vector2( -17, 349 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Collisions"]
@@ -651,6 +660,34 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D3"]
 position = Vector2( 633, 349 )
 shape = SubResource( 3 )
+
+[node name="OpenMapZone" type="Area2D" parent="Collisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/OpenMapZone"]
+polygon = PoolVector2Array( -10, 385, 644, 385, 643, 329, 659, 326, 662, 402, -27, 401, -25, 251, -9, 251 )
+
+[node name="HotelDeVilleDoor" type="StaticBody2D" parent="Collisions"]
+
+[node name="OpenEndDoor" type="ColorRect" parent="Collisions/HotelDeVilleDoor"]
+visible = false
+margin_left = 548.0
+margin_top = 194.0
+margin_right = 574.0
+margin_bottom = 219.0
+color = Color( 0.231373, 0.266667, 0.298039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnterEndZone" type="Area2D" parent="Collisions/HotelDeVilleDoor/OpenEndDoor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/HotelDeVilleDoor/OpenEndDoor/EnterEndZone"]
+position = Vector2( 13, -3.5 )
+shape = SubResource( 45 )
+
+[node name="EndDoor" type="CollisionShape2D" parent="Collisions/HotelDeVilleDoor"]
+position = Vector2( 560.5, 211 )
+shape = SubResource( 44 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -829,11 +866,15 @@ NPCName = " M. Chapuis "
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
 
+[node name="CollisionShape2D" parent="YSort/NPC/Baker/ListenBox" index="0"]
+shape = SubResource( 46 )
+
 [node name="AnimationTree" parent="YSort/NPC/Baker" index="6"]
 parameters/playback = SubResource( 16 )
 
 [node name="Baker3" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 29, 278 )
+position = Vector2( 22.6504, 310.542 )
+InitDir = 0
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandBaker"
 
@@ -844,11 +885,15 @@ NPCName = " M. Guignard "
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
 
+[node name="CollisionShape2D" parent="YSort/NPC/Baker3/ListenBox" index="0"]
+shape = SubResource( 45 )
+
 [node name="AnimationTree" parent="YSort/NPC/Baker3" index="6"]
 parameters/playback = SubResource( 17 )
 
 [node name="Baker2" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 453, 298 )
+InitDir = 0
 AutoDialogueID = "testApproach"
 DemandDialogueID = "demandRandom"
 
@@ -858,6 +903,9 @@ NPCName = " M. Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
+
+[node name="CollisionShape2D" parent="YSort/NPC/Baker2/ListenBox" index="0"]
+shape = SubResource( 44 )
 
 [node name="AnimationTree" parent="YSort/NPC/Baker2" index="6"]
 parameters/playback = SubResource( 18 )
@@ -873,6 +921,9 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 z_index = 1
 NPCName = " Mlle De Cerjeat "
+
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -1095,6 +1146,9 @@ position = Vector2( 11.0124, -17.6866 )
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
 shape = SubResource( 40 )
@@ -1111,7 +1165,6 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1141,6 +1194,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1289,11 +1345,11 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="10" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="PressE" parent="YSort/Affiche/Open" index="11" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="12"]
 modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
@@ -1363,6 +1419,8 @@ volume_db = -10.0
 autoplay = true
 bus = "Sounds"
 
+[connection signal="area_entered" from="Collisions/OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
+[connection signal="area_entered" from="Collisions/HotelDeVilleDoor/OpenEndDoor/EnterEndZone" to="YSort/Player" method="_on_EnterEndZone_area_entered"]
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
 [connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
@@ -1381,6 +1439,8 @@ bus = "Sounds"
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="visibility_changed" from="Notebook" to="YSort/Cuir" method="_on_Notebook_visibility_changed"]
+[connection signal="visibility_changed" from="Notebook" to="YSort/Affiche" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
