@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -24,6 +24,10 @@ font_data = ExtResource( 3 )
 size = 10
 outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 use_mipmaps = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -54,10 +58,10 @@ __meta__ = {
 }
 
 [node name="CloseNotebook" type="Button" parent="ColorRect"]
-margin_left = 143.0
-margin_top = 120.0
-margin_right = 794.0
-margin_bottom = 511.0
+margin_left = 141.99
+margin_top = 113.603
+margin_right = 792.99
+margin_bottom = 504.603
 focus_mode = 0
 action_mode = 0
 enabled_focus_mode = 0
@@ -85,9 +89,6 @@ margin_left = 66.0
 margin_top = 36.0
 margin_right = 106.0
 margin_bottom = 76.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PrenomLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 144.0
@@ -97,9 +98,6 @@ margin_bottom = 68.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Prénom :"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NomLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 144.0
@@ -201,9 +199,6 @@ custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
 margin_left = 240.0
@@ -348,14 +343,33 @@ custom_fonts/font = SubResource( 4 )
 text = "Objectif:
 Trouver les informations manquantes pour completer le registre et aller les faire  valider."
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Tab0" type="Sprite" parent="."]
+position = Vector2( 523, 68 )
+texture = ExtResource( 5 )
+vframes = 2
+
+[node name="PageNum" type="Label" parent="Tab0"]
+margin_left = -4.0
+margin_top = -8.0
+margin_right = 6.0
+margin_bottom = 6.0
+custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "0"
+
+[node name="Tab0Button" type="Button" parent="."]
+margin_left = 513.0
+margin_top = 58.0
+margin_right = 541.0
+margin_bottom = 78.0
+flat = true
 
 [node name="Tab1" type="Sprite" parent="."]
 position = Vector2( 523, 99.495 )
 texture = ExtResource( 5 )
 vframes = 2
+frame = 1
 
 [node name="PageNum" type="Label" parent="Tab1"]
 margin_left = -12.0
@@ -367,9 +381,6 @@ custom_fonts/font = SubResource( 2 )
 text = "1"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tab1Button" type="Button" parent="."]
 margin_left = 515.0
@@ -379,9 +390,6 @@ margin_bottom = 108.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tab2" type="Sprite" parent="."]
 position = Vector2( 523, 131 )
@@ -547,7 +555,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Portrait0" type="Sprite" parent="."]
+position = Vector2( 171.5, 112 )
+texture = ExtResource( 11 )
+hframes = 4
+vframes = 3
+
 [node name="Portrait1" type="Sprite" parent="."]
+visible = false
 position = Vector2( 171.51, 112 )
 texture = ExtResource( 11 )
 hframes = 4

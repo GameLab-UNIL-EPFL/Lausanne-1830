@@ -55,6 +55,8 @@ public class Player : KinematicBody2D {
 	[Export]
 	public bool isCutscene;
 	
+	public int cutsceneCounter = 8;
+	
 	public bool isBrewEnd = false;
 	
 	//Empirical acceleration and friction amounts
@@ -108,9 +110,13 @@ public class Player : KinematicBody2D {
 	
 	// Walk up to the quest giver and interact
 	private void HandleCutscene(float delta) {
-		if(isCutsceneConv) {
+		if(isCutsceneConv && CurrentState != PlayerStates.NOTEBOOK) {
 			if(Input.IsActionJustPressed("ui_interact")) {
-				NearestSub()._Notify(this);
+				if(--cutsceneCounter == 0) {
+					EmitSignal(nameof(OpenNotebook));
+				} else {
+					NearestSub()._Notify(this);
+				}
 			}
 		} else {
 			InputVec.x = 0.0f;

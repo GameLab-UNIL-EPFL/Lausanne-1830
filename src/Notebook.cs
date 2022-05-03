@@ -30,6 +30,9 @@ public class Notebook : Node2D {
 	private List<Button> tabButtons = new List<Button>(); 
 	private List<Sprite> Portraits = new List<Sprite>();
 	
+	private Sprite tabTutoSprite;
+	private Label tabTutoLabel;
+	
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
@@ -115,7 +118,7 @@ public class Notebook : Node2D {
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
-		for(int i = 1; i < Context.N_TABS; ++i) {
+		for(int i = 0; i < Context.N_TABS; ++i) {
 			Portraits.Add(GetNode<Sprite>("Portrait" + i));
 		}
 		//Fetch all info
@@ -125,7 +128,7 @@ public class Notebook : Node2D {
 		}
 		
 		//Gather all tabs
-		for(int i = 1; i <= Context.N_TABS; ++i) {
+		for(int i = 0; i <= Context.N_TABS; ++i) {
 			tabSprites.Add(GetNode<Sprite>("Tab" + i));
 			
 			//Retrieve tab and connect its pressed signal
@@ -388,28 +391,33 @@ public class Notebook : Node2D {
 		Portraits[num].Show();
 	}
 	
-	public void _on_Tab1Button_pressed() {
+	public void _on_Tab0Button_pressed() {
 		PressTabButton(0);
 		_Change_Portrait(0);
 		
 	}
-	public void _on_Tab2Button_pressed() {
+	public void _on_Tab1Button_pressed() {
 		PressTabButton(1);
 		_Change_Portrait(1);
 		
 	}
-	public void _on_Tab3Button_pressed() {
+	public void _on_Tab2Button_pressed() {
 		PressTabButton(2);
 		_Change_Portrait(2);
 		
 	}
-	public void _on_Tab4Button_pressed() {
+	public void _on_Tab3Button_pressed() {
 		PressTabButton(3);
 		_Change_Portrait(3);
+		
 	}
-	public void _on_Tab5Button_pressed() {
+	public void _on_Tab4Button_pressed() {
 		PressTabButton(4);
 		_Change_Portrait(4);
+	}
+	public void _on_Tab5Button_pressed() {
+		PressTabButton(5);
+		_Change_Portrait(5);
 	}
 }
 
