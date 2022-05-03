@@ -300,6 +300,11 @@ public class Player : KinematicBody2D {
 			dooropen.Show();
 			doorcolision.Disabled = true;
 		}
+		
+		var EnterPos = context._GetPlayerPosition();
+		if(EnterPos != Vector2.Zero) {
+			Position = EnterPos;
+		}
 	}
 	
 	// Called on every physics engine tick
@@ -488,4 +493,25 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.NOTEBOOK;
 		}
 	}
+	
+	private void _on_Intro_Exit_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Palud/ProtoPalud.tscn");
+				
+			context._UpdateLocation("Palud/ProtoPalud");
+		}
+	}
+	private void _on_IntroAreaDoor_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Intro/Intro.tscn");
+				
+			context._UpdateLocation("Intro/Intro");
+		}
+	}
 }
+
+
+
+

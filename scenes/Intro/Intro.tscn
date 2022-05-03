@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=13]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=15]
+
+[sub_resource type="RectangleShape2D" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.3539, 17.065 )
@@ -331,6 +333,20 @@ region = Rect2( 1, 1, 23, 11 )
 [node name="Background" type="TextureRect" parent="."]
 texture = ExtResource( 2 )
 
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 249.073, 102.893, 250.271, 237.133, 385.71, 237.613, 384.991, 256.071, 404.887, 255.112, 405.367, 237.373, 415.435, 236.414, 414.236, 100.256, 434.133, 98.8178, 435.331, 290.59, 229.656, 288.432, 230.375, 98.8178, 244.518, 99.7767 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 250.511, 141.727, 307.803, 142.206, 307.323, 115.838, 360.061, 116.796, 358.383, 140.289, 422.387, 139.33, 421.907, 95.7015, 242.361, 94.7427, 242.6, 142.446 )
+
+[node name="Exit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2( 395.05, 260.091 )
+shape = SubResource( 18 )
+
 [node name="Desk" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Desk"]
@@ -341,28 +357,28 @@ texture = ExtResource( 1 )
 position = Vector2( 333.595, 135.256 )
 shape = SubResource( 1 )
 
-[node name="Characters" type="YSort" parent="."]
+[node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="Characters" instance=ExtResource( 3 )]
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 333, 230 )
 isCutscene = true
 
-[node name="QuestNPC" parent="Characters" instance=ExtResource( 4 )]
+[node name="QuestNPC" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 333, 160 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
 
-[node name="TextBox" parent="Characters/QuestNPC" index="0"]
+[node name="TextBox" parent="YSort/QuestNPC" index="0"]
 NPCName = " M. Gély  "
 
-[node name="FullyAnimated" parent="Characters/QuestNPC" index="2"]
+[node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 15 )
 
-[node name="ListenBox" parent="Characters/QuestNPC" index="4"]
+[node name="ListenBox" parent="YSort/QuestNPC" index="4"]
 visible = false
 
-[node name="AnimationPlayer" parent="Characters/QuestNPC" index="5"]
+[node name="AnimationPlayer" parent="YSort/QuestNPC" index="5"]
 anims/IdleDown = SubResource( 8 )
 anims/IdleLeft = SubResource( 9 )
 anims/IdleRight = SubResource( 10 )
@@ -373,7 +389,7 @@ anims/WalkLeft = SubResource( 14 )
 anims/WalkRight = SubResource( 15 )
 anims/WalkUp = SubResource( 16 )
 
-[node name="AnimationTree" parent="Characters/QuestNPC" index="6"]
+[node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
 parameters/playback = SubResource( 17 )
 
 [node name="Notebook" parent="." instance=ExtResource( 8 )]
@@ -421,10 +437,11 @@ texture = SubResource( 7 )
 stream = ExtResource( 9 )
 volume_db = -10.0
 
-[connection signal="CutsceneEnd" from="Characters/Player" to="Notebook" method="_on_CutsceneEnd"]
-[connection signal="OpenNotebook" from="Characters/Player" to="Notebook" method="_on_NotebookController_pressed"]
-[connection signal="SendInfoToQuestNPC" from="Characters/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
-[connection signal="SlideInNotebookController" from="Characters/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
+[connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
+[connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 
-[editable path="Characters/QuestNPC"]
-[editable path="Characters/QuestNPC/ListenBox"]
+[editable path="YSort/QuestNPC"]
+[editable path="YSort/QuestNPC/ListenBox"]

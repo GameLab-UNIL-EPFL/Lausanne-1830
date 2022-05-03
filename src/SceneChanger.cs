@@ -72,10 +72,11 @@ public class SceneChanger : CanvasLayer
 		CurrentScene = nextScene.Instance();
 
 		// Add it to the active scene, as child of root.
-		GetTree().Root.AddChild(CurrentScene);
+		var tree = GetTree();
+		tree.Root.AddChild(CurrentScene);
 
 		// Optionally, to make it compatible with the SceneTree.change_scene() API.
-		GetTree().CurrentScene = CurrentScene;
+		tree.CurrentScene = CurrentScene;
 		
 		if(animate) {
 			_EaseIn();

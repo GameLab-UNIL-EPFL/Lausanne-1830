@@ -22,14 +22,14 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
-public enum Locations {PALUD, BRASSERIE, CASINO};
+public enum Locations {INTRO, PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
 public class Context : Node {
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
 	private GameStates GameState = GameStates.INIT;
-	private Locations CurrentLocation = Locations.PALUD;
+	private Locations CurrentLocation = Locations.INTRO;
 	private NPC QuestNPC = null;
 	public const int N_TABS = 6;
 	
@@ -37,6 +37,9 @@ public class Context : Node {
 	private float BrewGameScore = -1.0f;
 	private bool BrewGameCutscene = false;
 	private Vector2 PlayerPreviousPos = Vector2.Zero;
+	
+	private Vector2 IntroEnterPosition = new Vector2(395, 230);
+	private Vector2 PaludEnterPosition = new Vector2(608, 230);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -76,7 +79,7 @@ public class Context : Node {
 		NotebookCharInfo = new List<CharacterInfo_t>();
 		NotebookCorrectInfo = new List<InfoValue_t>();
 		GameState = GameStates.INIT;
-		CurrentLocation = Locations.PALUD;
+		CurrentLocation = Locations.INTRO;
 		
 		//Reload context
 		_Ready();
@@ -84,9 +87,13 @@ public class Context : Node {
 	
 	public void _UpdateLocation(string id) {
 		switch(id) {
+			case "Intro/Intro":
+				CurrentLocation = Locations.INTRO;
+				_SwitchScenes();
+				break;
 			case "Palud/ProtoPalud":
 				CurrentLocation = Locations.PALUD;
-				_StartGame();
+				_SwitchScenes();
 				break;
 			case "Casino/Casino":
 				CurrentLocation = Locations.CASINO;
@@ -103,12 +110,28 @@ public class Context : Node {
 	
 	public void _FetchQuestNPC() {
 		if(QuestNPC == null) {
-			QuestNPC = GetNode<NPC>("/root/ProtoPalud/YSort/QuestNPC");
+			QuestNPC = GetNode<NPC>("/root/Intro/YSort/QuestNPC");
 		}
 	}
 	
 	public NPC _GetQuestNPC() {
 		return QuestNPC;
+	}
+	
+	public Vector2 _GetPlayerPosition() {
+		if(GameState != GameStates.INIT) {
+			switch(CurrentLocation) {
+				case Locations.INTRO:
+					return IntroEnterPosition;
+					break;
+				case Locations.PALUD:
+					return PaludEnterPosition;
+					break;
+				default:
+					return Vector2.Zero;
+			}
+		}
+		return Vector2.Zero;
 	}
 	
 	public Locations _GetLocation() {
@@ -117,7 +140,6 @@ public class Context : Node {
 	
 	public void _StartGame() {
 		GameState = GameStates.PLAYING;
-		CurrentLocation = Locations.PALUD;
 	}
 	
 	public void _SwitchScenes() {
