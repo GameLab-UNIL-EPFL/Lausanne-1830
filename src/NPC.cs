@@ -459,6 +459,7 @@ public class NPC : KinematicBody2D {
 		//Start the brewing minigame
 		if(isBrewer) {
 			if(context._CheckBrewBurn() == -1.0f) {
+				context._UpdateBrewerPreviousPos(Position);
 				SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
 				SC.GotoScene("res://scenes/Brasserie/BrewGame.tscn");
 			} else {
