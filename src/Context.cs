@@ -36,6 +36,7 @@ public class Context : Node {
 	//Brewery minigame variables
 	private float BrewGameScore = -1.0f;
 	private bool BrewGameCutscene = false;
+	private Vector2 BrewerPreviousPos = Vector2.Zero;
 	private Vector2 PlayerPreviousPos = Vector2.Zero;
 	
 	public override void _Ready() {
@@ -195,6 +196,14 @@ public class Context : Node {
 	
 	public float _CheckBrewBurn() {
 		return BrewGameScore;
+	}
+	
+	public Vector2 _GetBrewerPreviousPos() {
+		return new Vector2(BrewerPreviousPos.x, BrewerPreviousPos.y);
+	}
+	
+	public void _UpdateBrewerPreviousPos(Vector2 pos) {
+		BrewerPreviousPos = new Vector2(pos.x, pos.y);
 	}
 	
 	public Vector2 _GetPlayerPreviousPos() {
