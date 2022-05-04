@@ -284,6 +284,7 @@ public class Player : KinematicBody2D {
 			if(context._GetLocation() == Locations.BRASSERIE && context._IsBrewGameCutscene()) {
  				Position = context._GetPlayerPreviousPos();
 				NPC brewer = GetNode<NPC>("../NPC/Brewer");
+				brewer.Position = context._GetBrewerPreviousPos();
 				subs.Add(brewer);
 				isBrewEnd = true;
 			}
@@ -311,8 +312,8 @@ public class Player : KinematicBody2D {
 			HandleInput(delta);
 		}
 		if(isBrewEnd) {
-			NotifySubs();
 			NPC brewer = GetNode<NPC>("../NPC/Brewer");
+			NotifySubs();
 			subs.Remove(brewer);
 			isBrewEnd = false;
 		}
