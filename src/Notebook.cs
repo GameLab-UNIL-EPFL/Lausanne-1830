@@ -384,7 +384,7 @@ public class Notebook : Node2D {
 	}
 	
 	private void _Change_Portrait(int num) {
-		for(int i = 1; i <= 5; ++i) {
+		for(int i = 0; i < Context.N_TABS; ++i) {
 			var P = GetNode<Sprite>("Portrait" + i);
 			P.Hide();
 		}
