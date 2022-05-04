@@ -35,6 +35,9 @@ public class Player : KinematicBody2D {
 	[Signal]
 	public delegate void OpenNotebook();
 	
+	[Signal]
+	public delegate void OpenTutorial();
+	
 	//Player FSM
 	public PlayerStates CurrentState = PlayerStates.IDLE;
 	
@@ -110,25 +113,33 @@ public class Player : KinematicBody2D {
 	
 	// Walk up to the quest giver and interact
 	private void HandleCutscene(float delta) {
-		if(isCutsceneConv && CurrentState != PlayerStates.NOTEBOOK) {
-			if(Input.IsActionJustPressed("ui_interact")) {
-				if(--cutsceneCounter == 0) {
-					EmitSignal(nameof(OpenNotebook));
-				} else {
-					NearestSub()._Notify(this);
+		if(CurrentState != PlayerStates.NOTEBOOK) {
+			if(isCutsceneConv) {
+				if(Input.IsActionJustPressed("ui_interact")) {
+					if(--cutsceneCounter == 0) {
+						EmitSignal(nameof(OpenNotebook));
+					} else {
+						NearestSub()._Notify(this);
+					}
 				}
+			} else {
+				InputVec.x = 0.0f;
+				InputVec.y = -1.0f;
+				if(subs.Count != 0 && QuestGiverIsSubbed()) {
+					var nearestNPC = NearestSub();
+					if(nearestNPC.isQuestNPC) {
+						InputVec.y = 0.0f;
+						nearestNPC._Notify(this);
+					}
+				} 
 			}
 		} else {
-			InputVec.x = 0.0f;
-			InputVec.y = -1.0f;
-			if(subs.Count != 0 && QuestGiverIsSubbed()) {
-				var nearestNPC = NearestSub();
-				if(nearestNPC.isQuestNPC) {
-					InputVec.y = 0.0f;
-					nearestNPC._Notify(this);
-				}
-			} 
+			if(Input.IsActionJustPressed("ui_focus_next")) {
+				EmitSignal(nameof(OpenNotebook));
+				NearestSub()._Notify(this);
+			}
 		}
+		
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
 	}

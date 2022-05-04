@@ -45,6 +45,9 @@ public class Context : Node {
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "De Cerjeat", "Montchoisi", 8, "Célibataire", 1, "Propriétaire" 
 		));
+		NotebookCorrectInfo.Add(new InfoValue_t(
+			false, true, true, true, true, true, true
+		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "Trüschel", "", 0, "", 0, ""
 		));
