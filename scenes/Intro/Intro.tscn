@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=13]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=15]
+[ext_resource path="res://assets/06_UI_menus/Arrows.png" type="Texture" id=16]
+[ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
 
 [sub_resource type="RectangleShape2D" id=18]
 
@@ -324,6 +327,28 @@ region = Rect2( 1, 1, 27, 11 )
 atlas = ExtResource( 10 )
 region = Rect2( 1, 1, 23, 11 )
 
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 18 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 16 )
+region = Rect2( 2, 2, 11, 11 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 16 )
+region = Rect2( 26, 1, 11, 13 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 2, 11, 11 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 16 )
+region = Rect2( 74, 1, 11, 12 )
+
+[sub_resource type="DynamicFont" id=24]
+font_data = ExtResource( 18 )
+
 [node name="Intro" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 6 )]
@@ -332,6 +357,9 @@ region = Rect2( 1, 1, 23, 11 )
 
 [node name="Background" type="TextureRect" parent="."]
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
@@ -436,6 +464,53 @@ texture = SubResource( 7 )
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -10.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 69.0
+margin_top = 101.0
+margin_right = 199.0
+margin_bottom = 287.0
+custom_fonts/font = SubResource( 19 )
+text = "Pour te déplacer"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Label"]
+position = Vector2( 51, 69 )
+texture = SubResource( 20 )
+
+[node name="Sprite2" type="Sprite" parent="Label"]
+position = Vector2( 63, 69 )
+texture = SubResource( 21 )
+
+[node name="Sprite3" type="Sprite" parent="Label"]
+position = Vector2( 75, 69 )
+texture = SubResource( 22 )
+
+[node name="Sprite4" type="Sprite" parent="Label"]
+position = Vector2( 63, 57 )
+texture = SubResource( 23 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 464.0
+margin_top = 99.0
+margin_right = 597.0
+margin_bottom = 290.0
+custom_fonts/font = SubResource( 24 )
+text = "Pour intéragir"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressE" parent="Label2" instance=ExtResource( 17 )]
+position = Vector2( 66, 67 )
+scale = Vector2( 1.2, 1.2 )
+frame = 1
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
