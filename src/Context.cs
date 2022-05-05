@@ -53,7 +53,7 @@ public class Context : Node {
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "De Cerjeat", "Montchoisi", 8, "Célibataire", 1, "Propriétaire" 
+			"", "De Cerjeat", "Montchoisi", 8, "Célibataire", 0, "Rentier.ère" 
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, true, true, true, true, true
