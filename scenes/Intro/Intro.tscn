@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -18,6 +18,10 @@
 [ext_resource path="res://assets/06_UI_menus/Arrows.png" type="Texture" id=16]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://src/Intro.cs" type="Script" id=19]
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 22, 22 )
 
 [sub_resource type="RectangleShape2D" id=18]
 
@@ -350,6 +354,7 @@ region = Rect2( 74, 1, 11, 12 )
 font_data = ExtResource( 18 )
 
 [node name="Intro" type="Node2D"]
+script = ExtResource( 19 )
 
 [node name="DialogueController" parent="." instance=ExtResource( 6 )]
 
@@ -368,6 +373,45 @@ polygon = PoolVector2Array( 249.073, 102.893, 250.271, 237.133, 385.71, 237.613,
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 250.511, 141.727, 307.803, 142.206, 307.323, 115.838, 360.061, 116.796, 358.383, 140.289, 422.387, 139.33, 421.907, 95.7015, 242.361, 94.7427, 242.6, 142.446 )
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 376, 241 )
+
+[node name="Door" type="ColorRect" parent="Door"]
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0.239216, 0.184314, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" type="ColorRect" parent="Door/Door"]
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 37.0
+margin_bottom = -1.0
+color = Color( 0.835294, 0.792157, 0.670588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wallcountourup2" type="ColorRect" parent="Door/Door/Wall"]
+margin_top = 2.0
+margin_right = 40.0
+margin_bottom = 3.0
+color = Color( 0.317647, 0.290196, 0.203922, 1 )
+
+[node name="Wallcountourdown" type="ColorRect" parent="Door/Door/Wall"]
+margin_top = -1.0
+margin_right = 40.0
+color = Color( 0.317647, 0.290196, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DoorCol" type="CollisionShape2D" parent="Door"]
+position = Vector2( 19, 18 )
+shape = SubResource( 25 )
 
 [node name="Exit" type="Area2D" parent="."]
 

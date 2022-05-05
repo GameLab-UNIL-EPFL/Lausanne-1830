@@ -136,7 +136,7 @@ public class Notebook : Node2D {
 			tab.Connect("pressed", this, "_on_Tab" + i + "Button_pressed");
 			tabButtons.Add(tab);
 		}
-		curTabId = 0;
+		curTabId = context._GetCurrentTab();
 		
 		//Load in current character info and correct info
 		characterInfo = context._GetNotebookCharInfo(curTabId);
@@ -362,6 +362,7 @@ public class Notebook : Node2D {
 		//Update Context
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
+		context._UpdateCurrentTab(buttonid);
 		
 		//Sanity check
 		Debug.Assert(context._GetNotebookCharInfo(curTabId).Equals(characterInfo));
@@ -420,4 +421,3 @@ public class Notebook : Node2D {
 		_Change_Portrait(5);
 	}
 }
-

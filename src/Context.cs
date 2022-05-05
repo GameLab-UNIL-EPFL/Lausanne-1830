@@ -26,11 +26,19 @@ public enum Locations {INTRO, PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
 public class Context : Node {
+	//Notebook data
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
+	private int CurrentTab = 0;
+	
+	//Game state data
 	private GameStates GameState = GameStates.INIT;
 	private Locations CurrentLocation = Locations.INTRO;
+	
+	//Quest NPC ref
 	private NPC QuestNPC = null;
+	
+	//Constants
 	public const int N_TABS = 6;
 	
 	//Brewery minigame variables
@@ -39,6 +47,7 @@ public class Context : Node {
 	private Vector2 BrewerPreviousPos = Vector2.Zero;
 	private Vector2 PlayerPreviousPos = Vector2.Zero;
 	
+	//Player scene positions
 	private Vector2 IntroEnterPosition = new Vector2(395, 230);
 	private Vector2 PaludEnterPosition = new Vector2(608, 230);
 	
@@ -139,6 +148,14 @@ public class Context : Node {
 			}
 		}
 		return Vector2.Zero;
+	}
+	
+	public int _GetCurrentTab() {
+		return CurrentTab;
+	}
+	
+	public void _UpdateCurrentTab(int tabNum) {
+		CurrentTab = tabNum;
 	}
 	
 	public Locations _GetLocation() {

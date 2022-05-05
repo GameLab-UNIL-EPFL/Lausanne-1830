@@ -123,15 +123,17 @@ public class Player : KinematicBody2D {
 					}
 				}
 			} else {
-				InputVec.x = 0.0f;
-				InputVec.y = -1.0f;
-				if(subs.Count != 0 && QuestGiverIsSubbed()) {
-					var nearestNPC = NearestSub();
-					if(nearestNPC.isQuestNPC) {
-						InputVec.y = 0.0f;
-						nearestNPC._Notify(this);
+				HandleMovementInput(delta);
+				
+				//Check for QuestNPC interaction specifically
+				if(Input.IsActionJustPressed("ui_interact")) {
+					if(subs.Count != 0 && QuestGiverIsSubbed()) {
+						var nearestNPC = NearestSub();
+						if(nearestNPC.isQuestNPC) {
+							nearestNPC._Notify(this);
+						}
 					}
-				} 
+				}
 			}
 		} else {
 			if(Input.IsActionJustPressed("ui_focus_next")) {
@@ -144,11 +146,7 @@ public class Player : KinematicBody2D {
 		HandleMovement(delta);
 	}
 	
-	/**
-	 * @brief Checks for player input and updates its velocity accordingly
-	 * @param delta, the time elapsed since the last update
-	 */
-	private void HandleInput(float delta) {
+	private void HandleMovementInput(float delta) {
 		if(CurrentState != PlayerStates.BLOCKED && CurrentState != PlayerStates.NOTEBOOK) {
 			//Handle movement
 			InputVec.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
@@ -162,8 +160,9 @@ public class Player : KinematicBody2D {
 			InputVec = Vector2.Zero;
 			Velocity = Vector2.Zero;
 		}
-		
-		//Check for interaction
+	}
+	
+	private void HandleInteractionInput(float delta) {
 		if(((subs.Count != 0) || (itemsInRange.Count != 0)) &&
 			(CurrentState != PlayerStates.NOTEBOOK)) {
 				
@@ -172,6 +171,17 @@ public class Player : KinematicBody2D {
 				NotifyItems();
 			}
 		}
+	}
+	
+	/**
+	 * @brief Checks for player input and updates its velocity accordingly
+	 * @param delta, the time elapsed since the last update
+	 */
+	private void HandleInput(float delta) {
+		HandleMovementInput(delta);
+		
+		//Check for interaction
+		HandleInteractionInput(delta);
 		
 		if(CurrentState != PlayerStates.BLOCKED) {
 			//Check for map
@@ -464,6 +474,13 @@ public class Player : KinematicBody2D {
 			EmitSignal(nameof(CutsceneEnd));
 			EmitSignal(nameof(SlideInNotebookController));
 			context._StartGame();
+			
+			//Find and open the door
+			StaticBody2D Door = GetNode<StaticBody2D>("../../Door");
+			CollisionShape2D DoorCol = GetNode<CollisionShape2D>("../../Door/DoorCol");
+			Door.Hide();
+			DoorCol.Disabled = true;
+			
 		}
 	}
 	
@@ -514,10 +531,11 @@ public class Player : KinematicBody2D {
 	
 	private void _on_Intro_Exit_area_entered(Area2D area) {
 		if(area.Owner is Player) {
-			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			/*SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
 			SC.GotoScene("res://scenes/Palud/ProtoPalud.tscn");
 				
-			context._UpdateLocation("Palud/ProtoPalud");
+			context._UpdateLocation("Palud/ProtoPalud");*/
+			NB._on_MapB_pressed();
 		}
 	}
 	private void _on_IntroAreaDoor_area_entered(Area2D area) {
@@ -529,7 +547,3 @@ public class Player : KinematicBody2D {
 		}
 	}
 }
-
-
-
-
