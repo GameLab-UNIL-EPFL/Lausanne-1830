@@ -128,6 +128,7 @@ public class Player : KinematicBody2D {
 				//Check for QuestNPC interaction specifically
 				if(Input.IsActionJustPressed("ui_interact")) {
 					if(subs.Count != 0 && QuestGiverIsSubbed()) {
+						InputVec = Vector2.Zero;
 						var nearestNPC = NearestSub();
 						if(nearestNPC.isQuestNPC) {
 							nearestNPC._Notify(this);
@@ -137,6 +138,7 @@ public class Player : KinematicBody2D {
 			}
 		} else {
 			if(Input.IsActionJustPressed("ui_focus_next")) {
+				InputVec = Vector2.Zero;
 				EmitSignal(nameof(OpenNotebook));
 				NearestSub()._Notify(this);
 			}

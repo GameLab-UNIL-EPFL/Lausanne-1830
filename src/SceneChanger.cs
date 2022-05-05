@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using Godot;
 using System;
 
-public class SceneChanger : CanvasLayer
-{
+public class SceneChanger : CanvasLayer {
 	private AnimationPlayer AnimPlayer;
 	
 	public Node CurrentScene { get; set; }
