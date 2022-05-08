@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Inside.mp3-cdcea3b70c561d477d5a7a42541befe2.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Music/Inside.mp3"
+dest_files=[ "res://.import/Inside.mp3-cdcea3b70c561d477d5a7a42541befe2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=16]
+[ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=17]
+[ext_resource path="res://assets/07_sounds/Sounds/Stamp.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/Sounds/Bravo.wav" type="AudioStream" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -43,6 +46,138 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 14 )
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect3:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect2:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Quest:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Stamp"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect3:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Quest:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0, 1.0 ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Stamp2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+} ],
+"times": PoolRealArray( 1.5 )
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Bravo")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 19 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
 [node name="Notebook" type="Node2D"]
 z_index = 2
 script = ExtResource( 10 )
@@ -68,6 +203,7 @@ action_mode = 0
 enabled_focus_mode = 0
 flat = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -344,6 +480,10 @@ custom_fonts/font = SubResource( 4 )
 text = "Objectif:
 Trouver les informations manquantes pour completer le registre et aller les faire  valider."
 autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab0" type="Sprite" parent="."]
 position = Vector2( 523, 68 )
@@ -628,9 +768,9 @@ volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 39.0
-margin_top = 331.0
+margin_top = 332.0
 margin_right = 88.0
-margin_bottom = 347.0
+margin_bottom = 348.0
 custom_fonts/font = SubResource( 5 )
 text = "FERMER"
 __meta__ = {
@@ -638,10 +778,46 @@ __meta__ = {
 }
 
 [node name="PressTab" parent="." instance=ExtResource( 15 )]
+position = Vector2( 21, 342 )
 
 [node name="PressSpace" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 20, 340 )
+
+[node name="Stamp" type="Sprite" parent="."]
+visible = false
+position = Vector2( 465, 268 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 17 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/Stamp = SubResource( 8 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 640.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 640.0
+margin_top = 360.0
+margin_right = 1280.0
+margin_bottom = 360.0
+rect_rotation = 180.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stamp2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+bus = "Sounds"
+
+[node name="Bravo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
 
 [connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]

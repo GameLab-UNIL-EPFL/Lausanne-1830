@@ -36,6 +36,8 @@ public class Notebook : Node2D {
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
+	private Sprite Stamp;
+	private AnimationPlayer AP;
 	
 	private Node2D M;
 	
@@ -115,6 +117,8 @@ public class Notebook : Node2D {
 		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		M = GetNode<Node2D>("Map");
+		AP = GetNode<AnimationPlayer>("AnimationPlayer");
+		Stamp = GetNode<Sprite>("Stamp");
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
@@ -191,6 +195,9 @@ public class Notebook : Node2D {
 		if(tmpcorrect.IsCorrect() || cutscene) {
 			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
+			if(!Stamp.Visible) {
+				AP.Play("Stamp");
+			}
 		}
 	}
 	
