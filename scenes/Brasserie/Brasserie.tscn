@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=76]
 
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
@@ -1094,6 +1096,10 @@ polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -38
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 262, 284 )
+FootstepPitch = 0.9
+
+[node name="AnimationTree" parent="YSort/Player" index="4"]
+parameters/playback = SubResource( 76 )
 
 [node name="Props" type="YSort" parent="YSort"]
 
@@ -1475,7 +1481,7 @@ visible = false
 text = "Lire"
 
 [node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 0
+frame = 1
 
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
@@ -1493,6 +1499,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1520,7 +1527,7 @@ visible = false
 text = "Regarder"
 
 [node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 0
+frame = 1
 
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
@@ -1532,6 +1539,7 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
+frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
@@ -1555,6 +1563,8 @@ texture = ExtResource( 29 )
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
+[editable path="YSort/Player"]
+[editable path="YSort/Player/TalkBox"]
 [editable path="YSort/Props/Bag"]
 [editable path="YSort/Props/Bag2"]
 [editable path="YSort/Props/Barrel"]
