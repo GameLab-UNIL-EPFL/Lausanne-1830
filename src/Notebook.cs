@@ -196,6 +196,7 @@ public class Notebook : Node2D {
 			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
 			if(!Stamp.Visible) {
+				AudioServer.SetBusMute(1, true);
 				AP.Play("Stamp");
 			}
 		}
@@ -389,6 +390,12 @@ public class Notebook : Node2D {
 		//Update the characterInfo
 		FillNotebook(characterInfo);
 		_UpdateNotebook(correctInfo);
+	}
+	
+	private void _on_AnimationPlayer_animation_finished(String anim_name) {
+		if(anim_name == "Stamp") {
+			AudioServer.SetBusMute(1, false);
+		}
 	}
 	
 	private void _Change_Portrait(int num) {

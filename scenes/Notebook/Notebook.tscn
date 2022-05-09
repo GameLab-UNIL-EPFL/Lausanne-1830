@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=17]
 [ext_resource path="res://assets/07_sounds/Sounds/Stamp.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/Sounds/Bravo.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/07_sounds/Sounds/Pen.mp3" type="AudioStream" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -94,12 +95,48 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
+"values": [ 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bravo:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
 "values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Quest:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847." ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Quest:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=8]
 resource_name = "Stamp"
-length = 3.0
+length = 4.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Stamp:visible")
@@ -108,7 +145,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.55 ),
+"times": PoolRealArray( 0, 3.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -120,7 +157,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 2.2, 3 ),
+"times": PoolRealArray( 0, 0.4, 3.35, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
@@ -132,7 +169,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 2.2, 3 ),
+"times": PoolRealArray( 0, 0.4, 3.35, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
@@ -144,10 +181,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.1, 1.6, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 1.25, 1.45, 2.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.0, 1.0, 0.0, 1.0 ]
+"values": [ 1.0, 1.0, 0.0, 0.0, 1.0 ]
 }
 tracks/4/type = "audio"
 tracks/4/path = NodePath("Stamp2")
@@ -157,11 +194,15 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "clips": [ {
+"end_offset": 2.45602,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+}, {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource( 18 )
 } ],
-"times": PoolRealArray( 1.5 )
+"times": PoolRealArray( 1.45, 2.85 )
 }
 tracks/5/type = "audio"
 tracks/5/path = NodePath("Bravo")
@@ -175,7 +216,44 @@ tracks/5/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 19 )
 } ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0.1 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bravo:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Quest:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Objectif:
+Trouver les informations manquantes pour completer le registre et aller les faire  valider.", "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847." ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Quest:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.25, 1.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="Notebook" type="Node2D"]
@@ -471,16 +549,14 @@ __meta__ = {
 }
 
 [node name="Quest" type="Label" parent="."]
-margin_left = 341.0
-margin_top = 97.0
-margin_right = 486.0
-margin_bottom = 150.0
+margin_left = 344.0
+margin_top = 80.0
+margin_right = 489.0
+margin_bottom = 231.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "Objectif:
-Trouver les informations manquantes pour completer le registre et aller les faire  valider."
+text = "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847."
 autowrap = true
-percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -814,10 +890,11 @@ __meta__ = {
 
 [node name="Stamp2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-bus = "Sounds"
+bus = "Effect"
 
 [node name="Bravo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+bus = "Effect"
 
 [connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
@@ -836,3 +913,4 @@ stream = ExtResource( 19 )
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
 [connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
 [connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
