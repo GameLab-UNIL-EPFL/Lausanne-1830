@@ -30,7 +30,7 @@ public class MapIcon : TextureButton {
 	private Sprite RR;
 	private Context context;
 	
-	private Vector2 INTRO_POS = new Vector2(254, 111);
+	private Vector2 INTRO_POS = new Vector2(260, 120);
 	private Vector2 PALUD_POS = new Vector2(208, 152);
 	private Vector2 BRASSERIE_POS = new Vector2(138, 108);
 	private Vector2 CASINO_POS = new Vector2(278, 234);

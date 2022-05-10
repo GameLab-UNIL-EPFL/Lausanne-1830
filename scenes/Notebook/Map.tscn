@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Notebook/MapIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/05_map/map.png" type="Texture" id=2]
@@ -7,16 +7,12 @@
 [ext_resource path="res://assets/05_map/paludIcon.png" type="Texture" id=5]
 [ext_resource path="res://assets/05_map/casinoIcon.png" type="Texture" id=6]
 [ext_resource path="res://assets/05_map/point.png" type="Texture" id=7]
-[ext_resource path="res://assets/01_characters/01_player/perso-Sheet.png" type="Texture" id=8]
+[ext_resource path="res://assets/05_map/pointHere.png" type="Texture" id=8]
 [ext_resource path="res://assets/05_map/adminIcon-hover.png" type="Texture" id=9]
 [ext_resource path="res://assets/05_map/paludIcon-hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/05_map/adminIcon.png" type="Texture" id=11]
 [ext_resource path="res://assets/05_map/casinoIcon-hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/05_map/breweryIcon-Hover.png" type="Texture" id=13]
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 8 )
-region = Rect2( 7, 5, 16, 16 )
 
 [node name="Map" type="Node2D"]
 
@@ -61,11 +57,20 @@ texture_normal = ExtResource( 7 )
 id = "Brasserie/Brasserie"
 text = ""
 
+[node name="admin_point" parent="." instance=ExtResource( 1 )]
+margin_left = 251.0
+margin_top = 111.0
+margin_right = 267.0
+margin_bottom = 127.0
+texture_normal = ExtResource( 7 )
+id = "Brasserie/Brasserie"
+text = ""
+
 [node name="brasserie_button" parent="." instance=ExtResource( 1 )]
 margin_left = 120.0
 margin_top = 79.0
 margin_right = 153.0
-margin_bottom = 111.0
+margin_bottom = 106.0
 texture_hover = ExtResource( 13 )
 id = "Brasserie/Brasserie"
 
@@ -100,14 +105,14 @@ id = "Casino/Casino"
 text = "Casino"
 
 [node name="YouAreHere" type="Sprite" parent="."]
-position = Vector2( 208, 152 )
-texture = SubResource( 7 )
+position = Vector2( 260, 120 )
+texture = ExtResource( 8 )
 
 [node name="office_button" parent="." instance=ExtResource( 1 )]
-margin_left = 224.0
-margin_top = 84.0
-margin_right = 291.0
-margin_bottom = 105.0
+margin_left = 269.0
+margin_top = 107.0
+margin_right = 336.0
+margin_bottom = 128.0
 texture_normal = ExtResource( 11 )
 texture_hover = ExtResource( 9 )
 id = "Intro/Intro"
