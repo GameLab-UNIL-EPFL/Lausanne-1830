@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -12,9 +12,6 @@
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/sleepingChild-sheet.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/francoisRochat.png" type="Texture" id=12]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 27.5, 2 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
@@ -346,9 +343,8 @@ position = Vector2( -336, -184 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Wall"]
 polygon = PoolVector2Array( 184, 256, 318.44, 256.539, 319.324, 212.698, 322.86, 212.698, 322.86, 256.185, 322.329, 271.565, 168, 272, 168, 88, 504, 88, 504, 272, 356.882, 272.569, 356.409, 235.717, 356.252, 210.203, 359.244, 210.361, 359.244, 235.717, 360.189, 241.386, 360.031, 256.663, 423.651, 255.847, 423.651, 242.146, 424.124, 236.695, 424.596, 173.384, 427.431, 173.226, 427.746, 204.786, 428.219, 255.971, 488, 256, 487.75, 209.682, 488.065, 205.272, 488, 136, 428.481, 136.768, 427.886, 152.971, 424.021, 152.823, 423.426, 136.471, 359.831, 136.43, 359.72, 192.111, 357.604, 191.888, 357.716, 187.211, 356.156, 136.319, 322.748, 136, 320, 136, 322.08, 186.432, 320, 192, 320, 184, 320, 136, 184, 136 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Wall"]
-position = Vector2( 341.5, 275 )
-shape = SubResource( 6 )
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite/Wall"]
+polygon = PoolVector2Array( 330, 263, 330, 278, 349, 278, 349, 263, 357, 263, 357, 285, 325, 285, 325, 263 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -425,7 +421,7 @@ parameters/playback = SubResource( 18 )
 position = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2( 325, 279 )
+position = Vector2( 324, 294 )
 shape = SubResource( 1 )
 
 [node name="Notebook" parent="." instance=ExtResource( 7 )]
