@@ -1434,18 +1434,18 @@ texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
 position = Vector2( 3, 20 )
-polygon = PoolVector2Array( -75, 44, 5, 44, 5, 20, 45, 20, 45, 44, 61, 44, 61, -28, -75, -28 )
+polygon = PoolVector2Array( -75, 44, 5, 44, 5, 20, 45, 20, 45, 44, 61, 44, 61, -28, -74, -31, -74, -20 )
 
 [node name="House3" type="StaticBody2D" parent="YSort"]
 position = Vector2( 232, 136 )
 
 [node name="Sprite" type="Sprite" parent="YSort/House3"]
-position = Vector2( 0, -42 )
+position = Vector2( 18, -70 )
 texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House3"]
 position = Vector2( 3, 18 )
-polygon = PoolVector2Array( -43, 44, -33.5, 44, -35, 4, 29, 4, 29, 44, 69, 44, 69, -20, 29, -18, 29, -2, -35, -2, -33.9381, -20, -43, -20 )
+polygon = PoolVector2Array( -43, 44, 54, 43, 52, -22, -41, -24 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 404, 207 )
@@ -1570,7 +1570,7 @@ anims/WalkUp = SubResource( 39 )
 parameters/playback = SubResource( 40 )
 
 [node name="Enfant5" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 240, 128 )
+position = Vector2( 40, 120 )
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
 
@@ -1626,10 +1626,11 @@ texture = ExtResource( 21 )
 centered = false
 offset = Vector2( -23, -30 )
 
-[node name="Sprite" type="Sprite" parent="YSort"]
-position = Vector2( 288, 258 )
+[node name="BridgeUpperWall" type="Sprite" parent="YSort"]
+position = Vector2( 288, 250 )
 scale = Vector2( 1.333, 1.333 )
 texture = ExtResource( 22 )
+offset = Vector2( 0, 6 )
 
 [node name="Door" type="Area2D" parent="."]
 
