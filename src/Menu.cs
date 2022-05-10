@@ -32,7 +32,7 @@ public class Menu : Control
 
 	private void _on_Button_pressed() {
 		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
-		SC.GotoScene("res://scenes/Palud/ProtoPalud.tscn");
+		SC.GotoScene("res://scenes/Intro/Intro.tscn");
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
 		MP.PlayMusic("Schubert_Sonata13.mp3", -5);
 	}

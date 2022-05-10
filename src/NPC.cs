@@ -150,7 +150,7 @@ public class NPC : KinematicBody2D {
 			return FormatText("Alors...¢"+
 			"Il me semble que toutes les informations sur cette personne sont correctes.¢"+
 			"Il faut maintenant passer aux prochaines.¢"+
-			"Plus que " + context._GetNCorrectTabs() + " pages à compléter!");
+			"Plus que " + context._GetNotCorrectTabs() + " pages à compléter!");
 		}
 		
 		string d = "Voyons voir ce registre.¢" +

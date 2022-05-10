@@ -247,12 +247,16 @@ public class NotebookList : Node2D {
 			res.Add(e);
 		}
 		
-		// Cache result for future use
+		// Sort results in such a way that _____ always appears first
 		string[] result = res.ToArray();
-		string[] finalRes = result.OrderBy(x => x).ToArray();
-		attributesCache.Add(attributeName, finalRes);
+		var target = "_____";
+		var results = Array.FindAll(result, s => s.Equals(target));
+		var tmp = new string[result.Length];
+		results.CopyTo(tmp, 0);
+		result.Where(val => val != "_____").OrderBy(x => x).ToArray().CopyTo(tmp, results.Length);
+		attributesCache.Add(attributeName, tmp);
 		
-		return finalRes;
+		return tmp;
 	}
 	
 	private void _on_Close_button_down() {

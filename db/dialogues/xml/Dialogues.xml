@@ -8,6 +8,9 @@
         <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
         <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
         <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
+        <text>Mais avant de commencer, essayez de remplir la première page.</text>
+        <text>Il manque le prénom de Mademoiselle De Cerjeat.</text>
+        <text>Elle s'appelle Elisabeth.</text>
     </dialogue>
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
