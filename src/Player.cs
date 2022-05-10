@@ -60,7 +60,7 @@ public class Player : KinematicBody2D {
 	[Export]
 	public float CloseNotebookTimer = 2.0f;
 	
-	private int cutsceneCounter = 8;
+	private int cutsceneCounter = 11;
 	
 	public bool isBrewEnd = false;
 	
