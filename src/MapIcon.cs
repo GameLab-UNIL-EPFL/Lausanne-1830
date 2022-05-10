@@ -62,6 +62,10 @@ public class MapIcon : TextureButton {
 			case Locations.BRASSERIE:
 				RR.Position = BRASSERIE_POS;
 				break;
+			case Locations.MOULIN:
+			case Locations.FLON:
+				RR.Position = MOULIN_POS;
+				break;
 			default:
 				break;
 		}
