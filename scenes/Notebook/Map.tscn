@@ -90,10 +90,10 @@ id = "Palud/ProtoPalud"
 text = "Palud"
 
 [node name="casino_button" parent="." instance=ExtResource( 1 )]
-margin_left = 262.0
-margin_top = 202.0
-margin_right = 295.0
-margin_bottom = 235.0
+margin_left = 298.0
+margin_top = 216.0
+margin_right = 331.0
+margin_bottom = 249.0
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 12 )
 id = "Casino/Casino"
