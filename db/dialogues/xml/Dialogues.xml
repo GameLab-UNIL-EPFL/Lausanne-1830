@@ -8,6 +8,9 @@
         <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
         <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
         <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
+        <text>Mais avant de commencer, essayez de remplir la première page.</text>
+        <text>Il manque le prénom de Mademoiselle De Cerjeat.</text>
+        <text>Elle s'appelle Elisabeth.</text>
     </dialogue>
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
@@ -29,6 +32,7 @@
         <text>Il y a tant de choses qui me font envie.</text>
         <text>Mais si j'achète trop, je vais devoir tout porter jusqu'à la maison...</text>
         <text>Et j'habite à la brasserie à la rue Chaucrau.</text>
+        <text>Et j'ai peur que ma mère, Angélique, ne me laisse plus venir.</text>
     </dialogue>
     <dialogue id="demandOldMan" ntargets="1" type="onDemand">
         <text>Ah, on dirait que madame Trüschel a encore envoyé sa fille faire les courses.</text>
@@ -69,6 +73,7 @@
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
         <text>Si vous avez des questions, allez demander à mon épouse.</text>
+        <text>Elle s'occupe du côté administratif et moi de la brasserie.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
         <text>Hé Wolff ! Tu sais ce qui est arrivé à Ralf ?</text>
@@ -78,16 +83,28 @@
         <text>Nein, keine ahnung...</text>
         <text>La dernière fois que je l'ai vu c'était la semaine passée,</text>
         <text>mais mes souvenirs sont un peu flou...</text>
-        <text>On a encore trop bu ce soir-là. </text>
+        <text>On a encore trop bu ce soir-là.</text>
     </dialogue>
     <dialogue id="demandTonneliers" ntargets="1" type="onDemand">
         <text>Le travail de brasseur peut être très fatiguant.</text>
     </dialogue>
     <dialogue id="demandAngelique" ntargets="1" type="onDemand">
         <text>Je suis désolée mais je suis très occupée.</text>
-        <text>J'ai encore du travail à terminer.</text>
-        <text>Ah pardon, je n'ai pas pris le temps de me présenter.</text>
+        <text>J'ai encore du travail à terminer,</text>
+        <text>mais vous pouvez aller regarder dans mes documents à l'étage.</text>
+        <text>Peut-être que vous trouverez ce que vous chercher.</text>
+    </dialogue>
+    <dialogue id="demandAngeliqueBad" ntargets="1" type="onDemand">
+        <text>Je n'ai pas envis de vous parler...</text>
+        <text>Vous avez raté ma bière et brûlé ma cuve.</text>
+        <text>Ça va me coûter cher en temps et en argent.</text>
+        <text>Allez embêter quelqu'un d'autre.</text>
+    </dialogue>
+    <dialogue id="demandAngeliqueGood" ntargets="1" type="onDemand">
+        <text>Merci beaucoup pour votre aide !</text>
+        <text>Ah mais je n'ai pas pris le temps de me présenter !</text>
         <text>Je m'appelle Angélique Trüschel.</text>
+        <text>Avec mon mari, Conrad, nous sommes propriétaire de la brasserie.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>
@@ -117,10 +134,14 @@
         <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même.</text>
     </dialogue>
     <dialogue id="demandBaumann" ntargets="1" type="onDemand">
-        <text>Mme Perregaux est de nouveau enceinte. Elle attend son deuxième enfant.</text>
+        <text>Mme Perregaux est de nouveau enceinte. Elle attend son troisième enfant.</text>
     </dialogue>
     <dialogue id="demandPouly" ntargets="1" type="onDemand">
         <text>Oh ! Mais quelle nouvelle réjouissante !</text>
+    </dialogue>
+    <dialogue id="demandFischer" ntargets="1" type="onDemand">
+        <text>Madame Appiani, la première chanteuse du grand théâtre de Lisbonne,</text> 
+        <text>va venir donner un concert ici le 14 février.</text>
     </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Bonjour, bienvenue au moulin Rochat !</text>

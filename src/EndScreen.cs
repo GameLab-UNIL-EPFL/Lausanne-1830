@@ -18,26 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using Godot;
 using System;
 
-public class Menu : Control
-{
+public class EndScreen : Node2D {
 	Context context;
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+	SceneChanger SC;
+	
+	public override void _Ready() {
 		context = GetNode<Context>("/root/Context");
-		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13_2.mp3");
+		SC = GetNode<SceneChanger>("/root/SceneChanger");
 	}
-
+	
 	private void _on_Button_pressed() {
-		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
-		SC.GotoScene("res://scenes/Intro/Intro.tscn");
-		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13.mp3", -5);
+		//Clear context and restart game
+		context._Clear();
+		SC.GotoScene("res://scenes/Interaction/Menu.tscn");
 	}
 }
-
-
-
 

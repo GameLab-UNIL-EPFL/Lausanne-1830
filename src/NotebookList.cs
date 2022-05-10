@@ -1,3 +1,20 @@
+/*
+Historically accurate educational video game based in 1830s Lausanne.
+Copyright (C) 2021  GameLab UNIL-EPFL
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 using Godot;
 using System;
 using System.Xml;
@@ -24,11 +41,14 @@ public class NotebookList : Node2D {
 	private VBoxContainer vBC;
 	private List<InfoChoiceButton> labels;
 	private Button close;
+	private Button CloseNBList;
 	private Sprite closeSprite;
+	
 	
 	// NumPad nodes
 	private VBoxContainer NumVC;
-	private Label InputNum;
+	//private Label InputNum;
+	private LineEdit InputNum;
 	
 	// Used to not respawn labels in case of opening and reclosing the same attribute
 	private string curAttribute;
@@ -153,10 +173,15 @@ public class NotebookList : Node2D {
 		vBC = GetNode<VBoxContainer>("BgSprite/ScrollContainer/AttributeList");
 		close = GetNode<Button>("Close");
 		closeSprite = GetNode<Sprite>("Close/CloseSprite");
+		CloseNBList = GetNode<Button>("CloseNBList");
+		
+		//Connect background button
+		CloseNBList.Connect("pressed", this, "_on_Close_button_up");
 		
 		// Fetch numpad nodes
 		NumVC = GetNode<VBoxContainer>("BgSprite/NumberVC");
-		InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
+		//InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
+		InputNum = GetNode<LineEdit>("BgSprite/NumberVC/LineEdit");
 		
 		// Spawn a label for each character
 		labels = new List<InfoChoiceButton>();
@@ -222,12 +247,16 @@ public class NotebookList : Node2D {
 			res.Add(e);
 		}
 		
-		// Cache result for future use
+		// Sort results in such a way that _____ always appears first
 		string[] result = res.ToArray();
-		string[] finalRes = result.OrderBy(x => x).ToArray();
-		attributesCache.Add(attributeName, finalRes);
+		var target = "_____";
+		var results = Array.FindAll(result, s => s.Equals(target));
+		var tmp = new string[result.Length];
+		results.CopyTo(tmp, 0);
+		result.Where(val => val != "_____").OrderBy(x => x).ToArray().CopyTo(tmp, results.Length);
+		attributesCache.Add(attributeName, tmp);
 		
-		return finalRes;
+		return tmp;
 	}
 	
 	private void _on_Close_button_down() {
@@ -256,5 +285,8 @@ public class NotebookList : Node2D {
 			EmitSignal(nameof(UpdateInfo), curAttribute, InputNum.Text);
 			_on_Close_button_up();
 		}
+	}
+	private void _on_LineEdit_text_entered(String new_text) {
+		_on_EnterNumber();
 	}
 }
