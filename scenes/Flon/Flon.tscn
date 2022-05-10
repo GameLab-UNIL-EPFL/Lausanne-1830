@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/danielRochat.png" type="Texture" id=18]
 [ext_resource path="res://assets/01_characters/03_pnjs/georgeRochat.png" type="Texture" id=19]
 [ext_resource path="res://assets/01_characters/03_pnjs/samuelRochat.png" type="Texture" id=20]
+[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/morceauPont.png" type="Texture" id=21]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
@@ -1407,6 +1408,9 @@ volume_db = -10.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
 polygon = PoolVector2Array( -1, -7, -4, 365, 266, 363, 265, 272, 259, 273, 259, 265, 315, 263, 316, 276, 297, 276, 299, 360, 525, 361, 599, 315, 641, 258, 640, -8, -1, 0, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision"]
+polygon = PoolVector2Array( 270, 250, 315, 250, 314, 242, 293, 242, 291, 235, 285, 226, 285, 206, 283, 195, 282, 116, 279, 104, 277, -14, 242, -17, 245, 12, 252, 25, 253, 205, 265, 233, 269, 241, 259, 243, 259, 250 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="House" type="StaticBody2D" parent="YSort"]
@@ -1613,6 +1617,13 @@ anims/WalkUp = SubResource( 59 )
 
 [node name="AnimationTree" parent="YSort/Enfant6" index="6"]
 parameters/playback = SubResource( 60 )
+
+[node name="BridgeWall" type="Sprite" parent="YSort"]
+position = Vector2( 288, 272 )
+scale = Vector2( 1.333, 1.333 )
+texture = ExtResource( 21 )
+centered = false
+offset = Vector2( -23, -30 )
 
 [node name="Door" type="Area2D" parent="."]
 
