@@ -1,3 +1,20 @@
+/*
+Historically accurate educational video game based in 1830s Lausanne.
+Copyright (C) 2021  GameLab UNIL-EPFL
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 using Godot;
 using System;
 using System.Diagnostics;
@@ -17,9 +34,10 @@ public class Notebook : Node2D {
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
 	
-	private Map M;
+	private Node2D M;
 	
 	private Context context;
+	private Player p;
 	
 	//Currently opened tab
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
@@ -91,8 +109,12 @@ public class Notebook : Node2D {
 	public override void _Ready() {
 		Hide();
 		context = GetNode<Context>("/root/Context");
+		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
-		M = GetNode<Map>("Map");
+		M = GetNode<Node2D>("Map");
+		
+		//Make sure that the context has the questNPC
+		context._FetchQuestNPC();
 		for(int i = 1; i < Context.N_TABS; ++i) {
 			Portraits.Add(GetNode<Sprite>("Portrait" + i));
 		}
@@ -157,6 +179,24 @@ public class Notebook : Node2D {
 		return idx;
 	}
 	
+	private void EvaluateAndUpdateNB(bool cutscene = true) {
+		//Update the characterInfo
+		FillCharInfo();
+		
+		//Request an info evaluation from the NPC
+		var tmpcorrect = context._GetQuestNPC()._CompareSolutions(characterInfo, curTabId);
+		if(tmpcorrect.IsCorrect() || cutscene) {
+			correctInfo = tmpcorrect;
+			_UpdateNotebook(correctInfo);
+		}
+	}
+	
+	//Evaluate the notebook infor on every update
+	private void _on_NotebookInfo_UpdateInfo() {
+		//Used to evaluate and update the notebook
+		EvaluateAndUpdateNB(false);
+	}
+	
 	public void _UpdateNotebook(InfoValue_t vals) {
 		//Change correct results to static
 		foreach(var v in vals.FoundAttributes()) {
@@ -183,40 +223,30 @@ public class Notebook : Node2D {
 		}
 	}
 	
-	public void _on_CutsceneEnd(NPC questNPC) {
-		//Sanity check
-		if(questNPC == null) {
-			return;
-		}
-		//Update the characterInfo
-		FillCharInfo();
-		
-		//Request an info evaluation from the NPC
-		correctInfo = questNPC._CompareSolutions(characterInfo, curTabId);
-		_UpdateNotebook(correctInfo);
+	public void _on_CutsceneEnd() {
+		EvaluateAndUpdateNB();
 	}
 	
-	public void _on_SendInfoToQuestNPC(Player p, NPC questNPC) {
+	public void _on_SendInfoToQuestNPC(NPC questNPC) {
 		//Update the characterInfo
 		FillCharInfo();
 		
 		//Request an info evaluation from the NPC
 		correctInfo = questNPC._EvaluateQuest(p, characterInfo, curTabId);
-		_UpdateNotebook(correctInfo);
 	}
 	
 	public void _on_NotebookController_pressed() {
-		Player p = GetNode<Player>("../YSort/Player");
 		if(mapOpen) {
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
+			_on_MapB_pressed();
+			hidden = true;
+			Show();
 		}
-		
 		if(ASP.Playing == false) {
 			ASP.Play();
 		}
 		if(hidden) {
 			Show();
+			ShowAll();
 			AudioServer.SetBusMute(2, true);
 			p.BlockPlayer();
 		} else {
@@ -228,21 +258,60 @@ public class Notebook : Node2D {
 		
 		//Update Context
 		FillCharInfo();
+		_UpdateNotebook(correctInfo);
 		context._UpdateNotebookCharInfo(curTabId, characterInfo);
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
+	private void ShowAll() {
+		var bg = GetNode<Sprite>("Sprite");
+		bg.Show();
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Show();
+		foreach(var inf in info) {
+			inf.Show();
+		}
+		foreach(var inf in infoStatic) {
+			inf.Show();
+		}
+		for(int i = 0; i < 4; ++i) {
+			tabSprites[i].Show();
+			tabButtons[i].Show();
+		}
+	}
+	
+	private void HideAll() {
+		var bg = GetNode<Sprite>("Sprite");
+		bg.Hide();
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Hide();
+		foreach(var inf in info) {
+			inf.Hide();
+		}
+		foreach(var inf in infoStatic) {
+			inf.Hide();
+		}
+		for(int i = 0; i < 4; ++i) {
+			tabSprites[i].Hide();
+			tabButtons[i].Hide();
+		}
+	}
+	
 	public void _on_MapB_pressed() {
-		if(hidden) {
-			_on_NotebookController_pressed();
-			
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
-		} else if(!hidden && !mapOpen) {
-			_on_MapButton_pressed();
-			M._on_MapButton_pressed();
+		_on_MapButton_pressed();
+		M.Show();
+		var space = GetNode<Sprite>("PressSpace");
+		space.Show();
+		
+		p._Map_B_Pressed();
+		
+		if(mapOpen) {
+			Show();
+			HideAll();
 		} else {
-			_on_NotebookController_pressed();
+			M.Hide();
+			space.Hide();
+			Hide();
 		}
 	}
 	
@@ -270,6 +339,15 @@ public class Notebook : Node2D {
 		context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
 	}
 	
+	private void _on_OpenMapZone_area_entered(Area2D tb) {
+		if(tb.Owner is Player) {
+			Player p = (Player)(tb.Owner);
+			if(!p.isCutscene) {
+				_on_MapB_pressed();
+			}
+		}
+	}
+	
 	private void PressTabButton(int buttonid) {
 		if(hidden || mapOpen) return;
 		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
@@ -293,11 +371,13 @@ public class Notebook : Node2D {
 		//Update the Notebook display
 		tabSprites[curTabId].Frame = 1;
 		tabSprites[buttonid].Frame = 0;
-		FillNotebook(characterInfo);
-		_UpdateNotebook(correctInfo);
 		
 		//Update current tab id
 		curTabId = buttonid;
+		
+		//Update the characterInfo
+		FillNotebook(characterInfo);
+		_UpdateNotebook(correctInfo);
 	}
 	
 	private void _Change_Portrait(int num) {
@@ -332,3 +412,4 @@ public class Notebook : Node2D {
 		_Change_Portrait(4);
 	}
 }
+
