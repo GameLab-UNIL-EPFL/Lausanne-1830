@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/05_fonts/InfoFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/Interaction/NumberButton.tscn" type="PackedScene" id=4]
 
-
 [node name="NotebookList" type="Node2D"]
 script = ExtResource( 2 )
 

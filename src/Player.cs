@@ -399,6 +399,16 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.BLOCKED;
 		}
 	}
+	
+	private void _on_Door_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Moulin.tscn");
+		}
+	}
 }
+
+
+
 
 
