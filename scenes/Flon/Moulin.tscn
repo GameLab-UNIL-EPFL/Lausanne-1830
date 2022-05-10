@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -421,7 +421,7 @@ parameters/playback = SubResource( 18 )
 position = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2( 324, 274 )
+position = Vector2( 324, 294 )
 shape = SubResource( 1 )
 
 [node name="Notebook" parent="." instance=ExtResource( 7 )]
