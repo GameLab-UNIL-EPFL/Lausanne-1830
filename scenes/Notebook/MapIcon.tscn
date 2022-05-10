@@ -89,7 +89,8 @@ tracks/2/keys = {
 }
 
 [node name="MapIcon" type="TextureButton"]
-margin_right = 40.0
+margin_top = 19.0
+margin_right = 54.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 1 )
 expand = true
