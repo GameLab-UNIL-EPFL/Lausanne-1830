@@ -39,7 +39,7 @@ public class Context : Node {
 	private NPC QuestNPC = null;
 	
 	//Constants
-	public const int N_TABS = 6;
+	public const int N_TABS = 5;
 	
 	//Brewery minigame variables
 	private float BrewGameScore = -1.0f;
@@ -139,10 +139,8 @@ public class Context : Node {
 			switch(CurrentLocation) {
 				case Locations.INTRO:
 					return IntroEnterPosition;
-					break;
 				case Locations.PALUD:
 					return PaludEnterPosition;
-					break;
 				default:
 					return Vector2.Zero;
 			}
@@ -201,12 +199,12 @@ public class Context : Node {
 		return GameState == GameStates.COMPLETE;
 	}
 	
-	public int _GetNCorrectTabs() {
-		int corrects = 0;
-		for(int i = 0; i < 4; ++i) {
-			if(!NotebookCorrectInfo[i].IsCorrect()) corrects++;
+	public int _GetNotCorrectTabs() {
+		int n_corrects = 0;
+		for(int i = 0; i < N_TABS; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) n_corrects++;
 		}
-		return corrects;
+		return n_corrects;
 	} 
 	
 	private bool CheckGameOver() {

@@ -57,8 +57,10 @@ public class Player : KinematicBody2D {
 	public float RunTime = 3.0f; // Seconds
 	[Export]
 	public bool isCutscene;
+	[Export]
+	public float CloseNotebookTimer = 2.0f;
 	
-	public int cutsceneCounter = 8;
+	private int cutsceneCounter = 8;
 	
 	public bool isBrewEnd = false;
 	
@@ -137,13 +139,16 @@ public class Player : KinematicBody2D {
 				}
 			}
 		} else {
-			if(Input.IsActionJustPressed("ui_focus_next")) {
+			//Check if the answer was filled in
+			if(NB._TutoPageIsComplete()) {
+				CloseNotebookTimer -= delta;
+			}
+			if(CloseNotebookTimer <= 0.0) {
 				InputVec = Vector2.Zero;
 				EmitSignal(nameof(OpenNotebook));
 				NearestSub()._Notify(this);
 			}
 		}
-		
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
 	}
@@ -483,6 +488,8 @@ public class Player : KinematicBody2D {
 			Door.Hide();
 			DoorCol.Disabled = true;
 			
+			//Force one more interaction with the NPC
+			NotifySubs();
 		}
 	}
 	

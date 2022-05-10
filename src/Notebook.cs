@@ -30,8 +30,8 @@ public class Notebook : Node2D {
 	private List<Button> tabButtons = new List<Button>(); 
 	private List<Sprite> Portraits = new List<Sprite>();
 	
-	private Sprite tabTutoSprite;
-	private Label tabTutoLabel;
+	private Button closeNB;
+	private Label closeLabel;
 	
 	private bool hidden = true;
 	private bool mapOpen = false;
@@ -47,6 +47,15 @@ public class Notebook : Node2D {
 	public InfoValue_t correctInfo = new InfoValue_t(false);
 	
 	private int curTabId = 0;
+	
+	public bool _TutoPageIsComplete() {
+		foreach(Label info in infoStatic) {
+			if(info.Text.Equals("Elisabeth")) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	private void FillNotebook(CharacterInfo_t cI) {
 		foreach(var inf in info) {
@@ -115,6 +124,8 @@ public class Notebook : Node2D {
 		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		M = GetNode<Node2D>("Map");
+		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
+		closeLabel = GetNode<Label>("Fermer");
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
@@ -226,6 +237,17 @@ public class Notebook : Node2D {
 		}
 	}
 	
+	private void DisableNonTutoTabs() {
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Hide();
+		closeNB.Disabled = true;
+		closeLabel.Hide();
+		for(int i = 1; i < Context.N_TABS; ++i) {
+			tabSprites[i].Hide();
+			tabButtons[i].Hide();
+		}
+	}
+	
 	public void _on_CutsceneEnd() {
 		EvaluateAndUpdateNB();
 	}
@@ -271,15 +293,22 @@ public class Notebook : Node2D {
 		bg.Show();
 		var pressTab = GetNode<Sprite>("PressTab");
 		pressTab.Show();
+		closeNB.Disabled = false;
+		closeLabel.Show();
 		foreach(var inf in info) {
 			inf.Show();
 		}
 		foreach(var inf in infoStatic) {
 			inf.Show();
 		}
-		for(int i = 0; i < 4; ++i) {
+		for(int i = 0; i < Context.N_TABS; ++i) {
 			tabSprites[i].Show();
 			tabButtons[i].Show();
+		}
+		
+		//Hide non-tutorial stuff in case of tuto
+		if(context._GetGameState() == GameStates.INIT) {
+			DisableNonTutoTabs();
 		}
 	}
 	
@@ -294,7 +323,7 @@ public class Notebook : Node2D {
 		foreach(var inf in infoStatic) {
 			inf.Hide();
 		}
-		for(int i = 0; i < 4; ++i) {
+		for(int i = 0; i < Context.N_TABS; ++i) {
 			tabSprites[i].Hide();
 			tabButtons[i].Hide();
 		}

@@ -364,7 +364,12 @@ margin_left = 513.0
 margin_top = 58.0
 margin_right = 541.0
 margin_bottom = 78.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab1" type="Sprite" parent="."]
 position = Vector2( 523, 99.495 )
@@ -391,6 +396,9 @@ margin_bottom = 108.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab2" type="Sprite" parent="."]
 position = Vector2( 523, 131 )
@@ -626,7 +634,7 @@ position = Vector2( 96, 48 )
 stream = ExtResource( 9 )
 volume_db = -15.0
 
-[node name="Label" type="Label" parent="."]
+[node name="Fermer" type="Label" parent="."]
 margin_left = 39.0
 margin_top = 331.0
 margin_right = 88.0
