@@ -27,7 +27,7 @@ public class Menu : Control
 	{
 		context = GetNode<Context>("/root/Context");
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13_2.mp3");
+		MP.PlayMusic("Schubert_Sonata13_2.mp3", -10);
 	}
 
 	private void _on_Button_pressed() {

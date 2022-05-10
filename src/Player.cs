@@ -271,7 +271,7 @@ public class Player : KinematicBody2D {
 					ASP.PitchScale = FootstepPitch;
 					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.1f);
 					ASP.Play();
-					T.Start(0.5f);
+					T.Start(0.26f);
 				}
 		
 				CheckIdle();

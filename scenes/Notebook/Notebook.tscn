@@ -22,11 +22,11 @@
 [ext_resource path="res://assets/07_sounds/Sounds/Pen.mp3" type="AudioStream" id=20]
 
 [sub_resource type="DynamicFont" id=1]
-size = 10
+size = 11
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 10
+size = 11
 outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 use_mipmaps = true
 font_data = ExtResource( 3 )
@@ -194,7 +194,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "clips": [ {
-"end_offset": 2.45602,
+"end_offset": 2.40904,
 "start_offset": 0.0,
 "stream": ExtResource( 20 )
 }, {
@@ -202,7 +202,7 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 18 )
 } ],
-"times": PoolRealArray( 1.45, 2.85 )
+"times": PoolRealArray( 1.4, 2.85 )
 }
 tracks/5/type = "audio"
 tracks/5/path = NodePath("Bravo")
@@ -241,7 +241,7 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Objectif:
-Trouver les informations manquantes pour completer le registre et aller les faire  valider.", "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847." ]
+Trouver les informations manquantes pour completer le registre et aller les faire  valider.", "Élisabeth de Cerjeat est née en 1769 à Louth en Grand-Bretagne. Fille d'un aristocrate vaudois et d'une mère anglaise, elle déménage avec sa famille à la rue de Bourg en 1780. Élisabeth et sa soeur consacrent du temps à aider les pauvres. À l'âge de 73 ans, avec l'aide de William Haldimand, elle fonde en 1843 l'Asile des aveugles de Lausanne après avoir été soignée d'une cataracte. Elle meurt chez elle à Montchoisi en 1847." ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Quest:visible")
@@ -306,18 +306,21 @@ margin_right = 106.0
 margin_bottom = 76.0
 
 [node name="PrenomLabel" type="Label" parent="Sprite/Labels"]
-margin_left = 144.0
+margin_left = 140.0
 margin_top = 54.0
-margin_right = 176.0
+margin_right = 182.0
 margin_bottom = 68.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Prénom :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NomLabel" type="Label" parent="Sprite/Labels"]
-margin_left = 144.0
+margin_left = 140.0
 margin_top = 87.0
-margin_right = 168.0
+margin_right = 165.0
 margin_bottom = 101.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -550,12 +553,13 @@ __meta__ = {
 
 [node name="Quest" type="Label" parent="."]
 margin_left = 344.0
-margin_top = 80.0
-margin_right = 489.0
-margin_bottom = 231.0
+margin_top = 64.0
+margin_right = 496.0
+margin_bottom = 301.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847."
+align = 3
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -811,6 +815,12 @@ position = Vector2( 171.51, 112 )
 hframes = 4
 vframes = 3
 
+[node name="Stamp" type="Sprite" parent="."]
+visible = false
+position = Vector2( 480, 280 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 17 )
+
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( 232, 112 )
@@ -859,12 +869,6 @@ position = Vector2( 21, 342 )
 [node name="PressSpace" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 20, 340 )
-
-[node name="Stamp" type="Sprite" parent="."]
-visible = false
-position = Vector2( 465, 268 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
