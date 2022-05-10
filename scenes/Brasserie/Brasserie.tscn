@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=32]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=33]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio2.png" type="Texture" id=34]
+[ext_resource path="res://assets/06_UI_menus/randomBook.png" type="Texture" id=35]
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
@@ -1474,9 +1475,6 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
-[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1510,6 +1508,52 @@ __meta__ = {
 position = Vector2( 210, 95 )
 texture = ExtResource( 38 )
 
+[node name="Book2" parent="." instance=ExtResource( 27 )]
+position = Vector2( 240.314, 83.9405 )
+
+[node name="Sprite" parent="Book2" index="0"]
+visible = false
+
+[node name="Label" parent="Book2/Sprite" index="0"]
+text = "Lire"
+
+[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
+frame = 1
+
+[node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
+position = Vector2( -5.67307, 11.3461 )
+shape = SubResource( 71 )
+
+[node name="Open" parent="Book2" index="2"]
+visible = false
+
+[node name="ColorRect" parent="Book2/Open" index="0"]
+margin_left = -581.5
+margin_top = -363.0
+margin_right = 737.5
+margin_bottom = 487.0
+
+[node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
+position = Vector2( -94, 260 )
+scale = Vector2( 1, 1 )
+frame = 1
+
+[node name="Label3" type="Label" parent="Book2/Open" index="2"]
+margin_left = -83.0
+margin_top = 253.0
+margin_right = -34.0
+margin_bottom = 269.0
+custom_colors/font_color = Color( 0.909804, 0.909804, 0.909804, 1 )
+custom_fonts/font = SubResource( 62 )
+text = "FERMER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Book2/Open" index="3"]
+position = Vector2( 80, 96 )
+texture = ExtResource( 35 )
+
 [node name="Item" parent="." instance=ExtResource( 27 )]
 position = Vector2( 174, 80 )
 
@@ -1518,9 +1562,6 @@ visible = false
 
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
-
-[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
@@ -1586,4 +1627,5 @@ texture = ExtResource( 29 )
 [editable path="YSort/NPC/Brasseur2/ListenBox"]
 [editable path="Notebook"]
 [editable path="Book"]
+[editable path="Book2"]
 [editable path="Item"]
