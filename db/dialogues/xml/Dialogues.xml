@@ -5,13 +5,12 @@
         <text>Très bien. Voyons voir ce carnet...</text>
         <text>Il est sensé contenir toutes les informations importantes sur les habitants de Lausanne.</text>
         <text>Mais les données de plusieurs personnes sont manquantes.</text>
-        <text>Essayez de remplir la première page.</text>
-        <text>Il manque le prénom de Mademoiselle De Cerjeat.</text>
-        <text>Elle s'appelle Elisabeth.</text>
-        <text>Bravo ! Maintenant, allez remplir les autres pages du registre.</text>
         <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
         <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
         <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
+        <text>Mais avant de commencer, essayez de remplir la première page.</text>
+        <text>Il manque le prénom de Mademoiselle De Cerjeat.</text>
+        <text>Elle s'appelle Elisabeth.</text>
     </dialogue>
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
