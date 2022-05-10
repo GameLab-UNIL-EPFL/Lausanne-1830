@@ -200,6 +200,11 @@ public class Context : Node {
 		return NotebookCorrectInfo[id];
 	}
 	
+	public bool _IsTabCorrect(int id) {
+		Debug.Assert(0 <= id && id < N_TABS);
+		return NotebookCorrectInfo[id].IsCorrect();
+	}
+	
 	public void _UpdateNotebookCharInfo(int id, CharacterInfo_t data) {
 		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCharInfo[id] = data;

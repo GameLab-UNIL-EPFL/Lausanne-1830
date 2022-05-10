@@ -161,6 +161,15 @@ public class Notebook : Node2D {
 		//Initialize display
 		FillNotebook(characterInfo);
 		_UpdateNotebook(correctInfo);
+		
+		//Check if tabs are complete
+		for(int i = 0; i < Context.N_TABS; ++i) {
+			if(i == curTabId) {
+				tabSprites[i].Frame = context._IsTabCorrect(i) ? 1 : 0;
+			} else {
+				tabSprites[i].Frame = context._IsTabCorrect(i) ? 3 : 2;
+			}
+		}
 	}
 	
 	private int AttributeToIdx(string attr) {
@@ -202,6 +211,13 @@ public class Notebook : Node2D {
 		if(tmpcorrect.IsCorrect() || cutscene) {
 			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
+			
+			//Update Context
+			context._UpdateNotebookCharInfo(curTabId, characterInfo);
+			context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
+			
+			//Update tab if needed
+			tabSprites[curTabId].Frame = context._IsTabCorrect(curTabId) ? 1 : 0;
 		}
 	}
 	
@@ -402,8 +418,8 @@ public class Notebook : Node2D {
 		correctInfo = context._GetNotebookCorrectInfo(buttonid);
 		
 		//Update the Notebook display
-		tabSprites[curTabId].Frame = 1;
-		tabSprites[buttonid].Frame = 0;
+		tabSprites[curTabId].Frame = context._IsTabCorrect(curTabId) ? 3 : 2;
+		tabSprites[buttonid].Frame = context._IsTabCorrect(buttonid) ? 1 : 0;
 		
 		//Update current tab id
 		curTabId = buttonid;
