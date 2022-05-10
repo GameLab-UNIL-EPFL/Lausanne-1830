@@ -22,7 +22,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
-public enum Locations {INTRO, PALUD, BRASSERIE, CASINO};
+public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
 
 // Storage for all persistent data in the game
 public class Context : Node {
@@ -50,6 +50,8 @@ public class Context : Node {
 	//Player scene positions
 	private Vector2 IntroEnterPosition = new Vector2(395, 230);
 	private Vector2 PaludEnterPosition = new Vector2(608, 230);
+	private Vector2 MoulinEnterPosition = new Vector2(324, 248);
+	private Vector2 FlonEnterPosition = new Vector2(404, 210);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -119,6 +121,14 @@ public class Context : Node {
 				CurrentLocation = Locations.BRASSERIE;
 				_SwitchScenes();
 				break;
+			case "Flon/Moulin":
+				CurrentLocation = Locations.MOULIN;
+				_SwitchScenes();
+				break;
+			case "Flon/Flon":
+				CurrentLocation = Locations.FLON;
+				_SwitchScenes();
+				break;
 			default:
 				break;
 		}
@@ -137,10 +147,10 @@ public class Context : Node {
 	public Vector2 _GetPlayerPosition() {
 		if(GameState != GameStates.INIT) {
 			switch(CurrentLocation) {
-				case Locations.INTRO:
-					return IntroEnterPosition;
-				case Locations.PALUD:
-					return PaludEnterPosition;
+				case Locations.MOULIN:
+					return MoulinEnterPosition;
+				case Locations.FLON:
+					return FlonEnterPosition;
 				default:
 					return Vector2.Zero;
 			}
