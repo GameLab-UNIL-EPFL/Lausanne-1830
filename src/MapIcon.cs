@@ -30,6 +30,7 @@ public class MapIcon : TextureButton {
 	private Sprite RR;
 	private Context context;
 	
+	private Vector2 INTRO_POS = new Vector2(254, 111);
 	private Vector2 PALUD_POS = new Vector2(208, 152);
 	private Vector2 BRASSERIE_POS = new Vector2(138, 108);
 	private Vector2 CASINO_POS = new Vector2(278, 234);
@@ -49,6 +50,9 @@ public class MapIcon : TextureButton {
 	
 	private void SetYouAreHerePos(Locations l) {
 		switch(l) {
+			case Locations.INTRO:
+				RR.Position = INTRO_POS;
+				break;
 			case Locations.PALUD:
 				RR.Position = PALUD_POS;
 				break;

@@ -22,16 +22,24 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
-public enum Locations {PALUD, BRASSERIE, CASINO};
+public enum Locations {INTRO, PALUD, BRASSERIE, CASINO};
 
 // Storage for all persistent data in the game
 public class Context : Node {
+	//Notebook data
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
+	private int CurrentTab = 0;
+	
+	//Game state data
 	private GameStates GameState = GameStates.INIT;
-	private Locations CurrentLocation = Locations.PALUD;
+	private Locations CurrentLocation = Locations.INTRO;
+	
+	//Quest NPC ref
 	private NPC QuestNPC = null;
-	public const int N_TABS = 6;
+	
+	//Constants
+	public const int N_TABS = 5;
 	
 	//Brewery minigame variables
 	private float BrewGameScore = -1.0f;
@@ -39,7 +47,17 @@ public class Context : Node {
 	private Vector2 BrewerPreviousPos = Vector2.Zero;
 	private Vector2 PlayerPreviousPos = Vector2.Zero;
 	
+	//Player scene positions
+	private Vector2 IntroEnterPosition = new Vector2(395, 230);
+	private Vector2 PaludEnterPosition = new Vector2(608, 230);
+	
 	public override void _Ready() {
+		NotebookCharInfo.Add(new CharacterInfo_t(
+			"", "De Cerjeat", "Montchoisi", 8, "Célibataire", 0, "Rentier.ère" 
+		));
+		NotebookCorrectInfo.Add(new InfoValue_t(
+			false, true, true, true, true, true, true
+		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "Trüschel", "", 0, "", 0, ""
 		));
@@ -77,7 +95,7 @@ public class Context : Node {
 		NotebookCharInfo = new List<CharacterInfo_t>();
 		NotebookCorrectInfo = new List<InfoValue_t>();
 		GameState = GameStates.INIT;
-		CurrentLocation = Locations.PALUD;
+		CurrentLocation = Locations.INTRO;
 		
 		//Reload context
 		_Ready();
@@ -85,9 +103,13 @@ public class Context : Node {
 	
 	public void _UpdateLocation(string id) {
 		switch(id) {
+			case "Intro/Intro":
+				CurrentLocation = Locations.INTRO;
+				_SwitchScenes();
+				break;
 			case "Palud/ProtoPalud":
 				CurrentLocation = Locations.PALUD;
-				_StartGame();
+				_SwitchScenes();
 				break;
 			case "Casino/Casino":
 				CurrentLocation = Locations.CASINO;
@@ -104,12 +126,34 @@ public class Context : Node {
 	
 	public void _FetchQuestNPC() {
 		if(QuestNPC == null) {
-			QuestNPC = GetNode<NPC>("/root/ProtoPalud/YSort/QuestNPC");
+			QuestNPC = GetNode<NPC>("/root/Intro/YSort/QuestNPC");
 		}
 	}
 	
 	public NPC _GetQuestNPC() {
 		return QuestNPC;
+	}
+	
+	public Vector2 _GetPlayerPosition() {
+		if(GameState != GameStates.INIT) {
+			switch(CurrentLocation) {
+				case Locations.INTRO:
+					return IntroEnterPosition;
+				case Locations.PALUD:
+					return PaludEnterPosition;
+				default:
+					return Vector2.Zero;
+			}
+		}
+		return Vector2.Zero;
+	}
+	
+	public int _GetCurrentTab() {
+		return CurrentTab;
+	}
+	
+	public void _UpdateCurrentTab(int tabNum) {
+		CurrentTab = tabNum;
 	}
 	
 	public Locations _GetLocation() {
@@ -118,7 +162,6 @@ public class Context : Node {
 	
 	public void _StartGame() {
 		GameState = GameStates.PLAYING;
-		CurrentLocation = Locations.PALUD;
 	}
 	
 	public void _SwitchScenes() {
@@ -156,12 +199,12 @@ public class Context : Node {
 		return GameState == GameStates.COMPLETE;
 	}
 	
-	public int _GetNCorrectTabs() {
-		int corrects = 0;
-		for(int i = 0; i < 4; ++i) {
-			if(!NotebookCorrectInfo[i].IsCorrect()) corrects++;
+	public int _GetNotCorrectTabs() {
+		int n_corrects = 0;
+		for(int i = 0; i < N_TABS; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) n_corrects++;
 		}
-		return corrects;
+		return n_corrects;
 	} 
 	
 	private bool CheckGameOver() {

@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using Godot;
 using System;
 
-public class SceneChanger : CanvasLayer
-{
+public class SceneChanger : CanvasLayer {
 	private AnimationPlayer AnimPlayer;
 	
 	public Node CurrentScene { get; set; }
@@ -72,10 +71,11 @@ public class SceneChanger : CanvasLayer
 		CurrentScene = nextScene.Instance();
 
 		// Add it to the active scene, as child of root.
-		GetTree().Root.AddChild(CurrentScene);
+		var tree = GetTree();
+		tree.Root.AddChild(CurrentScene);
 
 		// Optionally, to make it compatible with the SceneTree.change_scene() API.
-		GetTree().CurrentScene = CurrentScene;
+		tree.CurrentScene = CurrentScene;
 		
 		if(animate) {
 			_EaseIn();
