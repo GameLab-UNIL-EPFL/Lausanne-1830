@@ -35,12 +35,6 @@ public class NotebookController : TextureButton
 			MB.Connect("pressed", NB, "_on_MapB_pressed");
 		}
 	}
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 	
 	private void _on_Player_SlideInNotebookController() {
 		if(AnimPlayer == null) {

@@ -5,7 +5,7 @@
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=3]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/07_sounds/pageTurn.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=9]
@@ -64,9 +64,6 @@ extents = Vector2( 325, 9 )
 
 [sub_resource type="RectangleShape2D" id=62]
 extents = Vector2( 10, 185 )
-
-[sub_resource type="RectangleShape2D" id=63]
-extents = Vector2( 16, 4 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 53, 31.5 )
@@ -1362,6 +1359,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=60]
 
+[sub_resource type="RectangleShape2D" id=63]
+extents = Vector2( 16, 4 )
+
 [node name="Flon" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 7 )]
@@ -1434,12 +1434,6 @@ shape = SubResource( 62 )
 position = Vector2( 560, 184 )
 shape = SubResource( 62 )
 
-[node name="Door" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-position = Vector2( 404, 178 )
-shape = SubResource( 63 )
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="House" type="StaticBody2D" parent="YSort"]
@@ -1476,7 +1470,7 @@ position = Vector2( 3, 18 )
 polygon = PoolVector2Array( -43, 44, -33.5, 44, -35, 4, 29, 4, 29, 44, 69, 44, 69, -20, 29, -18, 29, -2, -35, -2, -33.9381, -20, -43, -20 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 135, 241 )
+position = Vector2( 404, 207 )
 
 [node name="Benedict" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 328, 208 )
@@ -1647,11 +1641,17 @@ anims/WalkUp = SubResource( 59 )
 [node name="AnimationTree" parent="YSort/Enfant6" index="6"]
 parameters/playback = SubResource( 60 )
 
+[node name="Door" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 404, 178 )
+shape = SubResource( 63 )
+
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
-[connection signal="area_entered" from="Door" to="YSort/Player" method="_on_Door_area_entered"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="area_entered" from="Door" to="YSort/Player" method="_on_Door_area_entered"]
 
 [editable path="YSort/Benedict"]
 [editable path="YSort/Benedict/ListenBox"]
