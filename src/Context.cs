@@ -52,6 +52,8 @@ public class Context : Node {
 	private Vector2 PaludEnterPosition = new Vector2(608, 230);
 	private Vector2 MoulinEnterPosition = new Vector2(324, 248);
 	private Vector2 FlonEnterPosition = new Vector2(404, 210);
+	private Vector2 BrasserieEnterPosition = new Vector2(262, 284);
+	private Vector2 CasinoEnterPosition = new Vector2(320, 288);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -147,10 +149,18 @@ public class Context : Node {
 	public Vector2 _GetPlayerPosition() {
 		if(GameState != GameStates.INIT) {
 			switch(CurrentLocation) {
+				case Locations.PALUD:
+					return PaludEnterPosition;
+				case Locations.INTRO:
+					return IntroEnterPosition;
 				case Locations.MOULIN:
 					return MoulinEnterPosition;
 				case Locations.FLON:
 					return FlonEnterPosition;
+				case Locations.BRASSERIE:
+					return BrasserieEnterPosition;
+				case Locations.CASINO:
+					return CasinoEnterPosition;
 				default:
 					return Vector2.Zero;
 			}

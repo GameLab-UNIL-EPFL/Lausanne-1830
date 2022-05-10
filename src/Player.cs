@@ -58,7 +58,7 @@ public class Player : KinematicBody2D {
 	[Export]
 	public bool isCutscene;
 	[Export]
-	public float CloseNotebookTimer = 2.0f;
+	public float CloseNotebookTimer = 1.5f;
 	
 	private int cutsceneCounter = 11;
 	
