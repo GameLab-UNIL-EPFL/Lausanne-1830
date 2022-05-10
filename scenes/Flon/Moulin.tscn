@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,14 @@
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/sleepingChild-sheet.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/francoisRochat.png" type="Texture" id=12]
+[ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/02_architecture/05_moulin/01_int/cuve.png" type="Texture" id=14]
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 30.0
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
@@ -348,6 +356,26 @@ polygon = PoolVector2Array( 330, 263, 330, 278, 349, 278, 349, 263, 357, 263, 35
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Cuve" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 202, 160 )
+
+[node name="Sprite" parent="YSort/Cuve" index="0"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/Cuve" index="1"]
+position = Vector2( -1, 0 )
+shape = SubResource( 20 )
+
+[node name="Cuve2" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 200, 216 )
+
+[node name="Sprite" parent="YSort/Cuve2" index="0"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/Cuve2" index="1"]
+position = Vector2( 0, -2 )
+shape = SubResource( 21 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 320, 224 )
 
@@ -462,6 +490,8 @@ volume_db = -10.0
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
+[editable path="YSort/Cuve"]
+[editable path="YSort/Cuve2"]
 [editable path="YSort/Enfant1"]
 [editable path="YSort/Enfant1/ListenBox"]
 [editable path="YSort/Enfant2"]
