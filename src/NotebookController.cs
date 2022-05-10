@@ -49,3 +49,4 @@ public class NotebookController : TextureButton
 		AnimPlayer.Play("Slide");
 	}
 }
+

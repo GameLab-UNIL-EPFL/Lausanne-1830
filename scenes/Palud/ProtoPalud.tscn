@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -33,7 +33,6 @@
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=31]
 [ext_resource path="res://assets/01_characters/03_pnjs/baker-Sheet.png" type="Texture" id=32]
 [ext_resource path="res://scenes/Palud/Pigeon.tscn" type="PackedScene" id=33]
-[ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=34]
 [ext_resource path="res://assets/01_characters/03_pnjs/lingere-Animation-Sheet.png" type="Texture" id=35]
 [ext_resource path="res://assets/01_characters/03_pnjs/profileLingereAnim-Sheet.png" type="Texture" id=36]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundry.png" type="Texture" id=37]
@@ -112,6 +111,9 @@ a = Vector2( 224, 8 )
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 7.58701, -140.561 )
 b = Vector2( 8, 51 )
+
+[sub_resource type="RectangleShape2D" id=48]
+extents = Vector2( 15.9459, 3.7391 )
 
 [sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 13, 3.5 )
@@ -566,8 +568,6 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 29.9439, 18.9086 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
-
 [sub_resource type="CircleShape2D" id=40]
 radius = 10.8202
 
@@ -635,7 +635,6 @@ margin_bottom = 144.0
 focus_neighbour_bottom = NodePath("../TextureRect")
 texture = ExtResource( 3 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -688,6 +687,20 @@ shape = SubResource( 3 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/OpenMapZone"]
 polygon = PoolVector2Array( -10, 385, 644, 385, 643, 329, 659, 326, 662, 402, -27, 401, -25, 251, -9, 251 )
 
+[node name="IntroAreaDoor" type="Area2D" parent="Collisions"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Collisions/IntroAreaDoor"]
+margin_left = 596.0
+margin_top = 194.0
+margin_right = 622.0
+margin_bottom = 219.0
+color = Color( 0.231373, 0.266667, 0.298039, 1 )
+
+[node name="IntroDoor" type="CollisionShape2D" parent="Collisions/IntroAreaDoor"]
+position = Vector2( 608.142, 190.577 )
+shape = SubResource( 48 )
+
 [node name="HotelDeVilleDoor" type="StaticBody2D" parent="Collisions"]
 
 [node name="OpenEndDoor" type="ColorRect" parent="Collisions/HotelDeVilleDoor"]
@@ -697,9 +710,6 @@ margin_top = 194.0
 margin_right = 574.0
 margin_bottom = 219.0
 color = Color( 0.231373, 0.266667, 0.298039, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="EnterEndZone" type="Area2D" parent="Collisions/HotelDeVilleDoor/OpenEndDoor"]
 
@@ -944,6 +954,9 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Mlle De Cerjeat "
 
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
+
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
@@ -1115,26 +1128,8 @@ position = Vector2( -64, 37 )
 texture = ExtResource( 38 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 537, 500 )
+position = Vector2( 608, 240 )
 isCutscene = true
-
-[node name="QuestNPC" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 535, 225 )
-DemandDialogueID = "demandQuest"
-HasAutoDialogue = false
-isQuestNPC = true
-
-[node name="TextBox" parent="YSort/QuestNPC" index="0"]
-NPCName = " M. Gély  "
-
-[node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
-texture = ExtResource( 34 )
-
-[node name="ListenBox" parent="YSort/QuestNPC" index="4"]
-visible = false
-
-[node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
-parameters/playback = SubResource( 24 )
 
 [node name="Cuir" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 481.821, 294.246 )
@@ -1148,7 +1143,7 @@ position = Vector2( 11.0124, -17.6866 )
 text = "Regarder"
 
 [node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
-frame = 0
+frame = 1
 
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
@@ -1166,6 +1161,7 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1196,6 +1192,9 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 1
+
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
@@ -1221,7 +1220,6 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="2" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="3"]
 position = Vector2( 265, 0 )
@@ -1290,6 +1288,7 @@ autoplay = true
 bus = "Sounds"
 
 [connection signal="area_entered" from="Collisions/OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
+[connection signal="area_entered" from="Collisions/IntroAreaDoor" to="YSort/Player" method="_on_IntroAreaDoor_area_entered"]
 [connection signal="area_entered" from="Collisions/HotelDeVilleDoor/OpenEndDoor/EnterEndZone" to="YSort/Player" method="_on_EnterEndZone_area_entered"]
 [connection signal="EndDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_EndDialogue"]
 [connection signal="StartDialogue" from="YSort/NPC/Truschel" to="YSort/Player" method="_on_NPC_StartDialogue"]
@@ -1351,8 +1350,6 @@ bus = "Sounds"
 [editable path="YSort/Fountain/Barrel"]
 [editable path="YSort/Fountain/Laundry"]
 [editable path="YSort/Fountain/Laundry2"]
-[editable path="YSort/QuestNPC"]
-[editable path="YSort/QuestNPC/ListenBox"]
 [editable path="YSort/Cuir"]
 [editable path="YSort/Affiche"]
 [editable path="Notebook"]

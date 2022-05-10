@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Notebook/MapIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/05_map/map.png" type="Texture" id=2]
@@ -15,6 +15,14 @@ region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
@@ -36,6 +44,10 @@ region = Rect2( 16, 0, 16, 16 )
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
 region = Rect2( 7, 5, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 1, 15, 15 )
 
 [node name="Map" type="Node2D"]
 
@@ -63,7 +75,6 @@ id = "Casino/Casino"
 text = ""
 
 [node name="moulin_point" parent="." instance=ExtResource( 1 )]
-visible = false
 margin_left = 176.0
 margin_top = 215.0
 margin_right = 192.0
@@ -91,12 +102,12 @@ texture_hover = SubResource( 2 )
 id = "Brasserie/Brasserie"
 
 [node name="moulin_button" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 175.0
-margin_top = 203.0
-margin_right = 191.0
-margin_bottom = 219.0
-texture_normal = ExtResource( 4 )
+margin_left = 171.0
+margin_top = 195.0
+margin_right = 196.0
+margin_bottom = 222.0
+texture_normal = SubResource( 8 )
+texture_hover = SubResource( 9 )
 id = "Flon/Flon"
 text = "Flon"
 
@@ -123,3 +134,12 @@ text = "Casino"
 [node name="YouAreHere" type="Sprite" parent="."]
 position = Vector2( 208, 152 )
 texture = SubResource( 7 )
+
+[node name="office_button" parent="." instance=ExtResource( 1 )]
+margin_left = 235.0
+margin_top = 107.0
+margin_right = 275.0
+margin_bottom = 147.0
+texture_normal = SubResource( 10 )
+id = "Intro/Intro"
+text = "Bureau"
