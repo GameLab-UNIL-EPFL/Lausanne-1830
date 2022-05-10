@@ -555,5 +555,23 @@ public class Player : KinematicBody2D {
 			context._UpdateLocation("Intro/Intro");
 		}
 	}
+	
+	//On entrance to the Moulin, TP the player
+	private void _on_Door_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Flon/Moulin.tscn");
+			context._UpdateLocation("Flon/Moulin");
+		}
+	}
+	
+	private void _on_Exit_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Flon/Flon.tscn");
+			context._UpdateLocation("Flon/Flon");
+		}
+	}
 }
+
 
