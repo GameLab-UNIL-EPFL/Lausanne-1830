@@ -38,6 +38,7 @@ public class Notebook : Node2D {
 	private AudioStreamPlayer ASP;
 	private Sprite Stamp;
 	private AnimationPlayer AP;
+	private AnimationPlayer AP2;
 	
 	private Node2D M;
 	
@@ -127,6 +128,7 @@ public class Notebook : Node2D {
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		M = GetNode<Node2D>("Map");
 		AP = GetNode<AnimationPlayer>("AnimationPlayer");
+		AP2 = GetNode<AnimationPlayer>("AnimationPlayer2");
 		Stamp = GetNode<Sprite>("Stamp");
 		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
 		closeLabel = GetNode<Label>("Fermer");
@@ -218,6 +220,8 @@ public class Notebook : Node2D {
 			if(!Stamp.Visible) {
 				AudioServer.SetBusMute(1, true);
 				AP.Play("Stamp");
+				AP2.Play("EraseText");
+				
 			}
 			
 			//Update Context
@@ -443,6 +447,13 @@ public class Notebook : Node2D {
 		}
 	}
 	
+	private void _on_AnimationPlayer2_animation_finished(String anim_name) {
+		if(anim_name == "EraseText") {
+			// Set new text from xml
+			AP2.Play("WriteText");
+		}
+	}
+	
 	private void _Change_Portrait(int num) {
 		for(int i = 0; i < Context.N_TABS; ++i) {
 			var P = GetNode<Sprite>("Portrait" + i);
@@ -480,4 +491,3 @@ public class Notebook : Node2D {
 		_Change_Portrait(5);
 	}
 }
-

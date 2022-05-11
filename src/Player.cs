@@ -59,7 +59,7 @@ public class Player : KinematicBody2D {
 	public bool isCutscene;
 	[Export]
 	public float FootstepPitch = 1.0f;
-	public float CloseNotebookTimer = 2.0f;
+	public float CloseNotebookTimer = 4.0f;
 	
 	private int cutsceneCounter = 11;
 	
