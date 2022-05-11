@@ -24,13 +24,11 @@ public class MapIcon : TextureButton {
 	
 	[Export]
 	public string text = "Brasserie";
-	
-	private AnimationPlayer AnimPlayer;
-	private Label L;
+
 	private Sprite RR;
 	private Context context;
 	
-	private Vector2 INTRO_POS = new Vector2(254, 111);
+	private Vector2 INTRO_POS = new Vector2(260, 120);
 	private Vector2 PALUD_POS = new Vector2(208, 152);
 	private Vector2 BRASSERIE_POS = new Vector2(138, 108);
 	private Vector2 CASINO_POS = new Vector2(278, 234);
@@ -38,9 +36,6 @@ public class MapIcon : TextureButton {
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		L = GetNode<Label>("Label");
-		L.Text = text;
 		context = GetNode<Context>("/root/Context");
 		RR = GetNode<Sprite>("../YouAreHere");
 		
@@ -62,6 +57,10 @@ public class MapIcon : TextureButton {
 			case Locations.BRASSERIE:
 				RR.Position = BRASSERIE_POS;
 				break;
+			case Locations.MOULIN:
+			case Locations.FLON:
+				RR.Position = MOULIN_POS;
+				break;
 			default:
 				break;
 		}
@@ -82,20 +81,6 @@ public class MapIcon : TextureButton {
 			
 		//Update the context
 		context._UpdateLocation(id);
-	}
-	
-	private void _on_MapIcon_mouse_entered() {
-		if(AnimPlayer == null) {
-			_Ready();
-		}
-		if(L.Text != "") {
-			L.Show();
-		}
-	}
-
-
-	private void _on_MapIcon_mouse_exited() {
-		L.Hide();
 	}
 	
 }

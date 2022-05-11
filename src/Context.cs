@@ -22,7 +22,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
-public enum Locations {INTRO, PALUD, BRASSERIE, CASINO};
+public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
 
 // Storage for all persistent data in the game
 public class Context : Node {
@@ -39,7 +39,7 @@ public class Context : Node {
 	private NPC QuestNPC = null;
 	
 	//Constants
-	public const int N_TABS = 6;
+	public const int N_TABS = 5;
 	
 	//Brewery minigame variables
 	private float BrewGameScore = -1.0f;
@@ -50,6 +50,8 @@ public class Context : Node {
 	//Player scene positions
 	private Vector2 IntroEnterPosition = new Vector2(395, 230);
 	private Vector2 PaludEnterPosition = new Vector2(608, 230);
+	private Vector2 MoulinEnterPosition = new Vector2(324, 248);
+	private Vector2 FlonEnterPosition = new Vector2(404, 210);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -119,6 +121,14 @@ public class Context : Node {
 				CurrentLocation = Locations.BRASSERIE;
 				_SwitchScenes();
 				break;
+			case "Flon/Moulin":
+				CurrentLocation = Locations.MOULIN;
+				_SwitchScenes();
+				break;
+			case "Flon/Flon":
+				CurrentLocation = Locations.FLON;
+				_SwitchScenes();
+				break;
 			default:
 				break;
 		}
@@ -137,12 +147,10 @@ public class Context : Node {
 	public Vector2 _GetPlayerPosition() {
 		if(GameState != GameStates.INIT) {
 			switch(CurrentLocation) {
-				case Locations.INTRO:
-					return IntroEnterPosition;
-					break;
-				case Locations.PALUD:
-					return PaludEnterPosition;
-					break;
+				case Locations.MOULIN:
+					return MoulinEnterPosition;
+				case Locations.FLON:
+					return FlonEnterPosition;
 				default:
 					return Vector2.Zero;
 			}
@@ -192,6 +200,11 @@ public class Context : Node {
 		return NotebookCorrectInfo[id];
 	}
 	
+	public bool _IsTabCorrect(int id) {
+		Debug.Assert(0 <= id && id < N_TABS);
+		return NotebookCorrectInfo[id].IsCorrect();
+	}
+	
 	public void _UpdateNotebookCharInfo(int id, CharacterInfo_t data) {
 		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCharInfo[id] = data;
@@ -201,12 +214,12 @@ public class Context : Node {
 		return GameState == GameStates.COMPLETE;
 	}
 	
-	public int _GetNCorrectTabs() {
-		int corrects = 0;
-		for(int i = 0; i < 4; ++i) {
-			if(!NotebookCorrectInfo[i].IsCorrect()) corrects++;
+	public int _GetNotCorrectTabs() {
+		int n_corrects = 0;
+		for(int i = 0; i < N_TABS; ++i) {
+			if(!NotebookCorrectInfo[i].IsCorrect()) n_corrects++;
 		}
-		return corrects;
+		return n_corrects;
 	} 
 	
 	private bool CheckGameOver() {

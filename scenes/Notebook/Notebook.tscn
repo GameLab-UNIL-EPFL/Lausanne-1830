@@ -287,9 +287,9 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect"]
 margin_left = 257.0
-margin_top = 161.0
+margin_top = 175.0
 margin_right = 679.0
-margin_bottom = 454.0
+margin_bottom = 468.0
 color = Color( 1, 1, 1, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -566,62 +566,79 @@ __meta__ = {
 }
 
 [node name="Tab0" type="Sprite" parent="."]
-position = Vector2( 523, 68 )
+position = Vector2( 525, 62 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
 
 [node name="PageNum" type="Label" parent="Tab0"]
 margin_left = -4.0
-margin_top = -8.0
+margin_top = -6.0
 margin_right = 6.0
-margin_bottom = 6.0
+margin_bottom = 8.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab0Button" type="Button" parent="."]
 margin_left = 513.0
-margin_top = 58.0
+margin_top = 52.0
 margin_right = 541.0
-margin_bottom = 78.0
+margin_bottom = 72.0
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab1" type="Sprite" parent="."]
-position = Vector2( 523, 99.495 )
+position = Vector2( 525, 109.495 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
-frame = 1
+frame = 2
 
 [node name="PageNum" type="Label" parent="Tab1"]
 margin_left = -12.0
-margin_top = -9.0
+margin_top = -7.0
 margin_right = 11.0
-margin_bottom = 6.0
+margin_bottom = 8.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "1"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab1Button" type="Button" parent="."]
-margin_left = 515.0
-margin_top = 88.0
-margin_right = 542.0
-margin_bottom = 108.0
+margin_left = 512.0
+margin_top = 102.0
+margin_right = 539.0
+margin_bottom = 122.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab2" type="Sprite" parent="."]
-position = Vector2( 523, 131 )
+position = Vector2( 522, 157 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
-frame = 1
+frame = 2
 
 [node name="PageNum" type="Label" parent="Tab2"]
-margin_left = -12.0
+margin_left = -10.0
 margin_top = -8.0
-margin_right = 11.0
+margin_right = 13.0
 margin_bottom = 7.0
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -634,9 +651,9 @@ __meta__ = {
 
 [node name="Tab2Button" type="Button" parent="."]
 margin_left = 509.0
-margin_top = 121.0
+margin_top = 147.0
 margin_right = 536.0
-margin_bottom = 141.0
+margin_bottom = 167.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -645,10 +662,11 @@ __meta__ = {
 }
 
 [node name="Tab3" type="Sprite" parent="."]
-position = Vector2( 523, 162 )
+position = Vector2( 521, 205 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
-frame = 1
+frame = 2
 
 [node name="PageNum" type="Label" parent="Tab3"]
 margin_left = -12.0
@@ -666,9 +684,9 @@ __meta__ = {
 
 [node name="Tab3Button" type="Button" parent="."]
 margin_left = 510.0
-margin_top = 151.0
+margin_top = 195.0
 margin_right = 537.0
-margin_bottom = 171.0
+margin_bottom = 215.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -677,10 +695,11 @@ __meta__ = {
 }
 
 [node name="Tab4" type="Sprite" parent="."]
-position = Vector2( 523, 195 )
+position = Vector2( 524, 253 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
-frame = 1
+frame = 2
 
 [node name="PageNum" type="Label" parent="Tab4"]
 margin_left = -11.514
@@ -693,14 +712,14 @@ text = "4"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Tab4Button" type="Button" parent="."]
 margin_left = 510.0
-margin_top = 185.0
+margin_top = 242.0
 margin_right = 537.0
-margin_bottom = 205.0
+margin_bottom = 262.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -712,6 +731,7 @@ __meta__ = {
 visible = false
 position = Vector2( 514.504, 226.808 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
 frame = 1
 
@@ -746,6 +766,7 @@ __meta__ = {
 visible = false
 position = Vector2( 514.504, 226.808 )
 texture = ExtResource( 5 )
+hframes = 2
 vframes = 2
 frame = 1
 
@@ -852,7 +873,7 @@ position = Vector2( 96, 48 )
 stream = ExtResource( 9 )
 volume_db = -15.0
 
-[node name="Label" type="Label" parent="."]
+[node name="Fermer" type="Label" parent="."]
 margin_left = 39.0
 margin_top = 332.0
 margin_right = 88.0

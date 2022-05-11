@@ -30,8 +30,8 @@ public class Notebook : Node2D {
 	private List<Button> tabButtons = new List<Button>(); 
 	private List<Sprite> Portraits = new List<Sprite>();
 	
-	private Sprite tabTutoSprite;
-	private Label tabTutoLabel;
+	private Button closeNB;
+	private Label closeLabel;
 	
 	private bool hidden = true;
 	private bool mapOpen = false;
@@ -49,6 +49,15 @@ public class Notebook : Node2D {
 	public InfoValue_t correctInfo = new InfoValue_t(false);
 	
 	private int curTabId = 0;
+	
+	public bool _TutoPageIsComplete() {
+		foreach(Label info in infoStatic) {
+			if(info.Text.Equals("Elisabeth")) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	private void FillNotebook(CharacterInfo_t cI) {
 		foreach(var inf in info) {
@@ -119,6 +128,8 @@ public class Notebook : Node2D {
 		M = GetNode<Node2D>("Map");
 		AP = GetNode<AnimationPlayer>("AnimationPlayer");
 		Stamp = GetNode<Sprite>("Stamp");
+		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
+		closeLabel = GetNode<Label>("Fermer");
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
@@ -154,6 +165,15 @@ public class Notebook : Node2D {
 		//Initialize display
 		FillNotebook(characterInfo);
 		_UpdateNotebook(correctInfo);
+		
+		//Check if tabs are complete
+		for(int i = 0; i < Context.N_TABS; ++i) {
+			if(i == curTabId) {
+				tabSprites[i].Frame = context._IsTabCorrect(i) ? 1 : 0;
+			} else {
+				tabSprites[i].Frame = context._IsTabCorrect(i) ? 3 : 2;
+			}
+		}
 	}
 	
 	private int AttributeToIdx(string attr) {
@@ -199,6 +219,13 @@ public class Notebook : Node2D {
 				AudioServer.SetBusMute(1, true);
 				AP.Play("Stamp");
 			}
+			
+			//Update Context
+			context._UpdateNotebookCharInfo(curTabId, characterInfo);
+			context._UpdateNotebookCorrectInfo(curTabId, correctInfo);
+			
+			//Update tab if needed
+			tabSprites[curTabId].Frame = context._IsTabCorrect(curTabId) ? 1 : 0;
 		}
 	}
 	
@@ -231,6 +258,17 @@ public class Notebook : Node2D {
 			
 			infoStatic[idx].Hide();
 			info[idx].Show();
+		}
+	}
+	
+	private void DisableNonTutoTabs() {
+		var pressTab = GetNode<Sprite>("PressTab");
+		pressTab.Hide();
+		closeNB.Disabled = true;
+		closeLabel.Hide();
+		for(int i = 1; i < Context.N_TABS; ++i) {
+			tabSprites[i].Hide();
+			tabButtons[i].Hide();
 		}
 	}
 	
@@ -279,15 +317,22 @@ public class Notebook : Node2D {
 		bg.Show();
 		var pressTab = GetNode<Sprite>("PressTab");
 		pressTab.Show();
+		closeNB.Disabled = false;
+		closeLabel.Show();
 		foreach(var inf in info) {
 			inf.Show();
 		}
 		foreach(var inf in infoStatic) {
 			inf.Show();
 		}
-		for(int i = 0; i < 4; ++i) {
+		for(int i = 0; i < Context.N_TABS; ++i) {
 			tabSprites[i].Show();
 			tabButtons[i].Show();
+		}
+		
+		//Hide non-tutorial stuff in case of tuto
+		if(context._GetGameState() == GameStates.INIT) {
+			DisableNonTutoTabs();
 		}
 	}
 	
@@ -302,7 +347,7 @@ public class Notebook : Node2D {
 		foreach(var inf in infoStatic) {
 			inf.Hide();
 		}
-		for(int i = 0; i < 4; ++i) {
+		for(int i = 0; i < Context.N_TABS; ++i) {
 			tabSprites[i].Hide();
 			tabButtons[i].Hide();
 		}
@@ -381,8 +426,8 @@ public class Notebook : Node2D {
 		correctInfo = context._GetNotebookCorrectInfo(buttonid);
 		
 		//Update the Notebook display
-		tabSprites[curTabId].Frame = 1;
-		tabSprites[buttonid].Frame = 0;
+		tabSprites[curTabId].Frame = context._IsTabCorrect(curTabId) ? 3 : 2;
+		tabSprites[buttonid].Frame = context._IsTabCorrect(buttonid) ? 1 : 0;
 		
 		//Update current tab id
 		curTabId = buttonid;
@@ -435,3 +480,4 @@ public class Notebook : Node2D {
 		_Change_Portrait(5);
 	}
 }
+

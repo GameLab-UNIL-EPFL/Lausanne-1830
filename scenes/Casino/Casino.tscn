@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -23,7 +23,8 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=21]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=23]
-[ext_resource path="res://assets/07_sounds/Sounds/grass/2.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=24]
+[ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -103,6 +104,8 @@ radius = 5.20476
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
+[sub_resource type="CapsuleShape2D" id=20]
+
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
 
@@ -124,9 +127,9 @@ __meta__ = {
 }
 
 [node name="Casino" type="StaticBody2D" parent="."]
-position = Vector2( 384, 144 )
+position = Vector2( 438, 111.495 )
 __meta__ = {
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Casino"]
@@ -182,30 +185,30 @@ volume_db = -10.0
 [node name="StaticBody2D" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D"]
-position = Vector2( 0, 312 )
+position = Vector2( 0, 358 )
 shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D4"]
-position = Vector2( -8, 48 )
+position = Vector2( -8, 10 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D2"]
-position = Vector2( 72, 352 )
+position = Vector2( -7, 352 )
 shape = SubResource( 4 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D3"]
-position = Vector2( 504, 352 )
+position = Vector2( 584, 352 )
 shape = SubResource( 5 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Coillision"]
-position = Vector2( 228.3, 106.303 )
+position = Vector2( 267.3, 82.2443 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -228,7 +231,7 @@ parameters/playback = SubResource( 20 )
 stream = ExtResource( 24 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 313, 242 )
+position = Vector2( 258, 227 )
 InitDir = 1
 ProbRight = 4
 ProbLeft = 0
@@ -268,7 +271,7 @@ texture = ExtResource( 12 )
 parameters/playback = SubResource( 8 )
 
 [node name="Pichard" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 287, 242 )
+position = Vector2( 232, 227 )
 InitDir = 0
 ProbRight = 0
 ProbLeft = 8
@@ -290,7 +293,7 @@ texture = ExtResource( 13 )
 parameters/playback = SubResource( 9 )
 
 [node name="Baumann" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 156, 195 )
+position = Vector2( 126.968, 154 )
 InitDir = 2
 DemandDialogueID = "demandBaumann"
 HasAutoDialogue = false
@@ -306,7 +309,7 @@ texture = ExtResource( 20 )
 parameters/playback = SubResource( 12 )
 
 [node name="Pouly" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 156, 171 )
+position = Vector2( 126.968, 130 )
 DemandDialogueID = "demandPouly"
 HasAutoDialogue = false
 
@@ -321,13 +324,13 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 201, 105.495 )
+position = Vector2( 240, 81.4363 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
 
 [node name="Fischer" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 241, 109.495 )
+position = Vector2( 280, 85.4363 )
 CanTurn = false
 DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
@@ -355,8 +358,163 @@ shape = SubResource( 18 )
 [node name="AnimationTree" parent="YSort/Fischer" index="6"]
 parameters/playback = SubResource( 16 )
 
+[node name="Bush" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 30.9677, 207 )
+
+[node name="Sprite" parent="YSort/Bush" index="0"]
+position = Vector2( -15.9677, 0 )
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush2" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 39, 232 )
+
+[node name="Sprite" parent="YSort/Bush2" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush2" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush3" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 41.5, 260 )
+
+[node name="Sprite" parent="YSort/Bush3" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush4" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 78.9677, 286 )
+
+[node name="Sprite" parent="YSort/Bush4" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush4" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush5" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 102.968, 310 )
+
+[node name="Sprite" parent="YSort/Bush5" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush6" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 126.968, 327 )
+
+[node name="Sprite" parent="YSort/Bush6" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush6" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush7" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 156.536, 363 )
+
+[node name="Sprite" parent="YSort/Bush7" index="0"]
+texture = ExtResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/Bush7" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush8" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 9.5, 232 )
+
+[node name="Sprite" parent="YSort/Bush8" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush8" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush9" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 9.5, 260 )
+
+[node name="Sprite" parent="YSort/Bush9" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush9" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush10" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 88, 352 )
+
+[node name="Sprite" parent="YSort/Bush10" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush10" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush11" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 15, 303 )
+
+[node name="Sprite" parent="YSort/Bush11" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush11" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush12" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 23.6717, 331 )
+
+[node name="Sprite" parent="YSort/Bush12" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush12" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush13" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 47, 288 )
+
+[node name="Sprite" parent="YSort/Bush13" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush13" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
+[node name="Bush14" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 66, 320 )
+
+[node name="Sprite" parent="YSort/Bush14" index="0"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush14" index="1"]
+position = Vector2( 6.14037, 14 )
+rotation = 1.5708
+shape = SubResource( 20 )
+
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 201, 105.495 )
+position = Vector2( 240, 81.4363 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
@@ -414,4 +572,18 @@ __meta__ = {
 [editable path="YSort/Briefcase"]
 [editable path="YSort/Fischer"]
 [editable path="YSort/Fischer/ListenBox"]
+[editable path="YSort/Bush"]
+[editable path="YSort/Bush2"]
+[editable path="YSort/Bush3"]
+[editable path="YSort/Bush4"]
+[editable path="YSort/Bush5"]
+[editable path="YSort/Bush6"]
+[editable path="YSort/Bush7"]
+[editable path="YSort/Bush8"]
+[editable path="YSort/Bush9"]
+[editable path="YSort/Bush10"]
+[editable path="YSort/Bush11"]
+[editable path="YSort/Bush12"]
+[editable path="YSort/Bush13"]
+[editable path="YSort/Bush14"]
 [editable path="Mallette"]

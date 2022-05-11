@@ -59,8 +59,9 @@ public class Player : KinematicBody2D {
 	public bool isCutscene;
 	[Export]
 	public float FootstepPitch = 1.0f;
+	public float CloseNotebookTimer = 2.0f;
 	
-	public int cutsceneCounter = 8;
+	private int cutsceneCounter = 11;
 	
 	public bool isBrewEnd = false;
 	
@@ -141,13 +142,16 @@ public class Player : KinematicBody2D {
 				}
 			}
 		} else {
-			if(Input.IsActionJustPressed("ui_focus_next")) {
+			//Check if the answer was filled in
+			if(NB._TutoPageIsComplete()) {
+				CloseNotebookTimer -= delta;
+			}
+			if(CloseNotebookTimer <= 0.0) {
 				InputVec = Vector2.Zero;
 				EmitSignal(nameof(OpenNotebook));
 				NearestSub()._Notify(this);
 			}
 		}
-		
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
 	}
@@ -504,6 +508,8 @@ public class Player : KinematicBody2D {
 			Door.Hide();
 			DoorCol.Disabled = true;
 			
+			//Force one more interaction with the NPC
+			NotifySubs();
 		}
 	}
 	
@@ -569,4 +575,23 @@ public class Player : KinematicBody2D {
 			context._UpdateLocation("Intro/Intro");
 		}
 	}
+	
+	//On entrance to the Moulin, TP the player
+	private void _on_Door_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Flon/Moulin.tscn");
+			context._UpdateLocation("Flon/Moulin");
+		}
+	}
+	
+	private void _on_Exit_area_entered(Area2D area) {
+		if(area.Owner is Player) {
+			SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+			SC.GotoScene("res://scenes/Flon/Flon.tscn");
+			context._UpdateLocation("Flon/Flon");
+		}
+	}
 }
+
+
