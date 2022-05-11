@@ -1139,11 +1139,9 @@ __meta__ = {
 [node name="Stamp2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
 volume_db = -5.0
-bus = "Effect"
 
 [node name="Bravo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-bus = "Effect"
 
 [connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
