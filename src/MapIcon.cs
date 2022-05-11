@@ -71,7 +71,7 @@ public class MapIcon : TextureButton {
 		SC.GotoScene("res://scenes/" + id + ".tscn");
 		
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13.mp3", -5);
+		MP.ChangeMusic("Schubert_Sonata13.mp3", -5);
 		
 		
 			

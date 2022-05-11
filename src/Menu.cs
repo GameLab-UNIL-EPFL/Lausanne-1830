@@ -34,7 +34,7 @@ public class Menu : Control
 		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
 		SC.GotoScene("res://scenes/Intro/Intro.tscn");
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13.mp3", -10);
+		MP.ChangeMusic("Schubert_Sonata13.mp3", -10);
 	}
 }
 

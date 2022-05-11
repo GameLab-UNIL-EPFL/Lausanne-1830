@@ -227,7 +227,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -80.0, 0.0 ]
+"values": [ -80.0, -5.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -1138,6 +1138,7 @@ __meta__ = {
 
 [node name="Stamp2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+volume_db = -5.0
 bus = "Effect"
 
 [node name="Bravo" type="AudioStreamPlayer" parent="."]

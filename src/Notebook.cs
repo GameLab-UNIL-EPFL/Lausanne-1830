@@ -218,7 +218,8 @@ public class Notebook : Node2D {
 			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
 			if(!Stamp.Visible) {
-				AudioServer.SetBusMute(1, true);
+				MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
+				MP.MusicFadeOut();
 				AP.Play("Stamp");
 				AP2.Play("EraseText");
 				
@@ -443,7 +444,8 @@ public class Notebook : Node2D {
 	
 	private void _on_AnimationPlayer_animation_finished(String anim_name) {
 		if(anim_name == "Stamp") {
-			AudioServer.SetBusMute(1, false);
+			MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
+			MP.MusicFadeIn(-10);
 		}
 	}
 	
