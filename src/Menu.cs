@@ -27,14 +27,14 @@ public class Menu : Control
 	{
 		context = GetNode<Context>("/root/Context");
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13_2.mp3");
+		MP.PlayMusic("Schubert_Sonata13_2.mp3", -10);
 	}
 
 	private void _on_Button_pressed() {
 		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
 		SC.GotoScene("res://scenes/Intro/Intro.tscn");
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13.mp3", -5);
+		MP.ChangeMusic("Schubert_Sonata13.mp3", -10);
 	}
 }
 

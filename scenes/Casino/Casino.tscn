@@ -83,6 +83,8 @@ b = Vector2( 7.2533, 11.611 )
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 48.7575, 33.1507 )
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
@@ -221,6 +223,12 @@ shape = SubResource( 19 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 320, 288 )
+
+[node name="AnimationTree" parent="YSort/Player" index="4"]
+parameters/playback = SubResource( 20 )
+
+[node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
+stream = ExtResource( 24 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 258, 227 )
@@ -549,6 +557,8 @@ __meta__ = {
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
 
+[editable path="YSort/Player"]
+[editable path="YSort/Player/TalkBox"]
 [editable path="YSort/Perregaux"]
 [editable path="YSort/Perregaux/ListenBox"]
 [editable path="YSort/Bourgeois"]

@@ -58,7 +58,8 @@ public class Player : KinematicBody2D {
 	[Export]
 	public bool isCutscene;
 	[Export]
-	public float CloseNotebookTimer = 1.5f;
+	public float FootstepPitch = 1.0f;
+	public float CloseNotebookTimer = 4.0f;
 	
 	private int cutsceneCounter = 11;
 	
@@ -78,6 +79,8 @@ public class Player : KinematicBody2D {
 	private AnimationPlayer animation;
 	private AnimationTree animationTree; 
 	private AnimationNodeStateMachinePlayback animationState;
+	private AudioStreamPlayer ASP;
+	private Timer T;
 	
 	private List<Item> itemsInRange = new List<Item>();
 	
@@ -267,6 +270,13 @@ public class Player : KinematicBody2D {
 					//Update animation to match state change
 					animationState.Travel("Run");
 				} 
+				
+				if(T.TimeLeft <= 0) {
+					ASP.PitchScale = FootstepPitch;
+					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.1f);
+					ASP.Play();
+					T.Start(0.26f);
+				}
 		
 				CheckIdle();
 				break;
@@ -280,6 +290,13 @@ public class Player : KinematicBody2D {
 					
 					//Update animation to match state change
 					animationState.Travel("Walk");
+				}
+				
+				if(T.TimeLeft <= 0) {
+					ASP.PitchScale = FootstepPitch;
+					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.2f);
+					ASP.Play();
+					T.Start(0.23f);
 				}
 				
 				CheckIdle();
@@ -309,6 +326,9 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		ASP = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		T = GetNode<Timer>("Timer");
+		
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;

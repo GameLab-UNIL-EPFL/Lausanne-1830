@@ -137,16 +137,16 @@ public class NPC : KinematicBody2D {
 	
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
-		if(res.IsCorrect()) {
-			if(context._IsGameComplete()) {
-				return FormatText("Alors...¢"+
+		if(context._AllTabsCorrect()) {
+			return FormatText("Alors...¢"+
 				"Voyons voir ce registre.¢"+
 				"Bravo ! Vous avez fait du bon travail !¢"+
 				"Je vais garder ça dans nos documents importants.¢"+
 				"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
 				"et en faire un jeu vidéo.¢"+
 				"Je vous ouvre la porte. Vous pouvez aller les remettre à l'intérieur.");
-			} 
+		}
+		if(res.IsCorrect()) {
 			return FormatText("Alors...¢"+
 			"Il me semble que toutes les informations sur cette personne sont correctes.¢"+
 			"Il faut maintenant passer aux prochaines.¢"+

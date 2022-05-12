@@ -18,6 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 using System.Collections.Generic;
 
 public class Notebook : Node2D {
@@ -36,11 +39,18 @@ public class Notebook : Node2D {
 	private bool hidden = true;
 	private bool mapOpen = false;
 	private AudioStreamPlayer ASP;
+	private Sprite Stamp;
+	private AnimationPlayer AP;
+	private AnimationPlayer AP2;
 	
 	private Node2D M;
 	
 	private Context context;
 	private Player p;
+	
+	private const string infoFilePath = "res://db/characters/infoCharacters.xml";
+	private XDocument InfoXML;
+	private Label Quest;
 	
 	//Currently opened tab
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
@@ -124,8 +134,15 @@ public class Notebook : Node2D {
 		p = GetNode<Player>("../YSort/Player");
 		ASP = GetNode<AudioStreamPlayer>("../NotebookClick");
 		M = GetNode<Node2D>("Map");
+		AP = GetNode<AnimationPlayer>("AnimationPlayer");
+		AP2 = GetNode<AnimationPlayer>("AnimationPlayer2");
+		Stamp = GetNode<Sprite>("Stamp");
 		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
 		closeLabel = GetNode<Label>("Fermer");
+		Quest = GetNode<Label>("Quest");
+		
+		//Load in character info XML
+		DialogueController._ParseXML(ref InfoXML, infoFilePath);
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
@@ -170,6 +187,15 @@ public class Notebook : Node2D {
 				tabSprites[i].Frame = context._IsTabCorrect(i) ? 3 : 2;
 			}
 		}
+		
+		//Update the objective
+		if(context._IsTabCorrect(curTabId)) {
+			SetCharInfo();
+			Stamp.Show();
+		} else {
+			SetObjective();
+			Stamp.Hide();
+		}
 	}
 	
 	private int AttributeToIdx(string attr) {
@@ -211,6 +237,13 @@ public class Notebook : Node2D {
 		if(tmpcorrect.IsCorrect() || cutscene) {
 			correctInfo = tmpcorrect;
 			_UpdateNotebook(correctInfo);
+			if(!Stamp.Visible) {
+				MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
+				MP.MusicFadeOut();
+				AP.Play("Stamp");
+				AP2.Play("EraseText");
+				
+			}
 			
 			//Update Context
 			context._UpdateNotebookCharInfo(curTabId, characterInfo);
@@ -427,6 +460,56 @@ public class Notebook : Node2D {
 		//Update the characterInfo
 		FillNotebook(characterInfo);
 		_UpdateNotebook(correctInfo);
+		
+		//Update the objective
+		if(context._IsTabCorrect(curTabId)) {
+			SetCharInfo();
+			Stamp.Show();
+		} else {
+			SetObjective();
+			Stamp.Hide();
+		}
+	}
+	
+	private void SetObjective() {
+		//Query character info
+		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("default")
+			select charInfo.Value;
+		
+		//Load in new info text
+		foreach(string infoText in infoTextQuery) {
+			Quest.Text = infoText;
+			break; // Need to do this to convert query result to string
+		}
+	}
+	
+	private void SetCharInfo() {
+		//Query character info
+		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("personnage")
+				where int.Parse(charInfo.Attribute("id").Value) == curTabId
+				select charInfo.Value;
+		
+		//Load in new info text
+		foreach(string infoText in infoTextQuery) {
+			Quest.Text = infoText;
+			break; // Need to do this to convert query result to string
+		}
+	}
+	
+	private void _on_AnimationPlayer_animation_finished(String anim_name) {
+		if(anim_name == "Stamp") {
+			MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
+			MP.MusicFadeIn(-10);
+		}
+	}
+	
+	private void _on_AnimationPlayer2_animation_finished(String anim_name) {
+		if(anim_name == "EraseText") {
+			// Set new text from xml
+			AP2.Play("WriteText");
+			
+			SetCharInfo();
+		}
 	}
 	
 	private void _Change_Portrait(int num) {
@@ -466,4 +549,3 @@ public class Notebook : Node2D {
 		_Change_Portrait(5);
 	}
 }
-

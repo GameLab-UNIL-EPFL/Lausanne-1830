@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -16,14 +16,18 @@
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=16]
-[ext_resource path="res://assets/01_characters/03_pnjs/benedictRochat.png" type="Texture" id=17]
+[ext_resource path="res://assets/02_architecture/03_brewery/sign.png" type="Texture" id=17]
+[ext_resource path="res://assets/07_sounds/Sounds/Stamp.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/Sounds/Bravo.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/07_sounds/Sounds/Pen.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/01_characters/03_pnjs/benedictRochat.png" type="Texture" id=21]
 
 [sub_resource type="DynamicFont" id=1]
-size = 10
+size = 11
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 10
+size = 11
 outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 use_mipmaps = true
 font_data = ExtResource( 3 )
@@ -43,6 +47,430 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 14 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "EraseText"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Quest:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect3:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect2:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Quest:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bravo:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Quest:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847." ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Quest:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Stamp"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 3.35, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect3:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 3.35, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Stamp2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+} ],
+"times": PoolRealArray( 2.85 )
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Bravo")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 19 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bravo:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -5.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "WriteText"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Quest:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Stamp2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( -2.5 )
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "EraseText"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Quest:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect3:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect2:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Quest:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bravo:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Quest:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847." ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Quest:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Stamp"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 3.35, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect3:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 3.35, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 0 ), Vector2( 640, 24 ), Vector2( 640, 24 ), Vector2( 640, 0 ) ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Stamp2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+} ],
+"times": PoolRealArray( 2.85 )
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Bravo")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 19 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bravo:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "WriteText"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Quest:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Stamp2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 2.65,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="Notebook" type="Node2D"]
 z_index = 2
@@ -69,6 +497,7 @@ action_mode = 0
 enabled_focus_mode = 0
 flat = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -93,18 +522,21 @@ margin_right = 106.0
 margin_bottom = 76.0
 
 [node name="PrenomLabel" type="Label" parent="Sprite/Labels"]
-margin_left = 144.0
+margin_left = 140.0
 margin_top = 54.0
-margin_right = 176.0
+margin_right = 182.0
 margin_bottom = 68.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Prénom :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NomLabel" type="Label" parent="Sprite/Labels"]
-margin_left = 144.0
+margin_left = 140.0
 margin_top = 87.0
-margin_right = 168.0
+margin_right = 165.0
 margin_bottom = 101.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -336,15 +768,18 @@ __meta__ = {
 }
 
 [node name="Quest" type="Label" parent="."]
-margin_left = 341.0
-margin_top = 97.0
-margin_right = 486.0
-margin_bottom = 150.0
+margin_left = 344.0
+margin_top = 64.0
+margin_right = 496.0
+margin_bottom = 301.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "Objectif:
-Trouver les informations manquantes pour completer le registre et aller les faire  valider."
+text = "	Elisabeth-Jeanne de Cerjat est la fille de Jean-François-Maximilien de Cerjat et de Marguerite-Madeleine née Stample. Elisabeth de Cerjat se distingue par l'aide qu'elle apporte aux pauvres. Suite à une opération de la cataracte à Heidelberg en 1842, elle se consacre aux malvoyants. Elle est, avec William Haldimand, la fondatrice de l'Asile des aveugles de Lausanne. Elle meurt à Montchoisi en 1847."
+align = 3
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tab0" type="Sprite" parent="."]
 position = Vector2( 525, 62 )
@@ -410,7 +845,7 @@ __meta__ = {
 }
 
 [node name="Tab2" type="Sprite" parent="."]
-position = Vector2( 528, 148 )
+position = Vector2( 526, 150 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -431,10 +866,10 @@ __meta__ = {
 }
 
 [node name="Tab2Button" type="Button" parent="."]
-margin_left = 515.0
-margin_top = 138.0
-margin_right = 542.0
-margin_bottom = 158.0
+margin_left = 513.0
+margin_top = 140.0
+margin_right = 540.0
+margin_bottom = 160.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -612,9 +1047,15 @@ vframes = 3
 [node name="Portrait5" type="Sprite" parent="."]
 visible = false
 position = Vector2( 171.51, 112 )
-texture = ExtResource( 17 )
+texture = ExtResource( 21 )
 hframes = 4
 vframes = 3
+
+[node name="Stamp" type="Sprite" parent="."]
+visible = false
+position = Vector2( 480, 280 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 17 )
 
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -649,9 +1090,9 @@ volume_db = -15.0
 
 [node name="Fermer" type="Label" parent="."]
 margin_left = 39.0
-margin_top = 331.0
+margin_top = 332.0
 margin_right = 88.0
-margin_bottom = 347.0
+margin_bottom = 348.0
 custom_fonts/font = SubResource( 5 )
 text = "FERMER"
 __meta__ = {
@@ -659,10 +1100,48 @@ __meta__ = {
 }
 
 [node name="PressTab" parent="." instance=ExtResource( 15 )]
+position = Vector2( 21, 342 )
 
 [node name="PressSpace" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 20, 340 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/EraseText = SubResource( 9 )
+anims/RESET = SubResource( 7 )
+anims/Stamp = SubResource( 8 )
+anims/WriteText = SubResource( 10 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/EraseText = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+anims/Stamp = SubResource( 13 )
+anims/WriteText = SubResource( 14 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 640.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 640.0
+margin_top = 360.0
+margin_right = 1280.0
+margin_bottom = 360.0
+rect_rotation = 180.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stamp2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+volume_db = -5.0
+
+[node name="Bravo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
 
 [connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
@@ -681,3 +1160,5 @@ position = Vector2( 20, 340 )
 [connection signal="UpdateInfo" from="NotebookList" to="Sprite/Metier" method="_on_UpdateInfo"]
 [connection signal="button_down" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_down"]
 [connection signal="button_up" from="NotebookList/Close" to="NotebookList" method="_on_Close_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]

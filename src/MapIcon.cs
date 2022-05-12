@@ -69,6 +69,11 @@ public class MapIcon : TextureButton {
 	private void _on_MapIcon_pressed() {
 		SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
 		SC.GotoScene("res://scenes/" + id + ".tscn");
+		
+		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
+		MP.ChangeMusic("Schubert_Sonata13.mp3", -5);
+		
+		
 			
 		//Update the context
 		context._UpdateLocation(id);

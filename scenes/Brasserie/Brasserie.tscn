@@ -39,6 +39,8 @@
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=76]
+
 [sub_resource type="SegmentShape2D" id=51]
 a = Vector2( 25.004, -1.29818 )
 b = Vector2( -4.75978, 13.7821 )
@@ -1095,6 +1097,10 @@ polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -38
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 262, 284 )
+FootstepPitch = 0.9
+
+[node name="AnimationTree" parent="YSort/Player" index="4"]
+parameters/playback = SubResource( 76 )
 
 [node name="Props" type="YSort" parent="YSort"]
 
@@ -1600,6 +1606,8 @@ texture = ExtResource( 29 )
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
+[editable path="YSort/Player"]
+[editable path="YSort/Player/TalkBox"]
 [editable path="YSort/Props/Bag"]
 [editable path="YSort/Props/Bag2"]
 [editable path="YSort/Props/Barrel"]
