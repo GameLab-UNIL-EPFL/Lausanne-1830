@@ -782,7 +782,7 @@ __meta__ = {
 }
 
 [node name="Tab0" type="Sprite" parent="."]
-position = Vector2( 525, 62 )
+position = Vector2( 525, 69 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -801,9 +801,9 @@ __meta__ = {
 
 [node name="Tab0Button" type="Button" parent="."]
 margin_left = 513.0
-margin_top = 52.0
+margin_top = 59.0
 margin_right = 541.0
-margin_bottom = 72.0
+margin_bottom = 79.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -812,7 +812,7 @@ __meta__ = {
 }
 
 [node name="Tab1" type="Sprite" parent="."]
-position = Vector2( 528, 100 )
+position = Vector2( 529, 108 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -833,10 +833,10 @@ __meta__ = {
 }
 
 [node name="Tab1Button" type="Button" parent="."]
-margin_left = 515.0
-margin_top = 92.505
-margin_right = 542.0
-margin_bottom = 112.505
+margin_left = 516.0
+margin_top = 100.505
+margin_right = 543.0
+margin_bottom = 120.505
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -845,7 +845,7 @@ __meta__ = {
 }
 
 [node name="Tab2" type="Sprite" parent="."]
-position = Vector2( 526, 150 )
+position = Vector2( 529, 153 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -867,9 +867,9 @@ __meta__ = {
 
 [node name="Tab2Button" type="Button" parent="."]
 margin_left = 513.0
-margin_top = 140.0
+margin_top = 143.0
 margin_right = 540.0
-margin_bottom = 160.0
+margin_bottom = 163.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -878,7 +878,7 @@ __meta__ = {
 }
 
 [node name="Tab3" type="Sprite" parent="."]
-position = Vector2( 528, 196 )
+position = Vector2( 530, 196 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -899,9 +899,9 @@ __meta__ = {
 }
 
 [node name="Tab3Button" type="Button" parent="."]
-margin_left = 517.0
+margin_left = 518.0
 margin_top = 186.0
-margin_right = 544.0
+margin_right = 545.0
 margin_bottom = 206.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -944,7 +944,7 @@ __meta__ = {
 }
 
 [node name="Tab5" type="Sprite" parent="."]
-position = Vector2( 528, 276 )
+position = Vector2( 529, 276 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -965,9 +965,9 @@ __meta__ = {
 }
 
 [node name="Tab5Button" type="Button" parent="."]
-margin_left = 514.0
+margin_left = 515.0
 margin_top = 268.0
-margin_right = 541.0
+margin_right = 542.0
 margin_bottom = 288.0
 focus_mode = 0
 enabled_focus_mode = 0
