@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/Stamp.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/Sounds/Bravo.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/Sounds/Pen.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/01_characters/03_pnjs/benedictRochat.png" type="Texture" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 11
@@ -811,7 +812,7 @@ __meta__ = {
 }
 
 [node name="Tab1" type="Sprite" parent="."]
-position = Vector2( 525, 109.495 )
+position = Vector2( 528, 100 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -832,10 +833,10 @@ __meta__ = {
 }
 
 [node name="Tab1Button" type="Button" parent="."]
-margin_left = 512.0
-margin_top = 102.0
-margin_right = 539.0
-margin_bottom = 122.0
+margin_left = 515.0
+margin_top = 92.505
+margin_right = 542.0
+margin_bottom = 112.505
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -844,7 +845,7 @@ __meta__ = {
 }
 
 [node name="Tab2" type="Sprite" parent="."]
-position = Vector2( 522, 157 )
+position = Vector2( 526, 150 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -865,10 +866,10 @@ __meta__ = {
 }
 
 [node name="Tab2Button" type="Button" parent="."]
-margin_left = 509.0
-margin_top = 147.0
-margin_right = 536.0
-margin_bottom = 167.0
+margin_left = 513.0
+margin_top = 140.0
+margin_right = 540.0
+margin_bottom = 160.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -877,7 +878,7 @@ __meta__ = {
 }
 
 [node name="Tab3" type="Sprite" parent="."]
-position = Vector2( 521, 205 )
+position = Vector2( 528, 196 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -898,10 +899,10 @@ __meta__ = {
 }
 
 [node name="Tab3Button" type="Button" parent="."]
-margin_left = 510.0
-margin_top = 195.0
-margin_right = 537.0
-margin_bottom = 215.0
+margin_left = 517.0
+margin_top = 186.0
+margin_right = 544.0
+margin_bottom = 206.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -910,7 +911,7 @@ __meta__ = {
 }
 
 [node name="Tab4" type="Sprite" parent="."]
-position = Vector2( 524, 253 )
+position = Vector2( 528, 236 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
@@ -931,10 +932,10 @@ __meta__ = {
 }
 
 [node name="Tab4Button" type="Button" parent="."]
-margin_left = 510.0
-margin_top = 242.0
-margin_right = 537.0
-margin_bottom = 262.0
+margin_left = 514.0
+margin_top = 225.0
+margin_right = 541.0
+margin_bottom = 245.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -943,12 +944,11 @@ __meta__ = {
 }
 
 [node name="Tab5" type="Sprite" parent="."]
-visible = false
-position = Vector2( 514.504, 226.808 )
+position = Vector2( 528, 276 )
 texture = ExtResource( 5 )
 hframes = 2
 vframes = 2
-frame = 1
+frame = 2
 
 [node name="PageNum" type="Label" parent="Tab5"]
 margin_left = -11.504
@@ -965,11 +965,10 @@ __meta__ = {
 }
 
 [node name="Tab5Button" type="Button" parent="."]
-visible = false
-margin_left = 502.0
-margin_top = 217.0
-margin_right = 529.0
-margin_bottom = 237.0
+margin_left = 514.0
+margin_top = 268.0
+margin_right = 541.0
+margin_bottom = 288.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -1048,6 +1047,7 @@ vframes = 3
 [node name="Portrait5" type="Sprite" parent="."]
 visible = false
 position = Vector2( 171.51, 112 )
+texture = ExtResource( 21 )
 hframes = 4
 vframes = 3
 
