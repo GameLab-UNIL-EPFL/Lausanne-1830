@@ -158,6 +158,8 @@ public class Context : Node {
 				case Locations.FLON:
 					return FlonEnterPosition;
 				case Locations.BRASSERIE:
+					if(BrewerPreviousPos != Vector2.Zero) 
+						return BrewerPreviousPos;
 					return BrasserieEnterPosition;
 				case Locations.CASINO:
 					return CasinoEnterPosition;
