@@ -232,6 +232,10 @@ public class Context : Node {
 		return n_corrects;
 	} 
 	
+	public bool _AllTabsCorrect() {
+		return _GetNotCorrectTabs() == 0;
+	}
+	
 	private bool CheckGameOver() {
 		for(int i = 0; i < 4; ++i) {
 			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
