@@ -39,7 +39,7 @@ public class Context : Node {
 	private NPC QuestNPC = null;
 	
 	//Constants
-	public const int N_TABS = 5;
+	public const int N_TABS = 6;
 	
 	//Brewery minigame variables
 	private float BrewGameScore = -1.0f;
@@ -233,7 +233,7 @@ public class Context : Node {
 	} 
 	
 	private bool CheckGameOver() {
-		for(int i = 0; i < 4; ++i) {
+		for(int i = 0; i < N_TABS; ++i) {
 			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
 		}
 		return true;
