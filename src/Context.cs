@@ -233,7 +233,7 @@ public class Context : Node {
 	} 
 	
 	private bool CheckGameOver() {
-		for(int i = 0; i < 5; ++i) {
+		for(int i = 0; i < N_TABS; ++i) {
 			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
 		}
 		return true;
