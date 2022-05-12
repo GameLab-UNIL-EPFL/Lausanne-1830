@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/samuelRochat.png" type="Texture" id=20]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/morceauPont.png" type="Texture" id=21]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/pontFond.png" type="Texture" id=22]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
@@ -1366,7 +1368,6 @@ extents = Vector2( 16, 4 )
 
 [node name="Bg" type="Sprite" parent="."]
 position = Vector2( 320, 184 )
-scale = Vector2( 1.33327, 1.33327 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
@@ -1399,6 +1400,17 @@ margin_right = 83.0
 margin_bottom = 36.0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 23 )]
+position = Vector2( 0, 33 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="PressTab" parent="NotebookController" instance=ExtResource( 24 )]
+position = Vector2( 0, 33 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -1407,15 +1419,16 @@ volume_db = -10.0
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( -1, -7, -4, 365, 266, 363, 265, 272, 259, 273, 259, 265, 315, 263, 316, 276, 297, 276, 299, 360, 525, 361, 599, 315, 641, 258, 640, -8, -1, 0, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
+polygon = PoolVector2Array( -1, -7, -4, 365, 280, 360, 280.55, 251.227, 274.314, 249, 274.314, 246.996, 282.778, 246.996, 295.25, 246.105, 315.964, 248.332, 316.409, 251.227, 303.714, 251.227, 304, 360, 392, 360, 528, 288, 592, 168, 592, 0, -1, 0, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( 270, 250, 315, 250, 314, 242, 293, 242, 291, 235, 285, 226, 285, 206, 283, 195, 282, 116, 279, 104, 277, -14, 242, -17, 245, 12, 252, 25, 253, 205, 265, 233, 269, 241, 259, 243, 259, 250 )
+position = Vector2( 0, -18 )
+polygon = PoolVector2Array( 274.314, 252.078, 314.182, 252.078, 314, 242, 296.267, 239.695, 293.461, 230.435, 290.654, 208.266, 290.093, 194.797, 290.374, 171.225, 288.129, 113.318, 292.338, 67.8581, 294.302, -42.3543, 242, -17, 245, 12, 260.629, 19.3116, 266.241, 197.884, 270.45, 220.052, 278.307, 240.257, 274.537, 245.619 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="House" type="StaticBody2D" parent="YSort"]
-position = Vector2( 488, 136 )
+position = Vector2( 492, 136 )
 
 [node name="Sprite" type="Sprite" parent="YSort/House"]
 position = Vector2( 0, -41 )
@@ -1437,7 +1450,7 @@ position = Vector2( 3, 20 )
 polygon = PoolVector2Array( -75, 44, 5, 44, 5, 20, 45, 20, 45, 44, 61, 44, 61, -28, -74, -31, -74, -20 )
 
 [node name="House3" type="StaticBody2D" parent="YSort"]
-position = Vector2( 232, 136 )
+position = Vector2( 200, 136 )
 
 [node name="Sprite" type="Sprite" parent="YSort/House3"]
 position = Vector2( 18, -70 )
@@ -1494,7 +1507,7 @@ texture = ExtResource( 15 )
 parameters/playback = SubResource( 10 )
 
 [node name="Enfant2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 80, 312 )
+position = Vector2( 198.087, 333.213 )
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
 
@@ -1520,6 +1533,7 @@ parameters/playback = SubResource( 20 )
 
 [node name="Enfant3" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 32, 224 )
+InitDir = 0
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
 
@@ -1544,7 +1558,7 @@ anims/WalkUp = SubResource( 29 )
 parameters/playback = SubResource( 30 )
 
 [node name="Enfant4" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 128, 136 )
+position = Vector2( 469.533, 250.551 )
 CanWander = true
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
@@ -1570,7 +1584,8 @@ anims/WalkUp = SubResource( 39 )
 parameters/playback = SubResource( 40 )
 
 [node name="Enfant5" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 40, 120 )
+position = Vector2( 64.7487, 223.945 )
+InitDir = 1
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
 
@@ -1595,7 +1610,7 @@ anims/WalkUp = SubResource( 49 )
 parameters/playback = SubResource( 50 )
 
 [node name="Enfant6" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 432, 224 )
+position = Vector2( 349.976, 330.066 )
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
 
@@ -1620,15 +1635,13 @@ anims/WalkUp = SubResource( 59 )
 parameters/playback = SubResource( 60 )
 
 [node name="BridgeWall" type="Sprite" parent="YSort"]
-position = Vector2( 288, 272 )
-scale = Vector2( 1.333, 1.333 )
+position = Vector2( 296, 250 )
 texture = ExtResource( 21 )
 centered = false
 offset = Vector2( -23, -30 )
 
 [node name="BridgeUpperWall" type="Sprite" parent="YSort"]
-position = Vector2( 288, 250 )
-scale = Vector2( 1.333, 1.333 )
+position = Vector2( 296, 233 )
 texture = ExtResource( 22 )
 offset = Vector2( 0, 6 )
 
