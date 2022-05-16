@@ -199,8 +199,7 @@
     <dialogue id="demEnfant7" ntargets="1" type="onDemand">
         <text>J'aide mon père à réparer et à faire fonctionner le moulin.</text>
     </dialogue>
-    <dialogue id="demEnfant8
-    " ntargets="1" type="onDemand">
+    <dialogue id="demEnfant8" ntargets="1" type="onDemand">
         <text>Mon frère ne va pas bien.</text>
         <text>Cela fait plusieurs jours qu'il est malade.</text>
         <text>J'ai peur qu'il ne s'en sorte pas.</text>

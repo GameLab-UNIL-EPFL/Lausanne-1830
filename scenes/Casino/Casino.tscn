@@ -73,11 +73,11 @@ a = Vector2( -1.00075, -0.15799 )
 b = Vector2( 638.999, -0.15799 )
 
 [sub_resource type="SegmentShape2D" id=4]
-a = Vector2( 8.75844, -349.192 )
+a = Vector2( 8.37082, -356.628 )
 b = Vector2( 8.75844, 10.808 )
 
 [sub_resource type="SegmentShape2D" id=5]
-a = Vector2( 6.367, -349.192 )
+a = Vector2( 5.83691, -357.475 )
 b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="RectangleShape2D" id=19]
@@ -186,19 +186,20 @@ volume_db = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D"]
 position = Vector2( 0, 358 )
+position = Vector2( 0, 367 )
 shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D4"]
-position = Vector2( -8, 10 )
+position = Vector2( -8, -4 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D2"]
-position = Vector2( -7, 352 )
+position = Vector2( -14, 352 )
 shape = SubResource( 4 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Coillision"]
@@ -208,7 +209,7 @@ position = Vector2( 584, 352 )
 shape = SubResource( 5 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Coillision"]
-position = Vector2( 267.3, 82.2443 )
+position = Vector2( 272.248, 121.808 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -231,7 +232,7 @@ parameters/playback = SubResource( 20 )
 stream = ExtResource( 24 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 258, 227 )
+position = Vector2( 265, 227 )
 InitDir = 1
 ProbRight = 4
 ProbLeft = 0
@@ -324,13 +325,13 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 240, 81.4363 )
+position = Vector2( 244.948, 121 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
 
 [node name="Fischer" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 280, 85.4363 )
+position = Vector2( 284.948, 125 )
 CanTurn = false
 DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
@@ -514,7 +515,7 @@ rotation = 1.5708
 shape = SubResource( 20 )
 
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 240, 81.4363 )
+position = Vector2( 244.948, 121 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
@@ -551,11 +552,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OpenMapZone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenMapZone"]
+polygon = PoolVector2Array( 587.592, -0.699097, 587.031, 4.35198, -1.70056, 4.3547, -0.0168686, 361.72, 588.714, 364.143, 588.714, 374.807, -8.99657, 372.383, -8.43533, -4.37104 )
+
 [connection signal="visibility_changed" from="Notebook" to="Mallette" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="area_entered" from="OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]

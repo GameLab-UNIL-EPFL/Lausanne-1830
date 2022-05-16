@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -24,7 +24,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=22]
 [ext_resource path="res://scenes/Palud/TableV.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/commode.png" type="Texture" id=24]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio.png" type="Texture" id=25]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio-Sheet.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/tabouret.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=28]
@@ -33,7 +33,6 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=31]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=32]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=33]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio2.png" type="Texture" id=34]
 [ext_resource path="res://assets/06_UI_menus/randomBook.png" type="Texture" id=35]
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
@@ -41,17 +40,33 @@
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=76]
 
-[sub_resource type="SegmentShape2D" id=51]
-a = Vector2( 25.004, -1.29818 )
-b = Vector2( -4.75978, 13.7821 )
-
-[sub_resource type="SegmentShape2D" id=52]
-a = Vector2( -17, 9 )
-b = Vector2( 13.5, 27 )
-
 [sub_resource type="CapsuleShape2D" id=63]
 radius = 11.3028
 height = 33.488
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 25 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 25 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 25 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=81]
+animations = [ {
+"frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=69]
 radius = 5.57125
@@ -1185,26 +1200,6 @@ position = Vector2( 102, 134 )
 [node name="Sprite" parent="YSort/Props/TableV" index="0"]
 texture = ExtResource( 24 )
 
-[node name="Bookshelf" parent="YSort/Props" instance=ExtResource( 15 )]
-position = Vector2( 110, 100 )
-
-[node name="Sprite" parent="YSort/Props/Bookshelf" index="0"]
-position = Vector2( -1.5874, -15.874 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Props/Bookshelf" index="1"]
-position = Vector2( -7.93701, -4.36536 )
-shape = SubResource( 51 )
-
-[node name="Bookshelf2" parent="YSort/Props" instance=ExtResource( 15 )]
-position = Vector2( 238, 85 )
-
-[node name="Sprite" parent="YSort/Props/Bookshelf2" index="0"]
-texture = ExtResource( 34 )
-
-[node name="CollisionShape2D" parent="YSort/Props/Bookshelf2" index="1"]
-shape = SubResource( 52 )
-
 [node name="Chair" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 174, 110 )
 
@@ -1223,6 +1218,35 @@ texture = ExtResource( 31 )
 [node name="CollisionShape2D" parent="YSort/Props/Bed" index="1"]
 rotation = 1.5708
 shape = SubResource( 63 )
+
+[node name="Bookshelf" type="StaticBody2D" parent="YSort/Props"]
+position = Vector2( 108.595, 85.2867 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
+frames = SubResource( 81 )
+frame = 1
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
+polygon = PoolVector2Array( -15.9191, 10.1443, 12.0273, -2.04508, 12.6219, 13.7119, -8.48653, 22.9283, -15.3245, 21.1445 )
+
+[node name="Bookshelf2" type="StaticBody2D" parent="YSort/Props"]
+position = Vector2( 238.218, 85.2867 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
+frames = SubResource( 81 )
+frame = 2
+playing = true
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf2"]
+polygon = PoolVector2Array( -12.3515, 1.52253, 15.2976, 9.54968, 14.4057, 22.0364, 9.35156, 24.1175, -12.0542, 12.2254 )
 
 [node name="NPC" type="YSort" parent="YSort"]
 
@@ -1481,11 +1505,8 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
-[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 1
-
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
-position = Vector2( -5.67307, 11.3461 )
+position = Vector2( 0.27296, 10.7515 )
 shape = SubResource( 71 )
 
 [node name="Open" parent="Book" index="2"]
@@ -1500,7 +1521,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1527,6 +1547,9 @@ visible = false
 [node name="Label" parent="Book2/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
+frame = 1
+
 [node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1541,13 +1564,14 @@ margin_right = 737.5
 margin_bottom = 487.0
 
 [node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
-position = Vector2( -94, 260 )
+position = Vector2( -225, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book2/Open" index="2"]
-margin_left = -83.0
+margin_left = -214.0
 margin_top = 253.0
-margin_right = -34.0
+margin_right = -165.0
 margin_bottom = 269.0
 custom_colors/font_color = Color( 0.909804, 0.909804, 0.909804, 1 )
 custom_fonts/font = SubResource( 62 )
@@ -1569,9 +1593,6 @@ visible = false
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 1
-
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
 shape = SubResource( 72 )
@@ -1582,7 +1603,6 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
-frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
@@ -1619,8 +1639,6 @@ texture = ExtResource( 29 )
 [editable path="YSort/Props/Bags"]
 [editable path="YSort/Props/TableH"]
 [editable path="YSort/Props/TableV"]
-[editable path="YSort/Props/Bookshelf"]
-[editable path="YSort/Props/Bookshelf2"]
 [editable path="YSort/Props/Chair"]
 [editable path="YSort/Props/Bed"]
 [editable path="YSort/NPC/Adrienne"]

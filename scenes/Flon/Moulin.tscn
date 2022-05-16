@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,12 @@
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/cuve.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/commode.png" type="Texture" id=17]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/horitontalWoodTable.png" type="Texture" id=18]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=19]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBox.png" type="Texture" id=20]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sac.png" type="Texture" id=21]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sackPile.png" type="Texture" id=22]
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 31.0
@@ -287,6 +293,12 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 9, 22 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 24.8031, 10 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19, 6 )
 
@@ -346,12 +358,15 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 320, 180 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Wall" type="StaticBody2D" parent="Sprite"]
 position = Vector2( -336, -184 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Wall"]
-polygon = PoolVector2Array( 184, 256, 318.44, 256.539, 319.324, 212.698, 322.86, 212.698, 322.86, 256.185, 322.329, 271.565, 168, 272, 168, 88, 504, 88, 504, 272, 356.882, 272.569, 356.409, 235.717, 356.252, 210.203, 359.244, 210.361, 359.244, 235.717, 360.189, 241.386, 360.031, 256.663, 423.651, 255.847, 423.651, 242.146, 424.124, 236.695, 424.596, 173.384, 427.431, 173.226, 427.746, 204.786, 428.219, 255.971, 488, 256, 487.75, 209.682, 488.065, 205.272, 488, 136, 428.481, 136.768, 427.886, 152.971, 424.021, 152.823, 423.426, 136.471, 359.831, 136.43, 359.72, 192.111, 357.604, 191.888, 357.716, 187.211, 356.156, 136.319, 322.748, 136, 320, 136, 322.08, 186.432, 320, 192, 320, 184, 320, 136, 184, 136 )
+polygon = PoolVector2Array( 184, 256, 318.44, 256.539, 319.876, 229.69, 322.654, 229.294, 322.86, 256.185, 322.329, 271.565, 168, 272, 168, 88, 504, 88, 504, 272, 356.882, 272.569, 356.409, 235.717, 357.18, 215.205, 360.553, 214.61, 359.244, 235.717, 360.189, 241.386, 360.031, 256.663, 423.651, 255.847, 423.651, 242.146, 424.124, 236.695, 424.609, 184.234, 428.776, 183.837, 427.746, 204.786, 428.219, 255.971, 488, 256, 487.75, 209.682, 488.065, 205.272, 487.744, 144.747, 428.776, 144.152, 428.379, 157.248, 424.609, 157.248, 424.213, 143.358, 360.32, 144.152, 360.751, 195.363, 357.577, 195.164, 355.557, 143.953, 324.008, 143.16, 323.611, 196.139, 319.444, 195.147, 319.841, 142.961, 184.912, 143.755 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite/Wall"]
 polygon = PoolVector2Array( 330, 263, 330, 278, 349, 278, 349, 263, 357, 263, 357, 285, 325, 285, 325, 263 )
@@ -382,8 +397,9 @@ shape = SubResource( 21 )
 position = Vector2( 320, 224 )
 
 [node name="Enfant1" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 272, 208 )
-DemandDialogueID = "demEnfant"
+position = Vector2( 246, 168 )
+InitDir = 1
+DemandDialogueID = "demEnfant7"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant1" index="0"]
@@ -396,8 +412,10 @@ texture = ExtResource( 12 )
 parameters/playback = SubResource( 7 )
 
 [node name="Enfant2" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 368, 184 )
-DemandDialogueID = "demEnfant"
+position = Vector2( 375, 145 )
+WanderingCooldown = 15.0
+WalkSpeed = 30
+DemandDialogueID = "demEnfant8"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant2" index="0"]
@@ -446,6 +464,58 @@ anims/WalkUp = SubResource( 17 )
 
 [node name="AnimationTree" parent="YSort/Enfant3" index="6"]
 parameters/playback = SubResource( 18 )
+
+[node name="Furniture" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 346, 154 )
+
+[node name="Sprite" parent="YSort/Furniture" index="0"]
+position = Vector2( 10, 4 )
+texture = ExtResource( 17 )
+
+[node name="CollisionShape2D" parent="YSort/Furniture" index="1"]
+position = Vector2( 10, 1 )
+shape = SubResource( 22 )
+
+[node name="Furniture2" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 256, 140 )
+
+[node name="Sprite" parent="YSort/Furniture2" index="0"]
+position = Vector2( 10, 4 )
+texture = ExtResource( 18 )
+
+[node name="CollisionShape2D" parent="YSort/Furniture2" index="1"]
+position = Vector2( 10.2017, 1 )
+shape = SubResource( 23 )
+
+[node name="Bag" parent="YSort/Furniture2" instance=ExtResource( 13 )]
+position = Vector2( 22, -4 )
+
+[node name="Sprite" parent="YSort/Furniture2/Bag" index="0"]
+texture = ExtResource( 21 )
+
+[node name="Furniture3" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 366, 237 )
+
+[node name="Sprite" parent="YSort/Furniture3" index="0"]
+position = Vector2( 11, 2 )
+texture = ExtResource( 19 )
+flip_h = true
+
+[node name="CollisionShape2D" parent="YSort/Furniture3" index="1"]
+position = Vector2( 10.2017, 1 )
+shape = SubResource( 23 )
+
+[node name="Bag2" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 274, 246 )
+
+[node name="Sprite" parent="YSort/Bag2" index="0"]
+texture = ExtResource( 22 )
+
+[node name="Box" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 290.5, 246.508 )
+
+[node name="Sprite" parent="YSort/Box" index="0"]
+texture = ExtResource( 20 )
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2( 0, -16 )
@@ -511,3 +581,9 @@ volume_db = -10.0
 [editable path="YSort/Enfant2/ListenBox"]
 [editable path="YSort/Enfant3"]
 [editable path="YSort/Enfant3/ListenBox"]
+[editable path="YSort/Furniture"]
+[editable path="YSort/Furniture2"]
+[editable path="YSort/Furniture2/Bag"]
+[editable path="YSort/Furniture3"]
+[editable path="YSort/Bag2"]
+[editable path="YSort/Box"]
