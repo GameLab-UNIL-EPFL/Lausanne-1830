@@ -21,10 +21,22 @@ using System;
 public class MusicPlayer : Node2D
 {
 	private AudioStreamPlayer Music;
+	private AudioStreamPlayer Music2;
+	private AnimationPlayer AP;
 	
 	public override void _Ready()
 	{
 		Music = GetNode<AudioStreamPlayer>("Music");
+		Music2 = GetNode<AudioStreamPlayer>("Music2");
+		AP = GetNode<AnimationPlayer>("AnimationPlayer");
+	}
+	
+	// sets the last animation key of the chosen track to the desired value
+	private void _SetAnimKey(string anim_name, string track_name, float db) {
+		var animation = AP.GetAnimation(anim_name);
+		var track = animation.FindTrack(track_name);
+		var last_key = animation.TrackGetKeyCount(track) - 1;
+		animation.TrackSetKeyValue(track, last_key, db);
 	}
 
 	public void PlayMusic(string fileName, float db = 0) {
@@ -32,5 +44,36 @@ public class MusicPlayer : Node2D
 		Music.Stream = audioStream;
 		Music.VolumeDb = db;
 		Music.Play();
+	}
+	
+	// Crossfades to a new audio stream, allowing for a smoother transition
+	public void ChangeMusic(string fileName, float db = 0) {
+		var audioStream = (AudioStream)GD.Load("res://assets/07_sounds/Music/" + fileName);
+		if (Music.Playing && Music2.Playing) return;
+		
+		if (Music2.Playing) {
+			// sets the music volume db track's last key to the chosen value
+			_SetAnimKey("FadeToTrack1", "Music:volume_db", db);
+			Music.Stream = audioStream;
+			Music.VolumeDb = db;
+			Music.Play();
+			AP.Play("FadeToTrack1");
+		} else {
+			_SetAnimKey("FadeToTrack2", "Music2:volume_db", db);
+			Music2.Stream = audioStream;
+			Music2.VolumeDb = db;
+			Music2.Play();
+			AP.Play("FadeToTrack2");
+		}
+	}
+		
+	public void MusicFadeIn(float db) {
+		_SetAnimKey("FadeIn", "Music:volume_db", db);
+		_SetAnimKey("FadeIn", "Music2:volume_db", db);
+		AP.Play("FadeIn");
+	}
+		
+	public void MusicFadeOut() {
+		AP.Play("FadeOut");
 	}
 }

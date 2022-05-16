@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pen.mp3-d4b364af61bd15701be7e05188c551fd.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/Pen.mp3"
+dest_files=[ "res://.import/Pen.mp3-d4b364af61bd15701be7e05188c551fd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -39,7 +39,7 @@ public class Context : Node {
 	private NPC QuestNPC = null;
 	
 	//Constants
-	public const int N_TABS = 5;
+	public const int N_TABS = 6;
 	
 	//Brewery minigame variables
 	private float BrewGameScore = -1.0f;
@@ -52,6 +52,8 @@ public class Context : Node {
 	private Vector2 PaludEnterPosition = new Vector2(608, 230);
 	private Vector2 MoulinEnterPosition = new Vector2(324, 248);
 	private Vector2 FlonEnterPosition = new Vector2(404, 210);
+	private Vector2 BrasserieEnterPosition = new Vector2(262, 284);
+	private Vector2 CasinoEnterPosition = new Vector2(320, 288);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -147,10 +149,20 @@ public class Context : Node {
 	public Vector2 _GetPlayerPosition() {
 		if(GameState != GameStates.INIT) {
 			switch(CurrentLocation) {
+				case Locations.PALUD:
+					return PaludEnterPosition;
+				case Locations.INTRO:
+					return IntroEnterPosition;
 				case Locations.MOULIN:
 					return MoulinEnterPosition;
 				case Locations.FLON:
 					return FlonEnterPosition;
+				case Locations.BRASSERIE:
+					if(BrewerPreviousPos != Vector2.Zero) 
+						return BrewerPreviousPos;
+					return BrasserieEnterPosition;
+				case Locations.CASINO:
+					return CasinoEnterPosition;
 				default:
 					return Vector2.Zero;
 			}
@@ -200,6 +212,11 @@ public class Context : Node {
 		return NotebookCorrectInfo[id];
 	}
 	
+	public bool _IsTabCorrect(int id) {
+		Debug.Assert(0 <= id && id < N_TABS);
+		return NotebookCorrectInfo[id].IsCorrect();
+	}
+	
 	public void _UpdateNotebookCharInfo(int id, CharacterInfo_t data) {
 		Debug.Assert(0 <= id && id < N_TABS);
 		NotebookCharInfo[id] = data;
@@ -217,8 +234,12 @@ public class Context : Node {
 		return n_corrects;
 	} 
 	
+	public bool _AllTabsCorrect() {
+		return _GetNotCorrectTabs() == 0;
+	}
+	
 	private bool CheckGameOver() {
-		for(int i = 0; i < 4; ++i) {
+		for(int i = 0; i < N_TABS; ++i) {
 			if(!NotebookCorrectInfo[i].IsCorrect()) return false;
 		}
 		return true;
