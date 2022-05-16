@@ -954,6 +954,9 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Mlle De Cerjeat "
 
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
+
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
@@ -1139,6 +1142,9 @@ position = Vector2( 11.0124, -17.6866 )
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
+frame = 1
+
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
 shape = SubResource( 40 )
@@ -1155,6 +1161,7 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1185,6 +1192,9 @@ visible = false
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 1
+
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
 
@@ -1210,7 +1220,6 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="2" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="3"]
 position = Vector2( 265, 0 )

@@ -467,10 +467,6 @@ parameters/playback = SubResource( 17 )
 [node name="Notebook" parent="." instance=ExtResource( 8 )]
 visible = false
 
-[node name="Quest" parent="Notebook" index="2"]
-text = "Objectif:
-Complète la page de Mademoiselle De Cerjeat. Elle s'appelle Elisabeth."
-
 [node name="NotebookController" type="TextureButton" parent="."]
 margin_left = 650.0
 margin_top = 4.168
