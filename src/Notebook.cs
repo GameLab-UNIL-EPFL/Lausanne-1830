@@ -150,6 +150,8 @@ public class Notebook : Node2D {
 		for(int i = 0; i < Context.N_TABS; ++i) {
 			Sprite portrait = GetNode<Sprite>("Portrait" + i);
 			Portraits.Add(portrait);
+			
+			// Only show the portrait from the current tab
 			if(i == curTabId) {
 				portrait.Show();
 			} else {

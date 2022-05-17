@@ -71,17 +71,15 @@ margin_left = 1.0
 margin_top = -16.0
 margin_right = 115.0
 margin_bottom = 25.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
 
 [node name="Text" type="Label" parent="TextContainer"]
 margin_right = 114.0
 margin_bottom = 41.0
-size_flags_horizontal = 3
-size_flags_vertical = 7
+size_flags_horizontal = 15
+size_flags_vertical = 15
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "012345678901234556789012345
