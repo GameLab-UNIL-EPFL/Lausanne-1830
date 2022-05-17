@@ -366,6 +366,8 @@ public class Notebook : Node2D {
 		//Hide non-tutorial stuff in case of tuto
 		if(context._GetGameState() == GameStates.INIT) {
 			DisableNonTutoTabs();
+			//Set tutorial objective
+			SetObjective(0);
 		}
 	}
 	
@@ -479,9 +481,10 @@ public class Notebook : Node2D {
 		}
 	}
 	
-	private void SetObjective() {
+	private void SetObjective(int id = 1) {
 		//Query character info
-		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("default")
+		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("objectif")
+			where int.Parse(charInfo.Attribute("id").Value) == id
 			select charInfo.Value;
 		
 		//Load in new info text

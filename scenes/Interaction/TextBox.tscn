@@ -64,6 +64,7 @@ __meta__ = {
 position = Vector2( 0, 24 )
 frames = SubResource( 4 )
 animation = "pressE"
+frame = 1
 playing = true
 
 [node name="TextContainer" type="MarginContainer" parent="."]
