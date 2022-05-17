@@ -3,14 +3,14 @@
         <text>Alors...</text>
         <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
         <text>Très bien. Voyons voir ce carnet...</text>
-        <text>Il est sensé contenir toutes les informations importantes sur les habitants de Lausanne.</text>
-        <text>Mais les données de plusieurs personnes sont manquantes.</text>
+        <text>Il est censé contenir toutes les informations importantes</text>
+        <text>sur les habitants de Lausanne,</text>
+        <text>mais les données de plusieurs personnes sont manquantes.</text>
         <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
         <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
         <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
         <text>Mais avant de commencer, essayez de remplir la première page.</text>
-        <text>Il manque le prénom de Mademoiselle De Cerjeat.</text>
-        <text>Elle s'appelle Elisabeth.</text>
+        <text>Il manque le prénom de Mademoiselle De Cerjeat. Elle s'appelle Elisabeth.</text>
     </dialogue>
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
@@ -73,7 +73,6 @@
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
         <text>Si vous avez des questions, allez demander à mon épouse.</text>
-        <text>Elle s'occupe du côté administratif et moi de la brasserie.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
         <text>Hé Wolff ! Tu sais ce qui est arrivé à Ralf ?</text>
@@ -92,19 +91,18 @@
         <text>Je suis désolée mais je suis très occupée.</text>
         <text>J'ai encore du travail à terminer,</text>
         <text>mais vous pouvez aller regarder dans mes documents à l'étage.</text>
-        <text>Peut-être que vous trouverez ce que vous chercher.</text>
+        <text>Peut-être que vous trouverez ce que vous cherchez.</text>
     </dialogue>
     <dialogue id="demandAngeliqueBad" ntargets="1" type="onDemand">
-        <text>Je n'ai pas envis de vous parler...</text>
-        <text>Vous avez raté ma bière et brûlé ma cuve.</text>
-        <text>Ça va me coûter cher en temps et en argent.</text>
+        <text>Je n'ai pas envie de vous parler...</text>
+        <text>Vous avez ruiné ma bière et brûlé ma cuve.</text>
         <text>Allez embêter quelqu'un d'autre.</text>
     </dialogue>
     <dialogue id="demandAngeliqueGood" ntargets="1" type="onDemand">
         <text>Merci beaucoup pour votre aide !</text>
         <text>Ah mais je n'ai pas pris le temps de me présenter !</text>
         <text>Je m'appelle Angélique Trüschel.</text>
-        <text>Avec mon mari, Conrad, nous sommes propriétaire de la brasserie.</text>
+        <text>Avec mon époux, Conrad, nous sommes propriétaire de la brasserie.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>
@@ -131,7 +129,8 @@
     </dialogue>
     <dialogue id="demandBourgeois" ntargets="1" type="onDemand">
         <text>Bonjour, je m'appelle Louis Henri Bourgeois.</text>
-        <text>J'ai été élu conseiller d'État peu après la révolution qui a commencé ici-même.</text>
+        <text>J'ai été élu conseiller d'État</text>
+        <text>peu après la révolution qui a commencé ici-même.</text>
     </dialogue>
     <dialogue id="demandBaumann" ntargets="1" type="onDemand">
         <text>Mme Perregaux est de nouveau enceinte. Elle attend son troisième enfant.</text>
@@ -146,14 +145,17 @@
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Bonjour, bienvenue au moulin Rochat !</text>
         <text>Je m'appelle Benedict.</text>
-        <text>Cela fait déjà plusieurs générations que ma famille habite et travaille ici.</text>
-        <text>Il y a plusieurs moulins au bord du Flon mais nous habitons dans le tout premier.</text>
+        <text>Cela fait déjà plusieurs générations</text> 
+        <text>que ma famille habite et travaille ici.</text>
+        <text>Il y a plusieurs moulins au bord du Flon</text>
+        <text>mais nous habitons dans le tout premier.</text>
     </dialogue>
     <dialogue id="appFemme" ntargets="1" type="onApproach">
         <text>Jeanne, arrête de jouer et vient m'aider !</text>
     </dialogue>
     <dialogue id="demandFemme" ntargets="1" type="onDemand">
-        <text>Oui, ce sont tous nos enfants. Même moi je ne suis plus sûr combien nous en avons...</text>
+        <text>Oui, ce sont tous nos enfants.</text>
+        <text>Même moi je ne suis plus sûr combien nous en avons...</text>
     </dialogue>
     <dialogue id="demandEnfant" ntargets="1" type="onDemand">
         <text>
@@ -169,18 +171,49 @@
         </text>
     </dialogue>
     <dialogue id="demEnfant" ntargets="1" type="onDemand">
-        <text>Bonjour !</text>
+        <text>Ne vous inquiétez pas, on s'habitue vite à l'odeur du Flon.</text>
+    </dialogue>
+    <dialogue id="demEnfant2" ntargets="1" type="onDemand">
+        <text>On trouve souvent des cadavres d'animaux dans la rivières.</text>
+        <text>Ce sont les boucheries et la tannerie qui les jettent dans l'eau.</text>
+    </dialogue>
+    <dialogue id="demEnfant3" ntargets="1" type="onDemand">
+        <text>Cela fait combien de jour qu'il est là en train de dormir ?</text>
+    </dialogue>
+    <dialogue id="demEnfant4" ntargets="1" type="onDemand">
+        <text>Je ne sais pas... Est-ce qu'on devrait essayer de le réveiller ?</text>
+    </dialogue>
+    <dialogue id="demEnfant5" ntargets="1" type="onDemand">
+        <text>Tu veux jouer avec moi ?</text>
+    </dialogue>
+    <dialogue id="appEnfant5" ntargets="1" type="onApproach">
+        <text>
+            <option id="0">Hi hi hi !</option>
+            <option id="1">La la laaa...</option>
+            <option id="2">Non mère, pas tout de suite !</option>
+        </text>
+    </dialogue>
+    <dialogue id="demEnfant6" ntargets="1" type="onDemand">
+        <text>Je vous déconseille de boire l'eau de la rivière !</text>
+    </dialogue>
+    <dialogue id="demEnfant7" ntargets="1" type="onDemand">
+        <text>J'aide mon père à réparer et à faire fonctionner le moulin.</text>
+    </dialogue>
+    <dialogue id="demEnfant8" ntargets="1" type="onDemand">
+        <text>Mon frère ne va pas bien.</text>
+        <text>Cela fait plusieurs jours qu'il est malade.</text>
+        <text>J'ai peur qu'il ne s'en sorte pas.</text>
     </dialogue>
     <dialogue id="appDomestique" ntargets="1" type="onApproach">
         <text>
             <option id="0">Repose-toi.</option>
-            <option id="1">Bois un peu de ce remède.</option>
+            <option id="1">Bois un peu de soupe.</option>
         </text>
     </dialogue>
     <dialogue id="demDomestique" ntargets="1" type="onDemand">
         <text>Satané Flon ! Ce n'est qu'une source de maux et de maladies !</text>
     </dialogue>
-    <dialogue id="appMalade" ntargets="1" type="onApproach">
+    <dialogue id="demMalade" ntargets="1" type="onDemand">
         <text>*Kof kof*</text>
     </dialogue>
 </scene>

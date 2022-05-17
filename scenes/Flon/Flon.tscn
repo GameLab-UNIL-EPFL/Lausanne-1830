@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -22,47 +22,22 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/samuelRochat.png" type="Texture" id=20]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/morceauPont.png" type="Texture" id=21]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/pontFond.png" type="Texture" id=22]
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
-region = Rect2( 38, 0, 37, 36 )
-
-[sub_resource type="Animation" id=1]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 650, 4.168 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "Slide"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
-}
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 37, 36 )
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=25]
+[ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=26]
+[ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=28]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
+[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/fumier.png" type="Texture" id=30]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/haybale.png" type="Texture" id=31]
+[ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=32]
+[ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=33]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 53, 31.5 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=68]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
@@ -584,263 +559,6 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=30]
 
-[sub_resource type="Animation" id=31]
-resource_name = "IdleDown"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=32]
-resource_name = "IdleLeft"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 4, 5 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=33]
-resource_name = "IdleRight"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 4, 5 ]
-}
-
-[sub_resource type="Animation" id=34]
-resource_name = "IdleUp"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 8, 9 ]
-}
-
-[sub_resource type="Animation" id=35]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=36]
-resource_name = "WalkDown"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 2, 1, 3, 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=37]
-resource_name = "WalkLeft"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 5, 6, 5, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=38]
-resource_name = "WalkRight"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 5, 6, 5, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=39]
-resource_name = "WalkUp"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullyAnimated:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullyAnimated:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 9, 10, 9, 11 ]
-}
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=40]
-
 [sub_resource type="Animation" id=41]
 resource_name = "IdleDown"
 loop = true
@@ -1097,6 +815,263 @@ tracks/1/keys = {
 }
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=50]
+
+[sub_resource type="Animation" id=31]
+resource_name = "IdleDown"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "IdleLeft"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "IdleRight"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "IdleUp"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "WalkDown"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 3, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "WalkLeft"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 5, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "WalkRight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 5, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "WalkUp"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FullyAnimated:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FullyAnimated:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 9, 11 ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=40]
 
 [sub_resource type="Animation" id=51]
 resource_name = "IdleDown"
@@ -1355,8 +1330,54 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=60]
 
+[sub_resource type="CapsuleShape2D" id=64]
+
+[sub_resource type="CircleShape2D" id=67]
+radius = 13.2027
+
+[sub_resource type="CapsuleShape2D" id=69]
+height = 55.7203
+
 [sub_resource type="RectangleShape2D" id=63]
 extents = Vector2( 16, 4 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 38, 0, 37, 36 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4.168 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 37, 36 )
 
 [node name="Flon" type="Node2D"]
 
@@ -1365,57 +1386,34 @@ extents = Vector2( 16, 4 )
 [node name="QuestController" parent="." instance=ExtResource( 9 )]
 
 [node name="Bg" type="Sprite" parent="."]
-position = Vector2( 320, 184 )
-scale = Vector2( 1.33327, 1.33327 )
+position = Vector2( 320, 180 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Notebook" parent="." instance=ExtResource( 5 )]
-visible = false
-
-[node name="NotebookControllerNode" type="Node2D" parent="."]
-z_index = 3
-
-[node name="NotebookController" type="TextureButton" parent="NotebookControllerNode"]
-margin_left = 650.0
-margin_top = 4.168
-margin_right = 693.0
-margin_bottom = 40.168
-focus_mode = 0
-mouse_default_cursor_shape = 2
-enabled_focus_mode = 0
-texture_normal = SubResource( 7 )
-script = ExtResource( 3 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
-anims/RESET = SubResource( 1 )
-anims/Slide = SubResource( 2 )
-
-[node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
-margin_left = 44.0
-margin_right = 83.0
-margin_bottom = 36.0
-mouse_default_cursor_shape = 2
-texture_normal = SubResource( 8 )
-
-[node name="NotebookClick" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -10.0
+[node name="Grass" type="TileMap" parent="."]
+tile_set = ExtResource( 33 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 4, 536870913, 0, 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 1, 0, 131100, 1, 0, 131105, 1, 0, 131106, 1, 0, 262178, 0, 0, 327716, 1, 0, 458779, 1, 0, 458787, 536870913, 0, 524297, 536870913, 0, 589859, 536870912, 0, 655387, 536870913, 0, 655388, 536870913, 0, 655395, 0, 0, 720923, 536870913, 0, 720931, 1, 0, 786441, 536870912, 0, 786442, 536870913, 0, 786446, 1, 0, 786447, 0, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 786465, 536870913, 0, 786466, 1, 0, 851987, 1, 0, 851989, 0, 0, 983059, 536870913, 0, 1048584, 536870913, 0, 1048589, 1, 0, 1048600, 536870913, 0, 1048606, 1, 0, 1245196, 1, 0, 1245206, 536870912, 0, 1310731, 0, 0, 1310733, 1, 0, 1441797, 536870913, 0, 1441805, 536870913, 0, 1441811, 536870913, 0, 1441814, 536870913, 0 )
 
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( -1, -7, -4, 365, 266, 363, 265, 272, 259, 273, 259, 265, 315, 263, 316, 276, 297, 276, 299, 360, 525, 361, 599, 315, 641, 258, 640, -8, -1, 0, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
+polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -8.29259, 369.771, 281.477, 369.771, 280.55, 251.227, 274.312, 247.724, 274.114, 243.16, 288.797, 240.382, 300.504, 240.382, 316.775, 242.168, 315.982, 247.128, 303.714, 251.227, 304.602, 370.715, 382.471, 370.243, 387.26, 358.762, 416, 336, 528, 280, 592, 168, 592, 0, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( 270, 250, 315, 250, 314, 242, 293, 242, 291, 235, 285, 226, 285, 206, 283, 195, 282, 116, 279, 104, 277, -14, 242, -17, 245, 12, 252, 25, 253, 205, 265, 233, 269, 241, 259, 243, 259, 250 )
+position = Vector2( 0, -18 )
+polygon = PoolVector2Array( 280.222, 246.68, 303.819, 246.916, 309.01, 247.152, 313.997, 245.087, 297.714, 236.386, 295.041, 230.373, 295.486, 216.635, 302.836, 216.412, 290.093, 194.797, 290.374, 171.225, 288.129, 113.318, 292.338, 67.8581, 294.302, -42.3543, 242, -17, 245, 12, 260.629, 19.3116, 266.241, 197.884, 258.514, 219.085, 272.1, 218.862, 278.307, 240.257, 274.537, 245.619 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="House" type="StaticBody2D" parent="YSort"]
-position = Vector2( 488, 136 )
+position = Vector2( 505, 136 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="YSort/House"]
 position = Vector2( 0, -41 )
@@ -1427,6 +1425,9 @@ shape = SubResource( 9 )
 
 [node name="House2" type="StaticBody2D" parent="YSort"]
 position = Vector2( 376, 136 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="YSort/House2"]
 position = Vector2( 0, -41 )
@@ -1437,21 +1438,31 @@ position = Vector2( 3, 20 )
 polygon = PoolVector2Array( -75, 44, 5, 44, 5, 20, 45, 20, 45, 44, 61, 44, 61, -28, -74, -31, -74, -20 )
 
 [node name="House3" type="StaticBody2D" parent="YSort"]
-position = Vector2( 232, 136 )
+position = Vector2( 200, 141 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="YSort/House3"]
 position = Vector2( 18, -70 )
 texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House3"]
-position = Vector2( 3, 18 )
-polygon = PoolVector2Array( -43, 44, 54, 43, 52, -22, -41, -24 )
+position = Vector2( 3, -70.0994 )
+scale = Vector2( 1, 2.368 )
+polygon = PoolVector2Array( -42.3851, 55.0389, 52.6362, 55.0389, 52.2157, -29.5508, -40.2829, -29.9059 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 404, 207 )
 
+[node name="AnimationTree" parent="YSort/Player" index="4"]
+parameters/playback = SubResource( 68 )
+
+[node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
+stream = ExtResource( 32 )
+
 [node name="Benedict" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 328, 208 )
+position = Vector2( 350, 208 )
 DemandDialogueID = "demandBene"
 HasAutoDialogue = false
 
@@ -1479,7 +1490,7 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 6 )
 
 [node name="Enfant1" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 184, 232 )
+position = Vector2( 157, 270 )
 CanWander = true
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
@@ -1494,8 +1505,11 @@ texture = ExtResource( 15 )
 parameters/playback = SubResource( 10 )
 
 [node name="Enfant2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 80, 312 )
-DemandDialogueID = "demEnfant"
+position = Vector2( 200, 332 )
+CanWander = true
+WanderingCooldown = 15.0
+WalkSpeed = 30
+DemandDialogueID = "demEnfant2"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant2" index="0"]
@@ -1519,8 +1533,9 @@ anims/WalkUp = SubResource( 19 )
 parameters/playback = SubResource( 20 )
 
 [node name="Enfant3" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 32, 224 )
-DemandDialogueID = "demEnfant"
+position = Vector2( 80, 117 )
+InitDir = 1
+DemandDialogueID = "demEnfant3"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant3" index="0"]
@@ -1544,43 +1559,18 @@ anims/WalkUp = SubResource( 29 )
 parameters/playback = SubResource( 30 )
 
 [node name="Enfant4" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 128, 136 )
-CanWander = true
-DemandDialogueID = "demEnfant"
+position = Vector2( 46, 117 )
+InitDir = 0
+DemandDialogueID = "demEnfant4"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant4" index="0"]
-NPCName = " Mlle Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant4" index="2"]
-texture = ExtResource( 17 )
-
-[node name="AnimationPlayer" parent="YSort/Enfant4" index="5"]
-anims/IdleDown = SubResource( 31 )
-anims/IdleLeft = SubResource( 32 )
-anims/IdleRight = SubResource( 33 )
-anims/IdleUp = SubResource( 34 )
-anims/RESET = SubResource( 35 )
-anims/WalkDown = SubResource( 36 )
-anims/WalkLeft = SubResource( 37 )
-anims/WalkRight = SubResource( 38 )
-anims/WalkUp = SubResource( 39 )
-
-[node name="AnimationTree" parent="YSort/Enfant4" index="6"]
-parameters/playback = SubResource( 40 )
-
-[node name="Enfant5" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 40, 120 )
-DemandDialogueID = "demEnfant"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Enfant5" index="0"]
 NPCName = " M. Rochat "
 
-[node name="FullyAnimated" parent="YSort/Enfant5" index="2"]
+[node name="FullyAnimated" parent="YSort/Enfant4" index="2"]
 texture = ExtResource( 18 )
 
-[node name="AnimationPlayer" parent="YSort/Enfant5" index="5"]
+[node name="AnimationPlayer" parent="YSort/Enfant4" index="5"]
 anims/IdleDown = SubResource( 41 )
 anims/IdleLeft = SubResource( 42 )
 anims/IdleRight = SubResource( 43 )
@@ -1591,12 +1581,42 @@ anims/WalkLeft = SubResource( 47 )
 anims/WalkRight = SubResource( 48 )
 anims/WalkUp = SubResource( 49 )
 
-[node name="AnimationTree" parent="YSort/Enfant5" index="6"]
+[node name="AnimationTree" parent="YSort/Enfant4" index="6"]
 parameters/playback = SubResource( 50 )
 
+[node name="Enfant5" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 462, 276 )
+InitDir = 1
+CanWander = true
+WanderingCooldown = 10.0
+WalkSpeed = 40
+AutoDialogueID = "appEnfant5"
+DemandDialogueID = "demEnfant5"
+
+[node name="TextBox" parent="YSort/Enfant5" index="0"]
+NPCName = " Mlle Rochat "
+
+[node name="FullyAnimated" parent="YSort/Enfant5" index="2"]
+texture = ExtResource( 17 )
+
+[node name="AnimationPlayer" parent="YSort/Enfant5" index="5"]
+anims/IdleDown = SubResource( 31 )
+anims/IdleLeft = SubResource( 32 )
+anims/IdleRight = SubResource( 33 )
+anims/IdleUp = SubResource( 34 )
+anims/RESET = SubResource( 35 )
+anims/WalkDown = SubResource( 36 )
+anims/WalkLeft = SubResource( 37 )
+anims/WalkRight = SubResource( 38 )
+anims/WalkUp = SubResource( 39 )
+
+[node name="AnimationTree" parent="YSort/Enfant5" index="6"]
+parameters/playback = SubResource( 40 )
+
 [node name="Enfant6" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 432, 224 )
-DemandDialogueID = "demEnfant"
+position = Vector2( 324, 332 )
+InitDir = 1
+DemandDialogueID = "demEnfant6"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant6" index="0"]
@@ -1620,17 +1640,299 @@ anims/WalkUp = SubResource( 59 )
 parameters/playback = SubResource( 60 )
 
 [node name="BridgeWall" type="Sprite" parent="YSort"]
-position = Vector2( 288, 272 )
-scale = Vector2( 1.333, 1.333 )
+position = Vector2( 296, 246 )
 texture = ExtResource( 21 )
 centered = false
 offset = Vector2( -23, -30 )
 
 [node name="BridgeUpperWall" type="Sprite" parent="YSort"]
-position = Vector2( 288, 250 )
-scale = Vector2( 1.333, 1.333 )
+position = Vector2( 296, 229 )
 texture = ExtResource( 22 )
 offset = Vector2( 0, 6 )
+
+[node name="Bush" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 72, 320 )
+
+[node name="Sprite" parent="YSort/Bush" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush2" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 100, 357 )
+
+[node name="Sprite" parent="YSort/Bush2" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush2" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush3" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 66, 290 )
+
+[node name="Sprite" parent="YSort/Bush3" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush15" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 2, 65 )
+
+[node name="Sprite" parent="YSort/Bush15" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush15" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush16" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 45, 205 )
+
+[node name="Sprite" parent="YSort/Bush16" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush16" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush7" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 62, 245 )
+
+[node name="Sprite" parent="YSort/Bush7" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush7" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush17" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 54, 270 )
+
+[node name="Sprite" parent="YSort/Bush17" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush17" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush8" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 16, 90 )
+
+[node name="Sprite" parent="YSort/Bush8" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Bush8" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush4" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 24.0831, 320 )
+
+[node name="Sprite" parent="YSort/Bush4" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush4" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush9" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 9, 263 )
+
+[node name="Sprite" parent="YSort/Bush9" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush9" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush10" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 22, 160 )
+
+[node name="Sprite" parent="YSort/Bush10" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush10" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush11" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( -11, 128 )
+
+[node name="Sprite" parent="YSort/Bush11" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush11" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush13" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 21.5, 225 )
+
+[node name="Sprite" parent="YSort/Bush13" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush13" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush14" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( -1, 190 )
+
+[node name="Sprite" parent="YSort/Bush14" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush14" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush12" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( -3, 106 )
+
+[node name="Sprite" parent="YSort/Bush12" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush12" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush5" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 42, 354 )
+
+[node name="Sprite" parent="YSort/Bush5" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush18" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 63, 337 )
+
+[node name="Sprite" parent="YSort/Bush18" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush18" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush19" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 43.7838, 301 )
+
+[node name="Sprite" parent="YSort/Bush19" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush19" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush20" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 31.7838, 278 )
+
+[node name="Sprite" parent="YSort/Bush20" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush20" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush21" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 0, 296 )
+
+[node name="Sprite" parent="YSort/Bush21" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush21" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush6" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 4, 347 )
+
+[node name="Sprite" parent="YSort/Bush6" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush6" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Box" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 450, 192 )
+
+[node name="Sprite" parent="YSort/Box" index="0"]
+texture = ExtResource( 28 )
+
+[node name="Box2" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 577, 160 )
+
+[node name="Sprite" parent="YSort/Box2" index="0"]
+texture = ExtResource( 29 )
+
+[node name="Box3" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 576, 148 )
+
+[node name="Sprite" parent="YSort/Box3" index="0"]
+texture = ExtResource( 29 )
+
+[node name="Hay" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 40, 27 )
+
+[node name="Sprite" parent="YSort/Hay" index="0"]
+position = Vector2( 0.0831146, -4.68631 )
+texture = ExtResource( 31 )
+
+[node name="CollisionShape2D" parent="YSort/Hay" index="1"]
+position = Vector2( -0.629974, 5.66974 )
+shape = SubResource( 67 )
+
+[node name="Manure" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 101, 33 )
+
+[node name="Sprite" parent="YSort/Manure" index="0"]
+texture = ExtResource( 30 )
+
+[node name="CollisionShape2D" parent="YSort/Manure" index="1"]
+position = Vector2( 0, 9 )
+rotation = 1.5708
+shape = SubResource( 69 )
 
 [node name="Door" type="Area2D" parent="."]
 
@@ -1638,12 +1940,62 @@ offset = Vector2( 0, 6 )
 position = Vector2( 404, 178 )
 shape = SubResource( 63 )
 
-[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
-[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[node name="Notebook" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="NotebookControllerNode" type="Node2D" parent="."]
+z_index = 3
+
+[node name="NotebookController" type="TextureButton" parent="NotebookControllerNode"]
+margin_left = 650.0
+margin_top = 4.168
+margin_right = 693.0
+margin_bottom = 40.168
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+texture_normal = SubResource( 7 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
+anims/RESET = SubResource( 1 )
+anims/Slide = SubResource( 2 )
+
+[node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
+margin_left = 44.0
+margin_right = 83.0
+margin_bottom = 36.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 23 )]
+position = Vector2( 0, 33 )
+
+[node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 24 )]
+position = Vector2( 0, 33 )
+
+[node name="NotebookClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="OpenMapZone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenMapZone"]
+polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.8579, -12, 375.53, 387.5, 375.53, 387.5, 364.53, -6, 365.53, -3, -4.84691 )
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="area_entered" from="Door" to="YSort/Player" method="_on_Door_area_entered"]
+[connection signal="area_entered" from="OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 
+[editable path="YSort/Player"]
+[editable path="YSort/Player/TalkBox"]
 [editable path="YSort/Benedict"]
 [editable path="YSort/Benedict/ListenBox"]
 [editable path="YSort/Epouse"]
@@ -1660,3 +2012,29 @@ shape = SubResource( 63 )
 [editable path="YSort/Enfant5/ListenBox"]
 [editable path="YSort/Enfant6"]
 [editable path="YSort/Enfant6/ListenBox"]
+[editable path="YSort/Bush"]
+[editable path="YSort/Bush2"]
+[editable path="YSort/Bush3"]
+[editable path="YSort/Bush15"]
+[editable path="YSort/Bush16"]
+[editable path="YSort/Bush7"]
+[editable path="YSort/Bush17"]
+[editable path="YSort/Bush8"]
+[editable path="YSort/Bush4"]
+[editable path="YSort/Bush9"]
+[editable path="YSort/Bush10"]
+[editable path="YSort/Bush11"]
+[editable path="YSort/Bush13"]
+[editable path="YSort/Bush14"]
+[editable path="YSort/Bush12"]
+[editable path="YSort/Bush5"]
+[editable path="YSort/Bush18"]
+[editable path="YSort/Bush19"]
+[editable path="YSort/Bush20"]
+[editable path="YSort/Bush21"]
+[editable path="YSort/Bush6"]
+[editable path="YSort/Box"]
+[editable path="YSort/Box2"]
+[editable path="YSort/Box3"]
+[editable path="YSort/Hay"]
+[editable path="YSort/Manure"]
