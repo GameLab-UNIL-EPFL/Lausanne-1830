@@ -455,7 +455,10 @@ shape = SubResource( 1 )
 [node name="Notebook" parent="." instance=ExtResource( 7 )]
 visible = false
 
-[node name="NotebookController" type="TextureButton" parent="."]
+[node name="NotebookControllerNode" type="Node2D" parent="."]
+z_index = 3
+
+[node name="NotebookController" type="TextureButton" parent="NotebookControllerNode"]
 margin_left = 650.0
 margin_top = 4.168
 margin_right = 693.0
@@ -465,15 +468,12 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 2 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 3 )
 anims/Slide = SubResource( 4 )
 
-[node name="MapButton" type="TextureButton" parent="NotebookController"]
+[node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
 margin_left = 44.0
 margin_right = 83.0
 margin_bottom = 36.0
@@ -485,10 +485,10 @@ stream = ExtResource( 6 )
 volume_db = -10.0
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
-[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Exit_area_entered"]
-[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
-[connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
 [editable path="YSort/Cuve"]
 [editable path="YSort/Cuve2"]

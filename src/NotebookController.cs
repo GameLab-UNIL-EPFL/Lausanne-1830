@@ -29,7 +29,7 @@ public class NotebookController : TextureButton
 	{
 		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		MB = GetNode<TextureButton>("MapButton");
-		NB = GetNode<Notebook>("../Notebook");
+		NB = GetNode<Notebook>("../../Notebook");
 		
 		if(!MB.IsConnected("pressed", NB, "_on_MapB_pressed")){
 			MB.Connect("pressed", NB, "_on_MapB_pressed");

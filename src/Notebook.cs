@@ -560,3 +560,4 @@ public class Notebook : Node2D {
 		_Change_Portrait(5);
 	}
 }
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -1420,7 +1420,10 @@ visible = false
 stream = ExtResource( 7 )
 volume_db = -10.0
 
-[node name="NotebookController" type="TextureButton" parent="."]
+[node name="NotebookControllerNode" type="Node2D" parent="."]
+z_index = 3
+
+[node name="NotebookController" type="TextureButton" parent="NotebookControllerNode"]
 margin_left = 650.0
 margin_top = 4.168
 margin_right = 693.0
@@ -1430,15 +1433,12 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 74 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
-[node name="MapButton" type="TextureButton" parent="NotebookController"]
+[node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
 margin_left = 44.0
 margin_right = 83.0
 margin_bottom = 36.0
@@ -1448,11 +1448,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 39 )]
+[node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 39 )]
 position = Vector2( 5, 33 )
 scale = Vector2( 0.75, 0.75 )
 
-[node name="PressTab" parent="NotebookController" instance=ExtResource( 40 )]
+[node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 40 )]
 position = Vector2( 0, 34 )
 scale = Vector2( 0.75, 0.75 )
 
@@ -1482,7 +1482,7 @@ visible = false
 text = "Lire"
 
 [node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 1
+frame = 0
 
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
@@ -1500,7 +1500,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1527,6 +1526,9 @@ visible = false
 [node name="Label" parent="Book2/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1543,6 +1545,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book2/Open" index="2"]
 margin_left = -83.0
@@ -1570,7 +1573,7 @@ visible = false
 text = "Regarder"
 
 [node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 1
+frame = 0
 
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
@@ -1582,7 +1585,6 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
-frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
@@ -1600,11 +1602,11 @@ position = Vector2( 146, 102 )
 texture = ExtResource( 29 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
-[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="visibility_changed" from="Notebook" to="Book" method="_on_Notebook_visibility_changed"]
 [connection signal="visibility_changed" from="Notebook" to="Item" method="_on_Notebook_visibility_changed"]
-[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
-[connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]
