@@ -1063,7 +1063,7 @@ atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 37, 36 )
 
 [sub_resource type="RectangleShape2D" id=59]
-extents = Vector2( 83.8691, 18.911 )
+extents = Vector2( 83.8691, 20.4755 )
 
 [sub_resource type="CircleShape2D" id=71]
 radius = 15.4083
@@ -1227,7 +1227,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1241,6 +1241,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
+frame = 3
 playing = true
 flip_h = true
 
@@ -1492,7 +1493,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 174.671, 113.386 )
+position = Vector2( 174.671, 114.951 )
 shape = SubResource( 59 )
 
 [node name="Book" parent="." instance=ExtResource( 27 )]
@@ -1523,6 +1524,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1549,6 +1551,9 @@ visible = false
 [node name="Label" parent="Book2/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1565,7 +1570,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -225, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book2/Open" index="2"]
 margin_left = -214.0
@@ -1605,6 +1609,7 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
+frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
