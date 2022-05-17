@@ -32,6 +32,7 @@ script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.35, 0.35 )
+z_index = -3
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Sprite"]
@@ -55,6 +56,7 @@ position = Vector2( -78, 16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "press"
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

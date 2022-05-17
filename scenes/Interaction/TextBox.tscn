@@ -4,10 +4,10 @@
 [ext_resource path="res://src/TextBox.cs" type="Script" id=2]
 [ext_resource path="res://assets/06_UI_menus/textBoxSmall.png" type="Texture" id=3]
 [ext_resource path="res://assets/06_UI_menus/textBoxBig.png" type="Texture" id=4]
-[ext_resource path="res://assets/06_UI_menus/presse1.png" type="Texture" id=5]
+[ext_resource path="res://assets/04_notebook/presse1.png" type="Texture" id=5]
 [ext_resource path="res://assets/06_UI_menus/simpleTextBoxSmall.png" type="Texture" id=6]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://assets/06_UI_menus/presse2.png" type="Texture" id=8]
+[ext_resource path="res://assets/04_notebook/presse2.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -64,6 +64,7 @@ __meta__ = {
 position = Vector2( 0, 24 )
 frames = SubResource( 4 )
 animation = "pressE"
+frame = 1
 playing = true
 
 [node name="TextContainer" type="MarginContainer" parent="."]
@@ -71,17 +72,15 @@ margin_left = 1.0
 margin_top = -16.0
 margin_right = 115.0
 margin_bottom = 25.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
 
 [node name="Text" type="Label" parent="TextContainer"]
 margin_right = 114.0
 margin_bottom = 41.0
-size_flags_horizontal = 3
-size_flags_vertical = 7
+size_flags_horizontal = 15
+size_flags_vertical = 15
 custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "012345678901234556789012345
@@ -90,7 +89,6 @@ text = "012345678901234556789012345
 align = 1
 valign = 1
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
