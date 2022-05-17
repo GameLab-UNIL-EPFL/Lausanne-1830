@@ -207,16 +207,22 @@ public class Player : KinematicBody2D {
 		if(CurrentState == PlayerStates.NOTEBOOK) {
 			//Check for tab switches
 			if(Input.IsActionJustPressed("ui_1")) {
-				NB._on_Tab1Button_pressed();
+				NB._on_Tab0Button_pressed();
 			}
 			if(Input.IsActionJustPressed("ui_2")) {
-				NB._on_Tab2Button_pressed();
+				NB._on_Tab1Button_pressed();
 			}
 			if(Input.IsActionJustPressed("ui_3")) {
-				NB._on_Tab3Button_pressed();
+				NB._on_Tab2Button_pressed();
 			}
 			if(Input.IsActionJustPressed("ui_4")) {
+				NB._on_Tab3Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_5")) {
 				NB._on_Tab4Button_pressed();
+			}
+			if(Input.IsActionJustPressed("ui_6")) {
+				NB._on_Tab5Button_pressed();
 			}
 		}
 	}

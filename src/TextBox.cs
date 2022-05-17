@@ -29,6 +29,7 @@ public class TextBox : Node2D {
 	private Label Text;
 	private AnimatedSprite E;
 	private Label N;
+	private DynamicFont F;
 	
 	private Vector2 DTCSize = new Vector2(114, 41);
 	private Vector2 DTCPos = new Vector2(3, -16);
@@ -63,8 +64,11 @@ public class TextBox : Node2D {
 		Text = GetNode<Label>("TextContainer/Text");
 		E = GetNode<AnimatedSprite>("AnimatedSprite");
 		N = GetNode<Label>("Name");
+		F = (DynamicFont)Text.Get("custom_fonts/font");
 		N.Text = NPCName;
 		
+		//Set default font size
+		F.Size = 10;
 		
 		Show();
 		_HideAll();
@@ -83,6 +87,12 @@ public class TextBox : Node2D {
 		Text.Text = text;
 		float nLines = text.Length / 25.0f;
 		ShowAll();
+		
+		if(nLines > 3.0f) {
+			F.Size = 8;
+		} else {
+			F.Size = 10;
+		}
 		
 		//Pick which TB to show
 		if(nLines > 1.0f)  {
@@ -103,3 +113,6 @@ public class TextBox : Node2D {
 		ShowAll();
 	}
 }
+
+
+

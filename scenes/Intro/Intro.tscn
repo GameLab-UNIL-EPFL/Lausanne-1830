@@ -467,11 +467,10 @@ parameters/playback = SubResource( 17 )
 [node name="Notebook" parent="." instance=ExtResource( 8 )]
 visible = false
 
-[node name="Quest" parent="Notebook" index="2"]
-text = "Objectif:
-Complète la page de Mademoiselle De Cerjeat. Elle s'appelle Elisabeth."
+[node name="NotebookControllerNode" type="Node2D" parent="."]
+z_index = 3
 
-[node name="NotebookController" type="TextureButton" parent="."]
+[node name="NotebookController" type="TextureButton" parent="NotebookControllerNode"]
 margin_left = 650.0
 margin_top = 4.168
 margin_right = 693.0
@@ -481,30 +480,24 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 2 )
 script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 3 )
 anims/Slide = SubResource( 4 )
 
-[node name="MapButton" type="TextureButton" parent="NotebookController"]
+[node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
 margin_left = 43.0
 margin_right = 82.0
 margin_bottom = 36.0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 14 )]
+[node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 14 )]
 position = Vector2( 6, 34 )
 scale = Vector2( 0.75, 0.75 )
 texture = SubResource( 6 )
 
-[node name="PressTab" parent="NotebookController" instance=ExtResource( 11 )]
+[node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 11 )]
 position = Vector2( 0, 34 )
 scale = Vector2( 0.75, 0.75 )
 texture = SubResource( 7 )
@@ -558,14 +551,15 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 67 )
 scale = Vector2( 1.2, 1.2 )
+frame = 1
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
-[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
-[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
-[connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
