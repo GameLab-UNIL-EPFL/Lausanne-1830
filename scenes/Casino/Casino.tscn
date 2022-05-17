@@ -165,7 +165,7 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Coillision" type="Node2D" parent="."]
 

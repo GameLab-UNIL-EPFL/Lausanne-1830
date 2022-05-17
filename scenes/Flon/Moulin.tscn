@@ -863,7 +863,7 @@ position = Vector2( 0, 33 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Wall" type="Sprite" parent="."]
 position = Vector2( 306, 235 )

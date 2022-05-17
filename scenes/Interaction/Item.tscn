@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/Item.cs" type="Script" id=5]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 25
 outline_size = 1
@@ -32,7 +31,6 @@ script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.35, 0.35 )
-z_index = -3
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Sprite"]
@@ -56,7 +54,6 @@ position = Vector2( -78, 16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "press"
-frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -65,6 +62,7 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="Open" type="Node2D" parent="."]
+z_index = 3
 
 [node name="ColorRect" type="ColorRect" parent="Open"]
 margin_left = -606.0
@@ -82,6 +80,7 @@ margin_top = -333.0
 margin_right = 655.0
 margin_bottom = 369.0
 focus_mode = 0
+disabled = true
 enabled_focus_mode = 0
 flat = true
 __meta__ = {
