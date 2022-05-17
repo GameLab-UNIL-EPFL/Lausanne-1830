@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/samuelRochat.png" type="Texture" id=20]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/morceauPont.png" type="Texture" id=21]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/pontFond.png" type="Texture" id=22]
+[ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
@@ -1954,6 +1956,9 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 7 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 1 )
@@ -1968,6 +1973,12 @@ texture_normal = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 23 )]
+position = Vector2( 0, 33 )
+
+[node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 24 )]
+position = Vector2( 0, 33 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

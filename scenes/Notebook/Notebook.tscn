@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -10,17 +10,18 @@
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=10]
-[ext_resource path="res://assets/01_characters/03_pnjs/angeliqueTruschel.png" type="Texture" id=11]
-[ext_resource path="res://assets/01_characters/03_pnjs/henriPerregaux.png" type="Texture" id=12]
-[ext_resource path="res://assets/01_characters/03_pnjs/montolieu.png" type="Texture" id=13]
+[ext_resource path="res://assets/01_characters/02_missingCharacters/portraitRochat.png" type="Texture" id=11]
+[ext_resource path="res://assets/01_characters/02_missingCharacters/portraitCerjeat.png" type="Texture" id=12]
+[ext_resource path="res://assets/01_characters/02_missingCharacters/portraitTruschel.png" type="Texture" id=13]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=16]
+[ext_resource path="res://assets/01_characters/02_missingCharacters/portraitMontolieu.png" type="Texture" id=16]
 [ext_resource path="res://assets/04_notebook/tampon.png" type="Texture" id=17]
 [ext_resource path="res://assets/07_sounds/Sounds/Stamp.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/Sounds/Bravo.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/Sounds/Pen.mp3" type="AudioStream" id=20]
-[ext_resource path="res://assets/01_characters/03_pnjs/benedictRochat.png" type="Texture" id=21]
+[ext_resource path="res://assets/01_characters/02_missingCharacters/portraitPerregaux.png" type="Texture" id=21]
+[ext_resource path="res://assets/01_characters/02_missingCharacters/mercier.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 11
@@ -613,8 +614,8 @@ __meta__ = {
 
 [node name="Placeholder" type="ColorRect" parent="Sprite"]
 margin_left = 203.0
-margin_top = 61.0
-margin_right = 240.0
+margin_top = 64.0
+margin_right = 239.0
 margin_bottom = 98.0
 color = Color( 0.831373, 0.764706, 0.662745, 1 )
 __meta__ = {
@@ -1032,44 +1033,33 @@ __meta__ = {
 }
 
 [node name="Portrait0" type="Sprite" parent="."]
-position = Vector2( 221, 77 )
-texture = ExtResource( 16 )
-hframes = 4
-vframes = 3
+position = Vector2( 221, 82 )
+texture = ExtResource( 12 )
 
 [node name="Portrait1" type="Sprite" parent="."]
 visible = false
-position = Vector2( 221, 77 )
-texture = ExtResource( 11 )
-hframes = 4
-vframes = 3
+position = Vector2( 221, 82 )
+texture = ExtResource( 13 )
 
 [node name="Portrait2" type="Sprite" parent="."]
 visible = false
-position = Vector2( 221, 77 )
-texture = ExtResource( 12 )
-hframes = 4
-vframes = 3
+position = Vector2( 221, 82 )
+texture = ExtResource( 21 )
 
 [node name="Portrait3" type="Sprite" parent="."]
 visible = false
-position = Vector2( 221, 77 )
-scale = Vector2( 0.333, 0.333 )
-texture = ExtResource( 13 )
-hframes = 2
+position = Vector2( 221, 82 )
+texture = ExtResource( 16 )
 
 [node name="Portrait4" type="Sprite" parent="."]
 visible = false
-position = Vector2( 221, 77 )
-hframes = 4
-vframes = 3
+position = Vector2( 221, 82 )
+texture = ExtResource( 22 )
 
 [node name="Portrait5" type="Sprite" parent="."]
 visible = false
-position = Vector2( 221, 77 )
-texture = ExtResource( 21 )
-hframes = 4
-vframes = 3
+position = Vector2( 221, 82 )
+texture = ExtResource( 11 )
 
 [node name="Stamp" type="Sprite" parent="."]
 visible = false
