@@ -146,8 +146,15 @@ public class Notebook : Node2D {
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
+		curTabId = context._GetCurrentTab();
 		for(int i = 0; i < Context.N_TABS; ++i) {
-			Portraits.Add(GetNode<Sprite>("Portrait" + i));
+			Sprite portrait = GetNode<Sprite>("Portrait" + i);
+			Portraits.Add(portrait);
+			if(i == curTabId) {
+				portrait.Show();
+			} else {
+				portrait.Hide();
+			}
 		}
 		//Fetch all info
 		foreach(var infoName in infoNames) {
@@ -164,7 +171,6 @@ public class Notebook : Node2D {
 			tab.Connect("pressed", this, "_on_Tab" + i + "Button_pressed");
 			tabButtons.Add(tab);
 		}
-		curTabId = context._GetCurrentTab();
 		
 		//Load in current character info and correct info
 		characterInfo = context._GetNotebookCharInfo(curTabId);
