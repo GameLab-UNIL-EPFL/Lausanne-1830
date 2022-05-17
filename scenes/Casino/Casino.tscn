@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
+[ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 116, 96 )
@@ -126,6 +127,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 27 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 262146, 1, 0, 458771, 536870913, 0, 524305, 536870912, 0, 524322, 1, 0, 589826, 1, 0, 589844, 536870913, 0, 852000, 1, 0, 917521, 536870913, 0, 1048580, 536870913, 0, 1048581, 1, 0, 1179655, 1, 0, 1245194, 536870913, 0, 1245216, 536870913, 0 )
+
 [node name="Casino" type="StaticBody2D" parent="."]
 position = Vector2( 438, 111.495 )
 __meta__ = {
@@ -185,7 +192,6 @@ volume_db = -10.0
 [node name="StaticBody2D" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D"]
-position = Vector2( 0, 358 )
 position = Vector2( 0, 367 )
 shape = SubResource( 3 )
 one_way_collision = true
@@ -391,7 +397,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush4" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 78.9677, 286 )
@@ -523,6 +529,9 @@ position = Vector2( 0, -19 )
 
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
+
+[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
+frame = 1
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )

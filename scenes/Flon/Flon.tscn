@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/fumier.png" type="Texture" id=30]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/haybale.png" type="Texture" id=31]
 [ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=32]
+[ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=33]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 53, 31.5 )
@@ -1391,10 +1392,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Grass" type="TileMap" parent="."]
+tile_set = ExtResource( 33 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 4, 536870913, 0, 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 1, 0, 131100, 1, 0, 131105, 1, 0, 131106, 1, 0, 262178, 0, 0, 327716, 1, 0, 458779, 1, 0, 458787, 536870913, 0, 524297, 536870913, 0, 589859, 536870912, 0, 655387, 536870913, 0, 655388, 536870913, 0, 655395, 0, 0, 720923, 536870913, 0, 720931, 1, 0, 786441, 536870912, 0, 786442, 536870913, 0, 786446, 1, 0, 786447, 0, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 786465, 536870913, 0, 786466, 1, 0, 851987, 1, 0, 851989, 0, 0, 983059, 536870913, 0, 1048584, 536870913, 0, 1048589, 1, 0, 1048600, 536870913, 0, 1048606, 1, 0, 1245196, 1, 0, 1245206, 536870912, 0, 1310731, 0, 0, 1310733, 1, 0, 1441797, 536870913, 0, 1441805, 536870913, 0, 1441811, 536870913, 0, 1441814, 536870913, 0 )
+
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -8.29259, 369.771, 281.477, 369.771, 280.55, 251.227, 274.312, 247.724, 274.114, 243.16, 288.797, 240.382, 300.504, 240.382, 316.775, 242.168, 315.982, 247.128, 303.714, 251.227, 304.602, 370.715, 382.471, 370.243, 387.26, 358.762, 528, 288, 592, 168, 592, 0, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
+polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -8.29259, 369.771, 281.477, 369.771, 280.55, 251.227, 274.312, 247.724, 274.114, 243.16, 288.797, 240.382, 300.504, 240.382, 316.775, 242.168, 315.982, 247.128, 303.714, 251.227, 304.602, 370.715, 382.471, 370.243, 387.26, 358.762, 416, 336, 528, 280, 592, 168, 592, 0, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision"]
 position = Vector2( 0, -18 )
@@ -1455,7 +1462,7 @@ parameters/playback = SubResource( 68 )
 stream = ExtResource( 32 )
 
 [node name="Benedict" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 345, 206 )
+position = Vector2( 350, 208 )
 DemandDialogueID = "demandBene"
 HasAutoDialogue = false
 
@@ -1732,7 +1739,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush4" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 23, 312 )
+position = Vector2( 24.0831, 320 )
 
 [node name="Sprite" parent="YSort/Bush4" index="0"]
 position = Vector2( -7.5, -9 )
@@ -1780,7 +1787,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush13" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 15, 230 )
+position = Vector2( 21.5, 225 )
 
 [node name="Sprite" parent="YSort/Bush13" index="0"]
 position = Vector2( -7.5, -9 )
@@ -1823,6 +1830,54 @@ position = Vector2( -7.5, -9 )
 texture = ExtResource( 26 )
 
 [node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush18" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 63, 337 )
+
+[node name="Sprite" parent="YSort/Bush18" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush18" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush19" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 43.7838, 301 )
+
+[node name="Sprite" parent="YSort/Bush19" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush19" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush20" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 31.7838, 278 )
+
+[node name="Sprite" parent="YSort/Bush20" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush20" index="1"]
+position = Vector2( -0.5, 6 )
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush21" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 0, 296 )
+
+[node name="Sprite" parent="YSort/Bush21" index="0"]
+position = Vector2( -7.5, -9 )
+texture = ExtResource( 26 )
+
+[node name="CollisionShape2D" parent="YSort/Bush21" index="1"]
 position = Vector2( -0.5, 6 )
 rotation = 1.5708
 shape = SubResource( 64 )
@@ -1974,6 +2029,10 @@ polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.
 [editable path="YSort/Bush14"]
 [editable path="YSort/Bush12"]
 [editable path="YSort/Bush5"]
+[editable path="YSort/Bush18"]
+[editable path="YSort/Bush19"]
+[editable path="YSort/Bush20"]
+[editable path="YSort/Bush21"]
 [editable path="YSort/Bush6"]
 [editable path="YSort/Box"]
 [editable path="YSort/Box2"]

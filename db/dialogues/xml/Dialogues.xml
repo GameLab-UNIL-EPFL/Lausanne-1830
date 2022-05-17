@@ -3,7 +3,7 @@
         <text>Alors...</text>
         <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
         <text>Très bien. Voyons voir ce carnet...</text>
-        <text>Il est sensé contenir toutes les informations importantes</text>
+        <text>Il est censé contenir toutes les informations importantes</text>
         <text>sur les habitants de Lausanne,</text>
         <text>mais les données de plusieurs personnes sont manquantes.</text>
         <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
@@ -91,7 +91,7 @@
         <text>Je suis désolée mais je suis très occupée.</text>
         <text>J'ai encore du travail à terminer,</text>
         <text>mais vous pouvez aller regarder dans mes documents à l'étage.</text>
-        <text>Peut-être que vous trouverez ce que vous chercher.</text>
+        <text>Peut-être que vous trouverez ce que vous cherchez.</text>
     </dialogue>
     <dialogue id="demandAngeliqueBad" ntargets="1" type="onDemand">
         <text>Je n'ai pas envie de vous parler...</text>
@@ -213,7 +213,7 @@
     <dialogue id="demDomestique" ntargets="1" type="onDemand">
         <text>Satané Flon ! Ce n'est qu'une source de maux et de maladies !</text>
     </dialogue>
-    <dialogue id="appMalade" ntargets="1" type="onApproach">
+    <dialogue id="demMalade" ntargets="1" type="onDemand">
         <text>*Kof kof*</text>
     </dialogue>
 </scene>
