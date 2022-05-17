@@ -29,7 +29,7 @@
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 116, 96 )
+extents = Vector2( 120, 101.8 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 5 )
@@ -131,10 +131,10 @@ __meta__ = {
 tile_set = ExtResource( 27 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 262146, 1, 0, 458771, 536870913, 0, 524305, 536870912, 0, 524322, 1, 0, 589826, 1, 0, 589844, 536870913, 0, 852000, 1, 0, 917521, 536870913, 0, 1048580, 536870913, 0, 1048581, 1, 0, 1179655, 1, 0, 1245194, 536870913, 0, 1245216, 536870913, 0 )
+tile_data = PoolIntArray( 23, 536870913, 0, 65558, 536870913, 0, 131093, 1, 0, 131094, 1, 0, 262146, 1, 0, 262157, 536870913, 0, 327696, 1, 0, 393230, 0, 0, 524322, 1, 0, 589826, 1, 0, 589845, 536870913, 0, 851993, 536870913, 0, 852000, 1, 0, 917521, 536870913, 0, 1048580, 536870913, 0, 1048581, 1, 0, 1179655, 1, 0, 1245194, 536870913, 0, 1245216, 536870913, 0 )
 
 [node name="Casino" type="StaticBody2D" parent="."]
-position = Vector2( 438, 111.495 )
+position = Vector2( 464, 107.6 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -143,6 +143,7 @@ __meta__ = {
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Casino"]
+position = Vector2( 8, -5.8 )
 shape = SubResource( 6 )
 
 [node name="Notebook" parent="." instance=ExtResource( 3 )]
@@ -215,7 +216,7 @@ position = Vector2( 584, 352 )
 shape = SubResource( 5 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Coillision"]
-position = Vector2( 272.248, 121.808 )
+position = Vector2( 227.3, 88.808 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -331,13 +332,13 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 244.948, 121 )
+position = Vector2( 200, 88 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
 
 [node name="Fischer" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 284.948, 125 )
+position = Vector2( 240, 92 )
 CanTurn = false
 DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
@@ -521,7 +522,7 @@ rotation = 1.5708
 shape = SubResource( 20 )
 
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 244.948, 121 )
+position = Vector2( 200, 88 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
