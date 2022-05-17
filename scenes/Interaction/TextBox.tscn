@@ -90,7 +90,6 @@ text = "012345678901234556789012345
 align = 1
 valign = 1
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
