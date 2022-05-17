@@ -504,7 +504,7 @@ texture = SubResource( 7 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 69.0

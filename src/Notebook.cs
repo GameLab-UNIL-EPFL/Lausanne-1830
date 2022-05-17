@@ -407,6 +407,10 @@ public class Notebook : Node2D {
 	}
 	
 	public void _on_MapButton_pressed() {
+		
+		if(ASP.Playing == false) {
+			ASP.Play();
+		}
 		if(mapOpen) {
 			//Show all temps
 			foreach(var i in tempInfo) {
