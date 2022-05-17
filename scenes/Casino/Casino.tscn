@@ -104,8 +104,6 @@ radius = 5.20476
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
-[sub_resource type="CapsuleShape2D" id=20]
-
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
 
@@ -228,7 +226,7 @@ position = Vector2( 320, 288 )
 parameters/playback = SubResource( 20 )
 
 [node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
-stream = ExtResource( 24 )
+stream = null
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 258, 227 )
@@ -368,7 +366,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush2" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 39, 232 )
@@ -379,7 +377,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush2" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush3" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 41.5, 260 )
@@ -390,7 +388,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush4" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 78.9677, 286 )
@@ -401,7 +399,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush4" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush5" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 102.968, 310 )
@@ -412,7 +410,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush6" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 126.968, 327 )
@@ -423,7 +421,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush6" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush7" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 156.536, 363 )
@@ -434,7 +432,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush7" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush8" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 9.5, 232 )
@@ -445,7 +443,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush8" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush9" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 9.5, 260 )
@@ -456,7 +454,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush9" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush10" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 88, 352 )
@@ -467,7 +465,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush10" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush11" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 15, 303 )
@@ -478,7 +476,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush11" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush12" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 23.6717, 331 )
@@ -489,7 +487,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush12" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush13" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 47, 288 )
@@ -500,7 +498,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush13" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush14" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 66, 320 )
@@ -511,7 +509,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush14" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
 position = Vector2( 240, 81.4363 )

@@ -73,9 +73,6 @@ margin_right = 115.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Text" type="Label" parent="TextContainer"]
 margin_right = 114.0
@@ -90,7 +87,6 @@ text = "012345678901234556789012345
 align = 1
 valign = 1
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
