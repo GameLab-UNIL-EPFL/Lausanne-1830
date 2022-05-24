@@ -6,7 +6,7 @@
     <personnage id="4">Jean-Jacques Mercier (deuxième du nom) est né en 1789 à Lausanne. Il est négociant et tanneur. Il développe une industrie du cuir au bord du Flon, pas encore recouverte à cette époque, à la rue du Pré 31. Les déchets produit par la production sont jetés dans la rivière, rendant ainsi la vallée du Flon malodorante et insalubre. Il meurt en 1868 à Lausanne.</personnage>
     <personnage id="5">Benedict Rochat est né en 1777 à Lausanne. Les Rochats sont meuniers depuis des générations et sont répartis dans plusieurs moulins au bord du Flon où ils font moudre des céréales et couper du bois à l'aide de l'énergie hydrolique.</personnage>
     <objectif id="0">Objectif : 
-Complète la page de Mademoiselle De Cerjeat. Elle s'appelle Elisabeth.</objectif>
+Complète la page de Mademoiselle De Cerjeat. Elle s'appelle [b]Elisabeth[/b].</objectif>
     <objectif id="1">Objectif :
 Trouver les informations manquantes pour compléter le registre de la population et retourner auprès de M. Gély lorsque toutes les pages sont complétées.</objectif>
 </db>
