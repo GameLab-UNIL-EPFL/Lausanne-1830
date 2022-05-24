@@ -122,10 +122,10 @@ public class BrewGame : Node2D {
 		InvBurnThreshold = 1.0f/BurnThreshold;
 		
 		//Initially hide all arrows
-		TopArrow.Hide();
-		LeftArrow.Hide();
-		DownArrow.Hide();
-		RightArrow.Hide();
+//		TopArrow.Hide();
+//		LeftArrow.Hide();
+//		DownArrow.Hide();
+//		RightArrow.Hide();
 	}
 	
 	/**
@@ -155,10 +155,10 @@ public class BrewGame : Node2D {
 	//Check that the correct key was pressed at the correct time
 	private void HandleStickState(float delta) {
 		if(BoostPressed < NumberOfBoosts) {
-			float actionPressedD = Input.GetActionStrength("ui_right");
-			float actionPressedR = Input.GetActionStrength("ui_up");
-			float actionPressedU = Input.GetActionStrength("ui_left");
-			float actionPressedL = Input.GetActionStrength("ui_down");
+			float actionPressedR = Input.GetActionStrength("ui_right");
+			float actionPressedU = Input.GetActionStrength("ui_up");
+			float actionPressedL = Input.GetActionStrength("ui_left");
+			float actionPressedD = Input.GetActionStrength("ui_down");
 			float mult = 0.0f;
 			switch(Location) {
 				case StickLocation.DOWN:
@@ -271,33 +271,33 @@ public class BrewGame : Node2D {
 		BoostPressed = 0;
 		
 		//Hide all arrows
-		TopArrow.Hide();
-		LeftArrow.Hide();
-		DownArrow.Hide();
-		RightArrow.Hide();
+		TopArrow.Frame = 0;
+		LeftArrow.Frame = 0;
+		DownArrow.Frame = 0;
+		RightArrow.Frame = 0;
 	}
 	
 	public void _on_Top_Entered(Area2D obj) {
 		Location = StickLocation.UP;
 		//Show up arrow
-		TopArrow.Show();
+		TopArrow.Frame = 1;
 	}
 	
 	public void _on_Left_Entered(Area2D obj) {
 		Location = StickLocation.LEFT;
 		//Show left arrow
-		LeftArrow.Show();
+		LeftArrow.Frame = 1;
 	}
 	
 	public void _on_Down_Entered(Area2D obj) {
 		Location = StickLocation.DOWN;
 		//Show bottom arrow
-		DownArrow.Show();
+		DownArrow.Frame = 1;
 	}
 	
 	public void _on_Right_Entered(Area2D obj) {
 		Location = StickLocation.RIGHT;
 		//Show Right Arrow
-		RightArrow.Show();
+		RightArrow.Frame = 1;
 	}
 }
