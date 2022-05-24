@@ -26,9 +26,7 @@
 [ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 116, 96 )
+[ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 5 )
@@ -73,11 +71,11 @@ a = Vector2( -1.00075, -0.15799 )
 b = Vector2( 638.999, -0.15799 )
 
 [sub_resource type="SegmentShape2D" id=4]
-a = Vector2( 8.75844, -349.192 )
+a = Vector2( 8.37082, -356.628 )
 b = Vector2( 8.75844, 10.808 )
 
 [sub_resource type="SegmentShape2D" id=5]
-a = Vector2( 6.367, -349.192 )
+a = Vector2( 5.83691, -357.475 )
 b = Vector2( 7.2533, 11.611 )
 
 [sub_resource type="RectangleShape2D" id=19]
@@ -104,8 +102,6 @@ radius = 5.20476
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
-[sub_resource type="CapsuleShape2D" id=20]
-
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
 
@@ -126,22 +122,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Casino" type="StaticBody2D" parent="."]
-position = Vector2( 438, 111.495 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Casino"]
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Casino"]
-shape = SubResource( 6 )
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 27 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 23, 536870913, 0, 65558, 536870913, 0, 131093, 1, 0, 131094, 1, 0, 262146, 1, 0, 262157, 536870913, 0, 327696, 1, 0, 393230, 0, 0, 524322, 1, 0, 589826, 1, 0, 589845, 536870913, 0, 851993, 536870913, 0, 852000, 1, 0, 917521, 536870913, 0, 1048580, 536870913, 0, 1048581, 1, 0, 1179655, 1, 0, 1245194, 536870913, 0, 1245216, 536870913, 0 )
 
 [node name="Notebook" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="NotebookController" type="TextureButton" parent="."]
+[node name="NotebookControllerNode" type="Node2D" parent="."]
+z_index = 3
+
+[node name="NotebookController" type="TextureButton" parent="NotebookControllerNode"]
 margin_left = 650.0
 margin_top = 4.168
 margin_right = 693.0
@@ -151,54 +144,48 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 14 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookController"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 1 )
 anims/Slide = SubResource( 2 )
 
-[node name="MapButton" type="TextureButton" parent="NotebookController"]
+[node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
 margin_left = 44.0
 margin_right = 83.0
 margin_bottom = 36.0
 texture_normal = SubResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="PressSpace" parent="NotebookController/MapButton" instance=ExtResource( 22 )]
+[node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 22 )]
 position = Vector2( 6, 33 )
 scale = Vector2( 0.75, 0.75 )
 
-[node name="PressTab" parent="NotebookController" instance=ExtResource( 23 )]
+[node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 23 )]
 position = Vector2( 0, 33 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Coillision" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D"]
-position = Vector2( 0, 358 )
+position = Vector2( 0, 367 )
 shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D4"]
-position = Vector2( -8, 10 )
+position = Vector2( -8, -4 )
 shape = SubResource( 3 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Coillision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coillision/StaticBody2D2"]
-position = Vector2( -7, 352 )
+position = Vector2( -14, 352 )
 shape = SubResource( 4 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Coillision"]
@@ -208,7 +195,7 @@ position = Vector2( 584, 352 )
 shape = SubResource( 5 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Coillision"]
-position = Vector2( 267.3, 82.2443 )
+position = Vector2( 227.3, 88.808 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -221,6 +208,20 @@ shape = SubResource( 19 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Casino" type="StaticBody2D" parent="YSort"]
+position = Vector2( 464, 139.6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Casino"]
+position = Vector2( 0, -32 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Casino"]
+position = Vector2( 0, -32 )
+polygon = PoolVector2Array( -108.708, 23.7656, -108.708, 87.1832, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 113.978, 87.7624, 114.557, 24.0552 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 320, 288 )
 
@@ -228,10 +229,10 @@ position = Vector2( 320, 288 )
 parameters/playback = SubResource( 20 )
 
 [node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
-stream = ExtResource( 24 )
+stream = null
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 258, 227 )
+position = Vector2( 265, 227 )
 InitDir = 1
 ProbRight = 4
 ProbLeft = 0
@@ -324,13 +325,13 @@ texture = ExtResource( 21 )
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 240, 81.4363 )
+position = Vector2( 200, 88 )
 
 [node name="Sprite" parent="YSort/Briefcase" index="0"]
 texture = ExtResource( 15 )
 
 [node name="Fischer" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 280, 85.4363 )
+position = Vector2( 240, 92 )
 CanTurn = false
 DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
@@ -368,7 +369,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush2" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 39, 232 )
@@ -379,7 +380,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush2" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush3" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 41.5, 260 )
@@ -390,7 +391,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush4" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 78.9677, 286 )
@@ -401,7 +402,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush4" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush5" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 102.968, 310 )
@@ -412,7 +413,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush6" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 126.968, 327 )
@@ -423,7 +424,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush6" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush7" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 156.536, 363 )
@@ -434,7 +435,7 @@ texture = ExtResource( 24 )
 [node name="CollisionShape2D" parent="YSort/Bush7" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush8" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 9.5, 232 )
@@ -445,7 +446,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush8" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush9" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 9.5, 260 )
@@ -456,7 +457,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush9" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush10" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 88, 352 )
@@ -467,7 +468,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush10" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush11" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 15, 303 )
@@ -478,7 +479,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush11" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush12" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 23.6717, 331 )
@@ -489,7 +490,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush12" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush13" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 47, 288 )
@@ -500,7 +501,7 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush13" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Bush14" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 66, 320 )
@@ -511,10 +512,10 @@ texture = ExtResource( 25 )
 [node name="CollisionShape2D" parent="YSort/Bush14" index="1"]
 position = Vector2( 6.14037, 14 )
 rotation = 1.5708
-shape = SubResource( 20 )
+shape = null
 
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
-position = Vector2( 240, 81.4363 )
+position = Vector2( 200, 88 )
 
 [node name="Sprite" parent="Mallette" index="0"]
 visible = false
@@ -551,11 +552,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OpenMapZone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenMapZone"]
+polygon = PoolVector2Array( 587.592, -0.699097, 587.031, 4.35198, -1.70056, 4.3547, -0.0168686, 361.72, 588.714, 364.143, 588.714, 374.807, -8.99657, 372.383, -8.43533, -4.37104 )
+
 [connection signal="visibility_changed" from="Notebook" to="Mallette" method="_on_Notebook_visibility_changed"]
-[connection signal="pressed" from="NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
-[connection signal="pressed" from="NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
-[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
+[connection signal="area_entered" from="OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]

@@ -146,8 +146,17 @@ public class Notebook : Node2D {
 		
 		//Make sure that the context has the questNPC
 		context._FetchQuestNPC();
+		curTabId = context._GetCurrentTab();
 		for(int i = 0; i < Context.N_TABS; ++i) {
-			Portraits.Add(GetNode<Sprite>("Portrait" + i));
+			Sprite portrait = GetNode<Sprite>("Portrait" + i);
+			Portraits.Add(portrait);
+			
+			// Only show the portrait from the current tab
+			if(i == curTabId) {
+				portrait.Show();
+			} else {
+				portrait.Hide();
+			}
 		}
 		//Fetch all info
 		foreach(var infoName in infoNames) {
@@ -164,7 +173,6 @@ public class Notebook : Node2D {
 			tab.Connect("pressed", this, "_on_Tab" + i + "Button_pressed");
 			tabButtons.Add(tab);
 		}
-		curTabId = context._GetCurrentTab();
 		
 		//Load in current character info and correct info
 		characterInfo = context._GetNotebookCharInfo(curTabId);
@@ -358,6 +366,8 @@ public class Notebook : Node2D {
 		//Hide non-tutorial stuff in case of tuto
 		if(context._GetGameState() == GameStates.INIT) {
 			DisableNonTutoTabs();
+			//Set tutorial objective
+			SetObjective(0);
 		}
 	}
 	
@@ -397,6 +407,10 @@ public class Notebook : Node2D {
 	}
 	
 	public void _on_MapButton_pressed() {
+		
+		if(ASP.Playing == false) {
+			ASP.Play();
+		}
 		if(mapOpen) {
 			//Show all temps
 			foreach(var i in tempInfo) {
@@ -471,9 +485,10 @@ public class Notebook : Node2D {
 		}
 	}
 	
-	private void SetObjective() {
+	private void SetObjective(int id = 1) {
 		//Query character info
-		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("default")
+		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("objectif")
+			where int.Parse(charInfo.Attribute("id").Value) == id
 			select charInfo.Value;
 		
 		//Load in new info text
@@ -549,3 +564,4 @@ public class Notebook : Node2D {
 		_Change_Portrait(5);
 	}
 }
+
