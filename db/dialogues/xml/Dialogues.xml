@@ -2,15 +2,29 @@
     <dialogue type="onDemand" ntargets="1" id="demandQuest">
         <text>Alors...</text>
         <text>C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
-        <text>Très bien. Voyons voir ce carnet...</text>
+        <replay id="0">
+            <text objectif="0">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
+        </replay>
+        <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
         <text>Il est censé contenir toutes les informations importantes</text>
         <text>sur les habitants de Lausanne,</text>
-        <text>mais les données de plusieurs personnes sont manquantes.</text>
-        <text>Essayez de trouver ces personnes avec les informations que vous avez</text>
-        <text>ou allez discuter avec les lausannois pour en apprendre plus.</text>
-        <text>Revenez me voir lorsque vous aurez fini de le compléter.</text>
-        <text>Mais avant de commencer, essayez de remplir la première page.</text>
-        <text>Il manque le prénom de Mademoiselle De Cerjeat. Elle s'appelle Elisabeth.</text>
+        <text>mais comme vous avez sûrment remarqué,</text>
+        <text>les données de plusieurs personnes sont manquantes.</text>
+        <replay id="1">
+            <text>Essayez de remplir la première page.</text>
+            <text>Ma collègue en sait plus que moi sur cette personne</text>
+            <text objectif="1">et il me semble que nous avont une lettre adressée à elle sur le bureau.</text>
+        </replay>
+        <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->
+        <text>Bravo ! Vous avez correctement rempli la première page.</text>
+        <text>Il y a encore 5 autres pages à compléter.</text>
+        <text>Essayez de trouver les informations manquantes en ville</text>
+        <text objectif="2">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
+        <!--Ensuite dialogue qui se trouve dans NPC.cs-->
+    </dialogue>
+    <dialogue id="demandTuto" ntargets="1" type="onDemand">
+        <text>Je connais bien Mademoiselle De Cerjeat.</text>
+        <text>Elle s'appelle Elisabeth.</text>
     </dialogue>
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>

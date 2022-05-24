@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://src/Intro.cs" type="Script" id=19]
+[ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/05_fonts/Fool.ttf" type="DynamicFontData" id=21]
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 22, 22 )
@@ -27,6 +29,9 @@ extents = Vector2( 22, 22 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.3539, 17.065 )
+
+[sub_resource type="DynamicFont" id=26]
+font_data = ExtResource( 21 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "IdleDown"
@@ -285,6 +290,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 12 )
 region = Rect2( 38, 0, 37, 36 )
@@ -317,6 +324,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "SlideCarnet"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4 ), Vector2( 601, 4 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=5]
@@ -429,6 +452,40 @@ texture = ExtResource( 1 )
 position = Vector2( 333.595, 135.256 )
 shape = SubResource( 1 )
 
+[node name="Letter" parent="Desk" instance=ExtResource( 20 )]
+position = Vector2( 334, 139 )
+
+[node name="Sprite" parent="Desk/Letter" index="0"]
+visible = false
+
+[node name="Label" parent="Desk/Letter/Sprite" index="0"]
+text = "Lire"
+
+[node name="Open" parent="Desk/Letter" index="2"]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="Desk/Letter/Open" index="2"]
+margin_left = -78.0
+margin_top = -11.0
+margin_right = 74.0
+margin_bottom = 87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Desk/Letter/Open" index="3"]
+margin_left = -70.0
+margin_top = 21.0
+margin_right = 55.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 26 )
+text = "Pour Mlle De Cerjeat
+Montchoisi"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 3 )]
@@ -436,7 +493,7 @@ position = Vector2( 333, 230 )
 isCutscene = true
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 333, 160 )
+position = Vector2( 355, 162 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
@@ -464,6 +521,17 @@ anims/WalkUp = SubResource( 16 )
 [node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
 parameters/playback = SubResource( 17 )
 
+[node name="NPC" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 282, 191 )
+DemandDialogueID = "demandTuto"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC" index="0"]
+NPCName = "Mme Meylan "
+
+[node name="AnimationTree" parent="YSort/NPC" index="6"]
+parameters/playback = SubResource( 27 )
+
 [node name="Notebook" parent="." instance=ExtResource( 8 )]
 visible = false
 
@@ -480,10 +548,14 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 2 )
 script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 3 )
 anims/Slide = SubResource( 4 )
+anims/SlideCarnet = SubResource( 28 )
 
 [node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
 margin_left = 43.0
@@ -556,7 +628,6 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
-frame = 1
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
@@ -566,6 +637,9 @@ frame = 1
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 
+[editable path="Desk/Letter"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
+[editable path="YSort/NPC"]
+[editable path="YSort/NPC/ListenBox"]
 [editable path="Notebook"]
