@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -29,7 +29,7 @@
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
-[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/fumier.png" type="Texture" id=30]
+[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/fumier-Sheet.png" type="Texture" id=30]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/haybale.png" type="Texture" id=31]
 [ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=32]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=33]
@@ -1335,8 +1335,31 @@ tracks/1/keys = {
 [sub_resource type="CircleShape2D" id=67]
 radius = 13.2027
 
-[sub_resource type="CapsuleShape2D" id=69]
-height = 55.7203
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 30 )
+region = Rect2( 96, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 30 )
+region = Rect2( 192, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 30 )
+region = Rect2( 288, 0, 96, 64 )
+
+[sub_resource type="SpriteFrames" id=73]
+animations = [ {
+"frames": [ SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=74]
 
 [sub_resource type="RectangleShape2D" id=63]
 extents = Vector2( 16, 4 )
@@ -1923,16 +1946,38 @@ texture = ExtResource( 31 )
 position = Vector2( -0.629974, 5.66974 )
 shape = SubResource( 67 )
 
-[node name="Manure" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 101, 33 )
+[node name="Manure" type="StaticBody2D" parent="YSort"]
+position = Vector2( 90, 57 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Sprite" parent="YSort/Manure" index="0"]
-texture = ExtResource( 30 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
+frames = SubResource( 73 )
+frame = 3
+playing = true
 
-[node name="CollisionShape2D" parent="YSort/Manure" index="1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
+polygon = PoolVector2Array( 45, 16, 35.5, 7.5, 34, 2.25, 27.5, 0, 12.25, -3, -8.75, -3, -21.5, -1.25, -30.5, 1.75, -38, 16.5, 1.5, 18.5 )
+
+[node name="NPC" parent="YSort/Manure" instance=ExtResource( 8 )]
 position = Vector2( 0, 9 )
-rotation = 1.5708
-shape = SubResource( 69 )
+DemandDialogueID = "demRalf"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/Manure/NPC" index="0"]
+visible = true
+position = Vector2( -17, -52.832 )
+NPCName = "Ralf"
+
+[node name="Shadow" parent="YSort/Manure/NPC" index="1"]
+visible = false
+
+[node name="FullyAnimated" parent="YSort/Manure/NPC" index="2"]
+visible = false
+
+[node name="AnimationTree" parent="YSort/Manure/NPC" index="6"]
+parameters/playback = SubResource( 74 )
 
 [node name="Door" type="Area2D" parent="."]
 
@@ -1976,9 +2021,11 @@ __meta__ = {
 
 [node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 23 )]
 position = Vector2( 0, 33 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 24 )]
 position = Vector2( 0, 33 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -1992,6 +2039,8 @@ polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="area_entered" from="Door" to="YSort/Player" method="_on_Door_area_entered"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
+[connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="area_entered" from="OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 
 [editable path="YSort/Player"]
@@ -2037,4 +2086,5 @@ polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.
 [editable path="YSort/Box2"]
 [editable path="YSort/Box3"]
 [editable path="YSort/Hay"]
-[editable path="YSort/Manure"]
+[editable path="YSort/Manure/NPC"]
+[editable path="YSort/Manure/NPC/ListenBox"]

@@ -178,7 +178,7 @@
         <text>Ce sont les boucheries et la tannerie qui les jettent dans l'eau.</text>
     </dialogue>
     <dialogue id="demEnfant3" ntargets="1" type="onDemand">
-        <text>Cela fait combien de jour qu'il est là en train de dormir ?</text>
+        <text>Cela fait combien de jour que cet inconnu est là en train de dormir ?</text>
     </dialogue>
     <dialogue id="demEnfant4" ntargets="1" type="onDemand">
         <text>Je ne sais pas... Est-ce qu'on devrait essayer de le réveiller ?</text>
@@ -215,5 +215,8 @@
     </dialogue>
     <dialogue id="demMalade" ntargets="1" type="onDemand">
         <text>*Kof kof*</text>
+    </dialogue>
+    <dialogue id="demRalf" ntargets="1" type="onDemand">
+        <text>Zzz...</text>
     </dialogue>
 </scene>
