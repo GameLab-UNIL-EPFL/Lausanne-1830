@@ -29,7 +29,7 @@ public class Context : Node {
 	//Notebook data
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
-	private int CurrentTab = 0;
+	public int CurrentTab = 0;
 	
 	//Game state data
 	private GameStates GameState = GameStates.INIT;
