@@ -520,19 +520,23 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Label"]
-position = Vector2( 51, 69 )
+position = Vector2( 38, 69 )
+scale = Vector2( 2, 2 )
 texture = SubResource( 20 )
 
 [node name="Sprite2" type="Sprite" parent="Label"]
 position = Vector2( 63, 69 )
+scale = Vector2( 2, 2 )
 texture = SubResource( 21 )
 
 [node name="Sprite3" type="Sprite" parent="Label"]
-position = Vector2( 75, 69 )
+position = Vector2( 88, 69 )
+scale = Vector2( 2, 2 )
 texture = SubResource( 22 )
 
 [node name="Sprite4" type="Sprite" parent="Label"]
-position = Vector2( 63, 57 )
+position = Vector2( 63, 43 )
+scale = Vector2( 2, 2 )
 texture = SubResource( 23 )
 
 [node name="Label2" type="Label" parent="."]
@@ -541,7 +545,8 @@ margin_top = 99.0
 margin_right = 597.0
 margin_bottom = 290.0
 custom_fonts/font = SubResource( 24 )
-text = "Pour intéragir"
+text = "Pour intéragir
+et parler"
 align = 1
 valign = 1
 __meta__ = {
@@ -549,8 +554,8 @@ __meta__ = {
 }
 
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
-position = Vector2( 66, 67 )
-scale = Vector2( 1.2, 1.2 )
+position = Vector2( 66, 56 )
+scale = Vector2( 2, 2 )
 frame = 1
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]

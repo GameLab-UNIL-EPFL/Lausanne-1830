@@ -25,7 +25,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 11
-font_data = ExtResource( 3 )
+font_data = ExtResource( 14 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 11
@@ -607,7 +607,7 @@ margin_right = 118.0
 margin_bottom = 185.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "N° :"
+text = "N° d'adresse :"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -634,18 +634,18 @@ __meta__ = {
 }
 
 [node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 188.0
+margin_left = 186.0
 margin_top = 111.0
-margin_right = 238.0
+margin_right = 236.0
 margin_bottom = 129.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "prenom"
 
 [node name="PrenomStatic" type="Label" parent="Sprite"]
-margin_left = 190.0
+margin_left = 188.0
 margin_top = 111.0
-margin_right = 239.0
+margin_right = 237.0
 margin_bottom = 129.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -656,18 +656,18 @@ __meta__ = {
 }
 
 [node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 183.0
+margin_left = 181.0
 margin_top = 140.0
-margin_right = 237.0
+margin_right = 235.0
 margin_bottom = 158.0
 custom_fonts/font = SubResource( 4 )
 text = "Trüschel"
 AttributeName = "nom"
 
 [node name="NomStatic" type="Label" parent="Sprite"]
-margin_left = 183.0
+margin_left = 181.0
 margin_top = 140.0
-margin_right = 226.0
+margin_right = 224.0
 margin_bottom = 158.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -678,18 +678,18 @@ __meta__ = {
 }
 
 [node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 187.0
+margin_left = 185.0
 margin_top = 172.0
-margin_right = 259.0
+margin_right = 257.0
 margin_bottom = 190.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "adresse"
 
 [node name="AdresseStatic" type="Label" parent="Sprite"]
-margin_left = 190.0
+margin_left = 188.0
 margin_top = 172.0
-margin_right = 262.0
+margin_right = 260.0
 margin_bottom = 189.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -700,18 +700,18 @@ __meta__ = {
 }
 
 [node name="Num" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 170.0
+margin_left = 219.0
 margin_top = 204.0
-margin_right = 192.0
+margin_right = 241.0
 margin_bottom = 222.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "num"
 
 [node name="NumStatic" type="Label" parent="Sprite"]
-margin_left = 171.0
+margin_left = 220.0
 margin_top = 204.0
-margin_right = 192.0
+margin_right = 241.0
 margin_bottom = 222.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -722,18 +722,18 @@ __meta__ = {
 }
 
 [node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 212.0
+margin_left = 210.0
 margin_top = 233.0
-margin_right = 265.0
+margin_right = 263.0
 margin_bottom = 251.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "conjoint"
 
 [node name="ConjointStatic" type="Label" parent="Sprite"]
-margin_left = 212.0
+margin_left = 210.0
 margin_top = 233.0
-margin_right = 265.0
+margin_right = 263.0
 margin_bottom = 251.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -744,18 +744,18 @@ __meta__ = {
 }
 
 [node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 205.0
+margin_left = 203.0
 margin_top = 259.0
-margin_right = 226.0
+margin_right = 224.0
 margin_bottom = 277.0
 custom_fonts/font = SubResource( 4 )
 text = "4"
 AttributeName = "enfants"
 
 [node name="EnfantsStatic" type="Label" parent="Sprite"]
-margin_left = 206.0
+margin_left = 204.0
 margin_top = 260.0
-margin_right = 227.0
+margin_right = 225.0
 margin_bottom = 277.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -766,18 +766,18 @@ __meta__ = {
 }
 
 [node name="Metier" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 190.0
+margin_left = 188.0
 margin_top = 287.0
-margin_right = 263.0
+margin_right = 261.0
 margin_bottom = 305.0
 custom_fonts/font = SubResource( 4 )
 text = "Propriétaire"
 AttributeName = "metier"
 
 [node name="MetierStatic" type="Label" parent="Sprite"]
-margin_left = 190.0
+margin_left = 188.0
 margin_top = 287.0
-margin_right = 262.0
+margin_right = 260.0
 margin_bottom = 305.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
