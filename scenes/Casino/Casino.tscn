@@ -126,7 +126,7 @@ __meta__ = {
 tile_set = ExtResource( 27 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 23, 536870913, 0, 65558, 536870913, 0, 131093, 1, 0, 131094, 1, 0, 262146, 1, 0, 262157, 536870913, 0, 327696, 1, 0, 393230, 0, 0, 524322, 1, 0, 589826, 1, 0, 589845, 536870913, 0, 851993, 536870913, 0, 852000, 1, 0, 917521, 536870913, 0, 1048580, 536870913, 0, 1048581, 1, 0, 1179655, 1, 0, 1245194, 536870913, 0, 1245216, 536870913, 0 )
+tile_data = PoolIntArray( 23, 536870913, 0, 65558, 536870913, 0, 131093, 1, 0, 131094, 1, 0, 262146, 1, 0, 262157, 536870913, 0, 327696, 1, 0, 393230, 0, 0, 524322, 1, 0, 589826, 1, 0, 589845, 536870913, 0, 655373, 3, 0, 786455, 2, 0, 851993, 536870913, 0, 852000, 1, 0, 917521, 536870913, 0, 1048580, 536870913, 0, 1048581, 1, 0, 1179655, 1, 0, 1245194, 536870913, 0, 1245216, 536870913, 0 )
 
 [node name="Notebook" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -523,6 +523,9 @@ position = Vector2( 0, -19 )
 
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
+
+[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )

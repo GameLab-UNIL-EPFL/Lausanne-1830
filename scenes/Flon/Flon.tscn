@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=115 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -11,8 +11,8 @@
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/01_characters/03_pnjs/benedictRochat.png" type="Texture" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/femmeRochat.png" type="Texture" id=11]
-[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat.png" type="Texture" id=12]
-[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat3.png" type="Texture" id=13]
+[ext_resource path="res://assets/03_backgrounds/petitRiviere.png" type="Texture" id=12]
+[ext_resource path="res://assets/03_backgrounds/bushes.png" type="Texture" id=13]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/background.png" type="Texture" id=14]
 [ext_resource path="res://assets/01_characters/03_pnjs/susetteRochat.png" type="Texture" id=15]
 [ext_resource path="res://assets/01_characters/03_pnjs/louiseRochat.png" type="Texture" id=16]
@@ -20,12 +20,10 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/danielRochat.png" type="Texture" id=18]
 [ext_resource path="res://assets/01_characters/03_pnjs/georgeRochat.png" type="Texture" id=19]
 [ext_resource path="res://assets/01_characters/03_pnjs/samuelRochat.png" type="Texture" id=20]
-[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/morceauPont.png" type="Texture" id=21]
-[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/pontFond.png" type="Texture" id=22]
+[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/Moulin_Batiment_Anim-Sheet.png" type="Texture" id=21]
+[ext_resource path="res://assets/03_backgrounds/riviere.png" type="Texture" id=22]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
-[ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=25]
-[ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
@@ -33,11 +31,103 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/haybale.png" type="Texture" id=31]
 [ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=32]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=33]
+[ext_resource path="res://assets/03_backgrounds/pathMoulin.png" type="Texture" id=34]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 53, 31.5 )
 
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 21 )
+region = Rect2( 340, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 21 )
+region = Rect2( 680, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 21 )
+region = Rect2( 1020, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 21 )
+region = Rect2( 1360, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 21 )
+region = Rect2( 1700, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 21 )
+region = Rect2( 2040, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 21 )
+region = Rect2( 2380, 0, 340, 236 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 21 )
+region = Rect2( 2720, 0, 340, 236 )
+
+[sub_resource type="SpriteFrames" id=84]
+animations = [ {
+"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
 [sub_resource type="AnimationNodeStateMachinePlayback" id=68]
+
+[sub_resource type="CircleShape2D" id=67]
+radius = 13.2027
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 30 )
+region = Rect2( 96, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 30 )
+region = Rect2( 192, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 30 )
+region = Rect2( 288, 0, 96, 64 )
+
+[sub_resource type="SpriteFrames" id=73]
+animations = [ {
+"frames": [ SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=74]
+
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 13 )
+region = Rect2( 52, 6, 40, 42 )
+
+[sub_resource type="CapsuleShape2D" id=64]
+
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 13 )
+region = Rect2( 3, 6, 41, 42 )
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 13 )
+region = Rect2( 147, 6, 41, 42 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 13 )
+region = Rect2( 99, 6, 41, 42 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
@@ -1330,39 +1420,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=60]
 
-[sub_resource type="CapsuleShape2D" id=64]
-
-[sub_resource type="CircleShape2D" id=67]
-radius = 13.2027
-
-[sub_resource type="AtlasTexture" id=69]
-atlas = ExtResource( 30 )
-region = Rect2( 0, 0, 96, 64 )
-
-[sub_resource type="AtlasTexture" id=70]
-atlas = ExtResource( 30 )
-region = Rect2( 96, 0, 96, 64 )
-
-[sub_resource type="AtlasTexture" id=71]
-atlas = ExtResource( 30 )
-region = Rect2( 192, 0, 96, 64 )
-
-[sub_resource type="AtlasTexture" id=72]
-atlas = ExtResource( 30 )
-region = Rect2( 288, 0, 96, 64 )
-
-[sub_resource type="SpriteFrames" id=73]
-animations = [ {
-"frames": [ SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ) ],
-"loop": true,
-"name": "default",
-"speed": 4.0
-} ]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=74]
-
 [sub_resource type="RectangleShape2D" id=63]
-extents = Vector2( 16, 4 )
+extents = Vector2( 2.3784, 4 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
@@ -1415,25 +1474,39 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Bridge" type="Sprite" parent="."]
+position = Vector2( 190, 278 )
+texture = ExtResource( 12 )
+
+[node name="River" type="Sprite" parent="."]
+position = Vector2( 491, 180 )
+texture = ExtResource( 22 )
+
+[node name="PathMoulin" type="Sprite" parent="."]
+position = Vector2( 84, 100 )
+texture = ExtResource( 34 )
+
 [node name="Grass" type="TileMap" parent="."]
 tile_set = ExtResource( 33 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 4, 536870913, 0, 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 1, 0, 131100, 1, 0, 131105, 1, 0, 131106, 1, 0, 262178, 0, 0, 327716, 1, 0, 458779, 1, 0, 458787, 536870913, 0, 524297, 536870913, 0, 589859, 536870912, 0, 655387, 536870913, 0, 655388, 536870913, 0, 655395, 0, 0, 720923, 536870913, 0, 720931, 1, 0, 786441, 536870912, 0, 786442, 536870913, 0, 786446, 1, 0, 786447, 0, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 786465, 536870913, 0, 786466, 1, 0, 851987, 1, 0, 851989, 0, 0, 983059, 536870913, 0, 1048584, 536870913, 0, 1048589, 1, 0, 1048600, 536870913, 0, 1048606, 1, 0, 1245196, 1, 0, 1245206, 536870912, 0, 1310731, 0, 0, 1310733, 1, 0, 1441797, 536870913, 0, 1441805, 536870913, 0, 1441811, 536870913, 0, 1441814, 536870913, 0 )
+tile_data = PoolIntArray( 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 33, 0, 0, 65538, 1, 0, 65543, 0, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 2, 0, 131073, 1, 0, 131100, 2, 0, 131105, 1, 0, 393218, 536870913, 0, 393228, 0, 0, 458760, 1, 0, 458779, 1, 0, 524291, 536870915, 0, 524299, 1, 0, 589825, 2, 0, 655368, 2, 0, 655387, 536870913, 0, 655388, 536870913, 0, 720903, 1, 0, 720923, 536870913, 0, 720925, 1, 0, 720929, 0, 0, 786439, 0, 0, 786444, 1, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 851989, 0, 0, 852002, 2, 0, 917507, 2, 0, 983059, 3, 0, 983065, 1, 0, 1048581, 3, 0, 1048584, 1, 0, 1048596, 3, 0, 1048607, 536870915, 0, 1114116, 2, 0, 1114139, 1, 0, 1114142, 536870914, 0, 1179655, 3, 0, 1179667, 536870915, 0, 1179671, 536870913, 0, 1245191, 2, 0, 1245206, 536870912, 0, 1245212, 3, 0, 1376264, 2, 0, 1376275, 1, 0, 1441797, 536870913, 0, 1441801, 2, 0, 1441816, 536870913, 0, 1441817, 536870913, 0 )
 
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -8.29259, 369.771, 281.477, 369.771, 280.55, 251.227, 274.312, 247.724, 274.114, 243.16, 288.797, 240.382, 300.504, 240.382, 316.775, 242.168, 315.982, 247.128, 303.714, 251.227, 304.602, 370.715, 382.471, 370.243, 387.26, 358.762, 416, 336, 528, 280, 592, 168, 592, 0, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 659, 351, 520, 380, -18, 382, -10, -8 )
+visible = false
+polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -8.29259, 369.771, 223.373, 367.636, 224.709, 349.373, 217.582, 323.091, 224.709, 298.146, 220.255, 274.537, 220.7, 247.365, 250.991, 246.919, 274.312, 247.724, 300.436, 247.81, 305.781, 260.728, 304.89, 278.546, 300.881, 295.028, 308.008, 319.973, 301.327, 347.146, 297.318, 369.418, 382.471, 370.243, 416.65, 359.845, 426.571, 342.384, 463.478, 315.795, 469.828, 302.302, 484.511, 291.587, 507.528, 278.094, 521.418, 257.855, 540.864, 243.171, 552.372, 236.822, 566.269, 219.069, 568.05, 193.679, 573.582, 174.848, 569.437, 142.371, 577.374, 110.226, 569.437, 90.3838, 572.612, 58.5604, 572.215, 47.0517, 569.04, 34.7494, 574.596, 17.288, 574.199, -0.570293, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 664.054, 380.879, 520, 380, -18, 382, -10, -8 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision"]
+visible = false
 position = Vector2( 0, -18 )
-polygon = PoolVector2Array( 280.222, 246.68, 303.819, 246.916, 309.01, 247.152, 313.997, 245.087, 297.714, 236.386, 295.041, 230.373, 295.486, 216.635, 302.836, 216.412, 290.093, 194.797, 290.374, 171.225, 288.129, 113.318, 292.338, 67.8581, 294.302, -42.3543, 242, -17, 245, 12, 260.629, 19.3116, 266.241, 197.884, 258.514, 219.085, 272.1, 218.862, 278.307, 240.257, 274.537, 245.619 )
+polygon = PoolVector2Array( 309.628, 240.32, 310.939, 233.723, 230.584, 232.752, 231.005, 241.161 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="House" type="StaticBody2D" parent="YSort"]
-position = Vector2( 505, 136 )
+position = Vector2( 505, 128 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1447,36 +1520,23 @@ position = Vector2( 3, 23.5 )
 shape = SubResource( 9 )
 
 [node name="House2" type="StaticBody2D" parent="YSort"]
-position = Vector2( 376, 136 )
+position = Vector2( 283, 140 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/House2"]
+[node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -41 )
-texture = ExtResource( 12 )
+frames = SubResource( 84 )
+frame = 6
+playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
 position = Vector2( 3, 20 )
-polygon = PoolVector2Array( -75, 44, 5, 44, 5, 20, 45, 20, 45, 44, 61, 44, 61, -28, -74, -31, -74, -20 )
-
-[node name="House3" type="StaticBody2D" parent="YSort"]
-position = Vector2( 200, 141 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="YSort/House3"]
-position = Vector2( 18, -70 )
-texture = ExtResource( 13 )
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House3"]
-position = Vector2( 3, -70.0994 )
-scale = Vector2( 1, 2.368 )
-polygon = PoolVector2Array( -42.3851, 55.0389, 52.6362, 55.0389, 52.2157, -29.5508, -40.2829, -29.9059 )
+polygon = PoolVector2Array( -74.7025, 50.511, -64.0118, 62.5381, 14.8328, 62.9007, 20.6236, 50.4281, 52.2505, 49.9827, 105.094, 51.1217, 104.499, 9.49948, 136.608, 11.8779, 136.608, 51.419, 160.043, 51.4279, 155.143, -161.051, -76.0389, -171.768, -74, -20 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 404, 207 )
+position = Vector2( 407, 236 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 68 )
@@ -1484,459 +1544,26 @@ parameters/playback = SubResource( 68 )
 [node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
 stream = ExtResource( 32 )
 
-[node name="Benedict" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 350, 208 )
-DemandDialogueID = "demandBene"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Benedict" index="0"]
-NPCName = " M. Rochat "
-
-[node name="FullyAnimated" parent="YSort/Benedict" index="2"]
-texture = ExtResource( 10 )
-
-[node name="AnimationTree" parent="YSort/Benedict" index="6"]
-parameters/playback = SubResource( 5 )
-
-[node name="Epouse" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 496, 184 )
-AutoDialogueID = "appFemme"
-DemandDialogueID = "demandFemme"
-
-[node name="TextBox" parent="YSort/Epouse" index="0"]
-NPCName = " Mme Rochat "
-
-[node name="FullyAnimated" parent="YSort/Epouse" index="2"]
-texture = ExtResource( 11 )
-
-[node name="AnimationTree" parent="YSort/Epouse" index="6"]
-parameters/playback = SubResource( 6 )
-
-[node name="Enfant1" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 157, 270 )
-CanWander = true
-DemandDialogueID = "demEnfant"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Enfant1" index="0"]
-NPCName = " Mlle Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant1" index="2"]
-texture = ExtResource( 15 )
-
-[node name="AnimationTree" parent="YSort/Enfant1" index="6"]
-parameters/playback = SubResource( 10 )
-
-[node name="Enfant2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 200, 332 )
-CanWander = true
-WanderingCooldown = 15.0
-WalkSpeed = 30
-DemandDialogueID = "demEnfant2"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Enfant2" index="0"]
-NPCName = " M. Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant2" index="2"]
-texture = ExtResource( 20 )
-
-[node name="AnimationPlayer" parent="YSort/Enfant2" index="5"]
-anims/IdleDown = SubResource( 11 )
-anims/IdleLeft = SubResource( 12 )
-anims/IdleRight = SubResource( 13 )
-anims/IdleUp = SubResource( 14 )
-anims/RESET = SubResource( 15 )
-anims/WalkDown = SubResource( 16 )
-anims/WalkLeft = SubResource( 17 )
-anims/WalkRight = SubResource( 18 )
-anims/WalkUp = SubResource( 19 )
-
-[node name="AnimationTree" parent="YSort/Enfant2" index="6"]
-parameters/playback = SubResource( 20 )
-
-[node name="Enfant3" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 80, 117 )
-InitDir = 1
-DemandDialogueID = "demEnfant3"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Enfant3" index="0"]
-NPCName = " Mlle Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant3" index="2"]
-texture = ExtResource( 16 )
-
-[node name="AnimationPlayer" parent="YSort/Enfant3" index="5"]
-anims/IdleDown = SubResource( 21 )
-anims/IdleLeft = SubResource( 22 )
-anims/IdleRight = SubResource( 23 )
-anims/IdleUp = SubResource( 24 )
-anims/RESET = SubResource( 25 )
-anims/WalkDown = SubResource( 26 )
-anims/WalkLeft = SubResource( 27 )
-anims/WalkRight = SubResource( 28 )
-anims/WalkUp = SubResource( 29 )
-
-[node name="AnimationTree" parent="YSort/Enfant3" index="6"]
-parameters/playback = SubResource( 30 )
-
-[node name="Enfant4" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 46, 117 )
-InitDir = 0
-DemandDialogueID = "demEnfant4"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Enfant4" index="0"]
-NPCName = " M. Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant4" index="2"]
-texture = ExtResource( 18 )
-
-[node name="AnimationPlayer" parent="YSort/Enfant4" index="5"]
-anims/IdleDown = SubResource( 41 )
-anims/IdleLeft = SubResource( 42 )
-anims/IdleRight = SubResource( 43 )
-anims/IdleUp = SubResource( 44 )
-anims/RESET = SubResource( 45 )
-anims/WalkDown = SubResource( 46 )
-anims/WalkLeft = SubResource( 47 )
-anims/WalkRight = SubResource( 48 )
-anims/WalkUp = SubResource( 49 )
-
-[node name="AnimationTree" parent="YSort/Enfant4" index="6"]
-parameters/playback = SubResource( 50 )
-
-[node name="Enfant5" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 462, 276 )
-InitDir = 1
-CanWander = true
-WanderingCooldown = 10.0
-WalkSpeed = 40
-AutoDialogueID = "appEnfant5"
-DemandDialogueID = "demEnfant5"
-
-[node name="TextBox" parent="YSort/Enfant5" index="0"]
-NPCName = " Mlle Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant5" index="2"]
-texture = ExtResource( 17 )
-
-[node name="AnimationPlayer" parent="YSort/Enfant5" index="5"]
-anims/IdleDown = SubResource( 31 )
-anims/IdleLeft = SubResource( 32 )
-anims/IdleRight = SubResource( 33 )
-anims/IdleUp = SubResource( 34 )
-anims/RESET = SubResource( 35 )
-anims/WalkDown = SubResource( 36 )
-anims/WalkLeft = SubResource( 37 )
-anims/WalkRight = SubResource( 38 )
-anims/WalkUp = SubResource( 39 )
-
-[node name="AnimationTree" parent="YSort/Enfant5" index="6"]
-parameters/playback = SubResource( 40 )
-
-[node name="Enfant6" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 324, 332 )
-InitDir = 1
-DemandDialogueID = "demEnfant6"
-HasAutoDialogue = false
-
-[node name="TextBox" parent="YSort/Enfant6" index="0"]
-NPCName = " M. Rochat "
-
-[node name="FullyAnimated" parent="YSort/Enfant6" index="2"]
-texture = ExtResource( 19 )
-
-[node name="AnimationPlayer" parent="YSort/Enfant6" index="5"]
-anims/IdleDown = SubResource( 51 )
-anims/IdleLeft = SubResource( 52 )
-anims/IdleRight = SubResource( 53 )
-anims/IdleUp = SubResource( 54 )
-anims/RESET = SubResource( 55 )
-anims/WalkDown = SubResource( 56 )
-anims/WalkLeft = SubResource( 57 )
-anims/WalkRight = SubResource( 58 )
-anims/WalkUp = SubResource( 59 )
-
-[node name="AnimationTree" parent="YSort/Enfant6" index="6"]
-parameters/playback = SubResource( 60 )
-
-[node name="BridgeWall" type="Sprite" parent="YSort"]
-position = Vector2( 296, 246 )
-texture = ExtResource( 21 )
-centered = false
-offset = Vector2( -23, -30 )
-
-[node name="BridgeUpperWall" type="Sprite" parent="YSort"]
-position = Vector2( 296, 229 )
-texture = ExtResource( 22 )
-offset = Vector2( 0, 6 )
-
-[node name="Bush" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 72, 320 )
-
-[node name="Sprite" parent="YSort/Bush" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush2" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 100, 357 )
-
-[node name="Sprite" parent="YSort/Bush2" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush2" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush3" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 66, 290 )
-
-[node name="Sprite" parent="YSort/Bush3" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush15" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 2, 65 )
-
-[node name="Sprite" parent="YSort/Bush15" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush15" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush16" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 45, 205 )
-
-[node name="Sprite" parent="YSort/Bush16" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush16" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush7" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 62, 245 )
-
-[node name="Sprite" parent="YSort/Bush7" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush7" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush17" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 54, 270 )
-
-[node name="Sprite" parent="YSort/Bush17" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush17" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush8" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 16, 90 )
-
-[node name="Sprite" parent="YSort/Bush8" index="0"]
-position = Vector2( 1.78381, -7.13525 )
-texture = ExtResource( 25 )
-
-[node name="CollisionShape2D" parent="YSort/Bush8" index="1"]
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush4" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 24.0831, 320 )
-
-[node name="Sprite" parent="YSort/Bush4" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush4" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush9" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 9, 263 )
-
-[node name="Sprite" parent="YSort/Bush9" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush9" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush10" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 22, 160 )
-
-[node name="Sprite" parent="YSort/Bush10" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush10" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush11" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( -11, 128 )
-
-[node name="Sprite" parent="YSort/Bush11" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush11" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush13" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 21.5, 225 )
-
-[node name="Sprite" parent="YSort/Bush13" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush13" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush14" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( -1, 190 )
-
-[node name="Sprite" parent="YSort/Bush14" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush14" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush12" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( -3, 106 )
-
-[node name="Sprite" parent="YSort/Bush12" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush12" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush5" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 42, 354 )
-
-[node name="Sprite" parent="YSort/Bush5" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush18" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 63, 337 )
-
-[node name="Sprite" parent="YSort/Bush18" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush18" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush19" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 43.7838, 301 )
-
-[node name="Sprite" parent="YSort/Bush19" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush19" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush20" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 31.7838, 278 )
-
-[node name="Sprite" parent="YSort/Bush20" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush20" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush21" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 0, 296 )
-
-[node name="Sprite" parent="YSort/Bush21" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush21" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
-[node name="Bush6" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 4, 347 )
-
-[node name="Sprite" parent="YSort/Bush6" index="0"]
-position = Vector2( -7.5, -9 )
-texture = ExtResource( 26 )
-
-[node name="CollisionShape2D" parent="YSort/Bush6" index="1"]
-position = Vector2( -0.5, 6 )
-rotation = 1.5708
-shape = SubResource( 64 )
-
 [node name="Box" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 450, 192 )
+position = Vector2( 464, 185 )
 
 [node name="Sprite" parent="YSort/Box" index="0"]
 texture = ExtResource( 28 )
 
 [node name="Box2" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 577, 160 )
+position = Vector2( 535, 185 )
 
 [node name="Sprite" parent="YSort/Box2" index="0"]
 texture = ExtResource( 29 )
 
 [node name="Box3" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 576, 148 )
+position = Vector2( 555.395, 185 )
 
 [node name="Sprite" parent="YSort/Box3" index="0"]
 texture = ExtResource( 29 )
 
 [node name="Hay" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 40, 27 )
+position = Vector2( 18.2838, 44.2197 )
 
 [node name="Sprite" parent="YSort/Hay" index="0"]
 position = Vector2( 0.0831146, -4.68631 )
@@ -1946,15 +1573,37 @@ texture = ExtResource( 31 )
 position = Vector2( -0.629974, 5.66974 )
 shape = SubResource( 67 )
 
+[node name="Hay3" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 48.2838, 28.3137 )
+
+[node name="Sprite" parent="YSort/Hay3" index="0"]
+position = Vector2( 0.0831146, -4.68631 )
+texture = ExtResource( 31 )
+
+[node name="CollisionShape2D" parent="YSort/Hay3" index="1"]
+position = Vector2( -0.629974, 5.66974 )
+shape = SubResource( 67 )
+
+[node name="Hay2" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 7, 73.6697 )
+
+[node name="Sprite" parent="YSort/Hay2" index="0"]
+position = Vector2( 0.0831146, -4.68631 )
+texture = ExtResource( 31 )
+
+[node name="CollisionShape2D" parent="YSort/Hay2" index="1"]
+position = Vector2( -0.629974, 5.66974 )
+shape = SubResource( 67 )
+
 [node name="Manure" type="StaticBody2D" parent="YSort"]
-position = Vector2( 90, 57 )
+position = Vector2( 80, 57.6697 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -1966,7 +1615,6 @@ DemandDialogueID = "demRalf"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Manure/NPC" index="0"]
-visible = true
 position = Vector2( -17, -52.832 )
 NPCName = "Ralf"
 
@@ -1979,10 +1627,574 @@ visible = false
 [node name="AnimationTree" parent="YSort/Manure/NPC" index="6"]
 parameters/playback = SubResource( 74 )
 
+[node name="Bushes" type="YSort" parent="YSort"]
+position = Vector2( -5, 0 )
+
+[node name="Bush" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 15.1, 264 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush12" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 63, 303 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush12" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush12" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush15" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 94, 350.865 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush15" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush15" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush25" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 23.8669, 207 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush25" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush25" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush26" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 31.37, 230 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush26" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush26" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush16" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 90, 377.603 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush16" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush16" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush17" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 1.56762, 251 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush17" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush17" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush20" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( -6.00999, 140 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush20" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush20" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush21" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 5.15384, 161 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush21" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush21" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush22" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 19.7838, 181 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush22" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush22" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush13" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( -6.00999, 236 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush13" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush13" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush11" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 38, 279 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush11" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 86 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush11" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush2" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 116.784, 336.5 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush2" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush2" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush28" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 95.0676, 322.865 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush28" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush28" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush29" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 92, 305.729 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush29" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush29" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush30" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 74, 334.5 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush30" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush30" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush31" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 54.8669, 261 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush31" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush31" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush32" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 29.5676, 248 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush32" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush32" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush33" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 28, 186 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush33" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush33" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush27" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 127, 366 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush27" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 85 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush27" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush3" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 7.5, 356 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush3" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 87 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush3" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush5" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 39, 373.865 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush5" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 87 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush5" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush6" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 6.5, 320 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush6" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 87 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush6" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush34" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 2.5, 337 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush34" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 87 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush34" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush8" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 28, 345.5 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush8" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 87 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush8" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush4" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 6.5, 291.865 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush4" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush4" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush23" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( -3.11619, 202 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush23" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush23" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush24" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 1.56762, 222 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush24" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush24" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush7" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 32.5, 309 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush7" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush7" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush18" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( -6.00999, 152.508 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush18" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush18" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush19" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( -6.00999, 172 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush19" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush19" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush9" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 53, 337 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush9" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush9" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush10" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 59, 359.365 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush10" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush10" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bush14" parent="YSort/Bushes" instance=ExtResource( 27 )]
+position = Vector2( 64, 379.865 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush14" index="0"]
+position = Vector2( 1.78381, -7.13525 )
+texture = SubResource( 88 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush14" index="1"]
+rotation = 1.5708
+shape = SubResource( 64 )
+
+[node name="Bushes" type="StaticBody2D" parent="YSort/Bushes"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Bushes/Bushes"]
+polygon = PoolVector2Array( 152.177, 387.668, 140.94, 353.956, 131.201, 344.966, 137.569, 331.856, 126.706, 320.993, 114.72, 314.251, 109.85, 308.258, 107.603, 301.141, 103.482, 294.773, 91.8704, 289.903, 81.7568, 288.03, 72.767, 292.525, 63.4026, 291.027, 51.7907, 287.656, 46.9212, 278.291, 47.6703, 270.8, 59.6568, 268.927, 68.6466, 266.305, 70.8941, 262.185, 70.5195, 254.318, 64.5263, 249.074, 58.5331, 247.201, 49.9178, 244.205, 46.5466, 240.085, 40.9279, 226.974, 39.8042, 217.61, 35.6839, 213.49, 35.3093, 206.373, 36.433, 200.379, 36.8076, 192.513, 41.3025, 186.145, 38.6805, 170.263, 30.0652, 166.143, 21.0754, 163.521, 14.7076, 162.771, 14.7076, 162.397, 12.4601, 149.661, 10.5872, 145.166, 9.08893, 143.293, 9.08893, 143.293, 6.46689, 136.926, 3.47028, 131.681, 0.848236, 129.809, -44.4756, 128.31, -38.4823, 389.959 )
+
+[node name="NPC" type="YSort" parent="YSort"]
+
+[node name="Benedict" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 350, 208 )
+DemandDialogueID = "demandBene"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Benedict" index="0"]
+NPCName = " M. Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Benedict" index="2"]
+texture = ExtResource( 10 )
+
+[node name="AnimationTree" parent="YSort/NPC/Benedict" index="6"]
+parameters/playback = SubResource( 5 )
+
+[node name="Epouse" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 496, 184 )
+AutoDialogueID = "appFemme"
+DemandDialogueID = "demandFemme"
+
+[node name="TextBox" parent="YSort/NPC/Epouse" index="0"]
+NPCName = " Mme Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Epouse" index="2"]
+texture = ExtResource( 11 )
+
+[node name="AnimationTree" parent="YSort/NPC/Epouse" index="6"]
+parameters/playback = SubResource( 6 )
+
+[node name="Enfant1" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 157, 270 )
+CanWander = true
+DemandDialogueID = "demEnfant"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Enfant1" index="0"]
+NPCName = " Mlle Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Enfant1" index="2"]
+texture = ExtResource( 15 )
+
+[node name="AnimationTree" parent="YSort/NPC/Enfant1" index="6"]
+parameters/playback = SubResource( 10 )
+
+[node name="Enfant2" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 200, 332 )
+CanWander = true
+WanderingCooldown = 15.0
+WalkSpeed = 30
+DemandDialogueID = "demEnfant2"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Enfant2" index="0"]
+NPCName = " M. Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Enfant2" index="2"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" parent="YSort/NPC/Enfant2" index="5"]
+anims/IdleDown = SubResource( 11 )
+anims/IdleLeft = SubResource( 12 )
+anims/IdleRight = SubResource( 13 )
+anims/IdleUp = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+anims/WalkDown = SubResource( 16 )
+anims/WalkLeft = SubResource( 17 )
+anims/WalkRight = SubResource( 18 )
+anims/WalkUp = SubResource( 19 )
+
+[node name="AnimationTree" parent="YSort/NPC/Enfant2" index="6"]
+parameters/playback = SubResource( 20 )
+
+[node name="Enfant3" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 80, 117 )
+InitDir = 1
+DemandDialogueID = "demEnfant3"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Enfant3" index="0"]
+NPCName = " Mlle Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Enfant3" index="2"]
+texture = ExtResource( 16 )
+
+[node name="AnimationPlayer" parent="YSort/NPC/Enfant3" index="5"]
+anims/IdleDown = SubResource( 21 )
+anims/IdleLeft = SubResource( 22 )
+anims/IdleRight = SubResource( 23 )
+anims/IdleUp = SubResource( 24 )
+anims/RESET = SubResource( 25 )
+anims/WalkDown = SubResource( 26 )
+anims/WalkLeft = SubResource( 27 )
+anims/WalkRight = SubResource( 28 )
+anims/WalkUp = SubResource( 29 )
+
+[node name="AnimationTree" parent="YSort/NPC/Enfant3" index="6"]
+parameters/playback = SubResource( 30 )
+
+[node name="Enfant4" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 46, 117 )
+InitDir = 0
+DemandDialogueID = "demEnfant4"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Enfant4" index="0"]
+NPCName = " M. Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Enfant4" index="2"]
+texture = ExtResource( 18 )
+
+[node name="AnimationPlayer" parent="YSort/NPC/Enfant4" index="5"]
+anims/IdleDown = SubResource( 41 )
+anims/IdleLeft = SubResource( 42 )
+anims/IdleRight = SubResource( 43 )
+anims/IdleUp = SubResource( 44 )
+anims/RESET = SubResource( 45 )
+anims/WalkDown = SubResource( 46 )
+anims/WalkLeft = SubResource( 47 )
+anims/WalkRight = SubResource( 48 )
+anims/WalkUp = SubResource( 49 )
+
+[node name="AnimationTree" parent="YSort/NPC/Enfant4" index="6"]
+parameters/playback = SubResource( 50 )
+
+[node name="Enfant5" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 462, 276 )
+InitDir = 1
+CanWander = true
+WanderingCooldown = 10.0
+WalkSpeed = 40
+AutoDialogueID = "appEnfant5"
+DemandDialogueID = "demEnfant5"
+
+[node name="TextBox" parent="YSort/NPC/Enfant5" index="0"]
+NPCName = " Mlle Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Enfant5" index="2"]
+texture = ExtResource( 17 )
+
+[node name="AnimationPlayer" parent="YSort/NPC/Enfant5" index="5"]
+anims/IdleDown = SubResource( 31 )
+anims/IdleLeft = SubResource( 32 )
+anims/IdleRight = SubResource( 33 )
+anims/IdleUp = SubResource( 34 )
+anims/RESET = SubResource( 35 )
+anims/WalkDown = SubResource( 36 )
+anims/WalkLeft = SubResource( 37 )
+anims/WalkRight = SubResource( 38 )
+anims/WalkUp = SubResource( 39 )
+
+[node name="AnimationTree" parent="YSort/NPC/Enfant5" index="6"]
+parameters/playback = SubResource( 40 )
+
+[node name="Enfant6" parent="YSort/NPC" instance=ExtResource( 8 )]
+position = Vector2( 360, 332 )
+InitDir = 1
+DemandDialogueID = "demEnfant6"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC/Enfant6" index="0"]
+NPCName = " M. Rochat "
+
+[node name="FullyAnimated" parent="YSort/NPC/Enfant6" index="2"]
+texture = ExtResource( 19 )
+
+[node name="AnimationPlayer" parent="YSort/NPC/Enfant6" index="5"]
+anims/IdleDown = SubResource( 51 )
+anims/IdleLeft = SubResource( 52 )
+anims/IdleRight = SubResource( 53 )
+anims/IdleUp = SubResource( 54 )
+anims/RESET = SubResource( 55 )
+anims/WalkDown = SubResource( 56 )
+anims/WalkLeft = SubResource( 57 )
+anims/WalkRight = SubResource( 58 )
+anims/WalkUp = SubResource( 59 )
+
+[node name="AnimationTree" parent="YSort/NPC/Enfant6" index="6"]
+parameters/playback = SubResource( 60 )
+
 [node name="Door" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-position = Vector2( 404, 178 )
+position = Vector2( 406.553, 183 )
 shape = SubResource( 63 )
 
 [node name="Notebook" parent="." instance=ExtResource( 5 )]
@@ -2045,46 +2257,61 @@ polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]
-[editable path="YSort/Benedict"]
-[editable path="YSort/Benedict/ListenBox"]
-[editable path="YSort/Epouse"]
-[editable path="YSort/Epouse/ListenBox"]
-[editable path="YSort/Enfant1"]
-[editable path="YSort/Enfant1/ListenBox"]
-[editable path="YSort/Enfant2"]
-[editable path="YSort/Enfant2/ListenBox"]
-[editable path="YSort/Enfant3"]
-[editable path="YSort/Enfant3/ListenBox"]
-[editable path="YSort/Enfant4"]
-[editable path="YSort/Enfant4/ListenBox"]
-[editable path="YSort/Enfant5"]
-[editable path="YSort/Enfant5/ListenBox"]
-[editable path="YSort/Enfant6"]
-[editable path="YSort/Enfant6/ListenBox"]
-[editable path="YSort/Bush"]
-[editable path="YSort/Bush2"]
-[editable path="YSort/Bush3"]
-[editable path="YSort/Bush15"]
-[editable path="YSort/Bush16"]
-[editable path="YSort/Bush7"]
-[editable path="YSort/Bush17"]
-[editable path="YSort/Bush8"]
-[editable path="YSort/Bush4"]
-[editable path="YSort/Bush9"]
-[editable path="YSort/Bush10"]
-[editable path="YSort/Bush11"]
-[editable path="YSort/Bush13"]
-[editable path="YSort/Bush14"]
-[editable path="YSort/Bush12"]
-[editable path="YSort/Bush5"]
-[editable path="YSort/Bush18"]
-[editable path="YSort/Bush19"]
-[editable path="YSort/Bush20"]
-[editable path="YSort/Bush21"]
-[editable path="YSort/Bush6"]
 [editable path="YSort/Box"]
 [editable path="YSort/Box2"]
 [editable path="YSort/Box3"]
 [editable path="YSort/Hay"]
+[editable path="YSort/Hay3"]
+[editable path="YSort/Hay2"]
 [editable path="YSort/Manure/NPC"]
 [editable path="YSort/Manure/NPC/ListenBox"]
+[editable path="YSort/Bushes/Bush"]
+[editable path="YSort/Bushes/Bush12"]
+[editable path="YSort/Bushes/Bush15"]
+[editable path="YSort/Bushes/Bush25"]
+[editable path="YSort/Bushes/Bush26"]
+[editable path="YSort/Bushes/Bush16"]
+[editable path="YSort/Bushes/Bush17"]
+[editable path="YSort/Bushes/Bush20"]
+[editable path="YSort/Bushes/Bush21"]
+[editable path="YSort/Bushes/Bush22"]
+[editable path="YSort/Bushes/Bush13"]
+[editable path="YSort/Bushes/Bush11"]
+[editable path="YSort/Bushes/Bush2"]
+[editable path="YSort/Bushes/Bush28"]
+[editable path="YSort/Bushes/Bush29"]
+[editable path="YSort/Bushes/Bush30"]
+[editable path="YSort/Bushes/Bush31"]
+[editable path="YSort/Bushes/Bush32"]
+[editable path="YSort/Bushes/Bush33"]
+[editable path="YSort/Bushes/Bush27"]
+[editable path="YSort/Bushes/Bush3"]
+[editable path="YSort/Bushes/Bush5"]
+[editable path="YSort/Bushes/Bush6"]
+[editable path="YSort/Bushes/Bush34"]
+[editable path="YSort/Bushes/Bush8"]
+[editable path="YSort/Bushes/Bush4"]
+[editable path="YSort/Bushes/Bush23"]
+[editable path="YSort/Bushes/Bush24"]
+[editable path="YSort/Bushes/Bush7"]
+[editable path="YSort/Bushes/Bush18"]
+[editable path="YSort/Bushes/Bush19"]
+[editable path="YSort/Bushes/Bush9"]
+[editable path="YSort/Bushes/Bush10"]
+[editable path="YSort/Bushes/Bush14"]
+[editable path="YSort/NPC/Benedict"]
+[editable path="YSort/NPC/Benedict/ListenBox"]
+[editable path="YSort/NPC/Epouse"]
+[editable path="YSort/NPC/Epouse/ListenBox"]
+[editable path="YSort/NPC/Enfant1"]
+[editable path="YSort/NPC/Enfant1/ListenBox"]
+[editable path="YSort/NPC/Enfant2"]
+[editable path="YSort/NPC/Enfant2/ListenBox"]
+[editable path="YSort/NPC/Enfant3"]
+[editable path="YSort/NPC/Enfant3/ListenBox"]
+[editable path="YSort/NPC/Enfant4"]
+[editable path="YSort/NPC/Enfant4/ListenBox"]
+[editable path="YSort/NPC/Enfant5"]
+[editable path="YSort/NPC/Enfant5/ListenBox"]
+[editable path="YSort/NPC/Enfant6"]
+[editable path="YSort/NPC/Enfant6/ListenBox"]
