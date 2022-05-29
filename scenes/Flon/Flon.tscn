@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=2]
+[gd_scene load_steps=118 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -33,6 +33,9 @@
 [ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=32]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=33]
 [ext_resource path="res://assets/03_backgrounds/pathMoulin.png" type="Texture" id=34]
+
+[sub_resource type="RectangleShape2D" id=90]
+extents = Vector2( 21, 17 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 53, 31.5 )
@@ -1504,6 +1507,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="NPCCollision"]
 polygon = PoolVector2Array( 128, 360, 128, 392, 416, 392, 416, 360 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCCollision"]
+position = Vector2( 407, 196 )
+shape = SubResource( 90 )
+
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
@@ -1540,7 +1547,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -41 )
 frames = SubResource( 84 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1615,7 +1622,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2178,8 +2185,8 @@ anims/WalkUp = SubResource( 39 )
 parameters/playback = SubResource( 40 )
 
 [node name="Enfant6" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 360, 332 )
-InitDir = 1
+position = Vector2( 408, 337.865 )
+InitDir = 0
 DemandDialogueID = "demEnfant6"
 HasAutoDialogue = false
 
