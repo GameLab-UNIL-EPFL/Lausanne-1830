@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=2]
+[gd_scene load_steps=117 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/03_backgrounds/riviere.png" type="Texture" id=22]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/03_backgrounds/hitboxesPont.png" type="Texture" id=25]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
@@ -1461,6 +1462,10 @@ tracks/0/keys = {
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 37, 36 )
 
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 25, 81, 9 )
+
 [node name="Flon" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 7 )]
@@ -1490,7 +1495,14 @@ texture = ExtResource( 34 )
 tile_set = ExtResource( 33 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 33, 0, 0, 65538, 1, 0, 65543, 0, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 2, 0, 131073, 1, 0, 131100, 2, 0, 131105, 1, 0, 393218, 536870913, 0, 393228, 0, 0, 458760, 1, 0, 458779, 1, 0, 524291, 536870915, 0, 524299, 1, 0, 589825, 2, 0, 655368, 2, 0, 655387, 536870913, 0, 655388, 536870913, 0, 720903, 1, 0, 720923, 536870913, 0, 720925, 1, 0, 720929, 0, 0, 786439, 0, 0, 786444, 1, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 851989, 0, 0, 852002, 2, 0, 917507, 2, 0, 983059, 3, 0, 983065, 1, 0, 1048581, 3, 0, 1048584, 1, 0, 1048596, 3, 0, 1048607, 536870915, 0, 1114116, 2, 0, 1114139, 1, 0, 1114142, 536870914, 0, 1179655, 3, 0, 1179667, 536870915, 0, 1179671, 536870913, 0, 1245191, 2, 0, 1245206, 536870912, 0, 1245212, 3, 0, 1376264, 2, 0, 1376275, 1, 0, 1441797, 536870913, 0, 1441801, 2, 0, 1441816, 536870913, 0, 1441817, 536870913, 0 )
+tile_data = PoolIntArray( 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 33, 0, 0, 65538, 1, 0, 65543, 0, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 2, 0, 131073, 1, 0, 131100, 2, 0, 131105, 1, 0, 393218, 536870913, 0, 393228, 0, 0, 458760, 1, 0, 458779, 1, 0, 524291, 536870915, 0, 524299, 1, 0, 589825, 2, 0, 655368, 2, 0, 655387, 536870913, 0, 655388, 536870913, 0, 720903, 1, 0, 720923, 536870913, 0, 720925, 1, 0, 720929, 0, 0, 786439, 0, 0, 786444, 1, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 786464, 536870913, 0, 851989, 0, 0, 852002, 2, 0, 917507, 2, 0, 983059, 3, 0, 983065, 1, 0, 1048581, 3, 0, 1048584, 1, 0, 1048596, 3, 0, 1048607, 536870915, 0, 1114116, 2, 0, 1114139, 1, 0, 1114142, 536870914, 0, 1179655, 3, 0, 1179667, 536870915, 0, 1179671, 536870913, 0, 1179686, 3, 0, 1245191, 2, 0, 1245206, 536870912, 0, 1245212, 3, 0, 1310759, 1, 0, 1376264, 2, 0, 1376275, 1, 0, 1376291, 536870913, 0, 1376294, 2, 0, 1376295, 0, 0, 1441797, 536870913, 0, 1441801, 2, 0, 1441816, 536870913, 0, 1441817, 536870913, 0, 1441831, 3, 0 )
+
+[node name="NPCCollision" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="NPCCollision"]
+polygon = PoolVector2Array( 128, 360, 128, 392, 416, 392, 416, 360 )
 
 [node name="Collision" type="StaticBody2D" parent="."]
 
@@ -1528,7 +1540,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -41 )
 frames = SubResource( 84 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1603,7 +1615,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2246,7 +2258,12 @@ volume_db = -15.0
 [node name="OpenMapZone" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenMapZone"]
-polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.8579, -12, 375.53, 387.5, 375.53, 387.5, 364.53, -6, 365.53, -3, -4.84691 )
+polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.8579, -12, 375.53, 424, 376, 432, 368, 142.023, 366.365, -6, 365.53, -3, -4.84691 )
+
+[node name="BridgeBot" type="Sprite" parent="."]
+position = Vector2( 221, 240 )
+texture = SubResource( 89 )
+centered = false
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]

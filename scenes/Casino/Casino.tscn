@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
+[ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=28]
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 5 )
@@ -229,7 +230,7 @@ position = Vector2( 320, 288 )
 parameters/playback = SubResource( 20 )
 
 [node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
-stream = null
+stream = ExtResource( 28 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 265, 227 )
@@ -523,9 +524,6 @@ position = Vector2( 0, -19 )
 
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
-
-[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
