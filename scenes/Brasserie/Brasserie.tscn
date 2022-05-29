@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=2]
+[gd_scene load_steps=160 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -1274,6 +1274,9 @@ radius = 16.4808
 [sub_resource type="DynamicFont" id=73]
 font_data = ExtResource( 28 )
 
+[sub_resource type="RectangleShape2D" id=129]
+extents = Vector2( 13.5844, 10 )
+
 [node name="Brasserie" type="Node2D"]
 
 [node name="QuestController" parent="." instance=ExtResource( 10 )]
@@ -1302,7 +1305,7 @@ __meta__ = {
 visible = false
 position = Vector2( 384.007, 140.819 )
 scale = Vector2( 0.753472, 0.753472 )
-polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170, 56, -183.531, 55.4858, -182.039, 157.895, -170, 160, -170, 128, -90, 128, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -82, 216, -90, 216, -226, 216 )
+polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170.742, 59.2283, -182.856, 59.755, -182.039, 157.895, -173.375, 157.72, -173.375, 135.072, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -142.3, 217.563, -142.827, 256.012, -173.902, 254.958, -173.902, 217.036, -226, 216 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1324,7 +1327,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 4
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1422,7 +1425,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1436,7 +1439,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
@@ -1451,7 +1454,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = SubResource( 100 )
-frame = 11
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1832,12 +1835,20 @@ __meta__ = {
 position = Vector2( 146, 102 )
 texture = ExtResource( 29 )
 
+[node name="OpenMapZone" type="Area2D" parent="."]
+position = Vector2( 262, 324 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpenMapZone"]
+position = Vector2( 5, 0 )
+shape = SubResource( 129 )
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="visibility_changed" from="Notebook" to="Book" method="_on_Notebook_visibility_changed"]
 [connection signal="visibility_changed" from="Notebook" to="Item" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="area_entered" from="OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]
