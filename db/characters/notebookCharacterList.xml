@@ -1,5 +1,5 @@
 <db>
-	<solution id="0" prenom="Elisabeth" nom="De Cerjeat" adresse="Montchoisi" num="8" conjoint="Célibataire" enfant="0" metier="Rentier.ère"></solution>
+	<solution id="0" prenom="Elisabeth" nom="De Cerjeat" adresse="Montchoisi" num="0" conjoint="Célibataire" enfant="0" metier="Rentier.ère"></solution>
 	<solution id="1" prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" num="16" conjoint="Marié.e" enfant="3" metier="Brasseur.se"></solution>
 	<solution id="2" prenom="Henri" nom="Perregaux" adresse="Rue St-François" num="9" conjoint="Marié.e" enfant="2" metier="Architecte"></solution>
 	<solution id="3" prenom="Isabelle" nom="De Montolieu" adresse="Château de Vennes" num="0" conjoint="Veuf.ve" enfant="1" metier="Écrivain.e"></solution>
