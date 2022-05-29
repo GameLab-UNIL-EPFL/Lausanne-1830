@@ -50,7 +50,7 @@ public class Notebook : Node2D {
 	
 	private const string infoFilePath = "res://db/characters/infoCharacters.xml";
 	private XDocument InfoXML;
-	private Label Quest;
+	private RichTextLabel Quest;
 	
 	//Currently opened tab
 	public CharacterInfo_t characterInfo = new CharacterInfo_t(-1);
@@ -139,7 +139,7 @@ public class Notebook : Node2D {
 		Stamp = GetNode<Sprite>("Stamp");
 		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
 		closeLabel = GetNode<Label>("Fermer");
-		Quest = GetNode<Label>("Quest");
+		Quest = GetNode<RichTextLabel>("Quest");
 		
 		//Load in character info XML
 		DialogueController._ParseXML(ref InfoXML, infoFilePath);
@@ -493,7 +493,7 @@ public class Notebook : Node2D {
 		
 		//Load in new info text
 		foreach(string infoText in infoTextQuery) {
-			Quest.Text = infoText;
+			Quest.BbcodeText = infoText;
 			break; // Need to do this to convert query result to string
 		}
 	}
@@ -506,7 +506,7 @@ public class Notebook : Node2D {
 		
 		//Load in new info text
 		foreach(string infoText in infoTextQuery) {
-			Quest.Text = infoText;
+			Quest.BbcodeText = infoText;
 			break; // Need to do this to convert query result to string
 		}
 	}
