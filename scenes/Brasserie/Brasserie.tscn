@@ -1,9 +1,9 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=159 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=3]
-[ext_resource path="res://assets/02_architecture/03_brewery/cuve.png" type="Texture" id=4]
+[ext_resource path="res://assets/02_architecture/03_brewery/cuve_v2-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=7]
@@ -20,7 +20,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrel.png" type="Texture" id=18]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bigBarrel.png" type="Texture" id=19]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sac.png" type="Texture" id=20]
-[ext_resource path="res://scenes/Palud/TableH.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire-Sheet.png" type="Texture" id=21]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=22]
 [ext_resource path="res://scenes/Palud/TableV.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/commode.png" type="Texture" id=24]
@@ -33,12 +33,125 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=31]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=32]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=33]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio.png" type="Texture" id=34]
 [ext_resource path="res://assets/06_UI_menus/randomBook.png" type="Texture" id=35]
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=76]
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 4 )
+region = Rect2( 100, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 4 )
+region = Rect2( 300, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 4 )
+region = Rect2( 400, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=107]
+atlas = ExtResource( 4 )
+region = Rect2( 500, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 4 )
+region = Rect2( 700, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 4 )
+region = Rect2( 800, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 4 )
+region = Rect2( 900, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 4 )
+region = Rect2( 1000, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 4 )
+region = Rect2( 1100, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=114]
+atlas = ExtResource( 4 )
+region = Rect2( 1200, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=115]
+atlas = ExtResource( 4 )
+region = Rect2( 1300, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=116]
+atlas = ExtResource( 4 )
+region = Rect2( 1400, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=117]
+atlas = ExtResource( 4 )
+region = Rect2( 1500, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 4 )
+region = Rect2( 1600, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=119]
+atlas = ExtResource( 4 )
+region = Rect2( 1700, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=120]
+atlas = ExtResource( 4 )
+region = Rect2( 1800, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=121]
+atlas = ExtResource( 4 )
+region = Rect2( 1900, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 4 )
+region = Rect2( 2000, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=123]
+atlas = ExtResource( 4 )
+region = Rect2( 2100, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=124]
+atlas = ExtResource( 4 )
+region = Rect2( 2200, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=125]
+atlas = ExtResource( 4 )
+region = Rect2( 2300, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=126]
+atlas = ExtResource( 4 )
+region = Rect2( 2400, 0, 100, 116 )
+
+[sub_resource type="AtlasTexture" id=127]
+atlas = ExtResource( 4 )
+region = Rect2( 2500, 0, 100, 116 )
+
+[sub_resource type="SpriteFrames" id=128]
+animations = [ {
+"frames": [ SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=63]
 radius = 11.3028
@@ -62,11 +175,94 @@ region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=81]
 animations = [ {
-"frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"frames": [ SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), ExtResource( 34 ), ExtResource( 34 ), ExtResource( 34 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 21 )
+region = Rect2( 64, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=84]
+atlas = ExtResource( 21 )
+region = Rect2( 128, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 21 )
+region = Rect2( 192, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 21 )
+region = Rect2( 256, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 21 )
+region = Rect2( 320, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 21 )
+region = Rect2( 384, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 21 )
+region = Rect2( 448, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 21 )
+region = Rect2( 512, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=91]
+atlas = ExtResource( 21 )
+region = Rect2( 576, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=92]
+atlas = ExtResource( 21 )
+region = Rect2( 640, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=93]
+atlas = ExtResource( 21 )
+region = Rect2( 704, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=94]
+atlas = ExtResource( 21 )
+region = Rect2( 768, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 21 )
+region = Rect2( 832, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 21 )
+region = Rect2( 896, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 21 )
+region = Rect2( 960, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 21 )
+region = Rect2( 1024, 0, 64, 46 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 21 )
+region = Rect2( 1088, 0, 64, 46 )
+
+[sub_resource type="SpriteFrames" id=100]
+animations = [ {
+"frames": [ SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=101]
+extents = Vector2( 22.372, 8.10147 )
 
 [sub_resource type="CircleShape2D" id=69]
 radius = 5.57125
@@ -1120,16 +1316,21 @@ parameters/playback = SubResource( 76 )
 [node name="Props" type="YSort" parent="YSort"]
 
 [node name="Cuve" type="StaticBody2D" parent="YSort/Props"]
-position = Vector2( 466, 241 )
+position = Vector2( 466, 234 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Sprite" type="Sprite" parent="YSort/Props/Cuve"]
-position = Vector2( 0, 10 )
-texture = ExtResource( 4 )
+[node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
+position = Vector2( 0, 6 )
+frames = SubResource( 128 )
+frame = 4
+playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
-position = Vector2( 0, 6 )
+position = Vector2( 0, 16 )
 rotation = 1.5708
-polygon = PoolVector2Array( 16, 48, 32, 32, 40, 16, 40, -16, 32, -32, 16, -48, 0, -48, -12.8338, -44.0833, -21.8153, -29.2154, -25.7438, -8.73041, -26.0244, 10.9127, -20.2661, 32.9179, -12.8335, 43.6207, 0, 48 )
+polygon = PoolVector2Array( 19.4904, 45.7321, 32, 32, 40, 16, 40, -16, 32, -32, 18.2302, -44.3523, -4.76334, -45.2971, -13.2678, -44.6671, -21.1423, -36.4776, -26.1819, -26.0833, -28.0718, -16.0039, -28.7017, -5.92453, -37.2062, -5.6095, -36.2612, 7.93463, -29.0166, 8.56458, -26.8117, 23.0536, -23.9769, 33.448, -18.9371, 40.3776, -11.6926, 46.3622, 0.906647, 46.0471 )
 
 [node name="Bag" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 487, 184 )
@@ -1138,7 +1339,7 @@ position = Vector2( 487, 184 )
 texture = ExtResource( 20 )
 
 [node name="Bag2" parent="YSort/Props" instance=ExtResource( 15 )]
-position = Vector2( 442.273, 283.849 )
+position = Vector2( 432, 284 )
 
 [node name="Sprite" parent="YSort/Props/Bag2" index="0"]
 texture = ExtResource( 20 )
@@ -1185,20 +1386,14 @@ position = Vector2( 333, 292 )
 [node name="Sprite" parent="YSort/Props/Bags" index="0"]
 texture = ExtResource( 16 )
 
-[node name="TableH" parent="YSort/Props" instance=ExtResource( 21 )]
-position = Vector2( 175, 86 )
-
-[node name="Sprite" parent="YSort/Props/TableH" index="0"]
-texture = ExtResource( 22 )
-
-[node name="CollisionPolygon2D" parent="YSort/Props/TableH" index="1"]
-polygon = PoolVector2Array( 22.5, -3.5, 22.5, 15.5, -22.5, 15.5, -23, -3 )
-
 [node name="TableV" parent="YSort/Props" instance=ExtResource( 23 )]
 position = Vector2( 102, 134 )
 
 [node name="Sprite" parent="YSort/Props/TableV" index="0"]
 texture = ExtResource( 24 )
+
+[node name="CollisionPolygon2D" parent="YSort/Props/TableV" index="1"]
+polygon = PoolVector2Array( -8.68526, -23.9389, -9.01897, 21.7794, 8.66766, 21.4457, 8.33395, -24.1057 )
 
 [node name="Chair" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 174, 110 )
@@ -1227,7 +1422,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1241,11 +1436,27 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
+frame = 3
 playing = true
 flip_h = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf2"]
 polygon = PoolVector2Array( -12.3515, 1.52253, 15.2976, 9.54968, 14.4057, 22.0364, 9.35156, 24.1175, -12.0542, 12.2254 )
+
+[node name="Desk" type="StaticBody2D" parent="YSort/Props"]
+position = Vector2( 175, 86 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
+frames = SubResource( 100 )
+frame = 11
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
+position = Vector2( -0.475677, 4.8588 )
+shape = SubResource( 101 )
 
 [node name="NPC" type="YSort" parent="YSort"]
 
@@ -1328,7 +1539,7 @@ anims/WalkUp = SubResource( 10 )
 parameters/playback = SubResource( 54 )
 
 [node name="Conrad" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 354, 208 )
+position = Vector2( 367.844, 211 )
 AutoDialogueID = "appConrad"
 DemandDialogueID = "demandConrad"
 
@@ -1352,11 +1563,10 @@ anims/WalkUp = SubResource( 18 )
 parameters/playback = SubResource( 55 )
 
 [node name="Brewer" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 530, 250 )
-InitDir = 1
+position = Vector2( 465, 212 )
+CanTurn = false
 ProbRight = 0
 ProbLeft = 0
-CanWander = true
 WanderingCooldown = 10.0
 WalkSpeed = 20
 DemandDialogueID = "demandTonneliers"
@@ -1367,6 +1577,7 @@ isBrewer = true
 NPCName = " M. Firstein "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brewer" index="2"]
+visible = false
 texture = ExtResource( 12 )
 
 [node name="AnimationPlayer" parent="YSort/NPC/Brewer" index="5"]
@@ -1383,7 +1594,9 @@ anims/WalkUp = SubResource( 26 )
 parameters/playback = SubResource( 56 )
 
 [node name="Brasseur" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 432, 212 )
+position = Vector2( 487, 292 )
+InitDir = 1
+CanTurn = false
 ProbRight = 0
 ProbLeft = 0
 ProbUp = 0
@@ -1396,7 +1609,7 @@ HasAutoDialogue = false
 NPCName = "M. Wolff"
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur" index="2"]
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 
 [node name="AnimationPlayer" parent="YSort/NPC/Brasseur" index="5"]
 anims/Idle = SubResource( 27 )
@@ -1412,7 +1625,7 @@ anims/WalkUp = SubResource( 34 )
 parameters/playback = SubResource( 57 )
 
 [node name="Brasseur2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 407, 244 )
+position = Vector2( 443.223, 292 )
 InitDir = 0
 DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
@@ -1504,9 +1717,6 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
-[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( 0.27296, 10.7515 )
 shape = SubResource( 71 )
@@ -1523,6 +1733,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1549,6 +1760,9 @@ visible = false
 [node name="Label" parent="Book2/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1565,7 +1779,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -225, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book2/Open" index="2"]
 margin_left = -214.0
@@ -1592,9 +1805,6 @@ visible = false
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
 shape = SubResource( 72 )
@@ -1605,6 +1815,7 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
+frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
@@ -1639,7 +1850,6 @@ texture = ExtResource( 29 )
 [editable path="YSort/Props/Box2"]
 [editable path="YSort/Props/Box3"]
 [editable path="YSort/Props/Bags"]
-[editable path="YSort/Props/TableH"]
 [editable path="YSort/Props/TableV"]
 [editable path="YSort/Props/Chair"]
 [editable path="YSort/Props/Bed"]
