@@ -55,7 +55,7 @@
     </dialogue>
     <dialogue id="demandRandom" ntargets="1" type="onDemand">
         <text>Le cuir n'est pas à vendre, désolé !</text>
-        <text>Je l'ai acheté aux Merciers.</text>
+        <text>Je l'ai acheté aux Mercier.</text>
     </dialogue>
     <dialogue id="demandPasteur" ntargets="1" type="onDemand">
         <text>Si vous chercher des renseignements ou du travail,</text>
@@ -188,6 +188,7 @@
         <text>Ne vous inquiétez pas, on s'habitue vite à l'odeur du Flon.</text>
     </dialogue>
     <dialogue id="demEnfant2" ntargets="1" type="onDemand">
+        <text>Je vous déconseille de boire l'eau de la rivière !</text>
         <text>On trouve souvent des cadavres d'animaux dans la rivières.</text>
         <text>Ce sont les boucheries et la tannerie qui les jettent dans l'eau.</text>
     </dialogue>
@@ -208,7 +209,8 @@
         </text>
     </dialogue>
     <dialogue id="demEnfant6" ntargets="1" type="onDemand">
-        <text>Je vous déconseille de boire l'eau de la rivière !</text>
+        <text>Je préfèrerais faire du chocolat plutôt que de la farine.</text>
+        <text>Notre voisin d'à côté, M. Kohler, a une fabrique de chocolat.</text>
     </dialogue>
     <dialogue id="demEnfant7" ntargets="1" type="onDemand">
         <text>J'aide mon père à réparer et à faire fonctionner le moulin.</text>

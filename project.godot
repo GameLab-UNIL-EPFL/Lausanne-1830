@@ -12,6 +12,7 @@ config_version=4
 
 config/name="Lausanne 1830"
 run/main_scene="res://scenes/Interaction/Menu.tscn"
+config/icon="res://assets/06_UI_menus/perso.png"
 
 [autoload]
 

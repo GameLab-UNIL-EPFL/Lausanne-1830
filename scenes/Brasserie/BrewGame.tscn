@@ -10,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 7 )
-shader_param/burntColor = Plane( 0.3398, 0.23047, 0.10156, 0 )
+shader_param/burntColor = Plane( 0.26, 0.2, 0.2, 0 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
@@ -31,7 +31,7 @@ atlas = ExtResource( 5 )
 region = Rect2( 50, 2, 24, 11 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 31.5, 11.75 )
+extents = Vector2( 31.5, 10.5 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 5 )
@@ -53,8 +53,9 @@ GameTime = 20.0
 MaxRotateSpeed = 4.0
 MinRotateSpeed = 1.5
 Radius = 55
-BurnThreshold = 2.0
-BurnLossPerSecond = 15.0
+BoostErrorDecrement = 1.5
+BurnThreshold = 2.5
+BurnLossPerSecond = 12.0
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( -25, -26 )
@@ -109,7 +110,7 @@ hframes = 2
 [node name="Area2D" type="Area2D" parent="arrowRight"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arrowRight/Area2D"]
-position = Vector2( -23.5, 0.25 )
+position = Vector2( -23.5, -1 )
 shape = SubResource( 4 )
 
 [node name="arrowBottom" type="Sprite" parent="."]

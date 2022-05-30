@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform vec4 burntColor: hint_color = vec4(0.3398, 0.23047, 0.10156, 0);
 
-const vec4 beerc = vec4(0.8203f, 0.5547f, 0.25f, 1.0f);
+const vec4 beerc = vec4(0.8f, 0.647059f, 0.407843f, 1.0f);
 const vec4 diff = vec4(vec3(0.01f), 0.0f);
 
 bool lt(vec4 v1, vec4 v2) {
