@@ -9,7 +9,7 @@
 [sub_resource type="DynamicFont" id=1]
 size = 25
 outline_size = 1
-outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+outline_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 1
@@ -40,7 +40,7 @@ margin_left = -78.0
 margin_top = -16.0
 margin_right = -78.0
 margin_bottom = -16.0
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Test"
 align = 1
@@ -54,6 +54,7 @@ position = Vector2( -78, 16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
 animation = "press"
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

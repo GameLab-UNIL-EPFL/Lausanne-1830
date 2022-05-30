@@ -111,6 +111,8 @@ public class NPC : KinematicBody2D {
 	
 	private Context context;
 	
+	private string[] noms = {"Cerjeat", "Trüschel", "Perregaux", "Montelieu", "Mercier", "Rochat"};
+	
 	private string[] BrewQuestText() {
 		//Check if the game has been played yet
 		if(context._CheckBrewBurn() == -1.0f) {
@@ -154,7 +156,7 @@ public class NPC : KinematicBody2D {
 		
 		string d = "Voyons voir ce registre.¢" +
 		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
-		"Sur la page actuelle...¢"+
+		"Sur la page de "+noms[context.CurrentTab]+"...¢"+
 		"Il y a encore ";
 		var i = 0;
 		foreach(var o in outliers) {

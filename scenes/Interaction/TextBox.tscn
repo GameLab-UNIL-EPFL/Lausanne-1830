@@ -19,7 +19,7 @@ animations = [ {
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
-outline_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+outline_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 use_mipmaps = true
 font_data = ExtResource( 7 )
 
@@ -75,13 +75,16 @@ margin_bottom = 25.0
 grow_horizontal = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Text" type="Label" parent="TextContainer"]
 margin_right = 114.0
 margin_bottom = 41.0
 size_flags_horizontal = 15
 size_flags_vertical = 15
-custom_colors/font_color = Color( 0.529412, 0.407843, 0.32549, 1 )
+custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "012345678901234556789012345
 012345678901234556789012345
@@ -109,7 +112,7 @@ __meta__ = {
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Name"]
-modulate = Color( 0.529412, 0.407843, 0.32549, 1 )
+modulate = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0

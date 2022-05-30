@@ -734,7 +734,7 @@ AutoDialogueID = "appDomestique"
 DemandDialogueID = "demDomestique"
 
 [node name="TextBox" parent="YSort/Domestique" index="0"]
-NPCName = " M. Rochat "
+NPCName = " M. Rohrbach "
 
 [node name="FullyAnimated" parent="YSort/Domestique" index="2"]
 texture = ExtResource( 23 )
@@ -857,9 +857,11 @@ __meta__ = {
 
 [node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 15 )]
 position = Vector2( 0, 33 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="PressTab" parent="NotebookControllerNode/NotebookController" instance=ExtResource( 16 )]
 position = Vector2( 0, 33 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
