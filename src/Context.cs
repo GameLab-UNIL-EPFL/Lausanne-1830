@@ -23,8 +23,8 @@ using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
-public enum Quests {TUTORIAL};
-public enum QuestStatus {};
+public enum Quests {NONE, TUTORIAL};
+public enum QuestStatus {NONE, ON_GOING, COMPLETE, NOT_STARTED};
 
 // Storage for all persistent data in the game
 public class Context : Node {
@@ -36,6 +36,9 @@ public class Context : Node {
 	//Game state data
 	private GameStates GameState = GameStates.INIT;
 	private Locations CurrentLocation = Locations.INTRO;
+	private Quests CurrentQuest = Quests.TUTORIAL;
+	private QuestStatus CurrentQuestStatus = QuestStatus.NOT_STARTED;
+	private int QuestStateId = -1;
 	
 	//Quest NPC ref
 	private NPC QuestNPC = null;
@@ -170,6 +173,30 @@ public class Context : Node {
 			}
 		}
 		return Vector2.Zero;
+	}
+	
+	public void _UpdateQuest(Quests q) {
+		CurrentQuest = q;
+	}
+	
+	public void _UpdateQuestStatus(QuestStatus qs) {
+		CurrentQuestStatus = qs;
+	}
+	
+	public void _UpdateQuestStateId(int id) {
+		QuestStateId = id;
+	}
+	
+	public Quests _GetQuest() {
+		return CurrentQuest;
+	}
+	
+	public QuestStatus _GetQuestStatus() {
+		return CurrentQuestStatus;
+	}
+	
+	public int _GetQuestStateId() {
+		return QuestStateId;
 	}
 	
 	public int _GetCurrentTab() {

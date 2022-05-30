@@ -461,6 +461,9 @@ visible = false
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
+frame = 0
+
 [node name="Open" parent="Desk/Letter" index="2"]
 visible = false
 
@@ -628,6 +631,7 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
+frame = 1
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]

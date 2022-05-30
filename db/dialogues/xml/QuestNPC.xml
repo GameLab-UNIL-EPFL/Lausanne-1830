@@ -1,19 +1,20 @@
 <dialogue type="onDemand" ntargets="1" id="demandQuest">
         <text id="0">Alors...</text>
         <text id="1">C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
-        <text objectif="0" id="2" replay="2">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
+        <text id="2">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
         <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
-        <text id="3">Il est censé contenir toutes les informations importantes</text>
+        <text id="3" objectif="0" replay="2">Il est censé contenir toutes les informations importantes</text>
         <text id="4">sur les habitants de Lausanne,</text>
         <text id="5">mais comme vous avez sûrment remarqué,</text>
         <text id="6">les données de plusieurs personnes sont manquantes.</text>
         <text id="7">Essayez de remplir la première page.</text>
         <text id="8">Ma collègue en sait plus que moi sur cette personne</text>
-        <text objectif="1" id="9" replay="7">et il me semble que nous avont une lettre adressée à elle sur le bureau.</text>
+        <text id="9">et il me semble que nous avont une lettre adressée à elle sur le bureau.</text>
         <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->
-        <text id="10">Bravo ! Vous avez correctement rempli la première page.</text>
+        <text id="10" objectif="1" replay="7">Bravo ! Vous avez correctement rempli la première page.</text>
         <text id="11">Il y a encore 5 autres pages à compléter.</text>
         <text id="12">Essayez de trouver les informations manquantes en ville</text>
-        <text objectif="2" id="13">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
+        <text id="13">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
         <!--Ensuite dialogue qui se trouve dans NPC.cs-->
+        <text id="14" signal="EndQuest"></text>
 </dialogue>

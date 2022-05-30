@@ -193,6 +193,7 @@ public class NPC : KinematicBody2D {
 		TB = GetNode<TextBox>("TextBox");
 		AT = GetNode<AnimationTree>("AnimationTree");
 		AS = (AnimationNodeStateMachinePlayback)AT.Get("parameters/playback");
+		
 		//Sanity Check
 		if(HasDemandDialogue || HasAutoDialogue) {
 			if(DC == null) {
@@ -423,7 +424,17 @@ public class NPC : KinematicBody2D {
 		return textLines.ToArray();
 	}
 	
+	private void TurnToPlayer(Player player) {
+		if(CanTurn) {
+			InputVec = (player.Position - Position).Normalized();
+			HandleMovement(0.03f);
+			InputVec = Vector2.Zero;
+			HandleMovement(0.03f);
+		}
+	}
+	
 	private void BeginDialogue(Player player, ref string d) {
+		EmitSignal(nameof(StartDialogue));
 		if(isTrueschel && context._CheckBrewBurn() != -1.0f) {
 			if(context._CheckBrewBurn() < BrewBadThreshold) {
 				DemandDialogueID = "demandAngeliqueBad";
@@ -442,12 +453,7 @@ public class NPC : KinematicBody2D {
 		}
 		
 		//Turn to player
-		if(CanTurn) {
-			InputVec = (player.Position - Position).Normalized();
-			HandleMovement(0.03f);
-			InputVec = Vector2.Zero;
-			HandleMovement(0.03f);
-		}
+		TurnToPlayer(player);
 		
 	}
 	
@@ -472,6 +478,43 @@ public class NPC : KinematicBody2D {
 		
 		if(!CanWander) {
 			LookInInitalDir();
+		}
+	}
+
+	
+	public void _NotifyQuest(Player player) {
+		string d;
+		TB._HideAll();
+
+		//Display text if needed
+		if(InnerLinesCount != 0) {
+			d = InnerLines[InnerLines.Length - InnerLinesCount--];
+		} else {
+			if(!inDialogue) {
+				//Initiate the dialogue
+				inDialogue = true;
+				player._StartDialogue();
+				TurnToPlayer(player);
+				
+				//Start the quest if needed
+				if(context._GetLocation() == Locations.INTRO) {
+					QC._StartQuest(Quests.TUTORIAL);
+				}
+			} 
+			//Check quest status and retrieve dialogue
+			d = QC._QuestInteraction();
+
+			//Check if it's the end of the dialogue
+			if(d == null) {
+				FinishDialogue(player);
+				return;
+			}
+		}
+		//Show it in the box
+		if(d != null) {
+			//throw new Exception(d);
+			TB._ShowText(d);
+			TB._ShowPressE();
 		}
 	}
 	
@@ -517,7 +560,7 @@ public class NPC : KinematicBody2D {
 			
 			//Show it in the box
 			if(d != null) {
-				TB._ShowText(d);
+				TB._ShowText((string)d);
 				TB._ShowPressE();
 			}
 		}

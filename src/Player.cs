@@ -46,7 +46,6 @@ public class Player : KinematicBody2D {
 	private PlayerStates PrevState = PlayerStates.IDLE;
 	
 	// Cutscene state
-	
 	private bool isCutsceneConv = false;
 	
 	[Export]
@@ -117,41 +116,30 @@ public class Player : KinematicBody2D {
 	}
 	
 	// Walk up to the quest giver and interact
-	private void HandleCutscene(float delta) {
+	private void HandleTutorial(float delta) {
+
 		if(CurrentState != PlayerStates.NOTEBOOK) {
-			if(isCutsceneConv) {
-				if(Input.IsActionJustPressed("ui_interact")) {
-					if(--cutsceneCounter == 0) {
-						EmitSignal(nameof(OpenNotebook));
-					} else {
-						NearestSub()._Notify(this);
-					}
-				}
-			} else {
-				HandleMovementInput(delta);
-				
-				//Check for QuestNPC interaction specifically
-				if(Input.IsActionJustPressed("ui_interact")) {
-					if(subs.Count != 0 && QuestGiverIsSubbed()) {
+			if(Input.IsActionJustPressed("ui_interact")) {
+				//Only allow interaction with questNPC if in initial stage
+				NPC nearestNPC = NearestSub();
+				if(nearestNPC != null) {
+					if(nearestNPC.isQuestNPC || context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
 						InputVec = Vector2.Zero;
-						var nearestNPC = NearestSub();
-						if(nearestNPC.isQuestNPC) {
-							nearestNPC._Notify(this);
+
+						//Interact with item if nearer to it 
+						var item = NearestItem();
+						if(item == null || isNearer(nearestNPC, item)) {
+							NotifySubs();
+						} else {
+							NotifyItems();
 						}
 					}
 				}
 			}
-		} else {
-			//Check if the answer was filled in
-			if(NB._TutoPageIsComplete()) {
-				CloseNotebookTimer -= delta;
+			if(CurrentState != PlayerStates.BLOCKED) {
+				HandleMovementInput(delta);
 			}
-			if(CloseNotebookTimer <= 0.0) {
-				InputVec = Vector2.Zero;
-				EmitSignal(nameof(OpenNotebook));
-				NearestSub()._Notify(this);
-			}
-		}
+		} 
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
 	}
@@ -237,7 +225,7 @@ public class Player : KinematicBody2D {
 	}
 	
 	public bool _CanInteract() {
-		return subs.Count == 0;
+		return subs.Count == 0 || context._GetQuest() == Quests.TUTORIAL;
 	}
 	
 	public void BlockPlayer() {
@@ -371,7 +359,7 @@ public class Player : KinematicBody2D {
 	// Called on every physics engine tick
 	public override void _Process(float delta) {
 		if(isCutscene) {
-			HandleCutscene(delta);
+			HandleTutorial(delta);
 		} else {
 			//Handle input
 			HandleInput(delta);
@@ -419,7 +407,7 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _AddItemInRange(Item i) {
-		if(subs.Count == 0) {
+		if(subs.Count == 0 || context._GetQuest() == Quests.TUTORIAL) {
 			itemsInRange.Add(i);
 		}
 	}
@@ -444,6 +432,12 @@ public class Player : KinematicBody2D {
 			}
 		}
 		return nearest;
+	}
+
+	private bool isNearer(NPC a, Item b) {
+		float distToa = Position.DistanceTo(a.Position);;
+		float distTob = Position.DistanceTo(b.Position);
+		return (distToa < distTob);
 	}
 	
 	// Finds the nearest sub to the player
@@ -478,7 +472,12 @@ public class Player : KinematicBody2D {
 		if(nearestNPC == null) return;
 		
 		if(nearestNPC.isQuestNPC) {
-			EmitSignal(nameof(SendInfoToQuestNPC), nearestNPC);
+			//Check for tutorial
+			if(context._GetQuest() == Quests.TUTORIAL) {
+				nearestNPC._NotifyQuest(this);
+			} else {
+				EmitSignal(nameof(SendInfoToQuestNPC), nearestNPC);
+			}
 		} else {
 			nearestNPC._Notify(this);
 		}
@@ -492,30 +491,26 @@ public class Player : KinematicBody2D {
 			context._UpdatePlayerPreviousPos(Position);
 		}
 		
-		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
-			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
-			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
-			
-			//Show opened door and remove collisions
-			dooropen.Show();
-			doorcolision.Disabled = true;
-		}
-		
 		// If the cutscene is still going, end it
 		if(isCutscene) {
-			isCutscene = false;
-			EmitSignal(nameof(CutsceneEnd));
-			EmitSignal(nameof(SlideInNotebookController));
-			context._StartGame();
-			
-			//Find and open the door
-			StaticBody2D Door = GetNode<StaticBody2D>("../../Door");
-			CollisionShape2D DoorCol = GetNode<CollisionShape2D>("../../Door/DoorCol");
-			Door.Hide();
-			DoorCol.Disabled = true;
-			
-			//Force one more interaction with the NPC
-			NotifySubs();
+			if(context._GetQuestStateId() < QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
+				EmitSignal(nameof(SlideInNotebookController));
+			}
+
+			if(context._GetQuestStatus() == QuestStatus.COMPLETE) {
+				isCutscene = false;
+				EmitSignal(nameof(CutsceneEnd));
+				context._StartGame();
+				
+				//Find and open the door
+				StaticBody2D Door = GetNode<StaticBody2D>("../../Door");
+				CollisionShape2D DoorCol = GetNode<CollisionShape2D>("../../Door/DoorCol");
+				Door.Hide();
+				DoorCol.Disabled = true;
+				
+				//Force one more interaction with the NPC
+				NotifySubs();
+			}
 		}
 	}
 	
