@@ -23,6 +23,8 @@ using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
+public enum Quests {TUTORIAL};
+public enum QuestStatus {};
 
 // Storage for all persistent data in the game
 public class Context : Node {

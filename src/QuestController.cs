@@ -186,8 +186,12 @@ public class QuestController : Node {
 	public string SceneCharacterFileBasePath = "res://db/characters/";
 	public string SceneCharacterFilePath;
 	
+	//Files related to the Quest dialogue
+	public string QuestDialogueFile = "res://db/dialogues/xml/QuestNPC.xml";
+	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument characterList;
+	private XDocument QuestDialogue;
 	
 	//Buffer storing the dialogue being used by a questNPC
 	private Stack<string> QuestBuffer = new Stack<string>();
@@ -196,6 +200,7 @@ public class QuestController : Node {
 	public override void _Ready() {
 		SceneCharacterFilePath = SceneCharacterFileBasePath + SceneCharacterFileName;
 		DialogueController._ParseXML(ref characterList, SceneCharacterFilePath);
+		DialogueController._ParseXML(ref QuestDialogue, QuestDialogueFile);
 	}
 	
 	public void _InitBuffer(string[] text) {
