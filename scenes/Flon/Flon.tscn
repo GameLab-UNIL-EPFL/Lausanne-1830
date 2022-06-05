@@ -25,6 +25,7 @@
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/03_backgrounds/hitboxesPont.png" type="Texture" id=25]
+[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bois.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
@@ -35,13 +36,17 @@
 [ext_resource path="res://assets/03_backgrounds/pathMoulin.png" type="Texture" id=34]
 
 [sub_resource type="RectangleShape2D" id=90]
-extents = Vector2( 21, 17 )
+extents = Vector2( 21, 11 )
 
 [sub_resource type="RectangleShape2D" id=92]
 extents = Vector2( 2.9957, 5.41327 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 53, 31.5 )
+
+[sub_resource type="AtlasTexture" id=91]
+atlas = ExtResource( 26 )
+region = Rect2( 79.5, 178.641, 99.75, 78.3999 )
 
 [sub_resource type="AtlasTexture" id=75]
 atlas = ExtResource( 21 )
@@ -1514,7 +1519,7 @@ collision_mask = 2
 polygon = PoolVector2Array( 128, 360, 128, 392, 416, 392, 416, 360 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCCollision"]
-position = Vector2( 407, 196 )
+position = Vector2( 407, 202 )
 shape = SubResource( 90 )
 
 [node name="Collision" type="StaticBody2D" parent="."]
@@ -1543,6 +1548,11 @@ texture = ExtResource( 1 )
 position = Vector2( 3, 23.5 )
 shape = SubResource( 9 )
 
+[node name="HouseLeft" type="Sprite" parent="YSort"]
+position = Vector2( 171, 261.654 )
+texture = SubResource( 91 )
+offset = Vector2( 0, -110 )
+
 [node name="House2" type="StaticBody2D" parent="YSort"]
 position = Vector2( 283, 200 )
 
@@ -1555,6 +1565,9 @@ playing = true
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
 position = Vector2( 3, -40 )
 polygon = PoolVector2Array( -74.7025, 50.511, -64.0118, 62.5381, 15.2825, 63.0905, 15.4005, 50.9381, 105.094, 51.1217, 104.499, 9.49948, 136.608, 11.8779, 136.608, 51.419, 160.043, 51.4279, 155.143, -161.051, -118, -168, -127.943, -159.345, -122.597, -130.391, -115.47, -101.437, -74.4886, -68.4733 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/House2"]
+polygon = PoolVector2Array( -161, 72, -155, 72, -155, 43, -161, 43 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 407, 236 )

@@ -1302,10 +1302,9 @@ __meta__ = {
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-visible = false
 position = Vector2( 384.007, 140.819 )
 scale = Vector2( 0.753472, 0.753472 )
-polygon = PoolVector2Array( -226, 152, -208.061, 150.924, -208.061, 60.8586, -385.557, 58.2251, -386, -48, -346, -64, -202, -64, -170, -48, -170.742, 59.2283, -182.856, 59.755, -182.039, 157.895, -173.375, 157.72, -173.375, 135.072, -82, 136, -82, 64, 222, 64, 222, 216, 238, 232, 238, -128, -402, -128, -402, 232, 230, 232, 222, 216, -142.3, 217.563, -142.827, 256.012, -173.902, 254.958, -173.902, 217.036, -226, 216 )
+polygon = PoolVector2Array( -172.544, 220.554, -228.286, 219.226, -229.613, 140.922, -213.687, 140.922, -213.687, 158.176, -207.051, 158.176, -208.378, 59.9637, -388.876, 59.9637, -388.876, -47.5386, -354.369, -64.7921, -309.244, -64.7921, -309.244, -54.1745, -248.194, -54.1745, -248.194, -64.7921, -211.032, -64.7921, -171.217, -47.5386, -169.89, 59.9637, -183.161, 59.9637, -183.161, 156.849, -177.853, 156.849, -177.853, 140.922, -83.6222, 140.922, -83.6222, 62.6181, 220.304, 62.6181, 220.304, 217.899, -144.673, 217.899, -143.346, 257.715, -130.074, 257.715, -131.401, 232.498, 234.903, 231.171, 240.212, -128.497, -415.42, -127.17, -419.401, 261.697, -172.544, 260.369 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1327,7 +1326,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 8
+frame = 23
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1425,7 +1424,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1439,7 +1438,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
-frame = 4
 playing = true
 flip_h = true
 
@@ -1454,7 +1452,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = SubResource( 100 )
-frame = 2
+frame = 30
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
