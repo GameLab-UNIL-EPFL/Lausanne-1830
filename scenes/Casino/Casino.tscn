@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/03_backgrounds/bushes2.png" type="Texture" id=24]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bench.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
 [ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=28]
@@ -75,8 +76,8 @@ a = Vector2( 8.37082, -356.628 )
 b = Vector2( 8.75844, 10.808 )
 
 [sub_resource type="SegmentShape2D" id=5]
-a = Vector2( 5.83691, -357.475 )
-b = Vector2( 7.2533, 11.611 )
+a = Vector2( 3.30884, -358.624 )
+b = Vector2( 3.68341, 13.0409 )
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 48.7575, 33.1507 )
@@ -125,6 +126,9 @@ atlas = ExtResource( 24 )
 region = Rect2( 3, 6, 41, 43 )
 
 [sub_resource type="CapsuleShape2D" id=28]
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 19.1543, 6.16451 )
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
@@ -230,10 +234,15 @@ __meta__ = {
 position = Vector2( -14.8091, -3.86674 )
 shape = SubResource( 19 )
 
+[node name="Bushes" type="StaticBody2D" parent="Coillision"]
+
+[node name="Bushes" type="CollisionPolygon2D" parent="Coillision/Bushes"]
+polygon = PoolVector2Array( 40, 0, 37.9906, 14.9404, 36.4032, 28.0365, 39.578, 49.8633, 31.641, 64.1499, 36.4032, 84.7861, 37.1969, 104.629, 20.926, 126.455, 35.2126, 140.345, 43.9433, 155.822, 38.7843, 172.554, 33.2284, 181.682, 37.9906, 188.428, 40.7685, 195.969, 37.5937, 203.112, 28.863, 211.843, 22.9103, 217.795, 25.6882, 224.939, 32.8315, 232.479, 38.7843, 237.241, 41.1654, 251.925, 50.6898, 267.005, 57.8331, 267.402, 73.7071, 284.069, 83.2315, 298.753, 87.9937, 313.039, 109.027, 322.167, 122.123, 336.156, 132.441, 342.505, 146.331, 337.743, 159.03, 342.505, 176.491, 347.664, 195.54, 347.664, 202.287, 346.077, 224.51, 342.108, 238.4, 344.093, 250.305, 347.267, 267.37, 342.108, 288.403, 336.949, 302.293, 339.33, 316.976, 342.505, 348.35, 335.759, 379.701, 337.346, 412.243, 347.267, 427.72, 350.442, 443.991, 342.902, 461.849, 342.902, 472.564, 344.886, 485.66, 340.918, 497.963, 333.775, 511.456, 333.378, 519.79, 337.743, 527.33, 332.584, 538.045, 327.822, 544.394, 331.79, 553.522, 335.362, 556.3, 335.759, 571.777, 334.171, 578.127, 336.949, 584.476, 340.521, 590.032, 345.283, 590.032, 418.304, -42.1079, 419.322, -41.4008, -2.07417 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Casino" type="StaticBody2D" parent="YSort"]
-position = Vector2( 464, 139.6 )
+position = Vector2( 425, 125.6 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -244,7 +253,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Casino"]
 position = Vector2( 0, -32 )
-polygon = PoolVector2Array( -108.708, 23.7656, -108.708, 87.1832, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 113.978, 87.7624, 114.557, 24.0552 )
+polygon = PoolVector2Array( -112, -99.6, -111.309, 88.0815, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 125.609, 88.6079, 112, -91.6 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 320, 288 )
@@ -1516,6 +1525,21 @@ position = Vector2( 0, 7 )
 rotation = 1.5708
 shape = SubResource( 28 )
 
+[node name="Bench" type="StaticBody2D" parent="YSort"]
+position = Vector2( 565, 175 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bench"]
+position = Vector2( 0.217682, 6.83549 )
+shape = SubResource( 29 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Bench"]
+position = Vector2( -0.202846, 7.59601 )
+scale = Vector2( 0.851704, 0.525249 )
+texture = ExtResource( 25 )
+
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
 position = Vector2( 200, 88 )
 
@@ -1525,9 +1549,6 @@ position = Vector2( 0, -19 )
 
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
-
-[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
