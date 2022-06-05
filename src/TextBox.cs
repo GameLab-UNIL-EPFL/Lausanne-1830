@@ -23,6 +23,9 @@ public class TextBox : Node2D {
 	[Export]
 	public string NPCName = "NPC";
 	
+	[Export]
+	public int FontSize = 10;
+	
 	private NinePatchRect ATB;
 	private NinePatchRect DTB;
 	private MarginContainer TC;
@@ -68,7 +71,7 @@ public class TextBox : Node2D {
 		N.Text = NPCName;
 		
 		//Set default font size
-		F.Size = 10;
+		F.Size = FontSize;
 		
 		Show();
 		_HideAll();
@@ -89,9 +92,9 @@ public class TextBox : Node2D {
 		ShowAll();
 		
 		if(nLines > 3.0f) {
-			F.Size = 8;
+			F.Size = FontSize - 1;
 		} else {
-			F.Size = 10;
+			F.Size = FontSize;
 		}
 		
 		//Pick which TB to show
