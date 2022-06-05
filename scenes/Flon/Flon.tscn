@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/benedictRochat.png" type="Texture" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/femmeRochat.png" type="Texture" id=11]
 [ext_resource path="res://assets/03_backgrounds/petitRiviere.png" type="Texture" id=12]
-[ext_resource path="res://assets/03_backgrounds/bushes.png" type="Texture" id=13]
+[ext_resource path="res://assets/03_backgrounds/bushes2.png" type="Texture" id=13]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/background.png" type="Texture" id=14]
 [ext_resource path="res://assets/01_characters/03_pnjs/susetteRochat.png" type="Texture" id=15]
 [ext_resource path="res://assets/01_characters/03_pnjs/louiseRochat.png" type="Texture" id=16]
@@ -117,21 +117,21 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=86]
 atlas = ExtResource( 13 )
-region = Rect2( 52, 6, 40, 42 )
+region = Rect2( 51, 54, 41, 42 )
 
 [sub_resource type="CapsuleShape2D" id=64]
 
 [sub_resource type="AtlasTexture" id=85]
 atlas = ExtResource( 13 )
-region = Rect2( 3, 6, 41, 42 )
+region = Rect2( 3, 54, 41, 42 )
 
 [sub_resource type="AtlasTexture" id=87]
 atlas = ExtResource( 13 )
-region = Rect2( 147, 6, 41, 42 )
+region = Rect2( 147, 54, 41, 43 )
 
 [sub_resource type="AtlasTexture" id=88]
 atlas = ExtResource( 13 )
-region = Rect2( 99, 6, 41, 42 )
+region = Rect2( 99, 54, 41, 42 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
@@ -1547,7 +1547,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -41 )
 frames = SubResource( 84 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1622,7 +1622,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -1859,7 +1858,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush27" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 127, 366 )
+position = Vector2( 121, 363 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush27" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -2026,9 +2025,15 @@ shape = SubResource( 64 )
 [node name="Bushes" type="StaticBody2D" parent="YSort/Bushes"]
 collision_layer = 3
 collision_mask = 3
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Bushes/Bushes"]
 polygon = PoolVector2Array( 152.177, 387.668, 140.94, 353.956, 131.201, 344.966, 137.569, 331.856, 126.706, 320.993, 114.72, 314.251, 109.85, 308.258, 107.603, 301.141, 103.482, 294.773, 91.8704, 289.903, 81.7568, 288.03, 72.767, 292.525, 63.4026, 291.027, 51.7907, 287.656, 46.9212, 278.291, 47.6703, 270.8, 59.6568, 268.927, 68.6466, 266.305, 70.8941, 262.185, 70.5195, 254.318, 64.5263, 249.074, 58.5331, 247.201, 49.9178, 244.205, 46.5466, 240.085, 40.9279, 226.974, 39.8042, 217.61, 35.6839, 213.49, 35.3093, 206.373, 36.433, 200.379, 36.8076, 192.513, 41.3025, 186.145, 38.6805, 170.263, 30.0652, 166.143, 21.0754, 163.521, 14.7076, 162.771, 14.7076, 162.397, 12.4601, 149.661, 10.5872, 145.166, 9.08893, 143.293, 9.08893, 143.293, 6.46689, 136.926, 3.47028, 131.681, 0.848236, 129.809, -44.4756, 128.31, -38.4823, 389.959 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NPC" type="YSort" parent="YSort"]
 
