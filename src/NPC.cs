@@ -166,10 +166,10 @@ public class NPC : KinematicBody2D {
 		d += i;
 		//d += "et ...¢" + "Je crois que les ai tous cités.¢";
 		if(i>1) {
-			d += " données eronnées.¢";
+			d += " données fausses.¢";
 			d += "Revenez me voir lorsque vous les aurez corrigées.";
 		} else {
-			d += " donnée eronnée.¢";
+			d += " donnée fausse.¢";
 			d += "Revenez me voir lorsque vous l'aurez corrigée.";
 		}
 

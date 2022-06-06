@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -23,8 +23,8 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png" type="Texture" id=21]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=23]
-[ext_resource path="res://assets/02_architecture/04_casino/bush.png" type="Texture" id=24]
-[ext_resource path="res://assets/02_architecture/04_casino/bushSombre.png" type="Texture" id=25]
+[ext_resource path="res://assets/03_backgrounds/bushes2.png" type="Texture" id=24]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bench.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
 [ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=28]
@@ -76,8 +76,8 @@ a = Vector2( 8.37082, -356.628 )
 b = Vector2( 8.75844, 10.808 )
 
 [sub_resource type="SegmentShape2D" id=5]
-a = Vector2( 5.83691, -357.475 )
-b = Vector2( 7.2533, 11.611 )
+a = Vector2( 3.30884, -358.624 )
+b = Vector2( 3.68341, 13.0409 )
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 48.7575, 33.1507 )
@@ -102,6 +102,33 @@ height = 27.9452
 radius = 5.20476
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 24 )
+region = Rect2( 148, 6, 40, 42 )
+
+[sub_resource type="CapsuleShape2D" id=22]
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 24 )
+region = Rect2( 99, 5, 41, 43 )
+
+[sub_resource type="CapsuleShape2D" id=24]
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 24 )
+region = Rect2( 51, 6, 41, 42 )
+
+[sub_resource type="CapsuleShape2D" id=26]
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 24 )
+region = Rect2( 3, 6, 41, 43 )
+
+[sub_resource type="CapsuleShape2D" id=28]
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 19.1543, 6.16451 )
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
@@ -207,10 +234,15 @@ __meta__ = {
 position = Vector2( -14.8091, -3.86674 )
 shape = SubResource( 19 )
 
+[node name="Bushes" type="StaticBody2D" parent="Coillision"]
+
+[node name="Bushes" type="CollisionPolygon2D" parent="Coillision/Bushes"]
+polygon = PoolVector2Array( 40, 0, 37.9906, 14.9404, 36.4032, 28.0365, 39.578, 49.8633, 31.641, 64.1499, 36.4032, 84.7861, 37.1969, 104.629, 20.926, 126.455, 35.2126, 140.345, 43.9433, 155.822, 38.7843, 172.554, 33.2284, 181.682, 37.9906, 188.428, 40.7685, 195.969, 37.5937, 203.112, 28.863, 211.843, 22.9103, 217.795, 25.6882, 224.939, 32.8315, 232.479, 38.7843, 237.241, 41.1654, 251.925, 50.6898, 267.005, 57.8331, 267.402, 73.7071, 284.069, 83.2315, 298.753, 87.9937, 313.039, 109.027, 322.167, 122.123, 336.156, 132.441, 342.505, 146.331, 337.743, 159.03, 342.505, 176.491, 347.664, 195.54, 347.664, 202.287, 346.077, 224.51, 342.108, 238.4, 344.093, 250.305, 347.267, 267.37, 342.108, 288.403, 336.949, 302.293, 339.33, 316.976, 342.505, 348.35, 335.759, 379.701, 337.346, 412.243, 347.267, 427.72, 350.442, 443.991, 342.902, 461.849, 342.902, 472.564, 344.886, 485.66, 340.918, 497.963, 333.775, 511.456, 333.378, 519.79, 337.743, 527.33, 332.584, 538.045, 327.822, 544.394, 331.79, 553.522, 335.362, 556.3, 335.759, 571.777, 334.171, 578.127, 336.949, 584.476, 340.521, 590.032, 345.283, 590.032, 418.304, -42.1079, 419.322, -41.4008, -2.07417 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Casino" type="StaticBody2D" parent="YSort"]
-position = Vector2( 464, 139.6 )
+position = Vector2( 425, 125.6 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -221,7 +253,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Casino"]
 position = Vector2( 0, -32 )
-polygon = PoolVector2Array( -108.708, 23.7656, -108.708, 87.1832, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 113.978, 87.7624, 114.557, 24.0552 )
+polygon = PoolVector2Array( -112, -99.6, -111.309, 88.0815, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 125.609, 88.6079, 112, -91.6 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 320, 288 )
@@ -360,160 +392,1153 @@ shape = SubResource( 18 )
 [node name="AnimationTree" parent="YSort/Fischer" index="6"]
 parameters/playback = SubResource( 16 )
 
-[node name="Bush" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 30.9677, 207 )
+[node name="Bushes" type="YSort" parent="YSort"]
 
-[node name="Sprite" parent="YSort/Bush" index="0"]
-position = Vector2( -15.9677, 0 )
-texture = ExtResource( 24 )
+[node name="Bush" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 6.5, 352 )
 
-[node name="CollisionShape2D" parent="YSort/Bush" index="1"]
+[node name="Sprite" parent="YSort/Bushes/Bush" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush2" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 39, 232 )
+[node name="Bush2" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 33.5, 352 )
 
-[node name="Sprite" parent="YSort/Bush2" index="0"]
-texture = ExtResource( 24 )
+[node name="Sprite" parent="YSort/Bushes/Bush2" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush2" index="1"]
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush2" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush3" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 41.5, 260 )
+[node name="Bush3" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 24, 332 )
 
-[node name="Sprite" parent="YSort/Bush3" index="0"]
-texture = ExtResource( 24 )
+[node name="Sprite" parent="YSort/Bushes/Bush3" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush3" index="1"]
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush3" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush4" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 78.9677, 286 )
+[node name="Bush22" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 96, 362 )
 
-[node name="Sprite" parent="YSort/Bush4" index="0"]
-texture = ExtResource( 24 )
+[node name="Sprite" parent="YSort/Bushes/Bush22" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush4" index="1"]
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush22" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush5" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 102.968, 310 )
+[node name="Bush23" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 126.968, 380 )
 
-[node name="Sprite" parent="YSort/Bush5" index="0"]
-texture = ExtResource( 24 )
+[node name="Sprite" parent="YSort/Bushes/Bush23" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush5" index="1"]
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush23" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush6" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 126.968, 327 )
+[node name="Bush24" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 160, 372 )
 
-[node name="Sprite" parent="YSort/Bush6" index="0"]
-texture = ExtResource( 24 )
+[node name="Sprite" parent="YSort/Bushes/Bush24" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush6" index="1"]
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush24" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush7" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 156.536, 363 )
+[node name="Bush25" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 160, 372 )
 
-[node name="Sprite" parent="YSort/Bush7" index="0"]
-texture = ExtResource( 24 )
+[node name="Sprite" parent="YSort/Bushes/Bush25" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush7" index="1"]
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush25" index="1"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush8" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 9.5, 232 )
+[node name="Bush26" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 182, 361.5 )
 
-[node name="Sprite" parent="YSort/Bush8" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush26" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush8" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush26" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush9" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 9.5, 260 )
+[node name="Bush27" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 204, 370.5 )
 
-[node name="Sprite" parent="YSort/Bush9" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush27" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush9" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush27" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush10" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 88, 352 )
+[node name="Bush28" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 280, 361.5 )
 
-[node name="Sprite" parent="YSort/Bush10" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush28" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush10" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush28" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush11" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 15, 303 )
+[node name="Bush29" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 296, 370.5 )
 
-[node name="Sprite" parent="YSort/Bush11" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush29" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush11" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush29" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush12" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 23.6717, 331 )
+[node name="Bush30" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 552, 361.5 )
 
-[node name="Sprite" parent="YSort/Bush12" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush30" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush12" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush30" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush13" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 47, 288 )
+[node name="Bush31" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 507, 361.5 )
 
-[node name="Sprite" parent="YSort/Bush13" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush31" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush13" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush31" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
 
-[node name="Bush14" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 66, 320 )
+[node name="Bush4" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 4, 312 )
 
-[node name="Sprite" parent="YSort/Bush14" index="0"]
-texture = ExtResource( 25 )
+[node name="Sprite" parent="YSort/Bushes/Bush4" index="0"]
+texture = SubResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/Bush14" index="1"]
-position = Vector2( 6.14037, 14 )
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush4" index="1"]
+position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = null
+shape = SubResource( 22 )
+
+[node name="Bush5" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 59, 335.5 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush5" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush5" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 22 )
+
+[node name="Bush6" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( -8, 336 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush6" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush6" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 22 )
+
+[node name="Bush18" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( -10.5, 250 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush18" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush18" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 22 )
+
+[node name="Bush19" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 0, 175 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush19" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush19" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 22 )
+
+[node name="Bush20" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( 6.5, 120.505 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush20" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush20" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 22 )
+
+[node name="Bush21" parent="YSort/Bushes" instance=ExtResource( 16 )]
+position = Vector2( -13.5, 56.5 )
+
+[node name="Sprite" parent="YSort/Bushes/Bush21" index="0"]
+texture = SubResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bushes/Bush21" index="1"]
+position = Vector2( 0, 6 )
+rotation = 1.5708
+shape = SubResource( 22 )
+
+[node name="Bush7" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 12, 287 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush7"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush7"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush8" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 30.9677, 308.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush8"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush8"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush9" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 5, 264.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush9"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush9"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush10" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 64, 353 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush10"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush10"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush32" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 116, 352 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush32"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush32"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush33" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 132.968, 366 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush33"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush33"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush34" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 160, 361 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush34"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush34"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush35" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 227.3, 366 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush35"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush35"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush36" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 254.948, 360.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush36"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush36"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush37" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 271, 353 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush37"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush37"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush38" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 313, 361.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush38"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush38"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush39" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 336, 357 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush39"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush39"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush40" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 352, 372 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush40"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush40"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush41" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 372.5, 361 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush41"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush41"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush42" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 389, 371 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush42"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush42"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush43" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 530.504, 356 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush43"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush43"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush44" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 454, 366.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush44"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush44"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush45" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 432, 357 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush45"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush45"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush46" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 416.294, 371 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush46"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush46"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush11" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( -6.00999, 221 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush11"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush11"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush12" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 0, 199 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush12"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush12"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush13" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( -6.00999, 145 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush13"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush13"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush14" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 0, 78 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush14"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush14"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush15" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 0, 14.9999 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush15"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush15"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush16" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( -8.5, 36 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush16"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush16"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="Bush17" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( -13.5, 97 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/Bush17"]
+texture = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/Bush17"]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+shape = SubResource( 24 )
+
+[node name="BushL" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 24, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL2" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20, 21 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL2"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL2"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL3" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 16, 61 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL3"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL3"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL4" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20.5, 101 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL4"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL4"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL5" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20, 139.6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL5"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL5"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL6" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 29.5, 159 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL6"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL6"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL7" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20.5, 173 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL7"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL7"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL8" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 30.9677, 272.508 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL8"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL8"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL9" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 53.5, 290 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL9"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL9"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL10" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 53.5, 279 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL10"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL10"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL11" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 84.5, 341 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL11"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL11"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL12" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 144, 349.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL12"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL12"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL13" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 202, 356 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL13"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL13"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL14" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 300, 346.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL14"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL14"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL15" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 397.794, 354.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL15"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL15"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL16" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 480, 357 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL16"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL16"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL17" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 504, 344.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL17"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL17"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL18" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 570, 345 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL18"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL18"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushL19" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 538, 339 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushL19"]
+texture = SubResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushL19"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 26 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BushLL" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20.5, 42 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL2" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20, 84.9413 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL2"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL2"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL3" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 24, 194 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL3"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL3"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL4" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 12, 211.6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL4"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL4"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL5" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 12, 235 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL5"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL5"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL12" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 20.5, 256 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL12"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL12"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL13" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 29.5, 245.508 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL13"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL13"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL6" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 59, 312 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL6"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL6"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL7" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 76, 331 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL7"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL7"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL14" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 80, 320 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL14"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL14"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL15" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 74, 301.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL15"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL15"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL16" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 104, 336.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL16"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL16"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL8" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 227.968, 354.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL8"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL8"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL9" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 352, 349.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL9"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL9"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL10" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 378, 349.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL10"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL10"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="BushLL11" type="StaticBody2D" parent="YSort/Bushes"]
+position = Vector2( 452.5, 352.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/Bushes/BushLL11"]
+texture = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bushes/BushLL11"]
+position = Vector2( 0, 7 )
+rotation = 1.5708
+shape = SubResource( 28 )
+
+[node name="Bench" type="StaticBody2D" parent="YSort"]
+position = Vector2( 565, 175 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bench"]
+position = Vector2( 0.217682, 6.83549 )
+shape = SubResource( 29 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Bench"]
+position = Vector2( -0.202846, 7.59601 )
+scale = Vector2( 0.851704, 0.525249 )
+texture = ExtResource( 25 )
 
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
 position = Vector2( 200, 88 )
@@ -554,9 +1579,15 @@ __meta__ = {
 }
 
 [node name="OpenMapZone" type="Area2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenMapZone"]
 polygon = PoolVector2Array( 587.592, -0.699097, 587.031, 4.35198, -1.70056, 4.3547, -0.0168686, 361.72, 588.714, 364.143, 588.714, 374.807, -8.99657, 372.383, -8.43533, -4.37104 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="visibility_changed" from="Notebook" to="Mallette" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
@@ -580,18 +1611,24 @@ polygon = PoolVector2Array( 587.592, -0.699097, 587.031, 4.35198, -1.70056, 4.35
 [editable path="YSort/Briefcase"]
 [editable path="YSort/Fischer"]
 [editable path="YSort/Fischer/ListenBox"]
-[editable path="YSort/Bush"]
-[editable path="YSort/Bush2"]
-[editable path="YSort/Bush3"]
-[editable path="YSort/Bush4"]
-[editable path="YSort/Bush5"]
-[editable path="YSort/Bush6"]
-[editable path="YSort/Bush7"]
-[editable path="YSort/Bush8"]
-[editable path="YSort/Bush9"]
-[editable path="YSort/Bush10"]
-[editable path="YSort/Bush11"]
-[editable path="YSort/Bush12"]
-[editable path="YSort/Bush13"]
-[editable path="YSort/Bush14"]
+[editable path="YSort/Bushes/Bush"]
+[editable path="YSort/Bushes/Bush2"]
+[editable path="YSort/Bushes/Bush3"]
+[editable path="YSort/Bushes/Bush22"]
+[editable path="YSort/Bushes/Bush23"]
+[editable path="YSort/Bushes/Bush24"]
+[editable path="YSort/Bushes/Bush25"]
+[editable path="YSort/Bushes/Bush26"]
+[editable path="YSort/Bushes/Bush27"]
+[editable path="YSort/Bushes/Bush28"]
+[editable path="YSort/Bushes/Bush29"]
+[editable path="YSort/Bushes/Bush30"]
+[editable path="YSort/Bushes/Bush31"]
+[editable path="YSort/Bushes/Bush4"]
+[editable path="YSort/Bushes/Bush5"]
+[editable path="YSort/Bushes/Bush6"]
+[editable path="YSort/Bushes/Bush18"]
+[editable path="YSort/Bushes/Bush19"]
+[editable path="YSort/Bushes/Bush20"]
+[editable path="YSort/Bushes/Bush21"]
 [editable path="Mallette"]
