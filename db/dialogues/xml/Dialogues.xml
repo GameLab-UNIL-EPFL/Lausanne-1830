@@ -58,12 +58,10 @@
         <text>Je l'ai acheté aux Mercier.</text>
     </dialogue>
     <dialogue id="demandPasteur" ntargets="1" type="onDemand">
-        <text>Si vous chercher des renseignements ou du travail,</text>
-        <text>je vous conseille d'aller voir les affiches sur le mur.</text>
+        <text>Je vous recommande de lire "Le Robinson suisse" de Montolieu.</text>
+        <text>C'est mon livre préféré.</text>
     </dialogue>
     <dialogue id="demandBaker" ntargets="1" type="onDemand">
-        <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
-        <text>Des betteraves, des choux ou des ragots ?</text>
         <text>Il y a beaucoup de vols ces temps.</text>
         <text>Vous devriez faire attention !</text>
         <text>Ils piquent surtout les mallettes à l'arrière des calèches,</text>
@@ -171,19 +169,6 @@
         <text>Oui, ce sont tous nos enfants.</text>
         <text>Même moi je ne suis plus sûr combien nous en avons...</text>
     </dialogue>
-    <dialogue id="demandEnfant" ntargets="1" type="onDemand">
-        <text>
-            <option id="0">Oh non, tu m'as trouvé ! Il faut que je cherche une meilleure cachette.</option>
-            <option id="1">Hihi, personne ne va me trouver ici.</option>
-        </text>
-    </dialogue>
-    <dialogue id="appEnfant" ntargets="1" type="onApproach">
-        <text>
-            <option id="0">1, 2, 3...</option>
-            <option id="1">4,5,6...</option>
-            <option id="2">9,10... Prêt ou pas, j'arrive !</option>
-        </text>
-    </dialogue>
     <dialogue id="demEnfant" ntargets="1" type="onDemand">
         <text>Ne vous inquiétez pas, on s'habitue vite à l'odeur du Flon.</text>
     </dialogue>
@@ -213,7 +198,7 @@
         <text>Comme notre voisin d'à côté, M. Kohler.</text>
     </dialogue>
     <dialogue id="demEnfant7" ntargets="1" type="onDemand">
-        <text>J'aide mon père à réparer et à faire fonctionner le moulin.</text>
+        <text>J'aide mon père à réparer et à faire fonctionner les meules du moulin.</text>
     </dialogue>
     <dialogue id="demEnfant8" ntargets="1" type="onDemand">
         <text>Mon frère ne va pas bien.</text>
