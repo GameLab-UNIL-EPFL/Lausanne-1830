@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=2]
+[gd_scene load_steps=164 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -38,6 +38,9 @@
 [ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
+
+[sub_resource type="RectangleShape2D" id=130]
+extents = Vector2( 21, 10 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=76]
 
@@ -152,6 +155,15 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
+
+[sub_resource type="CircleShape2D" id=131]
+radius = 8.22295
+
+[sub_resource type="RectangleShape2D" id=132]
+extents = Vector2( 7.73624, 10 )
+
+[sub_resource type="RectangleShape2D" id=133]
+extents = Vector2( 7.86797, 10 )
 
 [sub_resource type="CapsuleShape2D" id=63]
 radius = 11.3028
@@ -1299,6 +1311,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 256, 344 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 11, 0 )
+shape = SubResource( 130 )
+
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
@@ -1340,11 +1359,18 @@ position = Vector2( 487, 184 )
 [node name="Sprite" parent="YSort/Props/Bag" index="0"]
 texture = ExtResource( 20 )
 
+[node name="CollisionShape2D" parent="YSort/Props/Bag" index="1"]
+position = Vector2( -2, -3 )
+
 [node name="Bag2" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 432, 284 )
 
 [node name="Sprite" parent="YSort/Props/Bag2" index="0"]
 texture = ExtResource( 20 )
+
+[node name="CollisionShape2D" parent="YSort/Props/Bag2" index="1"]
+position = Vector2( -2, -4 )
+shape = SubResource( 131 )
 
 [node name="Barrel" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 536, 188 )
@@ -1370,11 +1396,19 @@ position = Vector2( 328.685, 192.945 )
 [node name="Sprite" parent="YSort/Props/Box" index="0"]
 texture = ExtResource( 32 )
 
+[node name="CollisionShape2D" parent="YSort/Props/Box" index="1"]
+position = Vector2( 2.26376, 0 )
+shape = SubResource( 132 )
+
 [node name="Box2" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 306.321, 249.642 )
 
 [node name="Sprite" parent="YSort/Props/Box2" index="0"]
 texture = ExtResource( 32 )
+
+[node name="CollisionShape2D" parent="YSort/Props/Box2" index="1"]
+position = Vector2( 2.13205, 0 )
+shape = SubResource( 133 )
 
 [node name="Box3" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 351.048, 193.89 )
@@ -1719,6 +1753,9 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( 0.27296, 10.7515 )
 shape = SubResource( 71 )
@@ -1735,7 +1772,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1762,9 +1798,6 @@ visible = false
 [node name="Label" parent="Book2/Sprite" index="0"]
 text = "Lire"
 
-[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1781,6 +1814,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -225, 260 )
 scale = Vector2( 1, 1 )
+frame = 1
 
 [node name="Label3" type="Label" parent="Book2/Open" index="2"]
 margin_left = -214.0
@@ -1807,6 +1841,9 @@ visible = false
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
 shape = SubResource( 72 )
@@ -1817,7 +1854,6 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
-frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0

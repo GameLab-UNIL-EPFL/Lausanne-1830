@@ -189,7 +189,7 @@
     </dialogue>
     <dialogue id="demEnfant2" ntargets="1" type="onDemand">
         <text>Je vous déconseille de boire l'eau de la rivière !</text>
-        <text>On trouve souvent des cadavres d'animaux dans la rivières.</text>
+        <text>On trouve souvent des cadavres d'animaux dans la rivière.</text>
         <text>Ce sont les boucheries et la tannerie qui les jettent dans l'eau.</text>
     </dialogue>
     <dialogue id="demEnfant3" ntargets="1" type="onDemand">
@@ -209,8 +209,8 @@
         </text>
     </dialogue>
     <dialogue id="demEnfant6" ntargets="1" type="onDemand">
-        <text>Je préfèrerais faire du chocolat plutôt que de la farine.</text>
-        <text>Notre voisin d'à côté, M. Kohler, a une fabrique de chocolat.</text>
+        <text>Je préfèrerais être chocolatier plutôt que meunier.</text>
+        <text>Comme notre voisin d'à côté, M. Kohler.</text>
     </dialogue>
     <dialogue id="demEnfant7" ntargets="1" type="onDemand">
         <text>J'aide mon père à réparer et à faire fonctionner le moulin.</text>

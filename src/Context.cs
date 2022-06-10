@@ -92,10 +92,10 @@ public class Context : Node {
 			false, true, false, false, true, true, false
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Rochat", "", 0, "", 0, ""
+			"", "Rochat", "", 1, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, true, false, false, false, false, false
+			false, true, false, true, false, false, false
 		));
 	}
 	
