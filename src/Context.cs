@@ -217,6 +217,7 @@ public class Context : Node {
 	
 	public void _SwitchScenes() {
 		GameState = GameStates.PLAYING;
+		CurrentQuest = Quests.NONE;
 	}
 	
 	public GameStates _GetGameState() {
