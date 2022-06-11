@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -30,8 +30,13 @@ extents = Vector2( 22, 22 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.3539, 17.065 )
 
+[sub_resource type="CircleShape2D" id=29]
+radius = 10.4403
+
 [sub_resource type="DynamicFont" id=26]
 font_data = ExtResource( 21 )
+
+[sub_resource type="CircleShape2D" id=30]
 
 [sub_resource type="Animation" id=8]
 resource_name = "IdleDown"
@@ -464,6 +469,9 @@ text = "Lire"
 [node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
 frame = 0
 
+[node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
+shape = SubResource( 29 )
+
 [node name="Open" parent="Desk/Letter" index="2"]
 visible = false
 
@@ -496,7 +504,7 @@ position = Vector2( 333, 230 )
 isCutscene = true
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 355, 162 )
+position = Vector2( 368, 160 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
@@ -507,8 +515,8 @@ NPCName = " M. Gély  "
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 15 )
 
-[node name="ListenBox" parent="YSort/QuestNPC" index="4"]
-visible = false
+[node name="CollisionShape2D" parent="YSort/QuestNPC/ListenBox" index="0"]
+shape = SubResource( 30 )
 
 [node name="AnimationPlayer" parent="YSort/QuestNPC" index="5"]
 anims/IdleDown = SubResource( 8 )
