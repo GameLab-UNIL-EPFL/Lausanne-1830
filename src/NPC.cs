@@ -536,6 +536,9 @@ public class NPC : KinematicBody2D {
 		TB._HideAll();
 		if(HasDemandDialogue) {
 			string d = null;
+
+			//Check for tutorial NPC
+			
 			
 			if(InnerLinesCount != 0) {
 				d = InnerLines[InnerLines.Length - InnerLinesCount--];
