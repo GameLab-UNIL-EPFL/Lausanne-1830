@@ -22,6 +22,9 @@
         <text objectif="2">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
         <!--Ensuite dialogue qui se trouve dans NPC.cs-->
     </dialogue>
+    <dialogue id="preTuto" ntargets="1" type="onDemand">
+        <text>Allez parler à M. Gély.</text>
+    </dialogue>
     <dialogue id="demandTuto" ntargets="1" type="onDemand">
         <text>Je connais bien Mademoiselle De Cerjeat.</text>
         <text>Elle s'appelle Elisabeth.</text>
