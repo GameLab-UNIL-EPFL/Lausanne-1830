@@ -205,6 +205,7 @@ public class QuestController : Node {
 	
 	//Id to track quest progression
 	private int QuestDialogueId = 0;
+	private int QuestDialogueIdOnObjectiveSuccess = -1;
 	
 	private Context context;
 	
@@ -325,6 +326,35 @@ public class QuestController : Node {
 		var dialogueQuery = from qd in QuestDialogue.Root.Descendants("text")
 							where int.Parse(qd.Attribute("id").Value) == QuestDialogueId
 							select qd;
+
+		//Check for successful objective to avoid repitition
+		if(QuestDialogueIdOnObjectiveSuccess >= QuestDialogueId) {
+			var successDialogueQuery = from sq in QuestDialogue.Root.Descendants("text")
+								   where int.Parse(sq.Attribute("id").Value) == QuestDialogueIdOnObjectiveSuccess
+								   select sq;
+
+			//Check for successful objective
+			foreach(XElement txt in successDialogueQuery) {
+				if(txt.Attribute("signal") != null) {
+					EmitSignal(txt.Attribute("signal").Value, Quests.TUTORIAL);
+					_EndQuest(Quests.TUTORIAL);
+					return null;
+				}
+
+				if(txt.Attribute("objectif") != null) {
+					int objId = int.Parse(txt.Attribute("objectif").Value);
+
+					//Check if the objective was met
+					if(CheckObjective(objId)) {
+						//Update the QuestDialogueId
+						QuestDialogueId = QuestDialogueIdOnObjectiveSuccess + 1;
+
+						//If so return the bojective text
+						return txt.Value;
+					} 
+				}
+			}
+		}
 		
 		//Check for objective or replay attributes
 		foreach(XElement txt in dialogueQuery) {
@@ -344,6 +374,9 @@ public class QuestController : Node {
 				if(!CheckObjective(objId)) {
 					//Find the replay Id
 					if(txt.Attribute("replay") != null) {
+						//Store current id in case of quest id
+						QuestDialogueIdOnObjectiveSuccess = int.Parse(txt.Attribute("id").Value);
+						//Set next id to the replay id
 						QuestDialogueId = int.Parse(txt.Attribute("replay").Value);
 					}
 					//End conversation for now
