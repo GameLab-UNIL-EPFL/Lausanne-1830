@@ -193,6 +193,7 @@ public class NPC : KinematicBody2D {
 		TB = GetNode<TextBox>("TextBox");
 		AT = GetNode<AnimationTree>("AnimationTree");
 		AS = (AnimationNodeStateMachinePlayback)AT.Get("parameters/playback");
+		
 		//Sanity Check
 		if(HasDemandDialogue || HasAutoDialogue) {
 			if(DC == null) {
@@ -423,7 +424,17 @@ public class NPC : KinematicBody2D {
 		return textLines.ToArray();
 	}
 	
+	private void TurnToPlayer(Player player) {
+		if(CanTurn) {
+			InputVec = (player.Position - Position).Normalized();
+			HandleMovement(0.03f);
+			InputVec = Vector2.Zero;
+			HandleMovement(0.03f);
+		}
+	}
+	
 	private void BeginDialogue(Player player, ref string d) {
+		EmitSignal(nameof(StartDialogue));
 		if(isTrueschel && context._CheckBrewBurn() != -1.0f) {
 			if(context._CheckBrewBurn() < BrewBadThreshold) {
 				DemandDialogueID = "demandAngeliqueBad";
@@ -431,6 +442,16 @@ public class NPC : KinematicBody2D {
 				DemandDialogueID = "demandAngeliqueGood";
 			}
 		}
+
+		//Check for tutorial NPC
+		if(context._GetQuest() == Quests.TUTORIAL) {
+			if(context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
+				DemandDialogueID = "demandTuto";
+			} else {
+				DemandDialogueID = "preTuto";
+			}
+		}
+
 		inDialogue = true;
 		player._StartDialogue();
 		if(isBrewer) {
@@ -442,12 +463,7 @@ public class NPC : KinematicBody2D {
 		}
 		
 		//Turn to player
-		if(CanTurn) {
-			InputVec = (player.Position - Position).Normalized();
-			HandleMovement(0.03f);
-			InputVec = Vector2.Zero;
-			HandleMovement(0.03f);
-		}
+		TurnToPlayer(player);
 		
 	}
 	
@@ -473,6 +489,54 @@ public class NPC : KinematicBody2D {
 		if(!CanWander) {
 			LookInInitalDir();
 		}
+	}
+
+	
+	public void _NotifyQuest(Player player) {
+		string d;
+		TB._HideAll();
+
+		//Display text if needed
+		if(InnerLinesCount != 0) {
+			d = InnerLines[InnerLines.Length - InnerLinesCount--];
+		} else {
+			if(!inDialogue) {
+				//Initiate the dialogue
+				inDialogue = true;
+				player._StartDialogue();
+				TurnToPlayer(player);
+				
+				//Start the quest if needed
+				if(context._GetLocation() == Locations.INTRO) {
+					QC._StartQuest(Quests.TUTORIAL);
+				}
+			} 
+			//Check quest status and retrieve dialogue
+			d = QC._QuestInteraction();
+
+			//Check if it's the end of the dialogue
+			if(d == null) {
+				FinishDialogue(player);
+				return;
+			}
+		}
+		//Show it in the box
+		if(d != null) {
+			//throw new Exception(d);
+			TB._ShowText(d);
+			TB._ShowPressE();
+		}
+
+		//Update objective if spoken to for the first time
+		if(context._GetQuest() == Quests.TUTORIAL) {
+			//Check for progress
+			int id = context._GetQuestStateId();
+			//First stage of the tutorial is done
+			context._UpdateQuestStateId((id < QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) ?
+				QuestController.TALK_TO_QUEST_NPC_OBJECTIVE : id
+			);
+		}
+
 	}
 	
 	/**
@@ -517,7 +581,7 @@ public class NPC : KinematicBody2D {
 			
 			//Show it in the box
 			if(d != null) {
-				TB._ShowText(d);
+				TB._ShowText((string)d);
 				TB._ShowPressE();
 			}
 		}

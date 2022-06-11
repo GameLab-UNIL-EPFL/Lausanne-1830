@@ -180,22 +180,48 @@ public struct XMLAttributeInfo_t {
 
 public class QuestController : Node {
 
+	[Signal]
+	public delegate void EndQuest(Quests q);
+	
+	public static int TALK_TO_QUEST_NPC_OBJECTIVE = -1;
+	public static int OPEN_NOTEBOOK_OBJECTIVE = 0;
+	public static int COMPLETE_PAGE_OBJECTIVE = 1;
+
 	//File at which the scene's dialogue is stored
 	[Export]
 	public string SceneCharacterFileName = "notebookCharacterList.xml";
 	public string SceneCharacterFileBasePath = "res://db/characters/";
 	public string SceneCharacterFilePath;
 	
+	//Files related to the Quest dialogue
+	public string QuestDialogueFile = "res://db/dialogues/xml/QuestNPC.xml";
+	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument characterList;
+	private XDocument QuestDialogue;
 	
 	//Buffer storing the dialogue being used by a questNPC
 	private Stack<string> QuestBuffer = new Stack<string>();
+	
+	//Id to track quest progression
+	private int QuestDialogueId = 0;
+	private int QuestDialogueIdOnObjectiveSuccess = -1;
+	
+	private Context context;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		SceneCharacterFilePath = SceneCharacterFileBasePath + SceneCharacterFileName;
 		DialogueController._ParseXML(ref characterList, SceneCharacterFilePath);
+		DialogueController._ParseXML(ref QuestDialogue, QuestDialogueFile);
+		
+		context = GetNode<Context>("/root/Context");
+
+		if(context._GetLocation() == Locations.INTRO) {
+			Notebook NB = GetNode<Notebook>("../Notebook");
+			NB.Connect("CloseNotebook", this, "_On_Notebook_Close");
+			NB.Connect("PageComplete", this, "_On_Notebook_Page_End");
+		}
 	}
 	
 	public void _InitBuffer(string[] text) {
@@ -275,5 +301,130 @@ public class QuestController : Node {
 		}
 		
 		return res;
+	}
+	
+	public void _StartQuest(Quests q) {
+		//Only start an available quest
+		if(context._GetQuest() == q && context._GetQuestStatus() == QuestStatus.NOT_STARTED) {
+			context._UpdateQuestStatus(QuestStatus.ON_GOING);
+		}
+	}
+	
+	public void _EndQuest(Quests q) {
+		//Only end an ongoing quest
+		if(context._GetQuest() == q && context._GetQuestStatus() == QuestStatus.ON_GOING) {
+			context._UpdateQuestStatus(QuestStatus.COMPLETE);
+		}
+	}
+
+	private bool CheckObjective(int objId) {
+		return context._GetQuestStateId() >= objId;
+	}
+	
+	private string TutorialQuest() {
+		//Check current dialogue state
+		var dialogueQuery = from qd in QuestDialogue.Root.Descendants("text")
+							where int.Parse(qd.Attribute("id").Value) == QuestDialogueId
+							select qd;
+
+		//Check for successful objective to avoid repitition
+		if(QuestDialogueIdOnObjectiveSuccess >= QuestDialogueId) {
+			var successDialogueQuery = from sq in QuestDialogue.Root.Descendants("text")
+								   where int.Parse(sq.Attribute("id").Value) == QuestDialogueIdOnObjectiveSuccess
+								   select sq;
+
+			//Check for successful objective
+			foreach(XElement txt in successDialogueQuery) {
+				if(txt.Attribute("signal") != null) {
+					EmitSignal(txt.Attribute("signal").Value, Quests.TUTORIAL);
+					_EndQuest(Quests.TUTORIAL);
+					return null;
+				}
+
+				if(txt.Attribute("objectif") != null) {
+					int objId = int.Parse(txt.Attribute("objectif").Value);
+
+					//Check if the objective was met
+					if(CheckObjective(objId)) {
+						//Update the QuestDialogueId
+						QuestDialogueId = QuestDialogueIdOnObjectiveSuccess + 1;
+
+						//If so return the bojective text
+						return txt.Value;
+					} 
+				}
+			}
+		}
+		
+		//Check for objective or replay attributes
+		foreach(XElement txt in dialogueQuery) {
+			if(txt.Attribute("signal") != null) {
+				EmitSignal(txt.Attribute("signal").Value, Quests.TUTORIAL);
+				_EndQuest(Quests.TUTORIAL);
+				return null;
+			}
+
+			//Update the QuestDialogueId
+			QuestDialogueId++;
+
+			if(txt.Attribute("objectif") != null) {
+				int objId = int.Parse(txt.Attribute("objectif").Value);
+
+				//Check if the objective was met
+				if(!CheckObjective(objId)) {
+					//Find the replay Id
+					if(txt.Attribute("replay") != null) {
+						//Store current id in case of quest id
+						QuestDialogueIdOnObjectiveSuccess = int.Parse(txt.Attribute("id").Value);
+						//Set next id to the replay id
+						QuestDialogueId = int.Parse(txt.Attribute("replay").Value);
+					}
+					//End conversation for now
+					return null;
+				} 
+			}
+
+			//Return the obtained string
+			return txt.Value;
+		}
+		//if no text obtained in query, just return null
+		return null;
+	}
+	
+	public string _QuestInteraction() {
+		//Check for an on-going quest
+		if(context._GetQuestStatus() == QuestStatus.ON_GOING) {
+			switch(context._GetQuest()) {
+				case Quests.TUTORIAL:
+					return TutorialQuest();
+				default:
+					return null;
+			}
+		}
+		return null;
+	}
+
+	public void _On_Notebook_Close() {
+		if(context._GetQuestStatus() == QuestStatus.ON_GOING) {
+			if(context._GetQuest() == Quests.TUTORIAL) {
+				//Check for progress
+				int id = context._GetQuestStateId();
+				//First stage of the tutorial is done
+				context._UpdateQuestStateId((id < OPEN_NOTEBOOK_OBJECTIVE) ? OPEN_NOTEBOOK_OBJECTIVE : id);
+			}
+		}
+	}
+	
+	//Triggers objective update
+	public void _On_Notebook_Page_End() {
+		//Check for correct quest
+		if(context._GetQuestStatus() == QuestStatus.ON_GOING) {
+			if(context._GetQuest() == Quests.TUTORIAL) {
+				//Check for progress
+				int id = context._GetQuestStateId();
+				//Second stage of the tutorial is done
+				context._UpdateQuestStateId((id < COMPLETE_PAGE_OBJECTIVE) ? COMPLETE_PAGE_OBJECTIVE : id);
+			}
+		}
 	}
 }

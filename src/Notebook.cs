@@ -24,6 +24,12 @@ using System.Linq;
 using System.Collections.Generic;
 
 public class Notebook : Node2D {
+	[Signal]
+	public delegate void CloseNotebook();
+
+	[Signal]
+	public delegate void PageComplete();
+
 	private List<NotebookInfo> tempInfo = new List<NotebookInfo>();
 	private List<NotebookInfo> info = new List<NotebookInfo>();
 	private List<Label> infoStatic = new List<Label>();
@@ -335,6 +341,7 @@ public class Notebook : Node2D {
 			Hide();
 			AudioServer.SetBusMute(2, false);
 			p.UnBlockPlayer();
+			EmitSignal(nameof(CloseNotebook));
 		}
 		hidden = !hidden;
 		
@@ -515,6 +522,9 @@ public class Notebook : Node2D {
 		if(anim_name == "Stamp") {
 			MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
 			MP.MusicFadeIn(-10);
+			
+			//Signal that the page is complete
+			EmitSignal(nameof(PageComplete));
 		}
 	}
 	
