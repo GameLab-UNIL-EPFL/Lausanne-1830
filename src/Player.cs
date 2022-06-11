@@ -125,15 +125,14 @@ public class Player : KinematicBody2D {
 				if(nearestNPC != null) {
 					if(nearestNPC.isQuestNPC || context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
 						InputVec = Vector2.Zero;
-
-						//Interact with item if nearer to it 
-						var item = NearestItem();
-						if(item == null || isNearer(nearestNPC, item)) {
-							NotifySubs();
-						} else {
-							NotifyItems();
-						}
 					}
+				}
+				//Interact with item if nearer to it 
+				var item = NearestItem();
+				if(item == null || (nearestNPC != null && isNearer(nearestNPC, item))) {
+					NotifySubs();
+				} else {
+					NotifyItems();
 				}
 			}
 			if(CurrentState != PlayerStates.BLOCKED) {
