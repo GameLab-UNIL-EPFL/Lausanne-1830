@@ -516,6 +516,17 @@ public class NPC : KinematicBody2D {
 			TB._ShowText(d);
 			TB._ShowPressE();
 		}
+
+		//Update objective if spoken to for the first time
+		if(context._GetQuest() == Quests.TUTORIAL) {
+			//Check for progress
+			int id = context._GetQuestStateId();
+			//First stage of the tutorial is done
+			context._UpdateQuestStateId((id < QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) ?
+				QuestController.TALK_TO_QUEST_NPC_OBJECTIVE : id
+			);
+		}
+
 	}
 	
 	/**

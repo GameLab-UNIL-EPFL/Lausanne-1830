@@ -38,7 +38,7 @@ public class Context : Node {
 	private Locations CurrentLocation = Locations.INTRO;
 	private Quests CurrentQuest = Quests.TUTORIAL;
 	private QuestStatus CurrentQuestStatus = QuestStatus.NOT_STARTED;
-	private int QuestStateId = -1;
+	private int QuestStateId = -2;
 	
 	//Quest NPC ref
 	private NPC QuestNPC = null;

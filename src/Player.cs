@@ -122,23 +122,37 @@ public class Player : KinematicBody2D {
 			if(Input.IsActionJustPressed("ui_interact")) {
 				//Only allow interaction with questNPC if in initial stage
 				NPC nearestNPC = NearestSub();
-				if(nearestNPC != null) {
-					if(nearestNPC.isQuestNPC || context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
-						InputVec = Vector2.Zero;
-					}
-				}
-				//Interact with item if nearer to it 
 				var item = NearestItem();
-				if(item == null || (nearestNPC != null && isNearer(nearestNPC, item))) {
-					NotifySubs();
-				} else {
+
+				if(nearestNPC != null) {
+					if(nearestNPC.isQuestNPC || 
+						//Make sure that we can only interact with the other NPC if the objective was met
+						context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
+						//Halt the player's movement BEFORE the interaction
+						InputVec = Vector2.Zero;
+						//Check which element is nearest to the player
+						if(item == null || isNearer(nearestNPC, item)) {
+							NotifySubs();
+						} else if(!isNearer(nearestNPC, item)) {
+							NotifyItems();
+						}
+						
+					}
+				//Interact with item if nearer to it 
+				} else if(item != null) {
 					NotifyItems();
 				}
+				
 			}
 			if(CurrentState != PlayerStates.BLOCKED) {
 				HandleMovementInput(delta);
 			}
 		} 
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next") &&
+			context._GetQuestStateId() >= QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) {
+			EmitSignal(nameof(OpenNotebook));
+		}
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
 	}

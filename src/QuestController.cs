@@ -182,7 +182,8 @@ public class QuestController : Node {
 
 	[Signal]
 	public delegate void EndQuest(Quests q);
-
+	
+	public static int TALK_TO_QUEST_NPC_OBJECTIVE = -1;
 	public static int OPEN_NOTEBOOK_OBJECTIVE = 0;
 	public static int COMPLETE_PAGE_OBJECTIVE = 1;
 
