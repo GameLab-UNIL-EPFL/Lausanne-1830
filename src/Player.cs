@@ -503,10 +503,7 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			if(context._GetQuestStateId() == QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) {
-				var NBCont = GetNode<NotebookController>("../../NotebookControllerNode/NotebookController");
-				if(NBCont.RectPosition[0] > 600.0) {
-					EmitSignal(nameof(SlideInNotebookController));
-				}
+				EmitSignal(nameof(SlideInNotebookController));
 			}
 
 			if(context._GetQuestStatus() == QuestStatus.COMPLETE) {
@@ -522,6 +519,9 @@ public class Player : KinematicBody2D {
 				
 				//Force one more interaction with the NPC
 				NotifySubs();
+
+				//Slide in the Map
+				EmitSignal(nameof(SlideInNotebookController));
 			}
 		}
 	}

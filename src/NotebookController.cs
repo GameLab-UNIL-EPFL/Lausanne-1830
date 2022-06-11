@@ -43,7 +43,12 @@ public class NotebookController : TextureButton
 			_Ready();
 		}
 		if(context._GetQuest() == Quests.TUTORIAL) {
-			AnimPlayer.Play("SlideCarnet");
+			if(RectPosition[0] > 630) {
+				AnimPlayer.Play("SlideCarnet");
+			}
+			if(context._GetQuestStatus() == QuestStatus.COMPLETE) {
+				AnimPlayer.Play("SlideMap");
+			}
 		} else {
 			AnimPlayer.Play("Slide");
 		}
