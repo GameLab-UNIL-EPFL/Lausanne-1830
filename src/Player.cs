@@ -507,7 +507,10 @@ public class Player : KinematicBody2D {
 		// If the cutscene is still going, end it
 		if(isCutscene) {
 			if(context._GetQuestStateId() < QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
-				EmitSignal(nameof(SlideInNotebookController));
+				var NBCont = GetNode<NotebookController>("../../NotebookControllerNode/NotebookController");
+				if(NBCont.RectPosition[0] > 600.0) {
+					EmitSignal(nameof(SlideInNotebookController));
+				}
 			}
 
 			if(context._GetQuestStatus() == QuestStatus.COMPLETE) {
