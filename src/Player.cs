@@ -125,19 +125,15 @@ public class Player : KinematicBody2D {
 				var item = NearestItem();
 
 				if(nearestNPC != null) {
-					if(nearestNPC.isQuestNPC || 
-						//Make sure that we can only interact with the other NPC if the objective was met
-						context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
-						//Halt the player's movement BEFORE the interaction
-						InputVec = Vector2.Zero;
-						//Check which element is nearest to the player
-						if(item == null || isNearer(nearestNPC, item)) {
-							NotifySubs();
-						} else if(!isNearer(nearestNPC, item)) {
-							NotifyItems();
-						}
-						
-					}
+					//Halt the player's movement BEFORE the interaction
+					InputVec = Vector2.Zero;
+					//Check which element is nearest to the player
+					if(item == null || isNearer(nearestNPC, item)) {
+						NotifySubs();
+					} else if(!isNearer(nearestNPC, item)) {
+						NotifyItems();
+					}	
+					
 				//Interact with item if nearer to it 
 				} else if(item != null) {
 					NotifyItems();
@@ -506,7 +502,7 @@ public class Player : KinematicBody2D {
 		
 		// If the cutscene is still going, end it
 		if(isCutscene) {
-			if(context._GetQuestStateId() < QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
+			if(context._GetQuestStateId() == QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) {
 				var NBCont = GetNode<NotebookController>("../../NotebookControllerNode/NotebookController");
 				if(NBCont.RectPosition[0] > 600.0) {
 					EmitSignal(nameof(SlideInNotebookController));

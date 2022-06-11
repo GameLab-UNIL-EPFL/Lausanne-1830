@@ -442,6 +442,16 @@ public class NPC : KinematicBody2D {
 				DemandDialogueID = "demandAngeliqueGood";
 			}
 		}
+
+		//Check for tutorial NPC
+		if(context._GetQuest() == Quests.TUTORIAL) {
+			if(context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
+				DemandDialogueID = "demandTuto";
+			} else {
+				DemandDialogueID = "preTuto";
+			}
+		}
+
 		inDialogue = true;
 		player._StartDialogue();
 		if(isBrewer) {
@@ -536,9 +546,6 @@ public class NPC : KinematicBody2D {
 		TB._HideAll();
 		if(HasDemandDialogue) {
 			string d = null;
-
-			//Check for tutorial NPC
-			
 			
 			if(InnerLinesCount != 0) {
 				d = InnerLines[InnerLines.Length - InnerLinesCount--];
