@@ -696,6 +696,7 @@ parameters/playback = SubResource( 8 )
 
 [node name="Enfant3" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 476, 165 )
+CanTurn = false
 AutoDialogueID = "Null"
 DemandDialogueID = "demMalade"
 HasAutoDialogue = false
