@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=2]
 
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=4]
@@ -465,9 +465,12 @@ shape = SubResource( 18 )
 
 [node name="Desk" type="StaticBody2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Desk"]
+[node name="Sprite" type="AnimatedSprite" parent="Desk"]
 position = Vector2( 334.266, 136.727 )
-texture = ExtResource( 1 )
+frames = ExtResource( 1 )
+animation = "desk"
+frame = 14
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
 position = Vector2( 333.595, 135.256 )
@@ -478,6 +481,7 @@ position = Vector2( 334, 139 )
 
 [node name="Sprite" parent="Desk/Letter" index="0"]
 visible = false
+position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
@@ -486,10 +490,12 @@ text = "Lire"
 frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
+position = Vector2( -14, 5 )
 shape = SubResource( 29 )
 
 [node name="Open" parent="Desk/Letter" index="2"]
 visible = false
+z_index = 1
 
 [node name="ColorRect2" type="ColorRect" parent="Desk/Letter/Open" index="2"]
 margin_left = -78.0
