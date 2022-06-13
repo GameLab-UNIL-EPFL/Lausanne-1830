@@ -609,6 +609,13 @@ public class NPC : KinematicBody2D {
 				TB._HideText();
 				player._EndDialogue();
 				inDialogue = false;
+
+				//Check for game end
+				if(context._AllTabsCorrect()) {
+					SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+					SC.GotoScene("res://scenes/Interaction/EndScreen.tscn");
+				}
+				
 			} else {
 				TB._ShowText(l);
 				TB._ShowPressE();
