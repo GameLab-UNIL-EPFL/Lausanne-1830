@@ -256,7 +256,7 @@ position = Vector2( 0, -32 )
 polygon = PoolVector2Array( -112, -99.6, -111.309, 88.0815, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 125.609, 88.6079, 112, -91.6 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 320, 288 )
+position = Vector2( 152, 33 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 20 )
@@ -278,7 +278,7 @@ DemandDialogueID = "demandPerregaux"
 
 [node name="TextBox" parent="YSort/Perregaux" index="0"]
 z_index = 1
-NPCName = " M. Perregaux "
+NPCName = " Henri Perregaux "
 
 [node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
 texture = ExtResource( 11 )
@@ -296,7 +296,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Bourgeois" index="0"]
 z_index = 1
-NPCName = " M. Bourgeois "
+NPCName = " Louis Bourgeois "
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
 texture = ExtResource( 12 )
@@ -318,7 +318,7 @@ DemandDialogueID = "demandPichard"
 
 [node name="TextBox" parent="YSort/Pichard" index="0"]
 z_index = 1
-NPCName = " M. Pichard "
+NPCName = " Adrien Pichard "
 
 [node name="FullyAnimated" parent="YSort/Pichard" index="2"]
 texture = ExtResource( 13 )
@@ -326,35 +326,35 @@ texture = ExtResource( 13 )
 [node name="AnimationTree" parent="YSort/Pichard" index="6"]
 parameters/playback = SubResource( 9 )
 
-[node name="Baumann" parent="YSort" instance=ExtResource( 8 )]
+[node name="Berthaud" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 126.968, 154 )
 InitDir = 2
 DemandDialogueID = "demandBaumann"
 HasAutoDialogue = false
 
-[node name="TextBox" parent="YSort/Baumann" index="0"]
+[node name="TextBox" parent="YSort/Berthaud" index="0"]
 z_index = 1
-NPCName = " Mme Baumann "
+NPCName = " Jeannette Berthaud "
 
-[node name="FullyAnimated" parent="YSort/Baumann" index="2"]
+[node name="FullyAnimated" parent="YSort/Berthaud" index="2"]
 texture = ExtResource( 20 )
 
-[node name="AnimationTree" parent="YSort/Baumann" index="6"]
+[node name="AnimationTree" parent="YSort/Berthaud" index="6"]
 parameters/playback = SubResource( 12 )
 
-[node name="Pouly" parent="YSort" instance=ExtResource( 8 )]
+[node name="Caroline" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 126.968, 130 )
 DemandDialogueID = "demandPouly"
 HasAutoDialogue = false
 
-[node name="TextBox" parent="YSort/Pouly" index="0"]
+[node name="TextBox" parent="YSort/Caroline" index="0"]
 z_index = 1
-NPCName = " Mme Pouly "
+NPCName = " Caroline Bégoz "
 
-[node name="FullyAnimated" parent="YSort/Pouly" index="2"]
+[node name="FullyAnimated" parent="YSort/Caroline" index="2"]
 texture = ExtResource( 21 )
 
-[node name="AnimationTree" parent="YSort/Pouly" index="6"]
+[node name="AnimationTree" parent="YSort/Caroline" index="6"]
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
@@ -370,7 +370,7 @@ DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Fischer" index="0"]
-NPCName = " M. Fischer "
+NPCName = " Henri Fischer "
 
 [node name="Shadow" parent="YSort/Fischer" index="1"]
 position = Vector2( 4, 6 )
@@ -1550,6 +1550,9 @@ position = Vector2( 0, -19 )
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
 
+[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
 
@@ -1604,10 +1607,10 @@ __meta__ = {
 [editable path="YSort/Bourgeois/ListenBox"]
 [editable path="YSort/Pichard"]
 [editable path="YSort/Pichard/ListenBox"]
-[editable path="YSort/Baumann"]
-[editable path="YSort/Baumann/ListenBox"]
-[editable path="YSort/Pouly"]
-[editable path="YSort/Pouly/ListenBox"]
+[editable path="YSort/Berthaud"]
+[editable path="YSort/Berthaud/ListenBox"]
+[editable path="YSort/Caroline"]
+[editable path="YSort/Caroline/ListenBox"]
 [editable path="YSort/Briefcase"]
 [editable path="YSort/Fischer"]
 [editable path="YSort/Fischer/ListenBox"]

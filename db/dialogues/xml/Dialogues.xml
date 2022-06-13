@@ -166,7 +166,7 @@
         <text>mais nous habitons dans le tout premier.</text>
     </dialogue>
     <dialogue id="appFemme" ntargets="1" type="onApproach">
-        <text>Jeanne, arrête de jouer et vient m'aider !</text>
+        <text>Marie, arrête de jouer et vient m'aider !</text>
     </dialogue>
     <dialogue id="demandFemme" ntargets="1" type="onDemand">
         <text>Oui, ce sont tous nos enfants.</text>

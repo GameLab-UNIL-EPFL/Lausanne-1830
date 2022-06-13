@@ -38,8 +38,8 @@ public class TextBox : Node2D {
 	private Vector2 DTCPos = new Vector2(3, -16);
 	private Vector2 ATCSize = new Vector2(114, 10);
 	private Vector2 ATCPos = new Vector2(3, 9);
-	private Vector2 DNamePos = new Vector2(10, -30);
-	private Vector2 ANamePos = new Vector2(10, -12);
+	private Vector2 DNamePos = new Vector2(4, -30);
+	private Vector2 ANamePos = new Vector2(4, -12);
 	
 	//Hides all nodes
 	public void _HideAll() {

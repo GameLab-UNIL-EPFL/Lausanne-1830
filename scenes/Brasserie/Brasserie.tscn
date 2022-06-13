@@ -1247,7 +1247,7 @@ polygon = PoolVector2Array( -172.544, 220.554, -228.286, 219.226, -229.613, 140.
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 262, 284 )
+position = Vector2( 264, 297 )
 FootstepPitch = 0.9
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
@@ -1264,7 +1264,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 10
+frame = 18
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1377,7 +1377,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1391,7 +1391,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
-frame = 1
+frame = 6
 playing = true
 flip_h = true
 
@@ -1407,7 +1407,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 11
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1427,7 +1427,7 @@ DemandDialogueID = "demandFille"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Adrienne" index="0"]
-NPCName = " Mlle Trüschel "
+NPCName = " Adrienne Trüschel "
 
 [node name="CollisionShape2D" parent="YSort/NPC/Adrienne/ListenBox" index="0"]
 position = Vector2( 0, 1.66855 )
@@ -1442,7 +1442,7 @@ DemandDialogueID = "demandAngelique"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Angelique" index="0"]
-NPCName = " Mme Trüschel "
+NPCName = " Angélique Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Angelique" index="2"]
 texture = ExtResource( 17 )
@@ -1471,7 +1471,7 @@ DemandDialogueID = "demandFilles"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Jenny" index="0"]
-NPCName = " Mlle Trüschel "
+NPCName = " Jenny Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Jenny" index="2"]
 texture = ExtResource( 9 )
@@ -1499,7 +1499,7 @@ AutoDialogueID = "appConrad"
 DemandDialogueID = "demandConrad"
 
 [node name="TextBox" parent="YSort/NPC/Conrad" index="0"]
-NPCName = " M. Trüschel "
+NPCName = " Conrad Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Conrad" index="2"]
 texture = ExtResource( 14 )
@@ -1528,7 +1528,7 @@ DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brewer" index="0"]
-NPCName = " M. Firstein "
+NPCName = " Jean Firstein "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brewer" index="2"]
 visible = false
@@ -1560,7 +1560,7 @@ DemandDialogueID = "demandTonnelier"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brasseur" index="0"]
-NPCName = "M. Wolff"
+NPCName = " Auguste Wolff "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur" index="2"]
 texture = ExtResource( 12 )
@@ -1585,7 +1585,7 @@ DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brasseur2" index="0"]
-NPCName = "M. Malter"
+NPCName = " Jacob Malter "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur2" index="2"]
 texture = ExtResource( 13 )
@@ -1623,6 +1623,9 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 74 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 1 )
