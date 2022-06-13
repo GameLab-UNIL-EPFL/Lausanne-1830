@@ -482,9 +482,6 @@ visible = false
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
 
-[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 shape = SubResource( 29 )
 
@@ -527,6 +524,7 @@ isQuestNPC = true
 
 [node name="TextBox" parent="YSort/QuestNPC" index="0"]
 NPCName = " M. Gély  "
+FontSize = 10
 
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 15 )
@@ -555,6 +553,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC" index="0"]
 NPCName = "Mme Meylan "
+FontSize = 10
 
 [node name="AnimationTree" parent="YSort/NPC" index="6"]
 parameters/playback = SubResource( 27 )
@@ -659,7 +658,6 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
-frame = 1
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
