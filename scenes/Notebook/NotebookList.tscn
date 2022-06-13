@@ -13,12 +13,13 @@ font_data = ExtResource( 5 )
 script = ExtResource( 2 )
 
 [node name="CloseNBList" type="Button" parent="."]
-margin_left = -557.0
-margin_top = -259.0
-margin_right = 839.0
-margin_bottom = 585.0
+margin_left = -568.0
+margin_top = -272.0
+margin_right = 828.0
+margin_bottom = 572.0
 flat = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -26,24 +27,44 @@ __meta__ = {
 texture = ExtResource( 1 )
 centered = false
 
-[node name="NumberVC" type="VBoxContainer" parent="BgSprite"]
-margin_left = 30.0
-margin_top = 16.0
-margin_right = 146.0
-margin_bottom = 110.0
+[node name="MarginContainer" type="AspectRatioContainer" parent="BgSprite"]
+margin_left = 16.0
+margin_top = 18.0
+margin_right = 160.0
+margin_bottom = 113.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="BgSprite/NumberVC"]
-margin_right = 116.0
+[node name="VBoxContainer" type="VBoxContainer" parent="BgSprite/MarginContainer"]
+margin_left = 21.0
+margin_right = 123.0
+margin_bottom = 95.0
+
+[node name="LineEdit" type="LineEdit" parent="BgSprite/MarginContainer/VBoxContainer"]
+margin_right = 102.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
+align = 1
 max_length = 2
 context_menu_enabled = false
 virtual_keyboard_enabled = false
+clear_button_enabled = true
+caret_blink = true
 
-[node name="InputNumber" type="Label" parent="BgSprite/NumberVC"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 102.0
+margin_bottom = 89.0
+
+[node name="NumberVC" type="VBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 56.0
+margin_bottom = 59.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputNumber" type="Label" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC"]
 visible = false
 margin_top = 28.0
 margin_right = 116.0
@@ -52,146 +73,152 @@ custom_fonts/font = ExtResource( 3 )
 align = 1
 valign = 1
 
-[node name="0to4HC" type="HBoxContainer" parent="BgSprite/NumberVC"]
-margin_top = 30.0
-margin_right = 116.0
-margin_bottom = 49.0
+[node name="0to4HC" type="HBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC"]
+margin_right = 56.0
+margin_bottom = 17.0
 
-[node name="0" parent="BgSprite/NumberVC/0to4HC" instance=ExtResource( 4 )]
-margin_right = 17.0
-margin_bottom = 19.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 3 )
-enabled_focus_mode = 0
-text = "0"
-
-[node name="1" parent="BgSprite/NumberVC/0to4HC" instance=ExtResource( 4 )]
-margin_left = 21.0
-margin_right = 38.0
-margin_bottom = 19.0
+[node name="1" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC" instance=ExtResource( 4 )]
+margin_right = 16.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "1"
 
-[node name="2" parent="BgSprite/NumberVC/0to4HC" instance=ExtResource( 4 )]
-margin_left = 42.0
-margin_right = 59.0
-margin_bottom = 19.0
+[node name="2" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC" instance=ExtResource( 4 )]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "2"
 
-[node name="3" parent="BgSprite/NumberVC/0to4HC" instance=ExtResource( 4 )]
-margin_left = 63.0
-margin_right = 80.0
-margin_bottom = 19.0
+[node name="3" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC" instance=ExtResource( 4 )]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "3"
 
-[node name="4" parent="BgSprite/NumberVC/0to4HC" instance=ExtResource( 4 )]
-margin_left = 84.0
-margin_right = 101.0
-margin_bottom = 19.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 3 )
-enabled_focus_mode = 0
-text = "4"
+[node name="5to9HC" type="HBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC"]
+margin_top = 21.0
+margin_right = 56.0
+margin_bottom = 38.0
 
-[node name="5to9HC" type="HBoxContainer" parent="BgSprite/NumberVC"]
-margin_top = 53.0
-margin_right = 116.0
-margin_bottom = 72.0
-
-[node name="5" parent="BgSprite/NumberVC/5to9HC" instance=ExtResource( 4 )]
-margin_right = 17.0
-margin_bottom = 19.0
+[node name="5" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
+margin_right = 16.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "5"
 
-[node name="6" parent="BgSprite/NumberVC/5to9HC" instance=ExtResource( 4 )]
-margin_left = 21.0
-margin_right = 38.0
-margin_bottom = 19.0
+[node name="6" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "6"
 
-[node name="7" parent="BgSprite/NumberVC/5to9HC" instance=ExtResource( 4 )]
-margin_left = 42.0
-margin_right = 59.0
-margin_bottom = 19.0
+[node name="4" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 17.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "4"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC"]
+margin_top = 42.0
+margin_right = 56.0
+margin_bottom = 59.0
+
+[node name="7" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer" instance=ExtResource( 4 )]
+margin_right = 16.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "7"
 
-[node name="8" parent="BgSprite/NumberVC/5to9HC" instance=ExtResource( 4 )]
-margin_left = 63.0
-margin_right = 80.0
-margin_bottom = 19.0
+[node name="8" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "8"
 
-[node name="9" parent="BgSprite/NumberVC/5to9HC" instance=ExtResource( 4 )]
-margin_left = 84.0
-margin_right = 101.0
-margin_bottom = 19.0
+[node name="9" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "9"
 
-[node name="EnterDelete" type="HBoxContainer" parent="BgSprite/NumberVC"]
-margin_top = 76.0
-margin_right = 116.0
-margin_bottom = 95.0
-alignment = 1
+[node name="EnterDelete" type="VBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 60.0
+margin_right = 102.0
+margin_bottom = 59.0
+alignment = 2
 
-[node name="delete" parent="BgSprite/NumberVC/EnterDelete" instance=ExtResource( 4 )]
-margin_left = 14.0
-margin_right = 57.0
-margin_bottom = 19.0
+[node name="delete" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/EnterDelete" instance=ExtResource( 4 )]
+margin_right = 42.0
+margin_bottom = 17.0
 custom_fonts/font = ExtResource( 3 )
-text = "delete"
+text = "Effacer"
 
-[node name="enter" parent="BgSprite/NumberVC/EnterDelete" instance=ExtResource( 4 )]
-margin_left = 61.0
-margin_right = 101.0
-margin_bottom = 19.0
+[node name="enter" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/EnterDelete" instance=ExtResource( 4 )]
+margin_top = 21.0
+margin_right = 42.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 3 )
-text = "enter"
+text = "OK"
+
+[node name="0" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/EnterDelete" instance=ExtResource( 4 )]
+margin_top = 42.0
+margin_right = 42.0
+margin_bottom = 59.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "0"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BgSprite"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 157.0
 margin_bottom = 110.0
+focus_mode = 2
+follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AttributeList" type="VBoxContainer" parent="BgSprite/ScrollContainer"]
+focus_mode = 2
 
-[connection signal="text_entered" from="BgSprite/NumberVC/LineEdit" to="." method="_on_LineEdit_text_entered"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/0to4HC/0" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/0to4HC/1" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/0to4HC/2" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/0to4HC/3" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/0to4HC/4" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/5to9HC/5" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/5to9HC/6" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/5to9HC/7" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/5to9HC/8" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/NumberVC/5to9HC/9" to="." method="_on_InsertNumber"]
-[connection signal="RemoveNumber" from="BgSprite/NumberVC/EnterDelete/delete" to="." method="_on_RemoveNumber"]
-[connection signal="EnterNumber" from="BgSprite/NumberVC/EnterDelete/enter" to="." method="_on_EnterNumber"]
+[connection signal="text_entered" from="BgSprite/MarginContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="visibility_changed" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC" to="." method="_on_NumberVC_visibility_changed"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC/1" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC/2" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC/3" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/5" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/6" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/4" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer/7" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer/8" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer/9" to="." method="_on_InsertNumber"]
+[connection signal="RemoveNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/EnterDelete/delete" to="." method="_on_RemoveNumber"]
+[connection signal="EnterNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/EnterDelete/enter" to="." method="_on_EnterNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/EnterDelete/0" to="." method="_on_InsertNumber"]
