@@ -117,9 +117,11 @@ public class Notebook : Node2D {
 					characterInfo.adresse = inf.Text;
 					break;
 				case "num":
+					//Make sure the entry is valid
 					try {
 						characterInfo.num = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
 					} catch {
+						//When a non-char is entered, display the default INVALID number
 						characterInfo.num = -1;
 						inf.Text = "-1";
 					}
@@ -128,7 +130,12 @@ public class Notebook : Node2D {
 					characterInfo.conjoint = inf.Text;
 					break;
 				case "enfants":
-					characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
+					try {
+						characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
+					} catch {
+						characterInfo.enfants = -1;
+						inf.Text = "-1";
+					}
 					break;
 				case "metier":
 					characterInfo.metier = inf.Text;
