@@ -209,7 +209,7 @@ public class Notebook : Node2D {
 			SetCharInfo();
 			Stamp.Show();
 		} else {
-			SetObjective();
+			SetObjective(context._GetQuestStateId());
 			Stamp.Hide();
 		}
 	}
@@ -376,7 +376,13 @@ public class Notebook : Node2D {
 		if(context._GetGameState() == GameStates.INIT) {
 			DisableNonTutoTabs();
 			//Set tutorial objective
-			SetObjective(0);
+			if(context._IsTabCorrect(curTabId)) {
+				SetCharInfo();
+				Stamp.Show();
+			} else {
+				SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
+				Stamp.Hide();
+			}
 		}
 	}
 	
@@ -489,12 +495,12 @@ public class Notebook : Node2D {
 			SetCharInfo();
 			Stamp.Show();
 		} else {
-			SetObjective();
+			SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
 			Stamp.Hide();
 		}
 	}
 	
-	private void SetObjective(int id = 1) {
+	private void SetObjective(int id) {
 		//Query character info
 		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("objectif")
 			where int.Parse(charInfo.Attribute("id").Value) == id
@@ -503,7 +509,7 @@ public class Notebook : Node2D {
 		//Load in new info text
 		foreach(string infoText in infoTextQuery) {
 			Quest.BbcodeText = infoText;
-			break; // Need to do this to convert query result to string
+			//break; // Need to do this to convert query result to string
 		}
 	}
 	
