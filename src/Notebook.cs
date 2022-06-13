@@ -130,9 +130,11 @@ public class Notebook : Node2D {
 					characterInfo.conjoint = inf.Text;
 					break;
 				case "enfants":
+					//Make sure only valid entries are used
 					try {
 						characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
 					} catch {
+						//Otherwise default to -1
 						characterInfo.enfants = -1;
 						inf.Text = "-1";
 					}
