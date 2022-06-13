@@ -145,7 +145,7 @@ public class NPC : KinematicBody2D {
 				"Bravo ! Vous avez fait du bon travail !¢"+
 				"Je vais garder ça dans nos documents importants.¢"+
 				"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
-				"et en faire un jeu vidéo.");
+				"et en faire un jeu vidéo.¢NO?");
 		}
 		if(res.IsCorrect()) {
 			return FormatText("Alors...¢"+

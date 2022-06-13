@@ -117,7 +117,12 @@ public class Notebook : Node2D {
 					characterInfo.adresse = inf.Text;
 					break;
 				case "num":
-					characterInfo.num = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
+					try {
+						characterInfo.num = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
+					} catch {
+						characterInfo.num = -1;
+						inf.Text = "-1";
+					}
 					break;
 				case "conjoint":
 					characterInfo.conjoint = inf.Text;

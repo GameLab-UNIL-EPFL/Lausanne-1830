@@ -34,7 +34,11 @@ public class NumberButton : Button {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		if(Text != "Effacer" && Text != "OK") {
-			number = int.Parse(Text);
+			try {
+				number = int.Parse(Text);
+			} catch (Exception e) {
+				number = -1;
+			} 
 			Connect("pressed", this, "_on_Num_Pressed");
 		} else {
 			number = -1;
