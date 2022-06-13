@@ -55,7 +55,7 @@ public class Context : Node {
 	//Player scene positions
 	private Vector2 IntroEnterPosition = new Vector2(395, 230);
 	private Vector2 PaludEnterPosition = new Vector2(608, 230);
-	private Vector2 MoulinEnterPosition = new Vector2(324, 248);
+	private Vector2 MoulinEnterPosition = new Vector2(469, 319);
 	private Vector2 FlonEnterPosition = new Vector2(404, 210);
 	private Vector2 BrasserieEnterPosition = new Vector2(262, 284);
 	private Vector2 CasinoEnterPosition = new Vector2(320, 288);

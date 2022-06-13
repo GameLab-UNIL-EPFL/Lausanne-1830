@@ -41,6 +41,7 @@ public class Notebook : Node2D {
 	
 	private Button closeNB;
 	private Label closeLabel;
+	private Node2D NBL;
 	
 	private bool hidden = true;
 	private bool mapOpen = false;
@@ -146,6 +147,7 @@ public class Notebook : Node2D {
 		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
 		closeLabel = GetNode<Label>("Fermer");
 		Quest = GetNode<RichTextLabel>("Quest");
+		NBL = GetNode<Node2D>("NotebookList");
 		
 		//Load in character info XML
 		DialogueController._ParseXML(ref InfoXML, infoFilePath);
@@ -451,7 +453,7 @@ public class Notebook : Node2D {
 	}
 	
 	private void PressTabButton(int buttonid) {
-		if(hidden || mapOpen) return;
+		if(hidden || mapOpen || NBL.Visible) return;
 		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
 		Debug.Assert(0 <= curTabId && curTabId < Context.N_TABS);
 		
@@ -538,11 +540,13 @@ public class Notebook : Node2D {
 	}
 	
 	private void _Change_Portrait(int num) {
-		for(int i = 0; i < Context.N_TABS; ++i) {
-			var P = GetNode<Sprite>("Portrait" + i);
-			P.Hide();
+		if(!NBL.Visible) {
+			for(int i = 0; i < Context.N_TABS; ++i) {
+				var P = GetNode<Sprite>("Portrait" + i);
+				P.Hide();
+			}
+			Portraits[num].Show();	
 		}
-		Portraits[num].Show();
 	}
 	
 	public void _on_Tab0Button_pressed() {
