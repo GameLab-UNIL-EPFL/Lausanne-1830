@@ -445,7 +445,7 @@ public class Player : KinematicBody2D {
 		//Make sure that the player isn't blocked if he's not in a dialogue
 		if(subs.Count == 0 && itemsInRange.Count == 0) {
 			if(CurrentState != PlayerStates.NOTEBOOK) {
-				CheckState();
+				CheckIdle();
 			}
 		}
 	}
