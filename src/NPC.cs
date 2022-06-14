@@ -145,7 +145,7 @@ public class NPC : KinematicBody2D {
 				"Bravo ! Vous avez fait du bon travail !¢"+
 				"Je vais garder ça dans nos documents importants.¢"+
 				"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
-				"et en faire un jeu vidéo.");
+				"et en faire un jeu vidéo.      ");
 		}
 		if(res.IsCorrect()) {
 			return FormatText("Alors...¢"+
@@ -609,6 +609,13 @@ public class NPC : KinematicBody2D {
 				TB._HideText();
 				player._EndDialogue();
 				inDialogue = false;
+
+				//Check for game end
+				if(context._AllTabsCorrect()) {
+					SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
+					SC.GotoScene("res://scenes/Interaction/EndScreen.tscn");
+				}
+				
 			} else {
 				TB._ShowText(l);
 				TB._ShowPressE();

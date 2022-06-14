@@ -146,7 +146,14 @@ public class Player : KinematicBody2D {
 		} 
 		//Check for tab
 		if(Input.IsActionJustPressed("ui_focus_next") &&
-			context._GetQuestStateId() >= QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) {
+			context._GetQuestStateId() >= QuestController.TALK_TO_QUEST_NPC_OBJECTIVE &&
+			CurrentState != PlayerStates.BLOCKED) {
+			//Toggle state
+			if(CurrentState == PlayerStates.NOTEBOOK)
+				CurrentState = PlayerStates.IDLE;
+			else 
+				CurrentState = PlayerStates.NOTEBOOK;
+			//Open book
 			EmitSignal(nameof(OpenNotebook));
 		}
 		InputVec = InputVec.Normalized();
