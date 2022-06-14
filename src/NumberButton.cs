@@ -36,7 +36,7 @@ public class NumberButton : Button {
 		if(Text != "Effacer" && Text != "OK") {
 			try {
 				number = int.Parse(Text);
-			} catch (Exception e) {
+			} catch {
 				number = -1;
 			} 
 			Connect("pressed", this, "_on_Num_Pressed");

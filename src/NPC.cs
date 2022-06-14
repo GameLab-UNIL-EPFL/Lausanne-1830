@@ -27,12 +27,6 @@ public class NPC : KinematicBody2D {
 	private Vector2 UpDir = new Vector2(0.0f, -1.0f);
 	private Vector2 DownDir = new Vector2(0.0f, 1.0f);
 	
-	[Signal]
-	public delegate void EndDialogue();
-	
-	[Signal]
-	public delegate void StartDialogue();
-	
 	private const int MAX_CHAR_PER_LINE = 35;
 	private const int MAX_LINES = 3;
 	
@@ -434,7 +428,6 @@ public class NPC : KinematicBody2D {
 	}
 	
 	private void BeginDialogue(Player player, ref string d) {
-		EmitSignal(nameof(StartDialogue));
 		if(isTrueschel && context._CheckBrewBurn() != -1.0f) {
 			if(context._CheckBrewBurn() < BrewBadThreshold) {
 				DemandDialogueID = "demandAngeliqueBad";

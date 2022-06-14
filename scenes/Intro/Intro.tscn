@@ -494,7 +494,7 @@ shape = SubResource( 18 )
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 31
+frame = 35
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]

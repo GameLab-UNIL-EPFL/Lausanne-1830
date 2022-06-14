@@ -91,6 +91,7 @@ public class Player : KinematicBody2D {
 	private Button CloseNB;
 	private Context context;
 	private NPC lastNearest = null;
+	private NPC speaker = null;
 
 	private bool wasBlocked = false;
 	
@@ -539,7 +540,7 @@ public class Player : KinematicBody2D {
 	
 	private void NotifySubs() {
 		// Only notify the nearest sub
-		var nearestNPC = NearestSub();
+		var nearestNPC = speaker == null ? NearestSub() : speaker;
 		if(nearestNPC == null) return;
 		
 		if(nearestNPC.isQuestNPC) {
@@ -556,9 +557,8 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
-		var nearestNPC = NearestSub();
 		
-		if(nearestNPC.isBrewer) {
+		if(speaker.isBrewer) {
 			context._UpdatePlayerPreviousPos(Position);
 		}
 		
@@ -586,6 +586,7 @@ public class Player : KinematicBody2D {
 				EmitSignal(nameof(SlideInNotebookController));
 			}
 		}
+		speaker = null;
 	}
 	
 	private void _on_EnterEndZone_area_entered(object area) {
@@ -594,6 +595,11 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _StartDialogue() {
+		if(speaker == null) {
+			speaker = NearestSub();
+		} else {
+			return;
+		}
 		CurrentState = PlayerStates.BLOCKED;
 		
 		foreach(var sub in subs) {
