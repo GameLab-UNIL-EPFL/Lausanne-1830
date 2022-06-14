@@ -89,6 +89,8 @@ public class Player : KinematicBody2D {
 	private Notebook NB;
 	private Context context;
 	private NPC lastNearest = null;
+
+	private bool wasBlocked = false;
 	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
@@ -148,11 +150,11 @@ public class Player : KinematicBody2D {
 		if(Input.IsActionJustPressed("ui_focus_next") &&
 			context._GetQuestStateId() >= QuestController.TALK_TO_QUEST_NPC_OBJECTIVE &&
 			CurrentState != PlayerStates.BLOCKED) {
-			//Toggle state
-			if(CurrentState == PlayerStates.NOTEBOOK)
+			if(CurrentState == PlayerStates.NOTEBOOK) {
 				CurrentState = PlayerStates.IDLE;
-			else 
-				CurrentState = PlayerStates.NOTEBOOK;
+			} else {
+				CurrentState = PlayerStates.BLOCKED;
+			}
 			//Open book
 			EmitSignal(nameof(OpenNotebook));
 		}
@@ -202,10 +204,13 @@ public class Player : KinematicBody2D {
 			if(Input.IsActionJustPressed("ui_map")) {
 				NB._on_MapB_pressed();
 			}
-			//Check for tab
-			if(Input.IsActionJustPressed("ui_focus_next")) {
-				EmitSignal(nameof(OpenNotebook));
+		}
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next")) {
+			if(CurrentState == PlayerStates.BLOCKED) {
+				wasBlocked = true;
 			}
+			EmitSignal(nameof(OpenNotebook));
 		}
 		
 		if(CurrentState == PlayerStates.NOTEBOOK) {
@@ -248,8 +253,14 @@ public class Player : KinematicBody2D {
 		CurrentState = PlayerStates.NOTEBOOK;
 	}
 	
+	//Unblock the player such that they return to the correct state from before the notebook opening
 	public void UnBlockPlayer() {
-		CurrentState = PlayerStates.IDLE;
+		if(wasBlocked) {
+			CurrentState = PlayerStates.BLOCKED;
+			wasBlocked = false;
+		} else {
+			CurrentState = PlayerStates.IDLE;
+		}
 	}
 	
 	/**
