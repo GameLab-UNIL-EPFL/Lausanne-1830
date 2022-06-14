@@ -29,9 +29,9 @@ public class MapIcon : TextureButton {
 	private Context context;
 	
 	private Vector2 INTRO_POS = new Vector2(260, 120);
-	private Vector2 PALUD_POS = new Vector2(562, 349);
-	private Vector2 BRASSERIE_POS = new Vector2(264, 297);
-	private Vector2 CASINO_POS = new Vector2(152, 34);
+	private Vector2 PALUD_POS = new Vector2(208, 152);
+	private Vector2 BRASSERIE_POS = new Vector2(138, 108);
+	private Vector2 CASINO_POS = new Vector2(278, 234);
 	private Vector2 MOULIN_POS = new Vector2(184, 223);
 
 	// Called when the node enters the scene tree for the first time.

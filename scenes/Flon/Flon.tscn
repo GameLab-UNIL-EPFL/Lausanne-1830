@@ -1564,7 +1564,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 8
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1576,7 +1576,7 @@ position = Vector2( 0, -61 )
 polygon = PoolVector2Array( -161, 72, -155, 72, -155.363, 62.1535, -161.129, 61.4953 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 407, 236 )
+position = Vector2( 188, 350 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 68 )
@@ -2091,7 +2091,7 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 6 )
 
 [node name="Enfant1" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 157, 270 )
+position = Vector2( 113, 261 )
 CanWander = true
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
@@ -2106,7 +2106,7 @@ texture = ExtResource( 15 )
 parameters/playback = SubResource( 10 )
 
 [node name="Enfant2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 200, 332 )
+position = Vector2( 210, 292 )
 CanWander = true
 WanderingCooldown = 15.0
 WalkSpeed = 30
