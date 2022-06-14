@@ -87,6 +87,7 @@ public class Player : KinematicBody2D {
 	private List<NPC> subsWithAuto = new List<NPC>();
 	
 	private Notebook NB;
+	private Button CloseNB;
 	private Context context;
 	private NPC lastNearest = null;
 
@@ -188,6 +189,18 @@ public class Player : KinematicBody2D {
 			}
 		}
 	}
+
+	private void CloseOpenElements() {
+		
+	}
+	
+	private void HandleEscapeInput() {
+		if(NB._IsMapOpen()) {
+			NB._on_MapB_pressed();
+		} else if(NB._IsNotebookOpen()) {
+			NB._on_NotebookController_pressed();
+		}
+	}
 	
 	/**
 	 * @brief Checks for player input and updates its velocity accordingly
@@ -198,6 +211,11 @@ public class Player : KinematicBody2D {
 		
 		//Check for interaction
 		HandleInteractionInput(delta);
+
+		//Check for escape
+		if(Input.IsActionJustPressed("ui_cancel")) {
+			HandleEscapeInput();
+		}
 		
 		if(CurrentState != PlayerStates.BLOCKED) {
 			//Check for map
@@ -343,6 +361,7 @@ public class Player : KinematicBody2D {
 		
 		//Fetch nodes
 		NB = GetNode<Notebook>("../../Notebook");
+		CloseNB = GetNode<Button>("../../Notebook/ColorRect/CloseNotebook");
 		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
@@ -350,6 +369,8 @@ public class Player : KinematicBody2D {
 		ASP = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		T = GetNode<Timer>("Timer");
 		
+		//Connect close notebook signal
+		CloseNB.Connect("pressed", this, nameof(HandleEscapeInput));
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
