@@ -189,10 +189,6 @@ public class Player : KinematicBody2D {
 			}
 		}
 	}
-
-	private void CloseOpenElements() {
-		
-	}
 	
 	private void HandleEscapeInput() {
 		if(NB._IsMapOpen()) {
