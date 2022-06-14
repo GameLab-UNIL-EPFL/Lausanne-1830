@@ -301,7 +301,7 @@ public class Player : KinematicBody2D {
 				RunCooldown = (RunCooldown < RunTime) ? RunCooldown + (float)delta : RunTime;
 				
 				//Check for sprint
-				if(RunRequest && RunCooldown >= RunTime) {
+				if(RunRequest) {
 					CurrentState = PlayerStates.RUNNING;
 					
 					//Update animation to match state change
@@ -321,7 +321,7 @@ public class Player : KinematicBody2D {
 			case PlayerStates.RUNNING:
 				//Burn cooldown if running
 				RunCooldown -= (float)delta;
-				if(RunCooldown <= 0.0f || !RunRequest) {
+				if(!RunRequest) {
 					RunCooldown = 0.0f;
 					CurrentState = PlayerStates.WALKING;
 					
