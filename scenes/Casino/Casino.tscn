@@ -370,6 +370,7 @@ DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Fischer" index="0"]
+z_index = 1
 NPCName = " Henri Fischer "
 
 [node name="Shadow" parent="YSort/Fischer" index="1"]
