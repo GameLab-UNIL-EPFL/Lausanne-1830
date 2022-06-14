@@ -58,6 +58,7 @@ public class Player : KinematicBody2D {
 	public bool isCutscene;
 	[Export]
 	public float FootstepPitch = 1.0f;
+
 	public float CloseNotebookTimer = 4.0f;
 	
 	private int cutsceneCounter = 11;
@@ -205,7 +206,7 @@ public class Player : KinematicBody2D {
 	private void HandleInput(float delta) {
 		HandleMovementInput(delta);
 		
-		//Check for interaction
+		//Check for interaction (and handle cooldown)
 		HandleInteractionInput(delta);
 
 		//Check for escape
@@ -246,6 +247,25 @@ public class Player : KinematicBody2D {
 			}
 			if(Input.IsActionJustPressed("ui_6")) {
 				NB._on_Tab5Button_pressed();
+			}
+		}
+	}
+	
+	private void CheckState() {
+		//Become idle if player stops moving
+		if(Velocity == Vector2.Zero) {
+			//Update state and animation
+			CurrentState = PlayerStates.IDLE;
+			animationState.Travel("Idle");
+		} else {
+			if(RunRequest && RunCooldown == RunTime) {
+				CurrentState = PlayerStates.RUNNING;
+				
+				//Update animation to match state change
+				animationState.Travel("Walk");
+			} else {
+				CurrentState = PlayerStates.WALKING;
+				animationState.Travel("Walk");	
 			}
 		}
 	}
@@ -303,7 +323,7 @@ public class Player : KinematicBody2D {
 					CurrentState = PlayerStates.RUNNING;
 					
 					//Update animation to match state change
-					animationState.Travel("Run");
+					animationState.Travel("Walk");
 				} 
 				
 				if(T.TimeLeft <= 0) {
@@ -420,6 +440,13 @@ public class Player : KinematicBody2D {
 		
 		//Scale velocity and move
 		Velocity = MoveAndSlide(Velocity);
+
+		//Make sure that the player isn't blocked if he's not in a dialogue
+		if(subs.Count == 0 && itemsInRange.Count == 0) {
+			if(CurrentState != PlayerStates.NOTEBOOK) {
+				CheckState();
+			}
+		}
 	}
 	
 	public void _Subscribe(NPC npc) {
