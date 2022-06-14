@@ -53,7 +53,7 @@ public class Player : KinematicBody2D {
 	[Export]
 	public int RunSpeed = 150;
 	[Export]
-	public float RunTime = 3.0f; // Seconds
+	public float RunTime = 2.0f; // Seconds
 	[Export]
 	public bool isCutscene;
 	[Export]
@@ -252,25 +252,6 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
-	private void CheckState() {
-		//Become idle if player stops moving
-		if(Velocity == Vector2.Zero) {
-			//Update state and animation
-			CurrentState = PlayerStates.IDLE;
-			animationState.Travel("Idle");
-		} else {
-			if(RunRequest && RunCooldown == RunTime) {
-				CurrentState = PlayerStates.RUNNING;
-				
-				//Update animation to match state change
-				animationState.Travel("Walk");
-			} else {
-				CurrentState = PlayerStates.WALKING;
-				animationState.Travel("Walk");	
-			}
-		}
-	}
-	
 	private void CheckIdle() {
 		//Become idle if player stops moving
 		if(Velocity == Vector2.Zero) {
@@ -320,7 +301,7 @@ public class Player : KinematicBody2D {
 				RunCooldown = (RunCooldown < RunTime) ? RunCooldown + (float)delta : RunTime;
 				
 				//Check for sprint
-				if(RunRequest && RunCooldown == RunTime) {
+				if(RunRequest && RunCooldown >= RunTime) {
 					CurrentState = PlayerStates.RUNNING;
 					
 					//Update animation to match state change
@@ -340,7 +321,7 @@ public class Player : KinematicBody2D {
 			case PlayerStates.RUNNING:
 				//Burn cooldown if running
 				RunCooldown -= (float)delta;
-				if(RunCooldown <= 0.0f) {
+				if(RunCooldown <= 0.0f || !RunRequest) {
 					RunCooldown = 0.0f;
 					CurrentState = PlayerStates.WALKING;
 					
