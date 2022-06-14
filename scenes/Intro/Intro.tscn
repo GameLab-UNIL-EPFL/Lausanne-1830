@@ -494,7 +494,7 @@ shape = SubResource( 18 )
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 16
+frame = 31
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -640,12 +640,12 @@ volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
-margin_top = 102.0
+margin_top = 68.0
 margin_right = 198.0
-margin_bottom = 229.0
+margin_bottom = 236.0
 custom_fonts/font = SubResource( 19 )
 text = "
-ou
+
 
 
 
@@ -656,47 +656,51 @@ pour courir"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Label"]
+[node name="Arrows" type="Node2D" parent="Label"]
+
+[node name="L" type="Sprite" parent="Label/Arrows"]
 position = Vector2( 40, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 20 )
 
-[node name="Sprite2" type="Sprite" parent="Label"]
+[node name="B" type="Sprite" parent="Label/Arrows"]
 position = Vector2( 65, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 21 )
 
-[node name="Sprite3" type="Sprite" parent="Label"]
+[node name="R" type="Sprite" parent="Label/Arrows"]
 position = Vector2( 90, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 22 )
 
-[node name="Sprite4" type="Sprite" parent="Label"]
+[node name="T" type="Sprite" parent="Label/Arrows"]
 position = Vector2( 65, 51 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 23 )
 
-[node name="w" type="Sprite" parent="Label"]
-position = Vector2( 65, -17 )
+[node name="Awsd" type="Node2D" parent="Label"]
+visible = false
+
+[node name="w" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 65, 52 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 32 )
 
-[node name="a" type="Sprite" parent="Label"]
-position = Vector2( 40, 7 )
+[node name="a" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 40, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 33 )
 
-[node name="s" type="Sprite" parent="Label"]
-position = Vector2( 65, 7 )
+[node name="s" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 65, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 34 )
 
-[node name="d" type="Sprite" parent="Label"]
-position = Vector2( 90, 7 )
+[node name="d" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 90, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 35 )
 
@@ -738,6 +742,10 @@ __meta__ = {
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
@@ -745,6 +753,7 @@ scale = Vector2( 2, 2 )
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="Desk/Letter"]
 [editable path="YSort/QuestNPC"]
