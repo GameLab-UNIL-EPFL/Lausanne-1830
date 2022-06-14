@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/01_characters/03_pnjs/georgeRochat.png" type="Texture" id=9]
+[ext_resource path="res://assets/01_characters/03_pnjs/henrietteRochat.png" type="Texture" id=9]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/sleepingChild-sheet.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/francoisRochat.png" type="Texture" id=12]
@@ -670,7 +670,7 @@ DemandDialogueID = "demEnfant7"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant1" index="0"]
-NPCName = " M. Rochat "
+NPCName = " François Rochat "
 
 [node name="FullyAnimated" parent="YSort/Enfant1" index="2"]
 texture = ExtResource( 12 )
@@ -686,7 +686,7 @@ DemandDialogueID = "demEnfant8"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant2" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Henriette Rochat "
 
 [node name="FullyAnimated" parent="YSort/Enfant2" index="2"]
 texture = ExtResource( 9 )
@@ -702,7 +702,7 @@ DemandDialogueID = "demMalade"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant3" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Jean Rochat "
 
 [node name="Shadow" parent="YSort/Enfant3" index="1"]
 visible = false
@@ -742,7 +742,7 @@ AutoDialogueID = "appDomestique"
 DemandDialogueID = "demDomestique"
 
 [node name="TextBox" parent="YSort/Domestique" index="0"]
-NPCName = " M. Rohrbach "
+NPCName = " Joseph Rohrbach "
 
 [node name="FullyAnimated" parent="YSort/Domestique" index="2"]
 texture = ExtResource( 23 )

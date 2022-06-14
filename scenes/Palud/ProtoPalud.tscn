@@ -807,7 +807,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D6"]
-position = Vector2( 66, 244 )
+position = Vector2( 130, 244 )
 shape = SubResource( 47 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collisions"]
@@ -1022,7 +1022,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Truschel" index="0"]
 z_index = 1
-NPCName = " Mlle Trüschel "
+NPCName = " Frédérique Trüschel "
 
 [node name="ListenBox" parent="YSort/NPC/Truschel" index="4"]
 visible = false
@@ -1037,7 +1037,7 @@ DemandDialogueID = "testDemand"
 
 [node name="TextBox" parent="YSort/NPC/Baker" index="0"]
 z_index = 1
-NPCName = " M. Chapuis "
+NPCName = " Jaques Chapuis "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker" index="2"]
 texture = ExtResource( 32 )
@@ -1056,7 +1056,7 @@ DemandDialogueID = "demandBaker"
 
 [node name="TextBox" parent="YSort/NPC/Baker3" index="0"]
 z_index = 1
-NPCName = " M. Guignard "
+NPCName = " Jacob Guignard "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker3" index="2"]
 texture = ExtResource( 32 )
@@ -1075,7 +1075,7 @@ DemandDialogueID = "demandRandom"
 
 [node name="TextBox" parent="YSort/NPC/Baker2" index="0"]
 z_index = 1
-NPCName = " M. Burnier "
+NPCName = " Gabriel Burnier "
 
 [node name="FullyAnimated" parent="YSort/NPC/Baker2" index="2"]
 texture = ExtResource( 32 )
@@ -1089,17 +1089,14 @@ parameters/playback = SubResource( 18 )
 [node name="Elisabeth" parent="YSort/NPC" instance=ExtResource( 8 )]
 position = Vector2( 190, 296 )
 CanWander = true
-WalkSpeed = 30
+WalkSpeed = 10
 AutoDialogueID = ""
 DemandDialogueID = "demandElisabeth"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 z_index = 1
-NPCName = " Mlle De Cerjeat "
-
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 0
+NPCName = " Elisabeth De Cerjeat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -1115,7 +1112,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Random" index="0"]
 z_index = 1
-NPCName = " Mme. Chardon "
+NPCName = " Caroline Medler "
 
 [node name="FullyAnimated" parent="YSort/NPC/Random" index="2"]
 texture = ExtResource( 14 )
@@ -1124,12 +1121,13 @@ texture = ExtResource( 14 )
 parameters/playback = SubResource( 20 )
 
 [node name="OldMan" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 296, 344 )
+position = Vector2( 296, 340 )
 ProbRight = 5
 ProbLeft = 5
 ProbUp = 1
 ProbDown = 1
 CanWander = true
+WanderingCooldown = 10.0
 WalkSpeed = 25
 AutoDialogueID = ""
 DemandDialogueID = "demandOldMan"
@@ -1137,7 +1135,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/OldMan" index="0"]
 z_index = 1
-NPCName = " M. Jaccard "
+NPCName = " Daniel Jaccard "
 
 [node name="FullyAnimated" parent="YSort/NPC/OldMan" index="2"]
 texture = ExtResource( 13 )
@@ -1156,7 +1154,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Lingere" index="0"]
 z_index = 1
-NPCName = " Mme Détraz "
+NPCName = " Madeleine Détraz "
 
 [node name="Shadow" parent="YSort/NPC/Lingere" index="1"]
 visible = false
@@ -1178,7 +1176,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Lingere2" index="0"]
 z_index = 1
-NPCName = " Mme Rebillet "
+NPCName = " Antoinette Porchet "
 
 [node name="Shadow" parent="YSort/NPC/Lingere2" index="1"]
 visible = false
@@ -1272,7 +1270,7 @@ position = Vector2( -64, 37 )
 texture = ExtResource( 38 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 608, 240 )
+position = Vector2( 562, 349 )
 isCutscene = true
 
 [node name="Cuir" parent="YSort" instance=ExtResource( 16 )]
@@ -1324,13 +1322,13 @@ texture = ExtResource( 41 )
 [node name="Cuir2" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 482, 295 )
 frames = SubResource( 61 )
-frame = 24
+frame = 7
 playing = true
 
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
-frame = 23
+frame = 28
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]

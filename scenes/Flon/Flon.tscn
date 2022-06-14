@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -37,6 +37,9 @@
 
 [sub_resource type="RectangleShape2D" id=90]
 extents = Vector2( 21, 11 )
+
+[sub_resource type="RectangleShape2D" id=94]
+extents = Vector2( 46.8727, 53.854 )
 
 [sub_resource type="RectangleShape2D" id=92]
 extents = Vector2( 2.9957, 5.41327 )
@@ -1521,6 +1524,10 @@ polygon = PoolVector2Array( 128, 360, 128, 392, 416, 392, 416, 360 )
 position = Vector2( 407, 202 )
 shape = SubResource( 90 )
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCCollision"]
+position = Vector2( 169.554, 118.485 )
+shape = SubResource( 94 )
+
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
@@ -1557,7 +1564,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 1
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1569,7 +1576,7 @@ position = Vector2( 0, -61 )
 polygon = PoolVector2Array( -161, 72, -155, 72, -155.363, 62.1535, -161.129, 61.4953 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 407, 236 )
+position = Vector2( 188, 350 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 68 )
@@ -1640,7 +1647,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2062,7 +2068,7 @@ DemandDialogueID = "demandBene"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Benedict" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Benedict Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Benedict" index="2"]
 texture = ExtResource( 10 )
@@ -2076,7 +2082,7 @@ AutoDialogueID = "appFemme"
 DemandDialogueID = "demandFemme"
 
 [node name="TextBox" parent="YSort/NPC/Epouse" index="0"]
-NPCName = " Mme Rochat "
+NPCName = " Jeanne Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Epouse" index="2"]
 texture = ExtResource( 11 )
@@ -2085,13 +2091,13 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 6 )
 
 [node name="Enfant1" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 157, 270 )
+position = Vector2( 113, 261 )
 CanWander = true
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Enfant1" index="0"]
-NPCName = " Mlle Rochat "
+NPCName = " Susanne Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Enfant1" index="2"]
 texture = ExtResource( 15 )
@@ -2100,7 +2106,7 @@ texture = ExtResource( 15 )
 parameters/playback = SubResource( 10 )
 
 [node name="Enfant2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 200, 332 )
+position = Vector2( 210, 292 )
 CanWander = true
 WanderingCooldown = 15.0
 WalkSpeed = 30
@@ -2108,7 +2114,7 @@ DemandDialogueID = "demEnfant2"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Enfant2" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Samuel Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Enfant2" index="2"]
 texture = ExtResource( 20 )
@@ -2134,7 +2140,7 @@ DemandDialogueID = "demEnfant3"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Enfant3" index="0"]
-NPCName = " Mlle Rochat "
+NPCName = " Louise Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Enfant3" index="2"]
 texture = ExtResource( 16 )
@@ -2160,7 +2166,7 @@ DemandDialogueID = "demEnfant4"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Enfant4" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Daniel Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Enfant4" index="2"]
 texture = ExtResource( 18 )
@@ -2189,7 +2195,7 @@ AutoDialogueID = "appEnfant5"
 DemandDialogueID = "demEnfant5"
 
 [node name="TextBox" parent="YSort/NPC/Enfant5" index="0"]
-NPCName = " Mlle Rochat "
+NPCName = " Marie Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Enfant5" index="2"]
 texture = ExtResource( 17 )
@@ -2215,7 +2221,7 @@ DemandDialogueID = "demEnfant6"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Enfant6" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Georges Rochat "
 
 [node name="FullyAnimated" parent="YSort/NPC/Enfant6" index="2"]
 texture = ExtResource( 19 )

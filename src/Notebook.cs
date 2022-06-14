@@ -473,7 +473,7 @@ public class Notebook : Node2D {
 	}
 	
 	private void PressTabButton(int buttonid) {
-		if(hidden || mapOpen || NBL.Visible) return;
+		if(hidden || mapOpen || NBL.Visible || AP.IsPlaying()) return;
 		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
 		Debug.Assert(0 <= curTabId && curTabId < Context.N_TABS);
 		
@@ -560,7 +560,7 @@ public class Notebook : Node2D {
 	}
 	
 	private void _Change_Portrait(int num) {
-		if(!NBL.Visible) {
+		if(!NBL.Visible && !AP.IsPlaying()) {
 			for(int i = 0; i < Context.N_TABS; ++i) {
 				var P = GetNode<Sprite>("Portrait" + i);
 				P.Hide();
