@@ -58,6 +58,7 @@ public class Player : KinematicBody2D {
 	public bool isCutscene;
 	[Export]
 	public float FootstepPitch = 1.0f;
+
 	public float CloseNotebookTimer = 4.0f;
 	
 	private int cutsceneCounter = 11;
@@ -87,8 +88,12 @@ public class Player : KinematicBody2D {
 	private List<NPC> subsWithAuto = new List<NPC>();
 	
 	private Notebook NB;
+	private Button CloseNB;
 	private Context context;
 	private NPC lastNearest = null;
+	private NPC speaker = null;
+
+	private bool wasBlocked = false;
 	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
@@ -148,11 +153,11 @@ public class Player : KinematicBody2D {
 		if(Input.IsActionJustPressed("ui_focus_next") &&
 			context._GetQuestStateId() >= QuestController.TALK_TO_QUEST_NPC_OBJECTIVE &&
 			CurrentState != PlayerStates.BLOCKED) {
-			//Toggle state
-			if(CurrentState == PlayerStates.NOTEBOOK)
+			if(CurrentState == PlayerStates.NOTEBOOK) {
 				CurrentState = PlayerStates.IDLE;
-			else 
-				CurrentState = PlayerStates.NOTEBOOK;
+			} else {
+				CurrentState = PlayerStates.BLOCKED;
+			}
 			//Open book
 			EmitSignal(nameof(OpenNotebook));
 		}
@@ -187,6 +192,14 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	private void HandleEscapeInput() {
+		if(NB._IsMapOpen()) {
+			NB._on_MapB_pressed();
+		} else if(NB._IsNotebookOpen()) {
+			NB._on_NotebookController_pressed();
+		}
+	}
+	
 	/**
 	 * @brief Checks for player input and updates its velocity accordingly
 	 * @param delta, the time elapsed since the last update
@@ -194,18 +207,26 @@ public class Player : KinematicBody2D {
 	private void HandleInput(float delta) {
 		HandleMovementInput(delta);
 		
-		//Check for interaction
+		//Check for interaction (and handle cooldown)
 		HandleInteractionInput(delta);
+
+		//Check for escape
+		if(Input.IsActionJustPressed("ui_cancel")) {
+			HandleEscapeInput();
+		}
 		
 		if(CurrentState != PlayerStates.BLOCKED) {
 			//Check for map
 			if(Input.IsActionJustPressed("ui_map")) {
 				NB._on_MapB_pressed();
 			}
-			//Check for tab
-			if(Input.IsActionJustPressed("ui_focus_next")) {
-				EmitSignal(nameof(OpenNotebook));
+		}
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next")) {
+			if(CurrentState == PlayerStates.BLOCKED) {
+				wasBlocked = true;
 			}
+			EmitSignal(nameof(OpenNotebook));
 		}
 		
 		if(CurrentState == PlayerStates.NOTEBOOK) {
@@ -231,6 +252,25 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	private void CheckState() {
+		//Become idle if player stops moving
+		if(Velocity == Vector2.Zero) {
+			//Update state and animation
+			CurrentState = PlayerStates.IDLE;
+			animationState.Travel("Idle");
+		} else {
+			if(RunRequest && RunCooldown == RunTime) {
+				CurrentState = PlayerStates.RUNNING;
+				
+				//Update animation to match state change
+				animationState.Travel("Walk");
+			} else {
+				CurrentState = PlayerStates.WALKING;
+				animationState.Travel("Walk");	
+			}
+		}
+	}
+	
 	private void CheckIdle() {
 		//Become idle if player stops moving
 		if(Velocity == Vector2.Zero) {
@@ -248,8 +288,14 @@ public class Player : KinematicBody2D {
 		CurrentState = PlayerStates.NOTEBOOK;
 	}
 	
+	//Unblock the player such that they return to the correct state from before the notebook opening
 	public void UnBlockPlayer() {
-		CurrentState = PlayerStates.IDLE;
+		if(wasBlocked) {
+			CurrentState = PlayerStates.BLOCKED;
+			wasBlocked = false;
+		} else {
+			CurrentState = PlayerStates.IDLE;
+		}
 	}
 	
 	/**
@@ -278,7 +324,7 @@ public class Player : KinematicBody2D {
 					CurrentState = PlayerStates.RUNNING;
 					
 					//Update animation to match state change
-					animationState.Travel("Run");
+					animationState.Travel("Walk");
 				} 
 				
 				if(T.TimeLeft <= 0) {
@@ -332,6 +378,7 @@ public class Player : KinematicBody2D {
 		
 		//Fetch nodes
 		NB = GetNode<Notebook>("../../Notebook");
+		CloseNB = GetNode<Button>("../../Notebook/ColorRect/CloseNotebook");
 		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
@@ -339,6 +386,8 @@ public class Player : KinematicBody2D {
 		ASP = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		T = GetNode<Timer>("Timer");
 		
+		//Connect close notebook signal
+		CloseNB.Connect("pressed", this, nameof(HandleEscapeInput));
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
@@ -392,6 +441,13 @@ public class Player : KinematicBody2D {
 		
 		//Scale velocity and move
 		Velocity = MoveAndSlide(Velocity);
+
+		//Make sure that the player isn't blocked if he's not in a dialogue
+		if(subs.Count == 0 && itemsInRange.Count == 0) {
+			if(CurrentState != PlayerStates.NOTEBOOK) {
+				CheckState();
+			}
+		}
 	}
 	
 	public void _Subscribe(NPC npc) {
@@ -484,7 +540,7 @@ public class Player : KinematicBody2D {
 	
 	private void NotifySubs() {
 		// Only notify the nearest sub
-		var nearestNPC = NearestSub();
+		var nearestNPC = speaker == null ? NearestSub() : speaker;
 		if(nearestNPC == null) return;
 		
 		if(nearestNPC.isQuestNPC) {
@@ -501,9 +557,8 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
-		var nearestNPC = NearestSub();
 		
-		if(nearestNPC.isBrewer) {
+		if(speaker.isBrewer) {
 			context._UpdatePlayerPreviousPos(Position);
 		}
 		
@@ -531,6 +586,7 @@ public class Player : KinematicBody2D {
 				EmitSignal(nameof(SlideInNotebookController));
 			}
 		}
+		speaker = null;
 	}
 	
 	private void _on_EnterEndZone_area_entered(object area) {
@@ -539,6 +595,11 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _StartDialogue() {
+		if(speaker == null) {
+			speaker = NearestSub();
+		} else {
+			return;
+		}
 		CurrentState = PlayerStates.BLOCKED;
 		
 		foreach(var sub in subs) {

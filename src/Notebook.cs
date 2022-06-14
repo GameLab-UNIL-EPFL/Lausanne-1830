@@ -65,6 +65,14 @@ public class Notebook : Node2D {
 	
 	private int curTabId = 0;
 	
+	public bool _IsMapOpen() {
+		return mapOpen;
+	}
+	
+	public bool _IsNotebookOpen() {
+		return !hidden && !mapOpen;
+	}
+	
 	public bool _TutoPageIsComplete() {
 		foreach(Label info in infoStatic) {
 			if(info.Text.Equals("Elisabeth")) {
