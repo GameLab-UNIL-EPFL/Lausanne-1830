@@ -868,7 +868,7 @@ shape = SubResource( 44 )
 [node name="PlayerEnterArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
-position = Vector2( 560, 268.067 )
+position = Vector2( 560, 316.067 )
 shape = SubResource( 80 )
 
 [node name="YSort" type="YSort" parent="."]
@@ -1335,6 +1335,7 @@ playing = true
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
+frame = 1
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]

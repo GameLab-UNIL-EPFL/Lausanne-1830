@@ -386,7 +386,7 @@ public class Player : KinematicBody2D {
 		}
 		
 		var EnterPos = context._GetPlayerPosition();
-		if(EnterPos != Vector2.Zero) {
+		if(EnterPos != Vector2.Zero && context._GetGameState() != GameStates.INIT) {
 			Position = EnterPos;
 		}
 
@@ -623,7 +623,7 @@ public class Player : KinematicBody2D {
 	}
 	
 	private void _on_Intro_Exit_area_entered(Area2D area) {
-		if(area.Owner is Player) {
+		if(area.Owner is Player && !isEnterAnim) {
 			NB._on_MapB_pressed();
 		}
 	}
@@ -670,8 +670,4 @@ public class Player : KinematicBody2D {
 
 	}
 }
-
-
-
-
 

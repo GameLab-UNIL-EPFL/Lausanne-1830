@@ -51,14 +51,16 @@ public class Context : Node {
 	private bool BrewGameCutscene = false;
 	private Vector2 BrewerPreviousPos = Vector2.Zero;
 	private Vector2 PlayerPreviousPos = Vector2.Zero;
+	private bool wasInMoulin = false;
 	
 	//Player scene positions
-	private Vector2 IntroEnterPosition = new Vector2(395, 230);
+	private Vector2 IntroEnterPosition = new Vector2(397, 310);
 	private Vector2 PaludEnterPosition = new Vector2(562, 450);
 	private Vector2 MoulinEnterPosition = new Vector2(469, 319);
-	private Vector2 FlonEnterPosition = new Vector2(404, 210);
-	private Vector2 BrasserieEnterPosition = new Vector2(264, 297);
-	private Vector2 CasinoEnterPosition = new Vector2(356, 312);
+	private Vector2 MoulinExitPosition = new Vector2(407, 230);
+	private Vector2 FlonEnterPosition = new Vector2(188, 446);
+	private Vector2 BrasserieEnterPosition = new Vector2(264, 393);
+	private Vector2 CasinoEnterPosition = new Vector2(358, 432);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
@@ -114,25 +116,31 @@ public class Context : Node {
 		switch(id) {
 			case "Intro/Intro":
 				CurrentLocation = Locations.INTRO;
+				wasInMoulin = false;
 				_SwitchScenes();
 				break;
 			case "Palud/ProtoPalud":
 				CurrentLocation = Locations.PALUD;
+				wasInMoulin = false;
 				_SwitchScenes();
 				break;
 			case "Casino/Casino":
 				CurrentLocation = Locations.CASINO;
+				wasInMoulin = false;
 				_SwitchScenes();
 				break;
 			case "Brasserie/Brasserie":
 				CurrentLocation = Locations.BRASSERIE;
+				wasInMoulin = false;
 				_SwitchScenes();
 				break;
 			case "Flon/Moulin":
 				CurrentLocation = Locations.MOULIN;
+				wasInMoulin = false;
 				_SwitchScenes();
 				break;
 			case "Flon/Flon":
+				wasInMoulin = CurrentLocation == Locations.MOULIN;
 				CurrentLocation = Locations.FLON;
 				_SwitchScenes();
 				break;
@@ -161,7 +169,7 @@ public class Context : Node {
 				case Locations.MOULIN:
 					return MoulinEnterPosition;
 				case Locations.FLON:
-					return FlonEnterPosition;
+					return wasInMoulin ? MoulinExitPosition : FlonEnterPosition;
 				case Locations.BRASSERIE:
 					if(BrewerPreviousPos != Vector2.Zero) 
 						return BrewerPreviousPos;
