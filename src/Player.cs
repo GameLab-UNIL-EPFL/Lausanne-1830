@@ -53,8 +53,6 @@ public class Player : KinematicBody2D {
 	[Export]
 	public int RunSpeed = 150;
 	[Export]
-	public float RunTime = 2.0f; // Seconds
-	[Export]
 	public bool isCutscene;
 	[Export]
 	public float FootstepPitch = 1.0f;
@@ -71,7 +69,6 @@ public class Player : KinematicBody2D {
 	
 	private int Speed = 0;
 	private bool RunRequest = false;
-	private float RunCooldown = 0.0f;
 	
 	public Vector2 Velocity = Vector2.Zero;
 	private Vector2 InputVec = Vector2.Zero;
@@ -286,8 +283,6 @@ public class Player : KinematicBody2D {
 	private void HandleState(float delta) {
 		switch(CurrentState) {
 			case PlayerStates.IDLE:
-				//Rest run cooldown faster
-				RunCooldown = (RunCooldown < RunTime) ? RunCooldown + (2.0f * (float)delta) : RunTime;
 				
 				//Check for state change
 				if(Velocity != Vector2.Zero) {
@@ -297,8 +292,6 @@ public class Player : KinematicBody2D {
 				break;
 				
 			case PlayerStates.WALKING:
-				//Rest run cooldown
-				RunCooldown = (RunCooldown < RunTime) ? RunCooldown + (float)delta : RunTime;
 				
 				//Check for sprint
 				if(RunRequest) {
@@ -319,10 +312,7 @@ public class Player : KinematicBody2D {
 				break;
 				
 			case PlayerStates.RUNNING:
-				//Burn cooldown if running
-				RunCooldown -= (float)delta;
 				if(!RunRequest) {
-					RunCooldown = 0.0f;
 					CurrentState = PlayerStates.WALKING;
 					
 					//Update animation to match state change
@@ -354,7 +344,6 @@ public class Player : KinematicBody2D {
 	public override void _Ready() {
 		//Initialize variables
 		Speed = WalkSpeed;
-		RunCooldown = RunTime;
 		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
