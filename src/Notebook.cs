@@ -474,7 +474,7 @@ public class Notebook : Node2D {
 	private void _on_OpenMapZone_area_entered(Area2D tb) {
 		if(tb.Owner is Player) {
 			Player p = (Player)(tb.Owner);
-			if(!p.isCutscene) {
+			if(!p.isCutscene && !p.isEnterAnim) {
 				_on_MapB_pressed();
 			}
 		}
