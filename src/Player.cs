@@ -46,7 +46,6 @@ public class Player : KinematicBody2D {
 	private PlayerStates PrevState = PlayerStates.IDLE;
 	
 	// Cutscene state
-	
 	private bool isCutsceneConv = false;
 	
 	[Export]
@@ -54,11 +53,10 @@ public class Player : KinematicBody2D {
 	[Export]
 	public int RunSpeed = 150;
 	[Export]
-	public float RunTime = 3.0f; // Seconds
-	[Export]
 	public bool isCutscene;
 	[Export]
 	public float FootstepPitch = 1.0f;
+
 	public float CloseNotebookTimer = 4.0f;
 	
 	private int cutsceneCounter = 11;
@@ -71,7 +69,6 @@ public class Player : KinematicBody2D {
 	
 	private int Speed = 0;
 	private bool RunRequest = false;
-	private float RunCooldown = 0.0f;
 	
 	public Vector2 Velocity = Vector2.Zero;
 	private Vector2 InputVec = Vector2.Zero;
@@ -88,8 +85,12 @@ public class Player : KinematicBody2D {
 	private List<NPC> subsWithAuto = new List<NPC>();
 	
 	private Notebook NB;
+	private Button CloseNB;
 	private Context context;
 	private NPC lastNearest = null;
+	private NPC speaker = null;
+
+	private bool wasBlocked = false;
 	
 	// Returns whether or not the quest giver is in the sub list
 	private bool QuestGiverIsSubbed() {
@@ -117,40 +118,45 @@ public class Player : KinematicBody2D {
 	}
 	
 	// Walk up to the quest giver and interact
-	private void HandleCutscene(float delta) {
+	private void HandleTutorial(float delta) {
+
 		if(CurrentState != PlayerStates.NOTEBOOK) {
-			if(isCutsceneConv) {
-				if(Input.IsActionJustPressed("ui_interact")) {
-					if(--cutsceneCounter == 0) {
-						EmitSignal(nameof(OpenNotebook));
-					} else {
-						NearestSub()._Notify(this);
-					}
+			if(Input.IsActionJustPressed("ui_interact")) {
+				//Only allow interaction with questNPC if in initial stage
+				NPC nearestNPC = NearestSub();
+				var item = NearestItem();
+
+				if(nearestNPC != null) {
+					//Halt the player's movement BEFORE the interaction
+					InputVec = Vector2.Zero;
+					//Check which element is nearest to the player
+					if(item == null || isNearer(nearestNPC, item)) {
+						NotifySubs();
+					} else if(!isNearer(nearestNPC, item)) {
+						NotifyItems();
+					}	
+					
+				//Interact with item if nearer to it 
+				} else if(item != null) {
+					NotifyItems();
 				}
-			} else {
-				HandleMovementInput(delta);
 				
-				//Check for QuestNPC interaction specifically
-				if(Input.IsActionJustPressed("ui_interact")) {
-					if(subs.Count != 0 && QuestGiverIsSubbed()) {
-						InputVec = Vector2.Zero;
-						var nearestNPC = NearestSub();
-						if(nearestNPC.isQuestNPC) {
-							nearestNPC._Notify(this);
-						}
-					}
-				}
 			}
-		} else {
-			//Check if the answer was filled in
-			if(NB._TutoPageIsComplete()) {
-				CloseNotebookTimer -= delta;
+			if(CurrentState != PlayerStates.BLOCKED) {
+				HandleMovementInput(delta);
 			}
-			if(CloseNotebookTimer <= 0.0) {
-				InputVec = Vector2.Zero;
-				EmitSignal(nameof(OpenNotebook));
-				NearestSub()._Notify(this);
+		} 
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next") &&
+			context._GetQuestStateId() >= QuestController.TALK_TO_QUEST_NPC_OBJECTIVE &&
+			CurrentState != PlayerStates.BLOCKED) {
+			if(CurrentState == PlayerStates.NOTEBOOK) {
+				CurrentState = PlayerStates.IDLE;
+			} else {
+				CurrentState = PlayerStates.BLOCKED;
 			}
+			//Open book
+			EmitSignal(nameof(OpenNotebook));
 		}
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
@@ -183,6 +189,14 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	private void HandleEscapeInput() {
+		if(NB._IsMapOpen()) {
+			NB._on_MapB_pressed();
+		} else if(NB._IsNotebookOpen()) {
+			NB._on_NotebookController_pressed();
+		}
+	}
+	
 	/**
 	 * @brief Checks for player input and updates its velocity accordingly
 	 * @param delta, the time elapsed since the last update
@@ -190,18 +204,26 @@ public class Player : KinematicBody2D {
 	private void HandleInput(float delta) {
 		HandleMovementInput(delta);
 		
-		//Check for interaction
+		//Check for interaction (and handle cooldown)
 		HandleInteractionInput(delta);
+
+		//Check for escape
+		if(Input.IsActionJustPressed("ui_cancel")) {
+			HandleEscapeInput();
+		}
 		
 		if(CurrentState != PlayerStates.BLOCKED) {
 			//Check for map
 			if(Input.IsActionJustPressed("ui_map")) {
 				NB._on_MapB_pressed();
 			}
-			//Check for tab
-			if(Input.IsActionJustPressed("ui_focus_next")) {
-				EmitSignal(nameof(OpenNotebook));
+		}
+		//Check for tab
+		if(Input.IsActionJustPressed("ui_focus_next")) {
+			if(CurrentState == PlayerStates.BLOCKED) {
+				wasBlocked = true;
 			}
+			EmitSignal(nameof(OpenNotebook));
 		}
 		
 		if(CurrentState == PlayerStates.NOTEBOOK) {
@@ -237,15 +259,21 @@ public class Player : KinematicBody2D {
 	}
 	
 	public bool _CanInteract() {
-		return subs.Count == 0;
+		return subs.Count == 0 || context._GetQuest() == Quests.TUTORIAL;
 	}
 	
 	public void BlockPlayer() {
 		CurrentState = PlayerStates.NOTEBOOK;
 	}
 	
+	//Unblock the player such that they return to the correct state from before the notebook opening
 	public void UnBlockPlayer() {
-		CurrentState = PlayerStates.IDLE;
+		if(wasBlocked) {
+			CurrentState = PlayerStates.BLOCKED;
+			wasBlocked = false;
+		} else {
+			CurrentState = PlayerStates.IDLE;
+		}
 	}
 	
 	/**
@@ -255,8 +283,6 @@ public class Player : KinematicBody2D {
 	private void HandleState(float delta) {
 		switch(CurrentState) {
 			case PlayerStates.IDLE:
-				//Rest run cooldown faster
-				RunCooldown = (RunCooldown < RunTime) ? RunCooldown + (2.0f * (float)delta) : RunTime;
 				
 				//Check for state change
 				if(Velocity != Vector2.Zero) {
@@ -266,15 +292,13 @@ public class Player : KinematicBody2D {
 				break;
 				
 			case PlayerStates.WALKING:
-				//Rest run cooldown
-				RunCooldown = (RunCooldown < RunTime) ? RunCooldown + (float)delta : RunTime;
 				
 				//Check for sprint
-				if(RunRequest && RunCooldown == RunTime) {
+				if(RunRequest) {
 					CurrentState = PlayerStates.RUNNING;
 					
 					//Update animation to match state change
-					animationState.Travel("Run");
+					animationState.Travel("Walk");
 				} 
 				
 				if(T.TimeLeft <= 0) {
@@ -288,10 +312,7 @@ public class Player : KinematicBody2D {
 				break;
 				
 			case PlayerStates.RUNNING:
-				//Burn cooldown if running
-				RunCooldown -= (float)delta;
-				if(RunCooldown <= 0.0f) {
-					RunCooldown = 0.0f;
+				if(!RunRequest) {
 					CurrentState = PlayerStates.WALKING;
 					
 					//Update animation to match state change
@@ -323,11 +344,11 @@ public class Player : KinematicBody2D {
 	public override void _Ready() {
 		//Initialize variables
 		Speed = WalkSpeed;
-		RunCooldown = RunTime;
 		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
 		NB = GetNode<Notebook>("../../Notebook");
+		CloseNB = GetNode<Button>("../../Notebook/ColorRect/CloseNotebook");
 		context = GetNode<Context>("/root/Context");
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
@@ -335,6 +356,8 @@ public class Player : KinematicBody2D {
 		ASP = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		T = GetNode<Timer>("Timer");
 		
+		//Connect close notebook signal
+		CloseNB.Connect("pressed", this, nameof(HandleEscapeInput));
 		
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
@@ -371,7 +394,7 @@ public class Player : KinematicBody2D {
 	// Called on every physics engine tick
 	public override void _Process(float delta) {
 		if(isCutscene) {
-			HandleCutscene(delta);
+			HandleTutorial(delta);
 		} else {
 			//Handle input
 			HandleInput(delta);
@@ -388,6 +411,13 @@ public class Player : KinematicBody2D {
 		
 		//Scale velocity and move
 		Velocity = MoveAndSlide(Velocity);
+
+		//Make sure that the player isn't blocked if he's not in a dialogue
+		if(subs.Count == 0 && itemsInRange.Count == 0) {
+			if(CurrentState != PlayerStates.NOTEBOOK) {
+				CheckIdle();
+			}
+		}
 	}
 	
 	public void _Subscribe(NPC npc) {
@@ -419,7 +449,7 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _AddItemInRange(Item i) {
-		if(subs.Count == 0) {
+		if(subs.Count == 0 || context._GetQuest() == Quests.TUTORIAL) {
 			itemsInRange.Add(i);
 		}
 	}
@@ -444,6 +474,12 @@ public class Player : KinematicBody2D {
 			}
 		}
 		return nearest;
+	}
+
+	private bool isNearer(NPC a, Item b) {
+		float distToa = Position.DistanceTo(a.Position);;
+		float distTob = Position.DistanceTo(b.Position);
+		return (distToa < distTob);
 	}
 	
 	// Finds the nearest sub to the player
@@ -474,11 +510,16 @@ public class Player : KinematicBody2D {
 	
 	private void NotifySubs() {
 		// Only notify the nearest sub
-		var nearestNPC = NearestSub();
+		var nearestNPC = speaker == null ? NearestSub() : speaker;
 		if(nearestNPC == null) return;
 		
 		if(nearestNPC.isQuestNPC) {
-			EmitSignal(nameof(SendInfoToQuestNPC), nearestNPC);
+			//Check for tutorial
+			if(context._GetQuest() == Quests.TUTORIAL) {
+				nearestNPC._NotifyQuest(this);
+			} else {
+				EmitSignal(nameof(SendInfoToQuestNPC), nearestNPC);
+			}
 		} else {
 			nearestNPC._Notify(this);
 		}
@@ -486,37 +527,36 @@ public class Player : KinematicBody2D {
 	
 	public void _EndDialogue() {
 		CurrentState = PlayerStates.IDLE;
-		var nearestNPC = NearestSub();
 		
-		if(nearestNPC.isBrewer) {
+		if(speaker.isBrewer) {
 			context._UpdatePlayerPreviousPos(Position);
-		}
-		
-		if(context._IsGameComplete() && context._GetLocation() == Locations.PALUD) {
-			var dooropen = GetNode<ColorRect>("../../Collisions/HotelDeVilleDoor/OpenEndDoor");
-			var doorcolision = GetNode<CollisionShape2D>("../../Collisions/HotelDeVilleDoor/EndDoor");
-			
-			//Show opened door and remove collisions
-			dooropen.Show();
-			doorcolision.Disabled = true;
 		}
 		
 		// If the cutscene is still going, end it
 		if(isCutscene) {
-			isCutscene = false;
-			EmitSignal(nameof(CutsceneEnd));
-			EmitSignal(nameof(SlideInNotebookController));
-			context._StartGame();
-			
-			//Find and open the door
-			StaticBody2D Door = GetNode<StaticBody2D>("../../Door");
-			CollisionShape2D DoorCol = GetNode<CollisionShape2D>("../../Door/DoorCol");
-			Door.Hide();
-			DoorCol.Disabled = true;
-			
-			//Force one more interaction with the NPC
-			NotifySubs();
+			if(context._GetQuestStateId() == QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) {
+				EmitSignal(nameof(SlideInNotebookController));
+			}
+
+			if(context._GetQuestStatus() == QuestStatus.COMPLETE) {
+				isCutscene = false;
+				EmitSignal(nameof(CutsceneEnd));
+				context._StartGame();
+				
+				//Find and open the door
+				StaticBody2D Door = GetNode<StaticBody2D>("../../Door");
+				CollisionShape2D DoorCol = GetNode<CollisionShape2D>("../../Door/DoorCol");
+				Door.Hide();
+				DoorCol.Disabled = true;
+				
+				//Force one more interaction with the NPC
+				NotifySubs();
+
+				//Slide in the Map
+				EmitSignal(nameof(SlideInNotebookController));
+			}
 		}
+		speaker = null;
 	}
 	
 	private void _on_EnterEndZone_area_entered(object area) {
@@ -525,6 +565,11 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _StartDialogue() {
+		if(speaker == null) {
+			speaker = NearestSub();
+		} else {
+			return;
+		}
 		CurrentState = PlayerStates.BLOCKED;
 		
 		foreach(var sub in subs) {

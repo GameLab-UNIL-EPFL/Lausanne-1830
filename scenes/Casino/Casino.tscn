@@ -237,7 +237,7 @@ shape = SubResource( 19 )
 [node name="Bushes" type="StaticBody2D" parent="Coillision"]
 
 [node name="Bushes" type="CollisionPolygon2D" parent="Coillision/Bushes"]
-polygon = PoolVector2Array( 40, 0, 37.9906, 14.9404, 36.4032, 28.0365, 39.578, 49.8633, 31.641, 64.1499, 36.4032, 84.7861, 37.1969, 104.629, 20.926, 126.455, 35.2126, 140.345, 43.9433, 155.822, 38.7843, 172.554, 33.2284, 181.682, 37.9906, 188.428, 40.7685, 195.969, 37.5937, 203.112, 28.863, 211.843, 22.9103, 217.795, 25.6882, 224.939, 32.8315, 232.479, 38.7843, 237.241, 41.1654, 251.925, 50.6898, 267.005, 57.8331, 267.402, 73.7071, 284.069, 83.2315, 298.753, 87.9937, 313.039, 109.027, 322.167, 122.123, 336.156, 132.441, 342.505, 146.331, 337.743, 159.03, 342.505, 176.491, 347.664, 195.54, 347.664, 202.287, 346.077, 224.51, 342.108, 238.4, 344.093, 250.305, 347.267, 267.37, 342.108, 288.403, 336.949, 302.293, 339.33, 316.976, 342.505, 348.35, 335.759, 379.701, 337.346, 412.243, 347.267, 427.72, 350.442, 443.991, 342.902, 461.849, 342.902, 472.564, 344.886, 485.66, 340.918, 497.963, 333.775, 511.456, 333.378, 519.79, 337.743, 527.33, 332.584, 538.045, 327.822, 544.394, 331.79, 553.522, 335.362, 556.3, 335.759, 571.777, 334.171, 578.127, 336.949, 584.476, 340.521, 590.032, 345.283, 590.032, 418.304, -42.1079, 419.322, -41.4008, -2.07417 )
+polygon = PoolVector2Array( 40, 0, 37.9906, 14.9404, 36.4032, 28.0365, 39.578, 49.8633, 31.641, 64.1499, 36.4032, 84.7861, 37.1969, 104.629, 20.926, 126.455, 35.2126, 140.345, 43.9433, 155.822, 38.7843, 172.554, 33.2284, 181.682, 37.9906, 188.428, 40.7685, 195.969, 37.5937, 203.112, 28.863, 211.843, 22.9103, 217.795, 25.6882, 224.939, 32.8315, 232.479, 38.7843, 237.241, 41.1654, 251.925, 50.6898, 267.005, 57.8331, 267.402, 73.7071, 284.069, 83.2315, 298.753, 87.9937, 313.039, 109.027, 322.167, 122.123, 336.156, 132.441, 342.505, 146.331, 337.743, 159.03, 342.505, 176.491, 347.664, 195.54, 347.664, 202.287, 346.077, 224.51, 342.108, 238.4, 344.093, 250.305, 347.267, 267.37, 342.108, 288.403, 336.949, 302.293, 339.33, 318.819, 335.427, 336.478, 344.677, 342.784, 353.927, 342.784, 373.267, 368.432, 374.529, 372.636, 353.927, 383.568, 341.734, 403.749, 340.893, 412.243, 347.267, 427.72, 350.442, 443.991, 342.902, 461.849, 342.902, 472.564, 344.886, 485.66, 340.918, 497.963, 333.775, 511.456, 333.378, 519.79, 337.743, 527.33, 332.584, 538.045, 327.822, 544.394, 331.79, 553.522, 335.362, 556.3, 335.759, 571.777, 334.171, 578.127, 336.949, 584.476, 340.521, 590.032, 345.283, 590.032, 418.304, -42.1079, 419.322, -41.4008, -2.07417 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -256,7 +256,7 @@ position = Vector2( 0, -32 )
 polygon = PoolVector2Array( -112, -99.6, -111.309, 88.0815, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 125.609, 88.6079, 112, -91.6 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 320, 288 )
+position = Vector2( 358, 312 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 20 )
@@ -278,7 +278,7 @@ DemandDialogueID = "demandPerregaux"
 
 [node name="TextBox" parent="YSort/Perregaux" index="0"]
 z_index = 1
-NPCName = " M. Perregaux "
+NPCName = " Henri Perregaux "
 
 [node name="FullyAnimated" parent="YSort/Perregaux" index="2"]
 texture = ExtResource( 11 )
@@ -296,7 +296,7 @@ HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Bourgeois" index="0"]
 z_index = 1
-NPCName = " M. Bourgeois "
+NPCName = " Louis Bourgeois "
 
 [node name="FullyAnimated" parent="YSort/Bourgeois" index="2"]
 texture = ExtResource( 12 )
@@ -318,7 +318,7 @@ DemandDialogueID = "demandPichard"
 
 [node name="TextBox" parent="YSort/Pichard" index="0"]
 z_index = 1
-NPCName = " M. Pichard "
+NPCName = " Adrien Pichard "
 
 [node name="FullyAnimated" parent="YSort/Pichard" index="2"]
 texture = ExtResource( 13 )
@@ -326,35 +326,35 @@ texture = ExtResource( 13 )
 [node name="AnimationTree" parent="YSort/Pichard" index="6"]
 parameters/playback = SubResource( 9 )
 
-[node name="Baumann" parent="YSort" instance=ExtResource( 8 )]
+[node name="Berthaud" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 126.968, 154 )
 InitDir = 2
 DemandDialogueID = "demandBaumann"
 HasAutoDialogue = false
 
-[node name="TextBox" parent="YSort/Baumann" index="0"]
+[node name="TextBox" parent="YSort/Berthaud" index="0"]
 z_index = 1
-NPCName = " Mme Baumann "
+NPCName = " Jeannette Berthaud "
 
-[node name="FullyAnimated" parent="YSort/Baumann" index="2"]
+[node name="FullyAnimated" parent="YSort/Berthaud" index="2"]
 texture = ExtResource( 20 )
 
-[node name="AnimationTree" parent="YSort/Baumann" index="6"]
+[node name="AnimationTree" parent="YSort/Berthaud" index="6"]
 parameters/playback = SubResource( 12 )
 
-[node name="Pouly" parent="YSort" instance=ExtResource( 8 )]
+[node name="Caroline" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 126.968, 130 )
 DemandDialogueID = "demandPouly"
 HasAutoDialogue = false
 
-[node name="TextBox" parent="YSort/Pouly" index="0"]
+[node name="TextBox" parent="YSort/Caroline" index="0"]
 z_index = 1
-NPCName = " Mme Pouly "
+NPCName = " Caroline Bégoz "
 
-[node name="FullyAnimated" parent="YSort/Pouly" index="2"]
+[node name="FullyAnimated" parent="YSort/Caroline" index="2"]
 texture = ExtResource( 21 )
 
-[node name="AnimationTree" parent="YSort/Pouly" index="6"]
+[node name="AnimationTree" parent="YSort/Caroline" index="6"]
 parameters/playback = SubResource( 13 )
 
 [node name="Briefcase" parent="YSort" instance=ExtResource( 16 )]
@@ -370,7 +370,8 @@ DemandDialogueID = "demandFischer"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Fischer" index="0"]
-NPCName = " M. Fischer "
+z_index = 1
+NPCName = " Henri Fischer "
 
 [node name="Shadow" parent="YSort/Fischer" index="1"]
 position = Vector2( 4, 6 )
@@ -769,7 +770,7 @@ rotation = 1.5708
 shape = SubResource( 24 )
 
 [node name="Bush39" type="StaticBody2D" parent="YSort/Bushes"]
-position = Vector2( 336, 357 )
+position = Vector2( 328, 353 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -783,7 +784,7 @@ rotation = 1.5708
 shape = SubResource( 24 )
 
 [node name="Bush40" type="StaticBody2D" parent="YSort/Bushes"]
-position = Vector2( 352, 372 )
+position = Vector2( 320.5, 375.5 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -797,7 +798,7 @@ rotation = 1.5708
 shape = SubResource( 24 )
 
 [node name="Bush41" type="StaticBody2D" parent="YSort/Bushes"]
-position = Vector2( 372.5, 361 )
+position = Vector2( 385, 367.5 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1484,7 +1485,7 @@ rotation = 1.5708
 shape = SubResource( 28 )
 
 [node name="BushLL9" type="StaticBody2D" parent="YSort/Bushes"]
-position = Vector2( 352, 349.5 )
+position = Vector2( 320.5, 341.5 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1498,7 +1499,7 @@ rotation = 1.5708
 shape = SubResource( 28 )
 
 [node name="BushLL10" type="StaticBody2D" parent="YSort/Bushes"]
-position = Vector2( 378, 349.5 )
+position = Vector2( 395.794, 341.5 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1604,10 +1605,10 @@ __meta__ = {
 [editable path="YSort/Bourgeois/ListenBox"]
 [editable path="YSort/Pichard"]
 [editable path="YSort/Pichard/ListenBox"]
-[editable path="YSort/Baumann"]
-[editable path="YSort/Baumann/ListenBox"]
-[editable path="YSort/Pouly"]
-[editable path="YSort/Pouly/ListenBox"]
+[editable path="YSort/Berthaud"]
+[editable path="YSort/Berthaud/ListenBox"]
+[editable path="YSort/Caroline"]
+[editable path="YSort/Caroline/ListenBox"]
 [editable path="YSort/Briefcase"]
 [editable path="YSort/Fischer"]
 [editable path="YSort/Fischer/ListenBox"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -20,8 +20,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrel.png" type="Texture" id=18]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bigBarrel.png" type="Texture" id=19]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sac.png" type="Texture" id=20]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire-Sheet.png" type="Texture" id=21]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=22]
+[ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=21]
 [ext_resource path="res://scenes/Palud/TableV.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/commode.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio-Sheet.png" type="Texture" id=25]
@@ -191,86 +190,6 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=82]
-atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=83]
-atlas = ExtResource( 21 )
-region = Rect2( 64, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=84]
-atlas = ExtResource( 21 )
-region = Rect2( 128, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=85]
-atlas = ExtResource( 21 )
-region = Rect2( 192, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=86]
-atlas = ExtResource( 21 )
-region = Rect2( 256, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=87]
-atlas = ExtResource( 21 )
-region = Rect2( 320, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=88]
-atlas = ExtResource( 21 )
-region = Rect2( 384, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=89]
-atlas = ExtResource( 21 )
-region = Rect2( 448, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=90]
-atlas = ExtResource( 21 )
-region = Rect2( 512, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=91]
-atlas = ExtResource( 21 )
-region = Rect2( 576, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=92]
-atlas = ExtResource( 21 )
-region = Rect2( 640, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=93]
-atlas = ExtResource( 21 )
-region = Rect2( 704, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=94]
-atlas = ExtResource( 21 )
-region = Rect2( 768, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=95]
-atlas = ExtResource( 21 )
-region = Rect2( 832, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=96]
-atlas = ExtResource( 21 )
-region = Rect2( 896, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=97]
-atlas = ExtResource( 21 )
-region = Rect2( 960, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=98]
-atlas = ExtResource( 21 )
-region = Rect2( 1024, 0, 64, 46 )
-
-[sub_resource type="AtlasTexture" id=99]
-atlas = ExtResource( 21 )
-region = Rect2( 1088, 0, 64, 46 )
-
-[sub_resource type="SpriteFrames" id=100]
-animations = [ {
-"frames": [ SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "default",
-"speed": 12.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=101]
@@ -1328,7 +1247,7 @@ polygon = PoolVector2Array( -172.544, 220.554, -228.286, 219.226, -229.613, 140.
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 262, 284 )
+position = Vector2( 264, 297 )
 FootstepPitch = 0.9
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
@@ -1345,7 +1264,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 14
+frame = 18
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1458,7 +1377,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1486,8 +1405,9 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
-frames = SubResource( 100 )
-frame = 8
+frames = ExtResource( 21 )
+animation = "desk"
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1507,7 +1427,7 @@ DemandDialogueID = "demandFille"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Adrienne" index="0"]
-NPCName = " Mlle Trüschel "
+NPCName = " Adrienne Trüschel "
 
 [node name="CollisionShape2D" parent="YSort/NPC/Adrienne/ListenBox" index="0"]
 position = Vector2( 0, 1.66855 )
@@ -1520,10 +1440,9 @@ parameters/playback = SubResource( 64 )
 position = Vector2( 277, 241 )
 DemandDialogueID = "demandAngelique"
 HasAutoDialogue = false
-isTrueschel = true
 
 [node name="TextBox" parent="YSort/NPC/Angelique" index="0"]
-NPCName = " Mme Trüschel "
+NPCName = " Angélique Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Angelique" index="2"]
 texture = ExtResource( 17 )
@@ -1552,7 +1471,7 @@ DemandDialogueID = "demandFilles"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Jenny" index="0"]
-NPCName = " Mlle Trüschel "
+NPCName = " Jenny Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Jenny" index="2"]
 texture = ExtResource( 9 )
@@ -1580,7 +1499,7 @@ AutoDialogueID = "appConrad"
 DemandDialogueID = "demandConrad"
 
 [node name="TextBox" parent="YSort/NPC/Conrad" index="0"]
-NPCName = " M. Trüschel "
+NPCName = " Conrad Trüschel "
 
 [node name="FullyAnimated" parent="YSort/NPC/Conrad" index="2"]
 texture = ExtResource( 14 )
@@ -1607,10 +1526,9 @@ WanderingCooldown = 10.0
 WalkSpeed = 20
 DemandDialogueID = "demandTonneliers"
 HasAutoDialogue = false
-isBrewer = true
 
 [node name="TextBox" parent="YSort/NPC/Brewer" index="0"]
-NPCName = " M. Firstein "
+NPCName = " Jean Firstein "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brewer" index="2"]
 visible = false
@@ -1642,7 +1560,7 @@ DemandDialogueID = "demandTonnelier"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brasseur" index="0"]
-NPCName = "M. Wolff"
+NPCName = " Auguste Wolff "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur" index="2"]
 texture = ExtResource( 12 )
@@ -1667,7 +1585,7 @@ DemandDialogueID = "demandBrasseur"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/NPC/Brasseur2" index="0"]
-NPCName = "M. Malter"
+NPCName = " Jacob Malter "
 
 [node name="FullyAnimated" parent="YSort/NPC/Brasseur2" index="2"]
 texture = ExtResource( 13 )
@@ -1705,6 +1623,9 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 74 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 1 )

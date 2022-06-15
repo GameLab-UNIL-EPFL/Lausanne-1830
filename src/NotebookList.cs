@@ -179,9 +179,9 @@ public class NotebookList : Node2D {
 		CloseNBList.Connect("pressed", this, "_on_Close_button_up");
 		
 		// Fetch numpad nodes
-		NumVC = GetNode<VBoxContainer>("BgSprite/NumberVC");
+		NumVC = GetNode<VBoxContainer>("BgSprite/MarginContainer/VBoxContainer");
 		//InputNum = GetNode<Label>("BgSprite/NumberVC/InputNumber");
-		InputNum = GetNode<LineEdit>("BgSprite/NumberVC/LineEdit");
+		InputNum = GetNode<LineEdit>("BgSprite/MarginContainer/VBoxContainer/LineEdit");
 		
 		// Spawn a label for each character
 		labels = new List<InfoChoiceButton>();
@@ -288,5 +288,12 @@ public class NotebookList : Node2D {
 	}
 	private void _on_LineEdit_text_entered(String new_text) {
 		_on_EnterNumber();
+	}
+
+	private void _on_NumberVC_visibility_changed()
+	{
+		if(NumVC.Visible) {
+			InputNum.GrabFocus();
+		}
 	}
 }

@@ -23,6 +23,8 @@ using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
+public enum Quests {NONE, TUTORIAL};
+public enum QuestStatus {NONE, ON_GOING, COMPLETE, NOT_STARTED};
 
 // Storage for all persistent data in the game
 public class Context : Node {
@@ -34,6 +36,9 @@ public class Context : Node {
 	//Game state data
 	private GameStates GameState = GameStates.INIT;
 	private Locations CurrentLocation = Locations.INTRO;
+	private Quests CurrentQuest = Quests.TUTORIAL;
+	private QuestStatus CurrentQuestStatus = QuestStatus.NOT_STARTED;
+	private int QuestStateId = -2;
 	
 	//Quest NPC ref
 	private NPC QuestNPC = null;
@@ -49,18 +54,18 @@ public class Context : Node {
 	
 	//Player scene positions
 	private Vector2 IntroEnterPosition = new Vector2(395, 230);
-	private Vector2 PaludEnterPosition = new Vector2(608, 230);
-	private Vector2 MoulinEnterPosition = new Vector2(324, 248);
+	private Vector2 PaludEnterPosition = new Vector2(562, 350);
+	private Vector2 MoulinEnterPosition = new Vector2(469, 319);
 	private Vector2 FlonEnterPosition = new Vector2(404, 210);
-	private Vector2 BrasserieEnterPosition = new Vector2(262, 284);
-	private Vector2 CasinoEnterPosition = new Vector2(320, 288);
+	private Vector2 BrasserieEnterPosition = new Vector2(264, 297);
+	private Vector2 CasinoEnterPosition = new Vector2(356, 312);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "De Cerjeat", "Montchoisi", 8, "Célibataire", 0, "Rentier.ère" 
+			"", "De Cerjeat", "", 1, "Célibataire", 0, "Rentier.ère" 
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
-			false, true, true, true, true, true, true
+			false, true, false, true, true, true, true
 		));
 		NotebookCharInfo.Add(new CharacterInfo_t(
 			"", "Trüschel", "", 0, "", 0, ""
@@ -170,6 +175,30 @@ public class Context : Node {
 		return Vector2.Zero;
 	}
 	
+	public void _UpdateQuest(Quests q) {
+		CurrentQuest = q;
+	}
+	
+	public void _UpdateQuestStatus(QuestStatus qs) {
+		CurrentQuestStatus = qs;
+	}
+	
+	public void _UpdateQuestStateId(int id) {
+		QuestStateId = id;
+	}
+	
+	public Quests _GetQuest() {
+		return CurrentQuest;
+	}
+	
+	public QuestStatus _GetQuestStatus() {
+		return CurrentQuestStatus;
+	}
+	
+	public int _GetQuestStateId() {
+		return QuestStateId;
+	}
+	
 	public int _GetCurrentTab() {
 		return CurrentTab;
 	}
@@ -188,6 +217,7 @@ public class Context : Node {
 	
 	public void _SwitchScenes() {
 		GameState = GameStates.PLAYING;
+		CurrentQuest = Quests.NONE;
 	}
 	
 	public GameStates _GetGameState() {

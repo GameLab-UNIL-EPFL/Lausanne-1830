@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/01_characters/03_pnjs/georgeRochat.png" type="Texture" id=9]
+[ext_resource path="res://assets/01_characters/03_pnjs/henrietteRochat.png" type="Texture" id=9]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/01_characters/03_pnjs/sleepingChild-sheet.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/03_pnjs/francoisRochat.png" type="Texture" id=12]
@@ -562,6 +562,9 @@ extents = Vector2( 9, 22 )
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 24.8031, 10 )
 
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 8.12392, 8.86655 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19, 6 )
 
@@ -629,15 +632,16 @@ __meta__ = {
 position = Vector2( -336, -184 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Wall"]
-polygon = PoolVector2Array( 184, 256, 318.44, 256.539, 319.876, 229.69, 322.654, 229.294, 322.86, 256.185, 322.329, 271.565, 168, 272, 168, 88, 504, 88, 504, 272, 356.882, 272.569, 356.409, 235.717, 357.18, 215.205, 360.553, 214.61, 359.244, 235.717, 360.189, 241.386, 360.031, 256.663, 423.651, 255.847, 423.651, 242.146, 424.124, 236.695, 424.609, 184.234, 428.776, 183.837, 427.746, 204.786, 428.219, 255.971, 488, 256, 487.75, 209.682, 488.065, 205.272, 487.744, 144.747, 428.776, 144.152, 428.379, 157.248, 424.609, 157.248, 424.213, 143.358, 360.32, 144.152, 360.751, 195.363, 357.577, 195.164, 355.557, 143.953, 324.008, 143.16, 323.611, 196.139, 319.444, 195.147, 319.841, 142.961, 184.912, 143.755 )
+polygon = PoolVector2Array( 154.903, 231.382, 340.209, 232.718, 340.209, 329.381, 423.508, 330.272, 424.399, 309.781, 430.19, 310.226, 430.636, 330.272, 468.053, 330.717, 460.07, 355.719, 109.008, 351.047, 120.354, 44.7015, 566.858, 44.0341, 571.53, 358.389, 511.462, 353.717, 503.689, 330.272, 518.389, 330.272, 517.944, 233.164, 431.972, 233.609, 430.636, 281.272, 423.063, 281.272, 423.063, 159.664, 431.081, 159.219, 430.636, 207.773, 517.053, 209.555, 517.053, 116.901, 430.19, 117.347, 430.19, 137.392, 423.063, 136.501, 423.508, 118.238, 338.873, 118.238, 338.873, 193.073, 329.964, 192.628, 328.628, 119.129, 154.457, 117.792 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite/Wall"]
+position = Vector2( 146, 67 )
 polygon = PoolVector2Array( 330, 263, 330, 278, 349, 278, 349, 263, 357, 263, 357, 285, 325, 285, 325, 263 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Cuve" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 202, 160 )
+position = Vector2( 172, 138 )
 
 [node name="Sprite" parent="YSort/Cuve" index="0"]
 texture = ExtResource( 14 )
@@ -647,26 +651,26 @@ position = Vector2( -1, 0 )
 shape = SubResource( 20 )
 
 [node name="Cuve2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 200, 216 )
+position = Vector2( 170, 194 )
 
 [node name="Sprite" parent="YSort/Cuve2" index="0"]
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" parent="YSort/Cuve2" index="1"]
-position = Vector2( 0, -2 )
+position = Vector2( 0, 2 )
 shape = SubResource( 21 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 320, 224 )
+position = Vector2( 469, 319 )
 
 [node name="Enfant1" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 246, 168 )
+position = Vector2( 216, 146 )
 InitDir = 1
 DemandDialogueID = "demEnfant7"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant1" index="0"]
-NPCName = " M. Rochat "
+NPCName = " François Rochat "
 
 [node name="FullyAnimated" parent="YSort/Enfant1" index="2"]
 texture = ExtResource( 12 )
@@ -675,14 +679,14 @@ texture = ExtResource( 12 )
 parameters/playback = SubResource( 7 )
 
 [node name="Enfant2" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 375, 145 )
+position = Vector2( 383, 124 )
 WanderingCooldown = 15.0
 WalkSpeed = 30
 DemandDialogueID = "demEnfant8"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant2" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Henriette Rochat "
 
 [node name="FullyAnimated" parent="YSort/Enfant2" index="2"]
 texture = ExtResource( 9 )
@@ -691,13 +695,14 @@ texture = ExtResource( 9 )
 parameters/playback = SubResource( 8 )
 
 [node name="Enfant3" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 444, 240 )
+position = Vector2( 476, 165 )
+CanTurn = false
 AutoDialogueID = "Null"
 DemandDialogueID = "demMalade"
 HasAutoDialogue = false
 
 [node name="TextBox" parent="YSort/Enfant3" index="0"]
-NPCName = " M. Rochat "
+NPCName = " Jean Rochat "
 
 [node name="Shadow" parent="YSort/Enfant3" index="1"]
 visible = false
@@ -714,6 +719,9 @@ shape = SubResource( 19 )
 [node name="ListenBox" parent="YSort/Enfant3" index="4"]
 position = Vector2( 4, -16 )
 
+[node name="CollisionShape2D" parent="YSort/Enfant3/ListenBox" index="0"]
+position = Vector2( -17.125, 5 )
+
 [node name="AnimationPlayer" parent="YSort/Enfant3" index="5"]
 anims/IdleDown = SubResource( 9 )
 anims/IdleLeft = SubResource( 10 )
@@ -729,12 +737,12 @@ anims/WalkUp = SubResource( 17 )
 parameters/playback = SubResource( 18 )
 
 [node name="Domestique" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 453, 205 )
+position = Vector2( 485, 130 )
 AutoDialogueID = "appDomestique"
 DemandDialogueID = "demDomestique"
 
 [node name="TextBox" parent="YSort/Domestique" index="0"]
-NPCName = " M. Rohrbach "
+NPCName = " Joseph Rohrbach "
 
 [node name="FullyAnimated" parent="YSort/Domestique" index="2"]
 texture = ExtResource( 23 )
@@ -763,7 +771,7 @@ anims/WalkUp = SubResource( 33 )
 parameters/playback = SubResource( 34 )
 
 [node name="Furniture" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 346, 154 )
+position = Vector2( 322, 298 )
 
 [node name="Sprite" parent="YSort/Furniture" index="0"]
 position = Vector2( 10, 4 )
@@ -774,7 +782,7 @@ position = Vector2( 10, 1 )
 shape = SubResource( 22 )
 
 [node name="Furniture2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 256, 140 )
+position = Vector2( 246, 114 )
 
 [node name="Sprite" parent="YSort/Furniture2" index="0"]
 position = Vector2( 10, 4 )
@@ -791,7 +799,7 @@ position = Vector2( 22, -4 )
 texture = ExtResource( 21 )
 
 [node name="Furniture3" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 366, 237 )
+position = Vector2( 431, 234 )
 
 [node name="Sprite" parent="YSort/Furniture3" index="0"]
 position = Vector2( 11, 2 )
@@ -803,22 +811,26 @@ position = Vector2( 10.2017, 1 )
 shape = SubResource( 23 )
 
 [node name="Bag2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 274, 246 )
+position = Vector2( 305, 117 )
 
 [node name="Sprite" parent="YSort/Bag2" index="0"]
 texture = ExtResource( 22 )
 
 [node name="Box" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 290.5, 246.508 )
+position = Vector2( 287.5, 117.508 )
 
 [node name="Sprite" parent="YSort/Box" index="0"]
 texture = ExtResource( 20 )
+
+[node name="CollisionShape2D" parent="YSort/Box" index="1"]
+position = Vector2( 1.8761, -1.13345 )
+shape = SubResource( 35 )
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2( 324, 294 )
+position = Vector2( 470, 361 )
 shape = SubResource( 1 )
 
 [node name="Notebook" parent="." instance=ExtResource( 7 )]
@@ -868,15 +880,13 @@ stream = ExtResource( 6 )
 volume_db = -15.0
 
 [node name="Wall" type="Sprite" parent="."]
-position = Vector2( 306, 235 )
+position = Vector2( 411, 317.15 )
+scale = Vector2( 1, 0.511364 )
 texture = ExtResource( 24 )
 
 [node name="Wall2" type="Sprite" parent="."]
-position = Vector2( 343, 222 )
-texture = ExtResource( 24 )
-
-[node name="Wall3" type="Sprite" parent="."]
-position = Vector2( 411, 189 )
+position = Vector2( 411, 159 )
+scale = Vector2( 1, 0.818182 )
 texture = ExtResource( 24 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]

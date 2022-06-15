@@ -1,6 +1,6 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=61 format=2]
 
-[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/secretaire.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=4]
@@ -19,6 +19,11 @@
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://src/Intro.cs" type="Script" id=19]
+[ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/05_fonts/Fool.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://assets/06_UI_menus/button.png" type="Texture" id=22]
+[ext_resource path="res://assets/06_UI_menus/shift.png" type="Texture" id=23]
+[ext_resource path="res://assets/06_UI_menus/wasd.png" type="Texture" id=24]
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 22, 22 )
@@ -27,6 +32,15 @@ extents = Vector2( 22, 22 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.3539, 17.065 )
+
+[sub_resource type="CircleShape2D" id=29]
+radius = 10.4403
+
+[sub_resource type="DynamicFont" id=26]
+size = 14
+font_data = ExtResource( 21 )
+
+[sub_resource type="CircleShape2D" id=30]
 
 [sub_resource type="Animation" id=8]
 resource_name = "IdleDown"
@@ -285,6 +299,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 12 )
 region = Rect2( 38, 0, 37, 36 )
@@ -319,6 +335,38 @@ tracks/0/keys = {
 "values": [ Vector2( 650, 4 ), Vector2( 555, 4 ) ]
 }
 
+[sub_resource type="Animation" id=28]
+resource_name = "SlideCarnet"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 4 ), Vector2( 601, 4 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "SlideMap"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 601, 4 ), Vector2( 555, 4 ) ]
+}
+
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 37, 36 )
@@ -350,6 +398,26 @@ region = Rect2( 50, 2, 11, 11 )
 atlas = ExtResource( 16 )
 region = Rect2( 74, 1, 11, 12 )
 
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 24 )
+region = Rect2( 25, 1, 11, 11 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 24 )
+region = Rect2( 1, 13, 11, 11 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 24 )
+region = Rect2( 25, 13, 11, 11 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 24 )
+region = Rect2( 49, 13, 11, 11 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 22 )
+region = Rect2( 2, 28, 11, 11 )
+
 [sub_resource type="DynamicFont" id=24]
 font_data = ExtResource( 18 )
 
@@ -363,13 +431,14 @@ script = ExtResource( 19 )
 [node name="Background" type="TextureRect" parent="."]
 texture = ExtResource( 2 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PoolVector2Array( 249.073, 102.893, 250.271, 237.133, 385.71, 237.613, 384.991, 256.071, 404.887, 255.112, 405.367, 237.373, 415.435, 236.414, 414.236, 100.256, 434.133, 98.8178, 435.331, 290.59, 229.656, 288.432, 230.375, 98.8178, 244.518, 99.7767 )
+polygon = PoolVector2Array( 252, 103, 251, 235, 386, 235, 384.991, 256.071, 404.887, 255.112, 405, 235, 413, 235, 412, 101, 434.133, 98.8178, 435.331, 290.59, 229.656, 288.432, 230.375, 98.8178, 244.518, 99.7767 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 250.511, 141.727, 307.803, 142.206, 307.323, 115.838, 360.061, 116.796, 358.383, 140.289, 422.387, 139.33, 421.907, 95.7015, 242.361, 94.7427, 242.6, 142.446 )
@@ -410,7 +479,7 @@ __meta__ = {
 }
 
 [node name="DoorCol" type="CollisionShape2D" parent="Door"]
-position = Vector2( 19, 18 )
+position = Vector2( 19, 16 )
 shape = SubResource( 25 )
 
 [node name="Exit" type="Area2D" parent="."]
@@ -421,13 +490,57 @@ shape = SubResource( 18 )
 
 [node name="Desk" type="StaticBody2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Desk"]
+[node name="Sprite" type="AnimatedSprite" parent="Desk"]
 position = Vector2( 334.266, 136.727 )
-texture = ExtResource( 1 )
+frames = ExtResource( 1 )
+animation = "desk"
+frame = 35
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
 position = Vector2( 333.595, 135.256 )
 shape = SubResource( 1 )
+
+[node name="Letter" parent="Desk" instance=ExtResource( 20 )]
+position = Vector2( 334, 139 )
+
+[node name="Sprite" parent="Desk/Letter" index="0"]
+visible = false
+position = Vector2( 0, -11 )
+
+[node name="Label" parent="Desk/Letter/Sprite" index="0"]
+text = "Lire"
+
+[node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
+position = Vector2( -14, 5 )
+shape = SubResource( 29 )
+
+[node name="Open" parent="Desk/Letter" index="2"]
+visible = false
+z_index = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Desk/Letter/Open" index="2"]
+margin_left = -78.0
+margin_top = -11.0
+margin_right = 74.0
+margin_bottom = 87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Desk/Letter/Open" index="3"]
+margin_left = -22.0
+margin_top = 32.0
+margin_right = 66.0
+margin_bottom = 77.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 26 )
+text = "Mlle De Cerjeat
+Montchoisi 1
+Lausanne"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -436,19 +549,19 @@ position = Vector2( 333, 230 )
 isCutscene = true
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 333, 160 )
+position = Vector2( 368, 160 )
 DemandDialogueID = "demandQuest"
 HasAutoDialogue = false
 isQuestNPC = true
 
 [node name="TextBox" parent="YSort/QuestNPC" index="0"]
-NPCName = " M. Gély  "
+NPCName = " Marc Gély "
 
 [node name="FullyAnimated" parent="YSort/QuestNPC" index="2"]
 texture = ExtResource( 15 )
 
-[node name="ListenBox" parent="YSort/QuestNPC" index="4"]
-visible = false
+[node name="CollisionShape2D" parent="YSort/QuestNPC/ListenBox" index="0"]
+shape = SubResource( 30 )
 
 [node name="AnimationPlayer" parent="YSort/QuestNPC" index="5"]
 anims/IdleDown = SubResource( 8 )
@@ -463,6 +576,17 @@ anims/WalkUp = SubResource( 16 )
 
 [node name="AnimationTree" parent="YSort/QuestNPC" index="6"]
 parameters/playback = SubResource( 17 )
+
+[node name="NPC" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 282, 191 )
+DemandDialogueID = "demandTuto"
+HasAutoDialogue = false
+
+[node name="TextBox" parent="YSort/NPC" index="0"]
+NPCName = " Marianne Blanc "
+
+[node name="AnimationTree" parent="YSort/NPC" index="6"]
+parameters/playback = SubResource( 27 )
 
 [node name="Notebook" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -480,10 +604,15 @@ mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 texture_normal = SubResource( 2 )
 script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NotebookControllerNode/NotebookController"]
 anims/RESET = SubResource( 3 )
 anims/Slide = SubResource( 4 )
+anims/SlideCarnet = SubResource( 28 )
+anims/SlideMap = SubResource( 31 )
 
 [node name="MapButton" type="TextureButton" parent="NotebookControllerNode/NotebookController"]
 margin_left = 43.0
@@ -491,6 +620,9 @@ margin_right = 82.0
 margin_bottom = 36.0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PressSpace" parent="NotebookControllerNode/NotebookController/MapButton" instance=ExtResource( 14 )]
 position = Vector2( 6, 34 )
@@ -507,37 +639,90 @@ stream = ExtResource( 9 )
 volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
-margin_left = 69.0
-margin_top = 101.0
-margin_right = 199.0
-margin_bottom = 287.0
+margin_left = 68.0
+margin_top = 68.0
+margin_right = 198.0
+margin_bottom = 236.0
 custom_fonts/font = SubResource( 19 )
-text = "Pour te déplacer"
+text = "
+
+
+
+
+Pour te déplacer
+et maintenir
+
+pour courir"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Label"]
-position = Vector2( 38, 69 )
+[node name="Arrows" type="Node2D" parent="Label"]
+
+[node name="L" type="Sprite" parent="Label/Arrows"]
+position = Vector2( 40, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 20 )
 
-[node name="Sprite2" type="Sprite" parent="Label"]
-position = Vector2( 63, 69 )
+[node name="B" type="Sprite" parent="Label/Arrows"]
+position = Vector2( 65, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 21 )
 
-[node name="Sprite3" type="Sprite" parent="Label"]
-position = Vector2( 88, 69 )
+[node name="R" type="Sprite" parent="Label/Arrows"]
+position = Vector2( 90, 77 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 22 )
 
-[node name="Sprite4" type="Sprite" parent="Label"]
-position = Vector2( 63, 43 )
+[node name="T" type="Sprite" parent="Label/Arrows"]
+position = Vector2( 65, 51 )
 scale = Vector2( 2, 2 )
 texture = SubResource( 23 )
+
+[node name="Awsd" type="Node2D" parent="Label"]
+visible = false
+
+[node name="w" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 65, 52 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 32 )
+
+[node name="a" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 40, 77 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 33 )
+
+[node name="s" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 65, 77 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 34 )
+
+[node name="d" type="Sprite" parent="Label/Awsd"]
+position = Vector2( 90, 77 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 35 )
+
+[node name="Sprite5" type="NinePatchRect" parent="Label"]
+show_behind_parent = true
+margin_left = 44.0
+margin_top = 132.0
+margin_right = 64.0
+margin_bottom = 142.0
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 36 )
+patch_margin_left = 2
+patch_margin_top = 1
+patch_margin_right = 2
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite6" type="Sprite" parent="Label"]
+position = Vector2( 65, 144 )
+texture = ExtResource( 23 )
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 464.0
@@ -556,7 +741,10 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
-frame = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
@@ -565,7 +753,11 @@ frame = 1
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
+[editable path="Desk/Letter"]
 [editable path="YSort/QuestNPC"]
 [editable path="YSort/QuestNPC/ListenBox"]
+[editable path="YSort/NPC"]
+[editable path="YSort/NPC/ListenBox"]
 [editable path="Notebook"]

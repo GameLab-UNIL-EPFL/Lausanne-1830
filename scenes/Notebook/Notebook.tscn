@@ -839,9 +839,6 @@ margin_bottom = 79.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tab1" type="Sprite" parent="."]
 position = Vector2( 529, 108 )
@@ -1163,7 +1160,6 @@ volume_db = -5.0
 [node name="Bravo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
 
-[connection signal="pressed" from="ColorRect/CloseNotebook" to="." method="_on_NotebookController_pressed"]
 [connection signal="OpenOptions" from="Sprite/Prenom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Nom" to="NotebookList" method="_on_OpenOptions"]
 [connection signal="OpenOptions" from="Sprite/Adresse" to="NotebookList" method="_on_OpenOptions"]

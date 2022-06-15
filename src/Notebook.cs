@@ -24,6 +24,12 @@ using System.Linq;
 using System.Collections.Generic;
 
 public class Notebook : Node2D {
+	[Signal]
+	public delegate void CloseNotebook();
+
+	[Signal]
+	public delegate void PageComplete();
+
 	private List<NotebookInfo> tempInfo = new List<NotebookInfo>();
 	private List<NotebookInfo> info = new List<NotebookInfo>();
 	private List<Label> infoStatic = new List<Label>();
@@ -35,6 +41,7 @@ public class Notebook : Node2D {
 	
 	private Button closeNB;
 	private Label closeLabel;
+	private Node2D NBL;
 	
 	private bool hidden = true;
 	private bool mapOpen = false;
@@ -57,6 +64,14 @@ public class Notebook : Node2D {
 	public InfoValue_t correctInfo = new InfoValue_t(false);
 	
 	private int curTabId = 0;
+	
+	public bool _IsMapOpen() {
+		return mapOpen;
+	}
+	
+	public bool _IsNotebookOpen() {
+		return !hidden && !mapOpen;
+	}
 	
 	public bool _TutoPageIsComplete() {
 		foreach(Label info in infoStatic) {
@@ -110,13 +125,27 @@ public class Notebook : Node2D {
 					characterInfo.adresse = inf.Text;
 					break;
 				case "num":
-					characterInfo.num = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
+					//Make sure the entry is valid
+					try {
+						characterInfo.num = Int32.Parse(inf.Text == "" ? "-1" : inf.Text);
+					} catch {
+						//When a non-char is entered, display the default INVALID number
+						characterInfo.num = -1;
+						inf.Text = "-1";
+					}
 					break;
 				case "conjoint":
 					characterInfo.conjoint = inf.Text;
 					break;
 				case "enfants":
-					characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
+					//Make sure only valid entries are used
+					try {
+						characterInfo.enfants = Int32.Parse(inf.Text == "" ? "4" : inf.Text);
+					} catch {
+						//Otherwise default to -1
+						characterInfo.enfants = -1;
+						inf.Text = "-1";
+					}
 					break;
 				case "metier":
 					characterInfo.metier = inf.Text;
@@ -140,6 +169,7 @@ public class Notebook : Node2D {
 		closeNB = GetNode<Button>("ColorRect/CloseNotebook");
 		closeLabel = GetNode<Label>("Fermer");
 		Quest = GetNode<RichTextLabel>("Quest");
+		NBL = GetNode<Node2D>("NotebookList");
 		
 		//Load in character info XML
 		DialogueController._ParseXML(ref InfoXML, infoFilePath);
@@ -201,7 +231,7 @@ public class Notebook : Node2D {
 			SetCharInfo();
 			Stamp.Show();
 		} else {
-			SetObjective();
+			SetObjective(context._GetQuestStateId());
 			Stamp.Hide();
 		}
 	}
@@ -335,6 +365,7 @@ public class Notebook : Node2D {
 			Hide();
 			AudioServer.SetBusMute(2, false);
 			p.UnBlockPlayer();
+			EmitSignal(nameof(CloseNotebook));
 		}
 		hidden = !hidden;
 		
@@ -367,7 +398,13 @@ public class Notebook : Node2D {
 		if(context._GetGameState() == GameStates.INIT) {
 			DisableNonTutoTabs();
 			//Set tutorial objective
-			SetObjective(0);
+			if(context._IsTabCorrect(curTabId)) {
+				SetCharInfo();
+				Stamp.Show();
+			} else {
+				SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
+				Stamp.Hide();
+			}
 		}
 	}
 	
@@ -444,7 +481,7 @@ public class Notebook : Node2D {
 	}
 	
 	private void PressTabButton(int buttonid) {
-		if(hidden || mapOpen) return;
+		if(hidden || mapOpen || NBL.Visible || AP.IsPlaying()) return;
 		Debug.Assert(0 <= buttonid && buttonid < Context.N_TABS);
 		Debug.Assert(0 <= curTabId && curTabId < Context.N_TABS);
 		
@@ -480,12 +517,12 @@ public class Notebook : Node2D {
 			SetCharInfo();
 			Stamp.Show();
 		} else {
-			SetObjective();
+			SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
 			Stamp.Hide();
 		}
 	}
 	
-	private void SetObjective(int id = 1) {
+	private void SetObjective(int id) {
 		//Query character info
 		var infoTextQuery = from charInfo in InfoXML.Root.Descendants("objectif")
 			where int.Parse(charInfo.Attribute("id").Value) == id
@@ -494,7 +531,7 @@ public class Notebook : Node2D {
 		//Load in new info text
 		foreach(string infoText in infoTextQuery) {
 			Quest.BbcodeText = infoText;
-			break; // Need to do this to convert query result to string
+			//break; // Need to do this to convert query result to string
 		}
 	}
 	
@@ -515,6 +552,9 @@ public class Notebook : Node2D {
 		if(anim_name == "Stamp") {
 			MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
 			MP.MusicFadeIn(-10);
+			
+			//Signal that the page is complete
+			EmitSignal(nameof(PageComplete));
 		}
 	}
 	
@@ -528,11 +568,13 @@ public class Notebook : Node2D {
 	}
 	
 	private void _Change_Portrait(int num) {
-		for(int i = 0; i < Context.N_TABS; ++i) {
-			var P = GetNode<Sprite>("Portrait" + i);
-			P.Hide();
+		if(!NBL.Visible && !AP.IsPlaying()) {
+			for(int i = 0; i < Context.N_TABS; ++i) {
+				var P = GetNode<Sprite>("Portrait" + i);
+				P.Hide();
+			}
+			Portraits[num].Show();	
 		}
-		Portraits[num].Show();
 	}
 	
 	public void _on_Tab0Button_pressed() {

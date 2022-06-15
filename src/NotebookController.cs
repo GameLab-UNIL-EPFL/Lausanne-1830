@@ -23,6 +23,7 @@ public class NotebookController : TextureButton
 	private AnimationPlayer AnimPlayer;
 	private TextureButton MB;
 	private Notebook NB;
+	private Context context;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -30,6 +31,7 @@ public class NotebookController : TextureButton
 		AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		MB = GetNode<TextureButton>("MapButton");
 		NB = GetNode<Notebook>("../../Notebook");
+		context = GetNode<Context>("/root/Context");
 		
 		if(!MB.IsConnected("pressed", NB, "_on_MapB_pressed")){
 			MB.Connect("pressed", NB, "_on_MapB_pressed");
@@ -40,7 +42,16 @@ public class NotebookController : TextureButton
 		if(AnimPlayer == null) {
 			_Ready();
 		}
-		AnimPlayer.Play("Slide");
+		if(context._GetQuest() == Quests.TUTORIAL) {
+			if(RectPosition[0] > 630) {
+				AnimPlayer.Play("SlideCarnet");
+			}
+			if(context._GetQuestStatus() == QuestStatus.COMPLETE) {
+				AnimPlayer.Play("SlideMap");
+			}
+		} else {
+			AnimPlayer.Play("Slide");
+		}
 	}
 }
 
