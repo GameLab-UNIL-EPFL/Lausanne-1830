@@ -462,9 +462,11 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _AddItemInRange(Item i) {
-		if(subs.Count == 0 || context._GetQuest() == Quests.TUTORIAL) {
+		if((subs.Count == 0 && context._GetQuest() != Quests.TUTORIAL) ||
+			(context._GetQuest() == Quests.TUTORIAL && 
+				context._GetQuestStateId() >= QuestController.CONFIRM_OPEN_NOTEBOOK_OBJECTIVE)) {
 			itemsInRange.Add(i);
-		}
+		} 
 	}
 	
 	public void _RemoveItemInRange(Item i) {

@@ -438,7 +438,7 @@ public class NPC : KinematicBody2D {
 
 		//Check for tutorial NPC
 		if(context._GetQuest() == Quests.TUTORIAL) {
-			if(context._GetQuestStateId() >= QuestController.OPEN_NOTEBOOK_OBJECTIVE) {
+			if(context._GetQuestStateId() >= QuestController.CONFIRM_OPEN_NOTEBOOK_OBJECTIVE) {
 				DemandDialogueID = "demandTuto";
 			} else {
 				DemandDialogueID = "preTuto";
@@ -509,6 +509,18 @@ public class NPC : KinematicBody2D {
 
 			//Check if it's the end of the dialogue
 			if(d == null) {
+				//Update objective if spoken to for the first time
+				if(context._GetQuest() == Quests.TUTORIAL) {
+					//Check for progress
+					int id = context._GetQuestStateId();
+					//First stage of the tutorial is done
+					context._UpdateQuestStateId((id < QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) ?
+						QuestController.TALK_TO_QUEST_NPC_OBJECTIVE : 
+						id == QuestController.OPEN_NOTEBOOK_OBJECTIVE ? 
+							QuestController.CONFIRM_OPEN_NOTEBOOK_OBJECTIVE : 
+							id
+					);
+				}
 				FinishDialogue(player);
 				return;
 			}
@@ -519,17 +531,6 @@ public class NPC : KinematicBody2D {
 			TB._ShowText(d);
 			TB._ShowPressE();
 		}
-
-		//Update objective if spoken to for the first time
-		if(context._GetQuest() == Quests.TUTORIAL) {
-			//Check for progress
-			int id = context._GetQuestStateId();
-			//First stage of the tutorial is done
-			context._UpdateQuestStateId((id < QuestController.TALK_TO_QUEST_NPC_OBJECTIVE) ?
-				QuestController.TALK_TO_QUEST_NPC_OBJECTIVE : id
-			);
-		}
-
 	}
 	
 	/**
