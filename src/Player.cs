@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK };
+public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK, ENTER };
 
 public class Player : KinematicBody2D {
 	[Signal]
@@ -62,6 +62,7 @@ public class Player : KinematicBody2D {
 	private int cutsceneCounter = 11;
 	
 	public bool isBrewEnd = false;
+	public bool isEnterAnim = true;
 	
 	//Empirical acceleration and friction amounts
 	private const int ACC = 950;
@@ -344,7 +345,6 @@ public class Player : KinematicBody2D {
 	public override void _Ready() {
 		//Initialize variables
 		Speed = WalkSpeed;
-		CurrentState = PlayerStates.IDLE;
 		
 		//Fetch nodes
 		NB = GetNode<Notebook>("../../Notebook");
@@ -386,15 +386,28 @@ public class Player : KinematicBody2D {
 		}
 		
 		var EnterPos = context._GetPlayerPosition();
-		if(EnterPos != Vector2.Zero) {
+		if(EnterPos != Vector2.Zero && context._GetGameState() != GameStates.INIT) {
 			Position = EnterPos;
 		}
+
+		//Set initial player state
+		CurrentState = PlayerStates.IDLE;
+		isEnterAnim = !isCutscene;
+	}
+
+	//Have the player walk up until they are interupted by a PlayerEnterArea
+	private void HandleEnter(float delta) {
+		InputVec = Vector2.Zero;
+		InputVec[1] = -1.0f;
+		HandleMovement(delta);
 	}
 	
 	// Called on every physics engine tick
 	public override void _Process(float delta) {
 		if(isCutscene) {
 			HandleTutorial(delta);
+		} else if(isEnterAnim) {
+			HandleEnter(delta);
 		} else {
 			//Handle input
 			HandleInput(delta);
@@ -449,9 +462,11 @@ public class Player : KinematicBody2D {
 	}
 	
 	public void _AddItemInRange(Item i) {
-		if(subs.Count == 0 || context._GetQuest() == Quests.TUTORIAL) {
+		if((subs.Count == 0 && context._GetQuest() != Quests.TUTORIAL) ||
+			(context._GetQuest() == Quests.TUTORIAL && 
+				context._GetQuestStateId() >= QuestController.CONFIRM_OPEN_NOTEBOOK_OBJECTIVE)) {
 			itemsInRange.Add(i);
-		}
+		} 
 	}
 	
 	public void _RemoveItemInRange(Item i) {
@@ -610,11 +625,7 @@ public class Player : KinematicBody2D {
 	}
 	
 	private void _on_Intro_Exit_area_entered(Area2D area) {
-		if(area.Owner is Player) {
-			/*SceneChanger SC = GetNode<SceneChanger>("/root/SceneChanger");
-			SC.GotoScene("res://scenes/Palud/ProtoPalud.tscn");
-				
-			context._UpdateLocation("Palud/ProtoPalud");*/
+		if(area.Owner is Player && !isEnterAnim) {
 			NB._on_MapB_pressed();
 		}
 	}
@@ -643,6 +654,22 @@ public class Player : KinematicBody2D {
 			context._UpdateLocation("Flon/Flon");
 		}
 	}
-}
+	
+	//Stops the player's intro animation
+	private void _on_PlayerEnterArea_area_entered(Area2D area) {
+		if(isEnterAnim) {
+			InputVec = Vector2.Zero;
+			Velocity = Vector2.Zero;
 
+			//Set player to IDLE
+			CurrentState = PlayerStates.IDLE;
+
+			//Update animation to match state change
+			animationState.Travel("Idle");
+
+			isEnterAnim = false;
+		}
+
+	}
+}
 

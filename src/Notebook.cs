@@ -131,7 +131,7 @@ public class Notebook : Node2D {
 					} catch {
 						//When a non-char is entered, display the default INVALID number
 						characterInfo.num = -1;
-						inf.Text = "-1";
+						inf.Text = "";
 					}
 					break;
 				case "conjoint":
@@ -144,7 +144,7 @@ public class Notebook : Node2D {
 					} catch {
 						//Otherwise default to -1
 						characterInfo.enfants = -1;
-						inf.Text = "-1";
+						inf.Text = "";
 					}
 					break;
 				case "metier":
@@ -474,7 +474,7 @@ public class Notebook : Node2D {
 	private void _on_OpenMapZone_area_entered(Area2D tb) {
 		if(tb.Owner is Player) {
 			Player p = (Player)(tb.Owner);
-			if(!p.isCutscene) {
+			if(!p.isCutscene && !p.isEnterAnim) {
 				_on_MapB_pressed();
 			}
 		}
