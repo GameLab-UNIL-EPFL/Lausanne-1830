@@ -85,7 +85,7 @@ margin_bottom = 205.345
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "
-Sarah Jallon (graphisme, HEIG-VD), 
+Sarah Jallon (game art, HEIG-VD), 
 Andrew Dobis (programmation, ETHZ-EPFL), 
 Saara Jones (game design, UNIL)
 "
