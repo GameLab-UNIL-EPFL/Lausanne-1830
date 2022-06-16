@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -421,6 +421,9 @@ region = Rect2( 2, 28, 11, 11 )
 [sub_resource type="DynamicFont" id=24]
 font_data = ExtResource( 18 )
 
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 0.304981, 0.0835169 )
+
 [node name="Intro" type="Node2D"]
 script = ExtResource( 19 )
 
@@ -439,6 +442,7 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 252, 103, 251, 235, 386, 235, 384.991, 256.071, 404.887, 255.112, 405, 235, 413, 235, 412, 101, 434.133, 98.8178, 435.331, 290.59, 229.656, 288.432, 230.375, 98.8178, 244.518, 99.7767 )
+one_way_collision = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 250.511, 141.727, 307.803, 142.206, 307.323, 115.838, 360.061, 116.796, 358.383, 140.289, 422.387, 139.33, 421.907, 95.7015, 242.361, 94.7427, 242.6, 142.446 )
@@ -481,12 +485,14 @@ __meta__ = {
 [node name="DoorCol" type="CollisionShape2D" parent="Door"]
 position = Vector2( 19, 16 )
 shape = SubResource( 25 )
+one_way_collision = true
 
 [node name="Exit" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2( 395.05, 260.091 )
 shape = SubResource( 18 )
+one_way_collision = true
 
 [node name="Desk" type="StaticBody2D" parent="."]
 
@@ -494,7 +500,7 @@ shape = SubResource( 18 )
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 35
+frame = 17
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -510,6 +516,9 @@ position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
+
+[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -545,7 +554,7 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 333, 230 )
+position = Vector2( 333, 224 )
 isCutscene = true
 
 [node name="QuestNPC" parent="YSort" instance=ExtResource( 4 )]
@@ -741,10 +750,19 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
+frame = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="PlayerEnterArea" type="Area2D" parent="."]
+scale = Vector2( -3.80679, -0.367396 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
+position = Vector2( -101.898, -535.911 )
+scale = Vector2( 21.9213, 109.55 )
+shape = SubResource( 37 )
 
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Intro_Exit_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
@@ -754,6 +772,7 @@ autostart = true
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 
 [editable path="Desk/Letter"]
 [editable path="YSort/QuestNPC"]

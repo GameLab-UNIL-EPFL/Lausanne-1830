@@ -21,11 +21,13 @@ using System;
 public class Item : Node2D {
 	private Sprite ItemSprite;
 	private Node2D N;
+	private Context context;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		ItemSprite = GetNode<Sprite>("Sprite");
 		N = GetNode<Node2D>("Open");
+		context = GetNode<Context>("/root/Context");
 	}
 	
 	public void _Notify(Player p) {
@@ -42,7 +44,9 @@ public class Item : Node2D {
 	private void _on_Area2D_area_entered(Area2D tb) {
 		if(tb.Owner is Player) {
 			Player p = (Player)tb.Owner;
-			if(p._CanInteract()) {
+			if(p._CanInteract() && 
+				!(context._GetQuest() == Quests.TUTORIAL  && 
+					context._GetQuestStateId() < QuestController.CONFIRM_OPEN_NOTEBOOK_OBJECTIVE)) {
 				ItemSprite.Show();
 				p._AddItemInRange(this);
 			}

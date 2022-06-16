@@ -631,6 +631,8 @@ tracks/0/keys = {
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 37, 36 )
 
+[sub_resource type="RectangleShape2D" id=36]
+
 [node name="Moulin" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 8 )]
@@ -1023,11 +1025,18 @@ position = Vector2( 411, 159 )
 scale = Vector2( 1, 0.818182 )
 texture = ExtResource( 24 )
 
+[node name="PlayerEnterArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
+position = Vector2( 470, 299 )
+shape = SubResource( 36 )
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Exit_area_entered"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
+[connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 
 [editable path="YSort/Cuve"]
 [editable path="YSort/Cuve2"]
