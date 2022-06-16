@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -20,10 +20,11 @@
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://src/Intro.cs" type="Script" id=19]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/05_fonts/Fool.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://assets/06_UI_menus/lettreMontolieu.png" type="Texture" id=21]
 [ext_resource path="res://assets/06_UI_menus/button.png" type="Texture" id=22]
 [ext_resource path="res://assets/06_UI_menus/shift.png" type="Texture" id=23]
 [ext_resource path="res://assets/06_UI_menus/wasd.png" type="Texture" id=24]
+[ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=25]
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 22, 22 )
@@ -36,9 +37,8 @@ extents = Vector2( 23.3539, 17.065 )
 [sub_resource type="CircleShape2D" id=29]
 radius = 10.4403
 
-[sub_resource type="DynamicFont" id=26]
-size = 14
-font_data = ExtResource( 21 )
+[sub_resource type="DynamicFont" id=38]
+font_data = ExtResource( 25 )
 
 [sub_resource type="CircleShape2D" id=30]
 
@@ -500,7 +500,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 17
+frame = 10
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -528,25 +528,28 @@ shape = SubResource( 29 )
 visible = false
 z_index = 1
 
-[node name="ColorRect2" type="ColorRect" parent="Desk/Letter/Open" index="2"]
-margin_left = -78.0
-margin_top = -11.0
-margin_right = 74.0
-margin_bottom = 87.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Button" parent="Desk/Letter/Open" index="1"]
+margin_left = -590.0
+margin_top = -327.0
+margin_right = 649.0
+margin_bottom = 375.0
 
-[node name="Label" type="Label" parent="Desk/Letter/Open" index="3"]
-margin_left = -22.0
-margin_top = 32.0
-margin_right = 66.0
-margin_bottom = 77.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 26 )
-text = "Mlle De Cerjeat
-Montchoisi 1
-Lausanne"
+[node name="Sprite" type="Sprite" parent="Desk/Letter/Open" index="2"]
+position = Vector2( -14, 34 )
+texture = ExtResource( 21 )
+
+[node name="PressE" parent="Desk/Letter/Open" index="3" instance=ExtResource( 17 )]
+position = Vector2( -295, 186 )
+scale = Vector2( 2, 2 )
+frame = 1
+
+[node name="Label" type="Label" parent="Desk/Letter/Open" index="4"]
+margin_left = -279.0
+margin_top = 183.0
+margin_right = -230.0
+margin_bottom = 199.0
+custom_fonts/font = SubResource( 38 )
+text = "FERMER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
