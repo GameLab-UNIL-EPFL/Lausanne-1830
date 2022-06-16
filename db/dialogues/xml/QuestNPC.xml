@@ -1,13 +1,13 @@
 <dialogue type="onDemand" ntargets="1" id="demandQuest">
         <text id="0">Alors...</text>
-        <text id="1">C'est vous qui avez été choisi pour compléter le registre de la population ?</text>
+        <text id="1">C'est vous qui avez été choisi pour compléter le registre de la population?</text>
         <text id="2">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
         <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
         <text id="3" objectif="0" replay="2">Il est censé contenir toutes les informations importantes</text>
         <text id="4">sur les habitants de Lausanne,</text>
-        <text id="5">mais comme vous avez sûrment remarqué,</text>
+        <text id="5">mais comme vous l'avez sûrement remarqué,</text>
         <text id="6">les données de plusieurs personnes sont manquantes.</text>
-        <text id="7">Essayez déja de remplir la première page.</text>
+        <text id="7">Essayez de remplir la première page.</text>
         <text id="8">Ma collègue en sait plus que moi sur cette personne</text>
         <text id="9">et il me semble que nous avons une lettre adressée à elle sur le bureau.</text>
         <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->

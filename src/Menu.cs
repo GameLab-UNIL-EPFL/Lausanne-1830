@@ -21,22 +21,32 @@ using System;
 public class Menu : Control
 {
 	Context context;
+	SceneChanger SC;
+	MusicPlayer MP;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		context = GetNode<Context>("/root/Context");
-		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.PlayMusic("Schubert_Sonata13_2.mp3", -10);
+		SC = (SceneChanger)GetNode("/root/SceneChanger");
+		MP = (MusicPlayer)GetNode("/root/MusicPlayer");
+		if(!MP.Music.IsPlaying()){
+			MP.PlayMusic("Schubert_Sonata13_2.mp3", -10);
+		}
 	}
 
 	private void _on_Button_pressed() {
-		SceneChanger SC = (SceneChanger)GetNode("/root/SceneChanger");
 		SC.GotoScene("res://scenes/Intro/Intro.tscn");
-		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
 		MP.ChangeMusic("Schubert_Sonata13.mp3", -10);
 	}
+	
+	private void _on_Button2_pressed() {
+		SC.GotoScene("res://scenes/Interaction/Credits.tscn");
+	}
 }
+
+
+
 
 
 

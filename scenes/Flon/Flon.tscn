@@ -1578,11 +1578,12 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
 position = Vector2( 3, -40 )
-polygon = PoolVector2Array( -74.7025, 50.511, -64.0118, 62.5381, 15.2825, 63.0905, 15.4005, 50.9381, 105.094, 51.1217, 104.499, 9.49948, 136.608, 11.8779, 136.608, 51.419, 160.043, 51.4279, 155.143, -161.051, -118, -168, -127.943, -159.345, -122.597, -130.391, -115.47, -101.437, -74.4886, -68.4733 )
+polygon = PoolVector2Array( -74.7025, 50.511, -64.0118, 62.5381, 15.2825, 63.0905, 15.4005, 50.9381, 106.194, 50.3874, 104.499, 9.49948, 136.608, 11.8779, 135.329, 51.2793, 160.043, 51.4279, 155.143, -161.051, -118, -168, -127.943, -159.345, -122.597, -130.391, -115.47, -101.437, -74.4886, -68.4733 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/House2"]
 position = Vector2( 0, -61 )
