@@ -2,7 +2,7 @@
 	<solution id="0" prenom="Elisabeth" nom="De Cerjeat" adresse="Montchoisi" num="1" conjoint="Célibataire" enfant="0" metier="Rentier.ère"></solution>
 	<solution id="1" prenom="Angélique" nom="Trüschel" adresse="Rue Chaucrau" num="16" conjoint="Marié.e" enfant="3" metier="Brasseur.se"></solution>
 	<solution id="2" prenom="Henri" nom="Perregaux" adresse="Rue St-François" num="9" conjoint="Marié.e" enfant="2" metier="Architecte"></solution>
-	<solution id="3" prenom="Isabelle" nom="De Montolieu" adresse="Château de Vennes" num="0" conjoint="Veuf.ve" enfant="1" metier="Écrivain.e"></solution>
+	<solution id="3" prenom="Isabelle" nom="De Montolieu" adresse="Château de Vennes" num="0" conjoint="Veuf.ve" enfant="1" metier="Ecrivain.e"></solution>
 	<solution id="4"  prenom="Jean-Jacques" nom="Mercier" adresse="Rue du Pré" num="31" conjoint="Marié.e" enfant="3" metier="Tanneur.se"></solution>
 	<solution id="5"  prenom="Benedict" nom="Rochat" adresse="Moulins de Pépinet" num="1" conjoint="Marié.e" enfant="9" metier="Meunier.ère"></solution>
 	<personnage prenom="Louis" nom="Michaud" adresse="Rue de la Madeleine" conjoint="Célibataire" metier="Jardinier.ère"></personnage>
