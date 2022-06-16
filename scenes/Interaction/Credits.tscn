@@ -73,12 +73,15 @@ Suivi du projet
 
 Partenaires : "
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 152.0
-margin_top = 80.3446
+margin_top = 74.3446
 margin_right = 467.0
-margin_bottom = 211.345
+margin_bottom = 205.345
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "
@@ -94,9 +97,9 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="."]
 margin_left = 152.0
-margin_top = 56.7279
+margin_top = 51.7279
 margin_right = 467.0
-margin_bottom = 398.728
+margin_bottom = 393.728
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "
@@ -114,9 +117,9 @@ __meta__ = {
 
 [node name="Label4" type="Label" parent="."]
 margin_left = 152.0
-margin_top = 142.995
+margin_top = 137.995
 margin_right = 467.0
-margin_bottom = 484.995
+margin_bottom = 479.995
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Laboratoire d'histoire des sciences et des techniques de l'EPFL

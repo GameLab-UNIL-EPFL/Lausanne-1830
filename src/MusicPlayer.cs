@@ -20,7 +20,7 @@ using System;
 
 public class MusicPlayer : Node2D
 {
-	private AudioStreamPlayer Music;
+	public AudioStreamPlayer Music;
 	private AudioStreamPlayer Music2;
 	private AnimationPlayer AP;
 	

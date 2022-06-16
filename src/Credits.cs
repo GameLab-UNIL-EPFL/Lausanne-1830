@@ -15,7 +15,6 @@ public class Credits : Control
 
 	private void _on_TextureButton_pressed() {
 		SC.GotoScene("res://scenes/Interaction/Menu.tscn");
-		MP.ChangeMusic("Schubert_Sonata13_2.mp3", -10);
 	}
 }
 
