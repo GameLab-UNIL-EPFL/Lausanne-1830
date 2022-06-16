@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -137,6 +137,9 @@ radius = 8.0
 size = 9
 font_data = ExtResource( 17 )
 
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 34.27, 10 )
+
 [node name="Casino" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 9 )]
@@ -238,6 +241,7 @@ shape = SubResource( 19 )
 
 [node name="Bushes" type="CollisionPolygon2D" parent="Coillision/Bushes"]
 polygon = PoolVector2Array( 40, 0, 37.9906, 14.9404, 36.4032, 28.0365, 39.578, 49.8633, 31.641, 64.1499, 36.4032, 84.7861, 37.1969, 104.629, 20.926, 126.455, 35.2126, 140.345, 43.9433, 155.822, 38.7843, 172.554, 33.2284, 181.682, 37.9906, 188.428, 40.7685, 195.969, 37.5937, 203.112, 28.863, 211.843, 22.9103, 217.795, 25.6882, 224.939, 32.8315, 232.479, 38.7843, 237.241, 41.1654, 251.925, 50.6898, 267.005, 57.8331, 267.402, 73.7071, 284.069, 83.2315, 298.753, 87.9937, 313.039, 109.027, 322.167, 122.123, 336.156, 132.441, 342.505, 146.331, 337.743, 159.03, 342.505, 176.491, 347.664, 195.54, 347.664, 202.287, 346.077, 224.51, 342.108, 238.4, 344.093, 250.305, 347.267, 267.37, 342.108, 288.403, 336.949, 302.293, 339.33, 318.819, 335.427, 336.478, 344.677, 342.784, 353.927, 342.784, 373.267, 368.432, 374.529, 372.636, 353.927, 383.568, 341.734, 403.749, 340.893, 412.243, 347.267, 427.72, 350.442, 443.991, 342.902, 461.849, 342.902, 472.564, 344.886, 485.66, 340.918, 497.963, 333.775, 511.456, 333.378, 519.79, 337.743, 527.33, 332.584, 538.045, 327.822, 544.394, 331.79, 553.522, 335.362, 556.3, 335.759, 571.777, 334.171, 578.127, 336.949, 584.476, 340.521, 590.032, 345.283, 590.032, 418.304, -42.1079, 419.322, -41.4008, -2.07417 )
+one_way_collision = true
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -256,7 +260,7 @@ position = Vector2( 0, -32 )
 polygon = PoolVector2Array( -112, -99.6, -111.309, 88.0815, -61.796, 88.0519, -62.0855, 97.0289, 67.0662, 97.0289, 67.3558, 88.9207, 125.609, 88.6079, 112, -91.6 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 358, 312 )
+position = Vector2( 358, 432 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 20 )
@@ -1551,6 +1555,9 @@ position = Vector2( 0, -19 )
 [node name="Label" parent="Mallette/Sprite" index="0"]
 text = "Ouvrir"
 
+[node name="AnimatedSprite" parent="Mallette/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Mallette/Area2D" index="0"]
 shape = SubResource( 10 )
 
@@ -1590,12 +1597,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="PlayerEnterArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
+position = Vector2( 362.018, 296 )
+shape = SubResource( 30 )
+
 [connection signal="visibility_changed" from="Notebook" to="Mallette" method="_on_Notebook_visibility_changed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="pressed" from="NotebookControllerNode/NotebookController" to="YSort/Player" method="_on_NotebookController_pressed"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="area_entered" from="OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
+[connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]

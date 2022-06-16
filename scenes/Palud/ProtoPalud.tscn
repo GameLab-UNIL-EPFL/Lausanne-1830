@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -123,6 +123,9 @@ extents = Vector2( 13, 3.5 )
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 16.5, 8 )
+
+[sub_resource type="RectangleShape2D" id=80]
+extents = Vector2( 10, 3.3641 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
@@ -769,9 +772,6 @@ margin_right = 640.0
 margin_bottom = 144.0
 focus_neighbour_bottom = NodePath("../TextureRect")
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
 position = Vector2( 319, 181 )
@@ -864,6 +864,12 @@ shape = SubResource( 45 )
 [node name="EndDoor" type="CollisionShape2D" parent="Collisions/HotelDeVilleDoor"]
 position = Vector2( 560.5, 211 )
 shape = SubResource( 44 )
+
+[node name="PlayerEnterArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
+position = Vector2( 560, 316.067 )
+shape = SubResource( 80 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1273,7 +1279,7 @@ position = Vector2( -64, 37 )
 texture = ExtResource( 38 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 562, 349 )
+position = Vector2( 562, 350 )
 isCutscene = true
 
 [node name="Cuir" parent="YSort" instance=ExtResource( 16 )]
@@ -1323,13 +1329,13 @@ texture = ExtResource( 41 )
 [node name="Cuir2" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 482, 295 )
 frames = SubResource( 61 )
-frame = 19
+frame = 8
 playing = true
 
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
@@ -1437,18 +1443,7 @@ bus = "Sounds"
 [connection signal="area_entered" from="Collisions/OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 [connection signal="area_entered" from="Collisions/IntroAreaDoor" to="YSort/Player" method="_on_IntroAreaDoor_area_entered"]
 [connection signal="area_entered" from="Collisions/HotelDeVilleDoor/OpenEndDoor/EnterEndZone" to="YSort/Player" method="_on_EnterEndZone_area_entered"]
-[connection signal="EndDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/NPC/Baker" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/NPC/Baker3" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/NPC/Baker3" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/NPC/Baker2" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/NPC/Baker2" to="YSort/Player" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/NPC/Elisabeth" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/NPC/Elisabeth" to="DialogueController" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/NPC/Random" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/NPC/Random" to="DialogueController" method="_on_NPC_StartDialogue"]
-[connection signal="EndDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_EndDialogue"]
-[connection signal="StartDialogue" from="YSort/NPC/OldMan" to="YSort/Player" method="_on_NPC_StartDialogue"]
+[connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 [connection signal="CutsceneEnd" from="YSort/Player" to="Notebook" method="_on_CutsceneEnd"]
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SendInfoToQuestNPC" from="YSort/Player" to="Notebook" method="_on_SendInfoToQuestNPC"]
