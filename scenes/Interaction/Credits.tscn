@@ -1,15 +1,142 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/06_UI_menus/titleScreen.png" type="Texture" id=1]
+[ext_resource path="res://assets/05_fonts/renner/Renner_ 400 Book.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/06_UI_menus/credits.png" type="Texture" id=3]
+[ext_resource path="res://src/Credits.cs" type="Script" id=4]
+[ext_resource path="res://assets/06_UI_menus/buttonsMenus.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+outline_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 11
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 9, 4, 95, 27 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 8, 33, 97, 29 )
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.478431, 0.337255, 0.282353, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 152.0
+margin_top = 15.5858
+margin_right = 467.0
+margin_bottom = 354.586
+custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Un projet du collège des humanités de l'EPFL
+GameLab UNIL-EPFL & Lausanne Time Machine
+
+Equipe de développement
+
+
+
+
+Suivi du projet
+
+
+Partenaires : "
+align = 1
+
+[node name="Label" type="Label" parent="."]
+margin_left = 152.0
+margin_top = 80.3446
+margin_right = 467.0
+margin_bottom = 211.345
+custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "
+Sarah Jallon (graphisme, HEIG-VD), 
+Andrew Dobis (programmation, ETHZ-EPFL), 
+Saara Jones (game design, UNIL)
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 152.0
+margin_top = 56.7279
+margin_right = 467.0
+margin_bottom = 398.728
+custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "
+
+
+Digital Kingdom, Vevey
+
+
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 152.0
+margin_top = 142.995
+margin_right = 467.0
+margin_bottom = 484.995
+custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Laboratoire d'histoire des sciences et des techniques de l'EPFL
+Section des sciences du langage et de l'information de l'UNIL
+Faculté des lettres de l'UNIL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 25.4558
+margin_top = 15.5858
+margin_right = 120.456
+margin_bottom = 42.5858
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

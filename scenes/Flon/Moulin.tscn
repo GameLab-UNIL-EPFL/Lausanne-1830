@@ -575,10 +575,11 @@ extents = Vector2( 10, 23.8603 )
 radius = 6.2154
 
 [sub_resource type="CapsuleShape2D" id=38]
-height = 10.6422
+radius = 10.3405
+height = 0.431976
 
 [sub_resource type="RectangleShape2D" id=35]
-extents = Vector2( 8.12392, 8.86655 )
+extents = Vector2( 8.12392, 7.36695 )
 
 [sub_resource type="CapsuleShape2D" id=39]
 radius = 11.1959
@@ -631,8 +632,6 @@ tracks/0/keys = {
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 37, 36 )
 
-[sub_resource type="RectangleShape2D" id=36]
-
 [node name="Moulin" type="Node2D"]
 
 [node name="DialogueController" parent="." instance=ExtResource( 8 )]
@@ -656,11 +655,10 @@ __meta__ = {
 }
 
 [node name="Wall" type="StaticBody2D" parent="Sprite"]
-visible = false
 position = Vector2( -336, -184 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Wall"]
-polygon = PoolVector2Array( 154.903, 231.382, 340.209, 232.718, 340.209, 329.381, 423.508, 330.272, 424.399, 309.781, 430.19, 310.226, 430.636, 330.272, 468.053, 330.717, 460.07, 355.719, 109.008, 351.047, 120.354, 44.7015, 566.858, 44.0341, 571.53, 358.389, 511.462, 353.717, 503.689, 330.272, 518.389, 330.272, 517.944, 233.164, 431.972, 233.609, 430.636, 281.272, 423.063, 281.272, 423.063, 159.664, 431.081, 159.219, 430.636, 207.773, 517.053, 209.555, 517.053, 116.901, 430.19, 117.347, 430.19, 137.392, 423.063, 136.501, 423.508, 118.238, 338.873, 118.238, 338.873, 193.073, 329.964, 192.628, 328.628, 119.129, 154.457, 117.792 )
+polygon = PoolVector2Array( 154.903, 231.382, 340.209, 232.718, 340.209, 329.381, 423.508, 330.272, 424.399, 309.781, 430.19, 310.226, 430.636, 330.272, 468.053, 330.717, 460.07, 355.719, 109.008, 351.047, 120.354, 44.7015, 566.858, 44.0341, 571.53, 358.389, 511.462, 353.717, 503.689, 330.272, 518.389, 330.272, 517.944, 233.164, 431.972, 233.609, 430.636, 281.272, 423.063, 281.272, 423.063, 159.664, 432.653, 159.172, 432.653, 200.797, 515.902, 201.638, 517.053, 116.901, 430.19, 117.347, 430.19, 137.392, 423.063, 136.501, 423.508, 118.238, 338.873, 118.238, 338.873, 193.073, 329.964, 192.628, 328.628, 119.129, 154.457, 117.792 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite/Wall"]
 position = Vector2( 146, 67 )
@@ -888,6 +886,7 @@ position = Vector2( 213, 214.808 )
 texture = ExtResource( 28 )
 
 [node name="CollisionShape2D" parent="YSort/Bag6" index="1"]
+position = Vector2( 0, 2.7003 )
 shape = SubResource( 38 )
 
 [node name="Bag5" parent="YSort" instance=ExtResource( 13 )]
@@ -909,7 +908,7 @@ position = Vector2( 287.5, 114.508 )
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" parent="YSort/Box" index="1"]
-position = Vector2( 1.8761, -1.13345 )
+position = Vector2( 1.87601, 0.3698 )
 shape = SubResource( 35 )
 
 [node name="Box5" parent="YSort" instance=ExtResource( 13 )]
@@ -919,7 +918,7 @@ position = Vector2( 233.5, 217 )
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" parent="YSort/Box5" index="1"]
-position = Vector2( 1.8761, -1.13345 )
+position = Vector2( 1.5, 1.4996 )
 shape = SubResource( 35 )
 
 [node name="Box2" parent="YSort" instance=ExtResource( 13 )]
@@ -936,7 +935,7 @@ shape = SubResource( 35 )
 position = Vector2( 431, 113 )
 
 [node name="CollisionShape2D" parent="YSort/Box3" index="1"]
-position = Vector2( -0.1239, 4.86655 )
+position = Vector2( -0.123992, 3.33786e-06 )
 shape = SubResource( 39 )
 
 [node name="Box4" parent="YSort" instance=ExtResource( 13 )]

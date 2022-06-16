@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -126,6 +126,17 @@ extents = Vector2( 16.5, 8 )
 
 [sub_resource type="RectangleShape2D" id=80]
 extents = Vector2( 10, 3.3641 )
+
+[sub_resource type="RectangleShape2D" id=81]
+extents = Vector2( 10, 8.74985 )
+
+[sub_resource type="RectangleShape2D" id=82]
+
+[sub_resource type="RectangleShape2D" id=83]
+extents = Vector2( 10, 8.84091 )
+
+[sub_resource type="RectangleShape2D" id=84]
+extents = Vector2( 7.9939, 7.36868 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
@@ -574,6 +585,9 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 29.9439, 18.9086 )
 
+[sub_resource type="CircleShape2D" id=85]
+radius = 6.47183
+
 [sub_resource type="CircleShape2D" id=40]
 radius = 10.8202
 
@@ -772,6 +786,10 @@ margin_right = 640.0
 margin_bottom = 144.0
 focus_neighbour_bottom = NodePath("../TextureRect")
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="PaludBuilings" parent="." instance=ExtResource( 5 )]
 position = Vector2( 319, 181 )
@@ -979,17 +997,28 @@ z_index = 1
 z_as_relative = false
 texture = ExtResource( 25 )
 
+[node name="CollisionShape2D" parent="YSort/Props/Box2" index="1"]
+position = Vector2( 0, 1.25015 )
+shape = SubResource( 81 )
+
 [node name="Box3" parent="YSort/Props" instance=ExtResource( 24 )]
 position = Vector2( 443, 273 )
 
 [node name="Sprite" parent="YSort/Props/Box3" index="0"]
 texture = ExtResource( 25 )
 
+[node name="CollisionShape2D" parent="YSort/Props/Box3" index="1"]
+shape = SubResource( 82 )
+
 [node name="Box4" parent="YSort/Props" instance=ExtResource( 24 )]
 position = Vector2( 2, 232 )
 
 [node name="Sprite" parent="YSort/Props/Box4" index="0"]
 texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Props/Box4" index="1"]
+position = Vector2( 0, 1.15909 )
+shape = SubResource( 83 )
 
 [node name="Box5" parent="YSort/Props" instance=ExtResource( 24 )]
 position = Vector2( 420, 326 )
@@ -1002,6 +1031,10 @@ position = Vector2( 627, 342 )
 
 [node name="Sprite" parent="YSort/Props/Box7" index="0"]
 texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/Props/Box7" index="1"]
+position = Vector2( 2.0061, 2.63132 )
+shape = SubResource( 84 )
 
 [node name="Box6" parent="YSort/Props" instance=ExtResource( 24 )]
 position = Vector2( 399, 326 )
@@ -1103,9 +1136,6 @@ HasAutoDialogue = false
 [node name="TextBox" parent="YSort/NPC/Elisabeth" index="0"]
 z_index = 1
 NPCName = " Elisabeth De Cerjeat "
-
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 1
 
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
@@ -1278,6 +1308,10 @@ position = Vector2( -64, 37 )
 [node name="Sprite" parent="YSort/Fountain/Laundry2" index="0"]
 texture = ExtResource( 38 )
 
+[node name="CollisionShape2D" parent="YSort/Fountain/Laundry2" index="1"]
+position = Vector2( 0.33371, 2.33597 )
+shape = SubResource( 85 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 562, 350 )
 isCutscene = true
@@ -1329,13 +1363,13 @@ texture = ExtResource( 41 )
 [node name="Cuir2" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 482, 295 )
 frames = SubResource( 61 )
-frame = 8
+frame = 10
 playing = true
 
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
-frame = 1
+frame = 21
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]

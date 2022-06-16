@@ -60,7 +60,7 @@ public class Context : Node {
 	private Vector2 MoulinExitPosition = new Vector2(407, 230);
 	private Vector2 FlonEnterPosition = new Vector2(188, 446);
 	private Vector2 BrasserieEnterPosition = new Vector2(264, 393);
-	private Vector2 CasinoEnterPosition = new Vector2(358, 432);
+	private Vector2 CasinoEnterPosition = new Vector2(191, 432);
 	
 	public override void _Ready() {
 		NotebookCharInfo.Add(new CharacterInfo_t(
