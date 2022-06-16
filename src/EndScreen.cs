@@ -32,5 +32,9 @@ public class EndScreen : Node2D {
 		context._Clear();
 		SC.GotoScene("res://scenes/Interaction/Menu.tscn");
 	}
+	
+		private void _on_Button2_pressed() {
+		OS.ShellOpen("https://lausanne1830.ch/");
+	}
 }
 

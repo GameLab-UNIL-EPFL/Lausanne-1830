@@ -500,7 +500,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 10
+frame = 27
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -516,9 +516,6 @@ position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
-
-[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -541,7 +538,6 @@ texture = ExtResource( 21 )
 [node name="PressE" parent="Desk/Letter/Open" index="3" instance=ExtResource( 17 )]
 position = Vector2( -295, 186 )
 scale = Vector2( 2, 2 )
-frame = 1
 
 [node name="Label" type="Label" parent="Desk/Letter/Open" index="4"]
 margin_left = -279.0
@@ -652,9 +648,9 @@ volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
-margin_top = 68.0
+margin_top = 78.0
 margin_right = 198.0
-margin_bottom = 236.0
+margin_bottom = 246.0
 custom_fonts/font = SubResource( 19 )
 text = "
 
@@ -663,8 +659,7 @@ text = "
 
 Pour te déplacer
 et maintenir
-
-pour courir"
+"
 align = 1
 valign = 1
 __meta__ = {
@@ -717,6 +712,7 @@ scale = Vector2( 2, 2 )
 texture = SubResource( 35 )
 
 [node name="Sprite5" type="NinePatchRect" parent="Label"]
+visible = false
 show_behind_parent = true
 margin_left = 44.0
 margin_top = 132.0
@@ -733,6 +729,7 @@ __meta__ = {
 }
 
 [node name="Sprite6" type="Sprite" parent="Label"]
+visible = false
 position = Vector2( 65, 144 )
 texture = ExtResource( 23 )
 
@@ -753,7 +750,6 @@ __meta__ = {
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
-frame = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

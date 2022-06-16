@@ -182,7 +182,7 @@
         <text>Depuis combien de jour cet inconnu est-il là en train de dormir?</text>
     </dialogue>
     <dialogue id="demEnfant4" ntargets="1" type="onDemand">
-        <text>Je ne sais pas... Est-ce qu'on devrait essayer de le réveiller?</text>
+        <text>Je ne sais pas... Est-ce qu'on devrait le réveiller?</text>
     </dialogue>
     <dialogue id="demEnfant5" ntargets="1" type="onDemand">
         <text>Tu veux jouer avec moi?</text>
