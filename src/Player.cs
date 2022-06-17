@@ -143,9 +143,6 @@ public class Player : KinematicBody2D {
 				}
 				
 			}
-			if(CurrentState != PlayerStates.BLOCKED) {
-				HandleMovementInput(delta);
-			}
 		} 
 		//Check for tab
 		if(Input.IsActionJustPressed("ui_focus_next") &&
@@ -159,6 +156,8 @@ public class Player : KinematicBody2D {
 			//Open book
 			EmitSignal(nameof(OpenNotebook));
 		}
+		
+		HandleMovementInput(delta);
 		InputVec = InputVec.Normalized();
 		HandleMovement(delta);
 	}
@@ -174,8 +173,11 @@ public class Player : KinematicBody2D {
 			RunRequest = Input.IsActionPressed("ui_shift");
 			HandleMovement(delta);
 		} else {
+			//Player shouldn't move if blocked
 			InputVec = Vector2.Zero;
 			Velocity = Vector2.Zero;
+
+			animationState.Travel("Idle");
 		}
 	}
 	
