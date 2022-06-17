@@ -173,8 +173,11 @@ public class Player : KinematicBody2D {
 			RunRequest = Input.IsActionPressed("ui_shift");
 			HandleMovement(delta);
 		} else {
+			//Player shouldn't move if blocked
 			InputVec = Vector2.Zero;
 			Velocity = Vector2.Zero;
+
+			animationState.Travel("Idle");
 		}
 	}
 	
