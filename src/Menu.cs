@@ -30,7 +30,7 @@ public class Menu : Control
 		context = GetNode<Context>("/root/Context");
 		SC = (SceneChanger)GetNode("/root/SceneChanger");
 		MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		if(!MP.Music.IsPlaying()){
+		if(!MP.Music.Playing){
 			MP.PlayMusic("Schubert_Sonata13_2.mp3", -10);
 		}
 	}
