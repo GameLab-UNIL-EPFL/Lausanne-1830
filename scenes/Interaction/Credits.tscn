@@ -77,6 +77,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="Equipe" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -85,9 +86,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Equipe"]
 margin_left = 152.0
-margin_top = 15.5858
+margin_top = 23.5858
 margin_right = 467.0
-margin_bottom = 354.586
+margin_bottom = 362.586
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Un projet du collège des humanités de l'EPFL
@@ -109,9 +110,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Equipe"]
 margin_left = 152.0
-margin_top = 74.3446
+margin_top = 70.3446
 margin_right = 467.0
-margin_bottom = 205.345
+margin_bottom = 201.345
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "
@@ -127,9 +128,9 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="Equipe"]
 margin_left = 152.0
-margin_top = 51.7279
+margin_top = 48.7279
 margin_right = 467.0
-margin_bottom = 393.728
+margin_bottom = 390.728
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "
@@ -147,9 +148,9 @@ __meta__ = {
 
 [node name="Label4" type="Label" parent="Equipe"]
 margin_left = 152.0
-margin_top = 137.995
+margin_top = 132.995
 margin_right = 467.0
-margin_bottom = 479.995
+margin_bottom = 474.995
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Laboratoire d'histoire des sciences et des techniques de l'EPFL
@@ -162,7 +163,6 @@ __meta__ = {
 }
 
 [node name="Assets" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -208,9 +208,9 @@ __meta__ = {
 
 [node name="LinkButton2" type="LinkButton" parent="Assets"]
 margin_left = 344.0
-margin_top = 304.0
+margin_top = 292.0
 margin_right = 440.0
-margin_bottom = 318.0
+margin_bottom = 306.0
 focus_mode = 2
 custom_colors/font_color_focus = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
@@ -234,9 +234,9 @@ align = 1
 
 [node name="Label3" type="Label" parent="Assets"]
 margin_left = 168.0
-margin_top = 124.0
+margin_top = 122.0
 margin_right = 445.0
-margin_bottom = 138.0
+margin_bottom = 153.0
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Deux extraits de
@@ -244,10 +244,10 @@ Schubert - Sonata [No. 13] in A major, Op. 120 [D 664] (1819 or 1825)"
 align = 1
 
 [node name="Label4" type="Label" parent="Assets"]
-margin_left = 168.0
-margin_top = 213.0
-margin_right = 456.0
-margin_bottom = 227.0
+margin_left = 161.0
+margin_top = 199.0
+margin_right = 449.0
+margin_bottom = 213.0
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Sons CC0 du site freesounds.org "
@@ -255,9 +255,9 @@ align = 1
 
 [node name="Label5" type="Label" parent="Assets"]
 margin_left = 168.0
-margin_top = 288.0
+margin_top = 275.0
 margin_right = 456.0
-margin_bottom = 319.0
+margin_bottom = 306.0
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Polices CC0 du site dafont.com
