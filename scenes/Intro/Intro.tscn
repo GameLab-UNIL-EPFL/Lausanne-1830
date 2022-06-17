@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -25,6 +25,12 @@
 [ext_resource path="res://assets/06_UI_menus/shift.png" type="Texture" id=23]
 [ext_resource path="res://assets/06_UI_menus/wasd.png" type="Texture" id=24]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=25]
+
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 10, 87.8739 )
+
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 70.1637, 22.8688 )
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 22, 22 )
@@ -447,6 +453,18 @@ one_way_collision = true
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 250.511, 141.727, 307.803, 142.206, 307.323, 115.838, 360.061, 116.796, 358.383, 140.289, 422.387, 139.33, 421.907, 95.7015, 242.361, 94.7427, 242.6, 142.446 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 241, 181.874 )
+shape = SubResource( 39 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 425.758, 182.526 )
+shape = SubResource( 39 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 316.164, 257.869 )
+shape = SubResource( 40 )
+
 [node name="Door" type="StaticBody2D" parent="."]
 position = Vector2( 376, 241 )
 
@@ -500,7 +518,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 10
+frame = 23
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
