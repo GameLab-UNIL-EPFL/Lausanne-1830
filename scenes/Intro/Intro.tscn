@@ -500,7 +500,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 27
+frame = 10
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -658,7 +658,7 @@ text = "
 
 
 Pour te déplacer
-et maintenir
+
 "
 align = 1
 valign = 1
@@ -739,7 +739,7 @@ margin_top = 99.0
 margin_right = 597.0
 margin_bottom = 290.0
 custom_fonts/font = SubResource( 24 )
-text = "Pour intéragir
+text = "Pour interagir
 et parler"
 align = 1
 valign = 1
