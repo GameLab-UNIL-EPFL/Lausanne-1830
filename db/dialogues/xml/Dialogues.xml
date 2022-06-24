@@ -8,7 +8,7 @@
         <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
         <text>Il est censé contenir toutes les informations importantes</text>
         <text>sur les habitants de Lausanne,</text>
-        <text>mais comme vous avez sûrment remarqué,</text>
+        <text>mais comme vous avez sûrement remarqué,</text>
         <text>les données de plusieurs personnes sont manquantes.</text>
         <replay id="1">
             <text>Essayez de remplir la première page.</text>
@@ -16,7 +16,7 @@
             <text objectif="1">et il me semble que nous avont une lettre adressée à elle sur le bureau.</text>
         </replay>
         <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->
-        <text>Bravo ! Vous avez correctement rempli la première page.</text>
+        <text>Bravo! Vous avez correctement rempli la première page.</text>
         <text>Il y a encore 5 autres pages à compléter.</text>
         <text>Essayez de trouver les informations manquantes en ville</text>
         <text objectif="2">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
@@ -37,7 +37,7 @@
         </text>
     </dialogue>
     <dialogue id="testDemand" ntargets="1" type="onDemand">
-        <text>Bien le bonjour, qu'est-ce qui vous intéresse ?</text>
+        <text>Bien le bonjour, qu'est-ce qui vous intéresse?</text>
         <text>Des belles pommes, des navets?</text>
     </dialogue>
     <dialogue id="demandElisabeth" ntargets="1" type="onDemand">
@@ -66,7 +66,7 @@
     </dialogue>
     <dialogue id="demandBaker" ntargets="1" type="onDemand">
         <text>Il y a beaucoup de vols ces temps.</text>
-        <text>Vous devriez faire attention !</text>
+        <text>Vous devriez faire attention!</text>
         <text>Ils piquent surtout les mallettes à l'arrière des calèches,</text>
         <text>mais j'ai entendu dire que quelqu'un</text>
         <text>s'était fait voler son hibou dans son jardin!</text>
@@ -75,28 +75,28 @@
         <text>Je rêverais d'être invitée au château de Vennes,</text>
         <text>de voir si l'intérieur est aussi beau que l'extérieur...</text>
         <text>Mais je ne suis qu'une lingère.</text>
-        <text>C'est madame De Montolieu qui y habite avec son fils unique.</text>
+        <text>C'est Madame De Montolieu qui y habite avec son fils unique.</text>
     </dialogue>
     <dialogue id="demandLingere2" ntargets="1" type="onDemand">
         <text>Et moi, je rêverais que quelqu'un fasse la lessive à ma place.</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
-            <option id="0">Allez, allez ! La bière ne va pas se brasser toute seule!</option>
-            <option id="1">Schnell, schnell !</option>
+            <option id="0">Allez, allez! La bière ne va pas se brasser toute seule!</option>
+            <option id="1">Schnell, schnell!</option>
         </text>
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
         <text>Si vous avez des questions, allez demander à mon épouse.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
-        <text>Hé Wolff ! Tu sais ce qui est arrivé à Ralf?</text>
+        <text>Hé Wolff! Tu sais ce qui est arrivé à Ralf?</text>
         <text>Je ne l'ai pas revu depuis longtemps.</text>
     </dialogue>
     <dialogue id="demandTonnelier" ntargets="1" type="onDemand">
-        <text>Nein, keine ahnung...</text>
+        <text>Nein, keine Ahnung...</text>
         <text>La dernière fois que je l'ai vu, c'était la semaine passée,</text>
-        <text>mais mes souvenirs sont un peu flou...</text>
+        <text>mais mes souvenirs sont un peu flous...</text>
         <text>On a encore trop bu ce soir-là.</text>
     </dialogue>
     <dialogue id="demandTonneliers" ntargets="1" type="onDemand">
@@ -117,7 +117,7 @@
         <text>Merci beaucoup pour votre aide!</text>
         <text>Ah mais je n'ai pas pris le temps de me présenter!</text>
         <text>Je m'appelle Angélique Trüschel.</text>
-        <text>Avec mon époux, Conrad, nous sommes propriétaire de la brasserie.</text>
+        <text>Avec mon époux, Conrad, nous sommes propriétaires de la brasserie.</text>
     </dialogue>
     <dialogue id="demandFille" ntargets="1" type="onDemand">
         <text>Moi aussi j'aimerais aller en ville!</text>
@@ -137,7 +137,7 @@
         <text>C'est le casino de Derrière-Bourg,</text>
         <text>une salle de concerts et de réunions en tout genre.</text>
         <text>C'est ici que les casinistes se sont rassemblés</text>
-        <text>pour organiser la révolution libérale.</text>
+        <text>pour organiser la Révolution libérale.</text>
     </dialogue>
     <dialogue id="demandPerregaux" ntargets="1" type="onDemand">
         <text>J'ai oublié ma mallette quelque part...</text>
@@ -151,7 +151,7 @@
         <text>Mme Perregaux est de nouveau enceinte. Elle attend son troisième enfant.</text>
     </dialogue>
     <dialogue id="demandPouly" ntargets="1" type="onDemand">
-        <text>Oh ! Mais quelle nouvelle réjouissante !</text>
+        <text>Oh! Mais quelle nouvelle réjouissante!</text>
     </dialogue>
     <dialogue id="demandFischer" ntargets="1" type="onDemand">
         <text>Madame Appiani, la première chanteuse du grand théâtre de St. Charles de Lisbonne,</text> 
@@ -179,7 +179,7 @@
         <text>Ce sont les boucheries et la tannerie qui les jettent dans l'eau.</text>
     </dialogue>
     <dialogue id="demEnfant3" ntargets="1" type="onDemand">
-        <text>Depuis combien de jour cet inconnu est-il là en train de dormir?</text>
+        <text>Depuis combien de jours cet inconnu est-il là en train de dormir?</text>
     </dialogue>
     <dialogue id="demEnfant4" ntargets="1" type="onDemand">
         <text>Je ne sais pas... Est-ce qu'on devrait le réveiller?</text>
@@ -189,7 +189,7 @@
     </dialogue>
     <dialogue id="appEnfant5" ntargets="1" type="onApproach">
         <text>
-            <option id="0">Hi hi hi !</option>
+            <option id="0">Hi hi hi!</option>
             <option id="1">La la laaa...</option>
             <option id="2">Non mère, pas tout de suite!</option>
         </text>
