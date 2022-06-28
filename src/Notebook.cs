@@ -225,15 +225,18 @@ public class Notebook : Node2D {
 				tabSprites[i].Frame = context._IsTabCorrect(i) ? 3 : 2;
 			}
 		}
-		
-		//Update the objective
+
+		//Set the objective (override it by charInfo if tab was completed)
+		SetObjective((context._GetQuest() == Quests.TUTORIAL &&
+				context._GetQuestStatus() != QuestStatus.COMPLETE) ?
+					context._GetQuestStateId() : 1);
+		Stamp.Hide();
+
+		//Update the objective to show char info
 		if(context._IsTabCorrect(curTabId)) {
 			SetCharInfo();
 			Stamp.Show();
-		} else {
-			SetObjective(context._GetQuestStateId());
-			Stamp.Hide();
-		}
+		} 
 	}
 	
 	private int AttributeToIdx(string attr) {
@@ -397,14 +400,18 @@ public class Notebook : Node2D {
 		//Hide non-tutorial stuff in case of tuto
 		if(context._GetGameState() == GameStates.INIT) {
 			DisableNonTutoTabs();
-			//Set tutorial objective
+
+			//Set objective (it might later be overridden by charInfo if needed)
+			SetObjective((context._GetQuest() == Quests.TUTORIAL &&
+				context._GetQuestStatus() != QuestStatus.COMPLETE) ?
+					context._GetQuestStateId() : 1);
+			Stamp.Hide();
+
+			//Set tutorial char info if tab is completed
 			if(context._IsTabCorrect(curTabId)) {
 				SetCharInfo();
 				Stamp.Show();
-			} else {
-				SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
-				Stamp.Hide();
-			}
+			} 
 		}
 	}
 	
@@ -512,13 +519,16 @@ public class Notebook : Node2D {
 		FillNotebook(characterInfo);
 		_UpdateNotebook(correctInfo);
 		
-		//Update the objective
+		//Set object (will be overriden by charInfo is needed)
+		SetObjective((context._GetQuest() == Quests.TUTORIAL &&
+				context._GetQuestStatus() != QuestStatus.COMPLETE) ?
+					context._GetQuestStateId() : 1);
+		Stamp.Hide();
+
+		//Update the objective to the charInfo if tab is completed
 		if(context._IsTabCorrect(curTabId)) {
 			SetCharInfo();
 			Stamp.Show();
-		} else {
-			SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
-			Stamp.Hide();
 		}
 	}
 	
