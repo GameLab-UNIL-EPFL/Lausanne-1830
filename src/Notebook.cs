@@ -402,7 +402,8 @@ public class Notebook : Node2D {
 				SetCharInfo();
 				Stamp.Show();
 			} else {
-				SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
+				SetObjective((context._GetQuest() == Quests.TUTORIAL && context._GetQuestStatus() != QuestStatus.COMPLETE) ?
+					context._GetQuestStateId() : 1);
 				Stamp.Hide();
 			}
 		}
@@ -517,7 +518,8 @@ public class Notebook : Node2D {
 			SetCharInfo();
 			Stamp.Show();
 		} else {
-			SetObjective(context._GetQuest() == Quests.TUTORIAL ? context._GetQuestStateId() : 1);
+			SetObjective((context._GetQuest() == Quests.TUTORIAL && context._GetQuestStatus() != QuestStatus.COMPLETE) ?
+				context._GetQuestStateId() : 1);
 			Stamp.Hide();
 		}
 	}
