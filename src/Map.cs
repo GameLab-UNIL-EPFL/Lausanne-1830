@@ -12,7 +12,9 @@ public class Map : Node2D
 	}
 
 	private void _on_Map_visibility_changed() {
-		office.GrabFocus();
+		if(Visible) {
+			office.GrabFocus();
+		}
 	}
 }
 
