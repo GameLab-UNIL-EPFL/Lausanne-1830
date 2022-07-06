@@ -74,10 +74,10 @@ id = "Brasserie/Brasserie"
 text = ""
 
 [node name="brasserie_button" parent="." instance=ExtResource( 1 )]
-margin_left = 126.0
-margin_top = 93.0
-margin_right = 176.0
-margin_bottom = 109.0
+margin_left = 132.0
+margin_top = 86.0
+margin_right = 182.0
+margin_bottom = 102.0
 focus_neighbour_right = NodePath("../palud_button")
 focus_neighbour_bottom = NodePath("../palud_button")
 texture_hover = ExtResource( 13 )
