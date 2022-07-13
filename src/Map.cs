@@ -1,51 +1,57 @@
-/*
-Historically accurate educational video game based in 1830s Lausanne.
-Copyright (C) 2021  GameLab UNIL-EPFL
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 using Godot;
 using System;
 
 public class Map : Node2D
 {
-	private bool hidden = true;
-	
-	private AudioStreamPlayer ASP;
-	private Sprite S;
-	
+	private TextureButton office;
+	private TextureButton brasserie;
+	private TextureButton moulin;
+	private TextureButton palud;
+	private TextureButton casino;
+	private Context context;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		ASP = GetNode<AudioStreamPlayer>("../ButtonSound");
-		S = GetNode<Sprite>("../TabMap");
+		office = GetNode<TextureButton>("office_button");
+		brasserie = GetNode<TextureButton>("brasserie_button");
+		moulin = GetNode<TextureButton>("moulin_button");
+		palud = GetNode<TextureButton>("palud_button");
+		casino = GetNode<TextureButton>("casino_button");
+		context = GetNode<Context>("/root/Context");
+		
 	}
-
-	public void _on_MapButton_pressed() {
-		if(ASP.Playing == false) {
-			ASP.Play();
+	
+	private void GrabFocusPos(Locations l) {
+		switch(l) {
+			case Locations.INTRO:
+				office.GrabFocus();
+				break;
+			case Locations.PALUD:
+				palud.GrabFocus();
+				break;
+			case Locations.CASINO:
+				casino.GrabFocus();
+				break;
+			case Locations.BRASSERIE:
+				brasserie.GrabFocus();
+				break;
+			case Locations.MOULIN:
+			case Locations.FLON:
+				moulin.GrabFocus();
+				break;
+			default:
+				break;
 		}
-		if(hidden) {
-			Show();
-			S.Frame = 0;
-		} else {
-			Hide();
-			S.Frame = 1;
-		}
-		hidden = !hidden;
 	}
+	
 
+	private void _on_Map_visibility_changed() {
+		if(Visible) {
+			GrabFocusPos(context._GetLocation());
+		}
+	}
 }
+
 
 
