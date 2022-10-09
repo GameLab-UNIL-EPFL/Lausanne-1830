@@ -108,8 +108,17 @@ margin_top = 21.0
 margin_right = 56.0
 margin_bottom = 38.0
 
-[node name="5" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
+[node name="4" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
 margin_right = 16.0
+margin_bottom = 17.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "4"
+
+[node name="5" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
+margin_left = 20.0
+margin_right = 36.0
 margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
@@ -117,22 +126,13 @@ enabled_focus_mode = 0
 text = "5"
 
 [node name="6" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
-margin_left = 20.0
-margin_right = 36.0
-margin_bottom = 17.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 3 )
-enabled_focus_mode = 0
-text = "6"
-
-[node name="4" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC" instance=ExtResource( 4 )]
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 17.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 3 )
 enabled_focus_mode = 0
-text = "4"
+text = "6"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC"]
 margin_top = 42.0
@@ -213,9 +213,9 @@ focus_mode = 2
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC/1" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC/2" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/0to4HC/3" to="." method="_on_InsertNumber"]
+[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/4" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/5" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/6" to="." method="_on_InsertNumber"]
-[connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/5to9HC/4" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer/7" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer/8" to="." method="_on_InsertNumber"]
 [connection signal="InsertNumber" from="BgSprite/MarginContainer/VBoxContainer/HBoxContainer/NumberVC/HBoxContainer/9" to="." method="_on_InsertNumber"]
