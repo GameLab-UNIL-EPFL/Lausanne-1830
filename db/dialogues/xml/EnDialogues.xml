@@ -1,27 +1,4 @@
 <scene name="palud">
-    <dialogue type="onDemand" ntargets="1" id="demandQuest">
-        <text>Alors...</text>
-        <text>C'est vous qui avez été choisi pour compléter le registre de la population?</text>
-        <replay id="0">
-            <text objectif="0">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
-        </replay>
-        <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
-        <text>Il est censé contenir toutes les informations importantes</text>
-        <text>sur les habitants de Lausanne,</text>
-        <text>mais comme vous avez sûrement remarqué,</text>
-        <text>les données de plusieurs personnes sont manquantes.</text>
-        <replay id="1">
-            <text>Essayez de remplir la première page.</text>
-            <text>Ma collègue en sait plus que moi sur cette personne</text>
-            <text objectif="1">et il me semble que nous avont une lettre adressée à elle sur le bureau.</text>
-        </replay>
-        <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->
-        <text>Bravo! Vous avez correctement rempli la première page.</text>
-        <text>Il y a encore 5 autres pages à compléter.</text>
-        <text>Essayez de trouver les informations manquantes en ville</text>
-        <text objectif="2">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
-        <!--Ensuite dialogue qui se trouve dans NPC.cs-->
-    </dialogue>
     <dialogue id="preTuto" ntargets="1" type="onDemand">
         <text>Go talk to Mr. Gély.</text>
     </dialogue>
@@ -32,13 +9,13 @@
     <dialogue id="testApproach" ntargets="1" type="onApproach">
         <text>
             <option id="0">Fresh fruits and vegetables !</option>
-            <option id="1">Venez goûter!</option>
-            <option id="2">Venez acheter!</option>
+            <option id="1">Good day! What are you buying?</option>
+            <option id="2">Finally a customer!</option>
         </text>
     </dialogue>
     <dialogue id="testDemand" ntargets="1" type="onDemand">
-        <text>Greetings, what are you looking for?Bien le bonjour, qu'est-ce qui vous intéresse?</text>
-        <text>Des belles pommes, des navets?</text>
+        <text>Greetings, how can I help you?</text>
+        <text>I have beautiful apples and turnips!</text>
     </dialogue>
     <dialogue id="demandElisabeth" ntargets="1" type="onDemand">
         <text>François?</text>
@@ -67,18 +44,18 @@
     <dialogue id="demandBaker" ntargets="1" type="onDemand">
         <text>You should be careful!</text>
         <text>There have been many thefts lately.</text>
-        <text>They mainly steal baggages at the back of carriages.</text>
+        <text>They mainly steal baggage at the back of carriages.</text>
         <text>but I heard a rumor</text>
         <text>that someone stole an owl from a garden!</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
         <text>I would love to be invited to Vennes' castle,</text>
         <text>to see if the inside is as beautiful as the outside...</text>
-        <text>But I am but a laundere.</text>
+        <text>But I am but a launderer.</text>
         <text>Ms. De Montolieu lives there with her only son.</text>
     </dialogue>
     <dialogue id="demandLingere2" ntargets="1" type="onDemand">
-        <text>And I would love if someone could do this job for me...</text>
+        <text>And I would love it if someone could do this job for me...</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
@@ -87,7 +64,7 @@
         </text>
     </dialogue>
     <dialogue id="demandConrad" ntargets="1" type="onDemand">
-        <text>If you have any question, go ask my spouse.</text>
+        <text>If you have any questions, go ask my spouse.</text>
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
         <text>Hey Wolff! Do you know what happened to Ralf?</text>
@@ -124,7 +101,7 @@
     </dialogue>
     <dialogue id="demandFilles" ntargets="1" type="onDemand">
         <text>Our mother thinks we are too young to go out,</text>
-        <text>but our sister Frédérique, she is allowed to go on errands.</text>
+        <text>but our sister Frédérique, is allowed to go on errands.</text>
     </dialogue>
     <dialogue id="appPerregaux" ntargets="1" type="onApproach">
         <text>Don't you think Lausanne needs more bridges?</text>
@@ -155,7 +132,7 @@
     </dialogue>
     <dialogue id="demandFischer" ntargets="1" type="onDemand">
         <text>Ms Appiani, the first singer of the theatre of St. Charles of Lisbon,</text> 
-        <text>will be giving a concert here on the 14th of february.</text>
+        <text>will be giving a concert here on the 14th of February.</text>
     </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
         <text>Welcome to our mill!</text>
@@ -176,7 +153,7 @@
     <dialogue id="demEnfant2" ntargets="1" type="onDemand">
         <text>Don't drink from the river!</text>
         <text>We can find animal carcasses in it.</text>
-        <text>The slaughter houses and the tannery throw them in the water.</text>
+        <text>The slaughterhouses and the tannery throw them in the water.</text>
     </dialogue>
     <dialogue id="demEnfant3" ntargets="1" type="onDemand">
         <text>How long has this stranger been sleeping there?</text>
