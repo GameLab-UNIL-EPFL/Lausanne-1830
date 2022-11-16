@@ -190,12 +190,12 @@ public class QuestController : Node {
 
 	//File at which the scene's dialogue is stored
 	[Export]
-	public string SceneCharacterFileName = "notebookCharacterList.xml";
-	public string SceneCharacterFileBasePath = "res://db/characters/";
+	public string SceneCharacterFileName = "/characters/notebookCharacterList.xml";
+	public string SceneCharacterFileBasePath = "res://db/";
 	public string SceneCharacterFilePath;
 	
 	//Files related to the Quest dialogue
-	public string QuestDialogueFile = "res://db/dialogues/xml/QuestNPC.xml";
+	public string QuestDialogueFile;
 	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument characterList;
@@ -212,11 +212,15 @@ public class QuestController : Node {
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		SceneCharacterFilePath = SceneCharacterFileBasePath + SceneCharacterFileName;
+		context = GetNode<Context>("/root/Context");
+
+		QuestDialogueFile = "res://db/" + context._GetLanguageAbbrv() + "/dialogues/xml/QuestNPC.xml";
+		
+		SceneCharacterFilePath = SceneCharacterFileBasePath + 
+			context._GetLanguageAbbrv() + SceneCharacterFileName;
 		DialogueController._ParseXML(ref characterList, SceneCharacterFilePath);
 		DialogueController._ParseXML(ref QuestDialogue, QuestDialogueFile);
 		
-		context = GetNode<Context>("/root/Context");
 
 		if(context._GetLocation() == Locations.INTRO) {
 			Notebook NB = GetNode<Notebook>("../Notebook");

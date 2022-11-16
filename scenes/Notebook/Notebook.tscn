@@ -1077,7 +1077,6 @@ texture = ExtResource( 17 )
 [node name="NotebookList" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( 232, 112 )
-DBFilePath = "res://db/characters/notebookCharacterList.xml"
 
 [node name="Close" type="Button" parent="NotebookList"]
 margin_left = 162.0

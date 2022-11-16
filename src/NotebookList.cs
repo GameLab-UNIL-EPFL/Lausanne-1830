@@ -26,7 +26,6 @@ public class NotebookList : Node2D {
 	[Signal]
 	public delegate void UpdateInfo(string attribute, string newVal);
 	
-	[Export]
 	public string DBFilePath;
 	
 	// Used to cache xml lookup results, in order to speed up second lookups
@@ -54,6 +53,8 @@ public class NotebookList : Node2D {
 	private string curAttribute;
 	private const string NUM = "num";
 	private const string ENFANTS = "enfants";
+
+	private Context context;
 	
 	private void HideAll() {
 		bgSprite.Hide();
@@ -158,10 +159,9 @@ public class NotebookList : Node2D {
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		// Sanity Check
-		if(DBFilePath == null) {
-			throw new Exception("DB file path must be set !!");
-		}
+		context = GetNode<Context>("/root/Context");
+
+		DBFilePath = "res://db/" + context._GetLanguageAbbrv() + "/characters/notebookCharacterList.xml";
 		
 		// Parse the XML file and store result in characterAttributes
 		DialogueController._ParseXML(ref characterAttributes, DBFilePath);

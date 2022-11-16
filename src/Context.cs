@@ -23,6 +23,7 @@ using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
+public enum Language {FR, EN};
 public enum Quests {NONE, TUTORIAL};
 public enum QuestStatus {NONE, ON_GOING, COMPLETE, NOT_STARTED};
 
@@ -39,6 +40,9 @@ public class Context : Node {
 	private Quests CurrentQuest = Quests.TUTORIAL;
 	private QuestStatus CurrentQuestStatus = QuestStatus.NOT_STARTED;
 	private int QuestStateId = -2;
+	
+	private Language CurrentLanguage = Language.FR;
+	private int NLanguages = Enum.GetNames(typeof(Language)).Length;
 	
 	//Quest NPC ref
 	private NPC QuestNPC = null;
@@ -111,6 +115,37 @@ public class Context : Node {
 		//Reload context
 		_Ready();
 	}
+	
+	public Language _GetLanguage() {
+		return CurrentLanguage;
+	}
+	
+	public void _NextLanguage() {
+		CurrentLanguage = (Language)(((int)CurrentLanguage + 1) % NLanguages);
+	}
+	
+	// Get the abbreviation used in the file system to reference the language
+	public string _GetLanguageAbbrv() {
+		switch(CurrentLanguage) {
+			case Language.EN:
+				return "en";
+			case Language.FR:
+				return "fr";
+			default:
+				return "fr";
+		}
+	}
+	
+	public string _LanguageToString() {
+		switch(CurrentLanguage) {
+			case Language.EN:
+				return "Language: En";
+			case Language.FR:
+				return "Langue: Fr";
+			default:
+				return "Langue: Fr";
+		}
+	} 
 	
 	public void _UpdateLocation(string id) {
 		switch(id) {

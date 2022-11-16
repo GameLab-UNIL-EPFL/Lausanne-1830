@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/06_UI_menus/titleScreenLogo.png" type="Texture" id=1]
 [ext_resource path="res://assets/06_UI_menus/buttonsMenus.png" type="Texture" id=2]
 [ext_resource path="res://src/Menu.cs" type="Script" id=3]
 [ext_resource path="res://assets/06_UI_menus/buttonsMenusbig.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Interaction/LanguageButton.cs" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
@@ -28,6 +29,9 @@ region = Rect2( 363, 297, 290, 87 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -72,5 +76,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="language" type="Button" parent="."]
+margin_left = 276.0
+margin_top = 286.0
+margin_right = 364.0
+margin_bottom = 306.0
+text = "Langue: Fr"
+script = ExtResource( 5 )
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="language" to="language" method="_on_language_pressed"]

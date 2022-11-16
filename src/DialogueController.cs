@@ -26,7 +26,9 @@ public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
 	[Export]
-	public string SceneDialogueFile = "res://db/dialogues/xml/Dialogues.xml";
+	public string SceneDialogueFile;
+	
+	Context context;
 	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
@@ -63,7 +65,7 @@ public class DialogueController : Node {
 		if(xml != null) {
 			targetXML = xml;
 		} else {
-			throw new Exception("Unable to load xml file!");
+			throw new Exception("Unable to load xml file:" + filePath);
 		}
 	}
 
@@ -72,6 +74,10 @@ public class DialogueController : Node {
 		//Initialize dialogue queues
 		target0Text = new Queue<String>();
 		target1Text = new Queue<String>();
+		
+		context = GetNode<Context>("/root/Context");
+		
+		SceneDialogueFile = "res://db/" + context._GetLanguageAbbrv() + "/dialogues/xml/Dialogues.xml";
 		
 		//Load XML and init state
 		IsOccupied = false;

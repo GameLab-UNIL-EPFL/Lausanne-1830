@@ -55,7 +55,7 @@ public class Notebook : Node2D {
 	private Context context;
 	private Player p;
 	
-	private const string infoFilePath = "res://db/characters/infoCharacters.xml";
+	private string infoFilePath;
 	private XDocument InfoXML;
 	private RichTextLabel Quest;
 	
@@ -170,6 +170,7 @@ public class Notebook : Node2D {
 		closeLabel = GetNode<Label>("Fermer");
 		Quest = GetNode<RichTextLabel>("Quest");
 		NBL = GetNode<Node2D>("NotebookList");
+		infoFilePath = "res://db/" + context._GetLanguageAbbrv() + "/characters/infoCharacters.xml";
 		
 		//Load in character info XML
 		DialogueController._ParseXML(ref InfoXML, infoFilePath);
