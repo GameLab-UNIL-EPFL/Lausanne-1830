@@ -35,6 +35,10 @@ public class Notebook : Node2D {
 	private List<Label> infoStatic = new List<Label>();
 	private string[] infoNames = {"Prenom", "Nom", "Adresse", "Num", "Conjoint", "Enfants", "Metier"};
 	
+	//TODO set the notebook labels in french or english
+	private string[] EnLabels = {"Name", "Surname", "Address", "Street number", "Marital Status", "Children", "Profession"};
+	private string[] FrLabels = {"Prénom", "Nom", "Adresse", "Numéro d'adresse", "Etat civil", "Enfant(s)", "Métier"};
+	
 	private List<Sprite> tabSprites = new List<Sprite>();
 	private List<Button> tabButtons = new List<Button>(); 
 	private List<Sprite> Portraits = new List<Sprite>();
