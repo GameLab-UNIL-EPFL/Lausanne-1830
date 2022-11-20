@@ -33,10 +33,6 @@ public class DialogueController : Node {
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
 	private XDocument questTree;
-
-	// Cache the most recently parsed tree
-	private string lastLoadedxml = null;
-	private XDocument xmlTreeCache = null;
 	
 	//Used to lock the Dialogue controller during an interaction
 	private bool IsOccupied
