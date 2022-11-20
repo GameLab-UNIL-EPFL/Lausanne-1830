@@ -1,21 +1,72 @@
-<dialogue type="onDemand" ntargets="1" id="demandQuest">
-        <text id="0">Alors...</text>
-        <text id="1">C'est vous qui avez été choisi pour compléter le registre de la population?</text>
-        <text id="2">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
-        <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
-        <text id="3" objectif="0" replay="2">Il est censé contenir toutes les informations importantes</text>
-        <text id="4">sur les habitants de Lausanne,</text>
-        <text id="5">mais comme vous l'avez sûrement remarqué,</text>
-        <text id="6">les données de plusieurs personnes sont manquantes.</text>
-        <text id="7">Essayez de remplir la première page.</text>
-        <text id="8">Ma collègue en sait plus que moi sur cette personne</text>
-        <text id="9">et il me semble que nous avons une lettre adressée à elle sur le bureau.</text>
-        <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->
-        <text id="10" objectif="2" replay="7">Bravo ! Vous avez correctement rempli la première page.</text>
-        <text id="11">Il y a encore 5 autres pages à compléter.</text>
-        <text id="12">Voici la carte.</text>
-        <text id="13">Essayez de trouver les informations manquantes en ville</text>
-        <text id="14">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
-        <!--Ensuite dialogue qui se trouve dans NPC.cs-->
-        <text id="15" signal="EndQuest"></text>
-</dialogue>
+<scene name="palud">
+        <dialogue type="onDemand" ntargets="1" id="demandQuest">
+                <text id="0">Alors...</text>
+                <text id="1">C'est vous qui avez été choisi pour compléter le registre de la population?</text>
+                <text id="2">Très bien. Voyons voir ce carnet... Essayez de l'ouvrir.</text>
+                <!--Faire apparaitre le bouton du carnet et laisser le joueur l'ouvrir et le fermer-->
+                <text id="3" objectif="0" replay="2">Il est censé contenir toutes les informations importantes</text>
+                <text id="4">sur les habitants de Lausanne,</text>
+                <text id="5">mais comme vous l'avez sûrement remarqué,</text>
+                <text id="6">les données de plusieurs personnes sont manquantes.</text>
+                <text id="7">Essayez de remplir la première page.</text>
+                <text id="8">Ma collègue en sait plus que moi sur cette personne</text>
+                <text id="9">et il me semble que nous avons une lettre adressée à elle sur le bureau.</text>
+                <!--Faire apparaitre le NPC et l'item et laisser le joueur remplir la première page-->
+                <text id="10" objectif="2" replay="7">Bravo ! Vous avez correctement rempli la première page.</text>
+                <text id="11">Il y a encore 5 autres pages à compléter.</text>
+                <text id="12">Voici la carte.</text>
+                <text id="13">Essayez de trouver les informations manquantes en ville</text>
+                <text id="14">et revenez me voir lorsque vous aurez fini de compléter le registre.</text>
+                <!--Ensuite dialogue qui se trouve dans NPC.cs-->
+                <text id="15" signal="EndQuest"></text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="questTextAllCorrect">
+                <text id="0">Alors...</text>
+		<text id="1">Voyons voir ce registre</text>
+                <text id="2">Bravo ! Vous avez fait du bon travail !</text>
+                <text id="3">Je vais garder ça dans nos documents importants.</text>
+                <text id="4">Peut-être qu'un jour des historiens pourront utiliser ces informations</text>
+                <text id="5">et en faire un jeu vidéo.      </text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="questTextCorrect">
+                <text id="0">Alors...</text>
+		<text id="1">Il me semble que toutes les informations sur cette personne sont correctes.</text>
+                <text id="2">Il faut maintenant passer aux prochaines.</text>
+                <text id="3">Plus que {0} pages à compléter!</text><!-- {0}: Number of incorrect pages left -->
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="questTextWrongSingular">
+                <text id="0">Voyons voir ce registre.</text>
+		<text id="1">Sur la page de {0}...</text><!-- {0}: Name associated to the current tab -->
+                <text id="2">Il y a encore {1} donnée fausse.</text><!-- {1}: number of wrong entries in tab -->
+                <text id="3">Revenez me voir lorsque vous l'aurez corrigée.</text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="questTextWrongPlural">
+                <text id="0">Voyons voir ce registre.</text>
+		<text id="1">Sur la page de {0}...</text><!-- {0}: Name associated to the current tab -->
+                <text id="2">Il y a encore {1} données fausses.</text><!-- {1}: number of wrong entries in tab -->
+                <text id="3">Revenez me voir lorsque vous les aurez corrigées.</text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="brewStart">
+                <text id="0">Le travail de brasseur peut être très fatiguant.</text>
+		<text id="1">Je ne sais pas si on va réussir à finir cette cuvée à temps...</text>
+                <text id="2">Tu veux nous aider à brasser la bière ?</text>
+                <text id="3">Merci !</text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="brewFail">
+                <text id="0">Mais tu as fait n'importe quoi !</text>
+		<text id="1">La bière est complètement brûlée !</text>
+                <text id="2">Mme Trüschel ne sera pas du tout contente...</text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="brewGood">
+                <text id="0">Bien...</text>
+		<text id="1">La bière n'est pas trop brûlée et encore vendable.</text>
+                <text id="2">Merci pour l'aide.</text>
+        </dialogue>
+        <dialogue type="onDemand" ntargets="1" id="brewPerfect">
+                <text id="0">Wow la bière est parfaite !</text>
+		<text id="1">Tu as vraiment un don pour ça.</text>
+                <text id="2">Merci énormément pour l'aide !</text>
+                <text id="3">Allez parler à Mme Trüschel...</text>
+                <text id="4">Je pense qu'elle vous remerciera.</text>
+        </dialogue>
+</scene>
