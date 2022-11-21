@@ -460,7 +460,6 @@ public class NPC : KinematicBody2D {
 		
 		//Turn to player
 		TurnToPlayer(player);
-		
 	}
 	
 	private void FinishDialogue(Player player) {
