@@ -29,6 +29,9 @@ public enum QuestStatus {NONE, ON_GOING, COMPLETE, NOT_STARTED};
 
 // Storage for all persistent data in the game
 public class Context : Node {
+	[Signal]
+	public delegate void UpdateLanguage(Language l);
+	
 	//Notebook data
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
@@ -122,7 +125,7 @@ public class Context : Node {
 	
 	public void _NextLanguage() {
 		CurrentLanguage = (Language)(((int)CurrentLanguage + 1) % NLanguages);
-		
+
 		// Send a signal to the rest of the scene to also update the language
 		EmitSignal(nameof(UpdateLanguage), context._GetLanguage());
 	}

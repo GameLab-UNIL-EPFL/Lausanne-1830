@@ -2,8 +2,6 @@ using Godot;
 using System;
 
 public class LanguageButton : Button {
-	[Signal]
-	public delegate void UpdateLanguage(Language l);
 	
 	private Context context;
 	
