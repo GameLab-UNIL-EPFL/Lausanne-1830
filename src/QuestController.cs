@@ -67,7 +67,7 @@ public struct CharacterInfo_t {
 
 public struct InfoValue_t {
 	public InfoValue_t(bool initVal0, bool initVal1, bool initVal2, 
-						bool initVal3, bool initVal4, bool initVal5, bool initVal6) {
+						bool initVal3, bool initVal4, bool initVal5, bool initVal6, bool initValid=false) {
 		prenomCorrect = initVal0;
 		nomCorrect = initVal1;
 		adresseCorrect = initVal2;
@@ -75,7 +75,7 @@ public struct InfoValue_t {
 		conjointCorrect = initVal4;
 		enfantsCorrect = initVal5;
 		metierCorrect = initVal6;
-		valid = false;
+		valid = initValid;
 	}
 	
 	public InfoValue_t(bool initVal) {
@@ -100,6 +100,19 @@ public struct InfoValue_t {
 	public bool IsCorrect() {
 		return prenomCorrect && nomCorrect && adresseCorrect &&
 			numCorrect && conjointCorrect && enfantsCorrect && metierCorrect;
+	}
+
+	public InfoValue_t Or(InfoValue_t other) {
+		return new InfoValue_t(
+			prenomCorrect || other.prenomCorrect,
+			nomCorrect || other.nomCorrect,
+			adresseCorrect || other.adresseCorrect,
+			numCorrect || other.numCorrect,
+			conjointCorrect || other.conjointCorrect,
+			enfantsCorrect || other.enfantsCorrect,
+			metierCorrect || other.metierCorrect,
+			valid || other.valid
+		);
 	}
 	
 	public bool IsValid() {
@@ -258,12 +271,18 @@ public class QuestController : Node {
 	
 	/**
 	 * @brief Queries the local XDocument for a given solution
+	 * @param tabId, the id of the tab for which we want a solution
+	 * @param l, the language in which the solution should be
 	 * @return a CharacterInfo_t struct containing all of the solution data
 	 */
-	public CharacterInfo_t _QueryQuestSolution(int tabId) {
+	public CharacterInfo_t _QueryQuestSolution(int tabId, Language l) {
+		
+		// Select the file based on the language
+		XDocument xmlDB = null;
+		DialogueController._ParseXML(ref xmlDB, SceneCharacterFileBasePath + context._GetLanguageAbbrv(l) + SceneCharacterFileName);
 		
 		//Query a new solution
-		var querySolution = from solution in characterList.Root.Descendants("solution")
+		var querySolution = from solution in xmlDB.Root.Descendants("solution")
 							where Int32.Parse(solution.Attribute("id").Value) == tabId
 							select solution.Attributes();
 		

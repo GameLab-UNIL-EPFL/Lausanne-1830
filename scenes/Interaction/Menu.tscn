@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/06_UI_menus/buttonsMenus.png" type="Texture" id=2]
 [ext_resource path="res://src/Menu.cs" type="Script" id=3]
 [ext_resource path="res://assets/06_UI_menus/buttonsMenusbig.png" type="Texture" id=4]
-[ext_resource path="res://scenes/Interaction/LanguageButton.cs" type="Script" id=5]
+[ext_resource path="res://src/LanguageButton.cs" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
@@ -29,9 +29,6 @@ region = Rect2( 363, 297, 290, 87 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

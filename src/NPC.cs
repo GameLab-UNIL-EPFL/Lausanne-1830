@@ -585,9 +585,25 @@ public class NPC : KinematicBody2D {
 	}
 	
 	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo, int tabId) {
-		CharacterInfo_t solution = QC._QueryQuestSolution(tabId);
-		solution = QC._QueryQuestSolution(tabId);
-		return QC._CompareCharInfo(solution, characterInfo);
+		CharacterInfo_t solution = new CharacterInfo_t(-1);
+		InfoValue_t[] sols = new InfoValue_t[context.NLanguages];
+
+		// An answer in any language is valid
+		var langs = Enum.GetValues(typeof(Language));
+		int idx = 0;
+
+		// Gather all possible language answers
+		foreach(var l in langs) {
+			solution = QC._QueryQuestSolution(tabId, (Language)l);
+			sols[idx++] = QC._CompareCharInfo(solution, characterInfo);
+		}
+
+		// The result is a conjunction of all possible language answers
+		InfoValue_t res = new InfoValue_t(false);
+		for(int i = 0; i < context.NLanguages; i++) {
+			res = res.Or(sols[i]);
+		} 
+		return res;
 	}
 	
 	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo, int tabId) {

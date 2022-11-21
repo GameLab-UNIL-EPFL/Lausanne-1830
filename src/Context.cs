@@ -31,7 +31,7 @@ public enum QuestStatus {NONE, ON_GOING, COMPLETE, NOT_STARTED};
 public class Context : Node {
 	[Signal]
 	public delegate void UpdateLanguage(Language l);
-	
+
 	//Notebook data
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
@@ -45,7 +45,7 @@ public class Context : Node {
 	private int QuestStateId = -2;
 	
 	private Language CurrentLanguage = Language.FR;
-	private int NLanguages = Enum.GetNames(typeof(Language)).Length;
+	public int NLanguages = Enum.GetNames(typeof(Language)).Length;
 	
 	//Quest NPC ref
 	private NPC QuestNPC = null;
@@ -127,12 +127,11 @@ public class Context : Node {
 		CurrentLanguage = (Language)(((int)CurrentLanguage + 1) % NLanguages);
 
 		// Send a signal to the rest of the scene to also update the language
-		EmitSignal(nameof(UpdateLanguage), context._GetLanguage());
+		EmitSignal(nameof(UpdateLanguage), CurrentLanguage);
 	}
-	
-	// Get the abbreviation used in the file system to reference the language
-	public string _GetLanguageAbbrv() {
-		switch(CurrentLanguage) {
+
+	public string _GetLanguageAbbrv(Language l) {
+		switch(l) {
 			case Language.EN:
 				return "en";
 			case Language.FR:
@@ -142,8 +141,13 @@ public class Context : Node {
 		}
 	}
 	
-	public string _LanguageToString() {
-		switch(CurrentLanguage) {
+	// Get the abbreviation used in the file system to reference the language
+	public string _GetLanguageAbbrv() {
+		return _GetLanguageAbbrv(CurrentLanguage);
+	}
+
+	public string _LanguageToString(Language l) {
+		switch(l) {
 			case Language.EN:
 				return "Language: En";
 			case Language.FR:
@@ -151,6 +155,10 @@ public class Context : Node {
 			default:
 				return "Langue: Fr";
 		}
+	}
+	
+	public string _LanguageToString() {
+		return _LanguageToString(CurrentLanguage);
 	} 
 	
 	public void _UpdateLocation(string id) {
