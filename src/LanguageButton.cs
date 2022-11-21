@@ -17,9 +17,6 @@ public class LanguageButton : Button {
 		// Go to the next language
 		context._NextLanguage();
 		Text = context._LanguageToString();
-		
-		// Send a signal to the rest of the scene to also update the language
-		EmitSignal(nameof(UpdateLanguage), context._GetLanguage());
 	}
 }
 

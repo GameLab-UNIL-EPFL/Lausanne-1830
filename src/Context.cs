@@ -122,6 +122,9 @@ public class Context : Node {
 	
 	public void _NextLanguage() {
 		CurrentLanguage = (Language)(((int)CurrentLanguage + 1) % NLanguages);
+		
+		// Send a signal to the rest of the scene to also update the language
+		EmitSignal(nameof(UpdateLanguage), context._GetLanguage());
 	}
 	
 	// Get the abbreviation used in the file system to reference the language
