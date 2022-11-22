@@ -22,30 +22,30 @@
         </dialogue>
         <!-- TODO: Translate as of here -->
         <dialogue type="onDemand" ntargets="1" id="questTextAllCorrect">
-                <text id="0">Alors...</text>
-                <text id="1">Voyons voir ce registre</text>
-                <text id="2">Bravo ! Vous avez fait du bon travail !</text>
-                <text id="3">Je vais garder ça dans nos documents importants.</text>
-                <text id="4">Peut-être qu'un jour des historiens pourront utiliser ces informations</text>
-                <text id="5">et en faire un jeu vidéo.      </text>
+                <text id="0">So...</text>
+                <text id="1">Let me see the notebook.</text>
+                <text id="2">Good job ! You did well !</text>
+                <text id="3">I will keep this in our archives.</text>
+                <text id="4">Maybe one day some historians will be able to use the information you've collected</text>
+                <text id="5">and make a video game with it.</text>
         </dialogue>
         <dialogue type="onDemand" ntargets="1" id="questTextCorrect">
-                <text id="0">Alors...</text>
-                <text id="1">Il me semble que toutes les informations sur cette personne sont correctes.</text>
-                <text id="2">Il faut maintenant passer aux prochaines.</text>
-                <text id="3">Plus que {0} pages à compléter!</text><!-- {0}: Number of incorrect pages left -->
+                <text id="0">Let's see...</text>
+                <text id="1">Looks like all the information on that person is correct.</text>
+                <text id="2">You can move on to the next one.</text>
+                <text id="3">Only {0} pages left to fill!</text><!-- {0}: Number of incorrect pages left -->
         </dialogue>
         <dialogue type="onDemand" ntargets="1" id="questTextWrongSingular">
-                <text id="0">Voyons voir ce registre.</text>
-                <text id="1">Sur la page de {0}...</text><!-- {0}: Name associated to the current tab -->
-                <text id="2">Il y a encore {1} donnée fausse.</text><!-- {1}: number of wrong entries in tab -->
-                <text id="3">Revenez me voir lorsque vous l'aurez corrigée.</text>
+                <text id="0">Let's see...</text>
+                <text id="1">On page {0}...</text><!-- {0}: Name associated to the current tab -->
+                <text id="2">There is {1} incorrect entry.</text><!-- {1}: number of wrong entries in tab -->
+                <text id="3">Come back once you've fixed it.</text>
         </dialogue>
         <dialogue type="onDemand" ntargets="1" id="questTextWrongPlural">
-                <text id="0">Voyons voir ce registre.</text>
-                <text id="1">Sur la page de {0}...</text><!-- {0}: Name associated to the current tab -->
-                <text id="2">Il y a encore {1} données fausses.</text><!-- {1}: number of wrong entries in tab -->
-                <text id="3">Revenez me voir lorsque vous les aurez corrigées.</text>
+                <text id="0">Let's see.</text>
+                <text id="1">On page {0}...</text><!-- {0}: Name associated to the current tab -->
+                <text id="2">There are {1} incorrect entries.</text><!-- {1}: number of wrong entries in tab -->
+                <text id="3">Come back once you've fixed them.</text>
         </dialogue>
         <dialogue type="onDemand" ntargets="1" id="brewStart">
                 <text id="0">Le travail de brasseur peut être très fatiguant.</text>
