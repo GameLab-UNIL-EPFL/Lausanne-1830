@@ -139,6 +139,7 @@ public class Context : Node {
 			default:
 				return "fr";
 		}
+		return "fr";
 	}
 	
 	// Get the abbreviation used in the file system to reference the language

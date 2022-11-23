@@ -8,7 +8,7 @@ public class TextTextureButton : TextureButton {
 	[Export]
 	public string resourceNameNormal; //includine the extension, e.g. normal.png
 	[Export]
-	public string resourcePath; //excluding the language and the filename, e.g. "06_UI_menus/"
+	public string resourcePath; //excluding the language and the filename, e.g. "06_UI_menus"
 	
 	private const string resourceBase = "res://assets/";
 	
@@ -31,10 +31,10 @@ public class TextTextureButton : TextureButton {
 	
 	private void UpdateRessource(Language l) {
 		// Update the sprite
-		string path = resourceBase + resourcePath + context._GetLanguageAbbrv(l);
+		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, context._GetLanguageAbbrv(l));
 		
 		// Load in both new textures
-		TextureHover = (Texture) ResourceLoader.Load(path + resourceNameHover);
-		TextureNormal = (Texture) ResourceLoader.Load(path + resourceNameNormal);
+		TextureHover = (Texture) ResourceLoader.Load(path +resourceNameHover);
+		TextureNormal = (Texture) ResourceLoader.Load(path +resourceNameNormal);
 	}
 }

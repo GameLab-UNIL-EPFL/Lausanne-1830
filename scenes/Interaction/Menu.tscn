@@ -60,7 +60,7 @@ texture_hover = SubResource( 4 )
 script = ExtResource( 6 )
 resourceNameHover = "jouerHbuttonsMenus.png"
 resourceNameNormal = "jouerbuttonsMenus.png"
-resourcePath = "06_UI_menus/"
+resourcePath = "06_UI_menus"
 
 [node name="Button2" type="TextureButton" parent="."]
 margin_left = 272.0
@@ -75,7 +75,7 @@ texture_hover = SubResource( 7 )
 script = ExtResource( 6 )
 resourceNameHover = "creditsHbuttonsMenus.png"
 resourceNameNormal = "creditsbuttonsMenus.png"
-resourcePath = "06_UI_menus/"
+resourcePath = "06_UI_menus"
 
 [node name="language" type="Button" parent="."]
 margin_left = 276.0

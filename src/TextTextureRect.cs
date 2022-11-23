@@ -20,9 +20,7 @@ public class TextTextureRect : TextureRect {
 		context = GetNode<Context>("/root/Context");
 		
 		// Update the ressource with the correct language
-		if(resourceName != "") {
-			UpdateRessource(context._GetLanguage());
-		}
+		UpdateRessource(context._GetLanguage());
 		
 		// Connect the language update signal to the class
 		context.Connect("UpdateLanguage", this, nameof(UpdateRessource));
@@ -30,7 +28,7 @@ public class TextTextureRect : TextureRect {
 	
 	private void UpdateRessource(Language l) {
 		// Update the sprite
-		string path = resourceBase + resourcePath + context._GetLanguageAbbrv(l);
+		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, context._GetLanguageAbbrv(l));
 		
 		// Load in both new textures
 		this.Texture = (Texture) ResourceLoader.Load(path + resourceName);
