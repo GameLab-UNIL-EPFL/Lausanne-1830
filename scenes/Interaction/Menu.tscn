@@ -45,6 +45,8 @@ margin_right = 640.0
 margin_bottom = 360.0
 texture = ExtResource( 1 )
 script = ExtResource( 7 )
+resourceName = "titleScreenLogo.png"
+resourcePath = "06_UI_menus/"
 
 [node name="Button" type="TextureButton" parent="."]
 margin_left = 272.0
@@ -56,6 +58,9 @@ enabled_focus_mode = 0
 texture_normal = SubResource( 3 )
 texture_hover = SubResource( 4 )
 script = ExtResource( 6 )
+resourceNameHover = "jouerHbuttonsMenus.png"
+resourceNameNormal = "jouerbuttonsMenus.png"
+resourcePath = "06_UI_menus/"
 
 [node name="Button2" type="TextureButton" parent="."]
 margin_left = 272.0
@@ -68,6 +73,9 @@ enabled_focus_mode = 0
 texture_normal = SubResource( 6 )
 texture_hover = SubResource( 7 )
 script = ExtResource( 6 )
+resourceNameHover = "creditsHbuttonsMenus.png"
+resourceNameNormal = "creditsbuttonsMenus.png"
+resourcePath = "06_UI_menus/"
 
 [node name="language" type="Button" parent="."]
 margin_left = 276.0
