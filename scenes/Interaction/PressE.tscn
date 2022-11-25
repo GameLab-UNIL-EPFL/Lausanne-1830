@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/06_UI_menus/presse1.png" type="Texture" id=1]
-[ext_resource path="res://assets/06_UI_menus/presse2.png" type="Texture" id=2]
-
+[ext_resource path="res://assets/06_UI_menus/fr/presse1.png" type="Texture" id=1]
+[ext_resource path="res://assets/06_UI_menus/fr/presse2.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -17,4 +16,5 @@ position = Vector2( 5, 40 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
 animation = "press"
+frame = 1
 playing = true

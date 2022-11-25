@@ -6,24 +6,24 @@
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/06_UI_menus/Space.png" type="Texture" id=7]
+[ext_resource path="res://assets/06_UI_menus/fr/Space.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/06_UI_menus/Tab.png" type="Texture" id=10]
+[ext_resource path="res://assets/06_UI_menus/fr/Tab.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=12]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=13]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=15]
-[ext_resource path="res://assets/06_UI_menus/Arrows.png" type="Texture" id=16]
+[ext_resource path="res://assets/06_UI_menus/fr/Arrows.png" type="Texture" id=16]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://src/Intro.cs" type="Script" id=19]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/06_UI_menus/lettreMontolieu.png" type="Texture" id=21]
-[ext_resource path="res://assets/06_UI_menus/button.png" type="Texture" id=22]
-[ext_resource path="res://assets/06_UI_menus/shift.png" type="Texture" id=23]
-[ext_resource path="res://assets/06_UI_menus/wasd.png" type="Texture" id=24]
+[ext_resource path="res://assets/06_UI_menus/fr/lettreMontolieu.png" type="Texture" id=21]
+[ext_resource path="res://assets/06_UI_menus/fr/button.png" type="Texture" id=22]
+[ext_resource path="res://assets/06_UI_menus/fr/shift.png" type="Texture" id=23]
+[ext_resource path="res://assets/06_UI_menus/fr/wasd.png" type="Texture" id=24]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=25]
 
 [sub_resource type="RectangleShape2D" id=39]
@@ -518,7 +518,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 23
+frame = 22
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -534,6 +534,9 @@ position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
+
+[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -666,7 +669,7 @@ volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
-margin_top = 78.0
+margin_top = 97.0
 margin_right = 198.0
 margin_bottom = 246.0
 custom_fonts/font = SubResource( 19 )

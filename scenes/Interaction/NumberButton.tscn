@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/NumberButton.cs" type="Script" id=1]
-[ext_resource path="res://assets/06_UI_menus/button.png" type="Texture" id=2]
+[ext_resource path="res://assets/06_UI_menus/fr/button.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )

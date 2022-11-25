@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/TextBox.cs" type="Script" id=2]
-[ext_resource path="res://assets/06_UI_menus/textBoxSmall.png" type="Texture" id=3]
-[ext_resource path="res://assets/06_UI_menus/textBoxBig.png" type="Texture" id=4]
+[ext_resource path="res://assets/06_UI_menus/fr/textBoxSmall.png" type="Texture" id=3]
+[ext_resource path="res://assets/06_UI_menus/fr/textBoxBig.png" type="Texture" id=4]
 [ext_resource path="res://assets/04_notebook/presse1.png" type="Texture" id=5]
-[ext_resource path="res://assets/06_UI_menus/simpleTextBoxSmall.png" type="Texture" id=6]
+[ext_resource path="res://assets/06_UI_menus/fr/simpleTextBoxSmall.png" type="Texture" id=6]
 [ext_resource path="res://assets/05_fonts/renner/Renner_ 400 Book.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/04_notebook/presse2.png" type="Texture" id=8]
 

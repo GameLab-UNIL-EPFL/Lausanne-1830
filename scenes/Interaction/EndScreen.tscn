@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/06_UI_menus/endScreen.png" type="Texture" id=1]
+[ext_resource path="res://assets/06_UI_menus/fr/endScreen.png" type="Texture" id=1]
 [ext_resource path="res://src/EndScreen.cs" type="Script" id=2]
-[ext_resource path="res://assets/06_UI_menus/buttonsMenus.png" type="Texture" id=3]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 3 )
-region = Rect2( 9, 70, 95, 27 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
-region = Rect2( 8, 99, 97, 29 )
+[ext_resource path="res://src/TextSprite.cs" type="Script" id=3]
+[ext_resource path="res://src/TextTextureButton.cs" type="Script" id=4]
+[ext_resource path="res://assets/06_UI_menus/fr/rejouerbuttonsMenus.png" type="Texture" id=5]
+[ext_resource path="res://assets/06_UI_menus/fr/rejouerHbuttonsMenus.png" type="Texture" id=6]
 
 [node name="EndScrene" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,16 +21,23 @@ __meta__ = {
 [node name="screne" type="Sprite" parent="."]
 position = Vector2( 321, 180 )
 texture = ExtResource( 1 )
+script = ExtResource( 3 )
+resourceName = "endScreen.png"
+resourcePath = "06_UI_menus"
 
 [node name="Button" type="TextureButton" parent="."]
 margin_left = 280.0
 margin_top = 240.0
 margin_right = 375.0
 margin_bottom = 267.0
-texture_normal = SubResource( 1 )
-texture_hover = SubResource( 2 )
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+resourceNameHover = "rejouerHbuttonsMenus.png"
+resourceNameNormal = "rejouerbuttonsMenus.png"
+resourcePath = "06_UI_menus"
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

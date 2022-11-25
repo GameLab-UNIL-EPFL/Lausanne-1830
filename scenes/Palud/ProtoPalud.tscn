@@ -25,7 +25,7 @@
 [ext_resource path="res://assets/03_backgrounds/pavedGround-Sheet.png" type="Texture" id=23]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=25]
-[ext_resource path="res://assets/06_UI_menus/affichesPalud.png" type="Texture" id=26]
+[ext_resource path="res://assets/06_UI_menus/fr/affichesPalud.png" type="Texture" id=26]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/appleBasketVertical.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketHorizontal.png" type="Texture" id=29]
@@ -40,7 +40,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=38]
 [ext_resource path="res://assets/02_architecture/02_palud/affiches-Sheet.png" type="Texture" id=39]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=40]
-[ext_resource path="res://assets/06_UI_menus/leatherSheet.png" type="Texture" id=41]
+[ext_resource path="res://assets/06_UI_menus/fr/leatherSheet.png" type="Texture" id=41]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/leather.png" type="Texture" id=42]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=43]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=44]
@@ -1138,6 +1138,9 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Elisabeth De Cerjeat "
 
+[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
+frame = 1
+
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
@@ -1328,6 +1331,9 @@ position = Vector2( 11.0124, -17.6866 )
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
+frame = 1
+
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
 shape = SubResource( 40 )
@@ -1344,7 +1350,7 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
-frame = 1
+frame = 0
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1361,17 +1367,19 @@ __meta__ = {
 position = Vector2( -162, -114 )
 texture = ExtResource( 41 )
 script = ExtResource( 46 )
+resourceName = "leatherSheet.png"
+resourcePath = "06_UI_menus"
 
 [node name="Cuir2" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 482, 295 )
 frames = SubResource( 61 )
-frame = 11
+frame = 5
 playing = true
 
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
-frame = 19
+frame = 29
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
@@ -1383,6 +1391,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 1
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1409,10 +1420,14 @@ __meta__ = {
 [node name="PressE" parent="YSort/Affiche/Open" index="2" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
+frame = 0
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="3"]
 position = Vector2( 265, 0 )
 texture = ExtResource( 26 )
+script = ExtResource( 46 )
+resourceName = "affichesPalud.png"
+resourcePath = "06_UI_menus"
 
 [node name="Notebook" parent="." instance=ExtResource( 15 )]
 visible = false

@@ -2,18 +2,18 @@
 
 [ext_resource path="res://scenes/Notebook/MapIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/05_map/map.png" type="Texture" id=2]
-[ext_resource path="res://assets/05_map/moulinIcon-hover.png" type="Texture" id=3]
-[ext_resource path="res://assets/05_map/moulinIcon.png" type="Texture" id=4]
-[ext_resource path="res://assets/05_map/paludIcon.png" type="Texture" id=5]
-[ext_resource path="res://assets/05_map/casinoIcon.png" type="Texture" id=6]
-[ext_resource path="res://assets/05_map/point.png" type="Texture" id=7]
+[ext_resource path="res://assets/06_UI_menus/fr/moulinIcon-hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/06_UI_menus/fr/moulinIcon.png" type="Texture" id=4]
+[ext_resource path="res://assets/06_UI_menus/en/paludIcon.png" type="Texture" id=5]
+[ext_resource path="res://assets/06_UI_menus/fr/casinoIcon.png" type="Texture" id=6]
 [ext_resource path="res://assets/05_map/pointHere.png" type="Texture" id=8]
-[ext_resource path="res://assets/05_map/adminIcon-hover.png" type="Texture" id=9]
-[ext_resource path="res://assets/05_map/paludIcon-hover.png" type="Texture" id=10]
-[ext_resource path="res://assets/05_map/adminIcon.png" type="Texture" id=11]
-[ext_resource path="res://assets/05_map/casinoIcon-hover-export.png" type="Texture" id=12]
-[ext_resource path="res://assets/05_map/breweryIcon-Hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/06_UI_menus/fr/adminIcon-hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/06_UI_menus/en/paludIcon-hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/06_UI_menus/fr/adminIcon.png" type="Texture" id=11]
+[ext_resource path="res://assets/06_UI_menus/fr/casinoIcon-hover-export.png" type="Texture" id=12]
+[ext_resource path="res://assets/06_UI_menus/fr/breweryIcon-Hover.png" type="Texture" id=13]
 [ext_resource path="res://src/Map.cs" type="Script" id=14]
+[ext_resource path="res://assets/06_UI_menus/fr/breweryIcon.png" type="Texture" id=15]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 14 )
@@ -23,56 +23,6 @@ position = Vector2( 224, 132 )
 scale = Vector2( 0.903226, 0.916667 )
 texture = ExtResource( 2 )
 
-[node name="palud_point" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 200.0
-margin_top = 144.0
-margin_right = 216.0
-margin_bottom = 160.0
-texture_normal = ExtResource( 7 )
-id = "Palud/ProtoPalud"
-text = ""
-
-[node name="casino_point" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 270.0
-margin_top = 226.0
-margin_right = 286.0
-margin_bottom = 242.0
-texture_normal = ExtResource( 7 )
-id = "Casino/Casino"
-text = ""
-
-[node name="moulin_point" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 176.0
-margin_top = 215.0
-margin_right = 192.0
-margin_bottom = 231.0
-texture_normal = ExtResource( 7 )
-id = "Flon/Flon"
-text = ""
-
-[node name="brasserie_point" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 130.0
-margin_top = 100.0
-margin_right = 146.0
-margin_bottom = 116.0
-texture_normal = ExtResource( 7 )
-id = "Brasserie/Brasserie"
-text = ""
-
-[node name="admin_point" parent="." instance=ExtResource( 1 )]
-visible = false
-margin_left = 251.0
-margin_top = 111.0
-margin_right = 267.0
-margin_bottom = 127.0
-texture_normal = ExtResource( 7 )
-id = "Brasserie/Brasserie"
-text = ""
-
 [node name="brasserie_button" parent="." instance=ExtResource( 1 )]
 margin_left = 132.0
 margin_top = 86.0
@@ -80,9 +30,13 @@ margin_right = 182.0
 margin_bottom = 102.0
 focus_neighbour_right = NodePath("../palud_button")
 focus_neighbour_bottom = NodePath("../palud_button")
+texture_normal = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
 texture_focused = ExtResource( 13 )
 id = "Brasserie/Brasserie"
+resourceNameHover = "breweryIcon-Hover.png"
+resourceNameNormal = "breweryIcon.png"
+resourcePath = "06_UI_menus"
 
 [node name="moulin_button" parent="." instance=ExtResource( 1 )]
 margin_left = 163.0
@@ -96,6 +50,9 @@ texture_hover = ExtResource( 3 )
 texture_focused = ExtResource( 3 )
 id = "Flon/Flon"
 text = "Flon"
+resourceNameHover = "moulinIcon-hover.png"
+resourceNameNormal = "moulinIcon.png"
+resourcePath = "06_UI_menus"
 
 [node name="palud_button" parent="." instance=ExtResource( 1 )]
 margin_left = 190.0
@@ -111,6 +68,9 @@ texture_hover = ExtResource( 10 )
 texture_focused = ExtResource( 10 )
 id = "Palud/ProtoPalud"
 text = "Palud"
+resourceNameHover = "paludIcon-hover.png"
+resourceNameNormal = "paludIcon.png"
+resourcePath = "06_UI_menus"
 
 [node name="casino_button" parent="." instance=ExtResource( 1 )]
 margin_left = 263.0
@@ -124,6 +84,9 @@ texture_hover = ExtResource( 12 )
 texture_focused = ExtResource( 12 )
 id = "Casino/Casino"
 text = "Casino"
+resourceNameHover = "casinoIcon-hover-export.png"
+resourceNameNormal = "casinoIcon.png"
+resourcePath = "06_UI_menus"
 
 [node name="YouAreHere" type="Sprite" parent="."]
 position = Vector2( 260, 120 )
@@ -141,5 +104,8 @@ texture_hover = ExtResource( 9 )
 texture_focused = ExtResource( 9 )
 id = "Intro/Intro"
 text = "Bureau"
+resourceNameHover = "adminIcon-Hover.png"
+resourceNameNormal = "adminIcon.png"
+resourcePath = "06_UI_menus"
 
 [connection signal="visibility_changed" from="." to="." method="_on_Map_visibility_changed"]

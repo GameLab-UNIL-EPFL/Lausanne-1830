@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/casinoIcon-Hover.png-d5f1ddc8f1be79d94975de0af160e7e1.stex"
+path="res://.import/casinoIcon-hover-export.png-096a4eb19b324585962d8ea1212d3299.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/en/casinoIcon-Hover.png"
-dest_files=[ "res://.import/casinoIcon-Hover.png-d5f1ddc8f1be79d94975de0af160e7e1.stex" ]
+source_file="res://assets/06_UI_menus/en/casinoIcon-hover-export.png"
+dest_files=[ "res://.import/casinoIcon-hover-export.png-096a4eb19b324585962d8ea1212d3299.stex" ]
 
 [params]
 

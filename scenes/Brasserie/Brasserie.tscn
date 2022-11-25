@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=2]
+[gd_scene load_steps=149 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -21,20 +21,21 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bigBarrel.png" type="Texture" id=19]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sac.png" type="Texture" id=20]
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=21]
+[ext_resource path="res://src/TextSprite.cs" type="Script" id=22]
 [ext_resource path="res://scenes/Palud/TableV.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/commode.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio-Sheet.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/tabouret.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=28]
-[ext_resource path="res://assets/06_UI_menus/acteProprio.png" type="Texture" id=29]
+[ext_resource path="res://assets/06_UI_menus/fr/acteProprio.png" type="Texture" id=29]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=31]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=32]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=33]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio.png" type="Texture" id=34]
-[ext_resource path="res://assets/06_UI_menus/randomBook.png" type="Texture" id=35]
-[ext_resource path="res://assets/06_UI_menus/livreIsabelle.png" type="Texture" id=38]
+[ext_resource path="res://assets/06_UI_menus/fr/randomBook.png" type="Texture" id=35]
+[ext_resource path="res://assets/06_UI_menus/fr/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 
@@ -1277,7 +1278,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 9
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1431,7 +1432,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 10
+frame = 17
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1698,6 +1699,9 @@ visible = false
 [node name="Label" parent="Book/Sprite" index="0"]
 text = "Lire"
 
+[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( 0.27296, 10.7515 )
 shape = SubResource( 71 )
@@ -1714,7 +1718,6 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
-frame = 1
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1786,6 +1789,9 @@ visible = false
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
 shape = SubResource( 72 )
@@ -1796,7 +1802,6 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
-frame = 1
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
@@ -1812,6 +1817,9 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Item/Open" index="3"]
 position = Vector2( 146, 102 )
 texture = ExtResource( 29 )
+script = ExtResource( 22 )
+resourceName = "acteProprio.png"
+resourcePath = "06_UI_menus"
 
 [node name="OpenMapZone" type="Area2D" parent="."]
 position = Vector2( 262, 324 )

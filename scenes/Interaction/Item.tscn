@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/06_UI_menus/presse2.png" type="Texture" id=1]
-[ext_resource path="res://assets/06_UI_menus/presse1.png" type="Texture" id=2]
-[ext_resource path="res://assets/06_UI_menus/simpleTextBoxSmall.png" type="Texture" id=3]
+[ext_resource path="res://assets/06_UI_menus/fr/presse1.png" type="Texture" id=1]
+[ext_resource path="res://assets/06_UI_menus/fr/presse2.png" type="Texture" id=2]
+[ext_resource path="res://assets/06_UI_menus/fr/simpleTextBoxSmall.png" type="Texture" id=3]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/Item.cs" type="Script" id=5]
 
