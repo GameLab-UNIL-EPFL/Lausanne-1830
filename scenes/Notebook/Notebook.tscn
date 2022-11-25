@@ -655,40 +655,37 @@ __meta__ = {
 }
 
 [node name="Prenom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 189.0
+margin_left = 205.0
 margin_top = 111.0
-margin_right = 239.0
+margin_right = 255.0
 margin_bottom = 129.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "prenom"
 
 [node name="PrenomStatic" type="Label" parent="Sprite"]
-margin_left = 191.0
+margin_left = 206.0
 margin_top = 111.0
-margin_right = 240.0
+margin_right = 255.0
 margin_bottom = 129.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Nom" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 181.0
+margin_left = 205.0
 margin_top = 140.0
-margin_right = 235.0
+margin_right = 259.0
 margin_bottom = 158.0
 custom_fonts/font = SubResource( 4 )
 text = "Trüschel"
 AttributeName = "nom"
 
 [node name="NomStatic" type="Label" parent="Sprite"]
-margin_left = 181.0
+margin_left = 205.0
 margin_top = 140.0
-margin_right = 224.0
+margin_right = 248.0
 margin_bottom = 158.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -699,18 +696,18 @@ __meta__ = {
 }
 
 [node name="Adresse" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 196.0
+margin_left = 204.0
 margin_top = 172.0
-margin_right = 268.0
+margin_right = 276.0
 margin_bottom = 190.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "adresse"
 
 [node name="AdresseStatic" type="Label" parent="Sprite"]
-margin_left = 199.0
+margin_left = 207.0
 margin_top = 172.0
-margin_right = 271.0
+margin_right = 279.0
 margin_bottom = 189.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -721,18 +718,18 @@ __meta__ = {
 }
 
 [node name="Num" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 219.0
+margin_left = 227.0
 margin_top = 204.0
-margin_right = 241.0
+margin_right = 249.0
 margin_bottom = 222.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "num"
 
 [node name="NumStatic" type="Label" parent="Sprite"]
-margin_left = 220.0
+margin_left = 228.0
 margin_top = 204.0
-margin_right = 241.0
+margin_right = 249.0
 margin_bottom = 222.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -743,18 +740,18 @@ __meta__ = {
 }
 
 [node name="Conjoint" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 210.0
+margin_left = 226.0
 margin_top = 233.0
-margin_right = 263.0
+margin_right = 279.0
 margin_bottom = 251.0
 custom_fonts/font = SubResource( 4 )
 text = ""
 AttributeName = "conjoint"
 
 [node name="ConjointStatic" type="Label" parent="Sprite"]
-margin_left = 210.0
+margin_left = 226.0
 margin_top = 233.0
-margin_right = 263.0
+margin_right = 279.0
 margin_bottom = 251.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -765,18 +762,18 @@ __meta__ = {
 }
 
 [node name="Enfants" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 203.0
+margin_left = 227.0
 margin_top = 259.0
-margin_right = 224.0
+margin_right = 248.0
 margin_bottom = 277.0
 custom_fonts/font = SubResource( 4 )
 text = "4"
 AttributeName = "enfants"
 
 [node name="EnfantsStatic" type="Label" parent="Sprite"]
-margin_left = 204.0
+margin_left = 228.0
 margin_top = 260.0
-margin_right = 225.0
+margin_right = 249.0
 margin_bottom = 277.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -787,18 +784,18 @@ __meta__ = {
 }
 
 [node name="Metier" parent="Sprite" instance=ExtResource( 2 )]
-margin_left = 188.0
+margin_left = 204.0
 margin_top = 287.0
-margin_right = 261.0
+margin_right = 277.0
 margin_bottom = 305.0
 custom_fonts/font = SubResource( 4 )
 text = "Propriétaire"
 AttributeName = "metier"
 
 [node name="MetierStatic" type="Label" parent="Sprite"]
-margin_left = 188.0
+margin_left = 204.0
 margin_top = 287.0
-margin_right = 260.0
+margin_right = 276.0
 margin_bottom = 305.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 4 )

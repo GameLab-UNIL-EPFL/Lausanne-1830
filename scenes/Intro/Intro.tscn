@@ -519,7 +519,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 17
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -535,6 +535,9 @@ position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
+
+[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -557,7 +560,6 @@ texture = ExtResource( 21 )
 [node name="PressE" parent="Desk/Letter/Open" index="3" instance=ExtResource( 17 )]
 position = Vector2( -295, 186 )
 scale = Vector2( 2, 2 )
-frame = 0
 
 [node name="Label" type="Label" parent="Desk/Letter/Open" index="4"]
 margin_left = -279.0
@@ -764,7 +766,6 @@ id = "tuto_interact"
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 70, 56 )
 scale = Vector2( 2, 2 )
-frame = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
