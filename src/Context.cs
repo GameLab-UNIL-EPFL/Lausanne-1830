@@ -18,6 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Godot;
 using System;
+using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 
@@ -36,6 +39,9 @@ public class Context : Node {
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
 	public int CurrentTab = 0;
+	
+	// Labels
+	private XDocument labelDB;
 	
 	//Game state data
 	private GameStates GameState = GameStates.INIT;
@@ -106,6 +112,16 @@ public class Context : Node {
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, false, false, false
 		));
+		
+		// Start out by loading in the label DB in the default language
+		DialogueController._ParseXML(
+			ref labelDB, 
+			string.Format("res://db/{0}/labels.xml", CurrentLanguage)
+		);
+	}
+	
+	public XDocument _GetLabelsDB() {
+		return labelDB;
 	}
 	
 	public void _Clear() {
@@ -125,7 +141,13 @@ public class Context : Node {
 	
 	public void _NextLanguage() {
 		CurrentLanguage = (Language)(((int)CurrentLanguage + 1) % NLanguages);
-
+		
+		// Update the labels DB
+		DialogueController._ParseXML(
+			ref labelDB, 
+			string.Format("res://db/{0}/labels.xml", CurrentLanguage)
+		);
+		
 		// Send a signal to the rest of the scene to also update the language
 		EmitSignal(nameof(UpdateLanguage), CurrentLanguage);
 	}
@@ -139,7 +161,6 @@ public class Context : Node {
 			default:
 				return "fr";
 		}
-		return "fr";
 	}
 	
 	// Get the abbreviation used in the file system to reference the language

@@ -519,7 +519,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 37
+frame = 17
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -668,24 +668,19 @@ volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
-margin_top = 97.0
+margin_top = 114.0
 margin_right = 198.0
-margin_bottom = 246.0
+margin_bottom = 263.0
 custom_fonts/font = SubResource( 19 )
-text = "
-
-
-
-
-Pour te déplacer
-
-"
+text = "Pour te déplacer"
 align = 1
 valign = 1
+autowrap = true
 script = ExtResource( 26 )
 id = "tuto_move"
 
 [node name="Arrows" type="Node2D" parent="Label"]
+position = Vector2( 0, -30 )
 
 [node name="L" type="Sprite" parent="Label/Arrows"]
 position = Vector2( 40, 77 )
@@ -709,6 +704,7 @@ texture = SubResource( 23 )
 
 [node name="Awsd" type="Node2D" parent="Label"]
 visible = false
+position = Vector2( 0, -30 )
 
 [node name="w" type="Sprite" parent="Label/Awsd"]
 position = Vector2( 65, 52 )
@@ -758,18 +754,15 @@ margin_top = 99.0
 margin_right = 597.0
 margin_bottom = 290.0
 custom_fonts/font = SubResource( 24 )
-text = "Pour interagir
-et parler"
+text = "Pour interagir et parler"
 align = 1
 valign = 1
+autowrap = true
 script = ExtResource( 26 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 id = "tuto_interact"
 
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
-position = Vector2( 66, 56 )
+position = Vector2( 70, 56 )
 scale = Vector2( 2, 2 )
 frame = 0
 
