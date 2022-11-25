@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/04_notebook/notebook.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Notebook/NotebookInfo.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/Pen.mp3" type="AudioStream" id=20]
 [ext_resource path="res://assets/01_characters/02_missingCharacters/portraitPerregaux.png" type="Texture" id=21]
 [ext_resource path="res://assets/01_characters/02_missingCharacters/mercier.png" type="Texture" id=22]
+[ext_resource path="res://src/TextLabel.cs" type="Script" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 11
@@ -545,9 +546,8 @@ margin_bottom = 91.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Prénom :"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 23 )
+id = "nb_firstname"
 
 [node name="NomLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 84.0
@@ -557,9 +557,11 @@ margin_bottom = 122.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Nom :"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "nb_lastname"
 
 [node name="AdresseLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 84.0
@@ -569,9 +571,11 @@ margin_bottom = 153.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Adresse :"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "nd_addr"
 
 [node name="ConjointLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 84.0
@@ -581,9 +585,11 @@ margin_bottom = 214.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Etat Civil :"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "nb_etatcivil"
 
 [node name="EnfantLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 84.0
@@ -593,9 +599,11 @@ margin_bottom = 241.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Enfant(s) :"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "nb_kids"
 
 [node name="MetierLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 84.0
@@ -605,9 +613,11 @@ margin_bottom = 268.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Métier :"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "nb_job"
 
 [node name="NumLabel" type="Label" parent="Sprite/Labels"]
 margin_left = 84.0
@@ -617,9 +627,11 @@ margin_bottom = 185.0
 custom_colors/font_color = Color( 0.270588, 0.184314, 0.12549, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "N° d'adresse :"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "nb_addrnum"
 
 [node name="Placeholder" type="ColorRect" parent="Sprite"]
 margin_left = 203.0

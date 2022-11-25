@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/06_UI_menus/fr/shift.png" type="Texture" id=23]
 [ext_resource path="res://assets/06_UI_menus/fr/wasd.png" type="Texture" id=24]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=25]
+[ext_resource path="res://src/TextLabel.cs" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 10, 87.8739 )
@@ -518,7 +519,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 22
+frame = 37
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -534,9 +535,6 @@ position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = "Lire"
-
-[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -559,6 +557,7 @@ texture = ExtResource( 21 )
 [node name="PressE" parent="Desk/Letter/Open" index="3" instance=ExtResource( 17 )]
 position = Vector2( -295, 186 )
 scale = Vector2( 2, 2 )
+frame = 0
 
 [node name="Label" type="Label" parent="Desk/Letter/Open" index="4"]
 margin_left = -279.0
@@ -683,9 +682,8 @@ Pour te déplacer
 "
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 26 )
+id = "tuto_move"
 
 [node name="Arrows" type="Node2D" parent="Label"]
 
@@ -764,13 +762,16 @@ text = "Pour interagir
 et parler"
 align = 1
 valign = 1
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "tuto_interact"
 
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 66, 56 )
 scale = Vector2( 2, 2 )
+frame = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

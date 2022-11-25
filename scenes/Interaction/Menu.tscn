@@ -98,9 +98,6 @@ custom_fonts/font = SubResource( 8 )
 text = "Langue: Fr"
 flat = true
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="language"]
 show_behind_parent = true
