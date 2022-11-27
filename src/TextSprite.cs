@@ -20,13 +20,13 @@ public class TextSprite : Sprite {
 		context = GetNode<Context>("/root/Context");
 		
 		// Update the ressource with the correct language
-		UpdateRessource(context._GetLanguage());
+		UpdateResource(context._GetLanguage());
 		
 		// Connect the language update signal to the class
-		context.Connect("UpdateLanguage", this, nameof(UpdateRessource));
+		context.Connect("UpdateLanguage", this, nameof(UpdateResource));
 	}
 	
-	private void UpdateRessource(Language l) {
+	private void UpdateResource(Language l) {
 		// Update the sprite
 		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, context._GetLanguageAbbrv(l));
 		

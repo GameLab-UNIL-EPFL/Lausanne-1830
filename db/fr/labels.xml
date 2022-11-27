@@ -10,4 +10,9 @@
     <!-- Tutorial Labels -->
     <label id="tuto_move">Pour te déplacer</label>
     <label id="tuto_interact">Pour interagir et parler</label>
+    <!-- General purpose Labels -->
+    <label id="gp_read">Lire</label>
+    <label id="gp_close">Fermer</label>
+    <label id="gp_open">Ouvrir</label>
+    <label id="gp_look">Regarder</label>
 </scene>

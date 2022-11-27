@@ -10,4 +10,9 @@
     <!-- Tutorial Labels -->
     <label id="tuto_move">To move around</label>
     <label id="tuto_interact">To interact and talk to people</label>
+    <!-- General purpose Labels -->
+    <label id="gp_read">Read</label>
+    <label id="gp_close">Close</label>
+    <label id="gp_open">Open</label>
+    <label id="gp_look">Look</label>
 </scene>

@@ -519,7 +519,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 8
+frame = 33
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -534,7 +534,9 @@ visible = false
 position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
-text = "Lire"
+text = ""
+script = ExtResource( 26 )
+id = "gp_read"
 
 [node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
 frame = 0
@@ -567,10 +569,11 @@ margin_top = 183.0
 margin_right = -230.0
 margin_bottom = 199.0
 custom_fonts/font = SubResource( 38 )
-text = "FERMER"
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "gp_close"
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -679,6 +682,9 @@ align = 1
 valign = 1
 autowrap = true
 script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 id = "tuto_move"
 
 [node name="Arrows" type="Node2D" parent="Label"]

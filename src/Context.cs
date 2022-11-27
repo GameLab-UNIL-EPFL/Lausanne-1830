@@ -116,7 +116,7 @@ public class Context : Node {
 		// Start out by loading in the label DB in the default language
 		DialogueController._ParseXML(
 			ref labelDB, 
-			string.Format("res://db/{0}/labels.xml", CurrentLanguage)
+			string.Format("res://db/{0}/labels.xml", _GetLanguageAbbrv())
 		);
 	}
 	
@@ -145,7 +145,7 @@ public class Context : Node {
 		// Update the labels DB
 		DialogueController._ParseXML(
 			ref labelDB, 
-			string.Format("res://db/{0}/labels.xml", CurrentLanguage)
+			string.Format("res://db/{0}/labels.xml", _GetLanguageAbbrv())
 		);
 		
 		// Send a signal to the rest of the scene to also update the language

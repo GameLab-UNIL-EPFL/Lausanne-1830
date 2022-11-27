@@ -21,7 +21,7 @@ public class TextLabel : Label {
 		labelsDB = context._GetLabelsDB();
 		
 		// Set the value of the label
-		Text = string.Format("{0} :", QueryLabel());
+		Text = string.Format("{0}", QueryLabel());
 	}
 	
 	private string QueryLabel() {
