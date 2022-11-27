@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ranz.mp3-c23f8f9640b38c484839c83ca4dd2631.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Music/Ranz.mp3"
+dest_files=[ "res://.import/Ranz.mp3-c23f8f9640b38c484839c83ca4dd2631.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
