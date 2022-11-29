@@ -4,7 +4,7 @@
 	<solution id="2" prenom="Henri" nom="Perregaux" adresse="Rue St-François" num="9" conjoint="Married" enfant="2" metier="Architect"></solution>
 	<solution id="3" prenom="Isabelle" nom="De Montolieu" adresse="Vennes" num="0" conjoint="Widowed" enfant="1" metier="Writer"></solution>
 	<solution id="4"  prenom="Jean-Jacques" nom="Mercier" adresse="Rue du Pré" num="31" conjoint="Married" enfant="3" metier="Tanner"></solution>
-	<solution id="5"  prenom="Benedict" nom="Rochat" adresse="Moulins de Pépinet" num="1" conjoint="Married" enfant="9" metier="Miller"></solution>
+	<solution id="5"  prenom="Benedict" nom="Rochat" adresse="Pépinet's Mills" num="1" conjoint="Married" enfant="9" metier="Miller"></solution>
 	<personnage prenom="Louis" nom="Michaud" adresse="Rue de la Madeleine" conjoint="Single" metier="Gardener"></personnage>
 	<personnage prenom="Samuel" nom="Kohler" adresse="Rue du Petit Chêne" conjoint="Single" metier="Merchant"></personnage>
 	<personnage prenom="Pierre" nom="De Crousaz" adresse="Rue St-Laurent" conjoint="Single" metier="Musician"></personnage>
