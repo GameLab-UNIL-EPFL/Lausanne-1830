@@ -1279,7 +1279,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 13
+frame = 15
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1403,7 +1403,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1417,7 +1416,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
-frame = 7
+frame = 4
 playing = true
 flip_h = true
 
@@ -1433,7 +1432,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 27
+frame = 16
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1699,7 +1698,6 @@ visible = false
 
 [node name="Label" parent="Book/Sprite" index="0"]
 text = ""
-script = ExtResource( 36 )
 id = "gp_read"
 
 [node name="AnimatedSprite" parent="Book/Sprite" index="1"]
@@ -1733,7 +1731,7 @@ script = ExtResource( 36 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-id = "gb_close"
+id = "gp_close"
 
 [node name="Sprite" type="Sprite" parent="Book/Open" index="3"]
 position = Vector2( 210, 95 )
@@ -1747,7 +1745,6 @@ visible = false
 
 [node name="Label" parent="Book2/Sprite" index="0"]
 text = ""
-script = ExtResource( 36 )
 id = "gp_read"
 
 [node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
@@ -1816,10 +1813,11 @@ margin_top = 250.0
 margin_right = -88.0
 margin_bottom = 266.0
 custom_fonts/font = SubResource( 73 )
-text = "FERMER"
+script = ExtResource( 36 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "gp_close"
 
 [node name="Sprite" type="Sprite" parent="Item/Open" index="3"]
 position = Vector2( 146, 102 )

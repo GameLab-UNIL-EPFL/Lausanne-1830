@@ -1119,10 +1119,11 @@ margin_top = 332.0
 margin_right = 88.0
 margin_bottom = 348.0
 custom_fonts/font = SubResource( 5 )
-text = "FERMER"
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "gp_close"
 
 [node name="PressTab" parent="." instance=ExtResource( 15 )]
 position = Vector2( 21, 342 )
