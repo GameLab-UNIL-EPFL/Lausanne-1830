@@ -55,6 +55,37 @@ public struct CharacterInfo_t {
 	public string conjoint;
 	public int enfants;
 	public string metier;
+
+	public void _ClearEntry(int i) {
+		switch(i) {
+			case 0: 
+				prenom = "";
+				break;
+			case 1:
+				nom = "";
+				break;
+			case 2:
+				adresse = "";
+				break;
+			case 3:
+				num = 0;
+				break;
+			case 4:
+				conjoint = "";
+				break;
+			case 5:
+				enfants = -0;
+				break;
+			case 6:
+				metier = "";
+				break;
+			case -1:
+				valid = false;
+				break;
+			default:
+				throw new IndexOutOfRangeException();
+		}
+	}
 	
 	public bool IsValid() {
 		return valid;
@@ -96,6 +127,62 @@ public struct InfoValue_t {
 	public bool conjointCorrect;
 	public bool enfantsCorrect;
 	public bool metierCorrect;
+
+	// Indexer for the struct values
+	public bool this[int i] {
+		get {
+			switch(i) {
+				case 0: 
+					return prenomCorrect;
+				case 1:
+					return nomCorrect;
+				case 2:
+					return adresseCorrect;
+				case 3:
+					return numCorrect;
+				case 4:
+					return conjointCorrect;
+				case 5:
+					return enfantsCorrect;
+				case 6:
+					return metierCorrect;
+				case -1:
+					return valid;
+				default:
+					throw new IndexOutOfRangeException();
+			}
+		}
+		set {
+			switch(i) {
+				case 0: 
+					prenomCorrect = value;
+					break;
+				case 1:
+					nomCorrect = value;
+					break;
+				case 2:
+					adresseCorrect = value;
+					break;
+				case 3:
+					numCorrect = value;
+					break;
+				case 4:
+					conjointCorrect = value;
+					break;
+				case 5:
+					enfantsCorrect = value;
+					break;
+				case 6:
+					metierCorrect = value;
+					break;
+				case -1:
+					valid = value;
+					break;
+				default:
+					throw new IndexOutOfRangeException();
+			}
+		}
+	}
 	
 	public bool IsCorrect() {
 		return prenomCorrect && nomCorrect && adresseCorrect &&
@@ -213,7 +300,8 @@ public class QuestController : Node {
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument characterList;
 	private XDocument QuestDialogue;
-	
+	private XDocument notebookInfo;
+		
 	//Buffer storing the dialogue being used by a questNPC
 	private Stack<string> QuestBuffer = new Stack<string>();
 	
@@ -233,6 +321,7 @@ public class QuestController : Node {
 			context._GetLanguageAbbrv() + SceneCharacterFileName;
 		DialogueController._ParseXML(ref characterList, SceneCharacterFilePath);
 		DialogueController._ParseXML(ref QuestDialogue, QuestDialogueFile);
+		DialogueController._ParseXML(ref notebookInfo, SceneCharacterFileBasePath + context._GetLanguageAbbrv() + SceneCharacterFileName);
 		
 
 		if(context._GetLocation() == Locations.INTRO) {
@@ -275,13 +364,68 @@ public class QuestController : Node {
 	 * @param l, the language in which the solution should be
 	 * @return a CharacterInfo_t struct containing all of the solution data
 	 */
-	public CharacterInfo_t _QueryQuestSolution(int tabId, Language l) {
+	public CharacterInfo_t _QueryQuestSolution(int tabId) {
+		//Query a new solution from the notbookInfo
+		var querySolution = from solution in notebookInfo.Root.Descendants("solution")
+							where Int32.Parse(solution.Attribute("id").Value) == tabId
+							select solution.Attributes();
 		
-		// Select the file based on the language
+		// Extract attribute name and value
+		var solutionList = querySolution.Select(x => 
+			x.Select(y => new XMLAttributeInfo_t(y.Name.LocalName, y.Value))
+		);
+		
+		CharacterInfo_t res = new CharacterInfo_t(-1);
+		
+		foreach(var e in solutionList) {
+			foreach(var xmlAttr in e) {
+				var inf = xmlAttr.val;
+				switch(xmlAttr.name) {
+					case "prenom":
+						res.prenom = inf;
+						break;
+					case "nom":
+						res.nom = inf;
+						break;
+					case "adresse":
+						res.adresse = inf;
+						break;
+					case "num":
+						res.num = Int32.Parse(inf);
+						break;
+					case "conjoint":
+						res.conjoint = inf;
+						break;
+					case "enfant":
+						res.enfants = Int32.Parse(inf);
+						break;
+					case "metier":
+						res.metier = inf;
+						break;
+					default:
+						break;
+				}
+			}
+		}
+		
+		return res;
+	}
+
+	/**
+	 * @brief Queries the local XDocument for a given solution
+	 * @param tabId, the id of the tab for which we want a solution
+	 * @param l, the language in which the solution should be
+	 * @return a CharacterInfo_t struct containing all of the solution data
+	 */
+	public static CharacterInfo_t _QueryQuestSolution(int tabId, Language l) {
 		XDocument xmlDB = null;
-		DialogueController._ParseXML(ref xmlDB, SceneCharacterFileBasePath + context._GetLanguageAbbrv(l) + SceneCharacterFileName);
-		
-		//Query a new solution
+
+		DialogueController._ParseXML(
+			ref xmlDB,
+			string.Format("res://db/{0}/characters/notebookCharacterList.xml", Context._GetLanguageAbbrv(l))
+		);
+
+		//Query a new solution from the notbookInfo
 		var querySolution = from solution in xmlDB.Root.Descendants("solution")
 							where Int32.Parse(solution.Attribute("id").Value) == tabId
 							select solution.Attributes();
