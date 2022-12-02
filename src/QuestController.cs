@@ -419,10 +419,10 @@ public class QuestController : Node {
 	 */
 	public static CharacterInfo_t _QueryQuestSolution(int tabId, Language l) {
 		XDocument xmlDB = null;
-
+		string path = string.Format("res://db/{0}/characters/notebookCharacterList.xml", Context._GetLanguageAbbrv(l));
 		DialogueController._ParseXML(
 			ref xmlDB,
-			string.Format("res://db/{0}/characters/notebookCharacterList.xml", Context._GetLanguageAbbrv(l))
+			path
 		);
 
 		//Query a new solution from the notbookInfo

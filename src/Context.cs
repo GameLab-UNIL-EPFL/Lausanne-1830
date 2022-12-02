@@ -110,6 +110,9 @@ public class Context : Node {
 		// Number of fields in the
 		const int N_ENTRIES = 6;
 
+		// Clear the current entires
+		NotebookCharInfo.Clear();
+
 		// Fill in the strings depending on the results
 		for(int i = 0; i < NotebookCorrectInfo.Count; ++i) {
 			// Retrieve the solution
@@ -121,6 +124,7 @@ public class Context : Node {
 					sol._ClearEntry(j);
 				}
 			}
+
 			// Add the newly prepared solution to the context data
 			NotebookCharInfo.Add(sol);
 		}
