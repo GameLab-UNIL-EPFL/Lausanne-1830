@@ -104,70 +104,56 @@ public class NPC : KinematicBody2D {
 	private bool inAutoDialogue = false;
 	
 	private Context context;
+
+	private const string questFile = "/dialogues/xml/QuestNPC.xml";
 	
 	private string[] noms = {"Cerjeat", "Trüschel", "Perregaux", "Montelieu", "Mercier", "Rochat"};
 	
 	private string[] BrewQuestText() {
 		//Check if the game has been played yet
 		if(context._CheckBrewBurn() == -1.0f) {
-			return FormatText("Le travail de brasseur peut être très fatiguant.¢" +
-				"Je ne sais pas si on va réussir à finir cette cuvée à temps...¢" +
-				"Tu veux nous aider à brasser la bière ?¢" +
-				"Merci!");
-		} else if(context._CheckBrewBurn() < BrewBadThreshold) {
-			return FormatText("Mais tu as fait n'importe quoi !¢" +
-				"La bière est complètement brûlée !¢"+
-				"Mme Trüschel ne sera pas du tout contente...");
-		} else if(context._CheckBrewBurn() < BrewPerfectThreshold) {
-			return FormatText("Bien...¢" +
-				"La bière n'est pas trop brûlée et encore vendable.¢"+
-				"Merci pour l'aide.");
+			return DC._QueryDialogue("brewStart", "onDemand", questFile);
+		} 
+		// Check the brew score after the minigame and respond appropriately
+		if(context._CheckBrewBurn() < BrewBadThreshold) {
+			return DC._QueryDialogue("brewFail", "onDemand", questFile);
+		} 
+		if(context._CheckBrewBurn() < BrewPerfectThreshold) {
+			return DC._QueryDialogue("brewGood", "onDemand", questFile);
 		} else {
-			return FormatText("Wow la bière est parfaite!¢" +
-				"Tu as vraiment un don pour ça.¢"+
-				"Merci énormément pour l'aide!¢"+
-				"Allez parler à Mme Trüschel...¢"+
-				"Je pense qu'elle vous remerciera.");
+			return DC._QueryDialogue("brewPerfect", "onDemand", questFile);
 		}
 	}
 	
 	private string[] QuestText(InfoValue_t res) {
 		string[] outliers = res.Outliers().ToArray();
+		
+		// Check the current state of the notebook and reply appropriately
 		if(context._AllTabsCorrect()) {
-			return FormatText("Alors...¢"+
-				"Voyons voir ce registre.¢"+
-				"Bravo ! Vous avez fait du bon travail !¢"+
-				"Je vais garder ça dans nos documents importants.¢"+
-				"Peut-être qu'un jour des historiens pourront utiliser ces informations¢"+
-				"et en faire un jeu vidéo.      ");
+			return DC._QueryDialogue("questTextAllCorrect", "onDemand", questFile);
 		}
 		if(res.IsCorrect()) {
-			return FormatText("Alors...¢"+
-			"Il me semble que toutes les informations sur cette personne sont correctes.¢"+
-			"Il faut maintenant passer aux prochaines.¢"+
-			"Plus que " + context._GetNotCorrectTabs() + " pages à compléter!");
+			return FormatText(
+				DC._QueryDialogue("questTextCorrect", "onDemand", questFile),
+				1,
+				new string[] { context._GetNotCorrectTabs().ToString() }
+			);
 		}
-		
-		string d = "Voyons voir ce registre.¢" +
-		//"Il y a encore plusieurs données qui sont eronnées, comme:¢";
-		"Sur la page de "+noms[context.CurrentTab]+"...¢"+
-		"Il y a encore ";
-		var i = 0;
-		foreach(var o in outliers) {
-			//d += o + ", ";
-			i++;
+	
+		// Check the number of outliers and request the right dialogue
+		int i = outliers.Length;
+		if(i > 1) {
+			return FormatText(
+				DC._QueryDialogue("questTextWrongPlural", "onDemand", questFile),
+				2,
+				new string[] { noms[context.CurrentTab], i.ToString() }
+			);
 		}
-		d += i;
-		//d += "et ...¢" + "Je crois que les ai tous cités.¢";
-		if(i>1) {
-			d += " données fausses.¢";
-			d += "Revenez me voir lorsque vous les aurez corrigées.";
-		} else {
-			d += " donnée fausse.¢";
-			d += "Revenez me voir lorsque vous l'aurez corrigée.";
-		}
-
-		return FormatText(d);
+		return FormatText(
+			DC._QueryDialogue("questTextWrongSingular", "onDemand", questFile),
+			2,
+			new string[] { noms[context.CurrentTab], i.ToString() }
+		);
 	}
 	
 	private void LookInInitalDir() {
@@ -383,7 +369,24 @@ public class NPC : KinematicBody2D {
 		}
 	}
 	
-	private string[] FormatText(string text) {
+	// Formats the given DC._QueryDialogue result using the given arguments
+	private string[] FormatText(string[] text, int nArgs = 0, string[] args = null) {
+		//Sanity check
+		if(text == null) {
+			throw new Exception("Can't format null");
+		}
+
+		// Compile the array into a single string
+		string oneLine = string.Join("\n", text);
+
+		// Reformat the text
+		string tFormated = nArgs > 0 ? string.Format(oneLine, args) : oneLine;
+
+		// Return a line separated version
+		return tFormated.Split('\n');
+	}
+	
+	private string[] FormatString(string text) {
 		//Sanity check
 		if(text == null) {
 			throw new Exception("Can't format null");
@@ -457,7 +460,6 @@ public class NPC : KinematicBody2D {
 		
 		//Turn to player
 		TurnToPlayer(player);
-		
 	}
 	
 	private void FinishDialogue(Player player) {
@@ -563,7 +565,7 @@ public class NPC : KinematicBody2D {
 				
 				if(!isBrewer) {
 					//Format the text to fit in the dialogue boxes
-					InnerLines = FormatText(d);
+					InnerLines = FormatString(d);
 					InnerLinesCount = InnerLines.Length;
 				}
 				
@@ -582,9 +584,25 @@ public class NPC : KinematicBody2D {
 	}
 	
 	public InfoValue_t _CompareSolutions(CharacterInfo_t characterInfo, int tabId) {
-		CharacterInfo_t solution = QC._QueryQuestSolution(tabId);
-		solution = QC._QueryQuestSolution(tabId);
-		return QC._CompareCharInfo(solution, characterInfo);
+		CharacterInfo_t solution = new CharacterInfo_t(-1);
+		InfoValue_t[] sols = new InfoValue_t[context.NLanguages];
+
+		// An answer in any language is valid
+		var langs = Enum.GetValues(typeof(Language));
+		int idx = 0;
+
+		// Gather all possible language answers
+		foreach(var l in langs) {
+			solution = QuestController._QueryQuestSolution(tabId, (Language)l);
+			sols[idx++] = QC._CompareCharInfo(solution, characterInfo);
+		}
+
+		// The result is a conjunction of all possible language answers
+		InfoValue_t res = new InfoValue_t(false);
+		for(int i = 0; i < context.NLanguages; i++) {
+			res = res.Or(sols[i]);
+		} 
+		return res;
 	}
 	
 	public InfoValue_t _EvaluateQuest(Player player, CharacterInfo_t characterInfo, int tabId) {

@@ -1,0 +1,16 @@
+<db>
+    <personnage id="0">Elisabeth de Cerjeat was born in 1769 in Louth, Great Britain. Her father was a swiss aristocrat and her mother was British. In 1780, the family moved to la rue de Bourg in Lausanne. Along with her sister, they devoted their time to helping the poor. In 1843, after being treated for cataract, the 73-year-old woman opened an asylum for the blind with the help of William Haldimand. She died in Montchoisi in 1847.</personnage>
+    <personnage id="1">Angélique Trüschel, born in 1780, was the wife of Conrad Trüschel. The couple owned a brewery of the same name. The building consisted of a main habitation, a brewery, stables, a barn, a woodshed, a garden and an orchard. She raised her daughters there. Conrad died in 1838 and Angélique in 1842.</personnage>
+    <personnage id="2">Henri Perregaux was an architecte born in 1785 in Lausanne. He was designated as a building inspector and later as a member of the roadworks and bridges committees. He worked on restoring the cathedral of Lausanne, building town halls and the Grand-Pont bridge with the help of the engineer Adrien Pichard. He died in Lausanne in 1850.</personnage>
+    <personnage id="3">The baroness Isabelle de Montolieu was a writer born in 1751 in Lausanne. At age of 35, she anonymously published her first novel "Caroline de Lichtfield" which became popular throughout Europe. She translated many books into French like "Le robinson suisse" by Johann David Wyss or multiple works by Jane Austen. She died in Vennes in 1932.</personnage>
+    <personnage id="4">Jean-Jacques Mercier was born in 1789 in Lausanne. He was a tanner and a merchant. He develops a leather industry by the Flon river which was not yet covered. The waste produced by the factory was thrown into the river, turning the valley into a smelly and unsanitary place. He died in 1868 in Lausanne.</personnage>
+    <personnage id="5">Benedict Rochat was born in 1777 in Lausanne. Originally from the vallée de Joux, the Rochat family had been millers for generations and were spread across multiple mills by the Flon river. By using hydraulic power, they were able to grind cereals and saw wood, but the state of the water meant that they lived in unhealthy living conditions.</personnage>
+    <objectif id="-1">[b]Objective :[/b] 
+Close the notebook and talk to M. Gély.</objectif>
+    <objectif id="0">[b]Objective :[/b] 
+Fill the first page of the notebook. The information can be found in the room.</objectif>
+    <objectif id="1">[b]Objective :[/b]
+Find the missing information to complete the registry and return to M. Gély once all the pages are done.
+
+If you are not sure about an answer, you can ask M. Gély for help. He can correct the data on your current page.</objectif>
+</db>

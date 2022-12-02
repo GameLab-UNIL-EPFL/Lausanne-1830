@@ -26,10 +26,13 @@ public class DialogueController : Node {
 	
 	//File at which the scene's dialogue is stored
 	[Export]
-	public string SceneDialogueFile = "res://db/dialogues/xml/Dialogues.xml";
+	public string SceneDialogueFile;
+	
+	Context context;
 	
 	//Local XDocument containing a parsed version of the dialogue
 	private XDocument dialogueTree;
+	private XDocument questTree;
 	
 	//Used to lock the Dialogue controller during an interaction
 	private bool IsOccupied
@@ -41,6 +44,7 @@ public class DialogueController : Node {
 	
 	public const string ON_DEMAND = "onDemand";
 	public const string ON_APPROACH = "onApproach";
+	private const string questFile = "/dialogues/xml/QuestNPC.xml";
 	
 	/**
 	 * @brief Parses the XML file and loads it into a local XDocument
@@ -63,7 +67,7 @@ public class DialogueController : Node {
 		if(xml != null) {
 			targetXML = xml;
 		} else {
-			throw new Exception("Unable to load xml file!");
+			throw new Exception("Unable to load xml file:" + filePath);
 		}
 	}
 
@@ -73,9 +77,14 @@ public class DialogueController : Node {
 		target0Text = new Queue<String>();
 		target1Text = new Queue<String>();
 		
+		context = GetNode<Context>("/root/Context");
+		
+		SceneDialogueFile = "res://db/" + context._GetLanguageAbbrv() + "/dialogues/xml/Dialogues.xml";
+		
 		//Load XML and init state
 		IsOccupied = false;
 		_ParseXML(ref dialogueTree, SceneDialogueFile);
+		_ParseXML(ref questTree, "res://db/" + context._GetLanguageAbbrv() + questFile);
 	}
 	
 	/**
@@ -85,9 +94,11 @@ public class DialogueController : Node {
 	 * @param targetNum, the number of the target speaking.
 	 * @return a string array containing all of the lines of the dialogue
 	 */
-	private string[] QueryDialogue(string dialogueID, string type, int targetNum = 0) {
+	public string[] _QueryDialogue(string dialogueID, string type, string fileName = null, int targetNum = 0) {
+		
 		// Query the data and write out resulting texts as a string array
-		var query = from dialogue in dialogueTree.Root.Descendants("dialogue")
+		var query = from dialogue in 
+			(fileName == questFile ? questTree : dialogueTree).Root.Descendants("dialogue")
 					where dialogue.Attribute("id").Value == dialogueID &&
 						dialogue.Attribute("type").Value == type &&
 						int.Parse(dialogue.Attribute("ntargets").Value) > targetNum
@@ -135,9 +146,10 @@ public class DialogueController : Node {
 	
 	private void FillQueue(string dialogueID, int id = 0, bool isApproach = false) {
 		//Fetch initial dialogues and fill queues
-		string[] texts = QueryDialogue(
+		string[] texts = _QueryDialogue(
 				dialogueID, 
 				isApproach ? ON_APPROACH : ON_DEMAND,
+				null,
 				id == 0 ? 0 : 1 //Make sure its only 0 or 1
 		);
 		//throw new Exception(string.Join(", ", texts));

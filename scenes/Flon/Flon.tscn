@@ -1578,7 +1578,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1621,7 +1621,7 @@ position = Vector2( 555.395, 185 )
 texture = ExtResource( 29 )
 
 [node name="Hay" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 18.2838, 44.2197 )
+position = Vector2( -0.259948, 23.5074 )
 
 [node name="Sprite" parent="YSort/Hay" index="0"]
 position = Vector2( 0.0831146, -4.68631 )
@@ -1632,7 +1632,7 @@ position = Vector2( -0.629974, 5.66974 )
 shape = SubResource( 67 )
 
 [node name="Hay3" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 48.2838, 28.3137 )
+position = Vector2( 36.0676, 41.1514 )
 
 [node name="Sprite" parent="YSort/Hay3" index="0"]
 position = Vector2( 0.0831146, -4.68631 )
@@ -1650,7 +1650,7 @@ position = Vector2( 0.0831146, -4.68631 )
 texture = ExtResource( 31 )
 
 [node name="CollisionShape2D" parent="YSort/Hay2" index="1"]
-position = Vector2( -0.629974, 5.66974 )
+position = Vector2( 2.5, -2 )
 shape = SubResource( 67 )
 
 [node name="Manure" type="StaticBody2D" parent="YSort"]
@@ -1661,7 +1661,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]

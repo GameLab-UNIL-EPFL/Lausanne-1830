@@ -18,20 +18,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Godot;
 using System;
+using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 
 public enum GameStates {INIT, PLAYING, COMPLETE};
 public enum Locations {INTRO, PALUD, BRASSERIE, CASINO, MOULIN, FLON};
+public enum Language {FR, EN};
 public enum Quests {NONE, TUTORIAL};
 public enum QuestStatus {NONE, ON_GOING, COMPLETE, NOT_STARTED};
 
 // Storage for all persistent data in the game
 public class Context : Node {
+	[Signal]
+	public delegate void UpdateLanguage(Language l);
+
 	//Notebook data
 	private List<CharacterInfo_t> NotebookCharInfo = new List<CharacterInfo_t>();
 	private List<InfoValue_t> NotebookCorrectInfo = new List<InfoValue_t>();
 	public int CurrentTab = 0;
+	
+	// Labels
+	private XDocument labelDB;
 	
 	//Game state data
 	private GameStates GameState = GameStates.INIT;
@@ -39,6 +49,9 @@ public class Context : Node {
 	private Quests CurrentQuest = Quests.TUTORIAL;
 	private QuestStatus CurrentQuestStatus = QuestStatus.NOT_STARTED;
 	private int QuestStateId = -2;
+	
+	private Language CurrentLanguage = Language.FR;
+	public int NLanguages = Enum.GetNames(typeof(Language)).Length;
 	
 	//Quest NPC ref
 	private NPC QuestNPC = null;
@@ -63,42 +76,62 @@ public class Context : Node {
 	private Vector2 CasinoEnterPosition = new Vector2(191, 432);
 	
 	public override void _Ready() {
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "De Cerjeat", "", 1, "Célibataire", 0, "Rentier.ère" 
-		));
+		// Initialize the notebook info entries
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, true, true, true
-		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Trüschel", "", 0, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, false, false, false
 		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Perregaux", "Rue St-François", 9, "", 0, ""
-		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, true, true, false, false, false
-		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "De Montolieu", "", 0, "Veuf.ve", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, true, false, false
 		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Mercier", "", 0, "Marié.e", 3, ""
-		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, true, true, false
-		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Rochat", "", 1, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, false, false, false
 		));
+		
+		InitNotebookCharInfo();
+		
+		// Start out by loading in the label DB in the default language
+		DialogueController._ParseXML(
+			ref labelDB, 
+			string.Format("res://db/{0}/labels.xml", _GetLanguageAbbrv())
+		);
+	}
+
+	// Fill in the notebookCharInfo depending on the initialized correct info fields
+	private void InitNotebookCharInfo() {
+		// Number of fields in the
+		const int N_ENTRIES = 7;
+
+		// Clear the current entires
+		NotebookCharInfo.Clear();
+
+		// Fill in the strings depending on the results
+		for(int i = 0; i < NotebookCorrectInfo.Count; ++i) {
+			// Retrieve the solution
+			CharacterInfo_t sol = QuestController._QueryQuestSolution(i, _GetLanguage());
+			
+			// Filter out non-wanted entries
+			for(int j = 0; j < N_ENTRIES; ++j) {
+				if(!NotebookCorrectInfo[i][j]) {
+					sol._ClearEntry(j);
+				}
+			}
+
+			// Add the newly prepared solution to the context data
+			NotebookCharInfo.Add(sol);
+		}
+	}
+	
+	public XDocument _GetLabelsDB() {
+		return labelDB;
 	}
 	
 	public void _Clear() {
@@ -111,6 +144,57 @@ public class Context : Node {
 		//Reload context
 		_Ready();
 	}
+	
+	public Language _GetLanguage() {
+		return CurrentLanguage;
+	}
+	
+	public void _NextLanguage() {
+		CurrentLanguage = (Language)(((int)CurrentLanguage + 1) % NLanguages);
+		
+		// Update the labels DB
+		DialogueController._ParseXML(
+			ref labelDB, 
+			string.Format("res://db/{0}/labels.xml", _GetLanguageAbbrv())
+		);
+		
+		// Update the char info
+		InitNotebookCharInfo();
+		
+		// Send a signal to the rest of the scene to also update the language
+		EmitSignal(nameof(UpdateLanguage), CurrentLanguage);
+	}
+
+	public static string _GetLanguageAbbrv(Language l) {
+		switch(l) {
+			case Language.EN:
+				return "en";
+			case Language.FR:
+				return "fr";
+			default:
+				return "fr";
+		}
+	}
+	
+	// Get the abbreviation used in the file system to reference the language
+	public string _GetLanguageAbbrv() {
+		return _GetLanguageAbbrv(CurrentLanguage);
+	}
+
+	public string _LanguageToString(Language l) {
+		switch(l) {
+			case Language.EN:
+				return "Language: En";
+			case Language.FR:
+				return "Langue: Fr";
+			default:
+				return "Langue: Fr";
+		}
+	}
+	
+	public string _LanguageToString() {
+		return _LanguageToString(CurrentLanguage);
+	} 
 	
 	public void _UpdateLocation(string id) {
 		switch(id) {

@@ -1,0 +1,18 @@
+<scene name="global">
+    <!-- Notebook Labels -->
+    <label id="nb_firstname">First Name :</label>
+    <label id="nb_lastname">Last Name :</label>
+    <label id="nd_addr">Address :</label>
+    <label id="nb_addrnum">Street Nr. :</label>
+    <label id="nb_etatcivil">Marital Status :</label>
+    <label id="nb_kids">Children :</label>
+    <label id="nb_job">Profession :</label>
+    <!-- Tutorial Labels -->
+    <label id="tuto_move">To move around</label>
+    <label id="tuto_interact">To interact and talk to people</label>
+    <!-- General purpose Labels -->
+    <label id="gp_read">Read</label>
+    <label id="gp_close">Close</label>
+    <label id="gp_open">Open</label>
+    <label id="gp_look">Look</label>
+</scene>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -6,25 +6,26 @@
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/06_UI_menus/Space.png" type="Texture" id=7]
+[ext_resource path="res://assets/06_UI_menus/fr/Space.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/06_UI_menus/Tab.png" type="Texture" id=10]
+[ext_resource path="res://assets/06_UI_menus/fr/Tab.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=12]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=13]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png" type="Texture" id=15]
-[ext_resource path="res://assets/06_UI_menus/Arrows.png" type="Texture" id=16]
+[ext_resource path="res://assets/06_UI_menus/fr/Arrows.png" type="Texture" id=16]
 [ext_resource path="res://scenes/Interaction/PressE.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/05_fonts/PixelOperator.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://src/Intro.cs" type="Script" id=19]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/06_UI_menus/lettreMontolieu.png" type="Texture" id=21]
-[ext_resource path="res://assets/06_UI_menus/button.png" type="Texture" id=22]
-[ext_resource path="res://assets/06_UI_menus/shift.png" type="Texture" id=23]
-[ext_resource path="res://assets/06_UI_menus/wasd.png" type="Texture" id=24]
+[ext_resource path="res://assets/06_UI_menus/fr/lettreMontolieu.png" type="Texture" id=21]
+[ext_resource path="res://assets/06_UI_menus/fr/button.png" type="Texture" id=22]
+[ext_resource path="res://assets/06_UI_menus/fr/shift.png" type="Texture" id=23]
+[ext_resource path="res://assets/06_UI_menus/fr/wasd.png" type="Texture" id=24]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=25]
+[ext_resource path="res://src/TextLabel.cs" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 10, 87.8739 )
@@ -518,7 +519,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 23
+frame = 33
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -533,7 +534,12 @@ visible = false
 position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
-text = "Lire"
+text = ""
+script = ExtResource( 26 )
+id = "gp_read"
+
+[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -563,10 +569,11 @@ margin_top = 183.0
 margin_right = -230.0
 margin_bottom = 199.0
 custom_fonts/font = SubResource( 38 )
-text = "FERMER"
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "gp_close"
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -666,25 +673,22 @@ volume_db = -15.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
-margin_top = 78.0
+margin_top = 114.0
 margin_right = 198.0
-margin_bottom = 246.0
+margin_bottom = 263.0
 custom_fonts/font = SubResource( 19 )
-text = "
-
-
-
-
-Pour te déplacer
-
-"
+text = "Pour te déplacer"
 align = 1
 valign = 1
+autowrap = true
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+id = "tuto_move"
 
 [node name="Arrows" type="Node2D" parent="Label"]
+position = Vector2( 0, -30 )
 
 [node name="L" type="Sprite" parent="Label/Arrows"]
 position = Vector2( 40, 77 )
@@ -708,6 +712,7 @@ texture = SubResource( 23 )
 
 [node name="Awsd" type="Node2D" parent="Label"]
 visible = false
+position = Vector2( 0, -30 )
 
 [node name="w" type="Sprite" parent="Label/Awsd"]
 position = Vector2( 65, 52 )
@@ -757,16 +762,15 @@ margin_top = 99.0
 margin_right = 597.0
 margin_bottom = 290.0
 custom_fonts/font = SubResource( 24 )
-text = "Pour interagir
-et parler"
+text = "Pour interagir et parler"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap = true
+script = ExtResource( 26 )
+id = "tuto_interact"
 
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
-position = Vector2( 66, 56 )
+position = Vector2( 70, 56 )
 scale = Vector2( 2, 2 )
 
 [node name="Timer" type="Timer" parent="."]
