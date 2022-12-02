@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/affiches-Sheet.png-2a9d07d4419426d962ac9b561d208ce2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/02_architecture/02_palud/affiches-Sheet.png"
+dest_files=[ "res://.import/affiches-Sheet.png-2a9d07d4419426d962ac9b561d208ce2.stex" ]
 
 [params]
 

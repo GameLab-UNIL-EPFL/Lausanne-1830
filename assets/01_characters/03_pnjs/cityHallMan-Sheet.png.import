@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/cityHallMan-Sheet.png-1aefe27df2553accfeeacf1250b4c7a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/01_characters/03_pnjs/cityHallMan-Sheet.png"
+dest_files=[ "res://.import/cityHallMan-Sheet.png-1aefe27df2553accfeeacf1250b4c7a5.stex" ]
 
 [params]
 

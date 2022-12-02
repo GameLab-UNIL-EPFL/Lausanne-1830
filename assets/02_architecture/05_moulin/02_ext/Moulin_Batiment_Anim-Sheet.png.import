@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/Moulin_Batiment_Anim-Sheet.png-7cffeb8a398d8aeca2304596701de9ad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/02_architecture/05_moulin/02_ext/Moulin_Batiment_Anim-Sheet.png"
+dest_files=[ "res://.import/Moulin_Batiment_Anim-Sheet.png-7cffeb8a398d8aeca2304596701de9ad.stex" ]
 
 [params]
 

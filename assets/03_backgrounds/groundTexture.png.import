@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/groundTexture.png-7b3b37b17f3973d2813a3532897a1c64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/03_backgrounds/groundTexture.png"
+dest_files=[ "res://.import/groundTexture.png-7b3b37b17f3973d2813a3532897a1c64.stex" ]
 
 [params]
 

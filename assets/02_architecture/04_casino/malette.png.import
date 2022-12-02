@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/malette.png-ca9d64622e0deeff67e8711baecbfc1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/02_architecture/04_casino/malette.png"
+dest_files=[ "res://.import/malette.png-ca9d64622e0deeff67e8711baecbfc1c.stex" ]
 
 [params]
 

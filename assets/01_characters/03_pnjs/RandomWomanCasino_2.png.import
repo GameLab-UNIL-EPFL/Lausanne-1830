@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/RandomWomanCasino_2.png-a1a45b60b0132106c5d4e30e2d4b1c73.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/01_characters/03_pnjs/RandomWomanCasino_2.png"
+dest_files=[ "res://.import/RandomWomanCasino_2.png-a1a45b60b0132106c5d4e30e2d4b1c73.stex" ]
 
 [params]
 

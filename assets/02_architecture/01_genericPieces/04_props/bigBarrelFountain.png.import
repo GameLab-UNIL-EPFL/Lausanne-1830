@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/bigBarrelFountain.png-41c0ed433daf86befd4a71cd5e0150e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/02_architecture/01_genericPieces/04_props/bigBarrelFountain.png"
+dest_files=[ "res://.import/bigBarrelFountain.png-41c0ed433daf86befd4a71cd5e0150e3.stex" ]
 
 [params]
 

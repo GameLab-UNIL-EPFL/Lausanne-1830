@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/frederiqueTruschel.png-566d841f2363bad41f8b5af0734fa40b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/01_characters/03_pnjs/frederiqueTruschel.png"
+dest_files=[ "res://.import/frederiqueTruschel.png-566d841f2363bad41f8b5af0734fa40b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex"
+path="res://.import/elisabethDeCerjeat-Sheet.png-30062d7cf295772beb043c1626b59535.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/06_UI_menus/fr/moulinIcon-hover.png"
-dest_files=[ "res://.import/moulinIcon-hover.png-63818319c5bcd4279fedd1e10dda834c.stex" ]
+source_file="res://assets/01_characters/03_pnjs/elisabethDeCerjeat-Sheet.png"
+dest_files=[ "res://.import/elisabethDeCerjeat-Sheet.png-30062d7cf295772beb043c1626b59535.stex" ]
 
 [params]
 
