@@ -108,7 +108,7 @@ public class Context : Node {
 	// Fill in the notebookCharInfo depending on the initialized correct info fields
 	private void InitNotebookCharInfo() {
 		// Number of fields in the
-		const int N_ENTRIES = 6;
+		const int N_ENTRIES = 7;
 
 		// Clear the current entires
 		NotebookCharInfo.Clear();
