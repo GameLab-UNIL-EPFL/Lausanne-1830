@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Eeeh1.wav-34ad36e90c7f42a77f8c3f5653747ccc.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/voice/Eeeh1.wav"
+dest_files=[ "res://.import/Eeeh1.wav-34ad36e90c7f42a77f8c3f5653747ccc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

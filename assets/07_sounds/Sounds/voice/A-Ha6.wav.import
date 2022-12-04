@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/A-Ha6.wav-8521f93c3b844b0fbac7d73f5d1fe3bc.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/voice/A-Ha6.wav"
+dest_files=[ "res://.import/A-Ha6.wav-8521f93c3b844b0fbac7d73f5d1fe3bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

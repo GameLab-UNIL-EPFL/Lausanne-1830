@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=2]
+[gd_scene load_steps=130 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/Stream Moderate Loop 1.wav" type="AudioStream" id=35]
 [ext_resource path="res://assets/07_sounds/Sounds/Forest Loop.wav" type="AudioStream" id=36]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=37]
+[ext_resource path="res://assets/07_sounds/Sounds/Snoring.mp3" type="AudioStream" id=38]
 
 [sub_resource type="RectangleShape2D" id=90]
 extents = Vector2( 21, 11 )
@@ -1584,7 +1585,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1667,7 +1668,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2340,7 +2341,7 @@ position = Vector2( 408, 224 )
 shape = SubResource( 97 )
 
 [node name="Water" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 620, 263 )
+position = Vector2( 597, 309 )
 stream = ExtResource( 35 )
 volume_db = 2.0
 autoplay = true
@@ -2357,6 +2358,14 @@ script = ExtResource( 37 )
 [node name="Birds" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 23, 315 )
 stream = ExtResource( 36 )
+autoplay = true
+script = ExtResource( 37 )
+
+[node name="Snoring" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 76.2838, 57 )
+stream = ExtResource( 38 )
+volume_db = 2.6
+pitch_scale = 0.7
 autoplay = true
 script = ExtResource( 37 )
 

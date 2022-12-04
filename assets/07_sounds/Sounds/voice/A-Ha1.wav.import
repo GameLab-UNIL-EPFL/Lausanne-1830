@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/A-Ha1.wav-3e7cc207ab5f1faa0190ad6c959cd895.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/voice/A-Ha1.wav"
+dest_files=[ "res://.import/A-Ha1.wav-3e7cc207ab5f1faa0190ad6c959cd895.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
