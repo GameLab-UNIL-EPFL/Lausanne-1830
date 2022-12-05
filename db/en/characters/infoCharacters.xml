@@ -4,12 +4,12 @@
     <personnage id="2">Henri Perregaux, born in 1785 in Lausanne, is the quasi-designated architect of the state of Vaud. He works as a building inspector and a member of the committees responsible for both roadwork and bridges. He restores the cathedral of Lausanne, builds town halls, as well as the Grand-Pont bridge with the help of the engineer Adrien Pichard. He dies in Lausanne in 1850.</personnage>
     <personnage id="3">The baroness Isabelle de Montolieu is a writer born in 1751 in Lausanne. At age of 35, she anonymously publishes her first novel "Caroline de Lichtfield," which would become popular throughout Europe. She also translates many books into French, such as "Le Robinson Suisse" by Johann David Wyss and multiple works by Jane Austen. She dies in Vennes in 1932.</personnage>
     <personnage id="4">Jean-Jacques Mercier was born in 1789 in Lausanne. Both a tanner and a merchant, he establishes a leather industry by the Flon river, which has not yet been built over. The waste produced by the factory is thrown into the river, turning the valley into a smelly and unsanitary place. He dies in 1868 in Lausanne.</personnage>  
-    <personnage id="5">Benedict Rochat was born in 1777 in Lausanne. Originally from the Joux valley, the Rochat family have been millers for generations and are spread across multiple mills by the Flon river. By using hydraulic power, they are able to grind cereals and saw wood, but the state of the water means that they live in unhealthy living conditions.</personnage>
+    <personnage id="5">Benedict Rochat was born in 1777 in Lausanne. Originally from the Joux valley, the Rochat family have been millers for generations spread across multiple mills by the Flon river. They grind grains and chop wood using hydraulic power, though the polluted water results in unhealthy living conditions.</personnage>
     <objectif id="-1">[b]Objective :[/b] 
 Close the notebook and talk to M. Gély.</objectif>
     <objectif id="0">[b]Objective :[/b] 
 Fill the first page of the notebook. The information can be found in the room.</objectif>
     <objectif id="1">[b]Objective :[/b]
 Find the missing information to complete the registry and return to M. Gély once all the pages are done.
-If you are unsure of an answer, you can ask M. Gély for help. He can correct the entries on your current page.</objectif>
+If you are unsure of an answer, you can ask M. Gély for help correcting the entries on your current page.</objectif>
 </db>
