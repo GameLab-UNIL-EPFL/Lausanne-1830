@@ -9,10 +9,10 @@
 	<personnage prenom="Samuel" nom="Kohler" adresse="Rue du Petit Chêne" conjoint="Single" metier="Merchant"></personnage>
 	<personnage prenom="Pierre" nom="De Crousaz" adresse="Rue St-Laurent" conjoint="Single" metier="Musician"></personnage>
 	<personnage prenom="Alexandre" nom="Chapuis" adresse="Rue de la Palud" conjoint="Single" metier="Labourer"></personnage>
-	<personnage prenom="Marie" nom="Rebillet" adresse="Rue St-Pierre" conjoint="Single" metier="Carpenter"></personnage>
-	<personnage prenom="Caroline" nom="Baumann" adresse="Place du Pont" conjoint="Single" metier="Farmer"></personnage>
+	<personnage prenom="Marie" nom="Rebillet" adresse="Rue St-Pierre" conjoint="Single" metier="Brewer"></personnage>
+	<personnage prenom="Caroline" nom="Baumann" adresse="Place du Pont" conjoint="Single" metier="Wine Maker"></personnage>
 	<personnage prenom="Jeannette" nom="Pouly" adresse="Rue d'Etraz" conjoint="Single" metier="Officer"></personnage>
 	<personnage prenom="Pauline" nom="Falconnier" adresse="Rue de Bourg" conjoint="Divorced" metier="Lawyer"></personnage>
-	<personnage prenom="Susanne" nom="Détraz" adresse="Rue de Martheray" conjoint="Divorced" metier="Launderer"></personnage>
+	<personnage prenom="Susanne" nom="Détraz" adresse="Rue de Martheray" conjoint="Divorced" metier="Laundress"></personnage>
 	<personnage prenom="_____" nom="_____" adresse="_____" conjoint="_____" metier="_____"></personnage>
 </db>
