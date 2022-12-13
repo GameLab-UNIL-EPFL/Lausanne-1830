@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Weber.mp3-c3f06dea963778752f9dce904c6beeff.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Music/Weber.mp3"
+dest_files=[ "res://.import/Weber.mp3-c3f06dea963778752f9dce904c6beeff.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

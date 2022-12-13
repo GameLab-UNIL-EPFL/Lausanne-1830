@@ -90,7 +90,7 @@ text = "Casino"
 resourceNameHover = "casinoIcon-hover-export.png"
 resourceNameNormal = "casinoIcon.png"
 resourcePath = "06_UI_menus"
-musicName = "Ranz"
+musicName = "Weber"
 
 [node name="YouAreHere" type="Sprite" parent="."]
 position = Vector2( 260, 120 )

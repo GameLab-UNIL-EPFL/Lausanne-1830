@@ -1585,7 +1585,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1668,7 +1668,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2353,20 +2353,23 @@ position = Vector2( 261.948, 195 )
 stream = ExtResource( 35 )
 volume_db = -5.0
 autoplay = true
+bus = "Sounds"
 script = ExtResource( 37 )
 
 [node name="Birds" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 23, 315 )
 stream = ExtResource( 36 )
 autoplay = true
+bus = "Sounds"
 script = ExtResource( 37 )
 
 [node name="Snoring" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 76.2838, 57 )
 stream = ExtResource( 38 )
-volume_db = 2.6
+volume_db = 5.0
 pitch_scale = 0.7
 autoplay = true
+bus = "Sounds"
 script = ExtResource( 37 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]

@@ -14,6 +14,10 @@ config/name="Lausanne 1830"
 run/main_scene="res://scenes/Interaction/Menu.tscn"
 config/icon="res://assets/06_UI_menus/fr/perso.png"
 
+[audio]
+
+mix_rate=48000
+
 [autoload]
 
 SceneChanger="*res://scenes/Interaction/SceneChanger.tscn"
