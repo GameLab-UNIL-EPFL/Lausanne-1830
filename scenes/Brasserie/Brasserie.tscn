@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=2]
+[gd_scene load_steps=153 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -36,9 +36,12 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/biblio.png" type="Texture" id=34]
 [ext_resource path="res://assets/06_UI_menus/fr/randomBook.png" type="Texture" id=35]
 [ext_resource path="res://src/TextLabel.cs" type="Script" id=36]
+[ext_resource path="res://assets/07_sounds/Sounds/Boiling water_3.wav" type="AudioStream" id=37]
 [ext_resource path="res://assets/06_UI_menus/fr/livreIsabelle.png" type="Texture" id=38]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=39]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/07_sounds/Sounds/Smelter burning_1.wav" type="AudioStream" id=41]
+[ext_resource path="res://src/FountainAudio.cs" type="Script" id=42]
 
 [sub_resource type="RectangleShape2D" id=130]
 extents = Vector2( 21, 10 )
@@ -1279,7 +1282,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 15
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1403,6 +1406,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1416,7 +1420,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
-frame = 4
+frame = 5
 playing = true
 flip_h = true
 
@@ -1432,7 +1436,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 16
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1838,6 +1842,21 @@ shape = SubResource( 129 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
 position = Vector2( 264.639, 276.999 )
 shape = SubResource( 134 )
+
+[node name="Brewing" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 466, 228 )
+stream = ExtResource( 37 )
+volume_db = -10.0
+autoplay = true
+script = ExtResource( 42 )
+
+[node name="Brewing2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 466, 228 )
+stream = ExtResource( 41 )
+volume_db = -25.0
+pitch_scale = 0.81
+autoplay = true
+script = ExtResource( 42 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
