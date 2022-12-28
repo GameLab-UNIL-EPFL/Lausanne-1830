@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SchubertSonata13.mp3-a749ba3a79b949cbd3812df3e4b5a0d1.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Music/SchubertSonata13.mp3"
+dest_files=[ "res://.import/SchubertSonata13.mp3-a749ba3a79b949cbd3812df3e4b5a0d1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
