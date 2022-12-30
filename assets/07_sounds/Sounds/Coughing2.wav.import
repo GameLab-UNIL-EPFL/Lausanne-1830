@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Coughing2.wav-9d6d9ad358091ad8e31991bb17c01c28.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/Coughing2.wav"
+dest_files=[ "res://.import/Coughing2.wav-9d6d9ad358091ad8e31991bb17c01c28.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

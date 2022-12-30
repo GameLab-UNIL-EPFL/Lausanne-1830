@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=2]
+[gd_scene load_steps=131 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/Forest Loop.wav" type="AudioStream" id=36]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=37]
 [ext_resource path="res://assets/07_sounds/Sounds/Snoring.mp3" type="AudioStream" id=38]
+[ext_resource path="res://assets/07_sounds/Sounds/Flies.mp3" type="AudioStream" id=39]
 
 [sub_resource type="RectangleShape2D" id=90]
 extents = Vector2( 21, 11 )
@@ -1585,7 +1586,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1668,7 +1669,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2367,9 +2367,15 @@ script = ExtResource( 37 )
 position = Vector2( 76.2838, 57 )
 stream = ExtResource( 38 )
 volume_db = 15.0
-pitch_scale = 1.2
 autoplay = true
 bus = "Sounds"
+script = ExtResource( 37 )
+
+[node name="Flies" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 76.2838, 66.6697 )
+stream = ExtResource( 39 )
+volume_db = -15.0
+autoplay = true
 script = ExtResource( 37 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
