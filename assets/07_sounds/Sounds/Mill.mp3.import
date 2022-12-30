@@ -12,4 +12,4 @@ dest_files=[ "res://.import/Mill.mp3-56406ce4ac017b0864367a1048f390c6.mp3str" ]
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=0.1

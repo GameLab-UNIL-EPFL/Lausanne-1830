@@ -102,7 +102,7 @@ public class MapIcon : TextureButton {
 		SC.GotoScene("res://scenes/" + id + ".tscn");
 		
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.ChangeMusic(musicName + ".mp3", -5);
+		MP.ChangeMusic(musicName + ".mp3", 0);
 		
 		
 			
