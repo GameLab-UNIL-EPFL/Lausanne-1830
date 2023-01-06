@@ -1052,6 +1052,7 @@ shape = SubResource( 36 )
 [node name="Mill" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 172, 129 )
 stream = ExtResource( 32 )
+volume_db = 5.0
 autoplay = true
 script = ExtResource( 31 )
 
@@ -1064,8 +1065,7 @@ script = ExtResource( 31 )
 [node name="LowHum" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 168, 155 )
 stream = ExtResource( 34 )
-volume_db = -20.0
-pitch_scale = 0.68
+volume_db = -15.0
 autoplay = true
 script = ExtResource( 31 )
 
