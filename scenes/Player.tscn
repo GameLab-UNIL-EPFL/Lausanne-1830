@@ -149,7 +149,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/path = NodePath("DefaultWalkAudio:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -161,7 +161,7 @@ tracks/2/keys = {
 "values": [ -25.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/3/path = NodePath("DefaultWalkAudio:pitch_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -508,7 +508,6 @@ radius = 14.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-RunTime = 10000.0
 
 [node name="shadow" type="Sprite" parent="."]
 position = Vector2( -0.125, 3.5 )
@@ -554,12 +553,18 @@ parameters/Walk/blend_position = Vector2( 0, 0 )
 position = Vector2( 0, -6 )
 shape = SubResource( 39 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DefaultWalkAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 volume_db = -25.0
 pitch_scale = 1.1
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GrassWalkAudio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StoneWalkAudio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="WoodWalkAudio" type="AudioStreamPlayer2D" parent="."]
 
 [editable path="TalkBox"]

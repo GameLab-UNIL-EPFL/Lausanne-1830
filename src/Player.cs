@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK, ENTER };
+public enum AudioTypes { DEFAULT, GRASS, WOOD, STONE };
 
 public class Player : KinematicBody2D {
 	[Signal]
@@ -75,7 +76,13 @@ public class Player : KinematicBody2D {
 	private AnimationPlayer animation;
 	private AnimationTree animationTree; 
 	private AnimationNodeStateMachinePlayback animationState;
-	private AudioStreamPlayer ASP;
+
+	private AudioTypes CurAudioType = AudioTypes.DEFAULT;
+	private AudioStreamPlayer2D DefaultAudio;
+	private AudioStreamPlayer2D GrassAudio;
+	private AudioStreamPlayer2D StoneAudio;
+	private AudioStreamPlayer2D WoodAudio;
+
 	private Timer T;
 	
 	private List<Item> itemsInRange = new List<Item>();
@@ -276,6 +283,16 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.IDLE;
 		}
 	}
+
+	public void _UpdateAudioType(AudioTypes at) {
+		CurAudioType = at;
+	}
+
+	private void PlayStep(ref AudioStreamPlayer2D ASP, float pitchScaleOffset) {
+		ASP.PitchScale = FootstepPitch;
+		ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + pitchScaleOffset);
+		ASP.Play();
+	}
 	
 	/**
 	 * @brief Updates the player's state according to the current actions taken
@@ -303,9 +320,10 @@ public class Player : KinematicBody2D {
 				} 
 				
 				if(T.TimeLeft <= 0) {
-					ASP.PitchScale = FootstepPitch;
-					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.1f);
-					ASP.Play();
+					PlayStep(CurAudioType == AudioTypes.WOOD ? WoodAudio :
+						CurAudioType == AudioTypes.GRASS ? GrassAudio :
+						CurAudioType == AudioTypes.STONE ? StoneAudio :
+						DefaultAudio, 0.1f);
 					T.Start(0.26f);
 				}
 		
@@ -321,9 +339,10 @@ public class Player : KinematicBody2D {
 				}
 				
 				if(T.TimeLeft <= 0) {
-					ASP.PitchScale = FootstepPitch;
-					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.2f);
-					ASP.Play();
+					PlayStep(CurAudioType == AudioTypes.WOOD ? WoodAudio :
+						CurAudioType == AudioTypes.GRASS ? GrassAudio :
+						CurAudioType == AudioTypes.STONE ? StoneAudio :
+						DefaultAudio, 0.2f);
 					T.Start(0.23f);
 				}
 				
@@ -353,7 +372,13 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-		ASP = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+
+		CurAudioType = AudioTypes.DEFAULT;
+		DefaultAudio = GetNode<AudioStreamPlayer2D>("DefaultWalkAudio");
+		GrassAudio = GetNode<AudioStreamPlayer2D>("GrassWalkAudio");
+		StoneAudio = GetNote<AudioStreamPlayer2D>("StoneWalkAudio");
+		WoodAudio = GetNode<AudioStreamPlayer2D>("WoodWalkAudio");
+
 		T = GetNode<Timer>("Timer");
 		
 		//Connect close notebook signal
