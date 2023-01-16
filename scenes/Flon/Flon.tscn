@@ -31,7 +31,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/fumier-Sheet.png" type="Texture" id=30]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/haybale.png" type="Texture" id=31]
-[ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=32]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=32]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=33]
 [ext_resource path="res://assets/03_backgrounds/pathMoulin.png" type="Texture" id=34]
 [ext_resource path="res://assets/07_sounds/Sounds/Stream Moderate Loop 1.wav" type="AudioStream" id=35]
@@ -1587,7 +1587,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1603,9 +1603,6 @@ position = Vector2( 407, 230 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 68 )
-
-[node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
-stream = ExtResource( 32 )
 
 [node name="Box" parent="YSort" instance=ExtResource( 27 )]
 position = Vector2( 453, 189 )
@@ -1670,7 +1667,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2380,11 +2376,27 @@ script = ExtResource( 37 )
 
 [node name="AmbientAudio" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource( 40 )
+lastPosition = Vector2( 487, 286 )
 
 [node name="Area2D" type="Area2D" parent="AmbientAudio"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AmbientAudio/Area2D"]
 polygon = PoolVector2Array( 392, 368, 566, 219, 573, -8, 644, -10, 646, 266, 527, 369 )
+
+[node name="PathSound" type="Area2D" parent="."]
+script = ExtResource( 32 )
+ExitType = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathSound"]
+polygon = PoolVector2Array( 175.672, 360.439, 172.46, 244.791, 89.3379, 241.981, 69.6618, 225.115, 67.654, 86.1773, 65, -30.5, 103.5, -30, 100.5, 190.5, 104.5, 210.5, 119.5, 218.5, 143.5, 216, 158, 211, 174.5, 216, 197.5, 220, 210, 219.5, 224.5, 220.5, 218, 241, 204, 245.5, 207, 272, 207.5, 306, 202, 314.5, 206.5, 358, 206, 401, 175.5, 398.5 )
+
+[node name="BridgeSound" type="Area2D" parent="."]
+script = ExtResource( 32 )
+EnterType = 3
+ExitType = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BridgeSound"]
+polygon = PoolVector2Array( 229.8, 221.9, 226.8, 246.4, 302.8, 245.4, 302.8, 239.4, 315.3, 239.4, 314.3, 228.4, 305.3, 228.4, 300.8, 222.4 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
@@ -2395,6 +2407,8 @@ polygon = PoolVector2Array( 392, 368, 566, 219, 573, -8, 644, -10, 646, 266, 527
 [connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 [connection signal="area_entered" from="AmbientAudio/Area2D" to="AmbientAudio" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="AmbientAudio/Area2D" to="AmbientAudio" method="_on_Area2D_area_exited"]
+[connection signal="area_entered" from="PathSound" to="PathSound" method="_on_area_entered"]
+[connection signal="area_exited" from="PathSound" to="PathSound" method="_on_area_exited"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]
