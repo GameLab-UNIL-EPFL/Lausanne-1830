@@ -1587,7 +1587,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1670,6 +1670,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2383,7 +2384,7 @@ script = ExtResource( 40 )
 [node name="Area2D" type="Area2D" parent="AmbientAudio"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AmbientAudio/Area2D"]
-polygon = PoolVector2Array( 245, 193, 241, 365, 281, 366, 282, 192 )
+polygon = PoolVector2Array( 392, 368, 566, 219, 573, -8, 644, -10, 646, 266, 527, 369 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
