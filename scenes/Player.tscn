@@ -1,10 +1,13 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/01_characters/01_player/perso-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.cs" type="Script" id=2]
 [ext_resource path="res://scenes/Interaction/TalkBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/01_characters/01_player/shadow.png" type="Texture" id=4]
+[ext_resource path="res://assets/07_sounds/Sounds/tile/0.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/07_sounds/Sounds/boots/2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/07_sounds/Sounds/wood/0.ogg" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 4.0
@@ -562,9 +565,12 @@ pitch_scale = 1.1
 one_shot = true
 
 [node name="GrassWalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 
 [node name="StoneWalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 
 [node name="WoodWalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 
 [editable path="TalkBox"]
