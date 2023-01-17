@@ -288,6 +288,10 @@ public class Player : KinematicBody2D {
 		return CurAudioType;
 	}
 
+	public AudioTypes _GetAudioType() {
+		return CurAudioType;
+	}
+
 	public void _UpdateAudioType(AudioTypes at) {
 		CurAudioType = at;
 	}
