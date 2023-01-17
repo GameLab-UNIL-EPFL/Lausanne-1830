@@ -283,9 +283,30 @@ public class Player : KinematicBody2D {
 			CurrentState = PlayerStates.IDLE;
 		}
 	}
+	
+	public AudioTypes _GetAudioType() {
+		return CurAudioType;
+	}
 
 	public void _UpdateAudioType(AudioTypes at) {
 		CurAudioType = at;
+	}
+	
+	private void SetASPVar(ref AudioStreamPlayer2D ASP) {
+		switch(CurAudioType) {
+			case AudioTypes.WOOD:
+				ASP = ref WoodAudio;
+				break;
+			case AudioTypes.STONE:
+				ASP = ref StoneAudio;
+				break;
+			case AudioTypes.GRASS:
+				ASP = ref GrassAudio;
+				break;
+			default:
+				ASP = ref DefaultAudio;
+				break;
+		}
 	}
 
 	private void PlayStep(ref AudioStreamPlayer2D ASP, float pitchScaleOffset) {
@@ -320,10 +341,9 @@ public class Player : KinematicBody2D {
 				} 
 				
 				if(T.TimeLeft <= 0) {
-					PlayStep(CurAudioType == AudioTypes.WOOD ? WoodAudio :
-						CurAudioType == AudioTypes.GRASS ? GrassAudio :
-						CurAudioType == AudioTypes.STONE ? StoneAudio :
-						DefaultAudio, 0.1f);
+					AudioStreamPlayer2D ASP = null;
+					SetASPVar(ref ASP);
+					PlayStep(ref ASP, 0.1f);
 					T.Start(0.26f);
 				}
 		
@@ -339,10 +359,9 @@ public class Player : KinematicBody2D {
 				}
 				
 				if(T.TimeLeft <= 0) {
-					PlayStep(CurAudioType == AudioTypes.WOOD ? WoodAudio :
-						CurAudioType == AudioTypes.GRASS ? GrassAudio :
-						CurAudioType == AudioTypes.STONE ? StoneAudio :
-						DefaultAudio, 0.2f);
+					AudioStreamPlayer2D ASP = null;
+					SetASPVar(ref ASP);
+					PlayStep(ref ASP, 0.2f);
 					T.Start(0.23f);
 				}
 				
@@ -376,7 +395,7 @@ public class Player : KinematicBody2D {
 		CurAudioType = AudioTypes.DEFAULT;
 		DefaultAudio = GetNode<AudioStreamPlayer2D>("DefaultWalkAudio");
 		GrassAudio = GetNode<AudioStreamPlayer2D>("GrassWalkAudio");
-		StoneAudio = GetNote<AudioStreamPlayer2D>("StoneWalkAudio");
+		StoneAudio = GetNode<AudioStreamPlayer2D>("StoneWalkAudio");
 		WoodAudio = GetNode<AudioStreamPlayer2D>("WoodWalkAudio");
 
 		T = GetNode<Timer>("Timer");
