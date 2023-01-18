@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -20,22 +20,27 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/horitontalWoodTable.png" type="Texture" id=18]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bed.png" type="Texture" id=19]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=20]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sac.png" type="Texture" id=21]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sackPile.png" type="Texture" id=22]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bagMoulin.png" type="Texture" id=21]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/tabouret.png" type="Texture" id=22]
 [ext_resource path="res://assets/01_characters/03_pnjs/josephDomestique.png" type="Texture" id=23]
 [ext_resource path="res://assets/02_architecture/03_brewery/wall.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/murHitbox.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrel.png" type="Texture" id=26]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/verticalWoodTable.png" type="Texture" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bigBarrelGround.png" type="Texture" id=28]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasket.png" type="Texture" id=29]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundry.png" type="Texture" id=30]
+[ext_resource path="res://assets/07_sounds/Sounds/Campfire_2.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/greensBasketVertical.png" type="Texture" id=30]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=31]
 [ext_resource path="res://assets/07_sounds/Sounds/Mill.mp3" type="AudioStream" id=32]
 [ext_resource path="res://assets/07_sounds/Sounds/Mill2.mp3" type="AudioStream" id=33]
 [ext_resource path="res://assets/07_sounds/Sounds/Smelter burning_1.wav" type="AudioStream" id=34]
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/cuve-Sheet.png" type="Texture" id=35]
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/fireplace-Sheet.png" type="Texture" id=36]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasketshadow.png" type="Texture" id=37]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundryshadow.png" type="Texture" id=38]
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 31.0
 
 [sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 35 )
@@ -81,9 +86,6 @@ animations = [ {
 "name": "New Anim",
 "speed": 5.0
 } ]
-
-[sub_resource type="CircleShape2D" id=20]
-radius = 31.0
 
 [sub_resource type="CircleShape2D" id=21]
 radius = 30.0
@@ -622,8 +624,9 @@ extents = Vector2( 24.8031, 10 )
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 10, 23.8603 )
 
-[sub_resource type="CircleShape2D" id=41]
-radius = 6.2154
+[sub_resource type="CapsuleShape2D" id=56]
+radius = 6.58142
+height = 10.9137
 
 [sub_resource type="CapsuleShape2D" id=38]
 radius = 10.3405
@@ -741,39 +744,39 @@ polygon = PoolVector2Array( 330, 263, 330, 278, 349, 278, 349, 263, 357, 263, 35
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Cuve" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 172, 138 )
+position = Vector2( 172, 121 )
+
+[node name="Sprite" parent="YSort/Cuve" index="0"]
+visible = false
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="YSort/Cuve" index="1"]
+position = Vector2( -1, 0 )
+shape = SubResource( 20 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Cuve"]
 position = Vector2( 0, -3 )
 frames = SubResource( 46 )
-frame = 2
+frame = 3
 playing = true
 
-[node name="Sprite" parent="YSort/Cuve" index="1"]
+[node name="Cuve2" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 170, 200 )
+
+[node name="Sprite" parent="YSort/Cuve2" index="0"]
 visible = false
 texture = ExtResource( 14 )
 
-[node name="CollisionShape2D" parent="YSort/Cuve" index="2"]
-position = Vector2( -1, 0 )
-shape = SubResource( 20 )
-
-[node name="Cuve2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 170, 194 )
+[node name="CollisionShape2D" parent="YSort/Cuve2" index="1"]
+position = Vector2( 2, -4 )
+shape = SubResource( 21 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="YSort/Cuve2"]
 position = Vector2( 1, -11 )
 frames = SubResource( 46 )
 animation = "New Anim"
-frame = 3
+frame = 2
 playing = true
-
-[node name="Sprite" parent="YSort/Cuve2" index="1"]
-visible = false
-texture = ExtResource( 14 )
-
-[node name="CollisionShape2D" parent="YSort/Cuve2" index="2"]
-position = Vector2( 2, -4 )
-shape = SubResource( 21 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 469, 319 )
@@ -898,7 +901,7 @@ position = Vector2( 10, 1 )
 shape = SubResource( 22 )
 
 [node name="Furniture2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 246, 111 )
+position = Vector2( 449.702, 210 )
 
 [node name="Sprite" parent="YSort/Furniture2" index="0"]
 position = Vector2( 10, 4 )
@@ -908,14 +911,15 @@ texture = ExtResource( 18 )
 position = Vector2( 10.2017, 1 )
 shape = SubResource( 23 )
 
-[node name="Bag" parent="YSort/Furniture2" instance=ExtResource( 13 )]
-position = Vector2( 22, -4 )
+[node name="Sprite2" type="Sprite" parent="YSort/Furniture2"]
+texture = ExtResource( 37 )
 
-[node name="Sprite" parent="YSort/Furniture2/Bag" index="0"]
-texture = ExtResource( 21 )
+[node name="Sprite3" type="Sprite" parent="YSort/Furniture2"]
+position = Vector2( 22.298, -3 )
+texture = ExtResource( 30 )
 
 [node name="Furniture4" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 259, 142 )
+position = Vector2( 354, 177 )
 
 [node name="Sprite" parent="YSort/Furniture4" index="0"]
 position = Vector2( 10, 4 )
@@ -925,8 +929,24 @@ texture = ExtResource( 27 )
 position = Vector2( 10.2017, 1.22176 )
 shape = SubResource( 37 )
 
+[node name="Sprite2" type="Sprite" parent="YSort/Furniture4"]
+position = Vector2( -14, -7 )
+texture = ExtResource( 22 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/Furniture4"]
+position = Vector2( -14, 17 )
+texture = ExtResource( 22 )
+
+[node name="Sprite4" type="Sprite" parent="YSort/Furniture4"]
+position = Vector2( 31, -7 )
+texture = ExtResource( 22 )
+
+[node name="Sprite5" type="Sprite" parent="YSort/Furniture4"]
+position = Vector2( 31, 17 )
+texture = ExtResource( 22 )
+
 [node name="Furniture3" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 359, 278 )
+position = Vector2( 359, 288 )
 
 [node name="Sprite" parent="YSort/Furniture3" index="0"]
 position = Vector2( 11, 2 )
@@ -938,23 +958,38 @@ position = Vector2( 10.2017, 1 )
 shape = SubResource( 23 )
 
 [node name="Bag8" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 303.5, 167 )
+position = Vector2( 300.5, 165 )
 
 [node name="Sprite" parent="YSort/Bag8" index="0"]
 texture = ExtResource( 21 )
 flip_h = true
 
 [node name="CollisionShape2D" parent="YSort/Bag8" index="1"]
-shape = SubResource( 41 )
+position = Vector2( 0, 5 )
+rotation = 1.5708
+shape = SubResource( 56 )
 
 [node name="Bag2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 305, 114 )
+position = Vector2( 302, 114 )
 
 [node name="Sprite" parent="YSort/Bag2" index="0"]
-texture = ExtResource( 22 )
+texture = ExtResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bag2" index="1"]
+position = Vector2( 0.376007, 5 )
+
+[node name="Bag9" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 276, 124.508 )
+
+[node name="Sprite" parent="YSort/Bag9" index="0"]
+texture = ExtResource( 21 )
+flip_h = true
+
+[node name="CollisionShape2D" parent="YSort/Bag9" index="1"]
+position = Vector2( 0.376007, 5 )
 
 [node name="Bag7" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 210, 113 )
+position = Vector2( 210, 214.808 )
 
 [node name="Sprite" parent="YSort/Bag7" index="0"]
 texture = ExtResource( 26 )
@@ -963,7 +998,10 @@ texture = ExtResource( 26 )
 position = Vector2( 289.376, 136 )
 
 [node name="Sprite" parent="YSort/Bag3" index="0"]
-texture = ExtResource( 22 )
+texture = ExtResource( 21 )
+
+[node name="CollisionShape2D" parent="YSort/Bag3" index="1"]
+position = Vector2( -1.87601, 5 )
 
 [node name="Bag4" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 296, 151 )
@@ -975,7 +1013,7 @@ texture = ExtResource( 28 )
 shape = SubResource( 38 )
 
 [node name="Bag6" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 215, 211.808 )
+position = Vector2( 269, 116 )
 
 [node name="Sprite" parent="YSort/Bag6" index="0"]
 texture = ExtResource( 28 )
@@ -1001,23 +1039,13 @@ position = Vector2( 1.87601, 0.3698 )
 shape = SubResource( 35 )
 
 [node name="Box5" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 237.5, 213 )
+position = Vector2( 235, 212.808 )
 
 [node name="Sprite" parent="YSort/Box5" index="0"]
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" parent="YSort/Box5" index="1"]
 position = Vector2( 1.5, 1.4996 )
-shape = SubResource( 35 )
-
-[node name="Box2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 269, 148 )
-
-[node name="Sprite" parent="YSort/Box2" index="0"]
-texture = ExtResource( 29 )
-
-[node name="CollisionShape2D" parent="YSort/Box2" index="1"]
-position = Vector2( 1.8761, -1.13345 )
 shape = SubResource( 35 )
 
 [node name="Box3" parent="YSort" instance=ExtResource( 13 )]
@@ -1031,17 +1059,15 @@ shape = SubResource( 39 )
 position = Vector2( 441.202, 124.508 )
 
 [node name="Sprite" parent="YSort/Box4" index="0"]
-texture = ExtResource( 30 )
+texture = ExtResource( 38 )
 
 [node name="CollisionShape2D" parent="YSort/Box4" index="1"]
 position = Vector2( 0.169922, 2.50752 )
 shape = SubResource( 40 )
 
 [node name="RoomWall" type="StaticBody2D" parent="YSort"]
+visible = false
 position = Vector2( 458.035, 181 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RoomWall"]
 position = Vector2( -0.464844, 10.7224 )
@@ -1051,6 +1077,7 @@ shape = SubResource( 36 )
 texture = ExtResource( 25 )
 
 [node name="RoomWall2" type="StaticBody2D" parent="YSort"]
+visible = false
 position = Vector2( 363, 255 )
 __meta__ = {
 "_edit_group_": true
@@ -1070,7 +1097,7 @@ position = Vector2( 365, 90 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StaticBody2D"]
 frames = SubResource( 54 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StaticBody2D"]
@@ -1166,6 +1193,12 @@ volume_db = -15.0
 autoplay = true
 script = ExtResource( 31 )
 
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 364.202, 112 )
+stream = ExtResource( 29 )
+autoplay = true
+script = ExtResource( 31 )
+
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
 [connection signal="area_entered" from="Exit" to="YSort/Player" method="_on_Exit_area_entered"]
@@ -1185,11 +1218,11 @@ script = ExtResource( 31 )
 [editable path="YSort/Domestique/ListenBox"]
 [editable path="YSort/Furniture"]
 [editable path="YSort/Furniture2"]
-[editable path="YSort/Furniture2/Bag"]
 [editable path="YSort/Furniture4"]
 [editable path="YSort/Furniture3"]
 [editable path="YSort/Bag8"]
 [editable path="YSort/Bag2"]
+[editable path="YSort/Bag9"]
 [editable path="YSort/Bag7"]
 [editable path="YSort/Bag3"]
 [editable path="YSort/Bag4"]
@@ -1197,6 +1230,5 @@ script = ExtResource( 31 )
 [editable path="YSort/Bag5"]
 [editable path="YSort/Box"]
 [editable path="YSort/Box5"]
-[editable path="YSort/Box2"]
 [editable path="YSort/Box3"]
 [editable path="YSort/Box4"]
