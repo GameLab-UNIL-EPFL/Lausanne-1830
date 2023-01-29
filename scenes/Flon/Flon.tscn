@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=2]
+[gd_scene load_steps=133 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -1492,9 +1492,12 @@ atlas = ExtResource( 25 )
 region = Rect2( 0, 25, 81, 9 )
 
 [sub_resource type="RectangleShape2D" id=95]
-extents = Vector2( 17.1406, 5.04553 )
+extents = Vector2( 17.4297, 5.04553 )
 
 [sub_resource type="RectangleShape2D" id=97]
+
+[sub_resource type="RectangleShape2D" id=98]
+extents = Vector2( 29.5, 11 )
 
 [node name="Flon" type="Node2D"]
 
@@ -1587,7 +1590,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1667,6 +1670,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2331,7 +2335,7 @@ centered = false
 [node name="PlayerEnterArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
-position = Vector2( 175.98, 308.954 )
+position = Vector2( 161, 305 )
 shape = SubResource( 95 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerEnterArea"]
@@ -2383,12 +2387,21 @@ lastPosition = Vector2( 487, 286 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AmbientAudio/Area2D"]
 polygon = PoolVector2Array( 392, 368, 566, 219, 573, -8, 644, -10, 646, 266, 527, 369 )
 
+[node name="GrassSoundOnExit" type="Area2D" parent="."]
+script = ExtResource( 32 )
+EnterType = 1
+ExitType = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassSoundOnExit"]
+position = Vector2( 404.5, 221 )
+shape = SubResource( 98 )
+
 [node name="PathSound" type="Area2D" parent="."]
 script = ExtResource( 32 )
 ExitType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathSound"]
-polygon = PoolVector2Array( 175.672, 360.439, 172.46, 244.791, 89.3379, 241.981, 69.6618, 225.115, 67.654, 86.1773, 65, -30.5, 103.5, -30, 100.5, 190.5, 104.5, 210.5, 119.5, 218.5, 143.5, 216, 158, 211, 174.5, 216, 197.5, 220, 210, 219.5, 224.5, 220.5, 218, 241, 204, 245.5, 207, 272, 207.5, 306, 202, 314.5, 206.5, 358, 206, 401, 175.5, 398.5 )
+polygon = PoolVector2Array( 175.672, 360.439, 172.46, 244.791, 89.3379, 241.981, 69.6618, 225.115, 67.654, 86.1773, 65, -30.5, 103.5, -30, 100.5, 190.5, 104.5, 210.5, 119.5, 218.5, 143.5, 216, 158, 211, 174.5, 216, 197.5, 220, 210, 219.5, 214, 222, 213, 241, 204, 245.5, 207, 272, 207.5, 306, 202, 314.5, 206.5, 358, 206, 359, 176, 361 )
 
 [node name="BridgeSound" type="Area2D" parent="."]
 script = ExtResource( 32 )
@@ -2396,7 +2409,7 @@ EnterType = 3
 ExitType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BridgeSound"]
-polygon = PoolVector2Array( 229.8, 221.9, 226.8, 246.4, 302.8, 245.4, 302.8, 239.4, 315.3, 239.4, 314.3, 228.4, 305.3, 228.4, 300.8, 222.4 )
+polygon = PoolVector2Array( 234, 224, 233, 242, 291, 244, 292, 239, 292, 238, 299, 233, 291, 225, 291, 222 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
@@ -2407,8 +2420,6 @@ polygon = PoolVector2Array( 229.8, 221.9, 226.8, 246.4, 302.8, 245.4, 302.8, 239
 [connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 [connection signal="area_entered" from="AmbientAudio/Area2D" to="AmbientAudio" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="AmbientAudio/Area2D" to="AmbientAudio" method="_on_Area2D_area_exited"]
-[connection signal="area_entered" from="PathSound" to="PathSound" method="_on_area_entered"]
-[connection signal="area_exited" from="PathSound" to="PathSound" method="_on_area_exited"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]

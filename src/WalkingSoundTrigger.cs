@@ -11,6 +11,8 @@ public class WalkingSoundTrigger : Area2D {
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
+		this.Connect("area_entered", this, nameof(_on_area_entered));
+		this.Connect("area_exited", this, nameof(_on_area_exited));
 	}
 
 	private void _on_area_entered(Area2D hb) {
