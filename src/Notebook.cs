@@ -137,6 +137,9 @@ public class Notebook : Node2D {
 						characterInfo.num = -1;
 						inf.Text = "";
 					}
+					if(characterInfo.num < 0) {
+						inf.Text = "";
+					}
 					break;
 				case "conjoint":
 					characterInfo.conjoint = inf.Text;
@@ -148,6 +151,9 @@ public class Notebook : Node2D {
 					} catch {
 						//Otherwise default to -1
 						characterInfo.enfants = -1;
+						inf.Text = "";
+					}
+					if(characterInfo.enfants < 0) {
 						inf.Text = "";
 					}
 					break;
