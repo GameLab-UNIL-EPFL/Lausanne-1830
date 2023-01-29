@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=2]
+[gd_scene load_steps=154 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 [ext_resource path="res://assets/07_sounds/Sounds/Smelter burning_1.wav" type="AudioStream" id=41]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=42]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=43]
 
 [sub_resource type="RectangleShape2D" id=130]
 extents = Vector2( 21, 10 )
@@ -1283,6 +1284,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
+frame = 17
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1408,7 +1410,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
-frame = 4
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1422,6 +1423,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
+frame = 4
 playing = true
 flip_h = true
 
@@ -1437,7 +1439,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 1
+frame = 31
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1852,6 +1854,14 @@ volume_db = -25.0
 pitch_scale = 0.81
 autoplay = true
 script = ExtResource( 42 )
+
+[node name="StoneAudioTrigger" type="Area2D" parent="."]
+script = ExtResource( 43 )
+EnterType = 3
+ExitType = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StoneAudioTrigger"]
+polygon = PoolVector2Array( 241, 328, 291, 328, 587, 330, 585, 183, 285, 182, 287, 237, 262, 237, 262, 263, 235, 266, 218, 266, 197, 237, 194, 331 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]

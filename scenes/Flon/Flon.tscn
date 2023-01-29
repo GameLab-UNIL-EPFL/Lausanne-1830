@@ -1590,7 +1590,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1670,7 +1670,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]

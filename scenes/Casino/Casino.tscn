@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -27,7 +27,7 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/bench.png" type="Texture" id=25]
 [ext_resource path="res://assets/01_characters/03_pnjs/henriFischer-Sheet.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Flon/GrassTileSet.tres" type="TileSet" id=27]
-[ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=28]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=28]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=29]
 [ext_resource path="res://assets/07_sounds/Sounds/Forest Loop.wav" type="AudioStream" id=30]
 
@@ -138,6 +138,9 @@ radius = 8.0
 [sub_resource type="DynamicFont" id=11]
 size = 9
 font_data = ExtResource( 17 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 7.5, 121.5 )
 
 [sub_resource type="RectangleShape2D" id=30]
 extents = Vector2( 34.27, 10 )
@@ -266,9 +269,6 @@ position = Vector2( 191, 432 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 20 )
-
-[node name="AudioStreamPlayer" parent="YSort/Player" index="6"]
-stream = ExtResource( 28 )
 
 [node name="Perregaux" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 305, 248 )
@@ -1599,6 +1599,14 @@ polygon = PoolVector2Array( 587.592, -0.699097, 587.031, 4.35198, -1.70056, 4.35
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="PathAudioTrigger" type="Area2D" parent="."]
+script = ExtResource( 28 )
+ExitType = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathAudioTrigger"]
+position = Vector2( 190.5, 244.5 )
+shape = SubResource( 31 )
 
 [node name="PlayerEnterArea" type="Area2D" parent="."]
 
