@@ -1,11 +1,11 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=3]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=4]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/01_characters/03_pnjs/henrietteRochat.png" type="Texture" id=9]
@@ -39,6 +39,12 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/smallBasketshadow.png" type="Texture" id=37]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundryBarre_groundl.png" type="Texture" id=38]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/taboure_woodt.png" type="Texture" id=39]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=40]
+[ext_resource path="res://assets/02_architecture/05_moulin/01_int/murBas.png" type="Texture" id=41]
+[ext_resource path="res://assets/02_architecture/05_moulin/01_int/murHitbox_2.png" type="Texture" id=42]
+[ext_resource path="res://assets/07_sounds/Sounds/Coughing2.wav" type="AudioStream" id=43]
+[ext_resource path="res://assets/07_sounds/Sounds/Coughing1.wav" type="AudioStream" id=44]
+[ext_resource path="res://assets/07_sounds/Sounds/Coughing3.wav" type="AudioStream" id=45]
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 31.0
@@ -644,7 +650,7 @@ height = 0.0
 extents = Vector2( 7.29383, 4.35902 )
 
 [sub_resource type="RectangleShape2D" id=36]
-extents = Vector2( 42.8283, 11.5362 )
+extents = Vector2( 42.8283, 9.48088 )
 
 [sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 36 )
@@ -709,6 +715,36 @@ tracks/0/keys = {
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 37, 36 )
+
+[sub_resource type="RectangleShape2D" id=57]
+extents = Vector2( 92, 113.75 )
+
+[sub_resource type="Animation" id=58]
+resource_name = "Coughing"
+length = 30.0
+loop = true
+tracks/0/type = "audio"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 44 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 43 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 45 )
+} ],
+"times": PoolRealArray( 0, 11.1, 21.4 )
+}
 
 [node name="Moulin" type="Node2D"]
 
@@ -775,6 +811,7 @@ shape = SubResource( 21 )
 position = Vector2( 1, -11 )
 frames = SubResource( 46 )
 animation = "New Anim"
+frame = 2
 playing = true
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
@@ -900,7 +937,7 @@ position = Vector2( 10, 1 )
 shape = SubResource( 22 )
 
 [node name="Furniture2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 449.702, 210 )
+position = Vector2( 449.702, 211 )
 
 [node name="Sprite" parent="YSort/Furniture2" index="0"]
 position = Vector2( 10, 4 )
@@ -917,6 +954,22 @@ texture = ExtResource( 37 )
 position = Vector2( 22.298, -3 )
 texture = ExtResource( 30 )
 
+[node name="Sprite2" type="Sprite" parent="YSort"]
+position = Vector2( 341, 170 )
+texture = ExtResource( 39 )
+
+[node name="Sprite3" type="Sprite" parent="YSort"]
+position = Vector2( 341, 194 )
+texture = ExtResource( 39 )
+
+[node name="Sprite4" type="Sprite" parent="YSort"]
+position = Vector2( 385, 170 )
+texture = ExtResource( 39 )
+
+[node name="Sprite5" type="Sprite" parent="YSort"]
+position = Vector2( 385, 194 )
+texture = ExtResource( 39 )
+
 [node name="Furniture4" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 354, 177 )
 
@@ -927,22 +980,6 @@ texture = ExtResource( 27 )
 [node name="CollisionShape2D" parent="YSort/Furniture4" index="1"]
 position = Vector2( 10.2017, 1.22176 )
 shape = SubResource( 37 )
-
-[node name="Sprite2" type="Sprite" parent="YSort/Furniture4"]
-position = Vector2( -13, -7 )
-texture = ExtResource( 39 )
-
-[node name="Sprite3" type="Sprite" parent="YSort/Furniture4"]
-position = Vector2( -13, 17 )
-texture = ExtResource( 39 )
-
-[node name="Sprite4" type="Sprite" parent="YSort/Furniture4"]
-position = Vector2( 31, -7 )
-texture = ExtResource( 39 )
-
-[node name="Sprite5" type="Sprite" parent="YSort/Furniture4"]
-position = Vector2( 31, 17 )
-texture = ExtResource( 39 )
 
 [node name="Furniture3" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 359, 288 )
@@ -1068,30 +1105,28 @@ position = Vector2( 0.169922, 2.50752 )
 shape = SubResource( 40 )
 
 [node name="RoomWall" type="StaticBody2D" parent="YSort"]
-visible = false
-position = Vector2( 458.035, 181 )
+position = Vector2( 459, 185 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RoomWall"]
 position = Vector2( -0.464844, 10.7224 )
 shape = SubResource( 36 )
 
 [node name="Sprite" type="Sprite" parent="YSort/RoomWall"]
-texture = ExtResource( 25 )
+position = Vector2( -2.5, 2 )
+texture = ExtResource( 42 )
 
 [node name="RoomWall2" type="StaticBody2D" parent="YSort"]
-visible = false
-position = Vector2( 363, 255 )
+position = Vector2( 365.5, 260.5 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RoomWall2"]
-position = Vector2( -0.464844, 10.7224 )
+position = Vector2( -0.464844, 12.7777 )
 shape = SubResource( 36 )
 
 [node name="Sprite" type="Sprite" parent="YSort/RoomWall2"]
-position = Vector2( 2.25, 0 )
-scale = Vector2( 0.950549, 1 )
+position = Vector2( 0, -1 )
 texture = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
@@ -1157,7 +1192,7 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Wall" type="Sprite" parent="."]
 position = Vector2( 411, 317.15 )
@@ -1165,9 +1200,18 @@ scale = Vector2( 1, 0.511364 )
 texture = ExtResource( 24 )
 
 [node name="Wall2" type="Sprite" parent="."]
-position = Vector2( 411, 154 )
-scale = Vector2( 1, 0.590909 )
+position = Vector2( 411, 150 )
+scale = Vector2( 1, 0.42 )
 texture = ExtResource( 24 )
+
+[node name="Wall3" type="Sprite" parent="."]
+position = Vector2( 411, 248 )
+scale = Vector2( 1, 0.8 )
+texture = ExtResource( 24 )
+
+[node name="StoneWall" type="Sprite" parent="."]
+position = Vector2( 223.5, 230.5 )
+texture = ExtResource( 41 )
 
 [node name="PlayerEnterArea" type="Area2D" parent="."]
 
@@ -1199,6 +1243,30 @@ script = ExtResource( 31 )
 position = Vector2( 364.202, 112 )
 stream = ExtResource( 29 )
 autoplay = true
+script = ExtResource( 31 )
+
+[node name="WoodAudioTrigger" type="Area2D" parent="."]
+position = Vector2( 409, 214.308 )
+script = ExtResource( 40 )
+EnterType = 2
+ExitType = 3
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="WoodAudioTrigger"]
+visible = false
+position = Vector2( 6.5, 13.5715 )
+shape = SubResource( 57 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Cough")
+autoplay = "Coughing"
+anims/Coughing = SubResource( 58 )
+
+[node name="Cough" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 491, 95.508 )
+stream = ExtResource( 45 )
+volume_db = -10.0
+pitch_scale = 1.35
+bus = "Sounds"
 script = ExtResource( 31 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]

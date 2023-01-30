@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/02_architecture/03_brewery/cuve_v2-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=7]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/01_characters/03_pnjs/filleTruschel1.png" type="Texture" id=9]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=10]
@@ -1284,7 +1284,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 17
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1410,6 +1410,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf"]
 frames = SubResource( 81 )
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Props/Bookshelf"]
@@ -1423,7 +1424,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Bookshelf2"]
 frames = SubResource( 81 )
-frame = 4
+frame = 5
 playing = true
 flip_h = true
 
@@ -1439,7 +1440,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 31
+frame = 32
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1640,7 +1641,7 @@ visible = false
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="NotebookControllerNode" type="Node2D" parent="."]
 z_index = 3

@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/06_UI_menus/fr/Space.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/06_UI_menus/fr/Tab.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=12]
@@ -520,7 +520,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 28
+frame = 14
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -537,6 +537,9 @@ position = Vector2( 0, -11 )
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = ""
 id = "gp_read"
+
+[node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
+frame = 0
 
 [node name="CollisionShape2D" parent="Desk/Letter/Area2D" index="0"]
 position = Vector2( -14, 5 )
@@ -559,7 +562,6 @@ texture = ExtResource( 21 )
 [node name="PressE" parent="Desk/Letter/Open" index="3" instance=ExtResource( 17 )]
 position = Vector2( -295, 186 )
 scale = Vector2( 2, 2 )
-frame = 0
 
 [node name="Label" type="Label" parent="Desk/Letter/Open" index="4"]
 margin_left = -279.0
@@ -667,7 +669,7 @@ texture = SubResource( 7 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
@@ -770,7 +772,6 @@ id = "tuto_interact"
 [node name="PressE" parent="Label2" instance=ExtResource( 17 )]
 position = Vector2( 70, 56 )
 scale = Vector2( 2, 2 )
-frame = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -5,7 +5,7 @@
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=3]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=9]
@@ -1590,7 +1590,7 @@ position = Vector2( 283, 200 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 0, -101 )
 frames = SubResource( 84 )
-frame = 4
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1670,7 +1670,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -2320,7 +2320,7 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="OpenMapZone" type="Area2D" parent="."]
 
@@ -2357,6 +2357,15 @@ autoplay = true
 bus = "Sounds"
 script = ExtResource( 37 )
 
+[node name="Water3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 261.948, 327.365 )
+stream = ExtResource( 35 )
+volume_db = -10.0
+pitch_scale = 1.45
+autoplay = true
+bus = "Sounds"
+script = ExtResource( 37 )
+
 [node name="Birds" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 23, 315 )
 stream = ExtResource( 36 )
@@ -2379,6 +2388,8 @@ autoplay = true
 script = ExtResource( 37 )
 
 [node name="AmbientAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+bus = "RightPan"
 script = ExtResource( 40 )
 lastPosition = Vector2( 487, 286 )
 
@@ -2409,7 +2420,7 @@ EnterType = 3
 ExitType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BridgeSound"]
-polygon = PoolVector2Array( 234, 224, 233, 242, 291, 244, 292, 239, 292, 238, 299, 233, 291, 225, 291, 222 )
+polygon = PoolVector2Array( 222.344, 222.272, 221.155, 242.488, 299.001, 242.488, 300.488, 238.575, 304.055, 233.569, 304.65, 228.218, 300.822, 223.558, 291, 222 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]

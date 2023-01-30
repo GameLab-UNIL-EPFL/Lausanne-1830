@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=17]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/Sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/Sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=21]
@@ -1373,13 +1373,13 @@ resourcePath = "06_UI_menus"
 [node name="Cuir2" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 482, 295 )
 frames = SubResource( 61 )
-frame = 12
+frame = 5
 playing = true
 
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
-frame = 6
+frame = 4
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
@@ -1475,7 +1475,7 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )

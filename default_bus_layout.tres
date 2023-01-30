@@ -1,4 +1,12 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+[gd_resource type="AudioBusLayout" load_steps=4 format=2]
+
+[sub_resource type="AudioEffectLowPassFilter" id=2]
+resource_name = "LowPassFilter"
+resonance = 0.25
+
+[sub_resource type="AudioEffectLowPassFilter" id=3]
+resource_name = "LowPassFilter"
+resonance = 0.3
 
 [sub_resource type="AudioEffectPanner" id=1]
 resource_name = "Panner"
@@ -23,11 +31,27 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = "Master"
-bus/4/name = "RightPan"
+bus/4/name = "Inside"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
 bus/4/volume_db = 0.0
-bus/4/send = "Sounds"
-bus/4/effect/0/effect = SubResource( 1 )
+bus/4/send = "Master"
+bus/4/effect/0/effect = SubResource( 2 )
 bus/4/effect/0/enabled = true
+bus/5/name = "Inside2"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = "Master"
+bus/5/effect/0/effect = SubResource( 3 )
+bus/5/effect/0/enabled = true
+bus/6/name = "RightPan"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = "Sounds"
+bus/6/effect/0/effect = SubResource( 1 )
+bus/6/effect/0/enabled = true
