@@ -54,16 +54,17 @@ public class MusicPlayer : Node2D
 		if (Music2.Playing) {
 			// sets the music volume db track's last key to the chosen value
 			_SetAnimKey("FadeToTrack1", "Music:volume_db", db);
+			GD.Print("here");
 			Music.Stream = audioStream;
-			Music.VolumeDb = db;
 			Music.Play();
 			AP.Play("FadeToTrack1");
+			//Music.VolumeDb = db;
 		} else {
 			_SetAnimKey("FadeToTrack2", "Music2:volume_db", db);
 			Music2.Stream = audioStream;
-			Music2.VolumeDb = db;
 			Music2.Play();
 			AP.Play("FadeToTrack2");
+			//Music2.VolumeDb = db;
 		}
 	}
 		
@@ -75,5 +76,10 @@ public class MusicPlayer : Node2D
 		
 	public void MusicFadeOut() {
 		AP.Play("FadeOut");
+	}
+	
+	public void MusicStop() {
+		Music.Stop();
+		Music2.Stop();
 	}
 }

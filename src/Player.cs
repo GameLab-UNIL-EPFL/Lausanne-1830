@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 public enum PlayerStates { IDLE, WALKING, RUNNING, BLOCKED, NOTEBOOK, ENTER };
+public enum AudioTypes { DEFAULT, GRASS, WOOD, STONE };
 
 public class Player : KinematicBody2D {
 	[Signal]
@@ -75,7 +76,13 @@ public class Player : KinematicBody2D {
 	private AnimationPlayer animation;
 	private AnimationTree animationTree; 
 	private AnimationNodeStateMachinePlayback animationState;
-	private AudioStreamPlayer ASP;
+
+	private AudioTypes CurAudioType = AudioTypes.DEFAULT;
+	private AudioStreamPlayer2D DefaultAudio;
+	private AudioStreamPlayer2D GrassAudio;
+	private AudioStreamPlayer2D StoneAudio;
+	private AudioStreamPlayer2D WoodAudio;
+
 	private Timer T;
 	
 	private List<Item> itemsInRange = new List<Item>();
@@ -277,6 +284,22 @@ public class Player : KinematicBody2D {
 		}
 	}
 	
+	public AudioTypes _GetAudioType() {
+		return CurAudioType;
+	}
+
+
+	public void _UpdateAudioType(AudioTypes at) {
+		CurAudioType = at;
+	}
+
+	private void PlayStep(ref AudioStreamPlayer2D ASP, float pitchScaleOffset) {
+		Debug.Assert(ASP != null); // sanity check
+		ASP.PitchScale = FootstepPitch;
+		ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + pitchScaleOffset);
+		ASP.Play();
+	}
+	
 	/**
 	 * @brief Updates the player's state according to the current actions taken
 	 * @param delta, the time elapsed since the last update
@@ -303,9 +326,21 @@ public class Player : KinematicBody2D {
 				} 
 				
 				if(T.TimeLeft <= 0) {
-					ASP.PitchScale = FootstepPitch;
-					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.1f);
-					ASP.Play();
+					// Play audio depending on ground type
+					switch(CurAudioType) {
+						case AudioTypes.WOOD:
+							PlayStep(ref WoodAudio, 0.1f);
+							break;
+						case AudioTypes.STONE:
+							PlayStep(ref StoneAudio, 0.1f);
+							break;
+						case AudioTypes.GRASS:
+							PlayStep(ref GrassAudio, 0.1f);
+							break;
+						default:
+							PlayStep(ref DefaultAudio, 0.1f);
+							break;
+					}
 					T.Start(0.26f);
 				}
 		
@@ -321,9 +356,21 @@ public class Player : KinematicBody2D {
 				}
 				
 				if(T.TimeLeft <= 0) {
-					ASP.PitchScale = FootstepPitch;
-					ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + 0.2f);
-					ASP.Play();
+					// Play audio depending on ground type
+					switch(CurAudioType) {
+						case AudioTypes.WOOD:
+							PlayStep(ref WoodAudio, 0.2f);
+							break;
+						case AudioTypes.STONE:
+							PlayStep(ref StoneAudio, 0.2f);
+							break;
+						case AudioTypes.GRASS:
+							PlayStep(ref GrassAudio, 0.2f);
+							break;
+						default:
+							PlayStep(ref DefaultAudio, 0.2f);
+							break;
+					}
 					T.Start(0.23f);
 				}
 				
@@ -353,12 +400,22 @@ public class Player : KinematicBody2D {
 		animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationState = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
-		ASP = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+
+		CurAudioType = AudioTypes.DEFAULT;
+		DefaultAudio = GetNode<AudioStreamPlayer2D>("DefaultWalkAudio");
+		GrassAudio = GetNode<AudioStreamPlayer2D>("GrassWalkAudio");
+		StoneAudio = GetNode<AudioStreamPlayer2D>("StoneWalkAudio");
+		WoodAudio = GetNode<AudioStreamPlayer2D>("WoodWalkAudio");
+
 		T = GetNode<Timer>("Timer");
 		
 		//Connect close notebook signal
 		CloseNB.Connect("pressed", this, nameof(HandleEscapeInput));
-		
+		if(context._GetGameState() == GameStates.INIT && context._GetLocation() != Locations.INTRO) {
+			// This is a buggy state caused by some speedrunning magic
+			// So we need to treat it as an edge case and manually fix it
+			context._StartGame();
+		}
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
 			if(context._GetLocation() == Locations.PALUD) {
@@ -392,7 +449,7 @@ public class Player : KinematicBody2D {
 
 		//Set initial player state
 		CurrentState = PlayerStates.IDLE;
-		isEnterAnim = !isCutscene;
+		isEnterAnim = context._GetGameState() != GameStates.INIT;
 	}
 
 	//Have the player walk up until they are interupted by a PlayerEnterArea
@@ -657,7 +714,7 @@ public class Player : KinematicBody2D {
 	
 	//Stops the player's intro animation
 	private void _on_PlayerEnterArea_area_entered(Area2D area) {
-		if(isEnterAnim) {
+		if(isEnterAnim && area.Owner is Player) {
 			InputVec = Vector2.Zero;
 			Velocity = Vector2.Zero;
 

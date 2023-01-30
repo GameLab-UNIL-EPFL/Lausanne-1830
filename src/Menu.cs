@@ -31,13 +31,13 @@ public class Menu : Control
 		SC = (SceneChanger)GetNode("/root/SceneChanger");
 		MP = (MusicPlayer)GetNode("/root/MusicPlayer");
 		if(!MP.Music.Playing){
-			MP.PlayMusic("Schubert_Sonata13_2.mp3", -10);
+			MP.PlayMusic("Schubert_Sonata13_2.mp3", -12);
 		}
 	}
 
 	private void _on_Button_pressed() {
 		SC.GotoScene("res://scenes/Intro/Intro.tscn");
-		MP.ChangeMusic("Schubert_Sonata13.mp3", -10);
+		MP.ChangeMusic("InsideRoom.mp3", 2);
 	}
 	
 	private void _on_Button2_pressed() {

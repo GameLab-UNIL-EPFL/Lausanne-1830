@@ -1,10 +1,13 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/01_characters/01_player/perso-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.cs" type="Script" id=2]
 [ext_resource path="res://scenes/Interaction/TalkBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/01_characters/01_player/shadow.png" type="Texture" id=4]
+[ext_resource path="res://assets/07_sounds/Sounds/tile/Footstep Concrete Walking 2_04.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/07_sounds/Sounds/grass/0.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/07_sounds/Sounds/boots/2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/07_sounds/Sounds/wood/2.ogg" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 4.0
@@ -149,7 +152,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/path = NodePath("DefaultWalkAudio:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -161,7 +164,7 @@ tracks/2/keys = {
 "values": [ -25.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/3/path = NodePath("DefaultWalkAudio:pitch_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -508,7 +511,6 @@ radius = 14.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-RunTime = 10000.0
 
 [node name="shadow" type="Sprite" parent="."]
 position = Vector2( -0.125, 3.5 )
@@ -554,12 +556,26 @@ parameters/Walk/blend_position = Vector2( 0, 0 )
 position = Vector2( 0, -6 )
 shape = SubResource( 39 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DefaultWalkAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 volume_db = -25.0
 pitch_scale = 1.1
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GrassWalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -18.0
+
+[node name="StoneWalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+pitch_scale = 0.8
+
+[node name="WoodWalkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -16.0
+pitch_scale = 1.3
 
 [editable path="TalkBox"]

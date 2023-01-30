@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=2]
+[gd_scene load_steps=131 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Interaction/Item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=17]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/07_sounds/Sounds/fountain.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/07_sounds/Sounds/marketCrowd.wav" type="AudioStream" id=20]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=21]
@@ -47,6 +47,7 @@
 [ext_resource path="res://assets/02_architecture/02_palud/affiches.png" type="Texture" id=45]
 [ext_resource path="res://src/TextSprite.cs" type="Script" id=46]
 [ext_resource path="res://src/TextLabel.cs" type="Script" id=47]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=48]
 
 [sub_resource type="TileSet" id=4]
 6/name = "pavedGround-Sheet.png 6"
@@ -1139,9 +1140,6 @@ HasAutoDialogue = false
 z_index = 1
 NPCName = " Elisabeth De Cerjeat "
 
-[node name="AnimatedSprite" parent="YSort/NPC/Elisabeth/TextBox" index="2"]
-frame = 1
-
 [node name="FullyAnimated" parent="YSort/NPC/Elisabeth" index="2"]
 texture = ExtResource( 12 )
 
@@ -1332,6 +1330,9 @@ position = Vector2( 11.0124, -17.6866 )
 [node name="Label" parent="YSort/Cuir/Sprite" index="0"]
 text = "Regarder"
 
+[node name="AnimatedSprite" parent="YSort/Cuir/Sprite" index="1"]
+frame = 0
+
 [node name="CollisionShape2D" parent="YSort/Cuir/Area2D" index="0"]
 position = Vector2( 3.69278, -0.155334 )
 shape = SubResource( 40 )
@@ -1348,7 +1349,6 @@ margin_bottom = 422.297
 [node name="PressE" parent="YSort/Cuir/Open" index="1" instance=ExtResource( 40 )]
 position = Vector2( -457, 50 )
 scale = Vector2( 1, 1 )
-frame = 0
 
 [node name="Label2" type="Label" parent="YSort/Cuir/Open" index="2"]
 margin_left = -445.0
@@ -1373,13 +1373,13 @@ resourcePath = "06_UI_menus"
 [node name="Cuir2" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 482, 295 )
 frames = SubResource( 61 )
-frame = 22
+frame = 5
 playing = true
 
 [node name="AfficheSprite" type="AnimatedSprite" parent="YSort"]
 position = Vector2( 51.5568, 190.668 )
 frames = SubResource( 79 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Affiche" parent="YSort" instance=ExtResource( 16 )]
@@ -1391,6 +1391,9 @@ visible = false
 
 [node name="Label" parent="YSort/Affiche/Sprite" index="0"]
 text = "Regarder"
+
+[node name="AnimatedSprite" parent="YSort/Affiche/Sprite" index="1"]
+frame = 0
 
 [node name="Open" parent="YSort/Affiche" index="2"]
 visible = false
@@ -1419,7 +1422,6 @@ id = "gp_close"
 [node name="PressE" parent="YSort/Affiche/Open" index="2" instance=ExtResource( 40 )]
 position = Vector2( -38, 155 )
 scale = Vector2( 1, 1 )
-frame = 0
 
 [node name="Sprite" type="Sprite" parent="YSort/Affiche/Open" index="3"]
 position = Vector2( 265, 0 )
@@ -1473,7 +1475,7 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Fountain" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 310.899, 262.204 )
@@ -1489,6 +1491,19 @@ stream = ExtResource( 20 )
 volume_db = -10.0
 autoplay = true
 bus = "Sounds"
+
+[node name="StoneAudioTrigger" type="Area2D" parent="."]
+script = ExtResource( 48 )
+EnterType = 3
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StoneAudioTrigger"]
+polygon = PoolVector2Array( 368, 329, 346, 327, 346, 310, 321, 310, 298, 313, 285, 328, 220, 326, 203, 295, 169, 268, 137, 264, 122, 254, 123, 234, 169, 238, 189, 250, 220, 253, 252, 245, 303, 245, 346, 244, 429, 244, 432, 309, 407, 327 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StoneAudioTrigger"]
+polygon = PoolVector2Array( 581, 377, 580, 367, 570, 361, 573, 349, 574, 341, 592, 339, 611, 341, 626, 327, 626, 294, 623, 270, 606, 261, 605, 234, 628, 232, 644, 234, 640, 391, 581, 390 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StoneAudioTrigger"]
+polygon = PoolVector2Array( 33, 345, 68, 346, 68, 371, 33, 381 )
 
 [connection signal="area_entered" from="Collisions/OpenMapZone" to="Notebook" method="_on_OpenMapZone_area_entered"]
 [connection signal="area_entered" from="Collisions/IntroAreaDoor" to="YSort/Player" method="_on_IntroAreaDoor_area_entered"]

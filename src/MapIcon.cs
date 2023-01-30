@@ -32,6 +32,11 @@ public class MapIcon : TextureButton {
 	[Export]
 	public string resourcePath; //excluding the language and the filename, e.g. "06_UI_menus"
 	
+	[Export]
+	public string musicName;
+	[Export]
+	public float musicVolume = 0;
+	
 	private const string resourceBase = "res://assets/";
 	
 
@@ -99,7 +104,11 @@ public class MapIcon : TextureButton {
 		SC.GotoScene("res://scenes/" + id + ".tscn");
 		
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.ChangeMusic("Schubert_Sonata13.mp3", -5);
+		if (musicName != null) {
+			MP.ChangeMusic(musicName + ".mp3", musicVolume);
+		} else {
+			MP.MusicStop();
+		}
 		
 		
 			

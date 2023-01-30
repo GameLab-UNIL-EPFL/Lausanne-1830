@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Flies.mp3-ef56cad7b292b1e1e44197e5cd48eb2c.mp3str"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/Flies.mp3"
+dest_files=[ "res://.import/Flies.mp3-ef56cad7b292b1e1e44197e5cd48eb2c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0.2
