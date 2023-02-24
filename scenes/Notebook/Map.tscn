@@ -38,6 +38,7 @@ resourceNameHover = "breweryIcon-Hover.png"
 resourceNameNormal = "breweryIcon.png"
 resourcePath = "06_UI_menus"
 musicName = "InsideRoom"
+musicVolume = 2.0
 
 [node name="moulin_button" parent="." instance=ExtResource( 1 )]
 margin_left = 163.0
@@ -55,6 +56,7 @@ resourceNameHover = "moulinIcon-hover.png"
 resourceNameNormal = "moulinIcon.png"
 resourcePath = "06_UI_menus"
 musicName = "Ranz"
+musicVolume = -5.0
 
 [node name="palud_button" parent="." instance=ExtResource( 1 )]
 margin_left = 190.0
@@ -74,6 +76,7 @@ resourceNameHover = "paludIcon-hover.png"
 resourceNameNormal = "paludIcon.png"
 resourcePath = "06_UI_menus"
 musicName = "SchubertSonata13"
+musicVolume = 2.0
 
 [node name="casino_button" parent="." instance=ExtResource( 1 )]
 margin_left = 263.0
@@ -90,7 +93,7 @@ text = "Casino"
 resourceNameHover = "casinoIcon-hover-export.png"
 resourceNameNormal = "casinoIcon.png"
 resourcePath = "06_UI_menus"
-musicName = "Weber"
+musicName = "null"
 
 [node name="YouAreHere" type="Sprite" parent="."]
 position = Vector2( 260, 120 )
@@ -112,5 +115,6 @@ resourceNameHover = "adminIcon-Hover.png"
 resourceNameNormal = "adminIcon.png"
 resourcePath = "06_UI_menus"
 musicName = "InsideRoom"
+musicVolume = 2.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_Map_visibility_changed"]

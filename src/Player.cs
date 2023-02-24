@@ -288,32 +288,13 @@ public class Player : KinematicBody2D {
 		return CurAudioType;
 	}
 
-	public AudioTypes _GetAudioType() {
-		return CurAudioType;
-	}
 
 	public void _UpdateAudioType(AudioTypes at) {
 		CurAudioType = at;
 	}
-	
-	private void SetASPVar(ref AudioStreamPlayer2D ASP) {
-		switch(CurAudioType) {
-			case AudioTypes.WOOD:
-				ASP = ref WoodAudio;
-				break;
-			case AudioTypes.STONE:
-				ASP = ref StoneAudio;
-				break;
-			case AudioTypes.GRASS:
-				ASP = ref GrassAudio;
-				break;
-			default:
-				ASP = ref DefaultAudio;
-				break;
-		}
-	}
 
 	private void PlayStep(ref AudioStreamPlayer2D ASP, float pitchScaleOffset) {
+		Debug.Assert(ASP != null); // sanity check
 		ASP.PitchScale = FootstepPitch;
 		ASP.PitchScale = (float)GD.RandRange(ASP.PitchScale - 0.1f, ASP.PitchScale + pitchScaleOffset);
 		ASP.Play();
@@ -345,9 +326,21 @@ public class Player : KinematicBody2D {
 				} 
 				
 				if(T.TimeLeft <= 0) {
-					AudioStreamPlayer2D ASP = null;
-					SetASPVar(ref ASP);
-					PlayStep(ref ASP, 0.1f);
+					// Play audio depending on ground type
+					switch(CurAudioType) {
+						case AudioTypes.WOOD:
+							PlayStep(ref WoodAudio, 0.1f);
+							break;
+						case AudioTypes.STONE:
+							PlayStep(ref StoneAudio, 0.1f);
+							break;
+						case AudioTypes.GRASS:
+							PlayStep(ref GrassAudio, 0.1f);
+							break;
+						default:
+							PlayStep(ref DefaultAudio, 0.1f);
+							break;
+					}
 					T.Start(0.26f);
 				}
 		
@@ -363,9 +356,21 @@ public class Player : KinematicBody2D {
 				}
 				
 				if(T.TimeLeft <= 0) {
-					AudioStreamPlayer2D ASP = null;
-					SetASPVar(ref ASP);
-					PlayStep(ref ASP, 0.2f);
+					// Play audio depending on ground type
+					switch(CurAudioType) {
+						case AudioTypes.WOOD:
+							PlayStep(ref WoodAudio, 0.2f);
+							break;
+						case AudioTypes.STONE:
+							PlayStep(ref StoneAudio, 0.2f);
+							break;
+						case AudioTypes.GRASS:
+							PlayStep(ref GrassAudio, 0.2f);
+							break;
+						default:
+							PlayStep(ref DefaultAudio, 0.2f);
+							break;
+					}
 					T.Start(0.23f);
 				}
 				
@@ -406,7 +411,11 @@ public class Player : KinematicBody2D {
 		
 		//Connect close notebook signal
 		CloseNB.Connect("pressed", this, nameof(HandleEscapeInput));
-		
+		if(context._GetGameState() == GameStates.INIT && context._GetLocation() != Locations.INTRO) {
+			// This is a buggy state caused by some speedrunning magic
+			// So we need to treat it as an edge case and manually fix it
+			context._StartGame();
+		}
 		if(context._GetGameState() != GameStates.INIT) {
 			isCutscene = false;
 			if(context._GetLocation() == Locations.PALUD) {
@@ -440,7 +449,7 @@ public class Player : KinematicBody2D {
 
 		//Set initial player state
 		CurrentState = PlayerStates.IDLE;
-		isEnterAnim = !isCutscene;
+		isEnterAnim = context._GetGameState() != GameStates.INIT;
 	}
 
 	//Have the player walk up until they are interupted by a PlayerEnterArea
@@ -705,7 +714,7 @@ public class Player : KinematicBody2D {
 	
 	//Stops the player's intro animation
 	private void _on_PlayerEnterArea_area_entered(Area2D area) {
-		if(isEnterAnim) {
+		if(isEnterAnim && area.Owner is Player) {
 			InputVec = Vector2.Zero;
 			Velocity = Vector2.Zero;
 

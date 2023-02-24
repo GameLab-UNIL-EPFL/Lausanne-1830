@@ -1,11 +1,11 @@
-[gd_scene load_steps=132 format=2]
+[gd_scene load_steps=130 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=3]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=6]
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=9]
@@ -25,7 +25,7 @@
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/03_backgrounds/hitboxesPont.png" type="Texture" id=25]
-[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bois.png" type="Texture" id=26]
+[ext_resource path="res://assets/02_architecture/05_moulin/02_ext/structureBois.png" type="Texture" id=26]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/woodenBoxGround.png" type="Texture" id=28]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrelGround.png" type="Texture" id=29]
@@ -44,61 +44,51 @@
 [sub_resource type="RectangleShape2D" id=90]
 extents = Vector2( 21, 11 )
 
-[sub_resource type="RectangleShape2D" id=94]
-extents = Vector2( 46.8727, 53.854 )
-
-[sub_resource type="RectangleShape2D" id=92]
-extents = Vector2( 2.9957, 5.41327 )
-
 [sub_resource type="RectangleShape2D" id=96]
 extents = Vector2( 34.9815, 8.09634 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 53, 31.5 )
+extents = Vector2( 64.9267, 31.5 )
 
-[sub_resource type="AtlasTexture" id=91]
-atlas = ExtResource( 26 )
-region = Rect2( 79.5, 178.641, 99.75, 78.3999 )
-
-[sub_resource type="AtlasTexture" id=75]
+[sub_resource type="AtlasTexture" id=99]
 atlas = ExtResource( 21 )
-region = Rect2( 0, 0, 340, 236 )
+region = Rect2( 0, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=100]
 atlas = ExtResource( 21 )
-region = Rect2( 340, 0, 340, 236 )
+region = Rect2( 375, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=77]
+[sub_resource type="AtlasTexture" id=101]
 atlas = ExtResource( 21 )
-region = Rect2( 680, 0, 340, 236 )
+region = Rect2( 750, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=78]
+[sub_resource type="AtlasTexture" id=102]
 atlas = ExtResource( 21 )
-region = Rect2( 1020, 0, 340, 236 )
+region = Rect2( 1125, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=79]
+[sub_resource type="AtlasTexture" id=103]
 atlas = ExtResource( 21 )
-region = Rect2( 1360, 0, 340, 236 )
+region = Rect2( 1500, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=80]
+[sub_resource type="AtlasTexture" id=104]
 atlas = ExtResource( 21 )
-region = Rect2( 1700, 0, 340, 236 )
+region = Rect2( 1875, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=81]
+[sub_resource type="AtlasTexture" id=105]
 atlas = ExtResource( 21 )
-region = Rect2( 2040, 0, 340, 236 )
+region = Rect2( 2250, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=82]
+[sub_resource type="AtlasTexture" id=106]
 atlas = ExtResource( 21 )
-region = Rect2( 2380, 0, 340, 236 )
+region = Rect2( 2625, 0, 375, 265 )
 
-[sub_resource type="AtlasTexture" id=83]
+[sub_resource type="AtlasTexture" id=107]
 atlas = ExtResource( 21 )
-region = Rect2( 2720, 0, 340, 236 )
+region = Rect2( 3000, 0, 375, 265 )
 
 [sub_resource type="SpriteFrames" id=84]
 animations = [ {
-"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
+"frames": [ SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ) ],
 "loop": true,
 "name": "default",
 "speed": 11.0
@@ -1492,9 +1482,12 @@ atlas = ExtResource( 25 )
 region = Rect2( 0, 25, 81, 9 )
 
 [sub_resource type="RectangleShape2D" id=95]
-extents = Vector2( 17.1406, 5.04553 )
+extents = Vector2( 29.9057, 5.04553 )
 
 [sub_resource type="RectangleShape2D" id=97]
+
+[sub_resource type="RectangleShape2D" id=98]
+extents = Vector2( 29.5, 11 )
 
 [node name="Flon" type="Node2D"]
 
@@ -1510,14 +1503,17 @@ __meta__ = {
 }
 
 [node name="Bridge" type="Sprite" parent="."]
-position = Vector2( 190, 278 )
+visible = false
+position = Vector2( 190, 303 )
 texture = ExtResource( 12 )
 
 [node name="River" type="Sprite" parent="."]
-position = Vector2( 491, 180 )
+visible = false
+position = Vector2( 513, 181 )
 texture = ExtResource( 22 )
 
 [node name="PathMoulin" type="Sprite" parent="."]
+visible = false
 position = Vector2( 84, 100 )
 texture = ExtResource( 34 )
 
@@ -1525,7 +1521,7 @@ texture = ExtResource( 34 )
 tile_set = ExtResource( 33 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 33, 0, 0, 65538, 1, 0, 65543, 0, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 2, 0, 131073, 1, 0, 131100, 2, 0, 131105, 1, 0, 393218, 536870913, 0, 393228, 0, 0, 458760, 1, 0, 458779, 1, 0, 524291, 536870915, 0, 524299, 1, 0, 589825, 2, 0, 655368, 2, 0, 655387, 536870913, 0, 655388, 536870913, 0, 720903, 1, 0, 720923, 536870913, 0, 720925, 1, 0, 720929, 0, 0, 786439, 0, 0, 786444, 1, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 786464, 536870913, 0, 851989, 0, 0, 852002, 2, 0, 917507, 2, 0, 983059, 3, 0, 983065, 1, 0, 1048581, 3, 0, 1048584, 1, 0, 1048596, 3, 0, 1048607, 536870915, 0, 1114116, 2, 0, 1114139, 1, 0, 1114142, 536870914, 0, 1179655, 3, 0, 1179667, 536870915, 0, 1179671, 536870913, 0, 1179686, 3, 0, 1245191, 2, 0, 1245206, 536870912, 0, 1245212, 3, 0, 1310759, 1, 0, 1376264, 2, 0, 1376275, 1, 0, 1376291, 536870913, 0, 1376294, 2, 0, 1376295, 0, 0, 1441797, 536870913, 0, 1441801, 2, 0, 1441816, 536870913, 0, 1441817, 536870913, 0, 1441831, 3, 0 )
+tile_data = PoolIntArray( 10, 536870913, 0, 13, 0, 0, 20, 536870913, 0, 21, 536870913, 0, 28, 536870913, 0, 33, 0, 0, 65538, 1, 0, 65543, 0, 0, 65550, 536870913, 0, 65555, 536870912, 0, 65562, 536870912, 0, 65565, 0, 0, 65568, 2, 0, 131073, 1, 0, 131100, 2, 0, 131105, 1, 0, 393218, 536870913, 0, 393228, 0, 0, 458760, 1, 0, 458779, 1, 0, 524291, 536870915, 0, 524299, 1, 0, 655368, 2, 0, 655387, 536870913, 0, 655388, 536870913, 0, 720903, 1, 0, 720923, 536870913, 0, 720925, 1, 0, 720929, 0, 0, 786439, 0, 0, 786444, 1, 0, 786454, 1, 0, 786459, 536870912, 0, 786460, 536870912, 0, 786464, 536870913, 0, 852002, 2, 0, 917525, 0, 0, 983059, 3, 0, 983065, 1, 0, 1048581, 3, 0, 1048584, 1, 0, 1048596, 3, 0, 1048607, 536870915, 0, 1114139, 1, 0, 1114142, 536870914, 0, 1179655, 3, 0, 1179667, 536870915, 0, 1179671, 536870913, 0, 1245191, 2, 0, 1245206, 536870912, 0, 1245212, 3, 0, 1310759, 1, 0, 1376264, 2, 0, 1376275, 1, 0, 1376294, 2, 0, 1376295, 0, 0, 1441801, 2, 0, 1441816, 536870913, 0, 1441817, 536870913, 0, 1441831, 3, 0 )
 
 [node name="NPCCollision" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -1539,18 +1535,10 @@ one_way_collision = true
 position = Vector2( 407, 202 )
 shape = SubResource( 90 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCCollision"]
-position = Vector2( 169.554, 118.485 )
-shape = SubResource( 94 )
-
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
-polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -8.29259, 369.771, 160.187, 369.663, 158.27, 508.863, 219, 518.007, 217.559, 374.35, 223.373, 367.636, 224.709, 349.373, 217.582, 323.091, 224.709, 298.146, 220.255, 274.537, 220.817, 245.075, 249.605, 244.603, 273.556, 244.485, 301.518, 244.839, 305.781, 260.728, 304.89, 278.546, 300.881, 295.028, 308.008, 319.973, 301.327, 347.146, 297.318, 369.418, 382.471, 370.243, 416.65, 359.845, 426.571, 342.384, 463.478, 315.795, 469.828, 302.302, 484.511, 291.587, 507.528, 278.094, 521.418, 257.855, 540.864, 243.171, 552.372, 236.822, 566.269, 219.069, 568, 192, 560, 192, 569.437, 142.371, 577.374, 110.226, 569.437, 90.3838, 572.612, 58.5604, 572.215, 47.0517, 569.04, 34.7494, 574.596, 17.288, 574.199, -0.570293, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 664.054, 380.879, 520, 380, 219.69, 527.151, 156.717, 514.902, -18, 382, -10, -8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
-position = Vector2( 125.045, 206.47 )
-shape = SubResource( 92 )
+polygon = PoolVector2Array( -1, -6.99999, -5.5811, -0.536163, -6.18528, 146.238, 6.72303, 156.902, 17.3864, 160.269, 16.8252, 175.422, 22.4375, 198.433, 26.3661, 218.637, 34.7846, 240.525, 38.7132, 255.117, 58.3563, 287.668, 67.336, 307.311, 85.2954, 343.23, 117.286, 367.924, 160.187, 369.663, 158.27, 508.863, 219, 518.007, 217.559, 374.35, 223.373, 367.636, 224.709, 349.373, 229.95, 326.028, 225.496, 298.41, 225.496, 281.037, 303.449, 282.374, 310.576, 285.046, 314.585, 303.31, 308.795, 325.582, 314.14, 346.073, 318.149, 367.9, 382.471, 370.243, 445.161, 361.333, 453.107, 345.441, 466.88, 332.198, 488.07, 322.133, 495.486, 305.711, 511.378, 291.409, 527.799, 283.463, 543.691, 259.625, 556.935, 246.381, 575.475, 238.965, 591.367, 220.954, 594.016, 197.646, 597.194, 188.111, 574.946, 187.397, 574.199, -0.570293, 162.799, 0, 161.908, -5.88157, 1.10063, -8.10881, 1, -23, 653, -20, 664.054, 380.879, 520, 380, 219.69, 527.151, 156.717, 514.902, -18, 382, -10, -8 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision"]
 position = Vector2( 190.725, 377.904 )
@@ -1563,7 +1551,7 @@ __meta__ = {
 }
 
 [node name="House" type="StaticBody2D" parent="YSort"]
-position = Vector2( 505, 128 )
+position = Vector2( 529, 135 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -1573,29 +1561,29 @@ position = Vector2( 0, -41 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/House"]
-position = Vector2( 3, 23.5 )
+position = Vector2( -8.9267, 23.5 )
 shape = SubResource( 9 )
 
 [node name="HouseLeft" type="Sprite" parent="YSort"]
-position = Vector2( 171, 261.654 )
-texture = SubResource( 91 )
-offset = Vector2( 0, -110 )
+position = Vector2( 179.554, 289 )
+texture = ExtResource( 26 )
+offset = Vector2( 0.5, -110 )
 
 [node name="House2" type="StaticBody2D" parent="YSort"]
-position = Vector2( 283, 200 )
+position = Vector2( 283, 131 )
 
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
-position = Vector2( 0, -101 )
+position = Vector2( 10.5, -11 )
 frames = SubResource( 84 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
-position = Vector2( 3, -40 )
-polygon = PoolVector2Array( -74.7025, 50.511, -64.0118, 62.5381, 15.2825, 63.0905, 15.4005, 50.9381, 106.194, 50.3874, 104.499, 9.49948, 136.608, 11.8779, 135.329, 51.2793, 160.043, 51.4279, 155.143, -161.051, -118, -168, -127.943, -159.345, -122.597, -130.391, -115.47, -101.437, -74.4886, -68.4733 )
+position = Vector2( 3, 46 )
+polygon = PoolVector2Array( -62.6418, 67.0124, -53.6621, 75.4309, 24.9102, 75.9921, 27.1552, 41.757, 115.268, 44.0019, 115.83, 8.64439, 147.259, 11.4505, 146.697, 41.757, 171.392, 40.6346, 162.894, -177.768, -115.083, -179.551, -130.543, -178.957, -176.327, -179.849, -177.814, -27.9275, -63.7643, -26.1519, -63.7643, 25.4813 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/House2"]
-position = Vector2( 0, -61 )
+position = Vector2( 11, 37.865 )
 polygon = PoolVector2Array( -161, 72, -155, 72, -155.363, 62.1535, -161.129, 61.4953 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
@@ -1605,13 +1593,13 @@ position = Vector2( 407, 230 )
 parameters/playback = SubResource( 68 )
 
 [node name="Box" parent="YSort" instance=ExtResource( 27 )]
-position = Vector2( 453, 189 )
+position = Vector2( 468, 194.865 )
 
 [node name="Sprite" parent="YSort/Box" index="0"]
 texture = ExtResource( 28 )
 
 [node name="CollisionShape2D" parent="YSort/Box" index="1"]
-position = Vector2( 1, 0 )
+position = Vector2( 2, 0 )
 shape = SubResource( 93 )
 
 [node name="Box2" parent="YSort" instance=ExtResource( 27 )]
@@ -1660,13 +1648,14 @@ position = Vector2( 2.5, -2 )
 shape = SubResource( 67 )
 
 [node name="Manure" type="StaticBody2D" parent="YSort"]
-position = Vector2( 80, 57.6697 )
+position = Vector2( 178, 165.168 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
@@ -1691,10 +1680,7 @@ visible = false
 parameters/playback = SubResource( 74 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
-position = Vector2( -5, 0 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( -17.2162, 4.168 )
 
 [node name="Bush" parent="YSort/Bushes" instance=ExtResource( 27 )]
 position = Vector2( 15.1, 264 )
@@ -1708,7 +1694,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush12" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 63, 303 )
+position = Vector2( 75.2838, 291.365 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush12" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -1730,7 +1716,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush25" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 23.8669, 207 )
+position = Vector2( 50.7162, 210.64 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush25" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -1741,7 +1727,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush26" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 31.37, 230 )
+position = Vector2( 50.2838, 231.832 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush26" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -1796,7 +1782,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush22" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 19.7838, 181 )
+position = Vector2( 39.2162, 175 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush22" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -1873,7 +1859,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush31" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 54.8669, 261 )
+position = Vector2( 62.5676, 267.34 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush31" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -1895,7 +1881,7 @@ rotation = 1.5708
 shape = SubResource( 64 )
 
 [node name="Bush33" parent="YSort/Bushes" instance=ExtResource( 27 )]
-position = Vector2( 28, 186 )
+position = Vector2( 40.2838, 191.832 )
 
 [node name="Sprite" parent="YSort/Bushes/Bush33" index="0"]
 position = Vector2( 1.78381, -7.13525 )
@@ -2089,7 +2075,7 @@ __meta__ = {
 }
 
 [node name="Benedict" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 350, 208 )
+position = Vector2( 350, 220.865 )
 DemandDialogueID = "demandBene"
 HasAutoDialogue = false
 
@@ -2117,7 +2103,7 @@ texture = ExtResource( 11 )
 parameters/playback = SubResource( 6 )
 
 [node name="Enfant1" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 113, 261 )
+position = Vector2( 126.284, 299.508 )
 CanWander = true
 DemandDialogueID = "demEnfant"
 HasAutoDialogue = false
@@ -2132,7 +2118,7 @@ texture = ExtResource( 15 )
 parameters/playback = SubResource( 10 )
 
 [node name="Enfant2" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 210, 292 )
+position = Vector2( 48, 124.508 )
 CanWander = true
 WanderingCooldown = 15.0
 WalkSpeed = 30
@@ -2160,8 +2146,9 @@ anims/WalkUp = SubResource( 19 )
 parameters/playback = SubResource( 20 )
 
 [node name="Enfant3" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 80, 117 )
-InitDir = 1
+position = Vector2( 191, 229.865 )
+InitDir = 2
+CanTurn = false
 DemandDialogueID = "demEnfant3"
 HasAutoDialogue = false
 
@@ -2186,8 +2173,9 @@ anims/WalkUp = SubResource( 29 )
 parameters/playback = SubResource( 30 )
 
 [node name="Enfant4" parent="YSort/NPC" instance=ExtResource( 8 )]
-position = Vector2( 46, 117 )
-InitDir = 0
+position = Vector2( 165, 225.865 )
+InitDir = 2
+CanTurn = false
 DemandDialogueID = "demEnfant4"
 HasAutoDialogue = false
 
@@ -2316,7 +2304,7 @@ scale = Vector2( 0.75, 0.75 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="OpenMapZone" type="Area2D" parent="."]
 
@@ -2324,14 +2312,14 @@ volume_db = -15.0
 polygon = PoolVector2Array( 160.661, -3.89114, 160.661, -9.55437, -7.34872, -12.8579, -12, 375.53, 424, 376, 432, 368, 142.023, 366.365, -6, 365.53, -3, -4.84691 )
 
 [node name="BridgeBot" type="Sprite" parent="."]
-position = Vector2( 221, 240 )
+position = Vector2( 230, 278.033 )
 texture = SubResource( 89 )
 centered = false
 
 [node name="PlayerEnterArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
-position = Vector2( 175.98, 308.954 )
+position = Vector2( 173.476, 305 )
 shape = SubResource( 95 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerEnterArea"]
@@ -2353,6 +2341,15 @@ autoplay = true
 bus = "Sounds"
 script = ExtResource( 37 )
 
+[node name="Water3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 261.948, 327.365 )
+stream = ExtResource( 35 )
+volume_db = -10.0
+pitch_scale = 1.45
+autoplay = true
+bus = "Sounds"
+script = ExtResource( 37 )
+
 [node name="Birds" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 23, 315 )
 stream = ExtResource( 36 )
@@ -2361,7 +2358,7 @@ bus = "Sounds"
 script = ExtResource( 37 )
 
 [node name="Snoring" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 76.2838, 57 )
+position = Vector2( 168, 174.865 )
 stream = ExtResource( 38 )
 volume_db = 15.0
 autoplay = true
@@ -2369,12 +2366,15 @@ bus = "Sounds"
 script = ExtResource( 37 )
 
 [node name="Flies" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 76.2838, 66.6697 )
+position = Vector2( 166.626, 172 )
 stream = ExtResource( 39 )
 autoplay = true
 script = ExtResource( 37 )
 
 [node name="AmbientAudio" type="AudioStreamPlayer2D" parent="."]
+visible = false
+volume_db = -10.0
+bus = "RightPan"
 script = ExtResource( 40 )
 lastPosition = Vector2( 487, 286 )
 
@@ -2383,12 +2383,21 @@ lastPosition = Vector2( 487, 286 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AmbientAudio/Area2D"]
 polygon = PoolVector2Array( 392, 368, 566, 219, 573, -8, 644, -10, 646, 266, 527, 369 )
 
+[node name="GrassSoundOnExit" type="Area2D" parent="."]
+script = ExtResource( 32 )
+EnterType = 1
+ExitType = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassSoundOnExit"]
+position = Vector2( 404.5, 206 )
+shape = SubResource( 98 )
+
 [node name="PathSound" type="Area2D" parent="."]
 script = ExtResource( 32 )
 ExitType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathSound"]
-polygon = PoolVector2Array( 175.672, 360.439, 172.46, 244.791, 89.3379, 241.981, 69.6618, 225.115, 67.654, 86.1773, 65, -30.5, 103.5, -30, 100.5, 190.5, 104.5, 210.5, 119.5, 218.5, 143.5, 216, 158, 211, 174.5, 216, 197.5, 220, 210, 219.5, 224.5, 220.5, 218, 241, 204, 245.5, 207, 272, 207.5, 306, 202, 314.5, 206.5, 358, 206, 401, 175.5, 398.5 )
+polygon = PoolVector2Array( 175.672, 360.439, 172.847, 281.615, 124.582, 282.176, 89.224, 279.931, 71.2646, 267.023, 67.654, 86.1773, 65, -30.5, 103.5, -30, 107.745, 186.767, 104.5, 210.5, 106, 238, 103.291, 249.131, 112.961, 252.495, 129.779, 253.336, 151.642, 253.336, 168.04, 249.551, 189.483, 255.858, 204.198, 258.381, 217.232, 255.017, 229.005, 257.54, 229.574, 271.143, 228.906, 280.821, 214.379, 286.105, 211.572, 305.748, 214.94, 336.616, 206.5, 358, 206, 359, 176, 361 )
 
 [node name="BridgeSound" type="Area2D" parent="."]
 script = ExtResource( 32 )
@@ -2396,7 +2405,8 @@ EnterType = 3
 ExitType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BridgeSound"]
-polygon = PoolVector2Array( 229.8, 221.9, 226.8, 246.4, 302.8, 245.4, 302.8, 239.4, 315.3, 239.4, 314.3, 228.4, 305.3, 228.4, 300.8, 222.4 )
+position = Vector2( 8, 37 )
+polygon = PoolVector2Array( 221.71, 217.739, 221.115, 245.685, 300.792, 245.685, 300.488, 238.575, 304.055, 233.569, 304.65, 228.218, 300.822, 223.558, 300.197, 219.225 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]
@@ -2407,8 +2417,6 @@ polygon = PoolVector2Array( 229.8, 221.9, 226.8, 246.4, 302.8, 245.4, 302.8, 239
 [connection signal="area_entered" from="PlayerEnterArea" to="YSort/Player" method="_on_PlayerEnterArea_area_entered"]
 [connection signal="area_entered" from="AmbientAudio/Area2D" to="AmbientAudio" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="AmbientAudio/Area2D" to="AmbientAudio" method="_on_Area2D_area_exited"]
-[connection signal="area_entered" from="PathSound" to="PathSound" method="_on_area_entered"]
-[connection signal="area_exited" from="PathSound" to="PathSound" method="_on_area_exited"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/TalkBox"]

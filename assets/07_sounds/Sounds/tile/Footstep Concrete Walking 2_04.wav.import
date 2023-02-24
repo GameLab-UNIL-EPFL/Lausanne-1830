@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Footstep Concrete Walking 2_04.wav-97e5f7550f84a9fa3a0d6ffd67beb2c1.sample"
+
+[deps]
+
+source_file="res://assets/07_sounds/Sounds/tile/Footstep Concrete Walking 2_04.wav"
+dest_files=[ "res://.import/Footstep Concrete Walking 2_04.wav-97e5f7550f84a9fa3a0d6ffd67beb2c1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
