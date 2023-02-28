@@ -26,7 +26,7 @@
                 <text id="1">Let me see the notebook.</text>
                 <text id="2">Good job ! You did well !</text>
                 <text id="3">I will keep this in our archives.</text>
-                <text id="4">Maybe one day some historians will be able to use the information you've collected</text>
+                <text id="4">Maybe one day historians will be able to use the information you've collected</text>
                 <text id="5">and make a video game with it.</text>
         </dialogue>
         <dialogue type="onDemand" ntargets="1" id="questTextCorrect">

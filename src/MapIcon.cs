@@ -91,7 +91,7 @@ public class MapIcon : TextureButton {
 	
 	private void UpdateRessource(Language l) {
 		// Update the sprite
-		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, context._GetLanguageAbbrv(l));
+		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, Context._GetLanguageAbbrv(l));
 		
 		// Load in both new textures
 		TextureHover = (Texture) ResourceLoader.Load(path +resourceNameHover);

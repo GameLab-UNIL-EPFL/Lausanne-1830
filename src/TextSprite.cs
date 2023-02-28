@@ -28,7 +28,7 @@ public class TextSprite : Sprite {
 	
 	private void UpdateResource(Language l) {
 		// Update the sprite
-		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, context._GetLanguageAbbrv(l));
+		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, Context._GetLanguageAbbrv(l));
 		
 		// Load in both new textures
 		this.Texture = (Texture) ResourceLoader.Load(path + resourceName);

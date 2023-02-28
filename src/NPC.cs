@@ -593,7 +593,7 @@ public class NPC : KinematicBody2D {
 
 		// Gather all possible language answers
 		foreach(var l in langs) {
-			solution = QC._QueryQuestSolution(tabId, (Language)l);
+			solution = QuestController._QueryQuestSolution(tabId, (Language)l);
 			sols[idx++] = QC._CompareCharInfo(solution, characterInfo);
 		}
 
