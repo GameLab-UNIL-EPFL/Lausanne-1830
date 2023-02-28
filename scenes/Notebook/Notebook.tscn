@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/Notebook/NotebookList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Notebook/Map.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/Notebook.cs" type="Script" id=10]
 [ext_resource path="res://assets/01_characters/02_missingCharacters/portraitRochat.png" type="Texture" id=11]
 [ext_resource path="res://assets/01_characters/02_missingCharacters/portraitCerjeat.png" type="Texture" id=12]
@@ -68,7 +68,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.0, 1.0, 0.0 ]
@@ -158,7 +158,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -244,6 +244,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "WriteText"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Quest:percent_visible")
 tracks/0/interp = 1
@@ -251,7 +252,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0.05, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -264,7 +265,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "clips": [ {
-"end_offset": 0.0,
+"end_offset": 0.251658,
 "start_offset": 0.0,
 "stream": ExtResource( 20 )
 } ],
@@ -280,7 +281,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.0, 1.0, 0.0 ]
@@ -384,7 +385,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3.05 ),
+"times": PoolRealArray( 0, 2.65 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -425,7 +426,7 @@ tracks/3/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 18 )
 } ],
-"times": PoolRealArray( 2.85 )
+"times": PoolRealArray( 2.4 )
 }
 tracks/4/type = "audio"
 tracks/4/path = NodePath("Bravo")
@@ -456,6 +457,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=14]
 resource_name = "WriteText"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Quest:percent_visible")
 tracks/0/interp = 1
@@ -476,7 +478,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "clips": [ {
-"end_offset": 2.65,
+"end_offset": 2.68663,
 "start_offset": 0.0,
 "stream": ExtResource( 20 )
 } ],
@@ -1111,7 +1113,7 @@ position = Vector2( 96, 48 )
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Fermer" type="Label" parent="."]
 margin_left = 39.0

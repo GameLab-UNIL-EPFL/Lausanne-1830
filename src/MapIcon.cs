@@ -34,6 +34,8 @@ public class MapIcon : TextureButton {
 	
 	[Export]
 	public string musicName;
+	[Export]
+	public float musicVolume = 0;
 	
 	private const string resourceBase = "res://assets/";
 	
@@ -89,7 +91,7 @@ public class MapIcon : TextureButton {
 	
 	private void UpdateRessource(Language l) {
 		// Update the sprite
-		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, context._GetLanguageAbbrv(l));
+		string path = string.Format("{0}/{1}/{2}/", resourceBase, resourcePath, Context._GetLanguageAbbrv(l));
 		
 		// Load in both new textures
 		TextureHover = (Texture) ResourceLoader.Load(path +resourceNameHover);
@@ -102,7 +104,11 @@ public class MapIcon : TextureButton {
 		SC.GotoScene("res://scenes/" + id + ".tscn");
 		
 		MusicPlayer MP = (MusicPlayer)GetNode("/root/MusicPlayer");
-		MP.ChangeMusic(musicName + ".mp3", 0);
+		if (musicName != null) {
+			MP.ChangeMusic(musicName + ".mp3", musicVolume);
+		} else {
+			MP.MusicStop();
+		}
 		
 		
 			

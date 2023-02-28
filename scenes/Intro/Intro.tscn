@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://scenes/Brasserie/DeskAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://assets/02_architecture/06_questRoom/background.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/Interaction/DialogueController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/06_UI_menus/fr/Space.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/06_UI_menus/fr/Tab.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/04_notebook/mapBookButtons.png" type="Texture" id=12]
@@ -26,6 +26,7 @@
 [ext_resource path="res://assets/06_UI_menus/fr/wasd.png" type="Texture" id=24]
 [ext_resource path="res://assets/05_fonts/PixelOperator-Bold.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://src/TextLabel.cs" type="Script" id=26]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=27]
 
 [sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 10, 87.8739 )
@@ -519,7 +520,7 @@ one_way_collision = true
 position = Vector2( 334.266, 136.727 )
 frames = ExtResource( 1 )
 animation = "desk"
-frame = 33
+frame = 14
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
@@ -535,7 +536,6 @@ position = Vector2( 0, -11 )
 
 [node name="Label" parent="Desk/Letter/Sprite" index="0"]
 text = ""
-script = ExtResource( 26 )
 id = "gp_read"
 
 [node name="AnimatedSprite" parent="Desk/Letter/Sprite" index="1"]
@@ -669,7 +669,7 @@ texture = SubResource( 7 )
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
@@ -776,6 +776,17 @@ scale = Vector2( 2, 2 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="WoodAudioTrigger" type="Area2D" parent="."]
+position = Vector2( 387.904, 196.892 )
+rotation = 3.14159
+scale = Vector2( 83.4498, 40.2482 )
+script = ExtResource( 27 )
+EnterType = 2
+ExitType = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WoodAudioTrigger"]
+polygon = PoolVector2Array( -0.636259, -1.36921, 0.478183, -1.31952, 0.478183, -0.822607, 0.741815, -0.822607, 0.741815, -0.598994, -0.636259, -0.598994 )
 
 [node name="PlayerEnterArea" type="Area2D" parent="."]
 scale = Vector2( -3.80679, -0.367396 )

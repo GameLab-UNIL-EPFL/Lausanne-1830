@@ -70,54 +70,64 @@ public class Context : Node {
 	private Vector2 IntroEnterPosition = new Vector2(397, 310);
 	private Vector2 PaludEnterPosition = new Vector2(562, 450);
 	private Vector2 MoulinEnterPosition = new Vector2(469, 319);
-	private Vector2 MoulinExitPosition = new Vector2(407, 230);
-	private Vector2 FlonEnterPosition = new Vector2(188, 446);
+	private Vector2 MoulinExitPosition = new Vector2(417, 230);
+	private Vector2 FlonEnterPosition = new Vector2(196, 446);
 	private Vector2 BrasserieEnterPosition = new Vector2(264, 393);
 	private Vector2 CasinoEnterPosition = new Vector2(191, 432);
 	
 	public override void _Ready() {
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "De Cerjeat", "", 1, "Célibataire", 0, "Rentier.ère" 
-		));
+		// Initialize the notebook info entries
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, true, true, true
-		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Trüschel", "", 0, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, false, false, false
 		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Perregaux", "Rue St-François", 9, "", 0, ""
-		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, true, true, false, false, false
-		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "De Montolieu", "", 0, "Veuf.ve", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, true, false, false
 		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Mercier", "", 0, "Marié.e", 3, ""
-		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, false, true, true, false
-		));
-		NotebookCharInfo.Add(new CharacterInfo_t(
-			"", "Rochat", "", 1, "", 0, ""
 		));
 		NotebookCorrectInfo.Add(new InfoValue_t(
 			false, true, false, true, false, false, false
 		));
+		
+		InitNotebookCharInfo();
 		
 		// Start out by loading in the label DB in the default language
 		DialogueController._ParseXML(
 			ref labelDB, 
 			string.Format("res://db/{0}/labels.xml", _GetLanguageAbbrv())
 		);
+	}
+
+	// Fill in the notebookCharInfo depending on the initialized correct info fields
+	private void InitNotebookCharInfo() {
+		// Number of fields in the
+		const int N_ENTRIES = 7;
+
+		// Clear the current entires
+		NotebookCharInfo.Clear();
+
+		// Fill in the strings depending on the results
+		for(int i = 0; i < NotebookCorrectInfo.Count; ++i) {
+			// Retrieve the solution
+			CharacterInfo_t sol = QuestController._QueryQuestSolution(i, _GetLanguage());
+			
+			// Filter out non-wanted entries
+			for(int j = 0; j < N_ENTRIES; ++j) {
+				if(!NotebookCorrectInfo[i][j]) {
+					sol._ClearEntry(j);
+				}
+			}
+
+			// Add the newly prepared solution to the context data
+			NotebookCharInfo.Add(sol);
+		}
 	}
 	
 	public XDocument _GetLabelsDB() {
@@ -148,11 +158,14 @@ public class Context : Node {
 			string.Format("res://db/{0}/labels.xml", _GetLanguageAbbrv())
 		);
 		
+		// Update the char info
+		InitNotebookCharInfo();
+		
 		// Send a signal to the rest of the scene to also update the language
 		EmitSignal(nameof(UpdateLanguage), CurrentLanguage);
 	}
 
-	public string _GetLanguageAbbrv(Language l) {
+	public static string _GetLanguageAbbrv(Language l) {
 		switch(l) {
 			case Language.EN:
 				return "en";

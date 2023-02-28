@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=2]
+[gd_scene load_steps=154 format=2]
 
 [ext_resource path="res://assets/02_architecture/03_brewery/backGround.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/02_architecture/03_brewery/cuve_v2-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://src/NotebookController.cs" type="Script" id=5]
 [ext_resource path="res://scenes/Notebook/Notebook.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/07_sounds/Sounds/pageTurn.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/07_sounds/Sounds/Book 01.wav" type="AudioStream" id=7]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/01_characters/03_pnjs/filleTruschel1.png" type="Texture" id=9]
 [ext_resource path="res://scenes/Interaction/QuestController.tscn" type="PackedScene" id=10]
@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/brasseur.png" type="Texture" id=13]
 [ext_resource path="res://assets/01_characters/03_pnjs/conradTruschel.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Palud/Prop.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/sackPile.png" type="Texture" id=16]
+[ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bagGeneric.png" type="Texture" id=16]
 [ext_resource path="res://assets/01_characters/03_pnjs/angeliqueTruschel.png" type="Texture" id=17]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrel.png" type="Texture" id=18]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bigBarrel.png" type="Texture" id=19]
@@ -42,6 +42,7 @@
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=40]
 [ext_resource path="res://assets/07_sounds/Sounds/Smelter burning_1.wav" type="AudioStream" id=41]
 [ext_resource path="res://src/FountainAudio.cs" type="Script" id=42]
+[ext_resource path="res://src/WalkingSoundTrigger.cs" type="Script" id=43]
 
 [sub_resource type="RectangleShape2D" id=130]
 extents = Vector2( 21, 10 )
@@ -160,8 +161,9 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="CircleShape2D" id=135]
-radius = 5.62534
+[sub_resource type="CapsuleShape2D" id=139]
+radius = 5.75012
+height = 16.1605
 
 [sub_resource type="CircleShape2D" id=136]
 radius = 8.19782
@@ -1282,7 +1284,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Props/Cuve"]
 position = Vector2( 0, 6 )
 frames = SubResource( 128 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Props/Cuve"]
@@ -1300,14 +1302,15 @@ texture = ExtResource( 20 )
 position = Vector2( -2, -3 )
 
 [node name="Bag2" parent="YSort/Props" instance=ExtResource( 15 )]
-position = Vector2( 432, 284 )
+position = Vector2( 507, 276 )
 
 [node name="Sprite" parent="YSort/Props/Bag2" index="0"]
-texture = ExtResource( 20 )
+texture = ExtResource( 16 )
 
 [node name="CollisionShape2D" parent="YSort/Props/Bag2" index="1"]
-position = Vector2( -1.77701, 0 )
-shape = SubResource( 135 )
+position = Vector2( 0, 6.19202 )
+rotation = 1.5708
+shape = SubResource( 139 )
 
 [node name="Barrel" parent="YSort/Props" instance=ExtResource( 15 )]
 position = Vector2( 536, 188 )
@@ -1361,10 +1364,11 @@ texture = ExtResource( 33 )
 shape = SubResource( 137 )
 
 [node name="Bags" parent="YSort/Props" instance=ExtResource( 15 )]
-position = Vector2( 333, 292 )
+position = Vector2( 332, 290 )
 
 [node name="Sprite" parent="YSort/Props/Bags" index="0"]
 texture = ExtResource( 16 )
+flip_h = true
 
 [node name="CollisionShape2D" parent="YSort/Props/Bags" index="1"]
 position = Vector2( 1, 3 )
@@ -1436,7 +1440,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Props/Desk"]
 frames = ExtResource( 21 )
 animation = "desk"
-frame = 4
+frame = 32
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Desk"]
@@ -1637,7 +1641,7 @@ visible = false
 
 [node name="NotebookClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="NotebookControllerNode" type="Node2D" parent="."]
 z_index = 3
@@ -1704,9 +1708,6 @@ visible = false
 text = ""
 id = "gp_read"
 
-[node name="AnimatedSprite" parent="Book/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Book/Area2D" index="0"]
 position = Vector2( 0.27296, 10.7515 )
 shape = SubResource( 71 )
@@ -1723,6 +1724,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -94, 260 )
 scale = Vector2( 1, 1 )
+frame = 0
 
 [node name="Label3" type="Label" parent="Book/Open" index="2"]
 margin_left = -83.0
@@ -1751,9 +1753,6 @@ visible = false
 text = ""
 id = "gp_read"
 
-[node name="AnimatedSprite" parent="Book2/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Book2/Area2D" index="0"]
 position = Vector2( -5.67307, 11.3461 )
 shape = SubResource( 71 )
@@ -1770,6 +1769,7 @@ margin_bottom = 487.0
 [node name="PressE" parent="Book2/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -225, 260 )
 scale = Vector2( 1, 1 )
+frame = 0
 
 [node name="Label3" type="Label" parent="Book2/Open" index="2"]
 margin_left = -214.0
@@ -1797,9 +1797,6 @@ visible = false
 [node name="Label" parent="Item/Sprite" index="0"]
 text = "Regarder"
 
-[node name="AnimatedSprite" parent="Item/Sprite" index="1"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Item/Area2D" index="0"]
 position = Vector2( 0.667419, 10.0113 )
 shape = SubResource( 72 )
@@ -1810,6 +1807,7 @@ visible = false
 [node name="PressE" parent="Item/Open" index="1" instance=ExtResource( 30 )]
 position = Vector2( -150, 256 )
 scale = Vector2( 1.5, 1.5 )
+frame = 0
 
 [node name="Label6" type="Label" parent="Item/Open" index="2"]
 margin_left = -137.0
@@ -1857,6 +1855,14 @@ volume_db = -25.0
 pitch_scale = 0.81
 autoplay = true
 script = ExtResource( 42 )
+
+[node name="StoneAudioTrigger" type="Area2D" parent="."]
+script = ExtResource( 43 )
+EnterType = 3
+ExitType = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StoneAudioTrigger"]
+polygon = PoolVector2Array( 241, 328, 291, 328, 587, 330, 585, 183, 285, 182, 287, 237, 262, 237, 262, 263, 235, 266, 218, 266, 197, 237, 194, 331 )
 
 [connection signal="OpenNotebook" from="YSort/Player" to="Notebook" method="_on_NotebookController_pressed"]
 [connection signal="SlideInNotebookController" from="YSort/Player" to="NotebookControllerNode/NotebookController" method="_on_Player_SlideInNotebookController"]

@@ -37,7 +37,7 @@ public class Menu : Control
 
 	private void _on_Button_pressed() {
 		SC.GotoScene("res://scenes/Intro/Intro.tscn");
-		MP.ChangeMusic("InsideRoom.mp3", 0);
+		MP.ChangeMusic("InsideRoom.mp3", 2);
 	}
 	
 	private void _on_Button2_pressed() {

@@ -77,4 +77,9 @@ public class MusicPlayer : Node2D
 	public void MusicFadeOut() {
 		AP.Play("FadeOut");
 	}
+	
+	public void MusicStop() {
+		Music.Stop();
+		Music2.Stop();
+	}
 }

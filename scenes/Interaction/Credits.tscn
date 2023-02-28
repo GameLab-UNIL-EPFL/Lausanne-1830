@@ -173,8 +173,8 @@ custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Assets graphiques : 
 
-
 Musique :
+
 
 
 Sons : 
@@ -229,13 +229,16 @@ align = 1
 
 [node name="Label3" type="Label" parent="Assets"]
 margin_left = 168.0
-margin_top = 122.0
+margin_top = 88.0
 margin_right = 445.0
-margin_bottom = 153.0
+margin_bottom = 168.0
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 10 )
-text = "Deux extraits de
-Schubert - Sonata [No. 13] in A major, Op. 120 [D 664] (1819 or 1825)"
+text = "Extraits de
+Schubert - Sonata no. 13 in A major, Op. 120
+C. M. Weber - Aufforderung zum Tanz, op. 65
+Rossini - Ouverture de Guillaume Tell
+Saara Jones - Inside"
 align = 1
 
 [node name="Label4" type="Label" parent="Assets"]

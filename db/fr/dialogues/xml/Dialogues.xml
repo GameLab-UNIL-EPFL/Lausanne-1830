@@ -72,13 +72,13 @@
         <text>s'était fait voler son hibou dans son jardin!</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
-        <text>Je rêverais d'être invitée au château de Vennes,</text>
-        <text>de voir si l'intérieur est aussi beau que l'extérieur...</text>
-        <text>Mais je ne suis qu'une lingère.</text>
-        <text>C'est Madame De Montolieu qui y habite avec son fils unique.</text>
+        <text>Il faut que je me dépêche de finir.</text>
+        <text>J'ai un long chemin à faire.</text>
+        <text>Je dois ramener le linge propre jusqu'à Vennes,</text>
+        <text>pour Madame De Montolieu et son fils.</text>
     </dialogue>
     <dialogue id="demandLingere2" ntargets="1" type="onDemand">
-        <text>Et moi, je rêverais que quelqu'un fasse la lessive à ma place.</text>
+        <text>Si seulement quelqu'un pouvait faire la lessive à ma place.</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>

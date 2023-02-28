@@ -1,5 +1,6 @@
 # Lausanne-1830
-Open source historically inspired role-playing game based on 1830s Lausanne.  
+Open source historically inspired role-playing game based on 1830s Lausanne.   
+__Winner of the Swiss Game Award 2022 for Best Serious Game.__  
 
 ![Lausanne1830 Prototype Screenshot](Lausanne-1830.png)
 

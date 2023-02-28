@@ -19,7 +19,7 @@
     </dialogue>
     <dialogue id="demandElisabeth" ntargets="1" type="onDemand">
         <text>François?</text>
-        <text>Oh sorry. I thought you were someone else...</text>
+        <text>Oh sorry. I mistook you for someone else...</text>
     </dialogue>
     <dialogue id="demandTruschel" ntargets="1" type="onDemand">
         <text>I love coming to the market!</text>
@@ -30,7 +30,7 @@
     </dialogue>
     <dialogue id="demandOldMan" ntargets="1" type="onDemand">
         <text>Oh, looks like Ms. Trüschel sent her daughter on errands again.</text>
-        <text>It is usually a domestic's job.</text>
+        <text>It is usually a servant's job.</text>
         <text>But I believe she wants to see the town.</text>
     </dialogue>
     <dialogue id="demandRandom" ntargets="1" type="onDemand">
@@ -38,24 +38,23 @@
         <text>I bought it from Mr. Mercier.</text>
     </dialogue>
     <dialogue id="demandPasteur" ntargets="1" type="onDemand">
-        <text>Have you read "Le Robinson suisse" by de Montolieu.</text>
+        <text>Have you read "The Swiss Family Robinson" by De Montolieu.</text>
         <text>It's my favourite book.</text>
     </dialogue>
     <dialogue id="demandBaker" ntargets="1" type="onDemand">
         <text>You should be careful!</text>
         <text>There have been many thefts lately.</text>
         <text>They mainly steal baggage at the back of carriages.</text>
-        <text>but I heard a rumor</text>
-        <text>that someone stole an owl from a garden!</text>
+        <text>but I heard a rumor that someone</text>
+        <text>had an owl stolen from their own garden!</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
-        <text>I would love to be invited to Vennes' castle,</text>
-        <text>to see if the inside is as beautiful as the outside...</text>
-        <text>But I am but a launderer.</text>
-        <text>Ms. De Montolieu lives there with her only son.</text>
+        <text>I need to hurry.</text>
+        <text>I have to take the laundry all the way back to Vennes,</text>
+        <text>to Ms. De Montolieu and her son.</text>
     </dialogue>
     <dialogue id="demandLingere2" ntargets="1" type="onDemand">
-        <text>And I would love it if someone could do this job for me...</text>
+        <text>I would love it if someone could do this job for me...</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
@@ -68,11 +67,11 @@
     </dialogue>
     <dialogue id="demandBrasseur" ntargets="1" type="onDemand">
         <text>Hey Wolff! Do you know what happened to Ralf?</text>
-        <text>I haven't seen him for a while...</text>
+        <text>I haven't seen him in a while...</text>
     </dialogue>
     <dialogue id="demandTonnelier" ntargets="1" type="onDemand">
         <text>Nein, keine Ahnung...</text>
-        <text>Last time I saw him was last week,</text>
+        <text>The last time I saw him was last week,</text>
         <text>but my memories are blurry...</text>
         <text>We had too much to drink that night.</text>
     </dialogue>
@@ -101,7 +100,7 @@
     </dialogue>
     <dialogue id="demandFilles" ntargets="1" type="onDemand">
         <text>Our mother thinks we are too young to go out,</text>
-        <text>but our sister Frédérique, is allowed to go on errands.</text>
+        <text>but our sister Frédérique, is allowed to run errands.</text>
     </dialogue>
     <dialogue id="appPerregaux" ntargets="1" type="onApproach">
         <text>Don't you think Lausanne needs more bridges?</text>
@@ -111,10 +110,10 @@
     </dialogue>
     <dialogue id="demandPichard" ntargets="1" type="onDemand">
         <text>What a beautiful building, don't you think?</text>
-        <text>It is the casino de Derrière-Bourg,</text>
+        <text>It is the casino Derrière-Bourg,</text>
         <text>a concert hall for music, parties and all sorts of events.</text>
         <text>Right here, the "casinistes" gathered</text>
-        <text>to organise the "Révolution libérale".</text>
+        <text>to organise the liberal revolution.</text>
     </dialogue>
     <dialogue id="demandPerregaux" ntargets="1" type="onDemand">
         <text>I forgot my briefcase somewhere...</text>
@@ -125,13 +124,13 @@
         <text>soon after the revolution that started right here in this building.</text>
     </dialogue>
     <dialogue id="demandBaumann" ntargets="1" type="onDemand">
-        <text>Ms Perregaux is pregnant again. She is expecting her third child.</text>
+        <text>Ms. Perregaux is pregnant again. She is expecting her third child.</text>
     </dialogue>
     <dialogue id="demandPouly" ntargets="1" type="onDemand">
         <text>Oh! Congratulations!</text>
     </dialogue>
     <dialogue id="demandFischer" ntargets="1" type="onDemand">
-        <text>Ms Appiani, the first singer of the theatre of St. Charles of Lisbon,</text> 
+        <text>Ms. Appiani, the first singer of the theatre of St. Charles of Lisbon,</text> 
         <text>will be giving a concert here on the 14th of February.</text>
     </dialogue>
     <dialogue id="demandBene" ntargets="1" type="onDemand">
@@ -141,18 +140,18 @@
         <text>for generations.</text>
     </dialogue>
     <dialogue id="appFemme" ntargets="1" type="onApproach">
-        <text>Marie, stop playing and come help me!</text>
+        <text>Marie, stop playing around and come help me!</text>
     </dialogue>
     <dialogue id="demandFemme" ntargets="1" type="onDemand">
         <text>Yes, these are all our children.</text>
         <text>Even I am not sure how many we have...</text>
     </dialogue>
     <dialogue id="demEnfant" ntargets="1" type="onDemand">
-        <text>Don't worry we get used to the smell of the Flon.</text>
+        <text>Don't worry, you'll soon get used to the smell of the Flon.</text>
     </dialogue>
     <dialogue id="demEnfant2" ntargets="1" type="onDemand">
         <text>Don't drink from the river!</text>
-        <text>We can find animal carcasses in it.</text>
+        <text>We often find animal carcasses in it.</text>
         <text>The slaughterhouses and the tannery throw them in the water.</text>
     </dialogue>
     <dialogue id="demEnfant3" ntargets="1" type="onDemand">
@@ -166,17 +165,17 @@
     </dialogue>
     <dialogue id="appEnfant5" ntargets="1" type="onApproach">
         <text>
-            <option id="0">Hi hi hi!</option>
+            <option id="0">Ha ha ha!</option>
             <option id="1">La la laaa...</option>
             <option id="2">Not now, mother!</option>
         </text>
     </dialogue>
     <dialogue id="demEnfant6" ntargets="1" type="onDemand">
-        <text>I would rather be a chocolate maker than a miller.</text>
+        <text>I would rather be a chocolatier than a miller.</text>
         <text>Like our neighbour, Mr. Kohler.</text>
     </dialogue>
     <dialogue id="demEnfant7" ntargets="1" type="onDemand">
-        <text>I help my father grind cereals with the millstones.</text>
+        <text>I help my father grind grains with the millstones.</text>
     </dialogue>
     <dialogue id="demEnfant8" ntargets="1" type="onDemand">
         <text>My brother is not feeling well.</text>
