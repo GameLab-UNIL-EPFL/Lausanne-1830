@@ -70,8 +70,8 @@ public class Context : Node {
 	private Vector2 IntroEnterPosition = new Vector2(397, 310);
 	private Vector2 PaludEnterPosition = new Vector2(562, 450);
 	private Vector2 MoulinEnterPosition = new Vector2(469, 319);
-	private Vector2 MoulinExitPosition = new Vector2(407, 230);
-	private Vector2 FlonEnterPosition = new Vector2(188, 446);
+	private Vector2 MoulinExitPosition = new Vector2(417, 230);
+	private Vector2 FlonEnterPosition = new Vector2(196, 446);
 	private Vector2 BrasserieEnterPosition = new Vector2(264, 393);
 	private Vector2 CasinoEnterPosition = new Vector2(191, 432);
 	

@@ -1564,10 +1564,16 @@ texture = ExtResource( 1 )
 position = Vector2( -8.9267, 23.5 )
 shape = SubResource( 9 )
 
-[node name="HouseLeft" type="Sprite" parent="YSort"]
-position = Vector2( 179.554, 289 )
+[node name="Bois" type="StaticBody2D" parent="YSort"]
+position = Vector2( 178, 233.033 )
+
+[node name="HouseLeft" type="Sprite" parent="YSort/Bois"]
+position = Vector2( 1, -54 )
 texture = ExtResource( 26 )
-offset = Vector2( 0.5, -110 )
+offset = Vector2( 0.5, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Bois"]
+polygon = PoolVector2Array( -46.7903, -54.8183, -40.1086, -54.8183, -40.1086, -48.1365, -45.8994, -48.1365 )
 
 [node name="House2" type="StaticBody2D" parent="YSort"]
 position = Vector2( 283, 131 )
@@ -1575,7 +1581,7 @@ position = Vector2( 283, 131 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 10.5, -11 )
 frames = SubResource( 84 )
-frame = 6
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1587,7 +1593,7 @@ position = Vector2( 11, 37.865 )
 polygon = PoolVector2Array( -161, 72, -155, 72, -155.363, 62.1535, -161.129, 61.4953 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 407, 230 )
+position = Vector2( 417, 230 )
 
 [node name="AnimationTree" parent="YSort/Player" index="4"]
 parameters/playback = SubResource( 68 )
@@ -2317,6 +2323,10 @@ texture = SubResource( 89 )
 centered = false
 
 [node name="PlayerEnterArea" type="Area2D" parent="."]
+position = Vector2( 9, 0 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnterArea"]
 position = Vector2( 173.476, 305 )
