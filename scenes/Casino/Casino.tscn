@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/02_architecture/04_casino/casino.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/marketCrowd.wav" type="AudioStream" id=32]
 [ext_resource path="res://assets/02_architecture/04_casino/fountain-Sheet.png" type="Texture" id=33]
 [ext_resource path="res://assets/07_sounds/Sounds/fountain.wav" type="AudioStream" id=34]
+[ext_resource path="res://scenes/Palud/Pigeon.tscn" type="PackedScene" id=35]
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 5 )
@@ -159,6 +160,8 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=36]
 radius = 27.4064
 height = 3.41736
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 8.0
@@ -1590,6 +1593,17 @@ playing = true
 position = Vector2( -1, 5.5 )
 shape = SubResource( 36 )
 
+[node name="Pigeon" parent="YSort" instance=ExtResource( 35 )]
+position = Vector2( 436, 271 )
+RoofTops = PoolVector2Array( 425, 30, 500, 32 )
+FountainSpot = Vector2( 436, 271 )
+
+[node name="AnimationTree" parent="YSort/Pigeon" index="3"]
+parameters/playback = SubResource( 37 )
+
+[node name="CollisionShape2D" parent="YSort/Pigeon/Area2D" index="0"]
+position = Vector2( -9.47391, -7.62354 )
+
 [node name="Mallette" parent="." instance=ExtResource( 14 )]
 position = Vector2( 145, 107 )
 
@@ -1736,4 +1750,5 @@ script = ExtResource( 29 )
 [editable path="YSort/Bushes/Bush19"]
 [editable path="YSort/Bushes/Bush20"]
 [editable path="YSort/Bushes/Bush21"]
+[editable path="YSort/Pigeon"]
 [editable path="Mallette"]
