@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=2]
+[gd_scene load_steps=148 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/bat2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/01_characters/03_pnjs/georgeRochat.png" type="Texture" id=19]
 [ext_resource path="res://assets/01_characters/03_pnjs/samuelRochat.png" type="Texture" id=20]
 [ext_resource path="res://assets/02_architecture/05_moulin/02_ext/Moulin_Batiment_Anim-Sheet.png" type="Texture" id=21]
+[ext_resource path="res://assets/03_backgrounds/riviere-Sheet.png" type="Texture" id=22]
 [ext_resource path="res://scenes/Interaction/PressSpace.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/Interaction/PressTab.tscn" type="PackedScene" id=24]
 [ext_resource path="res://assets/03_backgrounds/hitboxesPont.png" type="Texture" id=25]
@@ -80,12 +81,44 @@ animations = [ {
 "speed": 4.2
 } ]
 
+[sub_resource type="AtlasTexture" id=126]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=127]
+atlas = ExtResource( 22 )
+region = Rect2( 210, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=128]
+atlas = ExtResource( 22 )
+region = Rect2( 420, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=129]
+atlas = ExtResource( 22 )
+region = Rect2( 630, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=130]
+atlas = ExtResource( 22 )
+region = Rect2( 840, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=131]
+atlas = ExtResource( 22 )
+region = Rect2( 1050, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=132]
+atlas = ExtResource( 22 )
+region = Rect2( 1260, 0, 210, 360 )
+
+[sub_resource type="AtlasTexture" id=133]
+atlas = ExtResource( 22 )
+region = Rect2( 1470, 0, 210, 360 )
+
 [sub_resource type="SpriteFrames" id=117]
 animations = [ {
-"frames": [  ],
+"frames": [ SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 6.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=90]
@@ -1552,12 +1585,14 @@ __meta__ = {
 [node name="Bridge" type="AnimatedSprite" parent="."]
 position = Vector2( 199, 316 )
 frames = SubResource( 116 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="River" type="AnimatedSprite" parent="."]
-position = Vector2( 513, 181 )
+position = Vector2( 535, 181 )
 frames = SubResource( 117 )
+frame = 5
+playing = true
 
 [node name="PathMoulin" type="Sprite" parent="."]
 visible = false
@@ -1628,7 +1663,7 @@ position = Vector2( 283, 131 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/House2"]
 position = Vector2( 10.5, -11 )
 frames = SubResource( 84 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/House2"]
@@ -1708,7 +1743,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Manure"]
 frames = SubResource( 73 )
-frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Manure"]
