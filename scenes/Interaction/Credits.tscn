@@ -85,7 +85,7 @@ margin_right = 467.0
 margin_bottom = 362.586
 custom_colors/font_color = Color( 0.184314, 0.0862745, 0.0156863, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Un projet du collège des humanités de l'EPFL
+text = "Un projet du Collège des humanités de l'EPFL
 GameLab UNIL-EPFL & Lausanne Time Machine
 
 Equipe de développement :
