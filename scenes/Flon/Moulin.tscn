@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -23,7 +23,6 @@
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/bagMoulin.png" type="Texture" id=21]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/laundryMoulin.png" type="Texture" id=22]
 [ext_resource path="res://assets/01_characters/03_pnjs/josephDomestique.png" type="Texture" id=23]
-[ext_resource path="res://assets/02_architecture/03_brewery/wall.png" type="Texture" id=24]
 [ext_resource path="res://assets/02_architecture/05_moulin/01_int/murHitbox.png" type="Texture" id=25]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/04_props/closedBarrel.png" type="Texture" id=26]
 [ext_resource path="res://assets/02_architecture/01_genericPieces/03_furniture/verticalWoodTable.png" type="Texture" id=27]
@@ -45,6 +44,7 @@
 [ext_resource path="res://assets/07_sounds/Sounds/Coughing2.wav" type="AudioStream" id=43]
 [ext_resource path="res://assets/07_sounds/Sounds/Coughing1.wav" type="AudioStream" id=44]
 [ext_resource path="res://assets/07_sounds/Sounds/Coughing3.wav" type="AudioStream" id=45]
+[ext_resource path="res://assets/02_architecture/05_moulin/01_int/mur2.png" type="Texture" id=46]
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 31.0
@@ -716,6 +716,18 @@ tracks/0/keys = {
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 37, 36 )
 
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 46 )
+region = Rect2( 0, 77, 4, 22 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 46 )
+region = Rect2( 0, 77, 4, 22 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 46 )
+region = Rect2( 0, 0, 4, 34 )
+
 [sub_resource type="RectangleShape2D" id=57]
 extents = Vector2( 92, 113.75 )
 
@@ -772,7 +784,7 @@ __meta__ = {
 position = Vector2( -336, -184 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Wall"]
-polygon = PoolVector2Array( 154.903, 231.382, 340.996, 233.592, 341.416, 254.614, 429.711, 256.296, 429.711, 290.773, 423.404, 291.614, 422.143, 283.625, 340.996, 284.887, 340.209, 329.381, 423.508, 330.272, 424.399, 309.781, 430.19, 310.226, 430.636, 330.272, 468.053, 330.717, 460.07, 355.719, 109.008, 351.047, 120.354, 44.7015, 566.858, 44.0341, 571.53, 358.389, 511.462, 353.717, 503.689, 330.272, 518.389, 330.272, 518.425, 213.41, 430.131, 212.569, 428.449, 221.819, 423.824, 220.558, 423.063, 159.664, 432.653, 159.172, 432.653, 200.797, 515.902, 201.638, 517.053, 116.901, 430.19, 117.347, 430.19, 137.392, 423.063, 136.501, 423.508, 118.238, 338.873, 118.238, 338.873, 193.073, 329.964, 192.628, 328.628, 119.129, 154.457, 117.792 )
+polygon = PoolVector2Array( 154.903, 231.382, 340.996, 233.592, 341.416, 254.614, 429.711, 256.296, 429.711, 290.773, 423.404, 291.614, 422.143, 283.625, 340.996, 284.887, 340.209, 329.381, 423.508, 330.272, 423.717, 322.296, 430.788, 322.826, 430.636, 330.272, 468.053, 330.717, 460.07, 355.719, 109.008, 351.047, 120.354, 44.7015, 566.858, 44.0341, 571.53, 358.389, 511.462, 353.717, 503.689, 330.272, 518.389, 330.272, 519.145, 216.641, 424.893, 216.641, 423.767, 159.369, 430.362, 159.509, 430.846, 184.1, 516.367, 184.1, 517.053, 116.901, 430.19, 117.347, 430.362, 134.113, 423.908, 133.692, 423.508, 118.238, 338.873, 118.238, 338.873, 193.073, 329.964, 192.628, 328.628, 119.129, 154.457, 117.792 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite/Wall"]
 position = Vector2( 146, 67 )
@@ -794,6 +806,7 @@ shape = SubResource( 20 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Cuve"]
 position = Vector2( 0, -3 )
 frames = SubResource( 46 )
+frame = 3
 playing = true
 
 [node name="Cuve2" parent="YSort" instance=ExtResource( 13 )]
@@ -1115,6 +1128,26 @@ shape = SubResource( 36 )
 position = Vector2( -2.5, 2 )
 texture = ExtResource( 42 )
 
+[node name="ColorRect" type="ColorRect" parent="YSort/RoomWall"]
+margin_left = -48.0
+margin_top = -29.0
+margin_right = 46.0
+margin_bottom = -28.0
+color = Color( 0.317647, 0.290196, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="YSort/RoomWall"]
+margin_left = -48.0
+margin_top = -28.0
+margin_right = 46.0
+margin_bottom = -26.0
+color = Color( 0.886275, 0.858824, 0.768627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RoomWall2" type="StaticBody2D" parent="YSort"]
 position = Vector2( 365.5, 260.5 )
 __meta__ = {
@@ -1134,7 +1167,7 @@ position = Vector2( 365, 90 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/StaticBody2D"]
 frames = SubResource( 54 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StaticBody2D"]
@@ -1195,19 +1228,26 @@ stream = ExtResource( 6 )
 volume_db = -5.0
 
 [node name="Wall" type="Sprite" parent="."]
-position = Vector2( 411, 317.15 )
-scale = Vector2( 1, 0.511364 )
-texture = ExtResource( 24 )
+position = Vector2( 411, 318.15 )
+texture = SubResource( 61 )
 
 [node name="Wall2" type="Sprite" parent="."]
-position = Vector2( 411, 150 )
-scale = Vector2( 1, 0.42 )
-texture = ExtResource( 24 )
+position = Vector2( 411, 148 )
+texture = SubResource( 59 )
+normal_map = ExtResource( 46 )
+
+[node name="ColorRect" type="ColorRect" parent="Wall2"]
+margin_top = 9.0
+margin_right = 2.0
+margin_bottom = 11.0
+color = Color( 0.886275, 0.858824, 0.768627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Wall3" type="Sprite" parent="."]
-position = Vector2( 411, 248 )
-scale = Vector2( 1, 0.8 )
-texture = ExtResource( 24 )
+position = Vector2( 411, 247 )
+texture = SubResource( 60 )
 
 [node name="StoneWall" type="Sprite" parent="."]
 position = Vector2( 223.5, 230.5 )

@@ -49,13 +49,12 @@
         <text>had an owl stolen from their own garden!</text>
     </dialogue>
     <dialogue id="demandLingere" ntargets="1" type="onDemand">
-        <text>I would love to be invited to the Vennes castle,</text>
-        <text>to see if the inside is as beautiful as the outside...</text>
-        <text>But I am but a laundress.</text>
-        <text>Ms. De Montolieu lives there with her only son.</text>
+        <text>I need to hurry.</text>
+        <text>I have to take the laundry all the way back to Vennes,</text>
+        <text>to Ms. De Montolieu and her son.</text>
     </dialogue>
     <dialogue id="demandLingere2" ntargets="1" type="onDemand">
-        <text>And I would love it if someone could do this job for me...</text>
+        <text>I would love it if someone could do this job for me...</text>
     </dialogue>
     <dialogue id="appConrad" ntargets="1" type="onApproach">
         <text>
