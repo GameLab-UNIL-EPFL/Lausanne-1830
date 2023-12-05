@@ -184,11 +184,11 @@ public class Context : Node {
 	public string _LanguageToString(Language l) {
 		switch(l) {
 			case Language.EN:
-				return "Language: En";
+				return "Language: 🇬🇧/🇺🇸";
 			case Language.FR:
-				return "Langue: Fr";
+				return "Langue: 🇨🇭/🇫🇷";
 			default:
-				return "Langue: Fr";
+				return "Langue: 🇨🇭/🇫🇷";
 		}
 	}
 	
